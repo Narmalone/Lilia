@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StressBar : MonoBehaviour
+public class StressManager : MonoBehaviour
 {
     [SerializeField, Tooltip("Stress actuel du personnage")]private float m_currentStress;
     [SerializeField, Tooltip("Augmentation du stress du joueur")] private float m_upgradeStress;
@@ -24,6 +24,6 @@ public class StressBar : MonoBehaviour
             m_currentStress += m_upgradeStress;
             m_upgradeStress = 0.001f;
         }
-        Debug.Log(m_currentStress);
+        //Debug.Log(m_currentStress);
     }
 }
