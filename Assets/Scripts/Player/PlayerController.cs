@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         }
         if (m_isGrounded)
         {
-            Debug.Log(m_isGrounded);
+            //Debug.Log(m_isGrounded);
 
         }
 
@@ -47,6 +47,12 @@ public class PlayerController : MonoBehaviour
         m_myChara.Move(m_velocity * Time.deltaTime);
 
         m_velocity.y += m_gravity * Time.deltaTime;
+    }
+
+    public FlashlightManager flm;
+    public void takeFlashLight()
+    {
+        
     }
 
 }
