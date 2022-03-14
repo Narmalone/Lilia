@@ -20,23 +20,19 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField, Tooltip("Mask ou l'on définit le sol")]private LayerMask m_groundMask;
 
-    private bool m_isGrounded;
+    private bool m_isGrounded;      //Si le joueur est sur le sol ?
 
     private void Update()
     {
-        m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);
-        if(m_isGrounded && m_velocity.y < 0)
+        m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Création d'une sphere qui chech si le joueur touche le sol
+
+        if(m_isGrounded && m_velocity.y < 0)        //Reset de la gravité quand le joueur touche le sol
         {
             m_velocity.y = -2f;
         }
-        if (m_isGrounded)
-        {
-            //Debug.Log(m_isGrounded);
+        
 
-        }
-
-
-
+        // Déplacements du joueur
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
@@ -47,12 +43,35 @@ public class PlayerController : MonoBehaviour
         m_myChara.Move(m_velocity * Time.deltaTime);
 
         m_velocity.y += m_gravity * Time.deltaTime;
+
+        //Activation de la lampe
+        ActiveFlashlight();
     }
 
-    public FlashlightManager flm;
-    public void takeFlashLight()
+    //Variables, références et fonctions de la lampe par rapport au joueur
+    [SerializeField]FlashlightManager flm;
+    public bool flashlightIsPossessed = false;
+    public void takeFlashlight()
     {
-        
+        if (Input.GetKey(KeyCode.E))
+        {
+            flm.PickItem();
+            flashlightIsPossessed = true;
+        }
+    }
+    public void ActiveFlashlight()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && flashlightIsPossessed == true)
+        {
+            flm.UseFlashlight();
+        }
+        if (Input.GetKey(KeyCode.G) && flashlightIsPossessed == true)
+        {
+            flm.DropItem();
+            flm.GetComponent<BoxCollider>().enabled = true;
+            flashlightIsPossessed = false;
+        }
+
     }
 
 }
