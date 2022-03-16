@@ -14,38 +14,50 @@ public class FlashlightManager : MonoBehaviour
 
     [SerializeField] LayerMask _playerMask;
 
+    public bool isPc;
+    public bool isGamepad;
+
     private void Awake()
     {
         m_rFlashlight = flashlight.GetComponent<Rigidbody>();
         m_spotlightOfFlashlight.GetComponent<Light>();
+        isPc = true;
     }
 
     [SerializeField]PlayerController playerController;
     private void OnTriggerStay(Collider p_collide)
     {
-        if ((_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
+        if (isPc)
         {
-
-            if(playerController.flashlightIsPossessed == false)
+            if ((_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
             {
-                playerController.takeFlashlight();
-                uiManager.takeObject();
-            }
-            else if (playerController.flashlightIsPossessed == true)
-            {
-                uiManager.DisableUi();
-            }
 
+                if (playerController.flashlightIsPossessed == false)
+                {
+                    playerController.takeFlashlight();
+                    uiManager.takeObject();
+                }
+                else if (playerController.flashlightIsPossessed == true)
+                {
+                    uiManager.DisableUi();
+                }
+
+            }
         }
+        
 
 
     }
     private void OnTriggerExit(Collider p_collide)
     {
-        if ((_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
+        if (isPc)
         {
-            uiManager.DisableUi();
+            if ((_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
+            {
+                uiManager.DisableUi();
+            }
         }
+        
        
     }
 
@@ -53,21 +65,37 @@ public class FlashlightManager : MonoBehaviour
 
     public void PickItem()
     {
-        m_rFlashlight.useGravity = false;
-        m_rFlashlight.isKinematic = true;
+        if (isPc)
+        {
+            m_rFlashlight.useGravity = false;
+            m_rFlashlight.isKinematic = true;
 
-        flashlight.transform.SetParent(FlashlightContainer);
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.Euler(90f,180f,0f);
+            flashlight.transform.SetParent(FlashlightContainer);
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.Euler(90f, 180f, 0f);
+        }
+        else if (isGamepad)
+        {
+
+        }
+        
     }
 
     public void DropItem()
     {
-        m_rFlashlight.isKinematic = false;
-        m_rFlashlight.useGravity = true;
+        if (isPc)
+        {
+            m_rFlashlight.isKinematic = false;
+            m_rFlashlight.useGravity = true;
 
 
-        flashlight.transform.parent = null;      
+            flashlight.transform.parent = null;
+        }
+        else if (isGamepad)
+        {
+
+        }
+             
     }
 
     private int flashCount = 0;
@@ -77,18 +105,26 @@ public class FlashlightManager : MonoBehaviour
 
     public void UseFlashlight()
     {
-        if(flashCount == 0 && switchLight == false)
+        if (isPc)
         {
-            flashCount++;
-            m_spotlightOfFlashlight.GetComponent<Light>().intensity = 3;
-            switchLight = true;
+            if (flashCount == 0 && switchLight == false)
+            {
+                flashCount++;
+                m_spotlightOfFlashlight.GetComponent<Light>().intensity = 3;
+                switchLight = true;
+
+            }
+            else if (flashCount == 1 && switchLight == true)
+            {
+                m_spotlightOfFlashlight.GetComponent<Light>().intensity = 0;
+                flashCount--;
+                switchLight = false;
+            }
+        }
+        else if (isGamepad)
+        {
 
         }
-        else if (flashCount == 1 && switchLight == true)
-        {
-            m_spotlightOfFlashlight.GetComponent<Light>().intensity = 0;
-            flashCount--;
-            switchLight = false;
-        }
+        
     }
 }
