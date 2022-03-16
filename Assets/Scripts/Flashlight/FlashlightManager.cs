@@ -7,7 +7,7 @@ public class FlashlightManager : MonoBehaviour
 {
     [SerializeField]UiManager uiManager;
 
-    [SerializeField, Tooltip("Référence de la torche")]private GameObject flashlight;
+    [SerializeField, Tooltip("Rï¿½fï¿½rence de la torche")]private GameObject flashlight;
     [SerializeField] private Transform FlashlightContainer;
 
     [SerializeField]private GameObject m_spotlightOfFlashlight;
@@ -23,7 +23,7 @@ public class FlashlightManager : MonoBehaviour
     private void OnTriggerStay(Collider p_collide)
     {
         uiManager.takeObject();
-        playerController.takeFlashlight();
+        playerController.TakeFlashlight();
 
 
     }
@@ -45,7 +45,7 @@ public class FlashlightManager : MonoBehaviour
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(90f,180f,0f);
 
-        //trouver un moyen d'orienter l'objet en fonction de là ou on regarde
+        //trouver un moyen d'orienter l'objet en fonction de lï¿½ ou on regarde
         //m_yRotation = Mathf.Clamp(m_yRotation, -90f, 90f);
         //transform.LookAt(FlashlightContainer, Vector3.left);
         Debug.Log(FlashlightContainer.transform);

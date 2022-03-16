@@ -14,25 +14,25 @@ public class PlayerController : MonoBehaviour
 
     Vector3 m_velocity;
 
-    [SerializeField, Tooltip("Transform d'un empty ou sera crée la sphere pour savoir si le joueur est sur le sol")]private Transform groundCheck;
+    [SerializeField, Tooltip("Transform d'un empty ou sera crï¿½e la sphere pour savoir si le joueur est sur le sol")]private Transform groundCheck;
 
     [SerializeField, Tooltip("Radius de la sphere qui check si le joueur est sur le sol")]private float radiusCheckSphere = 0.4f;
 
-    [SerializeField, Tooltip("Mask ou l'on définit le sol")]private LayerMask m_groundMask;
+    [SerializeField, Tooltip("Mask ou l'on dï¿½finit le sol")]private LayerMask m_groundMask;
 
     private bool m_isGrounded;      //Si le joueur est sur le sol ?
 
     private void Update()
     {
-        m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Création d'une sphere qui chech si le joueur touche le sol
+        m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Crï¿½ation d'une sphere qui chech si le joueur touche le sol
 
-        if(m_isGrounded && m_velocity.y < 0)        //Reset de la gravité quand le joueur touche le sol
+        if(m_isGrounded && m_velocity.y < 0)        //Reset de la gravitï¿½ quand le joueur touche le sol
         {
             m_velocity.y = -2f;
         }
         
 
-        // Déplacements du joueur
+        // Dï¿½placements du joueur
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
@@ -46,17 +46,33 @@ public class PlayerController : MonoBehaviour
 
         //Activation de la lampe
         ActiveFlashlight();
+        ActiveDoudou();
     }
 
-    //Variables, références et fonctions de la lampe par rapport au joueur
-    [SerializeField]FlashlightManager flm;
+    //Variables, rï¿½fï¿½rences et fonctions de la lampe par rapport au joueur
+    
+    [SerializeField] FlashlightManager flm;
+    
+    [SerializeField] Doudou m_doudou;
+    
     public bool flashlightIsPossessed = false;
-    public void takeFlashlight()
+    
+    public bool m_doudouIsPossessed = false;
+    public void TakeFlashlight()
     {
         if (Input.GetKey(KeyCode.E))
         {
             flm.PickItem();
             flashlightIsPossessed = true;
+        }
+    }
+    
+    public void TakeDoudou()
+    {
+        if (Input.GetKey(KeyCode.A))
+        {
+            m_doudou.PickItem();
+            m_doudouIsPossessed = true;
         }
     }
     public void ActiveFlashlight()
@@ -70,6 +86,22 @@ public class PlayerController : MonoBehaviour
             flm.DropItem();
             flm.GetComponent<BoxCollider>().enabled = true;
             flashlightIsPossessed = false;
+        }
+
+    }
+    
+    public void ActiveDoudou()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && m_doudouIsPossessed == true)
+        {
+            m_doudou.UseDoudou();
+        }
+        if (Input.GetKey(KeyCode.G) && m_doudouIsPossessed == true)
+        {
+            m_doudou.DropItem();
+            Debug.Log("Drop doudou");
+            m_doudou.GetComponent<BoxCollider>().enabled = true;
+            m_doudouIsPossessed = false;
         }
 
     }
