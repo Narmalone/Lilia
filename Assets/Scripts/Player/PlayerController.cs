@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]private CharacterController m_myChara;
 
+    [SerializeField] UiManager uimanager;
+
     [SerializeField, Tooltip("Vitesse du joueur")]private float m_speed;
 
     private float m_gravity = -9.81f;

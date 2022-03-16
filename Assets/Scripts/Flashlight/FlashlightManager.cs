@@ -12,6 +12,8 @@ public class FlashlightManager : MonoBehaviour
 
     [SerializeField]private GameObject m_spotlightOfFlashlight;
 
+    [SerializeField] LayerMask _playerMask;
+
     private void Awake()
     {
         flashlight.GetComponent<BoxCollider>();
@@ -22,47 +24,50 @@ public class FlashlightManager : MonoBehaviour
     [SerializeField]PlayerController playerController;
     private void OnTriggerStay(Collider p_collide)
     {
-        uiManager.takeObject();
-        playerController.takeFlashlight();
+        if ((_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
+        {
+            playerController.takeFlashlight();
+            Debug.Log("colliderdétected");
+            uiManager.takeObject();
+        }
 
 
     }
     private void OnTriggerExit(Collider p_collide)
     {
-        uiManager.DisableUi();
+        if ((_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
+        {
+            uiManager.DisableUi();
+            Debug.Log("Désactive l'Ui");
+        }
+       
     }
-
-    private float m_yRotation = 0f;
 
     [SerializeField] private Rigidbody m_rFlashlight;
 
     public void PickItem()
     {
-        //m_rFlashlight.useGravity = false;
-        //m_rFlashlight.isKinematic = true;
+        m_rFlashlight.useGravity = false;
+        m_rFlashlight.isKinematic = true;
 
         flashlight.transform.SetParent(FlashlightContainer);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(90f,180f,0f);
 
-        //trouver un moyen d'orienter l'objet en fonction de là ou on regarde
-        //m_yRotation = Mathf.Clamp(m_yRotation, -90f, 90f);
-        //transform.LookAt(FlashlightContainer, Vector3.left);
-        Debug.Log(FlashlightContainer.transform);
-        flashlight.GetComponent<BoxCollider>().enabled = false;
+
+        bool m_disableCollider = flashlight.GetComponent<BoxCollider>().enabled = false;
+        Debug.Log(m_disableCollider);
         uiManager.DisableUi();
 
     }
 
     public void DropItem()
     {
-        //m_rFlashlight.isKinematic = false;
-        //m_rFlashlight.useGravity = true;
+        m_rFlashlight.isKinematic = false;
+        m_rFlashlight.useGravity = true;
 
 
-        flashlight.transform.parent = null;
-        Debug.Log("Drop l'item");
-      
+        flashlight.transform.parent = null;      
     }
 
     private int flashCount = 0;
