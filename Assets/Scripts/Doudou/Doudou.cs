@@ -62,6 +62,5 @@ public class Doudou : MonoBehaviour
 
     public void UseDoudou()
     {
-        Debug.Log("Used Doudou");
     }
 }

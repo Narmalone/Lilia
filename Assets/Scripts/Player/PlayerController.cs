@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -12,6 +14,20 @@ public class PlayerController : MonoBehaviour
 
     private float m_gravity = -9.81f;
 
+    [SerializeField] private StressManager m_stressBar;
+    
+    private int m_currentStress;
+
+    private int m_maxStress = 100;
+
+    private bool m_isStressTick = false;
+
+    private int m_tickStress = 5;
+
+    private bool m_doudouIsUsed = false;
+
+    private DateTime startTime;
+    
     Vector3 m_velocity;
 
     [SerializeField, Tooltip("Transform d'un empty ou sera cr�e la sphere pour savoir si le joueur est sur le sol")]private Transform groundCheck;
@@ -21,6 +37,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("Mask ou l'on d�finit le sol")]private LayerMask m_groundMask;
 
     private bool m_isGrounded;      //Si le joueur est sur le sol ?
+
+    private void Awake()
+    {
+        m_currentStress = m_maxStress;
+        m_stressBar.SetMaxHealth(m_maxStress);
+    }
 
     private void Update()
     {
@@ -44,11 +66,34 @@ public class PlayerController : MonoBehaviour
 
         m_velocity.y += m_gravity * Time.deltaTime;
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Stressing(10);
+        }
+        
+        AutoStress();
         //Activation de la lampe
         ActiveFlashlight();
         ActiveDoudou();
     }
 
+    private void Stressing(int p_stressNum)
+    {
+        m_currentStress -= p_stressNum;
+        m_stressBar.SetStress(m_currentStress);
+    }
+
+    public void AutoStress()
+    {
+        if (m_isStressTick == false)
+        {
+            m_currentStress -= m_tickStress;
+            m_stressBar.SetStress(m_currentStress);
+            m_isStressTick = true;
+            Task.Delay(1000).ContinueWith(t=> m_isStressTick=false);
+        }
+    }
+    
     //Variables, r�f�rences et fonctions de la lampe par rapport au joueur
     
     [SerializeField] FlashlightManager flm;
@@ -92,9 +137,29 @@ public class PlayerController : MonoBehaviour
     
     public void ActiveDoudou()
     {
-        if (Input.GetKeyDown(KeyCode.F) && m_doudouIsPossessed == true)
+        if (Input.GetKeyDown(KeyCode.R) && m_doudouIsPossessed == true)
         {
+            startTime = DateTime.Now;
+            Debug.Log(startTime);
             m_doudou.UseDoudou();
+            Stressing(-10);
+            m_doudouIsUsed = true;
+        }
+        if (Input.GetKeyUp(KeyCode.R) && m_doudouIsUsed == true)
+        {
+            DateTime endTime = DateTime.Now;
+            TimeSpan pressedTime = endTime.Subtract(startTime);
+            if (pressedTime.TotalMilliseconds >= 2000)
+            {
+                Debug.Log("Gros Soin");
+                Debug.Log(startTime);
+            }
+            else if (pressedTime.TotalMilliseconds < 2000 )
+            {
+                Debug.Log("Piti Soin");
+            }
+
+            m_doudouIsUsed = false;
         }
         if (Input.GetKey(KeyCode.G) && m_doudouIsPossessed == true)
         {
