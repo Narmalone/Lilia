@@ -71,7 +71,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.G) && flashlightIsPossessed == true)
         {
             flm.DropItem();
-            flm.GetComponent<BoxCollider>().enabled = true;
             flashlightIsPossessed = false;
         }
 

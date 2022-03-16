@@ -16,7 +16,6 @@ public class FlashlightManager : MonoBehaviour
 
     private void Awake()
     {
-        flashlight.GetComponent<BoxCollider>();
         m_rFlashlight = flashlight.GetComponent<Rigidbody>();
         m_spotlightOfFlashlight.GetComponent<Light>();
     }
@@ -26,8 +25,17 @@ public class FlashlightManager : MonoBehaviour
     {
         if ((_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
-            playerController.takeFlashlight();
-            uiManager.takeObject();
+
+            if(playerController.flashlightIsPossessed == false)
+            {
+                playerController.takeFlashlight();
+                uiManager.takeObject();
+            }
+            else if (playerController.flashlightIsPossessed == true)
+            {
+                uiManager.DisableUi();
+            }
+
         }
 
 
@@ -51,10 +59,6 @@ public class FlashlightManager : MonoBehaviour
         flashlight.transform.SetParent(FlashlightContainer);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(90f,180f,0f);
-
-        bool m_disableCollider = flashlight.GetComponent<BoxCollider>().enabled = false;
-        uiManager.DisableUi();
-
     }
 
     public void DropItem()

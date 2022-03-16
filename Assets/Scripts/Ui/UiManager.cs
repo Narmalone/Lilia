@@ -24,6 +24,10 @@ public class UiManager : MonoBehaviour
             m_takeLight.SetActive(true);
             Debug.Log(isHandle);
         }
+        else
+        {
+            DisableUi();
+        }
     }
     public void DisableUi()
     {
@@ -31,12 +35,11 @@ public class UiManager : MonoBehaviour
         if (isHandle == true)
         {
             m_takeLight.SetActive(false);
-            Debug.Log("disable Ui");
             Debug.Log(isHandle);
         }
         else
         {
-            Debug.Log("n'est pas en main");
+            Debug.LogError("Problème DisableUi ?", this);
         }
         
     }
