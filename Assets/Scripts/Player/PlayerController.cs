@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E))
         {
+            uimanager.DisableUi();
             flm.PickItem();
             flashlightIsPossessed = true;
         }

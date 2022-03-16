@@ -6,23 +6,38 @@ using TMPro;
 public class UiManager : MonoBehaviour
 {
     [SerializeField]private GameObject m_takeLight;
+
     [SerializeField]private GameObject flashlight;
+
+    public bool isHandle = false;
+    public bool isActivated;
 
     private void Start()
     {
-        m_takeLight.SetActive(false);
+        DisableUi();
     }
     public void takeObject()
     {
-        //Désactiver la Ui qui prend l'objet
-        //Activer l'Ui en bas à droite
-        //Debug.Log("prendre l'objet");
-
-        m_takeLight.SetActive(true);
-
+        isHandle = false;
+        if(isHandle == false)
+        {
+            m_takeLight.SetActive(true);
+            Debug.Log(isHandle);
+        }
     }
     public void DisableUi()
     {
-        m_takeLight.SetActive(false);
+        isHandle = true;
+        if (isHandle == true)
+        {
+            m_takeLight.SetActive(false);
+            Debug.Log("disable Ui");
+            Debug.Log(isHandle);
+        }
+        else
+        {
+            Debug.Log("n'est pas en main");
+        }
+        
     }
 }

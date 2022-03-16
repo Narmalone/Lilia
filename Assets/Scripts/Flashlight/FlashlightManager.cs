@@ -27,7 +27,6 @@ public class FlashlightManager : MonoBehaviour
         if ((_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             playerController.takeFlashlight();
-            Debug.Log("colliderdétected");
             uiManager.takeObject();
         }
 
@@ -38,7 +37,6 @@ public class FlashlightManager : MonoBehaviour
         if ((_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             uiManager.DisableUi();
-            Debug.Log("Désactive l'Ui");
         }
        
     }
@@ -54,9 +52,7 @@ public class FlashlightManager : MonoBehaviour
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(90f,180f,0f);
 
-
         bool m_disableCollider = flashlight.GetComponent<BoxCollider>().enabled = false;
-        Debug.Log(m_disableCollider);
         uiManager.DisableUi();
 
     }
