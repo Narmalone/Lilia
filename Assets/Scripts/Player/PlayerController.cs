@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private float m_gravity = -9.81f;
 
     [SerializeField] private StressManager m_stressBar;
+
+    [SerializeField] private UiManager m_UIManager;
     
     private int m_currentStress;
 
@@ -79,7 +81,18 @@ public class PlayerController : MonoBehaviour
 
     private void Stressing(int p_stressNum)
     {
-        m_currentStress -= p_stressNum;
+        if (m_currentStress < 0)
+        {
+            m_currentStress = 0;
+        }
+        else if (m_currentStress > m_maxStress)
+        {
+            m_currentStress = m_maxStress;
+        }
+        else
+        {
+            m_currentStress -= p_stressNum;
+        }
         m_stressBar.SetStress(m_currentStress);
     }
 
@@ -87,7 +100,18 @@ public class PlayerController : MonoBehaviour
     {
         if (m_isStressTick == false)
         {
-            m_currentStress -= m_tickStress;
+            if (m_currentStress < 0)
+            {
+                m_currentStress = 0;
+            }
+            else if (m_currentStress > m_maxStress)
+            {
+                m_currentStress = m_maxStress;
+            }
+            else
+            {
+                m_currentStress -= m_tickStress;
+            }
             m_stressBar.SetStress(m_currentStress);
             m_isStressTick = true;
             Task.Delay(1000).ContinueWith(t=> m_isStressTick=false);
@@ -109,6 +133,7 @@ public class PlayerController : MonoBehaviour
         {
             flm.PickItem();
             flashlightIsPossessed = true;
+            m_UIManager.TakeLampe();
         }
     }
     
@@ -118,6 +143,7 @@ public class PlayerController : MonoBehaviour
         {
             m_doudou.PickItem();
             m_doudouIsPossessed = true;
+            m_UIManager.TakeDoudou();
         }
     }
     public void ActiveFlashlight()
@@ -131,6 +157,9 @@ public class PlayerController : MonoBehaviour
             flm.DropItem();
             flm.GetComponent<BoxCollider>().enabled = true;
             flashlightIsPossessed = false;
+            m_UIManager.DropLampe();
+            m_UIManager.DisableUi();
+            
         }
 
     }
@@ -140,9 +169,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && m_doudouIsPossessed == true)
         {
             startTime = DateTime.Now;
-            Debug.Log(startTime);
             m_doudou.UseDoudou();
-            Stressing(-10);
             m_doudouIsUsed = true;
         }
         if (Input.GetKeyUp(KeyCode.R) && m_doudouIsUsed == true)
@@ -152,11 +179,12 @@ public class PlayerController : MonoBehaviour
             if (pressedTime.TotalMilliseconds >= 2000)
             {
                 Debug.Log("Gros Soin");
-                Debug.Log(startTime);
+                Stressing(-10);
             }
             else if (pressedTime.TotalMilliseconds < 2000 )
             {
                 Debug.Log("Piti Soin");
+                Stressing(-20);
             }
 
             m_doudouIsUsed = false;
@@ -167,6 +195,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Drop doudou");
             m_doudou.GetComponent<BoxCollider>().enabled = true;
             m_doudouIsPossessed = false;
+            m_UIManager.DropDoudou();
+            m_UIManager.DisableUi();
         }
 
     }

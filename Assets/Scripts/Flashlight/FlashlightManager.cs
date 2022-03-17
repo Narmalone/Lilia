@@ -22,10 +22,8 @@ public class FlashlightManager : MonoBehaviour
     [SerializeField]PlayerController playerController;
     private void OnTriggerStay(Collider p_collide)
     {
-        uiManager.takeObject();
+        uiManager.TakableObject();
         playerController.TakeFlashlight();
-
-
     }
     private void OnTriggerExit(Collider p_collide)
     {

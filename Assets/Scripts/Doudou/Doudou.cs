@@ -19,7 +19,7 @@ public class Doudou : MonoBehaviour
     [SerializeField]PlayerController playerController;
     private void OnTriggerStay(Collider p_collide)
     {
-        uiManager.takeObject();
+        uiManager.TakableObject();
         playerController.TakeDoudou();
 
 
