@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     public bool isGamepad;
 
     PlayerControls controls;
-    Vector3 GamepadMove;
+    Vector2 GamepadMove;
 
 
     private void Awake()
@@ -38,11 +38,12 @@ public class PlayerController : MonoBehaviour
         isPc = true;
         if (isGamepad)
         {
-            controls.Gameplay.Move.performed += ctx => GamepadMove = ctx.ReadValue<Vector3>();
-            controls.Gameplay.Move.canceled += ctx => GamepadMove = Vector3.zero;
+            controls.Gameplay.GamepadMove.performed += ctx => GamepadMove = ctx.ReadValue<Vector2>();
+            controls.Gameplay.GamepadMove.canceled += ctx => GamepadMove = Vector2.zero;
+            Debug.Log(GamepadMove);
         }
     }
-    private void Update()
+    public void Update()
     {
 
         if (isPc)
@@ -72,8 +73,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (isGamepad)
         {
-            Vector3 playerPos = new Vector3(-GamepadMove.x, 0f, GamepadMove.z) * m_speed * Time.deltaTime;
-            transform.Translate(playerPos, Space.World);
+            Vector2 m = new Vector2(-GamepadMove.x, GamepadMove.y) * Time.deltaTime;
+            transform.Translate(m, Space.World);
         }
        
     }
@@ -91,6 +92,12 @@ public class PlayerController : MonoBehaviour
                 flm.PickItem();
                 flashlightIsPossessed = true;
             }
+        }
+        else if (isGamepad)
+        {
+            uimanager.DisableUi();
+            flm.PickItem();
+            flashlightIsPossessed = true;
         }
         
     }

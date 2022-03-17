@@ -14,7 +14,9 @@ public class MouseLock : MonoBehaviour
     public bool isGamepad = true;
     public bool isPc = true;
     PlayerControls controls;
-    private Vector2 rotate;
+
+    private float movementInputX;
+    private float movementInputY;
 
     private void Awake()
     {
@@ -23,8 +25,11 @@ public class MouseLock : MonoBehaviour
 
         if (isGamepad)
         {
-            controls.Gameplay.Rotation.performed += ctx => rotate = ctx.ReadValue<Vector2>();
-            controls.Gameplay.Rotation.canceled += ctx => rotate = Vector2.zero;
+            controls.Gameplay.Rotation.performed += ctx => movementInputX = ctx.ReadValue<float>();
+            controls.Gameplay.Rotation.canceled += ctx => movementInputX = 0f;
+
+            controls.Gameplay.Rotation.performed += ctx => movementInputY = ctx.ReadValue<float>();
+            controls.Gameplay.Rotation.canceled += ctx => movementInputY = 0f;
             Debug.Log("les valeures sont lues");
         }
     }
@@ -34,7 +39,7 @@ public class MouseLock : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         if (isPc)
         {
@@ -50,11 +55,21 @@ public class MouseLock : MonoBehaviour
         }
         if (isGamepad)
         {
-            //NE MARCHE PAS ENCORE
-            Vector2 look = new Vector2(-rotate.y, -rotate.x) * mouseSensitivity * Time.deltaTime;
-            playerBody.Rotate(look, Space.World);
-            Debug.Log(look);
+
+            movementInputX = controls.Gameplay.Rotation.ReadValue<float>() * mouseSensitivity * Time.deltaTime;
+            movementInputY = controls.Gameplay.Rotation.ReadValue<float>() * mouseSensitivity * Time.deltaTime;
+
+            xRotation -= movementInputY;
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            transform.localRotation = Quaternion.Euler(0f, xRotation, 0f);
+            playerBody.Rotate(Vector3.down * movementInputX);
+            Debug.Log(movementInputX);
         }
-        
+
+    }
+
+    private void OnEnable()
+    {
+        controls.Gameplay.Enable();
     }
 }
