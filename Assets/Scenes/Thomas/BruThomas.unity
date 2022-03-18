@@ -554,81 +554,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &731429795 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1354072575498231416, guid: e35551cb15eded5469860737bea02a7c, type: 3}
-  m_PrefabInstance: {fileID: 1354072575585365887}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &731429798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 731429795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 80bbac539c558dd43a1a47d7b234e81a, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1905903004}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Update
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 511ffae1-cb23-44aa-910d-4b8b0ba98ee6
-    m_ActionName: Gameplay/GamepadMove[/Keyboard/z,/Keyboard/s,/Keyboard/q,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1925913649}
-        m_TargetAssemblyTypeName: MouseLock, Assembly-CSharp
-        m_MethodName: Update
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 99adf17d-d0b6-4b3e-aa9d-b0e37400b2e3
-    m_ActionName: Gameplay/Rotation
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 664b49d9-9a8c-4077-8fe7-37580c26b5b1
-    m_ActionName: Gameplay/takeFlashlight
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: fe0035a9-7a01-4e10-9abb-b6fb18a5b61e
-    m_ActionName: Gameplay/ActiveFlashlight
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Gameplay
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 1925913651}
 --- !u!4 &965676793 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1354072575962128774, guid: e35551cb15eded5469860737bea02a7c, type: 3}
@@ -1118,7 +1043,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1354072575498231414, guid: e35551cb15eded5469860737bea02a7c, type: 3}
   m_PrefabInstance: {fileID: 1354072575585365887}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 731429795}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24037df1209137c489d431dd54692cad, type: 3}
@@ -1180,22 +1105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36da180d7f7f6364494a02c1453e2920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1925913649 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5968079658271096600, guid: e35551cb15eded5469860737bea02a7c, type: 3}
-  m_PrefabInstance: {fileID: 1354072575585365887}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 221e092e0643aec4d9217a657c73cc88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!20 &1925913651 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 1354072575962128775, guid: e35551cb15eded5469860737bea02a7c, type: 3}
-  m_PrefabInstance: {fileID: 1354072575585365887}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2066910955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1316,6 +1225,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1354072575962128773, guid: e35551cb15eded5469860737bea02a7c, type: 3}
       propertyPath: playerBody
+      value: 
+      objectReference: {fileID: 965676793}
+    - target: {fileID: 5968079658271096600, guid: e35551cb15eded5469860737bea02a7c, type: 3}
+      propertyPath: fpsCam
+      value: 
+      objectReference: {fileID: 965676793}
+    - target: {fileID: 5968079658271096600, guid: e35551cb15eded5469860737bea02a7c, type: 3}
+      propertyPath: thisCam
       value: 
       objectReference: {fileID: 965676793}
     - target: {fileID: 5968079658271096600, guid: e35551cb15eded5469860737bea02a7c, type: 3}

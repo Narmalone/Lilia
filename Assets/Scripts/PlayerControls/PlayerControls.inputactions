@@ -16,15 +16,15 @@
                 },
                 {
                     "name": "Rotation",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "99adf17d-d0b6-4b3e-aa9d-b0e37400b2e3",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
-                    "name": "takeFlashlight",
+                    "name": "TakeFlashlight",
                     "type": "Button",
                     "id": "664b49d9-9a8c-4077-8fe7-37580c26b5b1",
                     "expectedControlType": "Button",
@@ -121,26 +121,15 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "positive",
-                    "id": "90b19cec-dc3f-45e4-b142-7769558483ab",
-                    "path": "<Gamepad>/rightStick/left",
+                    "name": "",
+                    "id": "863d74d7-21da-40e2-991f-b0b22e8abd35",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Rotation",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "negative",
-                    "id": "ba9600e7-4d73-4d9d-ab5d-71aa2df315f7",
-                    "path": "<Gamepad>/rightStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Rotation",
-                    "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
@@ -149,7 +138,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "takeFlashlight",
+                    "action": "TakeFlashlight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -171,6 +160,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "GamepadMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f1a8d0e0-baa1-4837-afc9-60504790d957",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
                     "action": "GamepadMove",
                     "isComposite": false,
                     "isPartOfComposite": false

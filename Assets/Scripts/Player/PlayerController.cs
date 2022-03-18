@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     private bool m_isGrounded;      //Si le joueur est sur le sol ?
 
     PlayerControls controls;
-    Vector2 GamepadMove;
+    Vector2 playerMove;
 
 
     private void Awake()
@@ -35,47 +35,49 @@ public class PlayerController : MonoBehaviour
         m_gameManager = FindObjectOfType<GameManager>();
         controls = new PlayerControls();
 
-        if (m_gameManager.isGamepad)
+        if (m_gameManager.isGamepad == true)
         {
-            controls.Gameplay.GamepadMove.performed += ctx => GamepadMove = ctx.ReadValue<Vector2>();
-            controls.Gameplay.GamepadMove.canceled += ctx => GamepadMove = Vector2.zero;
-            Debug.Log("valeures lues");
+            //controls.Gameplay.GamepadMove.performed += ctx => playerMove = ctx.ReadValue<Vector2>();
+            //controls.Gameplay.GamepadMove.canceled += ctx => playerMove = Vector2.zero;
+        }
+        else
+        {
+
         }
     }
     public void Update()
     {
+        m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Création d'une sphere qui chech si le joueur touche le sol
 
-        if (m_gameManager.isPc)
+        if (m_isGrounded && m_velocity.y < 0)        //Reset de la gravité quand le joueur touche le sol
         {
-            m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Création d'une sphere qui chech si le joueur touche le sol
-
-            if (m_isGrounded && m_velocity.y < 0)        //Reset de la gravité quand le joueur touche le sol
-            {
-                m_velocity.y = -2f;
-            }
-
-
-            // Déplacements du joueur
-            float x = Input.GetAxis("Horizontal");
-            float z = Input.GetAxis("Vertical");
-
-            Vector3 move = transform.right * x + transform.forward * z;
-
-            m_myChara.Move(move * m_speed * Time.deltaTime);
-
-            m_myChara.Move(m_velocity * Time.deltaTime);
-
-            m_velocity.y += m_gravity * Time.deltaTime;
-
-            //Activation de la lampe
-            ActiveFlashlight();
+            m_velocity.y = -2f;
         }
-        else if (m_gameManager.isGamepad)
+
+        // Déplacements du joueur
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+        Vector3 move = transform.right * x + transform.forward * z;
+
+        m_myChara.Move(move * m_speed * Time.deltaTime);
+
+        m_myChara.Move(m_velocity * Time.deltaTime);
+
+        m_velocity.y += m_gravity * Time.deltaTime;
+
+        //Activation de la lampe
+        ActiveFlashlight();
+        if (m_gameManager.isPc == true)
         {
-            Vector2 m = new Vector2(-GamepadMove.x, GamepadMove.y) * Time.deltaTime;
-            transform.Translate(m, Space.World);
-            Debug.Log(m);
+
+            
         }
+        else if (m_gameManager.isGamepad == true)
+        {
+
+        }
+
        
     }
 

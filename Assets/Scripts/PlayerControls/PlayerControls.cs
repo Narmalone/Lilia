@@ -38,15 +38,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Rotation"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""99adf17d-d0b6-4b3e-aa9d-b0e37400b2e3"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""takeFlashlight"",
+                    ""name"": ""TakeFlashlight"",
                     ""type"": ""Button"",
                     ""id"": ""664b49d9-9a8c-4077-8fe7-37580c26b5b1"",
                     ""expectedControlType"": ""Button"",
@@ -143,26 +143,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""positive"",
-                    ""id"": ""90b19cec-dc3f-45e4-b142-7769558483ab"",
-                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""name"": """",
+                    ""id"": ""863d74d7-21da-40e2-991f-b0b22e8abd35"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Rotation"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""ba9600e7-4d73-4d9d-ab5d-71aa2df315f7"",
-                    ""path"": ""<Gamepad>/rightStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Rotation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
@@ -171,7 +160,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""takeFlashlight"",
+                    ""action"": ""TakeFlashlight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -193,6 +182,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
+                    ""action"": ""GamepadMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f1a8d0e0-baa1-4837-afc9-60504790d957"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""GamepadMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -229,7 +229,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_GamepadMove = m_Gameplay.FindAction("GamepadMove", throwIfNotFound: true);
         m_Gameplay_Rotation = m_Gameplay.FindAction("Rotation", throwIfNotFound: true);
-        m_Gameplay_takeFlashlight = m_Gameplay.FindAction("takeFlashlight", throwIfNotFound: true);
+        m_Gameplay_TakeFlashlight = m_Gameplay.FindAction("TakeFlashlight", throwIfNotFound: true);
         m_Gameplay_ActiveFlashlight = m_Gameplay.FindAction("ActiveFlashlight", throwIfNotFound: true);
     }
 
@@ -292,7 +292,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_GamepadMove;
     private readonly InputAction m_Gameplay_Rotation;
-    private readonly InputAction m_Gameplay_takeFlashlight;
+    private readonly InputAction m_Gameplay_TakeFlashlight;
     private readonly InputAction m_Gameplay_ActiveFlashlight;
     public struct GameplayActions
     {
@@ -300,7 +300,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public GameplayActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @GamepadMove => m_Wrapper.m_Gameplay_GamepadMove;
         public InputAction @Rotation => m_Wrapper.m_Gameplay_Rotation;
-        public InputAction @takeFlashlight => m_Wrapper.m_Gameplay_takeFlashlight;
+        public InputAction @TakeFlashlight => m_Wrapper.m_Gameplay_TakeFlashlight;
         public InputAction @ActiveFlashlight => m_Wrapper.m_Gameplay_ActiveFlashlight;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
@@ -317,9 +317,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Rotation.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRotation;
                 @Rotation.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRotation;
                 @Rotation.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRotation;
-                @takeFlashlight.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTakeFlashlight;
-                @takeFlashlight.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTakeFlashlight;
-                @takeFlashlight.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTakeFlashlight;
+                @TakeFlashlight.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTakeFlashlight;
+                @TakeFlashlight.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTakeFlashlight;
+                @TakeFlashlight.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTakeFlashlight;
                 @ActiveFlashlight.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnActiveFlashlight;
                 @ActiveFlashlight.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnActiveFlashlight;
                 @ActiveFlashlight.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnActiveFlashlight;
@@ -333,9 +333,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Rotation.started += instance.OnRotation;
                 @Rotation.performed += instance.OnRotation;
                 @Rotation.canceled += instance.OnRotation;
-                @takeFlashlight.started += instance.OnTakeFlashlight;
-                @takeFlashlight.performed += instance.OnTakeFlashlight;
-                @takeFlashlight.canceled += instance.OnTakeFlashlight;
+                @TakeFlashlight.started += instance.OnTakeFlashlight;
+                @TakeFlashlight.performed += instance.OnTakeFlashlight;
+                @TakeFlashlight.canceled += instance.OnTakeFlashlight;
                 @ActiveFlashlight.started += instance.OnActiveFlashlight;
                 @ActiveFlashlight.performed += instance.OnActiveFlashlight;
                 @ActiveFlashlight.canceled += instance.OnActiveFlashlight;
