@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+
         m_gameManager = FindObjectOfType<GameManager>();
         controls = new PlayerControls();
 
@@ -99,6 +100,8 @@ public class PlayerController : MonoBehaviour
         {
             uimanager.DisableUi();
             flm.PickItem();
+            Gamepad.current.SetMotorSpeeds(0.75f * Time.deltaTime, 0.75f * Time.deltaTime);
+            float frequency = InputSystem.pollingFrequency = 60f;
             flashlightIsPossessed = true;
         }
         
