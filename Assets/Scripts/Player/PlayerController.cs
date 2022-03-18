@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]private CharacterController m_myChara;
 
+    [SerializeField]GameManager m_gameManager;
+
     [SerializeField] UiManager uimanager;
 
     [SerializeField, Tooltip("Vitesse du joueur")]private float m_speed;
@@ -24,29 +26,26 @@ public class PlayerController : MonoBehaviour
 
     private bool m_isGrounded;      //Si le joueur est sur le sol ?
 
-    public bool isPc;
-    public bool isGamepad;
-
     PlayerControls controls;
     Vector2 GamepadMove;
 
 
     private void Awake()
     {
+        m_gameManager = FindObjectOfType<GameManager>();
         controls = new PlayerControls();
-        isGamepad = true;
-        isPc = true;
-        if (isGamepad)
+
+        if (m_gameManager.isGamepad)
         {
             controls.Gameplay.GamepadMove.performed += ctx => GamepadMove = ctx.ReadValue<Vector2>();
             controls.Gameplay.GamepadMove.canceled += ctx => GamepadMove = Vector2.zero;
-            Debug.Log(GamepadMove);
+            Debug.Log("valeures lues");
         }
     }
     public void Update()
     {
 
-        if (isPc)
+        if (m_gameManager.isPc)
         {
             m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Création d'une sphere qui chech si le joueur touche le sol
 
@@ -71,10 +70,11 @@ public class PlayerController : MonoBehaviour
             //Activation de la lampe
             ActiveFlashlight();
         }
-        else if (isGamepad)
+        else if (m_gameManager.isGamepad)
         {
             Vector2 m = new Vector2(-GamepadMove.x, GamepadMove.y) * Time.deltaTime;
             transform.Translate(m, Space.World);
+            Debug.Log(m);
         }
        
     }
@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
     public bool flashlightIsPossessed = false;
     public void takeFlashlight()
     {
-        if (isPc)
+        if (m_gameManager.isPc)
         {
             if (Input.GetKey(KeyCode.E))
             {
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
                 flashlightIsPossessed = true;
             }
         }
-        else if (isGamepad)
+        else if (m_gameManager.isGamepad)
         {
             uimanager.DisableUi();
             flm.PickItem();
@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
     }
     public void ActiveFlashlight()
     {
-        if (isPc)
+        if (m_gameManager.isPc)
         {
             if (Input.GetKeyDown(KeyCode.F) && flashlightIsPossessed == true)
             {

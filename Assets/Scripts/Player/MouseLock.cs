@@ -7,12 +7,12 @@ public class MouseLock : MonoBehaviour
 {
     public float mouseSensitivity;
 
+    [SerializeField]GameManager m_gameManager;
+
     public Transform playerBody;
 
     private float xRotation = 0f;
 
-    public bool isGamepad = true;
-    public bool isPc = true;
     PlayerControls controls;
 
     private float movementInputX;
@@ -20,17 +20,17 @@ public class MouseLock : MonoBehaviour
 
     private void Awake()
     {
-        isGamepad = true;
+        m_gameManager = FindObjectOfType<GameManager>();
+
         controls = new PlayerControls();
 
-        if (isGamepad)
+        if (m_gameManager.isGamepad)
         {
             controls.Gameplay.Rotation.performed += ctx => movementInputX = ctx.ReadValue<float>();
             controls.Gameplay.Rotation.canceled += ctx => movementInputX = 0f;
 
             controls.Gameplay.Rotation.performed += ctx => movementInputY = ctx.ReadValue<float>();
             controls.Gameplay.Rotation.canceled += ctx => movementInputY = 0f;
-            Debug.Log("les valeures sont lues");
         }
     }
     void Start()
@@ -41,7 +41,7 @@ public class MouseLock : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        if (isPc)
+        if (m_gameManager.isPc)
         {
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
@@ -53,7 +53,7 @@ public class MouseLock : MonoBehaviour
 
             playerBody.Rotate(Vector3.up * mouseX);
         }
-        if (isGamepad)
+        if (m_gameManager.isGamepad)
         {
 
             movementInputX = controls.Gameplay.Rotation.ReadValue<float>() * mouseSensitivity * Time.deltaTime;
@@ -61,8 +61,10 @@ public class MouseLock : MonoBehaviour
 
             xRotation -= movementInputY;
             xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-            transform.localRotation = Quaternion.Euler(0f, xRotation, 0f);
+            //playerBody.transform.localRotation = Quaternion.Euler(0f, xRotation, 0f);
+            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
             playerBody.Rotate(Vector3.down * movementInputX);
+
             Debug.Log(movementInputX);
         }
 
