@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private float m_gravity = -9.81f;
 
     Vector3 m_velocity;
-
+    
     [SerializeField, Tooltip("Transform d'un empty ou sera crée la sphere pour savoir si le joueur est sur le sol")]private Transform groundCheck;
 
     [SerializeField, Tooltip("Radius de la sphere qui check si le joueur est sur le sol")]private float radiusCheckSphere = 0.4f;

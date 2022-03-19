@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class MouseLock : MonoBehaviour
 {
     public float mouseSensitivity;
-
     [SerializeField]GameManager m_gameManager;
 
     public Transform playerBody;
@@ -15,12 +14,18 @@ public class MouseLock : MonoBehaviour
     PlayerControls controls;
 
     private Vector2 rotateGamepad;
-    private float movementInputY;
+
+    float pitch;
+
+    Quaternion _initRotation;
+
     private void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();
 
         controls = new PlayerControls();
+
+        _initRotation = transform.localRotation;
 
         if (m_gameManager.isGamepad)
         {
@@ -29,8 +34,6 @@ public class MouseLock : MonoBehaviour
 
             //controls.Gameplay.Rotation.performed += ctx => movementInputY = ctx.ReadValue<Vector2>();
             //controls.Gameplay.Rotation.canceled += ctx => movementInputY = 0f;
-
-            Debug.Log("valeures lues");
         }
     }
     void Start()
@@ -57,22 +60,15 @@ public class MouseLock : MonoBehaviour
         else if (m_gameManager.isGamepad == true)
         {
 
-            //rotateGamepad = controls.Gameplay.Rotation.ReadValue<float>() * mouseSensitivity * Time.deltaTime;
+            Vector2 r = new Vector2(rotateGamepad.x, -rotateGamepad.y) * mouseSensitivity * Time.deltaTime;
 
-            //xRotation -= movementInputY;
+            transform.localRotation = _initRotation * Quaternion.Euler(pitch, 0f, 0f);
 
-            //transform.localRotation = Quaternion.Euler(0f, xRotation, 0f);
+            pitch = Mathf.Clamp(pitch - rotateGamepad.y * 1f, -90f, 90f);
 
-            //transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+            transform.Rotate(Vector3.right * r.y, Space.Self);
 
-            //playerBody.Rotate(Vector3.down * movementInputX);
-
-            Debug.Log(rotateGamepad);
-
-            Vector2 r = new Vector2(-rotateGamepad.x, -rotateGamepad.y) * 100f * Time.deltaTime;
-            transform.localRotation = Quaternion.Euler(rotateGamepad.y, 0f, 0f);
-            playerBody.Rotate(r, Space.Self);
-            Debug.Log(r);
+            playerBody.Rotate(Vector3.up * r.x, Space.Self);
             
         }
 
