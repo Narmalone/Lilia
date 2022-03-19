@@ -185,17 +185,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""GamepadMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f1a8d0e0-baa1-4837-afc9-60504790d957"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""GamepadMove"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
