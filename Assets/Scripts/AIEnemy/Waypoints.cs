@@ -11,7 +11,7 @@ public class Waypoints : MonoBehaviour
 
     public void nextPoint()
     {
-        index = 2 % index;
+        index = (index+1) % m_listWaypoints.Count;
     }
 
     public GameObject getCurrentPoint()

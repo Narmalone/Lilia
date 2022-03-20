@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,10 +14,17 @@ public class AIController : MonoBehaviour
 
     [SerializeField] private NavMeshAgent m_navAgent;
     [SerializeField] private Waypoints m_waypoints;
-    [SerializeField] private PlayerController m_player;
+    [SerializeField] private Doudou m_doudou;
 
     private m_enumState m_currentState = m_enumState.PATROUILLE;
 
+    public void FollowDoudou(int p_delay)
+    {
+        m_currentState = m_enumState.CHASSE;
+        Task.Delay(p_delay).ContinueWith(t=> m_currentState = m_enumState.PATROUILLE);
+        
+    }
+    
     private void Update()
     {
         if (m_currentState == m_enumState.PATROUILLE)
@@ -29,7 +37,7 @@ public class AIController : MonoBehaviour
         }
         else
         {
-            m_navAgent.SetDestination(m_player.transform.position);
+            m_navAgent.SetDestination(m_doudou.transform.position);
         }
     }
 }

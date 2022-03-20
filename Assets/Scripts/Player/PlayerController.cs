@@ -37,8 +37,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("Radius de la sphere qui check si le joueur est sur le sol")]private float radiusCheckSphere = 0.4f;
 
     [SerializeField, Tooltip("Mask ou l'on d�finit le sol")]private LayerMask m_groundMask;
+    
+    [SerializeField] FlashlightManager flm;
+    
+    [SerializeField] Doudou m_doudou;
+    
+    public bool flashlightIsPossessed = false;
+    
+    public bool m_doudouIsPossessed = false;
 
-    private bool m_isGrounded;      //Si le joueur est sur le sol ?
+    private bool m_isGrounded;//Si le joueur est sur le sol ?
+    
+    [SerializeField] AIController m_AIController;
 
     private void Awake()
     {
@@ -120,13 +130,6 @@ public class PlayerController : MonoBehaviour
     
     //Variables, r�f�rences et fonctions de la lampe par rapport au joueur
     
-    [SerializeField] FlashlightManager flm;
-    
-    [SerializeField] Doudou m_doudou;
-    
-    public bool flashlightIsPossessed = false;
-    
-    public bool m_doudouIsPossessed = false;
     public void TakeFlashlight()
     {
         if (Input.GetKey(KeyCode.E))
@@ -180,11 +183,14 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Gros Soin");
                 Stressing(-10);
+                m_AIController.FollowDoudou(1000);
+                
             }
             else if (pressedTime.TotalMilliseconds < 2000 )
             {
                 Debug.Log("Piti Soin");
                 Stressing(-20);
+                m_AIController.FollowDoudou(2000);
             }
 
             m_doudouIsUsed = false;
@@ -198,7 +204,5 @@ public class PlayerController : MonoBehaviour
             m_UIManager.DropDoudou();
             m_UIManager.DisableUi();
         }
-
     }
-
 }
