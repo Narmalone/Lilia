@@ -14,14 +14,14 @@ public class StressManager : MonoBehaviour
     [SerializeField] 
     private Slider m_slider;
 
-    private int m_currentValue;
-    public void SetMaxHealth(int p_health)
+    private float m_currentValue;
+    public void SetMaxHealth(float p_health)
     {
         m_slider.maxValue = p_health;
         m_slider.value = p_health;
     }
 
-    public void SetStress(int p_health)
+    public void SetStress(float p_health)
     {
         m_currentValue = p_health;
     }

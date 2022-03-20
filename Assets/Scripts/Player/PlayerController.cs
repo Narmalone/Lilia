@@ -3,40 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
+using DamageOverlayEffect;
 
 public class PlayerController : MonoBehaviour
 {
     //Si le joueur ne peut pas monter les escalier il faut changer le step offset dans unity ou dans le code du chara controller
 
-    [SerializeField]private CharacterController m_myChara;
-
-    [SerializeField, Tooltip("Vitesse du joueur")]private float m_speed;
-
-    private float m_gravity = -9.81f;
-
-    [SerializeField] private StressManager m_stressBar;
-
     [SerializeField] private UiManager m_UIManager;
-    
-    private int m_currentStress;
-
-    private int m_maxStress = 100;
-
-    private bool m_isStressTick = false;
-
-    private int m_tickStress = 5;
-
-    private bool m_doudouIsUsed = false;
-
-    private DateTime startTime;
-    
-    Vector3 m_velocity;
-
-    [SerializeField, Tooltip("Transform d'un empty ou sera cr�e la sphere pour savoir si le joueur est sur le sol")]private Transform groundCheck;
-
-    [SerializeField, Tooltip("Radius de la sphere qui check si le joueur est sur le sol")]private float radiusCheckSphere = 0.4f;
-
-    [SerializeField, Tooltip("Mask ou l'on d�finit le sol")]private LayerMask m_groundMask;
     
     [SerializeField] FlashlightManager flm;
     
@@ -46,14 +20,68 @@ public class PlayerController : MonoBehaviour
     
     public bool m_doudouIsPossessed = false;
 
-    private bool m_isGrounded;//Si le joueur est sur le sol ?
-    
     [SerializeField] AIController m_AIController;
 
+    private bool m_doudouIsUsed = false;
+
+    private DateTime startTime;
+
+    //-----------------------------------------------Systeme Stress------------------------------------------
+    
+    [SerializeField] private StressManager m_stressBar;
+    
+    private float m_currentStress;
+    
+    private float m_targetStress;
+
+    [SerializeField] float m_maxStress = 100f;
+
+    private bool m_isStressTick = false;
+
+    [SerializeField] float DecayRate = 0.2f;
+    
+    [SerializeField] float AttackRate = 2f;
+    [SerializeField] float ReleaseRate = 1f;
+
+    [Range(0f, 1f)] float m_intenseFieldOfView;
+    
+    [SerializeField] AnimationCurve IntensityDueToHealth;
+    
+    //-----------------------------------------------Post-Processing------------------------------------------
+    [SerializeField] PostProcessVolume LinkedPPV;
+    
+    float TargetIntensity = 0f;
+    float CurrentIntensity = 0f;
+    [SerializeField] float MaxEffectIntensity = 0.5f;
+    
+    DamageOverlay OverlaySettings;
+
+    private DepthOfField m_dOFSettings;
+
+    //-----------------------------------------------Systeme Physics------------------------------------------
+    
+    [SerializeField]private CharacterController m_myChara;
+
+    [SerializeField, Tooltip("Vitesse du joueur")]private float m_speed;
+
+    private float m_gravity = -9.81f;
+    
+    Vector3 m_velocity;
+    
+    [SerializeField, Tooltip("Transform d'un empty ou sera cr�e la sphere pour savoir si le joueur est sur le sol")]private Transform groundCheck;
+
+    [SerializeField, Tooltip("Radius de la sphere qui check si le joueur est sur le sol")]private float radiusCheckSphere = 0.4f;
+
+    [SerializeField, Tooltip("Mask ou l'on d�finit le sol")]private LayerMask m_groundMask;
+    
+    private bool m_isGrounded;//Si le joueur est sur le sol ?
+    
     private void Awake()
     {
         m_currentStress = m_maxStress;
         m_stressBar.SetMaxHealth(m_maxStress);
+        Debug.Log(LinkedPPV.profile.TryGetSettings<DamageOverlay>(out OverlaySettings));
+        Debug.Log(LinkedPPV.profile.TryGetSettings<DepthOfField>(out m_dOFSettings));
     }
 
     private void Update()
@@ -87,22 +115,32 @@ public class PlayerController : MonoBehaviour
         //Activation de la lampe
         ActiveFlashlight();
         ActiveDoudou();
+        Debug.Log(m_currentStress);
+        // test shader
+        // decay the target intensity
+        if (TargetIntensity > 0f)
+        {
+            TargetIntensity = Mathf.Clamp01(TargetIntensity - DecayRate * Time.deltaTime);
+            TargetIntensity = Mathf.Max(IntensityDueToHealth.Evaluate(m_currentStress / m_maxStress), TargetIntensity);
+        }
+
+        // intensity needs updating
+        if (CurrentIntensity != TargetIntensity)
+        {
+            float rate = TargetIntensity > CurrentIntensity ? AttackRate : ReleaseRate;
+            CurrentIntensity = Mathf.MoveTowards(CurrentIntensity, TargetIntensity, rate * Time.deltaTime);
+        }
+
+        m_intenseFieldOfView = m_currentStress / 100;
+        //Debug.Log(OverlaySettings);
+        Debug.Log(Mathf.Lerp(0f, MaxEffectIntensity, m_currentStress));
+        OverlaySettings.Intensity.value = Mathf.Lerp(0f, MaxEffectIntensity, CurrentIntensity);
+        m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
     }
 
-    private void Stressing(int p_stressNum)
+    private void Stressing(float p_stressNum)
     {
-        if (m_currentStress < 0)
-        {
-            m_currentStress = 0;
-        }
-        else if (m_currentStress > m_maxStress)
-        {
-            m_currentStress = m_maxStress;
-        }
-        else
-        {
-            m_currentStress -= p_stressNum;
-        }
+        TakeDamage(p_stressNum);
         m_stressBar.SetStress(m_currentStress);
     }
 
@@ -110,24 +148,21 @@ public class PlayerController : MonoBehaviour
     {
         if (m_isStressTick == false)
         {
-            if (m_currentStress < 0)
-            {
-                m_currentStress = 0;
-            }
-            else if (m_currentStress > m_maxStress)
-            {
-                m_currentStress = m_maxStress;
-            }
-            else
-            {
-                m_currentStress -= m_tickStress;
-            }
+            TakeDamage(DecayRate);
             m_stressBar.SetStress(m_currentStress);
             m_isStressTick = true;
-            Task.Delay(1000).ContinueWith(t=> m_isStressTick=false);
+            Task.Delay(50).ContinueWith(t=> m_isStressTick=false);
         }
     }
     
+    public void TakeDamage(float amount)
+    {
+        m_currentStress = Mathf.Clamp(m_currentStress - amount, 0f, m_maxStress);
+
+        float damagePercent = Mathf.Clamp01(amount / m_maxStress);
+
+        TargetIntensity = Mathf.Clamp01(TargetIntensity + damagePercent);
+    }
     //Variables, r�f�rences et fonctions de la lampe par rapport au joueur
     
     public void TakeFlashlight()
