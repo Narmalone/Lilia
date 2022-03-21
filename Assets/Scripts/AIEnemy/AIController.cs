@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class AIController : MonoBehaviour
 {
@@ -38,6 +39,10 @@ public class AIController : MonoBehaviour
         else
         {
             m_navAgent.SetDestination(m_doudou.transform.position);
+        }
+
+        if (Vector3.Distance(m_doudou.transform.position, transform.position) < 20)
+        {
         }
     }
 }

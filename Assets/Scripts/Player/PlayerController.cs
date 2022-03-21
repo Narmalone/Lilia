@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using DamageOverlayEffect;
+using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
@@ -57,6 +58,8 @@ public class PlayerController : MonoBehaviour
     DamageOverlay OverlaySettings;
 
     private DepthOfField m_dOFSettings;
+
+    [SerializeField] private Shake m_camShake;
 
     //-----------------------------------------------Systeme Physics------------------------------------------
     
@@ -115,7 +118,6 @@ public class PlayerController : MonoBehaviour
         //Activation de la lampe
         ActiveFlashlight();
         ActiveDoudou();
-        Debug.Log(m_currentStress);
         // test shader
         // decay the target intensity
         if (TargetIntensity > 0f)
@@ -133,9 +135,17 @@ public class PlayerController : MonoBehaviour
 
         m_intenseFieldOfView = m_currentStress / 100;
         //Debug.Log(OverlaySettings);
-        Debug.Log(Mathf.Lerp(0f, MaxEffectIntensity, m_currentStress));
         OverlaySettings.Intensity.value = Mathf.Lerp(0f, MaxEffectIntensity, CurrentIntensity);
         m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
+
+        if (Vector3.Distance(m_AIController.transform.position,m_doudou.transform.position)<10)
+        {
+            float dist = Vector3.Distance(m_AIController.transform.position, m_doudou.transform.position);
+            float power = dist/10 ;
+            float powerAdapted = Mathf.Lerp(0.1f, 0f,power);
+            Debug.Log(powerAdapted);
+            m_camShake.StartShake(0.15f,powerAdapted);
+        }
     }
 
     private void Stressing(float p_stressNum)
@@ -216,16 +226,23 @@ public class PlayerController : MonoBehaviour
             TimeSpan pressedTime = endTime.Subtract(startTime);
             if (pressedTime.TotalMilliseconds >= 2000)
             {
-                Debug.Log("Gros Soin");
+                Debug.Log("Gros Son");
                 Stressing(-10);
-                m_AIController.FollowDoudou(1000);
+                if (Vector3.Distance(m_AIController.transform.position, m_doudou.transform.position) < 10)
+                {
+                    m_AIController.FollowDoudou(1000);
+                }
+                
                 
             }
             else if (pressedTime.TotalMilliseconds < 2000 )
             {
                 Debug.Log("Piti Soin");
                 Stressing(-20);
-                m_AIController.FollowDoudou(2000);
+                if (Vector3.Distance(m_AIController.transform.position, m_doudou.transform.position) < 10)
+                {
+                    m_AIController.FollowDoudou(2000);
+                }
             }
 
             m_doudouIsUsed = false;
