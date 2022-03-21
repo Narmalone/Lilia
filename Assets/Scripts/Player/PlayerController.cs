@@ -6,49 +6,39 @@ public class PlayerController : MonoBehaviour
 {
     //Si le joueur ne peut pas monter les escalier il faut changer le step offset dans unity ou dans le code du chara controller
 
-    [SerializeField]private CharacterController m_myChara;
+    [SerializeField, Tooltip("Références du Chara controller")]private CharacterController m_myChara;
 
-    [SerializeField]GameManager m_gameManager;
+    private GameManager m_gameManager;
 
-    [SerializeField] UiManager uimanager;
+    [SerializeField, Tooltip("Références de l'uiManager")]private UiManager m_uiManager;
 
-    [SerializeField, Tooltip("Vitesse du joueur")]private float m_speed;
+    [SerializeField, Tooltip("Vitesse du joueur en m/s")]private float m_speed;
 
-    private float m_gravity = -9.81f;
+    [SerializeField, Tooltip("Gravité du joueur en m/s")]private float m_gravity = -9.81f;
 
-    Vector3 m_velocity;
+    private Vector3 m_velocity;
     
-    [SerializeField, Tooltip("Transform d'un empty ou sera crée la sphere pour savoir si le joueur est sur le sol")]private Transform groundCheck;
+    [SerializeField, Tooltip("Transform d'un empty ou sera crée la sphere pour savoir si le joueur est sur le sol")]private Transform m_groundCheck;
 
-    [SerializeField, Tooltip("Radius de la sphere qui check si le joueur est sur le sol")]private float radiusCheckSphere = 0.4f;
+    [SerializeField, Tooltip("Radius de la sphere qui check si le joueur est sur le sol")]private float m_radiusSphere = 0.4f;
 
     [SerializeField, Tooltip("Mask ou l'on définit le sol")]private LayerMask m_groundMask;
 
     private bool m_isGrounded;      //Si le joueur est sur le sol ?
 
-    PlayerControls controls;
-    Vector2 playerMove;
+    private PlayerControls m_controls;
+
+    private Vector2 playerMove;
 
 
     private void Awake()
     {
-
         m_gameManager = FindObjectOfType<GameManager>();
-        controls = new PlayerControls();
-
-        if (m_gameManager.isGamepad == true)
-        {
-            //controls.Gameplay.GamepadMove.performed += ctx => playerMove = ctx.ReadValue<Vector2>();
-            //controls.Gameplay.GamepadMove.canceled += ctx => playerMove = Vector2.zero;
-        }
-        else
-        {
-
-        }
+        m_controls = new PlayerControls();
     }
     public void Update()
     {
-        m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Création d'une sphere qui chech si le joueur touche le sol
+        m_isGrounded = Physics.CheckSphere(m_groundCheck.position, m_radiusSphere, m_groundMask);      //Création d'une sphere qui chech si le joueur touche le sol
 
         if (m_isGrounded && m_velocity.y < 0)        //Reset de la gravité quand le joueur touche le sol
         {
@@ -67,61 +57,70 @@ public class PlayerController : MonoBehaviour
 
         m_velocity.y += m_gravity * Time.deltaTime;
 
-        //Activation de la lampe
-        ActiveFlashlight();
-        if (m_gameManager.isPc == true)
-        {
+        //Drop de la lampe
+        DropFlashlight();
 
-            
-        }
-        else if (m_gameManager.isGamepad == true)
-        {
-
-        }
-
-       
-    }
-
-    //Variables, références et fonctions de la lampe par rapport au joueur
-    [SerializeField]FlashlightManager flm;
-    public bool flashlightIsPossessed = false;
-    public void takeFlashlight()
-    {
         if (m_gameManager.isPc)
         {
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                uimanager.DisableUi();
-                flm.PickItem();
-                flashlightIsPossessed = true;
+                m_uiManager.MenuPause();
             }
         }
         else if (m_gameManager.isGamepad)
         {
-            uimanager.DisableUi();
-            flm.PickItem();
-            Gamepad.current.SetMotorSpeeds(0.75f * Time.deltaTime, 0.75f * Time.deltaTime);
-            float frequency = InputSystem.pollingFrequency = 60f;
-            flashlightIsPossessed = true;
+            if (Gamepad.current.startButton.wasPressedThisFrame)
+            {
+                m_uiManager.MenuPause();
+            }
         }
         
     }
-    public void ActiveFlashlight()
+
+    //Variables, références et fonctions de la lampe par rapport au joueur
+    [SerializeField]FlashlightManager flm;
+    public bool m_flashlightIsPossessed = false;
+    public void TakeFlashlight()
     {
-        if (m_gameManager.isPc)
+        if (m_gameManager.isPc == true)
         {
-            if (Input.GetKeyDown(KeyCode.F) && flashlightIsPossessed == true)
+            if (Input.GetKey(KeyCode.E))
             {
-                flm.UseFlashlight();
-            }
-            if (Input.GetKey(KeyCode.G) && flashlightIsPossessed == true)
-            {
-                flm.DropItem();
-                flashlightIsPossessed = false;
+                m_uiManager.DisableUi();
+                flm.PickItem();
+                m_flashlightIsPossessed = true;
             }
         }
-       
-
+        else if (m_gameManager.isGamepad == true)
+        {
+            if (Gamepad.current.buttonEast.isPressed)
+            {
+                m_uiManager.DisableUi();
+                flm.PickItem();
+                Gamepad.current.SetMotorSpeeds(0.75f * Time.deltaTime, 0.75f * Time.deltaTime);
+                float frequency = InputSystem.pollingFrequency = 60f;
+                m_flashlightIsPossessed = true;
+            }
+        } 
+    }
+    public void DropFlashlight()
+    {
+        if (m_gameManager.isPc == true)
+        {
+            if (Input.GetKey(KeyCode.G) && m_flashlightIsPossessed == true)
+            {
+                flm.DropItem();
+                m_flashlightIsPossessed = false;
+            }
+        }
+        else if (m_gameManager.isGamepad == true)
+        {
+            if (Gamepad.current.buttonWest.isPressed && m_flashlightIsPossessed == true)
+            {
+                flm.DropItem();
+                m_flashlightIsPossessed = false;
+            }
+        }
     }
 
 }

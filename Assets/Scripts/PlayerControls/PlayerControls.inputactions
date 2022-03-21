@@ -22,24 +22,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "TakeFlashlight",
-                    "type": "Button",
-                    "id": "664b49d9-9a8c-4077-8fe7-37580c26b5b1",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ActiveFlashlight",
-                    "type": "Button",
-                    "id": "fe0035a9-7a01-4e10-9abb-b6fb18a5b61e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -128,28 +110,6 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Rotation",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6d1f3d20-b65c-4478-bd34-3fd08ddf43e8",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "TakeFlashlight",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6c6bf7f0-4b4f-4e1f-843c-f9a962ad5b21",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "ActiveFlashlight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

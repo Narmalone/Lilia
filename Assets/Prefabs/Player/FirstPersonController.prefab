@@ -144,9 +144,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_myChara: {fileID: 1354072575498231415}
+  m_uiManager: {fileID: 0}
   m_speed: 2
-  groundCheck: {fileID: 1354072574518692795}
-  radiusCheckSphere: 0.4
+  m_gravity: -9.81
+  m_groundCheck: {fileID: 1354072574518692795}
+  m_radiusSphere: 0.4
   m_groundMask:
     serializedVersion: 2
     m_Bits: 256
@@ -267,6 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 100
+  m_gameManager: {fileID: 0}
   playerBody: {fileID: 1354072575498231410}
 --- !u!1 &3158245358318544363
 GameObject:

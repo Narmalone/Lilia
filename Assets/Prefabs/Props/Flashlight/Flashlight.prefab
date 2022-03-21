@@ -110,16 +110,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiManager: {fileID: 0}
-  flashlight: {fileID: 4185062473227132230}
-  FlashlightContainer: {fileID: 0}
+  m_flashlight: {fileID: 4185062473227132230}
+  m_flashlightContainer: {fileID: 4185062473227132229}
   m_spotlightOfFlashlight: {fileID: 8859929757383797320}
-  m_lamptarger: {fileID: 696118552397831617}
-  _playerMask:
+  m_playerMask:
     serializedVersion: 2
     m_Bits: 512
+  m_gameManager: {fileID: 0}
   playerController: {fileID: 0}
-  m_rFlashlight: {fileID: 0}
-  switchLight: 0
+  m_rbodyFlashlight: {fileID: 0}
 --- !u!1 &8859929757383797320
 GameObject:
   m_ObjectHideFlags: 0

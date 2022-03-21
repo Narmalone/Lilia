@@ -7,124 +7,108 @@ public class FlashlightManager : MonoBehaviour
 {
     [SerializeField]UiManager uiManager;
 
-    [SerializeField, Tooltip("Référence de la torche")]private GameObject flashlight;
-    [SerializeField] private Transform FlashlightContainer;
+    [SerializeField, Tooltip("Référence de la torche")]private GameObject m_flashlight;
+    [SerializeField] private Transform m_flashlightContainer;
 
-    [SerializeField]private GameObject m_spotlightOfFlashlight;
+    [SerializeField] private GameObject m_spotlightOfFlashlight;
 
-    [SerializeField] LayerMask _playerMask;
+    [SerializeField] private LayerMask m_playerMask;
 
-    public bool isPc;
-    public bool isGamepad;
-
+    [SerializeField] private GameManager m_gameManager;
     private void Awake()
     {
-        m_rFlashlight = flashlight.GetComponent<Rigidbody>();
+        m_rbodyFlashlight = m_flashlight.GetComponent<Rigidbody>();
         m_spotlightOfFlashlight.GetComponent<Light>();
-        isPc = true;
+        m_gameManager = FindObjectOfType<GameManager>();
     }
 
     [SerializeField]PlayerController playerController;
     private void OnTriggerStay(Collider p_collide)
     {
-        if (isPc)
+        if (m_gameManager.isPc)
         {
-            if ((_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
+            if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
             {
 
-                if (playerController.flashlightIsPossessed == false)
+                if (playerController.m_flashlightIsPossessed == false)
                 {
-                    playerController.takeFlashlight();
+                    playerController.TakeFlashlight();
                     uiManager.takeObject();
                 }
-                else if (playerController.flashlightIsPossessed == true)
+                else if (playerController.m_flashlightIsPossessed == true)
                 {
                     uiManager.DisableUi();
                 }
-
             }
         }
-        
+        else if (m_gameManager.isGamepad)
+        {
+            if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
+            {
 
-
+                if (playerController.m_flashlightIsPossessed == false)
+                {
+                    playerController.TakeFlashlight();
+                    uiManager.takeObject();
+                    Debug.Log("gamepad ui activée");
+                }
+                else if (playerController.m_flashlightIsPossessed == true)
+                {
+                    uiManager.DisableUi();
+                }
+            }
+        }
     }
     private void OnTriggerExit(Collider p_collide)
     {
-        if (isPc)
-        {
-            if ((_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
+            if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
             {
                 uiManager.DisableUi();
             }
-        }
-        
-       
     }
 
-    [SerializeField] private Rigidbody m_rFlashlight;
+    [SerializeField] private Rigidbody m_rbodyFlashlight;
 
     public void PickItem()
     {
-        if (isPc)
+        if (m_gameManager.isPc)
         {
-            m_rFlashlight.useGravity = false;
-            m_rFlashlight.isKinematic = true;
+            m_rbodyFlashlight.useGravity = false;
+            m_rbodyFlashlight.isKinematic = true;
 
-            flashlight.transform.SetParent(FlashlightContainer);
+            m_flashlight.transform.SetParent(m_flashlightContainer);
             transform.localPosition = Vector3.zero;
             transform.localRotation = Quaternion.Euler(90f, 180f, 0f);
         }
-        else if (isGamepad)
+        else if (m_gameManager.isGamepad)
         {
+            m_rbodyFlashlight.useGravity = false;
+            m_rbodyFlashlight.isKinematic = true;
 
+            m_flashlight.transform.SetParent(m_flashlightContainer);
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.Euler(90f, 180f, 0f);
         }
         
     }
 
     public void DropItem()
     {
-        if (isPc)
+        if (m_gameManager.isPc)
         {
-            m_rFlashlight.isKinematic = false;
-            m_rFlashlight.useGravity = true;
+            m_rbodyFlashlight.isKinematic = false;
+            m_rbodyFlashlight.useGravity = true;
 
 
-            flashlight.transform.parent = null;
+            m_flashlight.transform.parent = null;
         }
-        else if (isGamepad)
+        else if (m_gameManager.isGamepad)
         {
-
+            m_rbodyFlashlight.isKinematic = false;
+            m_rbodyFlashlight.useGravity = true;
+            m_flashlight.transform.parent = null;
         }
-             
+
     }
 
-    private int flashCount = 0;
-    public bool switchLight = false;
-
-
-
-    public void UseFlashlight()
-    {
-        if (isPc)
-        {
-            if (flashCount == 0 && switchLight == false)
-            {
-                flashCount++;
-                m_spotlightOfFlashlight.GetComponent<Light>().intensity = 3;
-                switchLight = true;
-
-            }
-            else if (flashCount == 1 && switchLight == true)
-            {
-                m_spotlightOfFlashlight.GetComponent<Light>().intensity = 0;
-                flashCount--;
-                switchLight = false;
-            }
-        }
-        else if (isGamepad)
-        {
-
-        }
-        
-    }
 }

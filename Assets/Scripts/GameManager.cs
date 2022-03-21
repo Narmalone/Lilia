@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public bool isPc;
     public bool isGamepad;
+    public bool isPaused;
 
     private void Awake()
     {
@@ -30,6 +31,16 @@ public class GameManager : MonoBehaviour
     public void NextScene()
     {
        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-       Debug.Log("vers la prochaine scene");
     }
+
+    public void GamePaused()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void GameResume()
+    {
+        Time.timeScale = 1;
+    }
+
 }
