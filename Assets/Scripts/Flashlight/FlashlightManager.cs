@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class FlashlightManager : MonoBehaviour
 {
-    [SerializeField]UiManager uiManager;
+    [SerializeField]UiManager m_uiManager;
 
     [SerializeField, Tooltip("Référence de la torche")]private GameObject m_flashlight;
-    [SerializeField] private Transform m_flashlightContainer;
+
+    [SerializeField, Tooltip("Mettre le transform du conteneur du joueur FlashlightContainer")] private Transform m_flashlightContainer;
 
     [SerializeField] private GameObject m_spotlightOfFlashlight;
 
@@ -22,7 +23,7 @@ public class FlashlightManager : MonoBehaviour
         m_gameManager = FindObjectOfType<GameManager>();
     }
 
-    [SerializeField]PlayerController playerController;
+    [SerializeField]PlayerController m_playerController;
     private void OnTriggerStay(Collider p_collide)
     {
         if (m_gameManager.isPc)
@@ -30,14 +31,14 @@ public class FlashlightManager : MonoBehaviour
             if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
             {
 
-                if (playerController.m_flashlightIsPossessed == false)
+                if (m_playerController.m_flashlightIsPossessed == false)
                 {
-                    playerController.TakeFlashlight();
-                    uiManager.takeObject();
+                    m_playerController.TakeFlashlight();
+                    m_uiManager.takeObject();
                 }
-                else if (playerController.m_flashlightIsPossessed == true)
+                else if (m_playerController.m_flashlightIsPossessed == true)
                 {
-                    uiManager.DisableUi();
+                    m_uiManager.DisableUi();
                 }
             }
         }
@@ -46,15 +47,15 @@ public class FlashlightManager : MonoBehaviour
             if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
             {
 
-                if (playerController.m_flashlightIsPossessed == false)
+                if (m_playerController.m_flashlightIsPossessed == false)
                 {
-                    playerController.TakeFlashlight();
-                    uiManager.takeObject();
+                    m_playerController.TakeFlashlight();
+                    m_uiManager.takeObject();
                     Debug.Log("gamepad ui activée");
                 }
-                else if (playerController.m_flashlightIsPossessed == true)
+                else if (m_playerController.m_flashlightIsPossessed == true)
                 {
-                    uiManager.DisableUi();
+                    m_uiManager.DisableUi();
                 }
             }
         }
@@ -63,7 +64,7 @@ public class FlashlightManager : MonoBehaviour
     {
             if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
             {
-                uiManager.DisableUi();
+                m_uiManager.DisableUi();
             }
     }
 

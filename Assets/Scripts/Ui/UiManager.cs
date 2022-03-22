@@ -15,8 +15,6 @@ public class UiManager : MonoBehaviour
 
     private bool m_switchPannelPause;
 
-    private bool m_switchGamepadPause;
-
     public bool m_isHandle = false;
     public bool m_isActivated;
 
@@ -26,8 +24,6 @@ public class UiManager : MonoBehaviour
         m_switchPannelPause = false;
         m_pannelPause.SetActive(false);
         m_gameManager = FindObjectOfType<GameManager>();
-        m_switchGamepadPause = false;
-
     }
     private void Start()
     {
@@ -80,24 +76,6 @@ public class UiManager : MonoBehaviour
             m_gameManager.GameResume();
             Cursor.lockState = CursorLockMode.Locked;
             m_pannelPause.SetActive(false);
-        }
-    }
-
-    public void GamepadUiPauseSwitch()
-    {
-        //Faire un swith pour pas que quand on maintient start ça le fasse en boucle
-        if(m_switchGamepadPause == false)
-        {
-            m_pannelPause.SetActive(true);
-            m_switchGamepadPause = true;
-            Debug.Log("doit s'activer");
-        }
-        else if (m_switchGamepadPause == true)
-        {
-            m_pannelPause.SetActive(false);
-            m_switchGamepadPause = false;
-            Debug.Log("doit s'enlever");
-
         }
     }
 }
