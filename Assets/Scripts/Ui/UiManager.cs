@@ -5,9 +5,9 @@ using UnityEngine.UI;
 using TMPro;
 public class UiManager : MonoBehaviour
 {
-    [SerializeField]private GameObject m_takeLight;
+    //----------------------------------------------- Références & variables ------------------------------------------//
 
-    [SerializeField]private GameObject m_uiFlashligt;
+    [SerializeField]private GameObject m_takeLight;
 
     [SerializeField] private GameObject m_pannelPause;
 
@@ -29,7 +29,10 @@ public class UiManager : MonoBehaviour
     {
         DisableUi();
     }
-    public void takeObject()
+
+    //----------------------------------------------- Ui prendre et dropper un item ------------------------------------------//
+
+    public void TakeObject()
     {
         m_isHandle = false;
         if(m_isHandle == false)
@@ -54,6 +57,9 @@ public class UiManager : MonoBehaviour
         }
         
     }
+
+    //----------------------------------------------- Pannel d'UI ------------------------------------------//
+
     public void DisablePannel()
     {
         m_pannelPause.SetActive(false);

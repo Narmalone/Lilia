@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4185062473227132231}
   - component: {fileID: 696118552397831617}
   - component: {fileID: 374539406882126381}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,16 +109,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36da180d7f7f6364494a02c1453e2920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManager: {fileID: 0}
-  m_flashlight: {fileID: 4185062473227132230}
-  m_flashlightContainer: {fileID: 4185062473227132229}
-  m_spotlightOfFlashlight: {fileID: 8859929757383797320}
+  m_uiManager: {fileID: 0}
+  m_playerController: {fileID: 0}
+  m_gameManager: {fileID: 0}
   m_playerMask:
     serializedVersion: 2
     m_Bits: 512
-  m_gameManager: {fileID: 0}
-  playerController: {fileID: 0}
+  m_flashlight: {fileID: 4185062473227132230}
+  m_flashlightContainer: {fileID: 4185062473227132229}
+  m_spotlightOfFlashlight: {fileID: 8859929757383797320}
   m_rbodyFlashlight: {fileID: 0}
+  m_flashlightMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &8859929757383797320
 GameObject:
   m_ObjectHideFlags: 0

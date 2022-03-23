@@ -5,7 +5,15 @@ using UnityEngine;
 
 public class FlashlightManager : MonoBehaviour
 {
+
+    //----------------------------------------------- Références de classes ------------------------------------------//
+
     [SerializeField]UiManager m_uiManager;
+    [SerializeField] PlayerController m_playerController;
+    [SerializeField] private GameManager m_gameManager;
+    [SerializeField] private LayerMask m_playerMask;
+
+    //----------------------------------------------- Par rapport à la veilleuse ------------------------------------------//
 
     [SerializeField, Tooltip("Référence de la torche")]private GameObject m_flashlight;
 
@@ -13,9 +21,8 @@ public class FlashlightManager : MonoBehaviour
 
     [SerializeField] private GameObject m_spotlightOfFlashlight;
 
-    [SerializeField] private LayerMask m_playerMask;
+    [SerializeField] private Rigidbody m_rbodyFlashlight;
 
-    [SerializeField] private GameManager m_gameManager;
     private void Awake()
     {
         m_rbodyFlashlight = m_flashlight.GetComponent<Rigidbody>();
@@ -23,18 +30,21 @@ public class FlashlightManager : MonoBehaviour
         m_gameManager = FindObjectOfType<GameManager>();
     }
 
-    [SerializeField]PlayerController m_playerController;
+    //----------------------------------------------- Les OnTrigger ------------------------------------------//
+
     private void OnTriggerStay(Collider p_collide)
     {
         if (m_gameManager.isPc)
         {
+
             if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
             {
+                Debug.Log("dans la condition bitch");
 
                 if (m_playerController.m_flashlightIsPossessed == false)
                 {
                     m_playerController.TakeFlashlight();
-                    m_uiManager.takeObject();
+                    m_uiManager.TakeObject();
                 }
                 else if (m_playerController.m_flashlightIsPossessed == true)
                 {
@@ -50,7 +60,7 @@ public class FlashlightManager : MonoBehaviour
                 if (m_playerController.m_flashlightIsPossessed == false)
                 {
                     m_playerController.TakeFlashlight();
-                    m_uiManager.takeObject();
+                    m_uiManager.TakeObject();
                     Debug.Log("gamepad ui activée");
                 }
                 else if (m_playerController.m_flashlightIsPossessed == true)
@@ -68,7 +78,7 @@ public class FlashlightManager : MonoBehaviour
             }
     }
 
-    [SerializeField] private Rigidbody m_rbodyFlashlight;
+    //----------------------------------------------- Fonctions liées à la veilleuse ------------------------------------------//
 
     public void PickItem()
     {
@@ -92,7 +102,6 @@ public class FlashlightManager : MonoBehaviour
         }
         
     }
-
     public void DropItem()
     {
         if (m_gameManager.isPc)
@@ -109,7 +118,6 @@ public class FlashlightManager : MonoBehaviour
             m_rbodyFlashlight.useGravity = true;
             m_flashlight.transform.parent = null;
         }
-
     }
 
 }
