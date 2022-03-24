@@ -6,29 +6,31 @@ using UnityEngine;
 public class FlashlightManager : MonoBehaviour
 {
 
-    //----------------------------------------------- Références de classes ------------------------------------------//
+
+    //----------------------------------------------- Rï¿½fï¿½rences de classes ------------------------------------------//
 
     [SerializeField]UiManager m_uiManager;
     [SerializeField] PlayerController m_playerController;
     [SerializeField] private GameManager m_gameManager;
     [SerializeField] private LayerMask m_playerMask;
 
-    //----------------------------------------------- Par rapport à la veilleuse ------------------------------------------//
+    //----------------------------------------------- Par rapport ï¿½ la veilleuse ------------------------------------------//
 
-    [SerializeField, Tooltip("Référence de la torche")]private GameObject m_flashlight;
 
-    [SerializeField, Tooltip("Mettre le transform du conteneur du joueur FlashlightContainer")] private Transform m_flashlightContainer;
+    [SerializeField, Tooltip("Rï¿½fï¿½rence de la torche")]private GameObject flashlight;
+    [SerializeField] private Transform FlashlightContainer;
 
-    [SerializeField] private GameObject m_spotlightOfFlashlight;
-
+    [SerializeField]private GameObject m_spotlightOfFlashlight;
+    
     [SerializeField] private Rigidbody m_rbodyFlashlight;
 
     private void Awake()
     {
-        m_rbodyFlashlight = m_flashlight.GetComponent<Rigidbody>();
+        flashlight.GetComponent<BoxCollider>();
+        m_rbodyFlashlight = flashlight.GetComponent<Rigidbody>();
         m_spotlightOfFlashlight.GetComponent<Light>();
-        m_gameManager = FindObjectOfType<GameManager>();
     }
+
 
     //----------------------------------------------- Les OnTrigger ------------------------------------------//
 
@@ -61,7 +63,7 @@ public class FlashlightManager : MonoBehaviour
                 {
                     m_playerController.TakeFlashlight();
                     m_uiManager.UiTakeFlashlight();
-                    Debug.Log("gamepad ui activée");
+                    Debug.Log("gamepad ui activï¿½e");
                 }
                 else if (m_playerController.m_flashlightIsPossessed == true)
                 {
@@ -78,46 +80,55 @@ public class FlashlightManager : MonoBehaviour
             }
     }
 
-    //----------------------------------------------- Fonctions liées à la veilleuse ------------------------------------------//
+    //----------------------------------------------- Fonctions liï¿½es ï¿½ la veilleuse ------------------------------------------//
 
     public void PickItem()
     {
-        if (m_gameManager.isPc)
-        {
-            m_rbodyFlashlight.useGravity = false;
-            m_rbodyFlashlight.isKinematic = true;
+        //m_rFlashlight.useGravity = false;
+        //m_rFlashlight.isKinematic = true;
 
-            m_flashlight.transform.SetParent(m_flashlightContainer);
-            transform.localPosition = Vector3.zero;
-            transform.localRotation = Quaternion.Euler(90f, 180f, 0f);
-        }
-        else if (m_gameManager.isGamepad)
-        {
-            m_rbodyFlashlight.useGravity = false;
-            m_rbodyFlashlight.isKinematic = true;
+        flashlight.transform.SetParent(FlashlightContainer);
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.Euler(90f,180f,0f);
 
-            m_flashlight.transform.SetParent(m_flashlightContainer);
-            transform.localPosition = Vector3.zero;
-            transform.localRotation = Quaternion.Euler(90f, 180f, 0f);
-        }
-        
+        //trouver un moyen d'orienter l'objet en fonction de lï¿½ ou on regarde
+        //m_yRotation = Mathf.Clamp(m_yRotation, -90f, 90f);
+        //transform.LookAt(FlashlightContainer, Vector3.left);
+        Debug.Log(FlashlightContainer.transform);
+        flashlight.GetComponent<BoxCollider>().enabled = false;
+        m_uiManager.DisableUi();
+
     }
     public void DropItem()
     {
-        if (m_gameManager.isPc)
-        {
-            m_rbodyFlashlight.isKinematic = false;
-            m_rbodyFlashlight.useGravity = true;
+        //m_rFlashlight.isKinematic = false;
+        //m_rFlashlight.useGravity = true;
 
 
-            m_flashlight.transform.parent = null;
-        }
-        else if (m_gameManager.isGamepad)
-        {
-            m_rbodyFlashlight.isKinematic = false;
-            m_rbodyFlashlight.useGravity = true;
-            m_flashlight.transform.parent = null;
-        }
+        flashlight.transform.parent = null;
+        Debug.Log("Drop l'item");
+      
     }
 
+    private int flashCount = 0;
+    public bool switchLight = false;
+
+
+
+    public void UseFlashlight()
+    {
+        if(flashCount == 0 && switchLight == false)
+        {
+            flashCount++;
+            m_spotlightOfFlashlight.GetComponent<Light>().intensity = 3;
+            switchLight = true;
+
+        }
+        else if (flashCount == 1 && switchLight == true)
+        {
+            m_spotlightOfFlashlight.GetComponent<Light>().intensity = 0;
+            flashCount--;
+            switchLight = false;
+        }
+    }
 }

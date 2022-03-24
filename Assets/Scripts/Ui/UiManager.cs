@@ -5,13 +5,17 @@ using UnityEngine.UI;
 using TMPro;
 public class UiManager : MonoBehaviour
 {
-    //----------------------------------------------- Références & variables ------------------------------------------//
+    //----------------------------------------------- Rï¿½fï¿½rences & variables ------------------------------------------//
 
     [SerializeField]private GameObject m_takeLight;
 
     [SerializeField] private GameObject m_uiDoudou;
 
     [SerializeField] private GameObject m_pannelPause;
+
+    [SerializeField]private GameObject m_indicInteraction;
+    [SerializeField]private GameObject m_UILampe;
+    [SerializeField]private GameObject m_UIDoudou;
 
     private GameManager m_gameManager;
 
@@ -32,6 +36,9 @@ public class UiManager : MonoBehaviour
     {
         UiDisableFlashlight();
         UiDisableDoudou();
+        m_indicInteraction.SetActive(false);
+        m_UILampe.GetComponent<Image>().color = new Color32(100,100,100,255);
+        m_UIDoudou.GetComponent<Image>().color = new Color32(100,100,100,255);
     }
 
     //----------------------------------------------- Ui prendre et dropper un item ------------------------------------------//
@@ -49,10 +56,15 @@ public class UiManager : MonoBehaviour
         {
             UiDisableFlashlight();
         }
+
+    public void TakableObject()
+    {
+        m_indicInteraction.SetActive(true);
     }
    
     public void UiDisableFlashlight()
     {
+        m_indicInteraction.SetActive(false);
         m_flashlightIsHandle = true;
         if (m_flashlightIsHandle == true)
         {
@@ -60,7 +72,7 @@ public class UiManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Problème DisableUi ?", this);
+            Debug.LogError("Problï¿½me DisableUi ?", this);
         }
         
     }
@@ -75,7 +87,7 @@ public class UiManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Problème DisableUi ?", this);
+            Debug.LogError("Problï¿½me DisableUi ?", this);
         }
 
     }
@@ -95,26 +107,33 @@ public class UiManager : MonoBehaviour
 
     public void DisablePannel()
     {
-        m_pannelPause.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
-        Time.timeScale = 1;
-        m_switchPannelPause = false;
+        m_UILampe.GetComponent<Image>().color = new Color32(255,255,225,255);
     }
-    public void MenuPause()
+    
+    public void DropLampe()
     {
-        if(m_switchPannelPause == false)
-        {
-            m_pannelPause.SetActive(true);
-            m_switchPannelPause = true;
-            m_gameManager.GamePaused();
-            Cursor.lockState = CursorLockMode.None;
-        }
-        else if(m_switchPannelPause == true)
-        {
-            m_switchPannelPause = false;
-            m_gameManager.GameResume();
-            Cursor.lockState = CursorLockMode.Locked;
-            m_pannelPause.SetActive(false);
-        }
+        //Dï¿½sactiver la Ui qui prend l'objet
+        //Activer l'Ui en bas ï¿½ droite
+        //Debug.Log("prendre l'objet");
+
+        m_UILampe.GetComponent<Image>().color = new Color32(100,100,100,255);
+    }
+    
+    public void TakeDoudou()
+    {
+        //Dï¿½sactiver la Ui qui prend l'objet
+        //Activer l'Ui en bas ï¿½ droite
+        //Debug.Log("prendre l'objet");
+
+        m_UIDoudou.GetComponent<Image>().color = new Color32(255,255,225,255);
+    }
+    
+    public void DropDoudou()
+    {
+        //Dï¿½sactiver la Ui qui prend l'objet
+        //Activer l'Ui en bas ï¿½ droite
+        //Debug.Log("prendre l'objet");
+
+        m_UIDoudou.GetComponent<Image>().color = new Color32(100,100,100,255);
     }
 }

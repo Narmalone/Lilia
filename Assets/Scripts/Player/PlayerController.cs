@@ -1,17 +1,45 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.PostProcessing;
 using Unity.VisualScripting;
 using System.Threading.Tasks;
-public class PlayerController : MonoBehaviour
-{
+using DamageOverlayEffect;
     //----------------------------------------------- References from other Class ------------------------------------------//
 
-    private GameManager m_gameManager;
+public class PlayerController : MonoBehaviour
+{
+    //Si le joueur ne peut pas monter les escalier il faut changer le step offset dans unity ou dans le code du chara controller
 
-    [SerializeField, Tooltip("Références de l'uiManager")]private UiManager m_uiManager;
+    [SerializeField] private UiManager m_UIManager;
+    
+    [SerializeField] FlashlightManager flm;
+    
+    [SerializeField] Doudou m_doudou;
+    
+    public bool flashlightIsPossessed = false;
+    
+    public bool m_doudouIsPossessed = false;
+
+    [SerializeField] AIController m_AIController;
+
+    private bool m_doudouIsUsed = false;
+
+    private DateTime startTime;
+
+    //-----------------------------------------------Systeme Stress------------------------------------------
+    
+    [SerializeField] private StressManager m_stressBar;
+    
+    private float m_currentStress;
+    
+    private float m_targetStress;
+
+    [SerializeField] float m_maxStress = 100f;
+
 
     [SerializeField] FlashlightManager m_flm;
     DoudouManager m_doudouManager;
@@ -22,27 +50,47 @@ public class PlayerController : MonoBehaviour
     //----------------------------------------------- Player controls system ------------------------------------------//
 
 
-    [SerializeField, Tooltip("Références du Chara controller")] private CharacterController m_myChara;
+    [SerializeField, Tooltip("Rï¿½fï¿½rences du Chara controller")] private CharacterController m_myChara;
 
 
     [SerializeField, Tooltip("Vitesse du joueur en m/s")]private float m_speed;
 
-    [SerializeField, Tooltip("Gravité du joueur en m/s")]private float m_gravity = -9.81f;
+    private bool m_isStressTick = false;
 
-    private Vector3 m_velocity;
+    [SerializeField] float DecayRate = 0.2f;
     
-    [SerializeField, Tooltip("Transform d'un empty ou sera crée la sphere pour savoir si le joueur est sur le sol")]private Transform m_groundCheck;
+    [SerializeField] float AttackRate = 2f;
+    [SerializeField] float ReleaseRate = 1f;
 
-    [SerializeField, Tooltip("Radius de la sphere qui check si le joueur est sur le sol")]private float m_radiusSphere = 0.4f;
+    [Range(0f, 1f)] float m_intenseFieldOfView;
+    
+    [SerializeField] AnimationCurve IntensityDueToHealth;
+    
+    //-----------------------------------------------Post-Processing------------------------------------------
+    [SerializeField] PostProcessVolume LinkedPPV;
+    
+    float TargetIntensity = 0f;
+    float CurrentIntensity = 0f;
+    [SerializeField] float MaxEffectIntensity = 0.5f;
+    
+    DamageOverlay OverlaySettings;
 
-    [SerializeField, Tooltip("Mask ou l'on définit le sol")]private LayerMask m_groundMask;
+    private DepthOfField m_dOFSettings;
 
-    private bool m_isGrounded;      //Si le joueur est sur le sol ?
+    [SerializeField] private Shake m_camShake;
 
-    private PlayerControls m_controls;
+    //-----------------------------------------------Systeme Physics------------------------------------------
+    
+    [SerializeField]private CharacterController m_myChara;
 
-    private Vector2 playerMove;
+    [SerializeField, Tooltip("Vitesse du joueur")]private float m_speed;
 
+    private float m_gravity = -9.81f;
+    
+    Vector3 m_velocity;
+    
+    [SerializeField, Tooltip("Transform d'un empty ou sera crï¿½e la sphere pour savoir si le joueur est sur le sol")]private Transform groundCheck;
+    
     //----------------------------------------------- Player Items Systems ------------------------------------------//
 
     public bool m_flashlightIsPossessed = false;
@@ -51,23 +99,37 @@ public class PlayerController : MonoBehaviour
     //----------------------------------------------- Post-processing ------------------------------------------//
 
 
+    [SerializeField, Tooltip("Radius de la sphere qui check si le joueur est sur le sol")]private float radiusCheckSphere = 0.4f;
+
+
+    [SerializeField, Tooltip("Mask ou l'on dï¿½finit le sol")]private LayerMask m_groundMask;
+    
+    private bool m_isGrounded;//Si le joueur est sur le sol ?
+    
     private void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();
         m_controls = new PlayerControls();
         m_doudouManager = FindObjectOfType<DoudouManager>();
         m_flm = FindObjectOfType<FlashlightManager>();
-    }
-    public void Update()
-    {
-        m_isGrounded = Physics.CheckSphere(m_groundCheck.position, m_radiusSphere, m_groundMask);      //Création d'une sphere qui chech si le joueur touche le sol
 
-        if (m_isGrounded && m_velocity.y < 0)        //Reset de la gravité quand le joueur touche le sol
+        m_currentStress = m_maxStress;
+        m_stressBar.SetMaxHealth(m_maxStress);
+        Debug.Log(LinkedPPV.profile.TryGetSettings<DamageOverlay>(out OverlaySettings));
+        Debug.Log(LinkedPPV.profile.TryGetSettings<DepthOfField>(out m_dOFSettings));
+    }
+
+    private void Update()
+    {
+        m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Crï¿½ation d'une sphere qui chech si le joueur touche le sol
+
+        if(m_isGrounded && m_velocity.y < 0)        //Reset de la gravitï¿½ quand le joueur touche le sol
         {
             m_velocity.y = -2f;
         }
+        
 
-        // Déplacements du joueur
+        // Dï¿½placements du joueur
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
@@ -78,27 +140,74 @@ public class PlayerController : MonoBehaviour
         m_myChara.Move(m_velocity * Time.deltaTime);
 
         m_velocity.y += m_gravity * Time.deltaTime;
-
-
-        if (m_gameManager.isPc)
+        
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                m_uiManager.MenuPause();
-            }
+            Stressing(10);
         }
-        else if (m_gameManager.isGamepad)
+        
+        AutoStress();
+        //Activation de la lampe
+        ActiveFlashlight();
+        ActiveDoudou();
+        // test shader
+        // decay the target intensity
+        if (TargetIntensity > 0f)
         {
-            if (Gamepad.current.startButton.wasPressedThisFrame)
-            {
-                m_uiManager.MenuPause();
-            }
+            TargetIntensity = Mathf.Clamp01(TargetIntensity - DecayRate * Time.deltaTime);
+            TargetIntensity = Mathf.Max(IntensityDueToHealth.Evaluate(m_currentStress / m_maxStress), TargetIntensity);
+        }
+
+        // intensity needs updating
+        if (CurrentIntensity != TargetIntensity)
+        {
+            float rate = TargetIntensity > CurrentIntensity ? AttackRate : ReleaseRate;
+            CurrentIntensity = Mathf.MoveTowards(CurrentIntensity, TargetIntensity, rate * Time.deltaTime);
+        }
+
+        m_intenseFieldOfView = m_currentStress / 100;
+        //Debug.Log(OverlaySettings);
+        OverlaySettings.Intensity.value = Mathf.Lerp(0f, MaxEffectIntensity, CurrentIntensity);
+        m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
+
+        if (Vector3.Distance(m_AIController.transform.position,m_doudou.transform.position)<10)
+        {
+            float dist = Vector3.Distance(m_AIController.transform.position, m_doudou.transform.position);
+            float power = dist/10 ;
+            float powerAdapted = Mathf.Lerp(0.1f, 0f,power);
+            Debug.Log(powerAdapted);
+            m_camShake.StartShake(0.15f,powerAdapted);
         }
 
 
         //Check si le joueur drop des items
         DropFlashlight();
         DropDoudou();
+    }
+    private void Stressing(float p_stressNum)
+    {
+        TakeDamage(p_stressNum);
+        m_stressBar.SetStress(m_currentStress);
+    }
+
+    public void AutoStress()
+    {
+        if (m_isStressTick == false)
+        {
+            TakeDamage(DecayRate);
+            m_stressBar.SetStress(m_currentStress);
+            m_isStressTick = true;
+            Task.Delay(50).ContinueWith(t=> m_isStressTick=false);
+        }
+    }
+    
+    public void TakeDamage(float amount)
+    {
+        m_currentStress = Mathf.Clamp(m_currentStress - amount, 0f, m_maxStress);
+
+        float damagePercent = Mathf.Clamp01(amount / m_maxStress);
+
+        TargetIntensity = Mathf.Clamp01(TargetIntensity + damagePercent);
     }
 
     private void OnTriggerStay(Collider p_collide)
@@ -144,7 +253,7 @@ public class PlayerController : MonoBehaviour
                 {
                     TakeFlashlight();
                     m_uiManager.UiTakeFlashlight();
-                    Debug.Log("gamepad ui activée");
+                    Debug.Log("gamepad ui activï¿½e");
                 }
                 else if (m_flashlightIsPossessed == true)
                 {
@@ -180,22 +289,38 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //----------------------------------------------- Fonctions correspondantes au doudou et à la lampe ------------------------------------------//
+    //----------------------------------------------- Fonctions correspondantes au doudou et ï¿½ la lampe ------------------------------------------//
 
     //On pourrait les optis en vrais mais bon flm ?
+    
+
+    
+    //Variables, rï¿½fï¿½rences et fonctions de la lampe par rapport au joueur
+
     public void TakeFlashlight()
     {
-        if (m_gameManager.isPc == true)
+        if (Input.GetKey(KeyCode.E))
         {
-            if (Input.GetKey(KeyCode.E))
-            {
-                m_uiManager.UiDisableFlashlight();
-                m_flm.PickItem();
-                m_flashlightIsPossessed = true;
-            }
+            m_uiManager.UiDisableFlashlight();
+            m_flm.PickItem();
+            m_flashlightIsPossessed = true;
+            
+            flm.PickItem();
+            flashlightIsPossessed = true;
+            m_UIManager.TakeLampe();
         }
-        else if (m_gameManager.isGamepad == true)
+
+            
+    }
+    
+    
+    public void TakeDoudou()
+    {
+        if (Input.GetKey(KeyCode.A))
         {
+            m_doudou.PickItem();
+            m_doudouIsPossessed = true;
+            m_UIManager.TakeDoudou();
             if (Gamepad.current.buttonEast.isPressed)
             {
                 m_uiManager.UiDisableFlashlight();
@@ -230,24 +355,80 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    public void DropFlashlight()
+    public void ActiveFlashlight()
     {
-        if (m_gameManager.isPc == true)
+        if (Input.GetKeyDown(KeyCode.F) && flashlightIsPossessed == true)
         {
             if (Input.GetKey(KeyCode.G) && m_flashlightIsPossessed == true && m_doudouIsPossessed == false && isFullItem == false)
             {
                 m_flm.DropItem();
                 m_flashlightIsPossessed = false;
             }
-           
+
+            flm.UseFlashlight();
         }
-        else if (m_gameManager.isGamepad == true)
+        if (Input.GetKey(KeyCode.G) && flashlightIsPossessed == true)
         {
-            if (Gamepad.current.buttonWest.isPressed && m_flashlightIsPossessed == true && m_doudouIsPossessed == false && isFullItem == false)
+            flm.DropItem();
+            flm.GetComponent<BoxCollider>().enabled = true;
+            flashlightIsPossessed = false;
+            m_UIManager.DropLampe();
+            m_UIManager.DisableUi();
+            
+        }
+
+    }
+    
+    public void ActiveDoudou()
+    {
+        if (Input.GetKeyDown(KeyCode.R) && m_doudouIsPossessed == true)
+        {
+            if (Gamepad.current.buttonWest.isPressed && m_flashlightIsPossessed == true &&
+                m_doudouIsPossessed == false && isFullItem == false)
             {
                 m_flm.DropItem();
                 m_flashlightIsPossessed = false;
             }
+
+            startTime = DateTime.Now;
+            m_doudou.UseDoudou();
+            m_doudouIsUsed = true;
+        }
+        if (Input.GetKeyUp(KeyCode.R) && m_doudouIsUsed == true)
+        {
+            DateTime endTime = DateTime.Now;
+            TimeSpan pressedTime = endTime.Subtract(startTime);
+            if (pressedTime.TotalMilliseconds >= 2000)
+            {
+                Debug.Log("Gros Son");
+                Stressing(-10);
+                if (Vector3.Distance(m_AIController.transform.position, m_doudou.transform.position) < 10)
+                {
+                    m_AIController.FollowDoudou(1000);
+                }
+                
+                
+            }
+            else if (pressedTime.TotalMilliseconds < 2000 )
+            {
+                Debug.Log("Piti Soin");
+                Stressing(-20);
+                if (Vector3.Distance(m_AIController.transform.position, m_doudou.transform.position) < 10)
+                {
+                    m_AIController.FollowDoudou(2000);
+                }
+            }
+
+            m_doudouIsUsed = false;
+        }
+        if (Input.GetKey(KeyCode.G) && m_doudouIsPossessed == true)
+        {
+            m_doudou.DropItem();
+            Debug.Log("Drop doudou");
+            m_doudou.GetComponent<BoxCollider>().enabled = true;
+            m_doudouIsPossessed = false;
+            m_UIManager.DropDoudou();
+            m_UIManager.DisableUi();
         }
         if (m_flashlightIsPossessed == true && m_doudouIsPossessed == true && Input.GetKeyDown(KeyCode.G) && isFullItem == false)
         {
@@ -285,9 +466,8 @@ public class PlayerController : MonoBehaviour
         {
             m_flm.DropItem();
             m_flashlightIsPossessed = false;
-            Debug.Log("ça drop un des 2");
+            Debug.Log("ï¿½a drop un des 2");
 
         }
     }
-
 }
