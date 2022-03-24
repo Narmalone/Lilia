@@ -30,7 +30,11 @@ public class PlayerController : MonoBehaviour
 
     private DateTime startTime;
 
+    public GameManager m_gameManager;
+
+    public PlayerControls m_controls;
     //-----------------------------------------------Systeme Stress------------------------------------------
+    
     
     [SerializeField] private StressManager m_stressBar;
     
@@ -331,24 +335,6 @@ public class PlayerController : MonoBehaviour
     
     public void TakeDoudou()
     {
-        if (Input.GetKey(KeyCode.A))
-        {
-            m_doudou.PickItem();
-            m_doudouIsPossessed = true;
-            m_UIManager.TakeDoudou();
-            if (Gamepad.current.buttonEast.isPressed)
-            {
-                m_uiManager.UiDisableFlashlight();
-                m_flm.PickItem();
-                Gamepad.current.SetMotorSpeeds(0.75f, 0.75f);
-                float frequency = InputSystem.pollingFrequency = 60f;
-                m_flashlightIsPossessed = true;
-            }
-        } 
-    }
-
-    public void TakeDoudou()
-    {
         if (m_gameManager.isPc == true)
         {
             if (Input.GetKey(KeyCode.E))
@@ -370,6 +356,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    
     public void ActiveFlashlight()
     {
         if (Input.GetKeyDown(KeyCode.F) && flashlightIsPossessed == true)
@@ -405,8 +392,6 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && m_doudouIsPossessed == true)
         {
-
-
             if (Gamepad.current.buttonWest.isPressed && m_flashlightIsPossessed == true && m_doudouIsPossessed == false)
             {
                 m_flm.DropItem();

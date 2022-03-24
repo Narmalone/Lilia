@@ -51,7 +51,7 @@ public class UiManager : MonoBehaviour
     public void UiTakeFlashlight()
     {
         m_flashlightIsHandle = false;
-        if(m_flashlightIsHandle == false)
+        if (m_flashlightIsHandle == false)
         {
             m_takeLight.SetActive(true);
         }
@@ -59,6 +59,7 @@ public class UiManager : MonoBehaviour
         {
             UiDisableFlashlight();
         }
+    }
 
     public void TakableObject()
     {
