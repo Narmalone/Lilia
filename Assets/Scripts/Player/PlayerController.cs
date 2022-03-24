@@ -108,16 +108,15 @@ public class PlayerController : MonoBehaviour
 
             if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0)
             {
-                Debug.Log("dans la condition bitch");
 
                 if (m_flashlightIsPossessed == false)
                 {
                     TakeFlashlight();
-                    m_uiManager.TakeObject();
+                    m_uiManager.UiTakeFlashlight();
                 }
                 else if (m_flashlightIsPossessed == true)
                 {
-                    m_uiManager.DisableUi();
+                    m_uiManager.UiDisableFlashlight();
                 }
             }
 
@@ -128,11 +127,11 @@ public class PlayerController : MonoBehaviour
                 if (m_doudouIsPossessed == false)
                 {
                     TakeDoudou();
-                    m_uiManager.TakeObject();
+                    m_uiManager.UiTakeFlashlight();
                 }
                 else if (m_doudouIsPossessed == true)
                 {
-                    m_uiManager.DisableUi();
+                    m_uiManager.UiDisableFlashlight();
                 }
             }
         }
@@ -144,12 +143,12 @@ public class PlayerController : MonoBehaviour
                 if (m_flashlightIsPossessed == false)
                 {
                     TakeFlashlight();
-                    m_uiManager.TakeObject();
+                    m_uiManager.UiTakeFlashlight();
                     Debug.Log("gamepad ui activée");
                 }
                 else if (m_flashlightIsPossessed == true)
                 {
-                    m_uiManager.DisableUi();
+                    m_uiManager.UiDisableFlashlight();
                 }
             }
             else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0)
@@ -158,11 +157,11 @@ public class PlayerController : MonoBehaviour
                 if (m_doudouIsPossessed == false)
                 {
                     TakeDoudou();
-                    m_uiManager.TakeObject();
+                    m_uiManager.UiTakeFlashlight();
                 }
                 else if (m_doudouIsPossessed == true)
                 {
-                    m_uiManager.DisableUi();
+                    m_uiManager.UiDisableFlashlight();
                 }
             }
         }
@@ -173,11 +172,11 @@ public class PlayerController : MonoBehaviour
     {
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
-            m_uiManager.DisableUi();
+            m_uiManager.UiDisableFlashlight();
         }
         else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
-            m_uiManager.DisableUi();
+            m_uiManager.UiDisableDoudou();
         }
     }
 
@@ -190,7 +189,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                m_uiManager.DisableUi();
+                m_uiManager.UiDisableFlashlight();
                 m_flm.PickItem();
                 m_flashlightIsPossessed = true;
             }
@@ -199,9 +198,9 @@ public class PlayerController : MonoBehaviour
         {
             if (Gamepad.current.buttonEast.isPressed)
             {
-                m_uiManager.DisableUi();
+                m_uiManager.UiDisableFlashlight();
                 m_flm.PickItem();
-                Gamepad.current.SetMotorSpeeds(0.75f * Time.deltaTime, 0.75f * Time.deltaTime);
+                Gamepad.current.SetMotorSpeeds(0.75f, 0.75f);
                 float frequency = InputSystem.pollingFrequency = 60f;
                 m_flashlightIsPossessed = true;
             }
@@ -214,7 +213,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                m_uiManager.DisableUi();
+                m_uiManager.UiDisableDoudou();
                 m_doudouManager.PickItem();
                 m_doudouIsPossessed = true;
             }
@@ -223,7 +222,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Gamepad.current.buttonEast.isPressed)
             {
-                m_uiManager.DisableUi();
+                m_uiManager.UiDisableDoudou();
                 m_doudouManager.PickItem();
                 Gamepad.current.SetMotorSpeeds(0.75f * Time.deltaTime, 0.75f * Time.deltaTime);
                 float frequency = InputSystem.pollingFrequency = 60f;

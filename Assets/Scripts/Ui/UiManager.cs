@@ -9,13 +9,16 @@ public class UiManager : MonoBehaviour
 
     [SerializeField]private GameObject m_takeLight;
 
+    [SerializeField] private GameObject m_uiDoudou;
+
     [SerializeField] private GameObject m_pannelPause;
 
     private GameManager m_gameManager;
 
     private bool m_switchPannelPause;
 
-    public bool m_isHandle = false;
+    public bool m_flashlightIsHandle = false;
+    public bool m_doudouIsHandle = false;
     public bool m_isActivated;
 
 
@@ -27,27 +30,30 @@ public class UiManager : MonoBehaviour
     }
     private void Start()
     {
-        DisableUi();
+        UiDisableFlashlight();
     }
 
     //----------------------------------------------- Ui prendre et dropper un item ------------------------------------------//
 
-    public void TakeObject()
+
+    //FLASHLIGHT//
+    public void UiTakeFlashlight()
     {
-        m_isHandle = false;
-        if(m_isHandle == false)
+        m_flashlightIsHandle = false;
+        if(m_flashlightIsHandle == false)
         {
             m_takeLight.SetActive(true);
         }
         else
         {
-            DisableUi();
+            UiDisableFlashlight();
         }
     }
-    public void DisableUi()
+   
+    public void UiDisableFlashlight()
     {
-        m_isHandle = true;
-        if (m_isHandle == true)
+        m_flashlightIsHandle = true;
+        if (m_flashlightIsHandle == true)
         {
             m_takeLight.SetActive(false);
         }
@@ -58,6 +64,32 @@ public class UiManager : MonoBehaviour
         
     }
 
+    //DOUDOU//
+    public void UiDisableDoudou()
+    {
+        m_doudouIsHandle = true;
+        if (m_doudouIsHandle == true)
+        {
+            m_uiDoudou.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("Problème DisableUi ?", this);
+        }
+
+    }
+    public void UiTakeDoudou()
+    {
+        m_doudouIsHandle = false;
+        if (m_doudouIsHandle == false)
+        {
+            m_takeLight.SetActive(true);
+        }
+        else
+        {
+            UiDisableDoudou();
+        }
+    }
     //----------------------------------------------- Pannel d'UI ------------------------------------------//
 
     public void DisablePannel()

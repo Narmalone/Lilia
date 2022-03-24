@@ -41,11 +41,11 @@ public class DoudouManager : MonoBehaviour
                 if (m_playerController.m_doudouIsPossessed == false)
                 {
                     m_playerController.TakeDoudou();
-                    m_uiManager.TakeObject();
+                    m_uiManager.UiTakeFlashlight();
                 }
                 else if (m_playerController.m_doudouIsPossessed == true)
                 {
-                    m_uiManager.DisableUi();
+                    m_uiManager.UiDisableFlashlight();
                 }
             }
         }
@@ -57,11 +57,11 @@ public class DoudouManager : MonoBehaviour
                 if (m_playerController.m_doudouIsPossessed == false)
                 {
                     m_playerController.TakeDoudou();
-                    m_uiManager.TakeObject();
+                    m_uiManager.UiTakeFlashlight();
                 }
                 else if (m_playerController.m_doudouIsPossessed == true)
                 {
-                    m_uiManager.DisableUi();
+                    m_uiManager.UiDisableFlashlight();
                 }
             }
         }
@@ -71,7 +71,7 @@ public class DoudouManager : MonoBehaviour
     {
         if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
-            m_uiManager.DisableUi();
+            m_uiManager.UiDisableFlashlight();
         }
     }
 
