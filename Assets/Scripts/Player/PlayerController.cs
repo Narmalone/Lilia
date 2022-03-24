@@ -207,19 +207,16 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerStay(Collider p_collide)
     {
 
-        if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0)
+        if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
         {
+            m_UIManager.TakableObject();
             TakeFlashlight();
-            m_UIManager.TakableObject("Flashlight");
-            Debug.Log("on rentre dans flashlight");
         }
 
-        else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0)
+        else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false)
         {
-
+            m_UIManager.TakableObject();
             TakeDoudou();
-            m_UIManager.TakableObject("Doudou");
-            //Debug.Log("on rentre dans doudou");
         }
     }
 
@@ -229,13 +226,10 @@ public class PlayerController : MonoBehaviour
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             m_UIManager.DisableUi();
-            Debug.Log("on sort de flashlight");
         }
         else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             m_UIManager.DisableUi();
-            //Debug.Log("on sort de doudou");
-            Debug.Log(m_UIManager.InteractEnabled());
         }
     }
 
@@ -253,11 +247,11 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                m_UIManager.TakeLampe();
-                m_flm.PickItem();
                 m_flashlightIsPossessed = true;
                 m_flm.GetComponent<BoxCollider>().enabled = false;
-                
+                m_UIManager.TakeLampe();
+                m_flm.PickItem();
+                m_UIManager.DisableUi();
             }
         }
         else if (m_gameManager.isGamepad == true)
@@ -270,10 +264,10 @@ public class PlayerController : MonoBehaviour
                 Gamepad.current.SetMotorSpeeds(0.75f * Time.deltaTime, 0.75f * Time.deltaTime);
                 float frequency = InputSystem.pollingFrequency = 60f;
                 m_flm.GetComponent<BoxCollider>().enabled = false;
+                m_UIManager.DisableUi();
             }
         }
     }
-    
     
     public void TakeDoudou()
     {
@@ -285,6 +279,7 @@ public class PlayerController : MonoBehaviour
                 m_doudou.PickItem();
                 m_doudouIsPossessed = true;
                 m_doudou.GetComponent<BoxCollider>().enabled = false;
+                m_UIManager.DisableUi();
             }
         }
         else if (m_gameManager.isGamepad == true)
@@ -297,6 +292,7 @@ public class PlayerController : MonoBehaviour
                 float frequency = InputSystem.pollingFrequency = 60f;
                 m_doudouIsPossessed = true;
                 m_doudou.GetComponent<BoxCollider>().enabled = false;
+                m_UIManager.DisableUi();
             }
         }
     }
