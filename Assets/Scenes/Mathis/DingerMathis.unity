@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70889176ea5ff8545b77ca799f8df811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPc: 0
+  isPc: 1
   isGamepad: 0
   isPaused: 0
 --- !u!4 &579210312
@@ -602,6 +602,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635774800}
   m_CullTransparentMesh: 1
+--- !u!114 &697310044 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8485867390263558226, guid: f38b2bf5029ce5342929512af16e262e, type: 3}
+  m_PrefabInstance: {fileID: 8485867389848264891}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a2841ab564f3e24bbf653e5cce0d9bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &755966625
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,17 +953,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943625353}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &960569577 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8485867390263558226, guid: f38b2bf5029ce5342929512af16e262e, type: 3}
-  m_PrefabInstance: {fileID: 8485867389848264891}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a2841ab564f3e24bbf653e5cce0d9bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1010499679
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,8 +1800,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a051016cfa00d1344ac9777c39dab6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_takeLight: {fileID: 886882166}
-  m_uiDoudou: {fileID: 340483026}
   m_pannelPause: {fileID: 635774800}
   m_indicInteraction: {fileID: 635774800}
   m_UILampe: {fileID: 886882166}
@@ -1890,7 +1888,7 @@ PrefabInstance:
     - target: {fileID: 2873547174128195187, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
       propertyPath: m_doudou
       value: 
-      objectReference: {fileID: 960569577}
+      objectReference: {fileID: 697310044}
     - target: {fileID: 2873547174128195187, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
       propertyPath: m_waypoints
       value: 
@@ -1942,7 +1940,7 @@ PrefabInstance:
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_doudou
       value: 
-      objectReference: {fileID: 960569577}
+      objectReference: {fileID: 697310044}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: LinkedPPV
       value: 
@@ -2106,7 +2104,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 8485867389959950450, guid: f38b2bf5029ce5342929512af16e262e, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: f38b2bf5029ce5342929512af16e262e, type: 3}
 --- !u!1001 &8929562132245412801
 PrefabInstance:
