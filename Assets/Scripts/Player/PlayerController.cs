@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
 
     public bool m_flashlightIsPossessed = false;
     public bool m_doudouIsPossessed = false;
-    public bool isFullItem = false;
+
     //----------------------------------------------- Post-processing ------------------------------------------//
 
 
@@ -97,8 +97,23 @@ public class PlayerController : MonoBehaviour
 
 
         //Check si le joueur drop des items
-        DropFlashlight();
-        DropDoudou();
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            if(m_flashlightIsPossessed == true && m_doudouIsPossessed == false)
+            {
+                DropFlashlight();
+            }
+            else if (m_doudouIsPossessed == true && m_flashlightIsPossessed == false)
+            {
+                DropDoudou();
+            }
+            else if (m_flashlightIsPossessed == true && m_doudouIsPossessed == true)
+            {
+                DropFlashlight();
+                Debug.Log("rentre bien dans la bonne fonction");
+            }
+        }
+       
     }
 
     private void OnTriggerStay(Collider p_collide)
@@ -234,24 +249,28 @@ public class PlayerController : MonoBehaviour
     {
         if (m_gameManager.isPc == true)
         {
-            if (Input.GetKey(KeyCode.G) && m_flashlightIsPossessed == true && m_doudouIsPossessed == false && isFullItem == false)
+
+            if (m_flashlightIsPossessed == true && m_doudouIsPossessed == false)
             {
                 m_flm.DropItem();
                 m_flashlightIsPossessed = false;
             }
-           
+            else if(m_flashlightIsPossessed == true && m_doudouIsPossessed == true)
+            {
+                m_flm.DropItem();
+                m_flashlightIsPossessed = false;
+                Debug.Log("doit dropper la lampe");
+
+            }
+
         }
         else if (m_gameManager.isGamepad == true)
         {
-            if (Gamepad.current.buttonWest.isPressed && m_flashlightIsPossessed == true && m_doudouIsPossessed == false && isFullItem == false)
+            if (Gamepad.current.buttonWest.isPressed && m_flashlightIsPossessed == true && m_doudouIsPossessed == false)
             {
                 m_flm.DropItem();
                 m_flashlightIsPossessed = false;
             }
-        }
-        if (m_flashlightIsPossessed == true && m_doudouIsPossessed == true && Input.GetKeyDown(KeyCode.G) && isFullItem == false)
-        {
-            FullItem();
         }
 
     }
@@ -260,33 +279,19 @@ public class PlayerController : MonoBehaviour
     {
         if (m_gameManager.isPc == true)
         {
-            if (Input.GetKeyDown(KeyCode.G) && m_doudouIsPossessed == true && m_flashlightIsPossessed == false && isFullItem == false)
+            if (Input.GetKeyDown(KeyCode.G) && m_doudouIsPossessed == true && m_flashlightIsPossessed == false)
             {
                 m_doudouManager.DropItem();
                 m_doudouIsPossessed = false;
-                Debug.Log("drop doudou");
-
             }
         }
         else if (m_gameManager.isGamepad == true)
         {
-            if (Gamepad.current.buttonWest.isPressed && m_doudouIsPossessed == true && m_flashlightIsPossessed == false && isFullItem == false)
+            if (Gamepad.current.buttonWest.isPressed && m_doudouIsPossessed == true && m_flashlightIsPossessed == false)
             {
                 m_doudouManager.DropItem();
                 m_doudouIsPossessed = false;
             }
-        }
-    }
-
-    public void FullItem()
-    {
-        isFullItem = true;
-        if (isFullItem == true)
-        {
-            m_flm.DropItem();
-            m_flashlightIsPossessed = false;
-            Debug.Log("ça drop un des 2");
-
         }
     }
 

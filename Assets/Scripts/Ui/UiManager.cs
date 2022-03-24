@@ -33,7 +33,10 @@ public class UiManager : MonoBehaviour
         UiDisableFlashlight();
         UiDisableDoudou();
     }
-
+    private void Update()
+    {
+        
+    }
     //----------------------------------------------- Ui prendre et dropper un item ------------------------------------------//
 
 
@@ -84,7 +87,7 @@ public class UiManager : MonoBehaviour
         m_doudouIsHandle = false;
         if (m_doudouIsHandle == false)
         {
-            m_takeLight.SetActive(true);
+            m_uiDoudou.SetActive(true);
         }
         else
         {

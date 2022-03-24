@@ -35,17 +35,17 @@ public class DoudouManager : MonoBehaviour
     {
         if (m_gameManager.isPc)
         {
-            if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0 && Physics.Raycast(transform.position, -Vector3.up, out m_hit, 100f))
+            if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
             {
 
                 if (m_playerController.m_doudouIsPossessed == false)
                 {
                     m_playerController.TakeDoudou();
-                    m_uiManager.UiTakeFlashlight();
+                    m_uiManager.UiTakeDoudou();
                 }
                 else if (m_playerController.m_doudouIsPossessed == true)
                 {
-                    m_uiManager.UiDisableFlashlight();
+                    m_uiManager.UiDisableDoudou();
                 }
             }
         }
@@ -57,11 +57,11 @@ public class DoudouManager : MonoBehaviour
                 if (m_playerController.m_doudouIsPossessed == false)
                 {
                     m_playerController.TakeDoudou();
-                    m_uiManager.UiTakeFlashlight();
+                    m_uiManager.UiTakeDoudou();
                 }
                 else if (m_playerController.m_doudouIsPossessed == true)
                 {
-                    m_uiManager.UiDisableFlashlight();
+                    m_uiManager.UiDisableDoudou();
                 }
             }
         }
@@ -71,7 +71,7 @@ public class DoudouManager : MonoBehaviour
     {
         if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
-            m_uiManager.UiDisableFlashlight();
+            m_uiManager.UiDisableDoudou();
         }
     }
 
