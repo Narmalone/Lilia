@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.PostProcessing;
 using Unity.VisualScripting;
-using System.Threading.Tasks;
 using DamageOverlayEffect;
     //----------------------------------------------- References from other Class ------------------------------------------//
 
@@ -20,7 +19,7 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] Doudou m_doudou;
     
-    public bool flashlightIsPossessed = false;
+    public bool m_flashlightIsPossessed = false;
     
     public bool m_doudouIsPossessed = false;
 
@@ -85,9 +84,6 @@ public class PlayerController : MonoBehaviour
 
     //-----------------------------------------------Systeme Physics------------------------------------------
     
-    [SerializeField]private CharacterController m_myChara;
-
-    [SerializeField, Tooltip("Vitesse du joueur")]private float m_speed;
 
     private float m_gravity = -9.81f;
     
@@ -96,9 +92,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("Transform d'un empty ou sera cr�e la sphere pour savoir si le joueur est sur le sol")]private Transform groundCheck;
     
     //----------------------------------------------- Player Items Systems ------------------------------------------//
-
-    public bool m_flashlightIsPossessed = false;
-    public bool m_doudouIsPossessed = false;
+    
 
     //----------------------------------------------- Post-processing ------------------------------------------//
 
@@ -240,11 +234,11 @@ public class PlayerController : MonoBehaviour
                 if (m_flashlightIsPossessed == false)
                 {
                     TakeFlashlight();
-                    m_uiManager.UiTakeFlashlight();
+                    m_UIManager.UiTakeFlashlight();
                 }
                 else if (m_flashlightIsPossessed == true)
                 {
-                    m_uiManager.UiDisableFlashlight();
+                    m_UIManager.UiDisableFlashlight();
                 }
             }
 
@@ -255,11 +249,11 @@ public class PlayerController : MonoBehaviour
                 {
                     TakeDoudou();
                     Debug.Log("prend le doudou");
-                    m_uiManager.UiTakeDoudou();
+                    m_UIManager.UiTakeDoudou();
                 }
                 else if (m_doudouIsPossessed == true)
                 {
-                    m_uiManager.UiTakeDoudou();
+                    m_UIManager.UiTakeDoudou();
                 }
             }
         }
@@ -271,12 +265,12 @@ public class PlayerController : MonoBehaviour
                 if (m_flashlightIsPossessed == false)
                 {
                     TakeFlashlight();
-                    m_uiManager.UiTakeFlashlight();
+                    m_UIManager.UiTakeFlashlight();
                     Debug.Log("gamepad ui activ�e");
                 }
                 else if (m_flashlightIsPossessed == true)
                 {
-                    m_uiManager.UiDisableFlashlight();
+                    m_UIManager.UiDisableFlashlight();
                 }
             }
             else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0)
@@ -285,11 +279,11 @@ public class PlayerController : MonoBehaviour
                 if (m_doudouIsPossessed == false)
                 {
                     TakeDoudou();
-                    m_uiManager.UiTakeDoudou();
+                    m_UIManager.UiTakeDoudou();
                 }
                 else if (m_doudouIsPossessed == true)
                 {
-                    m_uiManager.UiDisableDoudou();
+                    m_UIManager.UiDisableDoudou();
                 }
             }
         }
@@ -300,11 +294,11 @@ public class PlayerController : MonoBehaviour
     {
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
-            m_uiManager.UiDisableFlashlight();
+            m_UIManager.UiDisableFlashlight();
         }
         else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
-            m_uiManager.UiDisableDoudou();
+            m_UIManager.UiDisableDoudou();
         }
     }
 
@@ -320,7 +314,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E))
         {
-            m_uiManager.UiDisableFlashlight();
+            m_UIManager.UiDisableFlashlight();
             m_flm.PickItem();
             m_flashlightIsPossessed = true;
             
@@ -339,7 +333,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                m_uiManager.UiDisableDoudou();
+                m_UIManager.UiDisableDoudou();
                 m_doudouManager.PickItem();
                 m_doudouIsPossessed = true;
             }
@@ -348,7 +342,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Gamepad.current.buttonEast.isPressed)
             {
-                m_uiManager.UiDisableDoudou();
+                m_UIManager.UiDisableDoudou();
                 m_doudouManager.PickItem();
                 Gamepad.current.SetMotorSpeeds(0.75f * Time.deltaTime, 0.75f * Time.deltaTime);
                 float frequency = InputSystem.pollingFrequency = 60f;
@@ -382,7 +376,7 @@ public class PlayerController : MonoBehaviour
             flm.GetComponent<BoxCollider>().enabled = true;
             flashlightIsPossessed = false;
             m_UIManager.DropLampe();
-            m_UIManager.DisableUi();
+            m_UIManager.UiDisableFlashlight();
             
         }
 
@@ -436,7 +430,7 @@ public class PlayerController : MonoBehaviour
             m_doudou.GetComponent<BoxCollider>().enabled = true;
             m_doudouIsPossessed = false;
             m_UIManager.DropDoudou();
-            m_UIManager.DisableUi();
+            m_UIManager.UiDisableDoudou();
         }
 
     }
@@ -461,16 +455,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-    public void FullItem()
+    public void DropFlashlight()
     {
-        isFullItem = true;
-        if (isFullItem == true)
+        if (m_gameManager.isPc == true)
         {
-            m_flm.DropItem();
-            m_flashlightIsPossessed = false;
-            Debug.Log("�a drop un des 2");
-
+            if (Input.GetKeyDown(KeyCode.G) && m_flashlightIsPossessed == true && m_doudouIsPossessed == false)
+            {
+                m_flm.DropItem();
+                m_flashlightIsPossessed = false;
+            }
+        }
+        else if (m_gameManager.isGamepad == true)
+        {
+            if (Gamepad.current.buttonWest.isPressed && m_flashlightIsPossessed == true && m_doudouIsPossessed == false)
+            {
+                m_flm.DropItem();
+                m_flashlightIsPossessed = false;
+            }
         }
     }
 

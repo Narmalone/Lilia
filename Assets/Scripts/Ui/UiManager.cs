@@ -65,10 +65,14 @@ public class UiManager : MonoBehaviour
     {
         m_indicInteraction.SetActive(true);
     }
-   
-    public void UiDisableFlashlight()
+
+
+    public void DisableUi()
     {
         m_indicInteraction.SetActive(false);
+    }
+    public void UiDisableFlashlight()
+    {
         m_flashlightIsHandle = true;
         if (m_flashlightIsHandle == true)
         {
