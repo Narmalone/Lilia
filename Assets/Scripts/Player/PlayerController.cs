@@ -14,7 +14,9 @@ public class PlayerController : MonoBehaviour
     //Si le joueur ne peut pas monter les escalier il faut changer le step offset dans unity ou dans le code du chara controller
 
     [SerializeField] private UiManager m_UIManager;
-    
+
+    private PannelManager m_pannelManager;
+
     [SerializeField] Doudou m_doudou;
     
     [SerializeField] private FlashlightManager m_flm;
@@ -108,6 +110,7 @@ public class PlayerController : MonoBehaviour
         m_gameManager = FindObjectOfType<GameManager>();
         m_controls = new PlayerControls();
         m_flm = FindObjectOfType<FlashlightManager>();
+        m_pannelManager = FindObjectOfType<PannelManager>();
 
         m_currentStress = m_maxStress;
         m_stressBar.SetMaxHealth(m_maxStress);
@@ -137,15 +140,26 @@ public class PlayerController : MonoBehaviour
 
         m_velocity.y += m_gravity * Time.deltaTime;
         
+
+        //Inputs venant du joueur
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Stressing(10);
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            m_pannelManager.OnPannelPause();
+            m_gameManager.GamePaused();
+        }
+
+        //Check Fonctions
+
         AutoStress();
-        //Activation de la lampe
         ActiveFlashlight();
         ActiveDoudou();
+
+
         // test shader
         // decay the target intensity
         if (TargetIntensity > 0f)
@@ -173,10 +187,6 @@ public class PlayerController : MonoBehaviour
             float powerAdapted = Mathf.Lerp(0.1f, 0f,power);
             m_camShake.StartShake(0.15f,powerAdapted);
         }
-
-
-        //Check si le joueur drop des items
-
     }
     private void Stressing(float p_stressNum)
     {

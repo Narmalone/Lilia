@@ -6,16 +6,13 @@ using TMPro;
 public class UiManager : MonoBehaviour
 {
     //----------------------------------------------- R�f�rences & variables ------------------------------------------//
-    
-    [SerializeField] private GameObject m_pannelPause;
 
+    //Ui In game
     [SerializeField]private GameObject m_indicInteraction;
     [SerializeField]private GameObject m_UILampe;
     [SerializeField]private GameObject m_UIDoudou;
 
     private GameManager m_gameManager;
-
-    private bool m_switchPannelPause;
 
     public bool m_flashlightIsHandle = false;
     public bool m_doudouIsHandle = false;
@@ -24,8 +21,6 @@ public class UiManager : MonoBehaviour
 
     private void Awake()
     {
-        m_switchPannelPause = false;
-        m_pannelPause.SetActive(false);
         m_gameManager = FindObjectOfType<GameManager>();
     }
     private void Start()
@@ -60,20 +55,19 @@ public class UiManager : MonoBehaviour
         return m_indicInteraction.activeSelf;
     }
 
-
-    //DOUDOU//
-    //----------------------------------------------- Pannel d'UI ------------------------------------------//
-
+    
     public void DisablePannel()
     {
         m_UILampe.GetComponent<Image>().color = new Color32(255,255,225,255);
     }
-    
+
+
+    //----------------------------------------------- UI Objets du joueur ------------------------------------------//
+
     public void TakeLampe()
     {
         //D�sactiver la Ui qui prend l'objet
         //Activer l'Ui en bas � droite
-        //Debug.Log("prendre l'objet");
 
         m_UILampe.GetComponent<Image>().color = new Color32(255,255,225,255);
     }
@@ -82,8 +76,6 @@ public class UiManager : MonoBehaviour
     {
         //D�sactiver la Ui qui prend l'objet
         //Activer l'Ui en bas � droite
-        //Debug.Log("prendre l'objet");
-
         m_UILampe.GetComponent<Image>().color = new Color32(100,100,100,255);
     }
     
@@ -91,7 +83,6 @@ public class UiManager : MonoBehaviour
     {
         //D�sactiver la Ui qui prend l'objet
         //Activer l'Ui en bas � droite
-        //Debug.Log("prendre l'objet");
 
         m_UIDoudou.GetComponent<Image>().color = new Color32(255,255,225,255);
     }
@@ -99,9 +90,6 @@ public class UiManager : MonoBehaviour
     public void DropDoudou()
     {
         //D�sactiver la Ui qui prend l'objet
-        //Activer l'Ui en bas � droite
-        //Debug.Log("prendre l'objet");
-
         m_UIDoudou.GetComponent<Image>().color = new Color32(100,100,100,255);
     }
 }
