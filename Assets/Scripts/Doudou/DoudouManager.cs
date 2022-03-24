@@ -33,39 +33,31 @@ public class DoudouManager : MonoBehaviour
 
     private void OnTriggerStay(Collider p_collide)
     {
-        if (m_gameManager.isPc)
+        if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
-            if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
+            if (m_playerController.m_doudouIsPossessed == false)
             {
-
-                if (m_playerController.m_doudouIsPossessed == false)
-                {
-                    m_playerController.TakeDoudou();
-                    m_uiManager.UiTakeDoudou();
-                }
-                else if (m_playerController.m_doudouIsPossessed == true)
-                {
-                    m_uiManager.UiDisableDoudou();
-                }
+                m_playerController.TakeDoudou();
+                m_uiManager.UiTakeDoudou();
+            }
+            else if (m_playerController.m_doudouIsPossessed == true)
+            {
+                m_uiManager.UiDisableDoudou();
             }
         }
-        else if (m_gameManager.isGamepad)
+        if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
-            if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
-            {
 
-                if (m_playerController.m_doudouIsPossessed == false)
-                {
-                    m_playerController.TakeDoudou();
-                    m_uiManager.UiTakeDoudou();
-                }
-                else if (m_playerController.m_doudouIsPossessed == true)
-                {
-                    m_uiManager.UiDisableDoudou();
-                }
+            if (m_playerController.m_doudouIsPossessed == false)
+            {
+                m_playerController.TakeDoudou();
+                m_uiManager.UiTakeDoudou();
+            }
+            else if (m_playerController.m_doudouIsPossessed == true)
+            {
+                m_uiManager.UiDisableDoudou();
             }
         }
-
     }
     private void OnTriggerExit(Collider p_collide)
     {
@@ -79,45 +71,18 @@ public class DoudouManager : MonoBehaviour
 
     public void PickItem()
     {
-        if (m_gameManager.isPc)
-        {
-            m_rbDoudou.useGravity = false;
-            m_rbDoudou.isKinematic = true;
-
-            m_doudou.transform.SetParent(m_doudouContainer);
-            transform.localPosition = Vector3.zero;
-            transform.localRotation = Quaternion.Euler(90f, 180f, 0f);
-        }
-        else if (m_gameManager.isGamepad)
-        {
             m_rbDoudou.useGravity = false;
             m_rbDoudou.isKinematic = true;
 
             m_rbDoudou.transform.SetParent(m_doudouContainer);
             transform.localPosition = Vector3.zero;
             transform.localRotation = Quaternion.Euler(90f, 180f, 0f);
-        }
-
     }
 
     public void DropItem()
     {
-
-        if (m_gameManager.isPc)
-        {
-            m_rbDoudou.isKinematic = false;
-            m_rbDoudou.useGravity = true;
-
-
-            m_doudou.transform.parent = null;
-        }
-        else if (m_gameManager.isGamepad)
-        {
-            m_rbDoudou.isKinematic = false;
-            m_rbDoudou.useGravity = true;
-
-            m_doudou.transform.parent = null;
-        }
-
+        m_rbDoudou.isKinematic = false;
+        m_rbDoudou.useGravity = true;
+        m_doudou.transform.parent = null;
     }
 }

@@ -118,6 +118,15 @@ public class UiManager : MonoBehaviour
         m_UILampe.GetComponent<Image>().color = new Color32(255,255,225,255);
     }
     
+    public void TakeLampe()
+    {
+        //D�sactiver la Ui qui prend l'objet
+        //Activer l'Ui en bas � droite
+        //Debug.Log("prendre l'objet");
+
+        m_UILampe.GetComponent<Image>().color = new Color32(255,255,225,255);
+    }
+    
     public void DropLampe()
     {
         //D�sactiver la Ui qui prend l'objet
