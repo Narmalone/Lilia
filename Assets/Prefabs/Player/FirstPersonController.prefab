@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 1354072575498231413}
   - component: {fileID: 1354072575498231414}
   - component: {fileID: 1354072575498231415}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: FirstPersonController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,16 +206,13 @@ MonoBehaviour:
   LinkedPPV: {fileID: 0}
   MaxEffectIntensity: 0.5
   m_myChara: {fileID: 1354072575498231415}
-  m_uiManager: {fileID: 0}
   m_speed: 2
-  m_gravity: -9.81
-  m_groundCheck: {fileID: 1354072574518692795}
-  m_radiusSphere: 0.4
+  groundCheck: {fileID: 1354072574518692795}
+  radiusCheckSphere: 0.4
   m_groundMask:
     serializedVersion: 2
     m_Bits: 256
-  flm: {fileID: 0}
-  flashlightIsPossessed: 0
+--- !u!143 &1354072575498231415
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -368,7 +365,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 100
-  m_gameManager: {fileID: 0}
   playerBody: {fileID: 1354072575498231410}
 --- !u!114 &6848592269740322073
 MonoBehaviour:

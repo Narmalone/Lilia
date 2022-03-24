@@ -7,7 +7,6 @@ using UnityEngine.Rendering.PostProcessing;
 using DamageOverlayEffect;
 using Unity.VisualScripting;
 
-using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     //Si le joueur ne peut pas monter les escalier il faut changer le step offset dans unity ou dans le code du chara controller
@@ -65,28 +64,18 @@ public class PlayerController : MonoBehaviour
     //-----------------------------------------------Systeme Physics------------------------------------------
     
     [SerializeField]private CharacterController m_myChara;
-    [SerializeField, Tooltip("Références du Chara controller")]private CharacterController m_myChara;
 
-    private GameManager m_gameManager;
-
-    [SerializeField, Tooltip("Références de l'uiManager")]private UiManager m_uiManager;
+    [SerializeField, Tooltip("Vitesse du joueur")]private float m_speed;
 
     private float m_gravity = -9.81f;
     
     Vector3 m_velocity;
     
-    [SerializeField, Tooltip("Transform d'un empty ou sera crï¿½e la sphere pour savoir si le joueur est sur le sol")]private Transform groundCheck;
-    [SerializeField, Tooltip("Vitesse du joueur en m/s")]private float m_speed;
+    [SerializeField, Tooltip("Transform d'un empty ou sera cr�e la sphere pour savoir si le joueur est sur le sol")]private Transform groundCheck;
 
-    [SerializeField, Tooltip("Gravité du joueur en m/s")]private float m_gravity = -9.81f;
+    [SerializeField, Tooltip("Radius de la sphere qui check si le joueur est sur le sol")]private float radiusCheckSphere = 0.4f;
 
-    private Vector3 m_velocity;
-    
-    [SerializeField, Tooltip("Transform d'un empty ou sera crée la sphere pour savoir si le joueur est sur le sol")]private Transform m_groundCheck;
-
-    [SerializeField, Tooltip("Radius de la sphere qui check si le joueur est sur le sol")]private float m_radiusSphere = 0.4f;
-
-    [SerializeField, Tooltip("Mask ou l'on dï¿½finit le sol")]private LayerMask m_groundMask;
+    [SerializeField, Tooltip("Mask ou l'on d�finit le sol")]private LayerMask m_groundMask;
     
     private bool m_isGrounded;//Si le joueur est sur le sol ?
     
@@ -98,29 +87,17 @@ public class PlayerController : MonoBehaviour
         Debug.Log(LinkedPPV.profile.TryGetSettings<DepthOfField>(out m_dOFSettings));
     }
 
-    private PlayerControls m_controls;
-
-    private Vector2 playerMove;
-
-
-    private void Awake()
+    private void Update()
     {
-        m_gameManager = FindObjectOfType<GameManager>();
-        m_controls = new PlayerControls();
-    }
-    public void Update()
-    {
-        m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Crï¿½ation d'une sphere qui chech si le joueur touche le sol
+        m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Cr�ation d'une sphere qui chech si le joueur touche le sol
 
-        if(m_isGrounded && m_velocity.y < 0)        //Reset de la gravitï¿½ quand le joueur touche le sol
-        m_isGrounded = Physics.CheckSphere(m_groundCheck.position, m_radiusSphere, m_groundMask);      //Création d'une sphere qui chech si le joueur touche le sol
-
-        if (m_isGrounded && m_velocity.y < 0)        //Reset de la gravité quand le joueur touche le sol
+        if(m_isGrounded && m_velocity.y < 0)        //Reset de la gravit� quand le joueur touche le sol
         {
             m_velocity.y = -2f;
         }
+        
 
-        // Dï¿½placements du joueur
+        // D�placements du joueur
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
@@ -196,34 +173,11 @@ public class PlayerController : MonoBehaviour
 
         TargetIntensity = Mathf.Clamp01(TargetIntensity + damagePercent);
     }
-    //Variables, rï¿½fï¿½rences et fonctions de la lampe par rapport au joueur
+    //Variables, r�f�rences et fonctions de la lampe par rapport au joueur
     
-        //Drop de la lampe
-        DropFlashlight();
-
-        if (m_gameManager.isPc)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                m_uiManager.MenuPause();
-            }
-        }
-        else if (m_gameManager.isGamepad)
-        {
-            if (Gamepad.current.startButton.wasPressedThisFrame)
-            {
-                m_uiManager.MenuPause();
-            }
-        }
-        
-    }
-
-    //Variables, références et fonctions de la lampe par rapport au joueur
-    [SerializeField]FlashlightManager flm;
-    public bool m_flashlightIsPossessed = false;
     public void TakeFlashlight()
     {
-        if (m_gameManager.isPc == true)
+        if (Input.GetKey(KeyCode.E))
         {
             flm.PickItem();
             flashlightIsPossessed = true;
@@ -238,36 +192,15 @@ public class PlayerController : MonoBehaviour
             m_doudou.PickItem();
             m_doudouIsPossessed = true;
             m_UIManager.TakeDoudou();
-            if (Input.GetKey(KeyCode.E))
-            {
-                m_uiManager.DisableUi();
-                flm.PickItem();
-                m_flashlightIsPossessed = true;
-            }
         }
-        else if (m_gameManager.isGamepad == true)
-        {
-            if (Gamepad.current.buttonEast.isPressed)
-            {
-                m_uiManager.DisableUi();
-                flm.PickItem();
-                Gamepad.current.SetMotorSpeeds(0.75f * Time.deltaTime, 0.75f * Time.deltaTime);
-                float frequency = InputSystem.pollingFrequency = 60f;
-                m_flashlightIsPossessed = true;
-            }
-        } 
     }
-    public void DropFlashlight()
+    public void ActiveFlashlight()
     {
-        if (m_gameManager.isPc == true)
+        if (Input.GetKeyDown(KeyCode.F) && flashlightIsPossessed == true)
         {
-            if (Input.GetKey(KeyCode.G) && m_flashlightIsPossessed == true)
-            {
-                flm.DropItem();
-                m_flashlightIsPossessed = false;
-            }
+            flm.UseFlashlight();
         }
-        else if (m_gameManager.isGamepad == true)
+        if (Input.GetKey(KeyCode.G) && flashlightIsPossessed == true)
         {
             flm.DropItem();
             flm.GetComponent<BoxCollider>().enabled = true;
@@ -275,12 +208,8 @@ public class PlayerController : MonoBehaviour
             m_UIManager.DropLampe();
             m_UIManager.DisableUi();
             
-            if (Gamepad.current.buttonWest.isPressed && m_flashlightIsPossessed == true)
-            {
-                flm.DropItem();
-                m_flashlightIsPossessed = false;
-            }
         }
+
     }
     
     public void ActiveDoudou()
