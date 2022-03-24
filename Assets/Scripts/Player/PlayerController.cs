@@ -122,16 +122,16 @@ public class PlayerController : MonoBehaviour
 
             else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0)
             {
-                Debug.Log("dans la condition bitch");
 
                 if (m_doudouIsPossessed == false)
                 {
                     TakeDoudou();
-                    m_uiManager.UiTakeFlashlight();
+                    Debug.Log("prend le doudou");
+                    m_uiManager.UiTakeDoudou();
                 }
                 else if (m_doudouIsPossessed == true)
                 {
-                    m_uiManager.UiDisableFlashlight();
+                    m_uiManager.UiTakeDoudou();
                 }
             }
         }
@@ -157,11 +157,11 @@ public class PlayerController : MonoBehaviour
                 if (m_doudouIsPossessed == false)
                 {
                     TakeDoudou();
-                    m_uiManager.UiTakeFlashlight();
+                    m_uiManager.UiTakeDoudou();
                 }
                 else if (m_doudouIsPossessed == true)
                 {
-                    m_uiManager.UiDisableFlashlight();
+                    m_uiManager.UiDisableDoudou();
                 }
             }
         }

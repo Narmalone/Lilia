@@ -146,6 +146,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_uiManager: {fileID: 0}
   m_flm: {fileID: 0}
+  m_flashlightMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  m_doudouMask:
+    serializedVersion: 2
+    m_Bits: 2048
   m_myChara: {fileID: 1354072575498231415}
   m_speed: 2
   m_gravity: -9.81
@@ -156,6 +162,7 @@ MonoBehaviour:
     m_Bits: 256
   m_flashlightIsPossessed: 0
   m_doudouIsPossessed: 0
+  isFullItem: 0
 --- !u!143 &1354072575498231415
 CharacterController:
   m_ObjectHideFlags: 0

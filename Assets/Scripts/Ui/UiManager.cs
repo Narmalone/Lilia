@@ -31,6 +31,7 @@ public class UiManager : MonoBehaviour
     private void Start()
     {
         UiDisableFlashlight();
+        UiDisableDoudou();
     }
 
     //----------------------------------------------- Ui prendre et dropper un item ------------------------------------------//
