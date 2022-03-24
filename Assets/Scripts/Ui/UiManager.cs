@@ -40,7 +40,10 @@ public class UiManager : MonoBehaviour
         m_UILampe.GetComponent<Image>().color = new Color32(100,100,100,255);
         m_UIDoudou.GetComponent<Image>().color = new Color32(100,100,100,255);
     }
-
+    private void Update()
+    {
+        
+    }
     //----------------------------------------------- Ui prendre et dropper un item ------------------------------------------//
 
 
@@ -96,7 +99,7 @@ public class UiManager : MonoBehaviour
         m_doudouIsHandle = false;
         if (m_doudouIsHandle == false)
         {
-            m_takeLight.SetActive(true);
+            m_uiDoudou.SetActive(true);
         }
         else
         {

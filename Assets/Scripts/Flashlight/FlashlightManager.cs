@@ -41,8 +41,6 @@ public class FlashlightManager : MonoBehaviour
 
             if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
             {
-                Debug.Log("dans la condition bitch");
-
                 if (m_playerController.m_flashlightIsPossessed == false)
                 {
                     m_playerController.TakeFlashlight();
