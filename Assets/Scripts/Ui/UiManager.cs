@@ -6,11 +6,7 @@ using TMPro;
 public class UiManager : MonoBehaviour
 {
     //----------------------------------------------- R�f�rences & variables ------------------------------------------//
-
-    [SerializeField]private GameObject m_takeLight;
-
-    [SerializeField] private GameObject m_uiDoudou;
-
+    
     [SerializeField] private GameObject m_pannelPause;
 
     [SerializeField]private GameObject m_indicInteraction;
@@ -34,8 +30,6 @@ public class UiManager : MonoBehaviour
     }
     private void Start()
     {
-        UiDisableFlashlight();
-        UiDisableDoudou();
         m_indicInteraction.SetActive(false);
         m_UILampe.GetComponent<Image>().color = new Color32(100,100,100,255);
         m_UIDoudou.GetComponent<Image>().color = new Color32(100,100,100,255);
@@ -48,18 +42,7 @@ public class UiManager : MonoBehaviour
 
 
     //FLASHLIGHT//
-    public void UiTakeFlashlight()
-    {
-        m_flashlightIsHandle = false;
-        if (m_flashlightIsHandle == false)
-        {
-            m_takeLight.SetActive(true);
-        }
-        else
-        {
-            UiDisableFlashlight();
-        }
-    }
+
 
     public void TakableObject()
     {
@@ -71,46 +54,9 @@ public class UiManager : MonoBehaviour
     {
         m_indicInteraction.SetActive(false);
     }
-    public void UiDisableFlashlight()
-    {
-        m_flashlightIsHandle = true;
-        if (m_flashlightIsHandle == true)
-        {
-            m_takeLight.SetActive(false);
-        }
-        else
-        {
-            Debug.LogError("Probl�me DisableUi ?", this);
-        }
-        
-    }
+
 
     //DOUDOU//
-    public void UiDisableDoudou()
-    {
-        m_doudouIsHandle = true;
-        if (m_doudouIsHandle == true)
-        {
-            m_uiDoudou.SetActive(false);
-        }
-        else
-        {
-            Debug.LogError("Probl�me DisableUi ?", this);
-        }
-
-    }
-    public void UiTakeDoudou()
-    {
-        m_doudouIsHandle = false;
-        if (m_doudouIsHandle == false)
-        {
-            m_uiDoudou.SetActive(true);
-        }
-        else
-        {
-            UiDisableDoudou();
-        }
-    }
     //----------------------------------------------- Pannel d'UI ------------------------------------------//
 
     public void DisablePannel()

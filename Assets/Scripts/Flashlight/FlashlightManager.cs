@@ -33,7 +33,7 @@ public class FlashlightManager : MonoBehaviour
 
 
     //----------------------------------------------- Les OnTrigger ------------------------------------------//
-
+/*
     private void OnTriggerStay(Collider p_collide)
     {
         if (m_gameManager.isPc)
@@ -44,7 +44,7 @@ public class FlashlightManager : MonoBehaviour
                 if (m_playerController.m_flashlightIsPossessed == false)
                 {
                     m_playerController.TakeFlashlight();
-                    m_uiManager.UiTakeFlashlight();
+                    m_uiManager.drop();
                 }
                 else if (m_playerController.m_flashlightIsPossessed == true)
                 {
@@ -77,7 +77,7 @@ public class FlashlightManager : MonoBehaviour
                 m_uiManager.UiDisableFlashlight();
             }
     }
-
+*/
     //----------------------------------------------- Fonctions li�es � la veilleuse ------------------------------------------//
 
     public void PickItem()

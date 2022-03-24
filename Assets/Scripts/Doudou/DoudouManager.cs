@@ -30,7 +30,7 @@ public class DoudouManager : MonoBehaviour
 
 
     //----------------------------------------------- Si le joueur trigger le doudou ------------------------------------------//
-
+/*
     private void OnTriggerStay(Collider p_collide)
     {
         if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
@@ -65,7 +65,7 @@ public class DoudouManager : MonoBehaviour
         {
             m_uiManager.UiDisableDoudou();
         }
-    }
+    }*/
 
     //----------------------------------------------- Fonctions de prises ou drop du doudou ------------------------------------------//
 
