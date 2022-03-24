@@ -210,7 +210,7 @@ public class PlayerController : MonoBehaviour
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             TakeFlashlight();
-            m_UIManager.TakableObject();
+            m_UIManager.TakableObject("Flashlight");
             Debug.Log("on rentre dans flashlight");
         }
 
@@ -218,8 +218,8 @@ public class PlayerController : MonoBehaviour
         {
 
             TakeDoudou();
-            m_UIManager.TakableObject();
-            Debug.Log("on rentre dans doudou");
+            m_UIManager.TakableObject("Doudou");
+            //Debug.Log("on rentre dans doudou");
         }
     }
 
@@ -234,7 +234,8 @@ public class PlayerController : MonoBehaviour
         else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             m_UIManager.DisableUi();
-            Debug.Log("on sort de doudou");
+            //Debug.Log("on sort de doudou");
+            Debug.Log(m_UIManager.InteractEnabled());
         }
     }
 

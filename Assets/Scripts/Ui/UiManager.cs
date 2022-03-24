@@ -44,8 +44,9 @@ public class UiManager : MonoBehaviour
     //FLASHLIGHT//
 
 
-    public void TakableObject()
+    public void TakableObject(string p_nameOfCaller)
     {
+        Debug.Log("activated");
         m_indicInteraction.SetActive(true);
     }
 
@@ -53,6 +54,11 @@ public class UiManager : MonoBehaviour
     public void DisableUi()
     {
         m_indicInteraction.SetActive(false);
+    }
+
+    public bool InteractEnabled()
+    {
+        return m_indicInteraction.activeSelf;
     }
 
 

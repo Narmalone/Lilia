@@ -15,19 +15,7 @@ public class Doudou : MonoBehaviour
         m_rbDoudou = m_doudou.GetComponent<Rigidbody>();
         m_emplacementDoudou.GetComponent<Light>();
     }
-
-    [SerializeField]PlayerController playerController;
-    private void OnTriggerStay(Collider p_collide)
-    {
-        uiManager.TakableObject();
-        playerController.TakeDoudou();
-
-
-    }
-    private void OnTriggerExit(Collider p_collide)
-    {
-        uiManager.DisableUi();
-    }
+    
 
     private float m_yRotation = 0f;
 
