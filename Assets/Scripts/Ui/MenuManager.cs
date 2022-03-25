@@ -13,6 +13,8 @@ public class MenuManager : MonoBehaviour
 
     //variables dans le Option depuis le menu
     [SerializeField] private GameObject m_newEventSystemFirstSelectedObject;
+    [SerializeField] private GameObject m_newSystemCurrentSelectedObject;
+    private float r = 255;
 
     private void Awake()
     {
@@ -42,7 +44,7 @@ public class MenuManager : MonoBehaviour
     {
         m_pannelOption.SetActive(true);
         EventSystem.current.firstSelectedGameObject = m_newEventSystemFirstSelectedObject;
-        m_newEventSystemFirstSelectedObject.gameObject.GetComponent<Toggle>();
+        EventSystem.current.SetSelectedGameObject(m_newSystemCurrentSelectedObject);
     }
 
     public void OnCredits()
