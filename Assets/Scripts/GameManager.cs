@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     //----------------------------------------------- Choose Your Platform ------------------------------------------//
@@ -38,6 +40,10 @@ public class GameManager : MonoBehaviour
     public void NextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    public void OnBack()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
 

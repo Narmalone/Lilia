@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Rendering.PostProcessing;
 using Unity.VisualScripting;
 using DamageOverlayEffect;
+using UnityEngine.EventSystems;
     //----------------------------------------------- References from other Class ------------------------------------------//
 
 public class PlayerController : MonoBehaviour
@@ -90,10 +91,7 @@ public class PlayerController : MonoBehaviour
     
     Vector3 m_velocity;
     
-    [SerializeField, Tooltip("Transform d'un empty ou sera cr�e la sphere pour savoir si le joueur est sur le sol")]private Transform groundCheck;
-    
-    //----------------------------------------------- Player Items Systems ------------------------------------------//
-    
+    [SerializeField, Tooltip("Transform d'un empty ou sera cr�e la sphere pour savoir si le joueur est sur le sol")]private Transform groundCheck;    
 
     //----------------------------------------------- Post-processing ------------------------------------------//
 
@@ -104,7 +102,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("Mask ou l'on d�finit le sol")]private LayerMask m_groundMask;
     
     private bool m_isGrounded;//Si le joueur est sur le sol ?
-    
+
+
+    //----------------------------------------------- Gamepad ------------------------------------------//
+
+
     private void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();
@@ -147,11 +149,24 @@ public class PlayerController : MonoBehaviour
             Stressing(10);
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if(m_gameManager.isPc == true)
         {
-            m_pannelManager.OnPannelPause();
-            m_gameManager.GamePaused();
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                m_pannelManager.OnPannelPause();
+                m_gameManager.GamePaused();
+            }
         }
+        else if (m_gameManager.isGamepad == true)
+        {
+            if (Gamepad.current.startButton.wasPressedThisFrame)
+            {
+                m_pannelManager.OnPannelPause();
+                m_gameManager.GamePaused();
+                //EventSystem.
+            }
+        }
+        
 
         //Check Fonctions
 
@@ -266,7 +281,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (m_gameManager.isGamepad == true)
         {
-            if (Gamepad.current.buttonEast.isPressed)
+            if (Gamepad.current.buttonSouth.isPressed)
             {
                 m_UIManager.TakeLampe();
                 m_flm.PickItem();
@@ -294,12 +309,12 @@ public class PlayerController : MonoBehaviour
         }
         else if (m_gameManager.isGamepad == true)
         {
-            if (Gamepad.current.buttonEast.isPressed)
+            if (Gamepad.current.buttonSouth.isPressed)
             {
                 m_UIManager.TakeDoudou();
                 m_doudou.PickItem();
-                Gamepad.current.SetMotorSpeeds(0.75f * Time.deltaTime, 0.75f * Time.deltaTime);
-                float frequency = InputSystem.pollingFrequency = 60f;
+                Gamepad.current.SetMotorSpeeds(0.1f, 0.1f);
+                InputSystem.pollingFrequency = 10f;
                 m_doudouIsPossessed = true;
                 m_doudou.GetComponent<BoxCollider>().enabled = false;
                 m_UIManager.DisableUi();
