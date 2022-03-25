@@ -13,6 +13,8 @@ public class AIController : MonoBehaviour
             CHASSE
     };
 
+    private bool m_chasing = false;
+
     [SerializeField] private NavMeshAgent m_navAgent;
     [SerializeField] private Waypoints m_waypoints;
     [SerializeField] private Doudou m_doudou;
@@ -22,8 +24,14 @@ public class AIController : MonoBehaviour
     public void FollowDoudou(int p_delay)
     {
         m_currentState = m_enumState.CHASSE;
-        Task.Delay(p_delay).ContinueWith(t=> m_currentState = m_enumState.PATROUILLE);
-        
+        m_chasing = true;
+        Task.Delay(p_delay).ContinueWith(t =>
+            {
+                m_chasing = false;
+                return m_currentState = m_enumState.PATROUILLE;
+            }
+            );
+
     }
     
     private void Update()
@@ -41,8 +49,16 @@ public class AIController : MonoBehaviour
             m_navAgent.SetDestination(m_doudou.transform.position);
         }
 
-        if (Vector3.Distance(m_doudou.transform.position, transform.position) < 20)
+        if (Vector3.Distance(m_doudou.transform.position, transform.position) < 5)
         {
+            m_currentState = m_enumState.CHASSE;
+        }
+        else
+        {
+            if (m_chasing == false)
+            {
+                m_currentState = m_enumState.PATROUILLE;
+            }
         }
     }
 }

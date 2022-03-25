@@ -382,10 +382,8 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Gros Son");
                 Stressing(-10);
-                if (Vector3.Distance(m_AIController.transform.position, m_doudou.transform.position) < 10)
-                {
-                    m_AIController.FollowDoudou(1000);
-                }
+                m_AIController.FollowDoudou(1000);
+                
                 
                 
             }
@@ -393,10 +391,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Piti Soin");
                 Stressing(-20);
-                if (Vector3.Distance(m_AIController.transform.position, m_doudou.transform.position) < 10)
-                {
-                    m_AIController.FollowDoudou(2000);
-                }
+                m_AIController.FollowDoudou(2000);
             }
 
             m_doudouIsUsed = false;
