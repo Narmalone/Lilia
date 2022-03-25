@@ -132,16 +132,18 @@ public class PlayerController : MonoBehaviour
         {
             m_velocity.y = -2f;
         }
-        
 
+        if (m_doudouIsUsed == false)
+        {
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
+
+            Vector3 move = transform.right * x + transform.forward * z;
+
+            m_myChara.Move(move * m_speed * Time.deltaTime);
+        }
         // D�placements du joueur
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * x + transform.forward * z;
-
-        m_myChara.Move(move * m_speed * Time.deltaTime);
-
+        
         m_myChara.Move(m_velocity * Time.deltaTime);
 
         m_velocity.y += m_gravity * Time.deltaTime;
