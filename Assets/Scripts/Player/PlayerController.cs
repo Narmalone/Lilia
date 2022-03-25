@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Rendering.PostProcessing;
 using Unity.VisualScripting;
 using DamageOverlayEffect;
+using UnityEngine.AI;
 using UnityEngine.EventSystems;
     //----------------------------------------------- References from other Class ------------------------------------------//
 
@@ -30,11 +31,13 @@ public class PlayerController : MonoBehaviour
 
     private bool m_doudouIsUsed = false;
 
-    private DateTime startTime;
+    //private DateTime startTime;
 
     public GameManager m_gameManager;
 
     public PlayerControls m_controls;
+
+    private NavMeshPath m_path;
     //-----------------------------------------------Systeme Stress------------------------------------------
     
     
@@ -113,7 +116,8 @@ public class PlayerController : MonoBehaviour
         m_controls = new PlayerControls();
         m_flm = FindObjectOfType<FlashlightManager>();
         m_pannelManager = FindObjectOfType<PannelManager>();
-
+        m_path = m_AIController.m_path;
+        
         m_currentStress = m_maxStress;
         m_stressBar.SetMaxHealth(m_maxStress);
         Debug.Log(LinkedPPV.profile.TryGetSettings<DamageOverlay>(out OverlaySettings));
@@ -195,12 +199,17 @@ public class PlayerController : MonoBehaviour
         OverlaySettings.Intensity.value = Mathf.Lerp(0f, MaxEffectIntensity, CurrentIntensity);
         m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
 
-        if (Vector3.Distance(m_AIController.transform.position,m_doudou.transform.position)<10)
+        if (AIController.GetPathLength(m_AIController.m_path) < 10f)
         {
             float dist = Vector3.Distance(m_AIController.transform.position, m_doudou.transform.position);
             float power = dist/10 ;
             float powerAdapted = Mathf.Lerp(0.1f, 0f,power);
             m_camShake.StartShake(0.15f,powerAdapted);
+        }
+
+        if (m_doudouIsUsed == true)
+        {
+            Stressing(-1);
         }
     }
     private void Stressing(float p_stressNum)
@@ -370,11 +379,17 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && m_doudouIsPossessed == true)
         {
-            startTime = DateTime.Now;
+            //startTime = DateTime.Now;
             m_doudou.UseDoudou();
             m_doudouIsUsed = true;
+            m_AIController.FollowDoudou();
         }
-        if (Input.GetKeyUp(KeyCode.R) && m_doudouIsUsed == true)
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            m_doudouIsUsed = false;
+            m_AIController.UnfollowDoudou();
+        }
+        /*if (Input.GetKeyUp(KeyCode.R) && m_doudouIsUsed == true)
         {
             DateTime endTime = DateTime.Now;
             TimeSpan pressedTime = endTime.Subtract(startTime);
@@ -396,6 +411,9 @@ public class PlayerController : MonoBehaviour
 
             m_doudouIsUsed = false;
         }
+        */
+        
+        
         if (m_gameManager.isPc == true)
         {
             if (Input.GetKeyDown(KeyCode.G) && m_doudouIsPossessed == true)

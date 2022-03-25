@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using Debug = UnityEngine.Debug;
 
 public class AIController : MonoBehaviour
 {
@@ -19,19 +21,29 @@ public class AIController : MonoBehaviour
     [SerializeField] private Waypoints m_waypoints;
     [SerializeField] private Doudou m_doudou;
 
+    [SerializeField, Tooltip("Distance de détéction du bebs")]
+    private float m_distanceDetection = 5f;
+
+    [NonSerialized]
+    public NavMeshPath m_path;
+    
     private m_enumState m_currentState = m_enumState.PATROUILLE;
 
-    public void FollowDoudou(int p_delay)
+    private void Awake()
+    {
+        m_path = new NavMeshPath();
+    }
+
+    public void FollowDoudou()
     {
         m_currentState = m_enumState.CHASSE;
         m_chasing = true;
-        Task.Delay(p_delay).ContinueWith(t =>
-            {
-                m_chasing = false;
-                return m_currentState = m_enumState.PATROUILLE;
-            }
-            );
+    }
 
+    public void UnfollowDoudou()
+    {
+        m_currentState = m_enumState.PATROUILLE;
+        m_chasing = false;
     }
     
     private void Update()
@@ -48,8 +60,9 @@ public class AIController : MonoBehaviour
         {
             m_navAgent.SetDestination(m_doudou.transform.position);
         }
-
-        if (Vector3.Distance(m_doudou.transform.position, transform.position) < 5)
+        
+        GetPath(m_path,m_doudou.transform.position, transform.position,NavMesh.AllAreas);
+        if (GetPathLength(m_path) < m_distanceDetection)
         {
             m_currentState = m_enumState.CHASSE;
         }
@@ -61,4 +74,30 @@ public class AIController : MonoBehaviour
             }
         }
     }
+    
+    public static bool GetPath( NavMeshPath path, Vector3 fromPos, Vector3 toPos, int passableMask )
+    {
+        path.ClearCorners();
+       
+        if ( NavMesh.CalculatePath( fromPos, toPos, passableMask, path ) == false )
+            return false;
+       
+        return true;
+    }
+       
+    public static float GetPathLength( NavMeshPath path )
+    {
+        float lng = 0.0f;
+       
+        if (( path.status != NavMeshPathStatus.PathInvalid ) && ( path.corners.Length > 1 ))
+        {
+            for ( int i = 1; i < path.corners.Length; ++i )
+            {
+                lng += Vector3.Distance( path.corners[i-1], path.corners[i] );
+            }
+        }
+       
+        return lng;
+    }
+    
 }
