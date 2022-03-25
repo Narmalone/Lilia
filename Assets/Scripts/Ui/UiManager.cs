@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 public class UiManager : MonoBehaviour
 {
     //----------------------------------------------- R�f�rences & variables ------------------------------------------//
-
+    
     //Ui In game
     [SerializeField]private GameObject m_indicInteraction;
     [SerializeField]private GameObject m_UILampe;
