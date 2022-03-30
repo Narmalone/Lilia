@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject m_newSystemCurrentSelectedObject;
     private float r = 255;
 
+
+
     private void Awake()
     {
         m_pannelOption.SetActive(false);
@@ -27,6 +30,9 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+
+
 
     //----------------------------------------------- Main Menu ------------------------------------------//
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class OptionManager : MonoBehaviour
 {
@@ -11,14 +12,12 @@ public class OptionManager : MonoBehaviour
 
     //SFX
     public float m_sfxValue;
-    public Button m_sfxTextValue;
+    public TextMeshProUGUI m_sfxTextValue;
     public GameObject m_SfxDecrease;
 
 
-    //Voice volume
-
-
-    //Music volume
+    private Color m_selectedColor = Color.yellow;
+    private Color m_unselectedColor = Color.white;
 
 
     private void Awake()
@@ -28,18 +27,23 @@ public class OptionManager : MonoBehaviour
     }
     private void Start()
     {
-        m_sfxTextValue.GetComponentInChildren<TextMeshProUGUI>().text = m_sfxValue.ToString();
+        m_sfxTextValue.GetComponent<TextMeshProUGUI>().text = m_sfxValue.ToString();
+        m_sfxTextValue.GetComponent<TextMeshProUGUI>().color = m_selectedColor;
     }
-    public void OnDecrease(float p_value, GameObject p_decrease)
+
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        OnDecrease();
+    }
+
+    public void OnDecrease()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            p_value -= 5;
-            p_value.ToString();
-            p_decrease.gameObject.GetComponent<Image>().color = Color.cyan;
-            Debug.Log("Q appuyé");
+            
         }
     }
+
     public void OnIncrease(float p_value, Image p_increase)
     {
         p_value += 5;
