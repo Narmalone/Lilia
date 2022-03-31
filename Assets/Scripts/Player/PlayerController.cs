@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     
     public bool m_doudouIsPossessed = false;
 
-    [SerializeField] AIController m_AIController;
+    [SerializeField] AISM m_AIStateMachine;
 
     private bool m_doudouIsUsed = false;
 
@@ -110,13 +110,18 @@ public class PlayerController : MonoBehaviour
     //----------------------------------------------- Gamepad ------------------------------------------//
 
 
+    private void Start()
+    {
+
+    }
+
     private void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();
         m_controls = new PlayerControls();
         m_flm = FindObjectOfType<FlashlightManager>();
         m_pannelManager = FindObjectOfType<PannelManager>();
-        m_path = m_AIController.m_path;
+        m_path = new NavMeshPath();
         
         m_currentStress = m_maxStress;
         m_stressBar.SetMaxHealth(m_maxStress);
@@ -201,9 +206,9 @@ public class PlayerController : MonoBehaviour
         OverlaySettings.Intensity.value = Mathf.Lerp(0f, MaxEffectIntensity, CurrentIntensity);
         m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
 
-        if (AIController.GetPathLength(m_AIController.m_path) < 10f)
+        if (Chasse.GetPathLength(m_AIStateMachine.m_path) < 10f)
         {
-            float dist = Vector3.Distance(m_AIController.transform.position, m_doudou.transform.position);
+            float dist = Vector3.Distance(m_AIStateMachine.transform.position, m_doudou.transform.position);
             float power = dist/10 ;
             float powerAdapted = Mathf.Lerp(0.1f, 0f,power);
             m_camShake.StartShake(0.15f,powerAdapted);
@@ -384,12 +389,12 @@ public class PlayerController : MonoBehaviour
             //startTime = DateTime.Now;
             m_doudou.UseDoudou();
             m_doudouIsUsed = true;
-            m_AIController.FollowDoudou();
+            m_AIStateMachine.m_chasing = true;
         }
         if (Input.GetKeyUp(KeyCode.R))
         {
             m_doudouIsUsed = false;
-            m_AIController.UnfollowDoudou();
+            m_AIStateMachine.m_chasing = false;
         }
         /*if (Input.GetKeyUp(KeyCode.R) && m_doudouIsUsed == true)
         {
