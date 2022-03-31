@@ -20,6 +20,8 @@ public class AIController : MonoBehaviour
     [SerializeField] private NavMeshAgent m_navAgent;
     [SerializeField] private Waypoints m_waypoints;
     [SerializeField] private Doudou m_doudou;
+    
+    [SerializeField] private Event1 m_triggeredEvent;
 
     [SerializeField, Tooltip("Distance de détéction du bebs")]
     private float m_distanceDetection = 5f;
@@ -32,6 +34,21 @@ public class AIController : MonoBehaviour
     private void Awake()
     {
         m_path = new NavMeshPath();
+    }
+
+    void OnEnable()
+    {
+        m_triggeredEvent.onTriggered += HandleTriggerEvent;
+    }
+
+    private void OnDisable()
+    {
+        m_triggeredEvent.onTriggered -= HandleTriggerEvent;
+    }
+
+    private void HandleTriggerEvent(Vector3 p_position)
+    {
+        Debug.Log("Ok, Je suis triggered");
     }
 
     public void FollowDoudou()
