@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.UI;
 
 public class TextSoundOption : MonoBehaviour
 {
     public float m_soundVolume;
 
     public TextMeshProUGUI m_textSoundVolume;
-
     private Color m_selectedColor;
     private Color m_unselectedColor;
 
     public float m_sensibility;
 
+    public Button[] m_soundButtonList;
+    public Button[] m_controlsButtonList;
     private void Awake()
     {
         //COLOR//
@@ -24,10 +26,18 @@ public class TextSoundOption : MonoBehaviour
         //SOUNDS//
         m_textSoundVolume = GetComponentInChildren<TextMeshProUGUI>();
         m_soundVolume = 10f;
-        m_textSoundVolume.GetComponent<TextMeshProUGUI>().text = m_soundVolume.ToString();
 
         //CONTROLS
         m_sensibility = 150f;
+
+        if (m_soundButtonList.Length > 0)
+        {
+            m_textSoundVolume.GetComponent<TextMeshProUGUI>().text = m_soundVolume.ToString();
+        }
+        else if (m_controlsButtonList.Length > 0)
+        {
+            m_textSoundVolume.GetComponent<TextMeshProUGUI>().text = m_sensibility.ToString();
+        }
 
     }
     private void Update()
@@ -43,11 +53,20 @@ public class TextSoundOption : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            OnDecrease();
+
+            if(m_soundButtonList.Length > 0 || m_controlsButtonList.Length > 0)
+            {
+                OnDecrease();
+                Debug.Log("doit decrease");
+            }
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            OnIncrease();
+            if (m_soundButtonList.Length > 0 || m_controlsButtonList.Length > 0)
+            {
+                OnIncrease();
+                Debug.Log("doit increase");
+            }
         }
     }
 
@@ -65,29 +84,27 @@ public class TextSoundOption : MonoBehaviour
 
         if (EventSystem.current.currentSelectedGameObject == gameObject)
         {
-            m_soundVolume -= 5f;
-            UpdateTextVolume();
-
-            if(m_soundVolume <= 0)
+            if(m_soundButtonList.Length > 0)
             {
-                m_soundVolume = 0f;
+                m_soundVolume -= 5f;
                 UpdateTextVolume();
+
+                if (m_soundVolume <= 0)
+                {
+                    m_soundVolume = 0f;
+                    UpdateTextVolume();
+                }
             }
-        }
-        else if (EventSystem.current.currentSelectedGameObject != gameObject)
-        {
-            Debug.Log("sur un autre gameobject");
-        }
-
-        if (EventSystem.current.currentSelectedGameObject == GameObject.Find("B_Sensibility"))
-        {
-            m_sensibility -= 5f;
-            UpdateTextControls();
-
-            if (m_sensibility <= 0)
+            if(m_controlsButtonList.Length > 0)
             {
-                m_sensibility = 0f;
-                UpdateTextControls();
+                m_sensibility -= 5f;
+                UpdateSensi();
+                Debug.Log("diminuer sensi");
+                if (m_sensibility <= 0)
+                {
+                    m_sensibility = 0f;
+                    UpdateSensi();
+                }
             }
         }
     }
@@ -96,30 +113,29 @@ public class TextSoundOption : MonoBehaviour
     {
         if (EventSystem.current.currentSelectedGameObject == gameObject)
         {
-            m_soundVolume += 5f;
-            UpdateTextVolume();
 
-            if (m_soundVolume >= 100)
+            if (m_soundButtonList.Length > 0)
             {
-                m_soundVolume = 100f;
+                m_soundVolume += 5f;
                 UpdateTextVolume();
+
+                if (m_soundVolume >= 100)
+                {
+                    m_soundVolume = 100f;
+                    UpdateTextVolume();
+                }
             }
-        }
-        else if (EventSystem.current.currentSelectedGameObject != gameObject)
-        {
-            Debug.Log("sur un autre gameobject");
-        }
-
-
-        if (EventSystem.current.currentSelectedGameObject == GameObject.Find("B_Sensibility"))
-        {
-            m_sensibility += 5f;
-            UpdateTextControls();
-
-            if (m_sensibility >= 400)
+            if(m_controlsButtonList.Length > 0)
             {
-                m_sensibility = 400f;
-                UpdateTextControls();
+                m_sensibility += 5f;
+                UpdateSensi();
+                Debug.Log("augmenter sensi");
+
+                if (m_sensibility >= 400)
+                {
+                    m_sensibility = 400f;
+                    UpdateSensi();
+                }
             }
         }
     }
@@ -128,7 +144,7 @@ public class TextSoundOption : MonoBehaviour
     {
         m_textSoundVolume.GetComponent<TextMeshProUGUI>().text = m_soundVolume.ToString();
     }
-    public void UpdateTextControls()
+    public void UpdateSensi()
     {
         m_textSoundVolume.GetComponent<TextMeshProUGUI>().text = m_sensibility.ToString();
     }
