@@ -5,34 +5,80 @@ using UnityEngine;
 
 public class FlashlightManager : MonoBehaviour
 {
-    [SerializeField]UiManager uiManager;
+
+
+    //----------------------------------------------- R�f�rences de classes ------------------------------------------//
+
+    [SerializeField]UiManager m_uiManager;
+    [SerializeField] PlayerController m_playerController;
+    [SerializeField] private GameManager m_gameManager;
+    [SerializeField] private LayerMask m_playerMask;
+
+    //----------------------------------------------- Par rapport � la veilleuse ------------------------------------------//
+
 
     [SerializeField, Tooltip("R�f�rence de la torche")]private GameObject flashlight;
     [SerializeField] private Transform FlashlightContainer;
 
     [SerializeField]private GameObject m_spotlightOfFlashlight;
+    
+    [SerializeField] private Rigidbody m_rbodyFlashlight;
 
     private void Awake()
     {
         flashlight.GetComponent<BoxCollider>();
-        m_rFlashlight = flashlight.GetComponent<Rigidbody>();
+        m_rbodyFlashlight = flashlight.GetComponent<Rigidbody>();
         m_spotlightOfFlashlight.GetComponent<Light>();
     }
 
-    [SerializeField]PlayerController playerController;
+
+    //----------------------------------------------- Les OnTrigger ------------------------------------------//
+/*
     private void OnTriggerStay(Collider p_collide)
     {
-        uiManager.TakableObject();
-        playerController.TakeFlashlight();
+        if (m_gameManager.isPc)
+        {
+
+            if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
+            {
+                if (m_playerController.m_flashlightIsPossessed == false)
+                {
+                    m_playerController.TakeFlashlight();
+                    m_uiManager.drop();
+                }
+                else if (m_playerController.m_flashlightIsPossessed == true)
+                {
+                    m_uiManager.UiDisableFlashlight();
+                }
+            }
+        }
+        else if (m_gameManager.isGamepad)
+        {
+            if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
+            {
+
+                if (m_playerController.m_flashlightIsPossessed == false)
+                {
+                    m_playerController.TakeFlashlight();
+                    m_uiManager.UiTakeFlashlight();
+                    Debug.Log("gamepad ui activ�e");
+                }
+                else if (m_playerController.m_flashlightIsPossessed == true)
+                {
+                    m_uiManager.UiDisableFlashlight();
+                }
+            }
+        }
     }
     private void OnTriggerExit(Collider p_collide)
     {
-        uiManager.DisableUi();
+            if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
+            {
+                m_uiManager.UiDisableFlashlight();
+            }
     }
-
-    private float m_yRotation = 0f;
-
-    [SerializeField] private Rigidbody m_rFlashlight;
+*/
+    //----------------------------------------------- Fonctions li�es � la veilleuse ------------------------------------------//
 
     public void PickItem()
     {
@@ -48,10 +94,9 @@ public class FlashlightManager : MonoBehaviour
         //transform.LookAt(FlashlightContainer, Vector3.left);
         Debug.Log(FlashlightContainer.transform);
         flashlight.GetComponent<BoxCollider>().enabled = false;
-        uiManager.DisableUi();
+        m_uiManager.DisableUi();
 
     }
-
     public void DropItem()
     {
         //m_rFlashlight.isKinematic = false;
