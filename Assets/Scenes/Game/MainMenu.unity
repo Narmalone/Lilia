@@ -806,7 +806,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 1990338590}
     m_SelectOnDown: {fileID: 1724268869}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -887,7 +887,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_soundVolume: 0
   m_textSoundVolume: {fileID: 1176383809}
-  m_textSensibility: {fileID: 0}
   m_sensibility: 0
   m_soundButtonList:
   - {fileID: 263613710}
@@ -4683,7 +4682,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_soundVolume: 0
   m_textSoundVolume: {fileID: 1889009947}
-  m_textSensibility: {fileID: 0}
   m_sensibility: 0
   m_soundButtonList:
   - {fileID: 263613710}
@@ -5094,7 +5092,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_soundVolume: 0
   m_textSoundVolume: {fileID: 0}
-  m_textSensibility: {fileID: 1501269369}
   m_sensibility: 0
   m_soundButtonList: []
   m_controlsButtonList:
@@ -5115,7 +5112,7 @@ MonoBehaviour:
     m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 832672874}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnDown: {fileID: 1990338590}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -5563,11 +5560,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 263613710}
+    m_SelectOnUp: {fileID: 1771378848}
+    m_SelectOnDown: {fileID: 263613710}
+    m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
@@ -5593,7 +5590,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1990338591}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2051293403}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: DisableOptionPannel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 417971849}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1990338591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5679,6 +5688,8 @@ MonoBehaviour:
   m_pannelMainMenu: {fileID: 1478285208}
   m_newEventSystemFirstSelectedObject: {fileID: 263613708}
   m_newSystemCurrentSelectedObject: {fileID: 263613708}
+  m_newEventSystemFirstSelectedObject_b: {fileID: 152299888}
+  m_newSystemCurrentSelectedObject_b: {fileID: 152299888}
 --- !u!1 &2058272870
 GameObject:
   m_ObjectHideFlags: 0
@@ -5733,7 +5744,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_soundVolume: 0
   m_textSoundVolume: {fileID: 331649588}
-  m_textSensibility: {fileID: 0}
   m_sensibility: 0
   m_soundButtonList:
   - {fileID: 263613710}

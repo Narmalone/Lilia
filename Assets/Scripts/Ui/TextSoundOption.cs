@@ -13,12 +13,15 @@ public class TextSoundOption : MonoBehaviour
     private Color m_selectedColor;
     private Color m_unselectedColor;
 
+    private GameManager m_gameManager;
+
     public float m_sensibility;
 
     public Button[] m_soundButtonList;
     public Button[] m_controlsButtonList;
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         //COLOR//
         m_selectedColor = Color.yellow;
         m_unselectedColor = Color.white;
@@ -38,6 +41,8 @@ public class TextSoundOption : MonoBehaviour
         {
             m_textSoundVolume.GetComponent<TextMeshProUGUI>().text = m_sensibility.ToString();
         }
+
+        m_gameManager = FindObjectOfType<GameManager>();
 
     }
     private void Update()

@@ -15,6 +15,10 @@ public class MenuManager : MonoBehaviour
     //variables dans le Option depuis le menu
     [SerializeField] private GameObject m_newEventSystemFirstSelectedObject;
     [SerializeField] private GameObject m_newSystemCurrentSelectedObject;
+    
+    
+    [SerializeField] private GameObject m_newEventSystemFirstSelectedObject_b;
+    [SerializeField] private GameObject m_newSystemCurrentSelectedObject_b;
     private float r = 255;
 
 
@@ -29,6 +33,13 @@ public class MenuManager : MonoBehaviour
     public void NextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void DisableOptionPannel(GameObject p_obj)
+    {
+        p_obj.SetActive(false);
+        EventSystem.current.firstSelectedGameObject = m_newEventSystemFirstSelectedObject_b;
+        EventSystem.current.SetSelectedGameObject(m_newSystemCurrentSelectedObject_b);
     }
 
 
@@ -55,7 +66,7 @@ public class MenuManager : MonoBehaviour
 
     public void OnCredits()
     {
-        Debug.Log("Afficher la scene des crédits");
+        Debug.Log("Afficher la scene des crï¿½dits");
     }
 
     public void OnQuit()

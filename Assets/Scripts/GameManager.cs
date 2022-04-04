@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    //Variables en rapport avec le jeu en général
+    //Variables en rapport avec le jeu en gï¿½nï¿½ral
     public bool isPc;
     public bool isGamepad;
     public bool isPaused;
@@ -58,5 +58,5 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
     }
-
+    
 }

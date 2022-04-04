@@ -6,7 +6,9 @@ using UnityEngine.InputSystem;
 public class MouseLock : MonoBehaviour
 {
     public float mouseSensitivity;
-    [SerializeField] private GameManager m_gameManager;
+    private GameManager m_gameManager;
+
+    private TextSoundOption m_txtSoundOption;
 
     public Transform playerBody;
     private float xRotation = 0f;
@@ -22,7 +24,11 @@ public class MouseLock : MonoBehaviour
     private void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();
+        
+        m_txtSoundOption = FindObjectOfType<TextSoundOption>();
 
+        Debug.Log(mouseSensitivity);
+        
         controls = new PlayerControls();
 
         _initRotation = transform.localRotation;
