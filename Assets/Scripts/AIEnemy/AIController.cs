@@ -17,7 +17,7 @@ public class AIController : MonoBehaviour
 
     private bool m_chasing = false;
 
-    [SerializeField] private NavMeshAgent m_navAgent;
+    [SerializeField,Tooltip("L'agent d'IA de l'ennemi")] private NavMeshAgent m_navAgent;
     [SerializeField] private Waypoints m_waypoints;
     [SerializeField] private Doudou m_doudou;
     
@@ -67,11 +67,11 @@ public class AIController : MonoBehaviour
     {
         if (m_currentState == m_enumState.PATROUILLE)
         {
-            if (Vector3.Distance(gameObject.transform.position, m_waypoints.getCurrentPoint().transform.position) <= 5)
+            if (Vector3.Distance(gameObject.transform.position, m_waypoints.GetCurrentPoint().transform.position) <= 5)
             {
-                m_waypoints.nextPoint();
+                m_waypoints.NextPoint();
             }
-            m_navAgent.SetDestination(m_waypoints.getCurrentPoint().transform.position);
+            m_navAgent.SetDestination(m_waypoints.GetCurrentPoint().transform.position);
         }
         else
         {

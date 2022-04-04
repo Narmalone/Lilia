@@ -34,11 +34,7 @@ public class Chasse : BaseState
         m_navAgent.SetDestination(m_doudou.transform.position);
 
         GetPath(m_path, m_doudou.transform.position, m_sm.transform.position, NavMesh.AllAreas);
-        if (GetPathLength(m_path) > m_sm.m_distanceDetection)
-        {
-            stateMachine.ChangeState(m_sm.m_patrouilleState);
-        }
-        if (m_sm.m_chasing == false)
+        if (GetPathLength(m_path) > m_sm.m_distanceDetection && m_sm.m_chasing == false)
         {
             stateMachine.ChangeState(m_sm.m_patrouilleState);
         }
