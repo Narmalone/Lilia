@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class MouseLock : MonoBehaviour
 {
-    public float mouseSensitivity;
     private GameManager m_gameManager;
 
-    private TextSoundOption m_txtSoundOption;
+    public float mouseSensitivity;
 
     public Transform playerBody;
     private float xRotation = 0f;
@@ -18,7 +18,7 @@ public class MouseLock : MonoBehaviour
 
     private Vector2 rotateGamepad;
 
-    float pitch;
+    private float pitch;
 
     Quaternion _initRotation;
     
@@ -27,6 +27,8 @@ public class MouseLock : MonoBehaviour
         m_gameManager = FindObjectOfType<GameManager>();
         
         controls = new PlayerControls();
+
+        m_gameManager.SetSensibility();
 
         _initRotation = transform.localRotation;
 
@@ -80,10 +82,5 @@ public class MouseLock : MonoBehaviour
     private void OnEnable()
     {
         controls.Gameplay.Enable();
-        
-        m_txtSoundOption = FindObjectOfType<TextSoundOption>();
-        
-        m_txtSoundOption.m_sensibility = (float)mouseSensitivity;
-        //Debug.Log((mouseSensitivity));
     }
 }

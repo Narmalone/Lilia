@@ -15,14 +15,34 @@ public class GameManager : MonoBehaviour
     public bool isPaused;
 
     private TextSoundOption m_txtsoundOption;
+    private MouseLock m_mouseLock;
     
     public float m_getSensibility;
+    public float m_setSensibility;
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        m_txtsoundOption = FindObjectOfType<TextSoundOption>();
+        if(m_txtsoundOption != null)
+        {
+            m_txtsoundOption = FindObjectOfType<TextSoundOption>();
+        }
+        else
+        {
+            return;
+        }
+        if(m_mouseLock != null)
+        {
+            m_mouseLock = FindObjectOfType<MouseLock>();
+            SetSensibility();
+        }
+        else
+        {
+            return;
+        }
         Cursor.lockState = CursorLockMode.Locked;
+
+        GetMenuSensibility();
     }
 
     //----------------------------------------------- Choose Your Platform ------------------------------------------//
@@ -67,8 +87,13 @@ public class GameManager : MonoBehaviour
 
     public void GetMenuSensibility()
     {
-        m_getSensibility = m_txtsoundOption.m_sensibility;
-        //Debug.Log((m_getSensibility));
+
+        m_getSensibility = TextSoundOption.instance.m_sensibility;
+    }
+
+    public void SetSensibility()
+    {
+        
     }
     
 }

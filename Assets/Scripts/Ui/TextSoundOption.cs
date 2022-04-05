@@ -15,14 +15,17 @@ public class TextSoundOption : MonoBehaviour
 
     private GameManager m_gameManager;
 
+    public static TextSoundOption instance;
+
     public float m_sensibility;
+    public float m_newSensibility;
 
     public Button[] m_soundButtonList;
     public Button[] m_controlsButtonList;
     private void Awake()
     {
         //DontDestroyOnLoad();
-        
+        instance = this;
         //COLOR//
         m_selectedColor = Color.yellow;
         m_unselectedColor = Color.white;
@@ -32,7 +35,7 @@ public class TextSoundOption : MonoBehaviour
         m_soundVolume = 10f;
 
         //CONTROLS
-        m_sensibility = 150f;
+        m_sensibility = 200f;
 
         if (m_soundButtonList.Length > 0)
         {
@@ -105,7 +108,6 @@ public class TextSoundOption : MonoBehaviour
             {
                 m_sensibility -= 5f;
                 UpdateSensi();
-                Debug.Log("diminuer sensi");
                 if (m_sensibility <= 0)
                 {
                     m_sensibility = 0f;
@@ -135,7 +137,6 @@ public class TextSoundOption : MonoBehaviour
             {
                 m_sensibility += 5f;
                 UpdateSensi();
-                Debug.Log("augmenter sensi");
 
                 if (m_sensibility >= 400)
                 {
@@ -152,7 +153,11 @@ public class TextSoundOption : MonoBehaviour
     }
     public void UpdateSensi()
     {
+        m_sensibility = m_newSensibility;
         m_textSoundVolume.GetComponent<TextMeshProUGUI>().text = m_sensibility.ToString();
+        Debug.Log(m_newSensibility);
+        m_gameManager.GetMenuSensibility();
+
     }
 
     private void OnDisable()
