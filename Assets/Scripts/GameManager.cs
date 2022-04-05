@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,9 +14,14 @@ public class GameManager : MonoBehaviour
     public bool isGamepad;
     public bool isPaused;
 
+    private TextSoundOption m_txtsoundOption;
+    
+    public float m_getSensibility;
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        m_txtsoundOption = FindObjectOfType<TextSoundOption>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -57,6 +63,12 @@ public class GameManager : MonoBehaviour
     public void GameResume()
     {
         Time.timeScale = 1;
+    }
+
+    public void GetMenuSensibility()
+    {
+        m_getSensibility = m_txtsoundOption.m_sensibility;
+        //Debug.Log((m_getSensibility));
     }
     
 }

@@ -1,10 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.UI;
-
 public class TextSoundOption : MonoBehaviour
 {
     public float m_soundVolume;
@@ -21,7 +21,8 @@ public class TextSoundOption : MonoBehaviour
     public Button[] m_controlsButtonList;
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad();
+        
         //COLOR//
         m_selectedColor = Color.yellow;
         m_unselectedColor = Color.white;
@@ -152,5 +153,10 @@ public class TextSoundOption : MonoBehaviour
     public void UpdateSensi()
     {
         m_textSoundVolume.GetComponent<TextMeshProUGUI>().text = m_sensibility.ToString();
+    }
+
+    private void OnDisable()
+    {
+        
     }
 }

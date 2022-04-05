@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,14 +21,10 @@ public class MouseLock : MonoBehaviour
     float pitch;
 
     Quaternion _initRotation;
-
+    
     private void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();
-        
-        m_txtSoundOption = FindObjectOfType<TextSoundOption>();
-
-        Debug.Log(mouseSensitivity);
         
         controls = new PlayerControls();
 
@@ -76,9 +73,17 @@ public class MouseLock : MonoBehaviour
         }
 
     }
-
+    
+    
+    //STOCKER LA VAR DANS UN SCRIPTABLE OBJECT ??
+    //REWORK TT LE CODE ET LE FOUTRE PAR DES SCRIPTABLES OBJECTS ASSETS MENU
     private void OnEnable()
     {
         controls.Gameplay.Enable();
+        
+        m_txtSoundOption = FindObjectOfType<TextSoundOption>();
+        
+        m_txtSoundOption.m_sensibility = (float)mouseSensitivity;
+        //Debug.Log((mouseSensitivity));
     }
 }
