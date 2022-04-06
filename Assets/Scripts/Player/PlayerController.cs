@@ -214,7 +214,7 @@ public class PlayerController : MonoBehaviour
 
         if (m_doudouIsUsed == true)
         {
-            Stressing(-1);
+            Stressing(-0.05f);
         }
     }
     private void Stressing(float p_stressNum)
