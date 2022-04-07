@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.PostProcessing;
 using Unity.VisualScripting;
 using DamageOverlayEffect;
@@ -60,7 +61,9 @@ public class PlayerController : MonoBehaviour
     //-----------------------------------------------Post-Processing------------------------------------------
     [Header("Post-Processing")]
     [SerializeField,Tooltip("Volume de post-process")] PostProcessVolume m_linkedPostProcess;
-    
+
+    [SerializeField] private Material m_materialStress;
+        
     [SerializeField,Tooltip("Script de Manager de Stress")] private StressManager m_stressBar;
     
     private float m_currentStress;
@@ -115,6 +118,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        
+        
         m_gameManager = FindObjectOfType<GameManager>();
         m_controls = new PlayerControls();
         m_flm = FindObjectOfType<FlashlightManager>();
@@ -201,6 +206,7 @@ public class PlayerController : MonoBehaviour
 
         m_intenseFieldOfView = m_currentStress / 100;
         //Debug.Log(m_overlaySettings);
+        m_materialStress.SetFloat("_Intensity", Mathf.Lerp(0f, 5f, m_currentIntensity));
         m_overlaySettings.Intensity.value = Mathf.Lerp(0f, m_intesiteMaxEffet, m_currentIntensity);
         m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
 
