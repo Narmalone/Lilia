@@ -22,6 +22,17 @@ public class TextSoundOption : MonoBehaviour
 
     public Button[] m_soundButtonList;
     public Button[] m_controlsButtonList;
+
+    [SerializeField, Tooltip("Référence du txt controller")]private TextMeshProUGUI m_txtController;
+
+    [SerializeField] private TextMeshProUGUI m_txtResolution;
+    public List<ResolutionParameters> resolutions = new List<ResolutionParameters>();
+    private int resolutionCount;
+    private bool isFullscreen;
+
+    [SerializeField] private TextMeshProUGUI m_txtLuminosity;
+    private float m_brightness;
+
     private void Awake()
     {
         //DontDestroyOnLoad();
@@ -48,6 +59,18 @@ public class TextSoundOption : MonoBehaviour
 
         m_gameManager = FindObjectOfType<GameManager>();
 
+        if (m_txtController == null)
+        {
+            Debug.Log("il n'ya pas de txt controller");
+        }
+
+        resolutionCount = 0;
+        if (m_txtResolution == null)
+        {
+            Debug.Log("pas de txt résolution");
+        }
+        Screen.SetResolution(1920,1080, true);
+
     }
     private void Update()
     {
@@ -63,18 +86,18 @@ public class TextSoundOption : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
 
-            if(m_soundButtonList.Length > 0 || m_controlsButtonList.Length > 0)
+            if(m_soundButtonList.Length > 0 || m_controlsButtonList.Length > 0 || m_txtController !=null || m_txtResolution !=null)
             {
                 OnDecrease();
-                Debug.Log("doit decrease");
+                //Debug.Log("doit decrease");
             }
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            if (m_soundButtonList.Length > 0 || m_controlsButtonList.Length > 0)
+            if (m_soundButtonList.Length > 0 || m_controlsButtonList.Length > 0 ||m_txtController !=null || m_txtResolution !=null)
             {
                 OnIncrease();
-                Debug.Log("doit increase");
+                //Debug.Log("doit increase");
             }
         }
     }
@@ -114,9 +137,38 @@ public class TextSoundOption : MonoBehaviour
                     UpdateSensi();
                 }
             }
+
+            if (m_txtController != null)
+            {
+                Debug.Log(("mtxtcontroller n'est pas à null"));
+                if (m_gameManager.isGamepad == true)
+                {
+                    m_txtController.text = "PC";
+                    m_txtController.fontSize = 35;
+                    m_gameManager.isGamepad = false;
+                    m_gameManager.isPc = true;
+                    Debug.Log((m_txtController.text));
+                }
+                else if (m_gameManager.isPc == true)
+                {
+                    m_txtController.text = "Gamepad";
+                    m_txtController.fontSize = 35;
+                    m_gameManager.isGamepad = true;
+                    m_gameManager.isPc = false;
+                    Debug.Log((m_txtController.text));
+                }
+            }
+
+            if (m_txtResolution != null)
+            {
+                resolutionCount--;
+                if (resolutionCount <= 0)
+                {
+                    resolutionCount = 0;
+                }
+            }
         }
     }
-
     public void OnIncrease()
     {
         if (EventSystem.current.currentSelectedGameObject == gameObject)
@@ -144,6 +196,49 @@ public class TextSoundOption : MonoBehaviour
                     UpdateSensi();
                 }
             }
+            
+            if (m_txtController != null)
+            {
+                Debug.Log(("mtxtcontroller n'est pas à null"));
+                if (m_gameManager.isGamepad == true)
+                {
+                    m_txtController.text = "PC";
+                    m_txtController.fontSize = 35;
+                    m_gameManager.isGamepad = false;
+                    m_gameManager.isPc = true;
+                    Debug.Log((m_txtController.text));
+                }
+                else if (m_gameManager.isPc == true)
+                {
+                    m_txtController.text = "Gamepad";
+                    m_txtController.fontSize = 35;
+                    m_gameManager.isGamepad = true;
+                    m_gameManager.isPc = false;
+                    Debug.Log((m_txtController.text));
+                }
+            }
+            
+            if (m_txtResolution != null)
+            {
+                resolutionCount++;
+                if (resolutionCount == 1)
+                {
+                    Screen.SetResolution(640, 480, false);
+                    UpdateResolution();
+                }
+                else if (resolutionCount == 2)
+                {
+                    Screen.SetResolution(1280, 720, false);
+                    UpdateResolution();
+
+                }
+                else if (resolutionCount == 3)
+                {
+                    Screen.SetResolution(1920, 1080, true);
+                    UpdateResolution();
+                    resolutionCount = 0;
+                }
+            }
         }
     }
 
@@ -153,15 +248,20 @@ public class TextSoundOption : MonoBehaviour
     }
     public void UpdateSensi()
     {
-        m_sensibility = m_newSensibility;
+        //m_sensibility = m_newSensibility;
         m_textSoundVolume.GetComponent<TextMeshProUGUI>().text = m_sensibility.ToString();
-        Debug.Log(m_newSensibility);
         m_gameManager.GetMenuSensibility();
-
     }
 
-    private void OnDisable()
+    public void UpdateResolution()
     {
-        
+        m_txtResolution.GetComponent<TextMeshProUGUI>().text = Screen.resolutions[resolutionCount].ToString();
+        Debug.Log(m_txtResolution.text);
     }
+}
+
+[System.Serializable]
+public class ResolutionParameters
+{
+    public int Width, Height;
 }
