@@ -9,25 +9,28 @@ using Unity.VisualScripting;
 using DamageOverlayEffect;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
-    //----------------------------------------------- References from other Class ------------------------------------------//
+
+//----------------------------------------------- References from other Class ------------------------------------------//
 
 public class PlayerController : MonoBehaviour
 {
     //Si le joueur ne peut pas monter les escalier il faut changer le step offset dans unity ou dans le code du chara controller
 
-    [SerializeField] private UiManager m_UIManager;
+    [SerializeField,Tooltip("Script de Control de l'UI")] private UiManager m_UIManager;
 
     private PannelManager m_pannelManager;
 
-    [SerializeField] Doudou m_doudou;
+    [SerializeField,Tooltip("Script du doudou")] Doudou m_doudou;
     
-    [SerializeField] private FlashlightManager m_flm;
+    [SerializeField,Tooltip("Script de la lampe torche")] private FlashlightManager m_flm;
     
+    [NonSerialized]
     public bool m_flashlightIsPossessed = false;
     
+    [NonSerialized]
     public bool m_doudouIsPossessed = false;
 
-    [SerializeField] AIController m_AIController;
+    [SerializeField,Tooltip("Script de la State Machine de l'IA")] AISM m_AIStateMachine;
 
     private bool m_doudouIsUsed = false;
 
@@ -38,77 +41,77 @@ public class PlayerController : MonoBehaviour
     public PlayerControls m_controls;
 
     private NavMeshPath m_path;
-    //-----------------------------------------------Systeme Stress------------------------------------------
-    
-    
-    [SerializeField] private StressManager m_stressBar;
-    
-    private float m_currentStress;
-    
-    private float m_targetStress;
-
-    [SerializeField] float m_maxStress = 100f;
-
-
-    
-
+    [Space(10)]
     [SerializeField] private LayerMask m_flashlightMask;
     [SerializeField] private LayerMask m_doudouMask;
+    //-----------------------------------------------Systeme Stress------------------------------------------
+
 
     //----------------------------------------------- Player controls system ------------------------------------------//
 
-
+    [Header("System de controle joueur")]
     [SerializeField, Tooltip("R�f�rences du Chara controller")] private CharacterController m_myChara;
 
 
     [SerializeField, Tooltip("Vitesse du joueur en m/s")]private float m_speed;
 
+    
+    
+    //-----------------------------------------------Post-Processing------------------------------------------
+    [Header("Post-Processing")]
+    [SerializeField,Tooltip("Volume de post-process")] PostProcessVolume m_linkedPostProcess;
+    
+    [SerializeField,Tooltip("Script de Manager de Stress")] private StressManager m_stressBar;
+    
+    private float m_currentStress;
+    
+    private float m_targetStress;
+
+    [SerializeField,Tooltip("Niveau de stress maximum")] float m_maxStress = 100f;
+    
+    private float m_targetIntensity = 0f;
+    private float m_currentIntensity = 0f;
+    
+    [SerializeField,Tooltip("Intensité maximum de l'effet")] float m_intesiteMaxEffet = 0.5f;
+    
+    private DamageOverlay m_overlaySettings;
+
+    private DepthOfField m_dOFSettings;
+    
     private bool m_isStressTick = false;
 
-    [SerializeField] float DecayRate = 0.2f;
+    [SerializeField,Tooltip("Vitesse de réduction de l'effet de vignette")] float m_frequendeReduction = 0.2f;
     
-    [SerializeField] float AttackRate = 2f;
-    [SerializeField] float ReleaseRate = 1f;
+    [SerializeField,Tooltip("Force d'attaque de l'effet")] float m_frequenceAttaque = 2f;
+    [SerializeField,Tooltip("Vitesse de perte de l'attaque")] float m_frequenceRelache = 1f;
 
     [Range(0f, 1f)] float m_intenseFieldOfView;
     
-    [SerializeField] AnimationCurve IntensityDueToHealth;
-    
-    //-----------------------------------------------Post-Processing------------------------------------------
-    [SerializeField] PostProcessVolume LinkedPPV;
-    
-    float TargetIntensity = 0f;
-    float CurrentIntensity = 0f;
-    [SerializeField] float MaxEffectIntensity = 0.5f;
-    
-    DamageOverlay OverlaySettings;
-
-    private DepthOfField m_dOFSettings;
-
-    [SerializeField] private Shake m_camShake;
+    [SerializeField,Tooltip("Courbe d'intensite de l'effet par rapport à la vie")] AnimationCurve m_intensityDueToHealth;
+    [Space(10)]
+    [SerializeField,Tooltip("Script de secouement")] private Shake m_camShake;
 
     //-----------------------------------------------Systeme Physics------------------------------------------
+    [Header("Systeme de physique")]
+    [SerializeField, Tooltip("Transform d'un empty ou sera cr�e la sphere pour savoir si le joueur est sur le sol")]private Transform groundCheck;
     
+    [SerializeField, Tooltip("Radius de la sphere qui check si le joueur est sur le sol")]private float radiusCheckSphere = 0.4f;
+    
+    [SerializeField, Tooltip("Mask ou l'on d�finit le sol")]private LayerMask m_groundMask;
 
     private float m_gravity = -9.81f;
     
     Vector3 m_velocity;
     
-    [SerializeField, Tooltip("Transform d'un empty ou sera cr�e la sphere pour savoir si le joueur est sur le sol")]private Transform groundCheck;    
-
-    //----------------------------------------------- Post-processing ------------------------------------------//
-
-
-    [SerializeField, Tooltip("Radius de la sphere qui check si le joueur est sur le sol")]private float radiusCheckSphere = 0.4f;
-
-
-    [SerializeField, Tooltip("Mask ou l'on d�finit le sol")]private LayerMask m_groundMask;
-    
-    private bool m_isGrounded;//Si le joueur est sur le sol ?
-
+    private bool m_isGrounded;
 
     //----------------------------------------------- Gamepad ------------------------------------------//
 
+
+    private void Start()
+    {
+
+    }
 
     private void Awake()
     {
@@ -116,12 +119,12 @@ public class PlayerController : MonoBehaviour
         m_controls = new PlayerControls();
         m_flm = FindObjectOfType<FlashlightManager>();
         m_pannelManager = FindObjectOfType<PannelManager>();
-        m_path = m_AIController.m_path;
+        m_path = new NavMeshPath();
         
         m_currentStress = m_maxStress;
         m_stressBar.SetMaxHealth(m_maxStress);
-        Debug.Log(LinkedPPV.profile.TryGetSettings<DamageOverlay>(out OverlaySettings));
-        Debug.Log(LinkedPPV.profile.TryGetSettings<DepthOfField>(out m_dOFSettings));
+        Debug.Log(m_linkedPostProcess.profile.TryGetSettings<DamageOverlay>(out m_overlaySettings));
+        Debug.Log(m_linkedPostProcess.profile.TryGetSettings<DepthOfField>(out m_dOFSettings));
     }
 
     private void Update()
@@ -183,27 +186,27 @@ public class PlayerController : MonoBehaviour
 
         // test shader
         // decay the target intensity
-        if (TargetIntensity > 0f)
+        if (m_targetIntensity > 0f)
         {
-            TargetIntensity = Mathf.Clamp01(TargetIntensity - DecayRate * Time.deltaTime);
-            TargetIntensity = Mathf.Max(IntensityDueToHealth.Evaluate(m_currentStress / m_maxStress), TargetIntensity);
+            m_targetIntensity = Mathf.Clamp01(m_targetIntensity - m_frequendeReduction * Time.deltaTime);
+            m_targetIntensity = Mathf.Max(m_intensityDueToHealth.Evaluate(m_currentStress / m_maxStress), m_targetIntensity);
         }
 
         // intensity needs updating
-        if (CurrentIntensity != TargetIntensity)
+        if (m_currentIntensity != m_targetIntensity)
         {
-            float rate = TargetIntensity > CurrentIntensity ? AttackRate : ReleaseRate;
-            CurrentIntensity = Mathf.MoveTowards(CurrentIntensity, TargetIntensity, rate * Time.deltaTime);
+            float rate = m_targetIntensity > m_currentIntensity ? m_frequenceAttaque : m_frequenceRelache;
+            m_currentIntensity = Mathf.MoveTowards(m_currentIntensity, m_targetIntensity, rate * Time.deltaTime);
         }
 
         m_intenseFieldOfView = m_currentStress / 100;
-        //Debug.Log(OverlaySettings);
-        OverlaySettings.Intensity.value = Mathf.Lerp(0f, MaxEffectIntensity, CurrentIntensity);
+        //Debug.Log(m_overlaySettings);
+        m_overlaySettings.Intensity.value = Mathf.Lerp(0f, m_intesiteMaxEffet, m_currentIntensity);
         m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
 
-        if (AIController.GetPathLength(m_AIController.m_path) < 10f)
+        if (Chasse.GetPathLength(m_AIStateMachine.m_path) < 10f)
         {
-            float dist = Vector3.Distance(m_AIController.transform.position, m_doudou.transform.position);
+            float dist = Vector3.Distance(m_AIStateMachine.transform.position, m_doudou.transform.position);
             float power = dist/10 ;
             float powerAdapted = Mathf.Lerp(0.1f, 0f,power);
             m_camShake.StartShake(0.15f,powerAdapted);
@@ -211,7 +214,7 @@ public class PlayerController : MonoBehaviour
 
         if (m_doudouIsUsed == true)
         {
-            Stressing(-1);
+            Stressing(-0.05f);
         }
     }
     private void Stressing(float p_stressNum)
@@ -224,7 +227,7 @@ public class PlayerController : MonoBehaviour
     {
         if (m_isStressTick == false)
         {
-            TakeDamage(DecayRate);
+            TakeDamage(m_frequendeReduction);
             m_stressBar.SetStress(m_currentStress);
             m_isStressTick = true;
             Task.Delay(50).ContinueWith(t=> m_isStressTick=false);
@@ -237,7 +240,7 @@ public class PlayerController : MonoBehaviour
 
         float damagePercent = Mathf.Clamp01(amount / m_maxStress);
 
-        TargetIntensity = Mathf.Clamp01(TargetIntensity + damagePercent);
+        m_targetIntensity = Mathf.Clamp01(m_targetIntensity + damagePercent);
     }
 
     private void OnTriggerStay(Collider p_collide)
@@ -365,12 +368,12 @@ public class PlayerController : MonoBehaviour
             //startTime = DateTime.Now;
             m_doudou.UseDoudou();
             m_doudouIsUsed = true;
-            m_AIController.FollowDoudou();
+            m_AIStateMachine.m_chasing = true;
         }
         if (Input.GetKeyUp(KeyCode.R))
         {
             m_doudouIsUsed = false;
-            m_AIController.UnfollowDoudou();
+            m_AIStateMachine.m_chasing = false;
         }
         if (m_gameManager.isPc == true)
         {

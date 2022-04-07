@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,14 +9,17 @@ public class UiManager : MonoBehaviour
     //----------------------------------------------- R�f�rences & variables ------------------------------------------//
 
     //Ui In game
-    [SerializeField]private GameObject m_indicInteraction;
-    [SerializeField]private GameObject m_UILampe;
-    [SerializeField]private GameObject m_UIDoudou;
+    [SerializeField,Tooltip("image d'UI pour l'intercation")]private GameObject m_indicInteraction;
+    [SerializeField,Tooltip("image d'UI pour l'indication de lampe")]private GameObject m_UILampe;
+    [SerializeField,Tooltip("image d'UI pour l'indication de doudou")]private GameObject m_UIDoudou;
 
     private GameManager m_gameManager;
 
+    [NonSerialized]
     public bool m_flashlightIsHandle = false;
+    [NonSerialized]
     public bool m_doudouIsHandle = false;
+    [NonSerialized]
     public bool m_isActivated;
 
 
