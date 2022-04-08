@@ -10,7 +10,7 @@ public class MenuManager : MonoBehaviour
 {
     //Variables en rapport avec le MainMenu
     [SerializeField] private GameObject m_pannelOption;
-    [SerializeField] private GameObject m_pannelMainMenu;
+    [SerializeField] private GameObject m_pannelPause;
 
     //variables dans le Option depuis le menu
     [SerializeField] private GameObject m_newEventSystemFirstSelectedObject;
@@ -21,11 +21,18 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject m_newSystemCurrentSelectedObject_b;
     private float r = 255;
 
+    private GameManager m_gameManager;
+
 
 
     private void Awake()
     {
         m_pannelOption.SetActive(false);
+        m_gameManager = FindObjectOfType<GameManager>();
+        if(m_pannelPause == null)
+        {
+            return;
+        }
     }
 
     //----------------------------------------------- Changements de scenes ------------------------------------------//
@@ -35,21 +42,23 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void DisableOptionPannel(GameObject p_obj)
-    {
-        p_obj.SetActive(false);
-        EventSystem.current.firstSelectedGameObject = m_newEventSystemFirstSelectedObject_b;
-        EventSystem.current.SetSelectedGameObject(m_newSystemCurrentSelectedObject_b);
-    }
-
-
-
 
     //----------------------------------------------- Main Menu ------------------------------------------//
 
     public void OnPlay()
     {
         NextScene();
+    }
+
+    public void OnResume(GameObject p_obj)
+    {
+        p_obj.SetActive(false);
+        m_gameManager.GameResume();
+    }
+
+    public void OnPause()
+    {
+        m_pannelPause.SetActive(true);
     }
 
     public void OnLoad()
@@ -64,6 +73,12 @@ public class MenuManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(m_newSystemCurrentSelectedObject);
     }
 
+    public void DisableOptionPannel(GameObject p_obj)
+    {
+        p_obj.SetActive(false);
+        EventSystem.current.firstSelectedGameObject = m_newEventSystemFirstSelectedObject_b;
+        EventSystem.current.SetSelectedGameObject(m_newSystemCurrentSelectedObject_b);
+    }
     public void OnCredits()
     {
         Debug.Log("Afficher la scene des cr�dits");
@@ -72,6 +87,16 @@ public class MenuManager : MonoBehaviour
     public void OnQuit()
     {
         Application.Quit();
+    }
+
+    public void ActivePannel(GameObject p_obj)
+    {
+        p_obj.SetActive(true);
+    }
+
+    public void DisablePannel(GameObject p_obj)
+    {
+        p_obj.SetActive(false);
     }
 
 }

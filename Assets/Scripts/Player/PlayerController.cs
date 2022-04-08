@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private UiManager m_UIManager;
 
-    private PannelManager m_pannelManager;
+    private MenuManager m_menuManager;
 
     [SerializeField] Doudou m_doudou;
     
@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
         m_gameManager = FindObjectOfType<GameManager>();
         m_controls = new PlayerControls();
         m_flm = FindObjectOfType<FlashlightManager>();
-        m_pannelManager = FindObjectOfType<PannelManager>();
+        m_menuManager = FindObjectOfType<MenuManager>();
 
         m_currentStress = m_maxStress;
         m_stressBar.SetMaxHealth(m_maxStress);
@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                m_pannelManager.OnPannelPause();
+                m_menuManager.OnPause();
                 m_gameManager.GamePaused();
             }
         }
@@ -161,7 +161,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Gamepad.current.startButton.wasPressedThisFrame)
             {
-                m_pannelManager.OnPannelPause();
+                m_menuManager.OnPause();
                 m_gameManager.GamePaused();
                 //EventSystem.
             }
