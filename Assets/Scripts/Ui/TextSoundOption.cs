@@ -261,7 +261,6 @@ public class TextSoundOption : MonoBehaviour
     {
         m_setNewSensibility = m_sensibility;
         m_textSoundVolume.GetComponent<TextMeshProUGUI>().text = m_sensibility.ToString();
-        m_gameManager.GetMenuSensibility();
     }
 
     public void UpdateResolution()

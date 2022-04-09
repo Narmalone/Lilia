@@ -13,32 +13,11 @@ public class GameManager : MonoBehaviour
     public bool isPc;
     public bool isGamepad;
     public bool isPaused;
-
-    private TextSoundOption m_txtsoundOption;
-    private MouseLock m_mouseLock;
     
-    public float m_getSensibility;
-
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        if(m_txtsoundOption != null)
-        {
-            m_txtsoundOption = FindObjectOfType<TextSoundOption>();
-        }
-        else
-        {
-            return;
-        }
-        if(m_mouseLock != null)
-        {
-            GetMenuSensibility();
-            m_mouseLock = FindObjectOfType<MouseLock>();
-        }
-        else
-        {
-            return;
-        }
+
         Cursor.lockState = CursorLockMode.Locked;
 
     }
@@ -82,10 +61,5 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
     }
-    public void GetMenuSensibility()
-    {
-        m_getSensibility = TextSoundOption.instance.m_sensibility;
-    }
-    
 
 }

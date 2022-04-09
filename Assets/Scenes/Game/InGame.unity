@@ -1354,6 +1354,7 @@ GameObject:
   - component: {fileID: 409145282}
   - component: {fileID: 409145280}
   - component: {fileID: 409145279}
+  - component: {fileID: 409145281}
   m_Layer: 5
   m_Name: B_Resolution
   m_TagString: Untagged
@@ -1435,6 +1436,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &409145281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409145278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e34dbd16916a1e4c9b1b9daa3e49f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &409145282
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2688,7 +2701,6 @@ MonoBehaviour:
   isPc: 1
   isGamepad: 0
   isPaused: 0
-  m_getSensibility: 0
 --- !u!1 &886882166
 GameObject:
   m_ObjectHideFlags: 0
@@ -7451,7 +7463,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2079634364
 RectTransform:
   m_ObjectHideFlags: 0

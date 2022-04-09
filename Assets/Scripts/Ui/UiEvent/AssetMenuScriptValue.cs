@@ -15,6 +15,8 @@ public class AssetMenuScriptValue : ScriptableObject
         _third = 2
     }
 
+     
+
     //bool something
     public delegate void SetBool();
 
