@@ -1,15 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class MouseLock : MonoBehaviour
 {
-    private GameManager m_gameManager;
-
     public float mouseSensitivity;
+    [SerializeField] private GameManager m_gameManager;
 
     public Transform playerBody;
     private float xRotation = 0f;
@@ -18,16 +15,14 @@ public class MouseLock : MonoBehaviour
 
     private Vector2 rotateGamepad;
 
-    private float pitch;
+    float pitch;
 
     Quaternion _initRotation;
 
-    [SerializeField] private AssetMenuScriptValue m_assetMenuScriptable;
- 
     private void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();
-        
+
         controls = new PlayerControls();
 
         _initRotation = transform.localRotation;
@@ -46,7 +41,7 @@ public class MouseLock : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-    
+
         if (m_gameManager.isPc == true)
         {
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
@@ -73,8 +68,9 @@ public class MouseLock : MonoBehaviour
             playerBody.Rotate(Vector3.up * r.x, Space.Self);
 
         }
-        mouseSensitivity = m_assetMenuScriptable.value;
+
     }
+
     private void OnEnable()
     {
         controls.Gameplay.Enable();
