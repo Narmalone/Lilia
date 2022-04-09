@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     private MouseLock m_mouseLock;
     
     public float m_getSensibility;
-    public float m_setSensibility;
 
     private void Awake()
     {
@@ -33,8 +32,8 @@ public class GameManager : MonoBehaviour
         }
         if(m_mouseLock != null)
         {
+            GetMenuSensibility();
             m_mouseLock = FindObjectOfType<MouseLock>();
-            SetSensibility();
         }
         else
         {
@@ -42,7 +41,6 @@ public class GameManager : MonoBehaviour
         }
         Cursor.lockState = CursorLockMode.Locked;
 
-        GetMenuSensibility();
     }
 
     //----------------------------------------------- Choose Your Platform ------------------------------------------//
@@ -84,16 +82,10 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
     }
-
     public void GetMenuSensibility()
     {
-
         m_getSensibility = TextSoundOption.instance.m_sensibility;
     }
-
-    public void SetSensibility()
-    {
-        
-    }
     
+
 }

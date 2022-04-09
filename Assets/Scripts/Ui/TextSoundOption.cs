@@ -15,11 +15,12 @@ public class TextSoundOption : MonoBehaviour
 
     private GameManager m_gameManager;
 
+    private MouseLock m_mouseLock;
+
     public static TextSoundOption instance;
 
     public float m_sensibility;
-    public float m_newSensibility;
-
+    public float m_setNewSensibility;
     public Button[] m_soundButtonList;
     public Button[] m_controlsButtonList;
 
@@ -32,7 +33,7 @@ public class TextSoundOption : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI m_txtLuminosity;
     private float m_brightness;
-
+   
     private void Awake()
     {
         //DontDestroyOnLoad();
@@ -46,8 +47,16 @@ public class TextSoundOption : MonoBehaviour
         m_soundVolume = 10f;
 
         //CONTROLS
-        m_sensibility = 200f;
-
+        m_mouseLock = FindObjectOfType<MouseLock>();
+        if (m_mouseLock != null)
+        {
+            m_mouseLock.mouseSensitivity = m_sensibility;
+            Debug.Log(m_sensibility, this);
+        }
+        else
+        {
+            return;
+        }
         if (m_soundButtonList.Length > 0)
         {
             m_textSoundVolume.GetComponent<TextMeshProUGUI>().text = m_soundVolume.ToString();
@@ -70,6 +79,7 @@ public class TextSoundOption : MonoBehaviour
             Debug.Log("pas de txt résolution");
         }
         Screen.SetResolution(1920,1080, true);
+
 
     }
     private void Update()
@@ -188,6 +198,7 @@ public class TextSoundOption : MonoBehaviour
             if(m_controlsButtonList.Length > 0)
             {
                 m_sensibility += 5f;
+                Debug.Log(m_sensibility);
                 UpdateSensi();
 
                 if (m_sensibility >= 400)
@@ -248,7 +259,7 @@ public class TextSoundOption : MonoBehaviour
     }
     public void UpdateSensi()
     {
-        //m_sensibility = m_newSensibility;
+        m_setNewSensibility = m_sensibility;
         m_textSoundVolume.GetComponent<TextMeshProUGUI>().text = m_sensibility.ToString();
         m_gameManager.GetMenuSensibility();
     }
@@ -257,6 +268,12 @@ public class TextSoundOption : MonoBehaviour
     {
         m_txtResolution.GetComponent<TextMeshProUGUI>().text = Screen.resolutions[resolutionCount].ToString();
         Debug.Log(m_txtResolution.text);
+    }
+
+    private void OnDisable()
+    {
+        m_mouseLock.mouseSensitivity = m_sensibility;
+        Debug.Log(m_mouseLock.mouseSensitivity, this);
     }
 }
 

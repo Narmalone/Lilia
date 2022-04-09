@@ -21,14 +21,14 @@ public class MouseLock : MonoBehaviour
     private float pitch;
 
     Quaternion _initRotation;
-    
+
+    [SerializeField] private AssetMenuScriptValue m_assetMenuScriptable;
+ 
     private void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();
         
         controls = new PlayerControls();
-
-        m_gameManager.SetSensibility();
 
         _initRotation = transform.localRotation;
 
@@ -46,7 +46,7 @@ public class MouseLock : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-
+    
         if (m_gameManager.isPc == true)
         {
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
@@ -73,12 +73,8 @@ public class MouseLock : MonoBehaviour
             playerBody.Rotate(Vector3.up * r.x, Space.Self);
 
         }
-
+        mouseSensitivity = m_assetMenuScriptable.value;
     }
-    
-    
-    //STOCKER LA VAR DANS UN SCRIPTABLE OBJECT ??
-    //REWORK TT LE CODE ET LE FOUTRE PAR DES SCRIPTABLES OBJECTS ASSETS MENU
     private void OnEnable()
     {
         controls.Gameplay.Enable();

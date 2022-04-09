@@ -24,10 +24,10 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
-  m_HaloStrength: 0.5
+  m_HaloStrength: 0.338
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
@@ -613,7 +613,7 @@ GameObject:
   - component: {fileID: 220843870}
   - component: {fileID: 220843869}
   m_Layer: 5
-  m_Name: Txt_Resolution
+  m_Name: BrightnessValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -840,22 +840,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 258475143}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cef4d1d61fc5d114db23fa0e9e514269, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d2c90c81905c58448ba40af5cd386d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_soundVolume: 0
-  m_textSoundVolume: {fileID: 940909245}
-  m_sensibility: 0
-  m_newSensibility: 0
-  m_soundButtonList:
-  - {fileID: 258475144}
-  - {fileID: 269767329}
-  - {fileID: 2129169381}
-  m_controlsButtonList: []
-  m_txtController: {fileID: 0}
-  m_txtResolution: {fileID: 0}
-  resolutions: []
-  m_txtLuminosity: {fileID: 0}
+  m_uiEvent: {fileID: 11400000, guid: 8776f74c4fc7773468fbf7858975fdd5, type: 2}
+  m_txtToModify: {fileID: 940909245}
 --- !u!222 &258475147
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -987,22 +976,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 269767328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cef4d1d61fc5d114db23fa0e9e514269, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d2c90c81905c58448ba40af5cd386d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_soundVolume: 0
-  m_textSoundVolume: {fileID: 1573422744}
-  m_sensibility: 0
-  m_newSensibility: 0
-  m_soundButtonList:
-  - {fileID: 258475144}
-  - {fileID: 269767329}
-  - {fileID: 2129169381}
-  m_controlsButtonList: []
-  m_txtController: {fileID: 0}
-  m_txtResolution: {fileID: 0}
-  resolutions: []
-  m_txtLuminosity: {fileID: 0}
+  m_uiEvent: {fileID: 11400000, guid: 347089ac8c7e08149953aed9d295d8f7, type: 2}
+  m_txtToModify: {fileID: 1573422744}
 --- !u!222 &269767332
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1376,7 +1354,6 @@ GameObject:
   - component: {fileID: 409145282}
   - component: {fileID: 409145280}
   - component: {fileID: 409145279}
-  - component: {fileID: 409145281}
   m_Layer: 5
   m_Name: B_Resolution
   m_TagString: Untagged
@@ -1400,7 +1377,7 @@ MonoBehaviour:
     m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 454785081}
-    m_SelectOnDown: {fileID: 129776570}
+    m_SelectOnDown: {fileID: 1747909113}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -1458,34 +1435,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &409145281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 409145278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cef4d1d61fc5d114db23fa0e9e514269, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_soundVolume: 0
-  m_textSoundVolume: {fileID: 0}
-  m_sensibility: 0
-  m_newSensibility: 0
-  m_soundButtonList: []
-  m_controlsButtonList: []
-  m_txtController: {fileID: 0}
-  m_txtResolution: {fileID: 2040177287}
-  resolutions:
-  - Width: 1920
-    Height: 1080
-  - Width: 1280
-    Height: 720
-  - Width: 800
-    Height: 640
-  m_txtLuminosity: {fileID: 0}
 --- !u!222 &409145282
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1654,19 +1603,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 454785080}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cef4d1d61fc5d114db23fa0e9e514269, type: 3}
+  m_Script: {fileID: 11500000, guid: c335952c57ce2924b950886b9b3c9e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_soundVolume: 0
-  m_textSoundVolume: {fileID: 0}
-  m_sensibility: 0
-  m_newSensibility: 0
-  m_soundButtonList: []
-  m_controlsButtonList: []
-  m_txtController: {fileID: 1095447959}
-  m_txtResolution: {fileID: 0}
-  resolutions: []
-  m_txtLuminosity: {fileID: 0}
+  m_uiEvent: {fileID: 11400000, guid: 6c080701d5e21734ca2cc49dc6e25938, type: 2}
+  m_txtToModify: {fileID: 1095447959}
 --- !u!222 &454785084
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1764,7 +1705,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.526
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2745,10 +2686,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPc: 1
-  isGamepad: 1
+  isGamepad: 0
   isPaused: 0
   m_getSensibility: 0
-  m_setSensibility: 0
 --- !u!1 &886882166
 GameObject:
   m_ObjectHideFlags: 0
@@ -5306,20 +5246,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1544415199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cef4d1d61fc5d114db23fa0e9e514269, type: 3}
+  m_Script: {fileID: 11500000, guid: 2fa9b8d3842086b4b826d3f4a856bc99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_soundVolume: 0
-  m_textSoundVolume: {fileID: 0}
-  m_sensibility: 0
-  m_newSensibility: 0
-  m_soundButtonList: []
-  m_controlsButtonList:
-  - {fileID: 1544415200}
-  m_txtController: {fileID: 0}
-  m_txtResolution: {fileID: 0}
-  resolutions: []
-  m_txtLuminosity: {fileID: 0}
+  m_uiEvent: {fileID: 11400000, guid: c824cfc070c17324380d74d09a3ee81c, type: 2}
+  m_txtToModify: {fileID: 2076333060}
 --- !u!222 &1544415203
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5939,20 +5870,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1747909110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cef4d1d61fc5d114db23fa0e9e514269, type: 3}
+  m_Script: {fileID: 11500000, guid: 645e35aea583f514d94e6d4dab8a42ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_soundVolume: 0
-  m_textSoundVolume: {fileID: 0}
-  m_sensibility: 0
-  m_newSensibility: 0
-  m_soundButtonList: []
-  m_controlsButtonList:
-  - {fileID: 1747909113}
-  m_txtController: {fileID: 0}
-  m_txtResolution: {fileID: 0}
-  resolutions: []
-  m_txtLuminosity: {fileID: 0}
+  m_uiEvent: {fileID: 11400000, guid: bf6294846a7f5844da1b4d90f80ccab0, type: 2}
+  m_txtToModify: {fileID: 220843869}
 --- !u!114 &1747909113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5968,7 +5890,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 454785081}
+    m_SelectOnUp: {fileID: 409145279}
     m_SelectOnDown: {fileID: 129776570}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -7965,22 +7887,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2129169380}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cef4d1d61fc5d114db23fa0e9e514269, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d2c90c81905c58448ba40af5cd386d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_soundVolume: 0
-  m_textSoundVolume: {fileID: 1230491883}
-  m_sensibility: 0
-  m_newSensibility: 0
-  m_soundButtonList:
-  - {fileID: 258475144}
-  - {fileID: 269767329}
-  - {fileID: 2129169381}
-  m_controlsButtonList: []
-  m_txtController: {fileID: 0}
-  m_txtResolution: {fileID: 0}
-  resolutions: []
-  m_txtLuminosity: {fileID: 0}
+  m_uiEvent: {fileID: 11400000, guid: fc03fab7047d4ca42bb232332ed8577d, type: 2}
+  m_txtToModify: {fileID: 1230491883}
 --- !u!222 &2129169384
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8092,6 +8003,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3562883709724059351, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: mouseSensitivity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562883709724059351, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_sensibilityEvent
+      value: 
+      objectReference: {fileID: 1544415202}
+    - target: {fileID: 3562883709724059351, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_assetMenuScriptable
+      value: 
+      objectReference: {fileID: 11400000, guid: c824cfc070c17324380d74d09a3ee81c, type: 2}
     - target: {fileID: 5221730686746049572, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_Layer
       value: 7
