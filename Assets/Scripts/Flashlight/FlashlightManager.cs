@@ -31,53 +31,6 @@ public class FlashlightManager : MonoBehaviour
         m_spotlightOfFlashlight.GetComponent<Light>();
     }
 
-
-    //----------------------------------------------- Les OnTrigger ------------------------------------------//
-/*
-    private void OnTriggerStay(Collider p_collide)
-    {
-        if (m_gameManager.isPc)
-        {
-
-            if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
-            {
-                if (m_playerController.m_flashlightIsPossessed == false)
-                {
-                    m_playerController.TakeFlashlight();
-                    m_uiManager.drop();
-                }
-                else if (m_playerController.m_flashlightIsPossessed == true)
-                {
-                    m_uiManager.UiDisableFlashlight();
-                }
-            }
-        }
-        else if (m_gameManager.isGamepad)
-        {
-            if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
-            {
-
-                if (m_playerController.m_flashlightIsPossessed == false)
-                {
-                    m_playerController.TakeFlashlight();
-                    m_uiManager.UiTakeFlashlight();
-                    Debug.Log("gamepad ui activ�e");
-                }
-                else if (m_playerController.m_flashlightIsPossessed == true)
-                {
-                    m_uiManager.UiDisableFlashlight();
-                }
-            }
-        }
-    }
-    private void OnTriggerExit(Collider p_collide)
-    {
-            if ((m_playerMask.value & (1 << p_collide.gameObject.layer)) > 0)
-            {
-                m_uiManager.UiDisableFlashlight();
-            }
-    }
-*/
     //----------------------------------------------- Fonctions li�es � la veilleuse ------------------------------------------//
 
     public void PickItem()
@@ -89,10 +42,6 @@ public class FlashlightManager : MonoBehaviour
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(90f,180f,0f);
 
-        //trouver un moyen d'orienter l'objet en fonction de l� ou on regarde
-        //m_yRotation = Mathf.Clamp(m_yRotation, -90f, 90f);
-        //transform.LookAt(FlashlightContainer, Vector3.left);
-        Debug.Log(FlashlightContainer.transform);
         flashlight.GetComponent<BoxCollider>().enabled = false;
         m_uiManager.DisableUi();
 
