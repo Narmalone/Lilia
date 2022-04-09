@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,17 +8,14 @@ public class UiManager : MonoBehaviour
     //----------------------------------------------- R�f�rences & variables ------------------------------------------//
 
     //Ui In game
-    [SerializeField,Tooltip("image d'UI pour l'intercation")]private GameObject m_indicInteraction;
-    [SerializeField,Tooltip("image d'UI pour l'indication de lampe")]private GameObject m_UILampe;
-    [SerializeField,Tooltip("image d'UI pour l'indication de doudou")]private GameObject m_UIDoudou;
+    [SerializeField]private GameObject m_indicInteraction;
+    [SerializeField]private GameObject m_UILampe;
+    [SerializeField]private GameObject m_UIDoudou;
 
     private GameManager m_gameManager;
 
-    [NonSerialized]
     public bool m_flashlightIsHandle = false;
-    [NonSerialized]
     public bool m_doudouIsHandle = false;
-    [NonSerialized]
     public bool m_isActivated;
 
 
@@ -73,7 +69,7 @@ public class UiManager : MonoBehaviour
         //D�sactiver la Ui qui prend l'objet
         //Activer l'Ui en bas � droite
 
-        m_UILampe.GetComponent<Image>().color = Color.white;
+        m_UILampe.GetComponent<Image>().color = new Color32(255,255,225,255);
     }
     
     public void DropLampe()
