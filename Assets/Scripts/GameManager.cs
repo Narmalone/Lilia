@@ -4,19 +4,22 @@ using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
 
-    //Variables en rapport avec le jeu en général
+    //Variables en rapport avec le jeu en gï¿½nï¿½ral
     public bool isPc;
     public bool isGamepad;
     public bool isPaused;
-
+    
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+
         Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     //----------------------------------------------- Choose Your Platform ------------------------------------------//
