@@ -49,7 +49,10 @@ public class MenuManager : MonoBehaviour
     {
         NextScene();
     }
-
+    public void OnMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
     public void OnResume(GameObject p_obj)
     {
         p_obj.SetActive(false);
