@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 0.4408152, g: 0.52431524, b: 0.735849, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -708,6 +708,7 @@ MonoBehaviour:
   m_navAgent: {fileID: 576080452}
   m_waypoints: {fileID: 1698167992}
   m_doudou: {fileID: 697310044}
+  m_triggeredEvent: {fileID: 0}
   m_distanceDetection: 5
 --- !u!195 &576080452 stripped
 NavMeshAgent:
@@ -1978,7 +1979,7 @@ MonoBehaviour:
   sharedProfile: {fileID: 11400000, guid: 169cecbb7db928949b3e6f4f53f7edd1, type: 2}
   isGlobal: 1
   blendDistance: 0
-  weight: 1
+  weight: 0.95
   priority: 0
 --- !u!65 &1039152227
 BoxCollider:
@@ -2005,7 +2006,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1051625050
 GameObject:
@@ -2682,6 +2683,7 @@ MonoBehaviour:
   - {fileID: 1934962090}
   - {fileID: 1912367910}
   - {fileID: 1143648992}
+  m_waypointsPref: {fileID: 0}
 --- !u!4 &1698167993
 Transform:
   m_ObjectHideFlags: 0
@@ -3331,9 +3333,6 @@ MonoBehaviour:
   m_indicInteraction: {fileID: 635774800}
   m_UILampe: {fileID: 886882166}
   m_UIDoudou: {fileID: 340483026}
-  m_flashlightIsHandle: 0
-  m_doudouIsHandle: 0
-  m_isActivated: 0
 --- !u!4 &2066910957
 Transform:
   m_ObjectHideFlags: 0
@@ -3370,7 +3369,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2873547174128195182, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2873547174128195182, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
       propertyPath: m_LocalPosition.x
