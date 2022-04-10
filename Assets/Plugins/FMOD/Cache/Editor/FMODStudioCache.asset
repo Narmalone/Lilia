@@ -60,6 +60,26 @@ MonoBehaviour:
   - Name: Desktop
     Value: 712
   Exists: 1
+--- !u!114 &-4302358428912386057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: FmodProject/GameSounds/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637848565864345729
+  FileSizes:
+  - Name: Desktop
+    Value: 712
+  Exists: 1
 --- !u!114 &-2845370923460315033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,15 +173,15 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -182608782053617805}
-  - {fileID: -1331430869654691877}
+  - {fileID: -4302358428912386057}
+  - {fileID: 5719706809450707625}
   EditorEvents: []
   EditorParameters: []
   MasterBanks:
-  - {fileID: -1331430869654691877}
+  - {fileID: 5719706809450707625}
   StringsBanks:
-  - {fileID: -182608782053617805}
-  cacheTime: 637851924956440645
+  - {fileID: -4302358428912386057}
+  cacheTime: 637848565864345729
   cacheVersion: 10
 --- !u!114 &4484843252155158936
 MonoBehaviour:
@@ -182,4 +202,24 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 712
+  Exists: 1
+--- !u!114 &5719706809450707625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FmodProject/GameSounds/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637848565864310727
+  FileSizes:
+  - Name: Desktop
+    Value: 1036
   Exists: 1
