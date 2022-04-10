@@ -19,6 +19,8 @@ public class MouseLock : MonoBehaviour
 
     Quaternion _initRotation;
 
+    [SerializeField] private AssetMenuScriptValue m_assetMenuScriptable;
+
     private void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();
@@ -68,7 +70,7 @@ public class MouseLock : MonoBehaviour
             playerBody.Rotate(Vector3.up * r.x, Space.Self);
 
         }
-
+        mouseSensitivity = m_assetMenuScriptable.value;
     }
 
     private void OnEnable()
