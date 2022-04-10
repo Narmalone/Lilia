@@ -19,8 +19,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField,Tooltip("Script de Control de l'UI")] private UiManager m_UIManager;
 
-    private PannelManager m_pannelManager;
-
     [SerializeField,Tooltip("Script du doudou")] Doudou m_doudou;
     
     [SerializeField,Tooltip("Script de la lampe torche")] private FlashlightManager m_flm;
@@ -123,7 +121,6 @@ public class PlayerController : MonoBehaviour
         m_gameManager = FindObjectOfType<GameManager>();
         m_controls = new PlayerControls();
         m_flm = FindObjectOfType<FlashlightManager>();
-        m_pannelManager = FindObjectOfType<PannelManager>();
         m_path = new NavMeshPath();
         
         m_currentStress = m_maxStress;
@@ -167,7 +164,6 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                m_pannelManager.OnPannelPause();
                 m_gameManager.GamePaused();
             }
         }
@@ -175,7 +171,6 @@ public class PlayerController : MonoBehaviour
         {
             if (Gamepad.current.startButton.wasPressedThisFrame)
             {
-                m_pannelManager.OnPannelPause();
                 m_gameManager.GamePaused();
                 //EventSystem.
             }
