@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering.Universal;
 using Unity.VisualScripting;
-using DamageOverlayEffect;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
@@ -60,7 +59,7 @@ public class PlayerController : MonoBehaviour
     
     //-----------------------------------------------Post-Processing------------------------------------------
     [Header("Post-Processing")]
-    [SerializeField,Tooltip("Volume de post-process")] PostProcessVolume m_linkedPostProcess;
+    [SerializeField,Tooltip("Volume de post-process")] Volume m_linkedPostProcess;
 
     [SerializeField] private Material m_materialStress;
         
@@ -77,7 +76,7 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField,Tooltip("Intensité maximum de l'effet")] float m_intesiteMaxEffet = 0.5f;
     
-    private DamageOverlay m_overlaySettings;
+    //private Vignette m_overlaySettings;
 
     private DepthOfField m_dOFSettings;
     
@@ -88,6 +87,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField,Tooltip("Force d'attaque de l'effet")] float m_frequenceAttaque = 2f;
     [SerializeField,Tooltip("Vitesse de perte de l'attaque")] float m_frequenceRelache = 1f;
 
+    [SerializeField]
     [Range(0f, 1f)] float m_intenseFieldOfView;
     
     [SerializeField,Tooltip("Courbe d'intensite de l'effet par rapport à la vie")] AnimationCurve m_intensityDueToHealth;
@@ -128,8 +128,7 @@ public class PlayerController : MonoBehaviour
         
         m_currentStress = m_maxStress;
         m_stressBar.SetMaxHealth(m_maxStress);
-        Debug.Log(m_linkedPostProcess.profile.TryGetSettings<DamageOverlay>(out m_overlaySettings));
-        Debug.Log(m_linkedPostProcess.profile.TryGetSettings<DepthOfField>(out m_dOFSettings));
+        Debug.Log(m_linkedPostProcess.profile.TryGet(out m_dOFSettings));
     }
 
     private void Update()
@@ -206,8 +205,8 @@ public class PlayerController : MonoBehaviour
         m_intenseFieldOfView = m_currentStress / 100;
         //Debug.Log(m_overlaySettings);
         m_materialStress.SetFloat("_Intensity", Mathf.Lerp(0f, 5f, m_currentIntensity));
-        m_overlaySettings.Intensity.value = Mathf.Lerp(0f, m_intesiteMaxEffet, m_currentIntensity);
-        m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
+        //m_overlaySettings.Intensity.value = Mathf.Lerp(0f, m_intesiteMaxEffet, m_currentIntensity);
+        m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 2f, m_intenseFieldOfView);
 
         if (Chasse.GetPathLength(m_AIStateMachine.m_path) < 10f)
         {

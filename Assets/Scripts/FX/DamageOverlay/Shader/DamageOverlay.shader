@@ -6,7 +6,7 @@ Shader "Hidden/PostProcessing/DamageOverlay"
 
     TEXTURE2D_SAMPLER2D(_MainTex, sampler_MainTex);
     TEXTURE2D_SAMPLER2D(_OverlayTexture, sampler_OverlayTexture);
-
+    
     half3 _DamageColour;
     half _Intensity;
     half _Smoothness;
