@@ -17,7 +17,7 @@ public class AISM : StateMachine
     [SerializeField, Tooltip("Event détécté")] private Event1 m_triggeredEvent;
     
     [SerializeField, Tooltip("Distance de détéction du bebs")]
-    public float m_distanceDetection = 5f;
+    public float m_distanceDetection;
 
     [NonSerialized] public bool m_chasing;
 

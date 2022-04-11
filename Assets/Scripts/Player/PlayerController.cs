@@ -55,8 +55,13 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField, Tooltip("Vitesse du joueur en m/s")]private float m_speed;
 
-    
-    
+    [SerializeField, Tooltip("puissance du stress en fonction du temps"), Range(0f,1f)] private float m_StressPower;
+
+    [SerializeField, Tooltip("Le joueur va stresser avec la touche espace en fonction de la valeur attribuée"), Range(0f,10f)] private float m_makeMeStress;
+
+    [SerializeField, Tooltip("Puissance du Slow du joueur en %"), Range(0,20)] private float m_slow;
+
+
     //-----------------------------------------------Post-Processing------------------------------------------
     [Header("Post-Processing")]
     [SerializeField,Tooltip("Volume de post-process")] Volume m_linkedPostProcess;
@@ -161,7 +166,7 @@ public class PlayerController : MonoBehaviour
         //Inputs venant du joueur
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Stressing(10);
+            Stressing(m_makeMeStress);
         }
 
         if(m_gameManager.isPc == true)
@@ -224,8 +229,9 @@ public class PlayerController : MonoBehaviour
 
         if (m_doudouIsUsed == true)
         {
-            Stressing(-0.1f);
+            Stressing(-m_StressPower);
         }
+        
     }
     private void Stressing(float p_stressNum)
     {
@@ -376,7 +382,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && m_doudouIsPossessed == true)
         {
             //startTime = DateTime.Now;
-            m_doudou.UseDoudou();
             m_doudouIsUsed = true;
             m_AIStateMachine.m_chasing = true;
         }

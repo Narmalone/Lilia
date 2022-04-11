@@ -35,9 +35,4 @@ public class Doudou : MonoBehaviour
     {
         m_doudou.transform.parent = null;      
     }
-
-    public void UseDoudou()
-    {
-
-    }
 }
