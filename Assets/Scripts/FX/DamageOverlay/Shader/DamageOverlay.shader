@@ -1,6 +1,7 @@
 Shader "Hidden/PostProcessing/DamageOverlay"
 {
     HLSLINCLUDE
+    
 
     #include "Packages/com.unity.postprocessing/PostProcessing/Shaders/StdLib.hlsl"
 
