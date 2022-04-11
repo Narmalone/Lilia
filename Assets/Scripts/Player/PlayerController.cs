@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField, Tooltip("Le joueur va stresser avec la touche espace en fonction de la valeur attribuée"), Range(0f,10f)] private float m_makeMeStress;
 
-    [SerializeField, Tooltip("Puissance du Slow du joueur en %"), Range(0,20)] private float m_slow;
+    [SerializeField, Tooltip("Si la valeur est à 0.3 alors le joueur est slow de 70%"), Range(0f,1f)] private float m_slow;
 
 
     //-----------------------------------------------Post-Processing------------------------------------------
@@ -155,6 +155,15 @@ public class PlayerController : MonoBehaviour
             Vector3 move = transform.right * x + transform.forward * z;
 
             m_myChara.Move(move * m_speed * Time.deltaTime);
+        }
+        if(m_doudouIsUsed == true)
+        {
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
+
+            Vector3 move = transform.right * x + transform.forward * z;
+
+            m_myChara.Move(move * m_speed * m_slow * Time.deltaTime);
         }
         // D�placements du joueur
         
