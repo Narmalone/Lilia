@@ -155,18 +155,39 @@ MonoBehaviour:
     m_Bits: 1024
   m_myChara: {fileID: 8172246454592653240}
   m_speed: 2
+  m_StressPower: 0.059
+  m_makeMeStress: 10
+  m_slow: 0.3
   m_linkedPostProcess: {fileID: 0}
   m_materialStress: {fileID: 2100000, guid: 5aea3b5ad0823594ea32ef9f4cd62a37, type: 2}
   m_stressBar: {fileID: 0}
   m_maxStress: 100
-  m_intesiteMaxEffet: 0.5
+  m_intesiteMaxEffet: 2
   m_frequendeReduction: 0.2
-  m_frequenceAttaque: 2
+  m_frequenceAttaque: 50
   m_frequenceRelache: 1
   m_intenseFieldOfView: 0
   m_intensityDueToHealth:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.5
+      inSlope: -0.5
+      outSlope: -0.5
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.34476843
+      outSlope: -0.34476843
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19270277
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -205,7 +226,6 @@ GameObject:
   - component: {fileID: 8172246455047256137}
   - component: {fileID: 8172246455047256136}
   - component: {fileID: 3562883709724059351}
-  - component: {fileID: 8172246454978275389}
   - component: {fileID: 8172246454978275390}
   - component: {fileID: 7320954766857035618}
   - component: {fileID: 6033248893781526100}
@@ -288,69 +308,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 300
-  m_gameManager: {fileID: 0}
   playerBody: {fileID: 8172246454592653245}
   m_assetMenuScriptable: {fileID: 11400000, guid: c824cfc070c17324380d74d09a3ee81c, type: 2}
---- !u!114 &8172246454978275389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8172246455047256134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeTrigger: {fileID: 8172246455047256137}
-  volumeLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  stopNaNPropagation: 1
-  finalBlitToCameraTarget: 0
-  antialiasingMode: 0
-  temporalAntialiasing:
-    jitterSpread: 0.75
-    sharpness: 0.25
-    stationaryBlending: 0.95
-    motionBlending: 0.85
-  subpixelMorphologicalAntialiasing:
-    quality: 2
-  fastApproximateAntialiasing:
-    fastMode: 0
-    keepAlpha: 0
-  fog:
-    enabled: 1
-    excludeSkybox: 1
-  debugLayer:
-    lightMeter:
-      width: 512
-      height: 256
-      showCurves: 1
-    histogram:
-      width: 512
-      height: 256
-      channel: 3
-    waveform:
-      exposure: 0.12
-      height: 256
-    vectorscope:
-      size: 256
-      exposure: 0.12
-    overlaySettings:
-      linearDepth: 0
-      motionColorIntensity: 4
-      motionGridSize: 64
-      colorBlindnessType: 0
-      colorBlindnessStrength: 1
-  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
-  breakBeforeColorGrading: 0
-  m_BeforeTransparentBundles: []
-  m_BeforeStackBundles: []
-  m_AfterStackBundles: []
 --- !u!114 &8172246454978275390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,7 +359,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0

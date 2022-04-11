@@ -24724,10 +24724,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6033248893781526100, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
-      propertyPath: m_RenderPostProcessing
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653239, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_Name
       value: FirstPersonController
@@ -24736,10 +24732,6 @@ PrefabInstance:
       propertyPath: m_flm
       value: 
       objectReference: {fileID: 4550594669908905075}
-    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
-      propertyPath: m_slow
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_doudou
       value: 
@@ -24753,77 +24745,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2066910958}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
-      propertyPath: m_StressPower
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
-      propertyPath: m_makeMeStress
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_AIStateMachine
       value: 
       objectReference: {fileID: 576080451}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
-      propertyPath: m_frequenceAttaque
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
-      propertyPath: m_intesiteMaxEffet
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_linkedPostProcess
       value: 
       objectReference: {fileID: 1790721835}
-    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
-      propertyPath: m_intensityDueToHealth.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
-      propertyPath: m_intensityDueToHealth.m_Curve.Array.data[1].time
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
-      propertyPath: m_intensityDueToHealth.m_Curve.Array.data[0].value
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
-      propertyPath: m_intensityDueToHealth.m_Curve.Array.data[1].value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
-      propertyPath: m_intensityDueToHealth.m_Curve.Array.data[0].inSlope
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
-      propertyPath: m_intensityDueToHealth.m_Curve.Array.data[1].inSlope
-      value: -0.34476843
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
-      propertyPath: m_intensityDueToHealth.m_Curve.Array.data[0].outSlope
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
-      propertyPath: m_intensityDueToHealth.m_Curve.Array.data[1].inWeight
-      value: 0.19270277
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
-      propertyPath: m_intensityDueToHealth.m_Curve.Array.data[1].outSlope
-      value: -0.34476843
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
-      propertyPath: m_intensityDueToHealth.m_Curve.Array.data[0].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
-      propertyPath: m_intensityDueToHealth.m_Curve.Array.data[0].tangentMode
-      value: 34
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
-      propertyPath: m_intensityDueToHealth.m_Curve.Array.data[1].tangentMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653245, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -24868,8 +24796,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8172246454978275389, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
 --- !u!4 &8184106750659682115 stripped
 Transform:
