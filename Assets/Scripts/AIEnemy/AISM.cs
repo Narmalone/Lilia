@@ -23,8 +23,6 @@ public class AISM : StateMachine
 
     [NonSerialized] public NavMeshPath m_path;
 
-    private BaseState m_currentState;
-
     private void Awake()
     {
         m_path = new NavMeshPath();

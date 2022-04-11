@@ -34,8 +34,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField,Tooltip("Script de la State Machine de l'IA")] AISM m_AIStateMachine;
 
-    [SerializeField,Tooltip("Script de la State Machine")] StateMachine m_stateMachine;
-    
     private bool m_doudouIsUsed = false;
 
     //private DateTime startTime;
@@ -232,7 +230,7 @@ public class PlayerController : MonoBehaviour
         Chasse.GetPath(m_path, m_doudou.transform.position, m_AIStateMachine.transform.position, NavMesh.AllAreas);
         if (m_path.status== NavMeshPathStatus.PathComplete)
         {
-            if (Chasse.GetPathLength(m_AIStateMachine.m_path) < 10f && m_stateMachine.currentState == m_AIStateMachine.m_chasseState)
+            if (Chasse.GetPathLength(m_AIStateMachine.m_path) < 10f && m_AIStateMachine.currentState == m_AIStateMachine.m_chasseState)
             {
                 float dist = Vector3.Distance(m_AIStateMachine.transform.position, m_doudou.transform.position);
                 float power = dist / 10;
