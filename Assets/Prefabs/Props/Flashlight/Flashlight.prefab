@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5927216318435697347}
   m_LocalRotation: {x: 0.70710605, y: -0, z: -0, w: 0.70710754}
-  m_LocalPosition: {x: 0, y: -0.193, z: 0.15}
+  m_LocalPosition: {x: 0, y: 0.856, z: -0.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8929562132021629146}
@@ -204,12 +204,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36da180d7f7f6364494a02c1453e2920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManager: {fileID: 0}
+  m_uiManager: {fileID: 0}
+  m_playerController: {fileID: 0}
+  m_gameManager: {fileID: 0}
+  m_playerMask:
+    serializedVersion: 2
+    m_Bits: 0
   flashlight: {fileID: 8929562132021629145}
   FlashlightContainer: {fileID: 0}
   m_spotlightOfFlashlight: {fileID: 5927216318435697347}
-  playerController: {fileID: 0}
-  m_rFlashlight: {fileID: 0}
+  m_rbodyFlashlight: {fileID: 0}
   switchLight: 0
 --- !u!54 &8929562131681804831
 Rigidbody:

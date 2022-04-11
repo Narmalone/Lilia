@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 70491204423526899}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FlashlightContainer
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -23,12 +23,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5221730686746049572}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.283, y: -0.253, z: 0.128}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.33899987, y: -0.483, z: 0.4120002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8172246454592653245}
-  m_RootOrder: 2
+  m_Father: {fileID: 8172246455047256137}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8172246454592653239
 GameObject:
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8172246454592653242}
   - component: {fileID: 8172246454592653241}
   - component: {fileID: 8172246454592653240}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FirstPersonControllerMathis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,12 +60,10 @@ Transform:
   m_GameObject: {fileID: 8172246454592653239}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.854, y: 1.07, z: -0.036}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 8172246455047256137}
   - {fileID: 8172246455215608436}
-  - {fileID: 70491204423526899}
-  - {fileID: 8172246455961300246}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -145,45 +143,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIManager: {fileID: 0}
-  flm: {fileID: 0}
   m_doudou: {fileID: 0}
-  flashlightIsPossessed: 0
-  m_doudouIsPossessed: 0
-  m_AIController: {fileID: 0}
+  m_flm: {fileID: 0}
+  m_AIStateMachine: {fileID: 0}
+  m_gameManager: {fileID: 0}
+  m_flashlightMask:
+    serializedVersion: 2
+    m_Bits: 512
+  m_doudouMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  m_myChara: {fileID: 8172246454592653240}
+  m_speed: 2
+  m_linkedPostProcess: {fileID: 0}
+  m_materialStress: {fileID: 2100000, guid: 5aea3b5ad0823594ea32ef9f4cd62a37, type: 2}
   m_stressBar: {fileID: 0}
   m_maxStress: 100
-  DecayRate: 0.1
-  AttackRate: 2
-  ReleaseRate: 20
-  IntensityDueToHealth:
+  m_intesiteMaxEffet: 0.5
+  m_frequendeReduction: 0.2
+  m_frequenceAttaque: 2
+  m_frequenceRelache: 1
+  m_intenseFieldOfView: 0
+  m_intensityDueToHealth:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.0083351135
-      value: 0.5023575
-      inSlope: -1.1835456
-      outSlope: -1.1835456
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.092047274
-    - serializedVersion: 3
-      time: 1.0041809
-      value: 0.002357483
-      inSlope: 0.008840089
-      outSlope: 0.008840089
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.26779336
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  LinkedPPV: {fileID: 0}
-  MaxEffectIntensity: 2
   m_camShake: {fileID: 8172246454978275390}
-  m_myChara: {fileID: 8172246454592653240}
-  m_speed: 2
   groundCheck: {fileID: 8172246455215608436}
   radiusCheckSphere: 0.4
   m_groundMask:
@@ -221,7 +208,8 @@ GameObject:
   - component: {fileID: 8172246454978275389}
   - component: {fileID: 8172246454978275390}
   - component: {fileID: 7320954766857035618}
-  m_Layer: 6
+  - component: {fileID: 6033248893781526100}
+  m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -236,9 +224,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8172246455047256134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.693, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 70491204423526899}
+  - {fileID: 8172246455961300246}
   m_Father: {fileID: 8172246454592653245}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -298,7 +288,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 300
+  m_gameManager: {fileID: 0}
   playerBody: {fileID: 8172246454592653245}
+  m_assetMenuScriptable: {fileID: 11400000, guid: c824cfc070c17324380d74d09a3ee81c, type: 2}
 --- !u!114 &8172246454978275389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,9 +350,7 @@ MonoBehaviour:
   breakBeforeColorGrading: 0
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
-  m_AfterStackBundles:
-  - assemblyQualifiedName: DamageOverlayEffect.DamageOverlay, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  m_AfterStackBundles: []
 --- !u!114 &8172246454978275390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,6 +377,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attenuationObject: {fileID: 0}
   ListenerNumber: -1
+--- !u!114 &6033248893781526100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8172246455047256134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &8172246455215608435
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,7 +419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8172246455215608436}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,10 +449,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8172246455961300246}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DoudouContainer
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -440,10 +463,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8172246455961300245}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.201, y: -0.253, z: 0.128}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.34499985, y: -0.508, z: 0.415}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8172246454592653245}
-  m_RootOrder: 3
+  m_Father: {fileID: 8172246455047256137}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
         
         m_currentStress = m_maxStress;
         m_stressBar.SetMaxHealth(m_maxStress);
-        Debug.Log(m_linkedPostProcess.profile.TryGet(out m_dOFSettings));
+        //Debug.Log(m_linkedPostProcess.profile.TryGet(out m_dOFSettings));
     }
 
     private void Update()
