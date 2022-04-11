@@ -52,6 +52,7 @@ public class CaisseProto : MonoBehaviour
         if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
         {
             m_uiManager.DisableUi();
+            
             canTake = false;
         }
         Debug.Log("trigger exit");
@@ -63,7 +64,7 @@ public class CaisseProto : MonoBehaviour
     }
     public void CanTake()
     {
-        if (Input.GetKeyDown(KeyCode.E) && m_boxCollider.isTrigger == true && canTake == true)
+        if (Input.GetKeyDown(KeyCode.E) && canTake == true && m_player.m_doudouIsPossessed == false && m_player.m_flashlightIsPossessed == false)
         {
             m_thisGameObject.transform.SetParent(m_twoHandsContainer);
             transform.localPosition = Vector3.zero;
@@ -72,6 +73,7 @@ public class CaisseProto : MonoBehaviour
             m_rbody.isKinematic = true;
             onHand = true;
             Debug.Log("prendre l'objet");
+            
         }
     }
     public void OnHand()
@@ -84,5 +86,10 @@ public class CaisseProto : MonoBehaviour
             onHand = false;
             Debug.Log("lâcher la caisse");
         }
+        if(onHand == true)
+        {
+            m_uiManager.DisableUi();
+        }
+
     }
 }

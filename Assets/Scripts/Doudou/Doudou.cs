@@ -21,6 +21,8 @@ public class Doudou : MonoBehaviour
 
     public void PickItem()
     {
+        m_rbDoudou.isKinematic = true;
+        m_rbDoudou.useGravity = false;
         m_doudou.transform.SetParent(m_emplacementDoudou);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(90f,180f,0f);
@@ -33,6 +35,8 @@ public class Doudou : MonoBehaviour
 
     public void DropItem()
     {
+        m_rbDoudou.isKinematic = false;
+        m_rbDoudou.useGravity = true;
         m_doudou.transform.parent = null;      
     }
 }
