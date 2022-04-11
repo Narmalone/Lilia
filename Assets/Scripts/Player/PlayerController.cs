@@ -23,7 +23,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField,Tooltip("Script du doudou")] Doudou m_doudou;
     
     [SerializeField,Tooltip("Script de la lampe torche")] private FlashlightManager m_flm;
-    
+
+    [SerializeField] private CaisseProto m_caisseProtoScript; 
+
     [NonSerialized]
     public bool m_flashlightIsPossessed = false;
     
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
     [Space(10)]
     [SerializeField] private LayerMask m_flashlightMask;
     [SerializeField] private LayerMask m_doudouMask;
+    [SerializeField] private LayerMask m_TwoHandsItemMask;
     //-----------------------------------------------Systeme Stress------------------------------------------
 
 
@@ -123,8 +126,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        
-        
+
+        m_caisseProtoScript = FindObjectOfType<CaisseProto>();
         m_gameManager = FindObjectOfType<GameManager>();
         m_menuManager = FindObjectOfType<MenuManager>();
         m_controls = new PlayerControls();
@@ -240,7 +243,6 @@ public class PlayerController : MonoBehaviour
         {
             Stressing(-m_StressPower);
         }
-        
     }
     private void Stressing(float p_stressNum)
     {
@@ -281,6 +283,12 @@ public class PlayerController : MonoBehaviour
         {
             m_UIManager.TakableObject();
             TakeDoudou();
+        }  
+        
+        else if ((m_TwoHandsItemMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false  && m_flashlightIsPossessed == false)
+        {
+            m_UIManager.TakableObject();
+            Debug.Log("caisse a été trigger");
         }
     }
 
@@ -294,7 +302,8 @@ public class PlayerController : MonoBehaviour
         else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             m_UIManager.DisableUi();
-        }
+        } 
+        
     }
 
     //----------------------------------------------- Fonctions correspondantes au doudou et � la lampe ------------------------------------------//

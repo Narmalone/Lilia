@@ -35,8 +35,8 @@ public class FlashlightManager : MonoBehaviour
 
     public void PickItem()
     {
-        //m_rFlashlight.useGravity = false;
-        //m_rFlashlight.isKinematic = true;
+        m_rbodyFlashlight.useGravity = false;
+        m_rbodyFlashlight.isKinematic = true;
 
         flashlight.transform.SetParent(FlashlightContainer);
         transform.localPosition = Vector3.zero;
@@ -48,8 +48,8 @@ public class FlashlightManager : MonoBehaviour
     }
     public void DropItem()
     {
-        //m_rFlashlight.isKinematic = false;
-        //m_rFlashlight.useGravity = true;
+        m_rbodyFlashlight.isKinematic = false;
+        m_rbodyFlashlight.useGravity = true;
 
 
         flashlight.transform.parent = null;
