@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField,Tooltip("Intensité maximum de l'effet")] float m_intesiteMaxEffet = 0.5f;
     
-    //private Vignette m_overlaySettings;
+    private Vignette m_vignetteSettings;
 
     private DepthOfField m_dOFSettings;
     
@@ -128,7 +128,9 @@ public class PlayerController : MonoBehaviour
         
         m_currentStress = m_maxStress;
         m_stressBar.SetMaxHealth(m_maxStress);
-        //Debug.Log(m_linkedPostProcess.profile.TryGet(out m_dOFSettings));
+
+        Debug.Log(m_linkedPostProcess.profile.TryGet(out m_dOFSettings));
+        Debug.Log(m_linkedPostProcess.profile.TryGet(out m_vignetteSettings));
     }
 
     private void Update()
@@ -204,9 +206,9 @@ public class PlayerController : MonoBehaviour
 
         m_intenseFieldOfView = m_currentStress / 100;
         //Debug.Log(m_overlaySettings);
-        m_materialStress.SetFloat("_Intensity", Mathf.Lerp(0f, 5f, m_currentIntensity));
-        //m_overlaySettings.Intensity.value = Mathf.Lerp(0f, m_intesiteMaxEffet, m_currentIntensity);
-        m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 2f, m_intenseFieldOfView);
+        m_materialStress.SetFloat("_Intensity", Mathf.Lerp(0f, 2f, m_currentIntensity));
+        m_vignetteSettings.intensity.value = Mathf.Lerp(0f, m_intesiteMaxEffet, m_currentIntensity);
+        m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
 
         if (Chasse.GetPathLength(m_AIStateMachine.m_path) < 10f)
         {
@@ -218,7 +220,7 @@ public class PlayerController : MonoBehaviour
 
         if (m_doudouIsUsed == true)
         {
-            Stressing(-0.05f);
+            Stressing(-0.1f);
         }
     }
     private void Stressing(float p_stressNum)
