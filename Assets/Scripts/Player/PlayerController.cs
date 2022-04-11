@@ -210,12 +210,16 @@ public class PlayerController : MonoBehaviour
         m_vignetteSettings.intensity.value = Mathf.Lerp(0f, m_intesiteMaxEffet, m_currentIntensity);
         m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
 
-        if (Chasse.GetPathLength(m_AIStateMachine.m_path) < 10f)
+        Chasse.GetPath(m_path, m_doudou.transform.position, m_AIStateMachine.transform.position, NavMesh.AllAreas);
+        if (m_path.status== NavMeshPathStatus.PathComplete)
         {
-            float dist = Vector3.Distance(m_AIStateMachine.transform.position, m_doudou.transform.position);
-            float power = dist/10 ;
-            float powerAdapted = Mathf.Lerp(0.1f, 0f,power);
-            m_camShake.StartShake(0.15f,powerAdapted);
+            if (Chasse.GetPathLength(m_AIStateMachine.m_path) < 10f)
+            {
+                float dist = Vector3.Distance(m_AIStateMachine.transform.position, m_doudou.transform.position);
+                float power = dist / 10;
+                float powerAdapted = Mathf.Lerp(0.1f, 0f, power);
+                m_camShake.StartShake(0.15f, powerAdapted);
+            }
         }
 
         if (m_doudouIsUsed == true)

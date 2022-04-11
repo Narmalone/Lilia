@@ -32,11 +32,13 @@ public class Chasse : BaseState
         base.UpdateLogic();
 
         m_navAgent.SetDestination(m_doudou.transform.position);
-
         GetPath(m_path, m_doudou.transform.position, m_sm.transform.position, NavMesh.AllAreas);
-        if (GetPathLength(m_path) > m_sm.m_distanceDetection && m_sm.m_chasing == false)
+        if (m_path.status== NavMeshPathStatus.PathComplete)
         {
-            stateMachine.ChangeState(m_sm.m_patrouilleState);
+            if (GetPathLength(m_path) > m_sm.m_distanceDetection && m_sm.m_chasing == false)
+            {
+                stateMachine.ChangeState(m_sm.m_patrouilleState);
+            }
         }
     }
     public static bool GetPath( NavMeshPath path, Vector3 fromPos, Vector3 toPos, int passableMask )
