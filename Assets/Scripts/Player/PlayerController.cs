@@ -235,7 +235,11 @@ public class PlayerController : MonoBehaviour
                 float dist = Vector3.Distance(m_AIStateMachine.transform.position, m_doudou.transform.position);
                 float power = dist / 10;
                 float powerAdapted = Mathf.Lerp(0.1f, 0f, power);
-                m_camShake.StartShake(0.15f, powerAdapted);
+                m_camShake.camShakeActive = true;
+            }
+            else
+            {
+                m_camShake.camShakeActive = false;
             }
         }
 
