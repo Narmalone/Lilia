@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class Shake : MonoBehaviour
 {
-    private float m_shakeTimeRemaining, m_shakePower;
+    [SerializeField]private float m_shakeTimeRemaining, m_shakePower;
 
     private Vector3 m_startingPosition;
 
