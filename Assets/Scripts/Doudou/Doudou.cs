@@ -25,7 +25,7 @@ public class Doudou : MonoBehaviour
         m_rbDoudou.useGravity = false;
         m_doudou.transform.SetParent(m_emplacementDoudou);
         transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.Euler(90f,180f,0f);
+        transform.localRotation = Quaternion.Euler(0f,-0f,0f);
 
         Debug.Log(m_emplacementDoudou.transform);
         m_doudou.GetComponent<BoxCollider>().enabled = false;

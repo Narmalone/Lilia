@@ -73,7 +73,7 @@ public class Shake : MonoBehaviour
         else
         {
             //lerp back towards default position and rotation once shake is done
-            Vector3 newPos = Vector3.Lerp(transform.localPosition, Vector3.zero, Time.deltaTime);
+            Vector3 newPos = Vector3.Lerp(transform.localPosition, transform.localPosition, Time.deltaTime);
             transform.localPosition = newPos;
             transform.localRotation = Quaternion.Euler(newPos * m_shakeRotation);
         }
