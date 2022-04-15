@@ -90,7 +90,6 @@ public class ResolutionSettings : MonoBehaviour
             if (indexResolution > resolution.Count - 1)
             {
                 indexResolution = resolution.Count -1;
-                Debug.Log("Résolution Q");
             }
 
             UpdateResolution();
@@ -102,7 +101,7 @@ public class ResolutionSettings : MonoBehaviour
         if (EventSystem.current.currentSelectedGameObject == gameObject)
         {
             indexResolution--;
-            if (indexResolution < 0)
+            if (indexResolution <= 0)
             {
                 indexResolution = 0;
             }
