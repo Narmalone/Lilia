@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField,Tooltip("Script de Control de l'UI")] private UiManager m_UIManager;
 
+    [SerializeField] private CreateNarrativeEvent m_createNarrativeEvent;
+
     private MenuManager m_menuManager;
 
     [SerializeField,Tooltip("Script du doudou")] Doudou m_doudou;
@@ -352,6 +354,10 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
+                if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 0)
+                {
+                    m_createNarrativeEvent.actionComplete = true;
+                }
                 m_UIManager.TakeDoudou();
                 m_doudou.PickItem();
                 m_doudouIsPossessed = true;
@@ -403,7 +409,10 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && m_doudouIsPossessed == true)
         {
-            //startTime = DateTime.Now;
+            if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 1)
+            {
+                m_createNarrativeEvent.actionComplete = true;
+            }
             m_doudouIsUsed = true;
             m_AIStateMachine.m_chasing = true;
         }
