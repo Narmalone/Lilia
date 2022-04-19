@@ -38,7 +38,7 @@ public class Shake : MonoBehaviour
     //Get a perlin float between -1 & 1, based off the time counter.
     float GetFloat(float seed)
     {
-        return (Mathf.PerlinNoise(seed, timeCounter) - 0.5f) * 2f;
+        return (Mathf.PerlinNoise(seed, timeCounter)) * 2f; //on peut régler la pos de la cam quand y'a le shake entre les parenthèses et après
     }
 
     //use the above function to generate a Vector3, different seeds are used to ensure different numbers
