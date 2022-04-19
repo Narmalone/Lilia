@@ -8,6 +8,7 @@ public class Shake : MonoBehaviour
 {
     #region variables
     public bool camShakeActive = true; //on or off
+    [SerializeField, Tooltip("Position ou le shake se lance")] private Transform m_originalPos;
     [Range(0, 1)]
     [SerializeField] float trauma;
     [SerializeField, Range(0,30), Tooltip("Puissance du Shake")] float m_shakePower = 16; //the power of the shake
@@ -73,7 +74,7 @@ public class Shake : MonoBehaviour
         else
         {
             //lerp back towards default position and rotation once shake is done
-            Vector3 newPos = Vector3.Lerp(transform.localPosition, transform.localPosition, Time.deltaTime);
+            Vector3 newPos = Vector3.Lerp(m_originalPos.transform.localPosition, m_originalPos.transform.localPosition, Time.deltaTime);
             transform.localPosition = newPos;
             transform.localRotation = Quaternion.Euler(newPos * m_shakeRotation);
         }
