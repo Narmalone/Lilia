@@ -122,11 +122,6 @@ public class PlayerController : MonoBehaviour
     private RaycastHit m_hit;
     private Ray m_ray;
 
-    private void Start()
-    {
-
-    }
-
     private void Awake()
     {
 
@@ -142,8 +137,6 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_dOFSettings));
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_vignetteSettings));
-        
-        m_ray = Camera.main.ScreenPointToRay(Input.mousePosition);
     }
 
     private void Update()
@@ -281,34 +274,48 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay(Collider p_collide)
     {
-
+        m_ray = Camera.main.ScreenPointToRay(new Vector3(0.5f,0.5f,0f));
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
         {
-            if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity))
+            if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_flashlightMask))
             {
                 m_UIManager.TakableObject();
                 TakeFlashlight();
-                Debug.Log("raycasthit");
-                Debug.DrawRay(transform.position,transform.TransformDirection(Vector3.forward));
             } 
             else
             {
                 m_UIManager.DisableUi();
                 return;
             }
-
         }
 
         else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false)
         {
-            m_UIManager.TakableObject();
-            TakeDoudou();
+            if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_doudouMask))
+            {
+                m_UIManager.TakableObject();
+                Debug.Log("dans le raycast mask doudou");
+                TakeDoudou();
+            }
+            else
+            {
+                m_UIManager.DisableUi();
+                return;
+            }
         }  
         
         else if ((m_TwoHandsItemMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false  && m_flashlightIsPossessed == false)
         {
-            m_UIManager.TakableObject();
-            Debug.Log("caisse a été trigger");
+            if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_TwoHandsItemMask))
+            {
+                m_UIManager.TakableObject();
+ 
+            }
+            else
+            {
+                m_UIManager.DisableUi();
+                return; 
+            }
         }
     }
 
