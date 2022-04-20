@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask m_flashlightMask;
     [SerializeField] private LayerMask m_doudouMask;
     [SerializeField] private LayerMask m_TwoHandsItemMask;
+    [SerializeField] private LayerMask m_interactableMask;
     //-----------------------------------------------Systeme Stress------------------------------------------
 
 
@@ -118,8 +119,8 @@ public class PlayerController : MonoBehaviour
     
     private bool m_isGrounded;
 
-    //----------------------------------------------- Gamepad ------------------------------------------//
-
+    private RaycastHit m_hit;
+    private Ray m_ray;
 
     private void Start()
     {
@@ -141,6 +142,8 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_dOFSettings));
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_vignetteSettings));
+        
+        m_ray = Camera.main.ScreenPointToRay(Input.mousePosition);
     }
 
     private void Update()
@@ -281,8 +284,19 @@ public class PlayerController : MonoBehaviour
 
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
         {
-            m_UIManager.TakableObject();
-            TakeFlashlight();
+            if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity))
+            {
+                m_UIManager.TakableObject();
+                TakeFlashlight();
+                Debug.Log("raycasthit");
+                Debug.DrawRay(transform.position,transform.TransformDirection(Vector3.forward));
+            } 
+            else
+            {
+                m_UIManager.DisableUi();
+                return;
+            }
+
         }
 
         else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false)
@@ -414,6 +428,7 @@ public class PlayerController : MonoBehaviour
                 m_createNarrativeEvent.actionComplete = true;
             }
             m_doudouIsUsed = true;
+            m_camShake.camShakeActive = true;
             m_AIStateMachine.m_chasing = true;
         }
         if (Input.GetKeyUp(KeyCode.R))
