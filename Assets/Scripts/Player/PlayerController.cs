@@ -243,13 +243,14 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                
                 m_camShake.camShakeActive = false;
             }
         }
 
         if (m_doudouIsUsed == true)
         {
-            Stressing(-m_StressPower);
+            Stressing(-m_StressPower*Time.deltaTime);
         }
     }
     private void Stressing(float p_stressNum)
