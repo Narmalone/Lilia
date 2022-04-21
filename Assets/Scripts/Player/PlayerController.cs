@@ -225,7 +225,7 @@ public class PlayerController : MonoBehaviour
 
         m_intenseFieldOfView = m_currentStress / 100;
         m_intenseFieldOfView = Mathf.Min(m_intesiteFlouToHealth.Evaluate(m_currentStress / m_maxStress), m_intenseFieldOfView);
-        Debug.Log(m_intenseFieldOfView);
+        //Debug.Log(m_intenseFieldOfView);
         //Debug.Log(m_overlaySettings);
         m_materialStress.SetFloat("_Intensity", Mathf.Lerp(0f, 2f, m_currentIntensity));
         m_vignetteSettings.intensity.value = Mathf.Lerp(0f, m_intesiteMaxEffet, m_currentIntensity);
