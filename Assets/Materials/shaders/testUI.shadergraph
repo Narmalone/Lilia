@@ -65,6 +65,9 @@
         },
         {
             "m_Id": "cf4ba54f1f574938b49cbf438773a69c"
+        },
+        {
+            "m_Id": "ba4ab8d25fb643b08f0366d0ff45935d"
         }
     ],
     "m_GroupDatas": [],
@@ -234,6 +237,9 @@
             },
             {
                 "m_Id": "078f1a4c2513459ea10aba8bbddee80f"
+            },
+            {
+                "m_Id": "ba4ab8d25fb643b08f0366d0ff45935d"
             }
         ]
     },
@@ -448,7 +454,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Power",
     "m_StageCapability": 3,
-    "m_Value": 5.599999904632568,
+    "m_Value": 2.2100000381469728,
     "m_DefaultValue": 1.0,
     "m_Labels": []
 }
@@ -1361,6 +1367,39 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BlockNode",
+    "m_ObjectId": "ba4ab8d25fb643b08f0366d0ff45935d",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "SurfaceDescription.BaseColor",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "eeb9b05815e84246bf8eeaa96d9b6365"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_SerializedDescriptor": "SurfaceDescription.BaseColor"
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "c4310f501d6144ce8ead139e61abfed6",
     "m_Id": 2,
@@ -1822,6 +1861,36 @@
     },
     "m_Labels": [],
     "m_Space": 2
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.ColorRGBMaterialSlot",
+    "m_ObjectId": "eeb9b05815e84246bf8eeaa96d9b6365",
+    "m_Id": 0,
+    "m_DisplayName": "Base Color",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "BaseColor",
+    "m_StageCapability": 2,
+    "m_Value": {
+        "x": 0.5,
+        "y": 0.5,
+        "z": 0.5
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_Labels": [],
+    "m_ColorMode": 0,
+    "m_DefaultColor": {
+        "r": 0.5,
+        "g": 0.5,
+        "b": 0.5,
+        "a": 1.0
+    }
 }
 
 {
