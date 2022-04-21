@@ -44,12 +44,15 @@ public class PlayerController : MonoBehaviour
 
     public PlayerControls m_controls;
 
+    [SerializeField] private PortillonScript m_portillon;
+
     private NavMeshPath m_path;
     [Space(10)]
     [SerializeField] private LayerMask m_flashlightMask;
     [SerializeField] private LayerMask m_doudouMask;
     [SerializeField] private LayerMask m_TwoHandsItemMask;
     [SerializeField] private LayerMask m_interactableMask;
+    [SerializeField] private LayerMask m_portillonMask;
     //-----------------------------------------------Systeme Stress------------------------------------------
 
 
@@ -294,7 +297,6 @@ public class PlayerController : MonoBehaviour
             if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_doudouMask))
             {
                 m_UIManager.TakableObject();
-                Debug.Log("dans le raycast mask doudou");
                 TakeDoudou();
             }
             else
@@ -317,6 +319,32 @@ public class PlayerController : MonoBehaviour
                 return; 
             }
         }
+
+        if ((m_portillonMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
+        {
+            Debug.Log("dans le portillon");
+            if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_portillonMask))
+            {
+                m_UIManager.TakableObject();
+                if (m_gameManager.isPc == true)
+                {
+                    if (Input.GetKey(KeyCode.E))
+                    {
+                        m_portillon.UnlockPortillon();
+                    }
+                }
+                else if (m_gameManager.isGamepad == true)
+                {
+                    
+                }
+                Debug.Log("raycast portillon");
+            }
+            else
+            {
+                m_UIManager.DisableUi();
+                return; 
+            }
+        }
     }
 
 
@@ -330,7 +358,11 @@ public class PlayerController : MonoBehaviour
         {
             m_UIManager.DisableUi();
         } 
-        
+        else if ((m_portillonMask.value & (1 << p_collide.gameObject.layer)) > 0)
+        {
+            m_UIManager.DisableUi();
+        }
+
     }
 
     //----------------------------------------------- Fonctions correspondantes au doudou et � la lampe ------------------------------------------//
