@@ -15,8 +15,8 @@ public class PortillonScript : MonoBehaviour
     private Animator m_animator;
     private string m_openAnim = "Open";
 
-    [SerializeField, Tooltip("Vitesse à laquelle le joueur ouvre le portillon en seconde"), Range(0,5)]private float m_speedToOpen;
-    [SerializeField, Range(0,1)]private float m_incrementValue;
+    [SerializeField, Tooltip("Vitesse à laquelle le joueur ouvre le portillon temps de secondes"), Range(0,5)]private float m_speedToOpen;
+    [SerializeField, Tooltip("Vitesse à laquelle la valeur s'incrémente par seconde"),Range(0,1)]private float m_incrementValue;
     private void Awake()
     {
         if (m_animator == null)
