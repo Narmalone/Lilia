@@ -53,19 +53,23 @@ public class QTEManager : MonoBehaviour
     {
         if (m_qteStarted == true)
         {
-            if (Vector3.Distance(transform.position, m_containerPerso.transform.position) > 1)
+            if (Vector3.Distance(transform.position, m_containerPerso.transform.position) > 0.3f)
             {
-                Vector3.MoveTowards(m_playerGO.transform.position,m_containerPerso.transform.position,0.1f);
+                m_playerGO.transform.position = Vector3.MoveTowards(m_playerGO.transform.position,m_containerPerso.transform.position,0.1f);
+                
             }
             else if (m_currentNumberQTE < m_nombreQTE)
             {
-                Debug.Log($"Press key {m_keycodesQTE[m_index]}");
-                if (Input.GetKey(m_keycodesQTE[m_index]) && m_startedCoroutine == false)
+                if (m_startedCoroutine == false)
                 {
-                    m_startedCoroutine = true;
-                    m_currentNumberQTE++;
-                    m_index = Random.Range(0, m_keycodesQTE.Length);
-                    StartCoroutine(CoroutineWait());
+                    Debug.Log($"Press key {m_keycodesQTE[m_index]}");
+                    if (Input.GetKey(m_keycodesQTE[m_index]))
+                    {
+                        m_startedCoroutine = true;
+                        m_currentNumberQTE++;
+                        m_index = Random.Range(0, m_keycodesQTE.Length);
+                        StartCoroutine(CoroutineWait());
+                    }
                 }
             }
             
