@@ -23,8 +23,15 @@ public class AISM : StateMachine
 
     [NonSerialized] public NavMeshPath m_path;
 
+    [NonSerialized] public float m_targetSpeed;
+    
+    [NonSerialized] public float m_pourcentSpeed = 1f;
+    
+    public AnimationCurve m_courbeLimace;
+    
     private void Awake()
     {
+        m_targetSpeed = m_navAgent.speed;
         m_path = new NavMeshPath();
         m_patrouilleState = new Patrouille(this,m_navAgent,m_waypoints,m_doudou);
         m_chasseState = new Chasse(this,m_navAgent,m_doudou);
