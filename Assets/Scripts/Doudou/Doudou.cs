@@ -23,11 +23,12 @@ public class Doudou : MonoBehaviour
     {
         m_rbDoudou.isKinematic = true;
         m_rbDoudou.useGravity = false;
+        /*
         m_doudou.transform.SetParent(m_emplacementDoudou);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(0f,-0f,0f);
-
-        Debug.Log(m_emplacementDoudou.transform);
+        */
+        m_doudou.transform.position = new Vector3(2000f, 2000f, 2000f);
         m_doudou.GetComponent<BoxCollider>().enabled = false;
         uiManager.DisableUi();
 
@@ -35,6 +36,10 @@ public class Doudou : MonoBehaviour
 
     public void DropItem()
     {
+        m_doudou.transform.position = m_emplacementDoudou.transform.position;
+        m_doudou.transform.SetParent(m_emplacementDoudou);
+        m_doudou.transform.localRotation = Quaternion.Euler(0f,-0f,0f);
+        
         m_rbDoudou.isKinematic = false;
         m_rbDoudou.useGravity = true;
         m_doudou.transform.parent = null;      
