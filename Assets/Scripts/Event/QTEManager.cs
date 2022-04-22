@@ -13,7 +13,9 @@ public class QTEManager : MonoBehaviour
 
     [SerializeField] private SphereCollider m_sphereCol;
 
-    [SerializeField][Range(1,10)] private float m_rangeCol;
+    [SerializeField][Range(1,10)] private float m_rangeCol = 0f;
+    
+    [SerializeField][Range(0,3)] private float m_tempsEntreQTE = 0f;
     
     [SerializeField] private int m_nombreQTE;
     
@@ -53,13 +55,14 @@ public class QTEManager : MonoBehaviour
     {
         if (m_qteStarted == true)
         {
-            if (Vector3.Distance(transform.position, m_containerPerso.transform.position) > 0.3f)
+            if (Vector3.Distance(transform.position, m_containerPerso.transform.position) > 1f)
             {
                 m_playerGO.transform.position = Vector3.MoveTowards(m_playerGO.transform.position,m_containerPerso.transform.position,0.1f);
                 
             }
             else if (m_currentNumberQTE < m_nombreQTE)
             {
+                Debug.Log("dans le else if connard");
                 if (m_startedCoroutine == false)
                 {
                     Debug.Log($"Press key {m_keycodesQTE[m_index]}");
@@ -84,7 +87,7 @@ public class QTEManager : MonoBehaviour
 
     IEnumerator CoroutineWait()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(m_tempsEntreQTE);
         m_startedCoroutine = false;
     }
 
