@@ -13,6 +13,8 @@ public class ZoneDetection : MonoBehaviour
         if ((m_layerPlayer.value & (1 << other.gameObject.layer)) > 0)
         {
             m_triggeredEvent?.Raise(other.transform.position);
+            Debug.Log("un event a été trigger ?");
         }
     }
+   
 }

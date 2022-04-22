@@ -31,19 +31,21 @@ public class Patrouille : BaseState
     {
         base.UpdateLogic();
         
-        if (Vector3.Distance(m_sm.transform.position, m_waypoints.GetCurrentPoint().transform.position) <= 5)
+        if (Vector3.Distance(m_sm.transform.position, m_waypoints.GetCurrentPoint().transform.position) <= 1)
         {
             m_waypoints.NextPoint();
         }
         m_navAgent.SetDestination(m_waypoints.GetCurrentPoint().transform.position);
-        
-        Chasse.GetPath(m_path,m_doudou.transform.position, m_sm.transform.position,NavMesh.AllAreas);
-        if (Chasse.GetPathLength(m_path) < m_sm.m_distanceDetection)
+        Chasse.GetPath(m_path, m_doudou.transform.position, m_sm.transform.position, NavMesh.AllAreas);
+        if (m_path.status == NavMeshPathStatus.PathComplete)
         {
-            stateMachine.ChangeState(m_sm.m_chasseState);
-            Debug.Log("change state");
+            if (Chasse.GetPathLength(m_path) < m_sm.m_distanceDetection)
+            {
+                stateMachine.ChangeState(m_sm.m_chasseState);
+                Debug.Log("change state");
+            }
         }
-
+        
         if (m_sm.m_chasing == true)
         {
             stateMachine.ChangeState(m_sm.m_chasseState);

@@ -14,5 +14,6 @@ public class Event1 : ScriptableObject
     public void Raise(Vector3 p_pos)
     {
         onTriggered?.Invoke(p_pos);
-    }
+    } 
+    
 }

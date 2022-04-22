@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 public class MouseLock : MonoBehaviour
 {
     public float mouseSensitivity;
-    [SerializeField] private GameManager m_gameManager;
+    private GameManager m_gameManager;
 
-    public Transform playerBody;
+    [Tooltip("Référence du transform du joueur")]public Transform playerBody;
     private float xRotation = 0f;
 
     PlayerControls controls;

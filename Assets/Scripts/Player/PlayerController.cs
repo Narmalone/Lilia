@@ -23,7 +23,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField,Tooltip("Script du doudou")] Doudou m_doudou;
     
     [SerializeField,Tooltip("Script de la lampe torche")] private FlashlightManager m_flm;
-    
+
+    [SerializeField] private CaisseProto m_caisseProtoScript; 
+
     [NonSerialized]
     public bool m_flashlightIsPossessed = false;
     
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
     [Space(10)]
     [SerializeField] private LayerMask m_flashlightMask;
     [SerializeField] private LayerMask m_doudouMask;
+    [SerializeField] private LayerMask m_TwoHandsItemMask;
     //-----------------------------------------------Systeme Stress------------------------------------------
 
 
@@ -55,8 +58,13 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField, Tooltip("Vitesse du joueur en m/s")]private float m_speed;
 
-    
-    
+    [SerializeField, Tooltip("puissance du stress en fonction du temps"), Range(0f,1f)] private float m_StressPower;
+
+    [SerializeField, Tooltip("Le joueur va stresser avec la touche espace en fonction de la valeur attribuée"), Range(0f,10f)] private float m_makeMeStress;
+
+    [SerializeField, Tooltip("Si la valeur est à 0.3 alors le joueur est slow de 70%"), Range(0f,1f)] private float m_slow;
+
+
     //-----------------------------------------------Post-Processing------------------------------------------
     [Header("Post-Processing")]
     [SerializeField,Tooltip("Volume de post-process")] Volume m_linkedPostProcess;
@@ -76,7 +84,7 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField,Tooltip("Intensité maximum de l'effet")] float m_intesiteMaxEffet = 0.5f;
     
-    //private Vignette m_overlaySettings;
+    private Vignette m_vignetteSettings;
 
     private DepthOfField m_dOFSettings;
     
@@ -91,6 +99,8 @@ public class PlayerController : MonoBehaviour
     [Range(0f, 1f)] float m_intenseFieldOfView;
     
     [SerializeField,Tooltip("Courbe d'intensite de l'effet par rapport à la vie")] AnimationCurve m_intensityDueToHealth;
+    [Space(10)]
+    [SerializeField,Tooltip("Courbe d'intensite de l'effet de flou par rapport à la vie")] AnimationCurve m_intesiteFlouToHealth;
     [Space(10)]
     [SerializeField,Tooltip("Script de secouement")] private Shake m_camShake;
 
@@ -118,8 +128,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        
-        
+
+        m_caisseProtoScript = FindObjectOfType<CaisseProto>();
         m_gameManager = FindObjectOfType<GameManager>();
         m_menuManager = FindObjectOfType<MenuManager>();
         m_controls = new PlayerControls();
@@ -128,7 +138,9 @@ public class PlayerController : MonoBehaviour
         
         m_currentStress = m_maxStress;
         m_stressBar.SetMaxHealth(m_maxStress);
+
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_dOFSettings));
+        Debug.Log(m_linkedPostProcess.profile.TryGet(out m_vignetteSettings));
     }
 
     private void Update()
@@ -149,6 +161,15 @@ public class PlayerController : MonoBehaviour
 
             m_myChara.Move(move * m_speed * Time.deltaTime);
         }
+        if(m_doudouIsUsed == true)
+        {
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
+
+            Vector3 move = transform.right * x + transform.forward * z;
+
+            m_myChara.Move(move * m_speed * m_slow * Time.deltaTime);
+        }
         // D�placements du joueur
         
         m_myChara.Move(m_velocity * Time.deltaTime);
@@ -159,7 +180,7 @@ public class PlayerController : MonoBehaviour
         //Inputs venant du joueur
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Stressing(10);
+            Stressing(m_makeMeStress);
         }
 
         if(m_gameManager.isPc == true)
@@ -203,22 +224,33 @@ public class PlayerController : MonoBehaviour
         }
 
         m_intenseFieldOfView = m_currentStress / 100;
+        m_intenseFieldOfView = Mathf.Min(m_intesiteFlouToHealth.Evaluate(m_currentStress / m_maxStress), m_intenseFieldOfView);
+        //Debug.Log(m_intenseFieldOfView);
         //Debug.Log(m_overlaySettings);
-        m_materialStress.SetFloat("_Intensity", Mathf.Lerp(0f, 5f, m_currentIntensity));
-        //m_overlaySettings.Intensity.value = Mathf.Lerp(0f, m_intesiteMaxEffet, m_currentIntensity);
-        m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 2f, m_intenseFieldOfView);
+        m_materialStress.SetFloat("_Intensity", Mathf.Lerp(0f, 2f, m_currentIntensity));
+        m_vignetteSettings.intensity.value = Mathf.Lerp(0f, m_intesiteMaxEffet, m_currentIntensity);
+        m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
 
-        if (Chasse.GetPathLength(m_AIStateMachine.m_path) < 10f)
+        Chasse.GetPath(m_path, m_doudou.transform.position, m_AIStateMachine.transform.position, NavMesh.AllAreas);
+        if (m_path.status== NavMeshPathStatus.PathComplete)
         {
-            float dist = Vector3.Distance(m_AIStateMachine.transform.position, m_doudou.transform.position);
-            float power = dist/10 ;
-            float powerAdapted = Mathf.Lerp(0.1f, 0f,power);
-            m_camShake.StartShake(0.15f,powerAdapted);
+            if (Chasse.GetPathLength(m_AIStateMachine.m_path) < 10f && m_AIStateMachine.currentState == m_AIStateMachine.m_chasseState)
+            {
+                float dist = Vector3.Distance(m_AIStateMachine.transform.position, m_doudou.transform.position);
+                float power = dist / 10;
+                float powerAdapted = Mathf.Lerp(0.1f, 0f, power);
+                m_camShake.camShakeActive = true;
+            }
+            else
+            {
+                
+                m_camShake.camShakeActive = false;
+            }
         }
 
         if (m_doudouIsUsed == true)
         {
-            Stressing(-0.05f);
+            Stressing(-m_StressPower*Time.deltaTime);
         }
     }
     private void Stressing(float p_stressNum)
@@ -260,6 +292,12 @@ public class PlayerController : MonoBehaviour
         {
             m_UIManager.TakableObject();
             TakeDoudou();
+        }  
+        
+        else if ((m_TwoHandsItemMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false  && m_flashlightIsPossessed == false)
+        {
+            m_UIManager.TakableObject();
+            Debug.Log("caisse a été trigger");
         }
     }
 
@@ -273,7 +311,8 @@ public class PlayerController : MonoBehaviour
         else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             m_UIManager.DisableUi();
-        }
+        } 
+        
     }
 
     //----------------------------------------------- Fonctions correspondantes au doudou et � la lampe ------------------------------------------//
@@ -370,7 +409,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && m_doudouIsPossessed == true)
         {
             //startTime = DateTime.Now;
-            m_doudou.UseDoudou();
             m_doudouIsUsed = true;
             m_AIStateMachine.m_chasing = true;
         }
