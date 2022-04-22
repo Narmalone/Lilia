@@ -189,6 +189,7 @@ public class PlayerController : MonoBehaviour
                 m_menuManager.OnPause();
                 m_gameManager.GamePaused();
             }
+            
         }
         else if (m_gameManager.isGamepad == true)
         {
@@ -237,9 +238,11 @@ public class PlayerController : MonoBehaviour
                 float power = dist / 10;
                 float powerAdapted = Mathf.Lerp(0.1f, 0f, power);
                 m_camShake.camShakeActive = true;
+                Debug.Log("dans la chasse");
             }
             else
             {
+                Debug.Log("ne doit plus chasser");
                 m_camShake.camShakeActive = false;
             }
         }
@@ -460,23 +463,29 @@ public class PlayerController : MonoBehaviour
     
     public void ActiveDoudou()
     {
-        if (Input.GetKeyDown(KeyCode.R) && m_doudouIsPossessed == true)
-        {
-            if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 1)
-            {
-                m_createNarrativeEvent.actionComplete = true;
-            }
-            m_doudouIsUsed = true;
-            m_camShake.camShakeActive = true;
-            m_AIStateMachine.m_chasing = true;
-        }
-        if (Input.GetKeyUp(KeyCode.R))
-        {
-            m_doudouIsUsed = false;
-            m_AIStateMachine.m_chasing = false;
-        }
         if (m_gameManager.isPc == true)
         {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (m_doudouIsPossessed == true)
+                {
+                    m_doudouIsUsed = true;
+                    m_camShake.camShakeActive = true;
+                    m_AIStateMachine.m_chasing = true;
+                    if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 1)
+                    {
+                        m_createNarrativeEvent.actionComplete = true;
+                    }
+                    Debug.Log("doit être chase");
+                }
+            }
+            if (Input.GetKeyUp(KeyCode.R))
+            {
+                Debug.Log("touche r non appuyé");
+                m_doudouIsUsed = false;
+                m_camShake.camShakeActive = false;
+                m_AIStateMachine.m_chasing = false; 
+            }
             if (Input.GetKeyDown(KeyCode.G) && m_doudouIsPossessed == true)
             {
                 if (m_flashlightIsPossessed == false)

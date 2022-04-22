@@ -5,16 +5,21 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PortillonScript : MonoBehaviour
 {
-    [SerializeField] private LayerMask m_playerMask;
+    [Header("References scripts")]
     [SerializeField] private GameManager m_gameManager;
-
-    [SerializeField] private BoxCollider m_boxCollider;
-
-    public Slider sliderInstance;
+    [SerializeField] private UiManager m_uiManager;
     
+    [Header("References dans l'objet"), Space(10)]
+    [SerializeField] private BoxCollider m_boxCollider;
+    public Slider sliderInstance;
+
+    [Header("References Mask"), Space(10)]
+    [SerializeField] private LayerMask m_playerMask;
+
     private Animator m_animator;
     private string m_openAnim = "Open";
-
+    
+    [Header("Variables pour Designers"), Space(10)]
     [SerializeField, Tooltip("Vitesse à laquelle le joueur ouvre le portillon temps de secondes"), Range(0,5)]private float m_speedToOpen;
     [SerializeField, Tooltip("Vitesse à laquelle la valeur s'incrémente par seconde"),Range(0,1)]private float m_incrementValue;
     private void Awake()
@@ -40,6 +45,7 @@ public class PortillonScript : MonoBehaviour
         Animator.StringToHash(m_openAnim);
         m_boxCollider.enabled = false;
         Debug.Log("jouer l'anim");
+        m_uiManager.DisableUi();
     }
 
     public void UnlockPortillon()
