@@ -62,7 +62,7 @@ public class Shake : MonoBehaviour
         if (camShakeActive && Trauma > 0)
         {
             //increase the time counter (how fast the position changes) based off the traumaMult and some root of the Trauma
-            timeCounter += Time.deltaTime * Mathf.Pow(Trauma,0.3f) * m_shakePower;
+            timeCounter += Time.deltaTime * Mathf.Pow(Trauma,0.5f) * m_shakePower;
             //Bind the movement to the desired range
             Vector3 newPos = GetVec3() * m_shakeRange * Trauma;;
             transform.localPosition = newPos;
