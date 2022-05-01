@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     private MenuManager m_menuManager;
 
+    [SerializeField] private FunRadio m_phone;
+
     [SerializeField,Tooltip("Script du doudou")] Doudou m_doudou;
     
     [SerializeField,Tooltip("Script de la lampe torche")] private FlashlightManager m_flm;
@@ -53,6 +55,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask m_TwoHandsItemMask;
     [SerializeField] private LayerMask m_interactableMask;
     [SerializeField] private LayerMask m_portillonMask;
+    [SerializeField] private LayerMask m_radioMask;
     //-----------------------------------------------Systeme Stress------------------------------------------
 
 
@@ -323,7 +326,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if ((m_portillonMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
+        else if ((m_portillonMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
         {
             Debug.Log("dans le portillon");
             if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_portillonMask))
@@ -348,6 +351,31 @@ public class PlayerController : MonoBehaviour
                 return; 
             }
         }
+        else if ((m_radioMask.value & (1 << p_collide.gameObject.layer)) > 0)
+        {
+            Debug.Log("dans le layer téléphone");
+            if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_radioMask))
+            {
+                m_UIManager.TakableObject();
+                if (m_gameManager.isPc == true)
+                {
+                    if (Input.GetKey(KeyCode.E))
+                    {
+                        m_phone.AnswerToCall();
+                    }
+                }
+                else if (m_gameManager.isGamepad == true)
+                {
+                    
+                }
+                Debug.Log("raycast téléphone");
+            }
+            else
+            {
+                m_UIManager.DisableUi();
+                return; 
+            }
+        }
     }
 
 
@@ -362,6 +390,10 @@ public class PlayerController : MonoBehaviour
             m_UIManager.DisableUi();
         } 
         else if ((m_portillonMask.value & (1 << p_collide.gameObject.layer)) > 0)
+        {
+            m_UIManager.DisableUi();
+        }
+        else if ((m_radioMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             m_UIManager.DisableUi();
         }

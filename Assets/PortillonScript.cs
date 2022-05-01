@@ -22,6 +22,7 @@ public class PortillonScript : MonoBehaviour
     [Header("Variables pour Designers"), Space(10)]
     [SerializeField, Tooltip("Vitesse à laquelle le joueur ouvre le portillon temps de secondes"), Range(0,5)]private float m_speedToOpen;
     [SerializeField, Tooltip("Vitesse à laquelle la valeur s'incrémente par seconde"),Range(0,1)]private float m_incrementValue;
+    [SerializeField, Tooltip("Booléen qui définit si le portillon est activable ou pas")]private bool m_isActivable;
     private void Awake()
     {
         if (m_animator == null)
@@ -39,6 +40,14 @@ public class PortillonScript : MonoBehaviour
         sliderInstance.gameObject.SetActive(false);
     }
 
+    private void Update()
+    {
+        if (m_isActivable == false)
+        {
+            
+        }
+    }
+
     public void OnComplete()
     {
         m_animator.SetBool(m_openAnim,true);
@@ -50,20 +59,22 @@ public class PortillonScript : MonoBehaviour
 
     public void UnlockPortillon()
     {
-        Debug.Log("dans le unlock portillon");
-        sliderInstance.gameObject.SetActive(true);
-        if (m_incrementValue < m_speedToOpen)
+        if (m_isActivable == true)
         {
-            m_incrementValue += m_incrementValue * Time.deltaTime;
-            sliderInstance.value = m_incrementValue;
-            Debug.Log(m_incrementValue);
+            Debug.Log("dans le unlock portillon");
+            sliderInstance.gameObject.SetActive(true);
+            if (m_incrementValue < m_speedToOpen)
+            {
+                m_incrementValue += m_incrementValue * Time.deltaTime;
+                sliderInstance.value = m_incrementValue;
+                Debug.Log(m_incrementValue);
+            }
+            else if (m_incrementValue >= m_speedToOpen)
+            {
+                OnComplete();
+                sliderInstance.gameObject.SetActive(false);
+                Debug.Log("Complété");
+            } 
         }
-        else if (m_incrementValue >= m_speedToOpen)
-        {
-            OnComplete();
-            sliderInstance.gameObject.SetActive(false);
-            Debug.Log("Complété");
-        }
-      
     }
 }
