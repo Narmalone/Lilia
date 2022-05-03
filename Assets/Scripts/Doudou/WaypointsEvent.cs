@@ -6,9 +6,9 @@ public class WaypointsEvent : MonoBehaviour
 {
     public int m_waypointsIndex;
 
-    [SerializeField, Tooltip("Vitesse à laquelle le doudou va entre chaques points par secondes")] public float m_speed = 1f;
+    [SerializeField, Tooltip("Vitesse à laquelle le doudou va en mettre par secondes")] public float m_speed = 1f;
 
-    public List<GameObject> m_waypoints;
+    [Tooltip("Au minimum un point de départ et 1 point d'arrêt, le dernier et avant-dernier point doivent être collés")]public List<GameObject> m_waypoints;
 
     [SerializeField] Doudou m_doudou;
 
@@ -33,13 +33,25 @@ public class WaypointsEvent : MonoBehaviour
             if (m_doudou.transform.localPosition == m_waypoints[m_waypointsIndex].transform.localPosition)
             {
                 MooveToNextPoint();
-                Debug.Log("bouge au prochain point");
             }
         }
+        else { return; }
     }
     public void MooveToNextPoint()
     {
-        m_waypointsIndex++;
-        m_doudou.transform.localPosition = Vector3.MoveTowards(m_doudou.transform.localPosition, m_waypoints[m_waypointsIndex].transform.position, m_speed * Time.deltaTime);
+        if (m_waypointsIndex >= 0 && m_waypointsIndex < m_waypoints.Count -1)
+        {
+            if(isEventCalled == true)
+            {
+                m_waypointsIndex++;
+                m_doudou.transform.localPosition = Vector3.MoveTowards(m_doudou.transform.localPosition, m_waypoints[m_waypointsIndex].transform.position, m_speed * Time.deltaTime);
+                Debug.Log(m_waypointsIndex);
+            }
+        }
+        if(m_waypointsIndex == m_waypoints.Count -1)
+        {
+            m_doudou.CallEventEnded();
+            isEventCalled = false;
+        }
     }
 }

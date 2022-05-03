@@ -9,6 +9,7 @@ public class FunRadio : MonoBehaviour
     [SerializeField] private GameManager m_gameManager;
     [SerializeField] private UiManager m_uiManager;
     [SerializeField] private CreateNarrativeEvent m_createNarrativeEvent;
+    [SerializeField] private WaypointsEvent m_waypointMoveDoudou;
     
     [Header("References Mask"), Space(10)]
     [SerializeField] private LayerMask m_playerMask;
@@ -27,6 +28,7 @@ public class FunRadio : MonoBehaviour
 
     public void AnswerToCall()
     {
+        m_waypointMoveDoudou.isEventCalled = true;
         Debug.Log("a répondu au téléphone");
     }
 }

@@ -12,7 +12,7 @@ public class Doudou : MonoBehaviour
     private Rigidbody m_rbDoudou;
     [SerializeField] private float m_stepOffset = 0.2f;
     public bool m_callEvent = false;
-
+    public bool m_callEventEnded = false;
     [SerializeField] WaypointsEvent m_waypointsEvent;
 
     private void Awake()
@@ -21,24 +21,32 @@ public class Doudou : MonoBehaviour
         m_rbDoudou = m_doudou.GetComponent<Rigidbody>();
         m_callEvent = false;
     }
-
-    private void OnTriggerStay(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if ((m_stairsMask.value & (1 << other.gameObject.layer)) > 0)
+        if ((m_stairsMask.value & (1 << collision.gameObject.layer)) > 0)
         {
             if (m_callEvent == true)
             {
-                Debug.Log("dans la condition de l'event");
+                Debug.Log("collision stairs enter");
                 m_doudou.transform.localPosition = new Vector3(m_doudou.transform.localPosition.x, m_doudou.transform.localPosition.y + m_stepOffset, m_doudou.transform.localPosition.z);
                 m_rbDoudou.isKinematic = true;
                 m_rbDoudou.useGravity = false;
                 m_boxDoudouColider.enabled = false;
             }
         }
-            Debug.Log("On collision enter");
     }
+    private void OnCollisionExit(Collision collision)
+    {
+        if ((m_stairsMask.value & (1 << collision.gameObject.layer)) > 0)
+        {
+            if (m_callEvent == true)
+            {
+                m_rbDoudou.isKinematic = false;
+                m_rbDoudou.useGravity = true;
+            }
+        }
 
- 
+    }
     private float m_yRotation = 0f;
 
     public void PickItem()
@@ -60,5 +68,17 @@ public class Doudou : MonoBehaviour
         m_rbDoudou.isKinematic = false;
         m_rbDoudou.useGravity = true;
         m_doudou.transform.parent = null;      
+    }
+
+    public void CallEventEnded()
+    {
+        m_callEventEnded = true;
+        if(m_callEventEnded == true)
+        {
+            Debug.Log("l'event est fini");
+            m_boxDoudouColider.enabled = true;
+            m_rbDoudou.isKinematic = false;
+            m_rbDoudou.useGravity = true;
+        }
     }
 }
