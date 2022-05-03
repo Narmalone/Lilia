@@ -9,6 +9,7 @@ public class CreateNarrativeEvent : ScriptableObject
     [Header("Variables")]
     [Tooltip("vitesse � laquelle le texte FadeIn et FadeOut par seconde"), Range(0f, 1f)]public float speedToDisplayValue;
     public bool actionComplete;
+    public bool isWaitingAction;
     public bool isFirstTime;
     
     [Header("Dialog"), Space(10)]

@@ -361,7 +361,10 @@ public class PlayerController : MonoBehaviour
                 {
                     if (Input.GetKey(KeyCode.E))
                     {
-                        m_phone.AnswerToCall();
+                        if(m_doudouIsPossessed == false && m_flashlightIsPossessed == false)
+                        {
+                            m_phone.AnswerToCall();
+                        }
                     }
                 }
                 else if (m_gameManager.isGamepad == true)

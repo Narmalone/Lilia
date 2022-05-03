@@ -65,9 +65,16 @@ public class TxtEvent : MonoBehaviour
     {
         if (m_createNarrativeEvent.index < m_createNarrativeEvent.lines.Length -1)
         {
-            ClearLines();
-            m_createNarrativeEvent.index++;
-            StartCoroutine(DisplaySentence());
+            if(m_createNarrativeEvent.index != 1)
+            {
+                ClearLines();
+                m_createNarrativeEvent.index++;
+                StartCoroutine(DisplaySentence());
+            }
+            else
+            {
+                Debug.Log("en attente du prochain event");
+            }
         }
     }
 

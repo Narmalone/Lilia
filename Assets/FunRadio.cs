@@ -8,6 +8,7 @@ public class FunRadio : MonoBehaviour
     [Header("References scripts")]
     [SerializeField] private GameManager m_gameManager;
     [SerializeField] private UiManager m_uiManager;
+    [SerializeField] private CreateNarrativeEvent m_createNarrativeEvent;
     
     [Header("References Mask"), Space(10)]
     [SerializeField] private LayerMask m_playerMask;
