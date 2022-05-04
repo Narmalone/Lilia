@@ -23,13 +23,18 @@ public class PortillonScript : MonoBehaviour
     [SerializeField, Tooltip("Vitesse à laquelle le joueur ouvre le portillon temps de secondes"), Range(0,5)]private float m_speedToOpen;
     [SerializeField, Tooltip("Vitesse à laquelle la valeur s'incrémente par seconde"),Range(0,1)]private float m_incrementValue;
     [SerializeField, Tooltip("Booléen qui définit si le portillon est activable ou pas")]private bool m_isActivable;
+
+    [Header("Références Renderer et materials"), Space(10)]
+    private Renderer m_myRend;
     private void Awake()
     {
         if (m_animator == null)
         {
             m_animator = GetComponentInParent<Animator>();
         };
-        
+
+        m_myRend = GetComponent<Renderer>();
+
         sliderInstance.minValue = 0;
         sliderInstance.value = m_incrementValue;
         sliderInstance.maxValue = m_speedToOpen;
@@ -42,9 +47,13 @@ public class PortillonScript : MonoBehaviour
 
     private void Update()
     {
-        if (m_isActivable == false)
+        if (m_isActivable == true)
         {
-            
+            Activable();
+        }
+        else if (m_isActivable == false)
+        {
+            Unactivable();
         }
     }
 
@@ -76,5 +85,16 @@ public class PortillonScript : MonoBehaviour
                 Debug.Log("Complété");
             } 
         }
+    }
+
+    public void Activable()
+    {
+        m_myRend.material.color = Color.yellow;
+        m_boxCollider.enabled = true;
+    }
+    public void Unactivable()
+    {
+        m_myRend.material.color = Color.grey;
+        m_boxCollider.enabled = false;
     }
 }
