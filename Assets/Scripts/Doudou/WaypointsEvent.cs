@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class WaypointsEvent : MonoBehaviour
 {
@@ -14,11 +15,14 @@ public class WaypointsEvent : MonoBehaviour
 
     public bool isEventCalled;
 
+    public Transform m_positionAfterCall;
+    public bool setNewPos = false;
+
     private void Awake()
     {
         m_waypointsIndex = 0;
-
-        if(m_doudou == null)
+        setNewPos = false;
+        if (m_doudou == null)
         {
             m_doudou = FindObjectOfType<Doudou>();
         }
@@ -28,11 +32,19 @@ public class WaypointsEvent : MonoBehaviour
     {
         if(isEventCalled == true)
         {
-            m_doudou.m_callEvent = true;
-            m_doudou.transform.localPosition = Vector3.MoveTowards(m_doudou.transform.localPosition, m_waypoints[m_waypointsIndex].transform.position, m_speed * Time.deltaTime);
-            if (m_doudou.transform.localPosition == m_waypoints[m_waypointsIndex].transform.localPosition)
+            if(setNewPos == false)
             {
-                MooveToNextPoint();
+                m_doudou.transform.position = m_positionAfterCall.transform.position;
+                setNewPos = true;
+            }
+            else
+            {
+                m_doudou.m_callEvent = true;
+                m_doudou.transform.localPosition = Vector3.MoveTowards(m_doudou.transform.localPosition, m_waypoints[m_waypointsIndex].transform.position, m_speed * Time.deltaTime);
+                if (m_doudou.transform.localPosition == m_waypoints[m_waypointsIndex].transform.localPosition)
+                {
+                    MooveToNextPoint();
+                }
             }
         }
         else { return; }

@@ -47,9 +47,9 @@ public class TxtEvent : MonoBehaviour
             
             if (currentAlpha <= desiredAlpha)
             {
+                m_createNarrativeEvent.actionComplete = false;
                 ClearLines();
                 NextSentence();
-                m_createNarrativeEvent.actionComplete = false;
             }
         }
     }
@@ -65,7 +65,7 @@ public class TxtEvent : MonoBehaviour
     {
         if (m_createNarrativeEvent.index < m_createNarrativeEvent.lines.Length -1)
         {
-            if(m_createNarrativeEvent.index != 1)
+            if(m_createNarrativeEvent.isWaitingAction == false)
             {
                 ClearLines();
                 m_createNarrativeEvent.index++;
@@ -73,7 +73,7 @@ public class TxtEvent : MonoBehaviour
             }
             else
             {
-                Debug.Log("en attente du prochain event");
+                Debug.Log("en attente que le joueur fasse quelque chose");
             }
         }
     }

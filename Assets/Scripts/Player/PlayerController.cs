@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private CreateNarrativeEvent m_createNarrativeEvent;
 
+    [SerializeField] private TxtEvent m_txtEvent;
+
     private MenuManager m_menuManager;
 
     [SerializeField] private FunRadio m_phone;
@@ -353,6 +355,12 @@ public class PlayerController : MonoBehaviour
         }
         else if ((m_radioMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
+            if (m_createNarrativeEvent.index == 1)
+            {
+                m_createNarrativeEvent.isWaitingAction = false;
+                m_createNarrativeEvent.actionComplete = true;
+                m_txtEvent.OnFade();
+            }
             Debug.Log("dans le layer téléphone");
             if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_radioMask))
             {
@@ -363,7 +371,10 @@ public class PlayerController : MonoBehaviour
                     {
                         if(m_doudouIsPossessed == false && m_flashlightIsPossessed == false)
                         {
-                            m_phone.AnswerToCall();
+                            if(m_createNarrativeEvent.index == 2)
+                            {
+                                m_phone.AnswerToCall();
+                            }
                         }
                     }
                 }
@@ -448,6 +459,7 @@ public class PlayerController : MonoBehaviour
                 if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 0)
                 {
                     m_createNarrativeEvent.actionComplete = true;
+                    m_createNarrativeEvent.isWaitingAction = false;
                 }
                 m_UIManager.TakeDoudou();
                 m_doudou.PickItem();
@@ -510,6 +522,7 @@ public class PlayerController : MonoBehaviour
                     if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 1)
                     {
                         m_createNarrativeEvent.actionComplete = true;
+                        m_createNarrativeEvent.isWaitingAction = true;
                     }
                     Debug.Log("doit être chase");
                 }
