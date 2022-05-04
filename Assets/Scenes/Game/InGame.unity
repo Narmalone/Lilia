@@ -6640,6 +6640,12 @@ MonoBehaviour:
   m_doudou: {fileID: 604610448}
   m_triggeredEvent: {fileID: 11400000, guid: 4c6861d28e471b14793c61f67048ca61, type: 2}
   m_distanceDetection: 3
+  m_courbeLimace:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!195 &576080452 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 2873547174128195186, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
@@ -19859,15 +19865,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2873547174128195182, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.907
+      value: 0.057
       objectReference: {fileID: 0}
     - target: {fileID: 2873547174128195182, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.201
+      value: -0.493
       objectReference: {fileID: 0}
     - target: {fileID: 2873547174128195182, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.093
+      value: 7.954
       objectReference: {fileID: 0}
     - target: {fileID: 2873547174128195182, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20361,7 +20367,15 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_intesiteFlouToHealth.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_intensityDueToHealth.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_intesiteFlouToHealth.m_Curve.Array.data[1].time
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
@@ -20373,12 +20387,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_intesiteFlouToHealth.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_intensityDueToHealth.m_Curve.Array.data[0].inSlope
       value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_intensityDueToHealth.m_Curve.Array.data[1].inSlope
       value: -0.34476843
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_intesiteFlouToHealth.m_Curve.Array.data[0].inSlope
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_intensityDueToHealth.m_Curve.Array.data[0].outSlope
@@ -20391,6 +20413,10 @@ PrefabInstance:
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_intensityDueToHealth.m_Curve.Array.data[1].outSlope
       value: -0.34476843
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_intesiteFlouToHealth.m_Curve.Array.data[0].outSlope
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_intensityDueToHealth.m_Curve.Array.data[0].outWeight

@@ -11,11 +11,11 @@ public class Shake : MonoBehaviour
     [SerializeField, Tooltip("Position ou le shake se lance")] private Transform m_originalPos;
     [Range(0, 1)]
     [SerializeField] float trauma;
-    [SerializeField, Range(0,30), Tooltip("Puissance du Shake")] float m_shakePower = 16; //the power of the shake
-    [SerializeField, Range(0,1), Tooltip("Portée du mouvement entre 0 et 1 du perlin noise")] float m_shakeRange = 0.8f; //the range of movment
+    [SerializeField, Range(0, 30), Tooltip("Puissance du Shake")] float m_shakePower = 16; //the power of the shake
+    [SerializeField, Range(0, 1), Tooltip("Portée du mouvement entre 0 et 1 du perlin noise")] float m_shakeRange = 0.8f; //the range of movment
     [SerializeField, Tooltip("Puissance de rotation")] float m_shakeRotation = 17f; //the rotational power
-    [SerializeField, Range(0,1), Tooltip("Valeur à laquelle la profondeur se multiplue")] float m_shakeDepthMultiplier = 0.6f; //the depth multiplier
-    [SerializeField, Range(0,3), Tooltip("Vitesse à laquelle le shake apparaît/disparaît")] float m_shakeDecay = 1.3f; //how quickly the shake falls off
+    [SerializeField, Range(0, 1), Tooltip("Valeur à laquelle la profondeur se multiplue")] float m_shakeDepthMultiplier = 0.6f; //the depth multiplier
+    [SerializeField, Range(0, 3), Tooltip("Vitesse à laquelle le shake apparaît/disparaît")] float m_shakeDecay = 1.3f; //how quickly the shake falls off
 
     float timeCounter = 0; //counter stored for smooth transition
     #endregion
@@ -57,14 +57,14 @@ public class Shake : MonoBehaviour
         camShakeActive = false;
     }
 
-    private void Update ()
+    private void Update()
     {
         if (camShakeActive && Trauma > 0)
         {
             //increase the time counter (how fast the position changes) based off the traumaMult and some root of the Trauma
-            timeCounter += Time.deltaTime * Mathf.Pow(Trauma,0.5f) * m_shakePower;
+            timeCounter += Time.deltaTime * Mathf.Pow(Trauma, 0.5f) * m_shakePower;
             //Bind the movement to the desired range
-            Vector3 newPos = GetVec3() * m_shakeRange * Trauma;;
+            Vector3 newPos = GetVec3() * m_shakeRange * Trauma; ;
             transform.localPosition = newPos;
             //rotation modifier applied here
             transform.localRotation = Quaternion.Euler(newPos * m_shakeRotation);
