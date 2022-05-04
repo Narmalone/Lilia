@@ -18,13 +18,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField,Tooltip("Script de Control de l'UI")] private UiManager m_UIManager;
 
-    [SerializeField] private CreateNarrativeEvent m_createNarrativeEvent;
-
-    [SerializeField] private TxtEvent m_txtEvent;
-
     private MenuManager m_menuManager;
-
-    [SerializeField] private FunRadio m_phone;
 
     [SerializeField,Tooltip("Script du doudou")] Doudou m_doudou;
     
@@ -48,16 +42,11 @@ public class PlayerController : MonoBehaviour
 
     public PlayerControls m_controls;
 
-    [SerializeField] private PortillonScript m_portillon;
-
     private NavMeshPath m_path;
     [Space(10)]
     [SerializeField] private LayerMask m_flashlightMask;
     [SerializeField] private LayerMask m_doudouMask;
     [SerializeField] private LayerMask m_TwoHandsItemMask;
-    [SerializeField] private LayerMask m_interactableMask;
-    [SerializeField] private LayerMask m_portillonMask;
-    [SerializeField] private LayerMask m_radioMask;
     //-----------------------------------------------Systeme Stress------------------------------------------
 
 
@@ -111,6 +100,8 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField,Tooltip("Courbe d'intensite de l'effet par rapport à la vie")] AnimationCurve m_intensityDueToHealth;
     [Space(10)]
+    [SerializeField,Tooltip("Courbe d'intensite de l'effet de flou par rapport à la vie")] AnimationCurve m_intesiteFlouToHealth;
+    [Space(10)]
     [SerializeField,Tooltip("Script de secouement")] private Shake m_camShake;
 
     //-----------------------------------------------Systeme Physics------------------------------------------
@@ -127,8 +118,13 @@ public class PlayerController : MonoBehaviour
     
     private bool m_isGrounded;
 
-    private RaycastHit m_hit;
-    private Ray m_ray;
+    //----------------------------------------------- Gamepad ------------------------------------------//
+
+
+    private void Start()
+    {
+
+    }
 
     private void Awake()
     {
@@ -145,7 +141,6 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_dOFSettings));
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_vignetteSettings));
-       
     }
 
     private void Update()
@@ -195,7 +190,6 @@ public class PlayerController : MonoBehaviour
                 m_menuManager.OnPause();
                 m_gameManager.GamePaused();
             }
-            
         }
         else if (m_gameManager.isGamepad == true)
         {
@@ -230,6 +224,8 @@ public class PlayerController : MonoBehaviour
         }
 
         m_intenseFieldOfView = m_currentStress / 100;
+        m_intenseFieldOfView = Mathf.Min(m_intesiteFlouToHealth.Evaluate(m_currentStress / m_maxStress), m_intenseFieldOfView);
+        //Debug.Log(m_intenseFieldOfView);
         //Debug.Log(m_overlaySettings);
         m_materialStress.SetFloat("_Intensity", Mathf.Lerp(0f, 2f, m_currentIntensity));
         m_vignetteSettings.intensity.value = Mathf.Lerp(0f, m_intesiteMaxEffet, m_currentIntensity);
@@ -244,18 +240,17 @@ public class PlayerController : MonoBehaviour
                 float power = dist / 10;
                 float powerAdapted = Mathf.Lerp(0.1f, 0f, power);
                 m_camShake.camShakeActive = true;
-                Debug.Log("dans la chasse");
             }
             else
             {
-                Debug.Log("ne doit plus chasser");
+                
                 m_camShake.camShakeActive = false;
             }
         }
 
         if (m_doudouIsUsed == true)
         {
-            Stressing(-m_StressPower);
+            Stressing(-m_StressPower*Time.deltaTime);
         }
     }
     private void Stressing(float p_stressNum)
@@ -286,110 +281,23 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay(Collider p_collide)
     {
-        m_ray = Camera.main.ScreenPointToRay(new Vector3(0.5f,0.5f,0f));
+
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
         {
-            if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_flashlightMask))
-            {
-                m_UIManager.TakableObject();
-                TakeFlashlight();
-            } 
-            else
-            {
-                m_UIManager.DisableUi();
-                return;
-            }
+            m_UIManager.TakableObject();
+            TakeFlashlight();
         }
 
         else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false)
         {
-            if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_doudouMask))
-            {
-                m_UIManager.TakableObject();
-                TakeDoudou();
-            }
-            else
-            {
-                m_UIManager.DisableUi();
-                return;
-            }
+            m_UIManager.TakableObject();
+            TakeDoudou();
         }  
         
         else if ((m_TwoHandsItemMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false  && m_flashlightIsPossessed == false)
         {
-            if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_TwoHandsItemMask))
-            {
-                m_UIManager.TakableObject();
- 
-            }
-            else
-            {
-                m_UIManager.DisableUi();
-                return; 
-            }
-        }
-
-        else if ((m_portillonMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
-        {
-            Debug.Log("dans le portillon");
-            if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_portillonMask))
-            {
-                m_UIManager.TakableObject();
-                if (m_gameManager.isPc == true)
-                {
-                    if (Input.GetKey(KeyCode.E))
-                    {
-                        m_portillon.UnlockPortillon();
-                    }
-                }
-                else if (m_gameManager.isGamepad == true)
-                {
-                    
-                }
-                Debug.Log("raycast portillon");
-            }
-            else
-            {
-                m_UIManager.DisableUi();
-                return; 
-            }
-        }
-        else if ((m_radioMask.value & (1 << p_collide.gameObject.layer)) > 0)
-        {
-            if (m_createNarrativeEvent.index == 1)
-            {
-                m_createNarrativeEvent.isWaitingAction = false;
-                m_createNarrativeEvent.actionComplete = true;
-                m_txtEvent.OnFade();
-            }
-            Debug.Log("dans le layer téléphone");
-            if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_radioMask))
-            {
-                m_UIManager.TakableObject();
-                if (m_gameManager.isPc == true)
-                {
-                    if (Input.GetKey(KeyCode.E))
-                    {
-                        if(m_doudouIsPossessed == false && m_flashlightIsPossessed == false)
-                        {
-                            if(m_createNarrativeEvent.index == 2)
-                            {
-                                m_phone.AnswerToCall();
-                            }
-                        }
-                    }
-                }
-                else if (m_gameManager.isGamepad == true)
-                {
-                    
-                }
-                Debug.Log("raycast téléphone");
-            }
-            else
-            {
-                m_UIManager.DisableUi();
-                return; 
-            }
+            m_UIManager.TakableObject();
+            Debug.Log("caisse a été trigger");
         }
     }
 
@@ -404,15 +312,7 @@ public class PlayerController : MonoBehaviour
         {
             m_UIManager.DisableUi();
         } 
-        else if ((m_portillonMask.value & (1 << p_collide.gameObject.layer)) > 0)
-        {
-            m_UIManager.DisableUi();
-        }
-        else if ((m_radioMask.value & (1 << p_collide.gameObject.layer)) > 0)
-        {
-            m_UIManager.DisableUi();
-        }
-
+        
     }
 
     //----------------------------------------------- Fonctions correspondantes au doudou et � la lampe ------------------------------------------//
@@ -457,11 +357,6 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 0)
-                {
-                    m_createNarrativeEvent.actionComplete = true;
-                    m_createNarrativeEvent.isWaitingAction = false;
-                }
                 m_UIManager.TakeDoudou();
                 m_doudou.PickItem();
                 m_doudouIsPossessed = true;
@@ -511,30 +406,19 @@ public class PlayerController : MonoBehaviour
     
     public void ActiveDoudou()
     {
+        if (Input.GetKeyDown(KeyCode.R) && m_doudouIsPossessed == true)
+        {
+            //startTime = DateTime.Now;
+            m_doudouIsUsed = true;
+            m_AIStateMachine.m_chasing = true;
+        }
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            m_doudouIsUsed = false;
+            m_AIStateMachine.m_chasing = false;
+        }
         if (m_gameManager.isPc == true)
         {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                if (m_doudouIsPossessed == true)
-                {
-                    m_doudouIsUsed = true;
-                    m_camShake.camShakeActive = true;
-                    m_AIStateMachine.m_chasing = true;
-                    if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 1)
-                    {
-                        m_createNarrativeEvent.actionComplete = true;
-                        m_createNarrativeEvent.isWaitingAction = true;
-                    }
-                    Debug.Log("doit être chase");
-                }
-            }
-            if (Input.GetKeyUp(KeyCode.R))
-            {
-                Debug.Log("touche r non appuyé");
-                m_doudouIsUsed = false;
-                m_camShake.camShakeActive = false;
-                m_AIStateMachine.m_chasing = false; 
-            }
             if (Input.GetKeyDown(KeyCode.G) && m_doudouIsPossessed == true)
             {
                 if (m_flashlightIsPossessed == false)

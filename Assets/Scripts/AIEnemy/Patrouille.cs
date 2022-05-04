@@ -35,6 +35,15 @@ public class Patrouille : BaseState
         {
             m_waypoints.NextPoint();
         }
+        
+        m_sm.m_pourcentSpeed += 1f*Time.deltaTime;
+        if (m_sm.m_pourcentSpeed >= 1f)
+        {
+            m_sm.m_pourcentSpeed = 0;
+        }
+
+        m_navAgent.speed = Mathf.Lerp(0f,m_sm.m_targetSpeed*2f,m_sm.m_courbeLimace.Evaluate(m_sm.m_pourcentSpeed));
+        
         m_navAgent.SetDestination(m_waypoints.GetCurrentPoint().transform.position);
         Chasse.GetPath(m_path, m_doudou.transform.position, m_sm.transform.position, NavMesh.AllAreas);
         if (m_path.status == NavMeshPathStatus.PathComplete)
