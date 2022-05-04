@@ -23,6 +23,8 @@ public class PortillonScript : MonoBehaviour
     [SerializeField, Tooltip("Vitesse à laquelle le joueur ouvre le portillon temps de secondes"), Range(0,5)]private float m_speedToOpen;
     [SerializeField, Tooltip("Vitesse à laquelle la valeur s'incrémente par seconde"),Range(0,1)]private float m_incrementValue;
     [SerializeField, Tooltip("Booléen qui définit si le portillon est activable ou pas")]private bool m_isActivable;
+    [SerializeField, Tooltip("Couleur du portillon quand il est activable")] private Color m_activePortillonColor;
+    [SerializeField, Tooltip("Couleur du portillon quand il n'est pas activable")] private Color m_inactivePortillonColor;
 
     [Header("Références Renderer et materials"), Space(10)]
     private Renderer m_myRend;
@@ -89,12 +91,12 @@ public class PortillonScript : MonoBehaviour
 
     public void Activable()
     {
-        m_myRend.material.color = Color.yellow;
+        m_myRend.material.color = m_activePortillonColor;
         m_boxCollider.enabled = true;
     }
     public void Unactivable()
     {
-        m_myRend.material.color = Color.grey;
+        m_myRend.material.color = m_inactivePortillonColor;
         m_boxCollider.enabled = false;
     }
 }
