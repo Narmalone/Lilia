@@ -145,6 +145,7 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_dOFSettings));
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_vignetteSettings));
+       
     }
 
     private void Update()
