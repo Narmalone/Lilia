@@ -10,14 +10,14 @@ public class Chasse : BaseState
     private AISM m_sm;
 
     private NavMeshAgent m_navAgent;
-    private Doudou m_doudou;
+    private GameObject m_target;
     private NavMeshPath m_path;
     
 
-    public Chasse(AISM p_stateMachine, NavMeshAgent p_navAgent, Doudou p_doudou) : base("Chasse", p_stateMachine)
+    public Chasse(AISM p_stateMachine, NavMeshAgent p_navAgent, GameObject p_target) : base("Chasse", p_stateMachine)
     {
         m_navAgent = p_navAgent;
-        m_doudou = p_doudou;
+        m_target = p_target;
         m_sm = p_stateMachine;
         m_path = m_sm.m_path;
     }
@@ -31,6 +31,20 @@ public class Chasse : BaseState
     {
         base.UpdateLogic();
 
+        if (m_sm.m_player.m_doudouIsPossessed == true)
+        {
+            if (GameObject.ReferenceEquals(m_target, m_sm.m_player.gameObject) == false)
+            {
+                m_target = m_sm.m_player.gameObject;
+            }
+        }
+        else
+        {
+            if (GameObject.ReferenceEquals(m_target, m_sm.m_doudou.gameObject) == false)
+            {
+                m_target = m_sm.m_doudou.gameObject;
+            }
+        }
         
         m_sm.m_pourcentSpeed += 1f*Time.deltaTime;
         if (m_sm.m_pourcentSpeed >= 1)
@@ -40,8 +54,8 @@ public class Chasse : BaseState
 
         m_navAgent.speed = Mathf.Lerp(0f,m_sm.m_targetSpeed*2f,m_sm.m_courbeLimace.Evaluate(m_sm.m_pourcentSpeed));
         
-        m_navAgent.SetDestination(m_doudou.transform.position);
-        GetPath(m_path, m_doudou.transform.position, m_sm.transform.position, NavMesh.AllAreas);
+        m_navAgent.SetDestination(m_target.transform.position);
+        GetPath(m_path, m_target.transform.position, m_sm.transform.position, NavMesh.AllAreas);
         if (m_path.status== NavMeshPathStatus.PathComplete)
         {
             if (GetPathLength(m_path) > m_sm.m_distanceDetection && m_sm.m_chasing == false)

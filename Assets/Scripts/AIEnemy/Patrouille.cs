@@ -10,14 +10,14 @@ public class Patrouille : BaseState
 
     private NavMeshAgent m_navAgent;
     private Waypoints m_waypoints;
-    private Doudou m_doudou;
+    private GameObject m_target;
     private NavMeshPath m_path;
     
-    public Patrouille(AISM p_stateMachine, NavMeshAgent p_navAgent, Waypoints p_waypoints, Doudou p_doudou) : base("Patrouille", p_stateMachine)
+    public Patrouille(AISM p_stateMachine, NavMeshAgent p_navAgent, Waypoints p_waypoints, GameObject p_target) : base("Patrouille", p_stateMachine)
     {
         m_navAgent = p_navAgent;
         m_waypoints = p_waypoints;
-        m_doudou = p_doudou;
+        m_target = p_target;
         m_sm = p_stateMachine;
         m_path = m_sm.m_path;
     }
@@ -30,6 +30,21 @@ public class Patrouille : BaseState
     public override void UpdateLogic()
     {
         base.UpdateLogic();
+        
+        if (m_sm.m_player.m_doudouIsPossessed == true)
+        {
+            if (GameObject.ReferenceEquals(m_target, m_sm.m_player.gameObject) == false)
+            {
+                m_target = m_sm.m_player.gameObject;
+            }
+        }
+        else
+        {
+            if (GameObject.ReferenceEquals(m_target, m_sm.m_doudou.gameObject) == false)
+            {
+                m_target = m_sm.m_doudou.gameObject;
+            }
+        }
         
         if (Vector3.Distance(m_sm.transform.position, m_waypoints.GetCurrentPoint().transform.position) <= 1)
         {
@@ -45,7 +60,7 @@ public class Patrouille : BaseState
         m_navAgent.speed = Mathf.Lerp(0f,m_sm.m_targetSpeed*2f,m_sm.m_courbeLimace.Evaluate(m_sm.m_pourcentSpeed));
         
         m_navAgent.SetDestination(m_waypoints.GetCurrentPoint().transform.position);
-        Chasse.GetPath(m_path, m_doudou.transform.position, m_sm.transform.position, NavMesh.AllAreas);
+        Chasse.GetPath(m_path, m_target.transform.position, m_sm.transform.position, NavMesh.AllAreas);
         if (m_path.status == NavMeshPathStatus.PathComplete)
         {
             if (Chasse.GetPathLength(m_path) < m_sm.m_distanceDetection)
