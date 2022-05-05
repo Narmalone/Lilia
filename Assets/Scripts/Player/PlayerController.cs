@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask m_flashlightMask;
     [SerializeField] private LayerMask m_doudouMask;
     [SerializeField] private LayerMask m_TwoHandsItemMask;
-    [SerializeField] private LayerMask m_interactableMask;
+    [SerializeField] private LayerMask m_iaMask;
     [SerializeField] private LayerMask m_portillonMask;
     [SerializeField] private LayerMask m_radioMask;
     //-----------------------------------------------Systeme Stress------------------------------------------
@@ -196,10 +196,9 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                m_menuManager.OnPause();
                 m_gameManager.GamePaused();
+                m_menuManager.OnPause();
             }
-
         }
         else if (m_gameManager.isGamepad == true)
         {
@@ -263,6 +262,7 @@ public class PlayerController : MonoBehaviour
                 float power = dist / 10;
                 float powerAdapted = Mathf.Lerp(0.1f, 0f, power);
                 m_camShake.camShakeActive = true;
+                
                 Debug.Log("dans la chasse");
             }
             else
@@ -433,12 +433,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
     //----------------------------------------------- Fonctions correspondantes au doudou et � la lampe ------------------------------------------//
-
-    //On pourrait les optis en vrais mais bon flm ?
-
-
 
     //Variables, r�f�rences et fonctions de la lampe par rapport au joueur
 

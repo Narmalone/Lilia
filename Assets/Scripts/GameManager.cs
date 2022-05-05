@@ -13,13 +13,13 @@ public class GameManager : MonoBehaviour
     public bool isPc;
     public bool isGamepad;
     public bool isPaused;
-    
+
+    public bool isDead;
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
 
         Cursor.lockState = CursorLockMode.Locked;
-
     }
 
     //----------------------------------------------- Choose Your Platform ------------------------------------------//
@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     public void GamePaused()
     {
         Time.timeScale = 0;
+        Debug.Log("jeu en pause");
     }
 
     public void GameResume()
