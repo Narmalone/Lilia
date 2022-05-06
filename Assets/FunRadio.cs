@@ -28,9 +28,7 @@ public class FunRadio : MonoBehaviour
 
     public void AnswerToCall()
     {
-        
         m_waypointMoveDoudou.isEventCalled = true;
         Debug.Log("a répondu au téléphone");
-
     }
 }

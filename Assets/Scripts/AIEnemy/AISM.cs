@@ -13,8 +13,11 @@ public class AISM : StateMachine
     
     [SerializeField, Tooltip("L'agent de navigation AI")] private NavMeshAgent m_navAgent;
     [SerializeField, Tooltip("Reference script waypoints")] private Waypoints m_waypoints;
-    [SerializeField, Tooltip("Instance du doudou")] private Doudou m_doudou;
+    [SerializeField, Tooltip("Instance du doudou")] private GameObject m_target;
     [SerializeField, Tooltip("Event détécté")] private Event1 m_triggeredEvent;
+    
+    [SerializeField, Tooltip("GO Joueur")] public PlayerController m_player;
+    [SerializeField, Tooltip("GO DouDou")] public Doudou m_doudou;
     
     [SerializeField, Tooltip("Distance de détéction du bebs")]
     public float m_distanceDetection;
@@ -33,8 +36,17 @@ public class AISM : StateMachine
     {
         m_targetSpeed = m_navAgent.speed;
         m_path = new NavMeshPath();
-        m_patrouilleState = new Patrouille(this,m_navAgent,m_waypoints,m_doudou);
-        m_chasseState = new Chasse(this,m_navAgent,m_doudou);
+        if (m_player.m_doudouIsPossessed == true)
+        {
+            m_target = m_player.gameObject;
+        }
+        else
+        {
+            m_target = m_doudou.gameObject;
+        }
+        m_patrouilleState = new Patrouille(this,m_navAgent,m_waypoints,m_target);
+        m_chasseState = new Chasse(this,m_navAgent,m_target);
+        
     }
     void OnEnable()
     {

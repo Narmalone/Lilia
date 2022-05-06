@@ -11,7 +11,7 @@ public class MenuManager : MonoBehaviour
     //Variables en rapport avec le MainMenu
     [SerializeField] private GameObject m_pannelOption;
     [SerializeField] private GameObject m_pannelPause;
-
+    [SerializeField] private GameObject m_pannelDeath;
     //variables dans le Option depuis le menu
     [SerializeField] private GameObject m_newEventSystemFirstSelectedObject;
     [SerializeField] private GameObject m_newSystemCurrentSelectedObject;
@@ -76,6 +76,14 @@ public class MenuManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(m_newSystemCurrentSelectedObject);
     }
 
+    public void OnDeath()
+    {
+        if (Input.anyKeyDown)
+        {
+            SceneManager.LoadScene("InGame");
+        }
+        m_pannelDeath.SetActive(true);
+    }
     public void DisableOptionPannel(GameObject p_obj)
     {
         p_obj.SetActive(false);

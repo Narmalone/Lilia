@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private TxtEvent m_txtEvent;
 
+    [SerializeField] private TimelinePlayerScript m_timePlayerScript;
+
     private MenuManager m_menuManager;
 
     [SerializeField] private FunRadio m_phone;
@@ -42,6 +44,8 @@ public class PlayerController : MonoBehaviour
 
     private bool m_doudouIsUsed = false;
 
+    private GameObject m_target;
+    
     //private DateTime startTime;
 
     public GameManager m_gameManager;
@@ -55,7 +59,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask m_flashlightMask;
     [SerializeField] private LayerMask m_doudouMask;
     [SerializeField] private LayerMask m_TwoHandsItemMask;
-    [SerializeField] private LayerMask m_interactableMask;
+    [SerializeField] private LayerMask m_iaMask;
     [SerializeField] private LayerMask m_portillonMask;
     [SerializeField] private LayerMask m_radioMask;
     //-----------------------------------------------Systeme Stress------------------------------------------
@@ -67,7 +71,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("R�f�rences du Chara controller")] private CharacterController m_myChara;
 
 
-    [SerializeField, Tooltip("Vitesse du joueur en m/s")] private float m_speed;
+    [SerializeField, Tooltip("Vitesse du joueur en m/s")] public float m_speed;
 
     [SerializeField, Tooltip("puissance du stress en fonction du temps"), Range(0f, 1f)] private float m_StressPower;
 
@@ -143,6 +147,8 @@ public class PlayerController : MonoBehaviour
         m_currentStress = m_maxStress;
         m_stressBar.SetMaxHealth(m_maxStress);
 
+        m_camShake.camShakeActive = false;
+        
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_dOFSettings));
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_vignetteSettings));
 
@@ -192,10 +198,9 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                m_menuManager.OnPause();
                 m_gameManager.GamePaused();
+                m_menuManager.OnPause();
             }
-
         }
         else if (m_gameManager.isGamepad == true)
         {
@@ -235,7 +240,22 @@ public class PlayerController : MonoBehaviour
         m_vignetteSettings.intensity.value = Mathf.Lerp(0f, m_intesiteMaxEffet, m_currentIntensity);
         m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
 
-        Chasse.GetPath(m_path, m_doudou.transform.position, m_AIStateMachine.transform.position, NavMesh.AllAreas);
+        if (m_doudouIsPossessed == true)
+        {
+            if (GameObject.ReferenceEquals(m_target, gameObject) == false)
+            {
+                m_target = gameObject;
+            }
+        }
+        else
+        {
+            if (GameObject.ReferenceEquals(m_target,m_doudou.gameObject) == false)
+            {
+                m_target = m_doudou.gameObject;
+            }
+        }
+        
+        Chasse.GetPath(m_path, m_target.transform.position, m_AIStateMachine.transform.position, NavMesh.AllAreas);
         if (m_path.status == NavMeshPathStatus.PathComplete)
         {
             if (Chasse.GetPathLength(m_AIStateMachine.m_path) < 10f && m_AIStateMachine.currentState == m_AIStateMachine.m_chasseState)
@@ -244,6 +264,7 @@ public class PlayerController : MonoBehaviour
                 float power = dist / 10;
                 float powerAdapted = Mathf.Lerp(0.1f, 0f, power);
                 m_camShake.camShakeActive = true;
+                
                 Debug.Log("dans la chasse");
             }
             else
@@ -375,6 +396,7 @@ public class PlayerController : MonoBehaviour
                             if (m_createNarrativeEvent.index == 2)
                             {
                                 m_phone.AnswerToCall();
+                                m_timePlayerScript.StartTimeline();
                             }
                         }
                     }
@@ -414,12 +436,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
     //----------------------------------------------- Fonctions correspondantes au doudou et � la lampe ------------------------------------------//
-
-    //On pourrait les optis en vrais mais bon flm ?
-
-
 
     //Variables, r�f�rences et fonctions de la lampe par rapport au joueur
 
@@ -518,22 +535,22 @@ public class PlayerController : MonoBehaviour
                 if (m_doudouIsPossessed == true)
                 {
                     m_doudouIsUsed = true;
-                    m_camShake.camShakeActive = true;
+                    //m_camShake.camShakeActive = true;
 
                     if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 1)
                     {
                         m_createNarrativeEvent.actionComplete = true;
                         m_createNarrativeEvent.isWaitingAction = true;
                     }
-                    Debug.Log("doit être chase");
+                    //Debug.Log("doit être chase");
                 }
             }
             if (Input.GetKeyUp(KeyCode.R))
             {
                 Debug.Log("touche r non appuyé");
                 m_doudouIsUsed = false;
-                m_camShake.camShakeActive = false;
-                m_AIStateMachine.m_chasing = false;
+                //m_camShake.camShakeActive = false;
+                //m_AIStateMachine.m_chasing = false;
             }
             if (Input.GetKeyDown(KeyCode.G) && m_doudouIsPossessed == true)
             {
