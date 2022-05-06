@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private TxtEvent m_txtEvent;
 
+    [SerializeField] private TimelinePlayerScript m_timePlayerScript;
+
     private MenuManager m_menuManager;
 
     [SerializeField] private FunRadio m_phone;
@@ -69,7 +71,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("R�f�rences du Chara controller")] private CharacterController m_myChara;
 
 
-    [SerializeField, Tooltip("Vitesse du joueur en m/s")] private float m_speed;
+    [SerializeField, Tooltip("Vitesse du joueur en m/s")] public float m_speed;
 
     [SerializeField, Tooltip("puissance du stress en fonction du temps"), Range(0f, 1f)] private float m_StressPower;
 
@@ -394,6 +396,7 @@ public class PlayerController : MonoBehaviour
                             if (m_createNarrativeEvent.index == 2)
                             {
                                 m_phone.AnswerToCall();
+                                m_timePlayerScript.StartTimeline();
                             }
                         }
                     }
