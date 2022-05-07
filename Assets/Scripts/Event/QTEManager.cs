@@ -55,10 +55,10 @@ public class QTEManager : MonoBehaviour
     {
         if (m_qteStarted == true)
         {
-            if (Vector3.Distance(transform.position, m_containerPerso.transform.position) > 0.3f)
+            if (Vector3.Distance(m_playerGO.transform.position, m_containerPerso.transform.position) > 0.3f)
             {
                 m_playerGO.transform.position = Vector3.MoveTowards(m_playerGO.transform.position,m_containerPerso.transform.position,0.1f);
-                Debug.Log("bouger le joueur vers le container");
+                Debug.Log($"bouger le joueur vers le container : {Vector3.Distance(transform.position, m_containerPerso.transform.position)}");
             }
             else if (m_currentNumberQTE < m_nombreQTE)
             {

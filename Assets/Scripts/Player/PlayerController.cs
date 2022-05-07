@@ -242,14 +242,14 @@ public class PlayerController : MonoBehaviour
 
         if (m_doudouIsPossessed == true)
         {
-            if (GameObject.ReferenceEquals(m_target, gameObject) == false)
+            if (ReferenceEquals(m_target, gameObject) == false)
             {
                 m_target = gameObject;
             }
         }
         else
         {
-            if (GameObject.ReferenceEquals(m_target,m_doudou.gameObject) == false)
+            if (ReferenceEquals(m_target,m_doudou.gameObject) == false)
             {
                 m_target = m_doudou.gameObject;
             }
