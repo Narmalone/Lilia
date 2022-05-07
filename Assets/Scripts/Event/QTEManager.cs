@@ -55,10 +55,10 @@ public class QTEManager : MonoBehaviour
     {
         if (m_qteStarted == true)
         {
-            if (m_playerGO.transform.position != m_containerPerso.transform.position)
+            if (Vector3.Distance(transform.position, m_containerPerso.transform.position) > 0.3f)
             {
                 m_playerGO.transform.position = Vector3.MoveTowards(m_playerGO.transform.position,m_containerPerso.transform.position,0.1f);
-                Debug.Log("pk ca marche pas ta mere la tchoin");
+                Debug.Log("bouger le joueur vers le container");
             }
             else if (m_currentNumberQTE < m_nombreQTE)
             {
@@ -98,7 +98,7 @@ public class QTEManager : MonoBehaviour
             m_playerGO = p_other.gameObject;
             if (Input.GetKey(KeyCode.E) && m_qteStarted == false)
             {
-                Debug.Log("Yes");
+                Debug.Log("Qte started");
                 m_qteStarted = true;
             }
         }
