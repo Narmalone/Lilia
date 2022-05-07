@@ -9,8 +9,6 @@ using Random=UnityEngine.Random;
 [RequireComponent(typeof(SphereCollider))]
 public class QTEManager : MonoBehaviour
 {
-    [SerializeField] private GameObject m_containerPerso;
-
     [SerializeField] private SphereCollider m_sphereCol;
 
     [SerializeField][Range(1,10)] private float m_rangeCol = 0f;
@@ -23,7 +21,9 @@ public class QTEManager : MonoBehaviour
     
     [SerializeField] private LayerMask m_layerPlayer;
 
-    private GameObject m_playerGO;
+    [SerializeField]private GameObject m_playerGO;
+
+    [SerializeField] private GameObject m_containerPerso;
 
     private bool m_qteStarted = false;
     
@@ -55,10 +55,10 @@ public class QTEManager : MonoBehaviour
     {
         if (m_qteStarted == true)
         {
-            if (Vector3.Distance(transform.position, m_containerPerso.transform.position) > 1f)
+            if (m_playerGO.transform.position != m_containerPerso.transform.position)
             {
                 m_playerGO.transform.position = Vector3.MoveTowards(m_playerGO.transform.position,m_containerPerso.transform.position,0.1f);
-                
+                Debug.Log("pk ca marche pas ta mere la tchoin");
             }
             else if (m_currentNumberQTE < m_nombreQTE)
             {

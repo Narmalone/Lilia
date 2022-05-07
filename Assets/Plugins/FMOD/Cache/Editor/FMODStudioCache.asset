@@ -62,10 +62,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637874887534759385
+  lastModified: 637874917812995503
   FileSizes:
   - Name: Desktop
-    Value: 1368
+    Value: 1470
   Exists: 1
 --- !u!114 &-5466242373532085440
 MonoBehaviour:
@@ -142,7 +142,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Voices.bank
   Name: Voices
   StudioPath: bank:/Voices
-  lastModified: 637874887535750299
+  lastModified: 637874917813966393
   FileSizes:
   - Name: Desktop
     Value: 50976
@@ -194,6 +194,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 712
   Exists: 1
+--- !u!114 &-1775130401373131233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/LesPotes/Julien
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/LesPotes/Julien
+  Guid:
+    Data1: -1308353413
+    Data2: 1141618755
+    Data3: -1198669145
+    Data4: 872367579
+  Banks:
+  - {fileID: 2804047040273175666}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2580
 --- !u!114 &-1553942299466581350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,13 +264,42 @@ MonoBehaviour:
   - {fileID: -2326078339826491117}
   - {fileID: 4724345077923129438}
   - {fileID: -7440751301283213107}
+  - {fileID: -1775130401373131233}
+  - {fileID: 788129318274993177}
   EditorParameters: []
   MasterBanks:
   - {fileID: 7686102279033228172}
   StringsBanks:
   - {fileID: -6488784911144660544}
-  cacheTime: 637874887535750299
+  cacheTime: 637874917813966393
   cacheVersion: 10
+--- !u!114 &788129318274993177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/LesPotes/Julien_1
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/LesPotes/Julien_1
+  Guid:
+    Data1: -891858308
+    Data2: 1304586381
+    Data3: -2066293343
+    Data4: 702200443
+  Banks:
+  - {fileID: 2804047040273175666}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6720
 --- !u!114 &2804047040273175666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,10 +315,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Sounds.bank
   Name: Sounds
   StudioPath: bank:/Sounds
-  lastModified: 637874887534959579
+  lastModified: 637874917813546002
   FileSizes:
   - Name: Desktop
-    Value: 184896
+    Value: 247872
   Exists: 1
 --- !u!114 &4484843252155158936
 MonoBehaviour:
@@ -373,7 +429,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637874887534739364
+  lastModified: 637874917812985493
   FileSizes:
   - Name: Desktop
     Value: 2032
@@ -393,7 +449,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637874887535179772
+  lastModified: 637874917813766204
   FileSizes:
   - Name: Desktop
     Value: 2110624
