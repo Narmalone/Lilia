@@ -300,6 +300,7 @@ MonoBehaviour:
   m_desiredAlpha: 1
   m_currentAlpha: 0
   speedToDisplayValue: 0.1
+  isGood: 0
 --- !u!1 &783385969543320378
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,6 +1021,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_uiEvent: {fileID: 11400000, guid: fc03fab7047d4ca42bb232332ed8577d, type: 2}
   m_txtToModify: {fileID: 4075055851637115199}
+  m_audioScript: {fileID: 0}
+  m_newValue: 0
 --- !u!1 &4075055850157501227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,7 +1474,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4075055850246563106
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4149,6 +4152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_uiEvent: {fileID: 11400000, guid: 8776f74c4fc7773468fbf7858975fdd5, type: 2}
   m_txtToModify: {fileID: 4075055852129412608}
+  m_audioScript: {fileID: 0}
+  m_newValue: 0
 --- !u!1 &4075055851273789305
 GameObject:
   m_ObjectHideFlags: 0
@@ -4388,6 +4393,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_uiEvent: {fileID: 11400000, guid: 347089ac8c7e08149953aed9d295d8f7, type: 2}
   m_txtToModify: {fileID: 4075055852037203840}
+  m_audioScript: {fileID: 0}
+  m_newValue: 0
 --- !u!1 &4075055851361373982
 GameObject:
   m_ObjectHideFlags: 0
@@ -7856,7 +7863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1215489366822365908
 Transform:
   m_ObjectHideFlags: 0

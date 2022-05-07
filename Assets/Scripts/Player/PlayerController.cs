@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TxtEvent m_txtEvent;
 
     [SerializeField] private TimelinePlayerScript m_timePlayerScript;
-
+    [SerializeField] private AudioManagerScript m_audioScript;
     private MenuManager m_menuManager;
 
     [SerializeField] private FunRadio m_phone;
@@ -541,6 +541,7 @@ public class PlayerController : MonoBehaviour
                     {
                         m_createNarrativeEvent.actionComplete = true;
                         m_createNarrativeEvent.isWaitingAction = true;
+                        m_audioScript.Play("PhoneEvent");
                     }
                     //Debug.Log("doit être chase");
                 }

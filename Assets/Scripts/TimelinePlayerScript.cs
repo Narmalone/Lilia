@@ -36,7 +36,6 @@ public class TimelinePlayerScript : MonoBehaviour
                 m_director.Stop();
                 m_player.m_speed = 2f;
             }
-            Debug.Log(m_director.time);
         }
         else { return; }
        

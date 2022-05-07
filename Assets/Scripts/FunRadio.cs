@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class FunRadio : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class FunRadio : MonoBehaviour
     [SerializeField] private UiManager m_uiManager;
     [SerializeField] private CreateNarrativeEvent m_createNarrativeEvent;
     [SerializeField] private WaypointsEvent m_waypointMoveDoudou;
-    
+    [SerializeField] private AudioManagerScript m_audioScript;
+    public bool isPlay = false;
     [Header("References Mask"), Space(10)]
     [SerializeField] private LayerMask m_playerMask;
 
@@ -25,10 +27,12 @@ public class FunRadio : MonoBehaviour
             m_uiManager = FindObjectOfType<UiManager>();
         }
     }
-
     public void AnswerToCall()
     {
         m_waypointMoveDoudou.isEventCalled = true;
+        m_audioScript.Stop("PhoneEvent");
+        m_audioScript.Play("HangUp");
+        m_audioScript.PlayVoices("DialogPhone");
         Debug.Log("a répondu au téléphone");
     }
 }
