@@ -61,7 +61,6 @@
 	<object class="GroupTrack" id="{5e5f5411-8142-44fc-b94d-84d6f2b37637}">
 		<relationship name="modules">
 			<destination>{fc94d5a0-d341-424a-8ade-afd06c9fa5c0}</destination>
-			<destination>{9795ab53-9b1f-416c-b7cc-ee676b0042ba}</destination>
 			<destination>{a05fccb6-fef3-4b38-a8b7-915681398542}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
@@ -71,11 +70,13 @@
 	<object class="Timeline" id="{dced4eed-f0a8-4e4d-b9df-ece1cf41dcb2}">
 		<relationship name="modules">
 			<destination>{fc94d5a0-d341-424a-8ade-afd06c9fa5c0}</destination>
-			<destination>{9795ab53-9b1f-416c-b7cc-ee676b0042ba}</destination>
 			<destination>{a05fccb6-fef3-4b38-a8b7-915681398542}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{306555d9-0f54-42ed-9031-c33a05b97f21}">
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{fcbb7940-394e-4856-a7e8-7b000ab915ea}</destination>
 		</relationship>
@@ -94,30 +95,16 @@
 	<object class="MixerBusPanner" id="{193b7e8b-8f01-4807-889b-1fab829ab1b6}" />
 	<object class="SingleSound" id="{fc94d5a0-d341-424a-8ade-afd06c9fa5c0}">
 		<property name="start">
-			<value>7</value>
-		</property>
-		<property name="length">
-			<value>2.3399999999999999</value>
-		</property>
-		<property name="volume">
-			<value>-35</value>
-		</property>
-		<relationship name="audioFile">
-			<destination>{c69a26f7-328b-4ca5-9849-1a488a11a3cc}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{9795ab53-9b1f-416c-b7cc-ee676b0042ba}">
-		<property name="start">
 			<value>1.2799999999999998</value>
 		</property>
 		<property name="length">
 			<value>2.3399999999999999</value>
 		</property>
 		<property name="volume">
-			<value>-30</value>
+			<value>-25</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{330688d5-7c9b-4974-9e96-6d99f04de8c2}</destination>
+			<destination>{c69a26f7-328b-4ca5-9849-1a488a11a3cc}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{a05fccb6-fef3-4b38-a8b7-915681398542}">
@@ -128,7 +115,7 @@
 			<value>1</value>
 		</property>
 		<property name="volume">
-			<value>-30</value>
+			<value>-25</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{00ed69c6-a113-4c6b-b066-86626ae35a54}</destination>

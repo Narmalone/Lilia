@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 using Random=UnityEngine.Random;
 
 
@@ -14,9 +16,14 @@ public class QTEManager : MonoBehaviour
     [SerializeField][Range(1,10)] private float m_rangeCol = 0f;
     
     [SerializeField][Range(0,3)] private float m_tempsEntreQTE = 0f;
-    
-    [SerializeField] private int m_nombreQTE;
-    
+
+    [SerializeField] private TextMeshProUGUI m_txtToModify;
+    [SerializeField] private TextMeshProUGUI m_txtPushTheBox;
+    [SerializeField] private TxtPuzzle_1 m_txtPuzzle;
+
+    [SerializeField] private PlayerController m_playerController;
+    [SerializeField] public int m_nombreQTE;
+    [SerializeField] private UiManager m_uiManager;
     private int m_currentNumberQTE = 0;
     
     [SerializeField] private LayerMask m_layerPlayer;
@@ -29,11 +36,16 @@ public class QTEManager : MonoBehaviour
     
     private bool m_startedCoroutine = false;
 
-    [SerializeField] private KeyCode[] m_keycodesQTE;
+    [SerializeField] public KeyCode[] m_keycodesQTE;
 
-    private int m_index;
-    
-    // Start is called before the first frame update
+    public int m_index;
+
+    public bool m_qteIsOver = false;
+
+    private void Awake()
+    {
+        m_txtPushTheBox.gameObject.SetActive(false);
+    }
     void Start()
     {
         m_index = Random.Range(0,m_keycodesQTE.Length);
@@ -62,12 +74,14 @@ public class QTEManager : MonoBehaviour
             }
             else if (m_currentNumberQTE < m_nombreQTE)
             {
+                m_txtPuzzle.UpdateText();
                 Debug.Log("dans le else if connard");
                 if (m_startedCoroutine == false)
                 {
                     Debug.Log($"Press key {m_keycodesQTE[m_index]}");
                     if (Input.GetKey(m_keycodesQTE[m_index]))
                     {
+                        m_txtPuzzle.SetNewPosition();
                         m_startedCoroutine = true;
                         m_currentNumberQTE++;
                         m_index = Random.Range(0, m_keycodesQTE.Length);
@@ -80,8 +94,12 @@ public class QTEManager : MonoBehaviour
             {
                 m_qteStarted = false;
                 m_currentNumberQTE = 0;
+                m_qteIsOver = true;
+                StopAllCoroutines();
+                m_txtToModify.gameObject.SetActive(false);
             }
         }
+        
         
     }
 
@@ -90,17 +108,46 @@ public class QTEManager : MonoBehaviour
         yield return new WaitForSeconds(m_tempsEntreQTE);
         m_startedCoroutine = false;
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if ((m_layerPlayer.value & (1 << other.gameObject.layer)) > 0)
+        {
+            if (m_qteIsOver == false)
+            {
+                m_txtPushTheBox.gameObject.SetActive(true);
+            }
+        }  
+    }
     private void OnTriggerStay(Collider p_other)
     {
         if ((m_layerPlayer.value & (1 << p_other.gameObject.layer))>0)
         {
             m_playerGO = p_other.gameObject;
+            
             if (Input.GetKey(KeyCode.E) && m_qteStarted == false)
             {
-                Debug.Log("Qte started");
-                m_qteStarted = true;
+                if(m_qteIsOver == false)
+                {
+                    if(m_playerController.m_doudouIsPossessed == false && m_playerController.m_flashlightIsPossessed == false)
+                    {
+                        Debug.Log("Qte started");
+                        m_txtToModify.gameObject.SetActive(true);
+                        m_txtPushTheBox.gameObject.SetActive(false);
+                        m_qteStarted = true;
+                    }
+                   
+                }
+                
             }
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if ((m_layerPlayer.value & (1 << other.gameObject.layer)) > 0)
+        {
+            m_txtPushTheBox.gameObject.SetActive(false);
+        }
+
+    }
+
 }

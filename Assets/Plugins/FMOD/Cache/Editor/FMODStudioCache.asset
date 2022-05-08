@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8758302307620480185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Hits/Puzzle_HitBox
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Hits/Puzzle_HitBox
+  Guid:
+    Data1: 245796041
+    Data2: 1160800057
+    Data3: -1306144121
+    Data4: 1591531773
+  Banks:
+  - {fileID: 2804047040273175666}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1280
 --- !u!114 &-8459598355757670183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,7 +73,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 9340
+  Length: 3620
 --- !u!114 &-6488784911144660544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,10 +89,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637875514871290201
+  lastModified: 637875837570110289
   FileSizes:
   - Name: Desktop
-    Value: 1470
+    Value: 1576
   Exists: 1
 --- !u!114 &-5466242373532085440
 MonoBehaviour:
@@ -142,10 +169,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Voices.bank
   Name: Voices
   StudioPath: bank:/Voices
-  lastModified: 637875514871978756
+  lastModified: 637875837570760873
   FileSizes:
   - Name: Desktop
-    Value: 50976
+    Value: 34208
   Exists: 1
 --- !u!114 &-2326078339826491117
 MonoBehaviour:
@@ -266,12 +293,14 @@ MonoBehaviour:
   - {fileID: -7440751301283213107}
   - {fileID: -1775130401373131233}
   - {fileID: 788129318274993177}
+  - {fileID: -8758302307620480185}
+  - {fileID: 1619571006713556317}
   EditorParameters: []
   MasterBanks:
   - {fileID: 7686102279033228172}
   StringsBanks:
   - {fileID: -6488784911144660544}
-  cacheTime: 637875514871978756
+  cacheTime: 637875837570760873
   cacheVersion: 10
 --- !u!114 &788129318274993177
 MonoBehaviour:
@@ -300,6 +329,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 6720
+--- !u!114 &1619571006713556317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Hits/KeyDropFromBox
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Hits/KeyDropFromBox
+  Guid:
+    Data1: 1540604811
+    Data2: 1308501917
+    Data3: -928801122
+    Data4: 543231078
+  Banks:
+  - {fileID: 2804047040273175666}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 816
 --- !u!114 &2804047040273175666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,10 +371,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Sounds.bank
   Name: Sounds
   StudioPath: bank:/Sounds
-  lastModified: 637875514871848585
+  lastModified: 637875837570560697
   FileSizes:
   - Name: Desktop
-    Value: 247872
+    Value: 275072
   Exists: 1
 --- !u!114 &4484843252155158936
 MonoBehaviour:
@@ -429,7 +485,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637875514871290201
+  lastModified: 637875837570100278
   FileSizes:
   - Name: Desktop
     Value: 2032
@@ -449,7 +505,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637875514871749926
+  lastModified: 637875837570320482
   FileSizes:
   - Name: Desktop
     Value: 2110624
