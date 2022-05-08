@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5927216318435697347
+--- !u!1 &1055859429599638205
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3310872010716109061}
-  - component: {fileID: 3613179185292342003}
+  - component: {fileID: 4061637481574654604}
+  - component: {fileID: 2913768133333076615}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -17,36 +17,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3310872010716109061
+--- !u!4 &4061637481574654604
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5927216318435697347}
-  m_LocalRotation: {x: 0.70710605, y: -0, z: -0, w: 0.70710754}
-  m_LocalPosition: {x: 0, y: 0.856, z: -0.24}
+  m_GameObject: {fileID: 1055859429599638205}
+  m_LocalRotation: {x: 0.7071066, y: 0.000000007450581, z: 0.000000007450581, w: 0.70710707}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8929562132021629146}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!108 &3613179185292342003
+--- !u!108 &2913768133333076615
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5927216318435697347}
+  m_GameObject: {fileID: 1055859429599638205}
   m_Enabled: 1
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 3
-  m_Range: 5
-  m_SpotAngle: 70
-  m_InnerSpotAngle: 7
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -126,7 +126,7 @@ Transform:
   m_LocalPosition: {x: 0.612, y: 0.728, z: 2.262}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3310872010716109061}
+  - {fileID: 4061637481574654604}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 270, y: 0, z: 121.447}
@@ -214,6 +214,7 @@ MonoBehaviour:
   flashlight: {fileID: 8929562132021629145}
   FlashlightContainer: {fileID: 0}
   m_rbodyFlashlight: {fileID: 0}
+  GetDropped: 0
 --- !u!54 &8929562131681804831
 Rigidbody:
   m_ObjectHideFlags: 0
