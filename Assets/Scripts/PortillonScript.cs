@@ -11,6 +11,7 @@ public class PortillonScript : MonoBehaviour
     
     [Header("References dans l'objet"), Space(10)]
     [SerializeField] private BoxCollider m_boxCollider;
+    [SerializeField] private MeshCollider m_thisMesh;
     public Slider sliderInstance;
 
     [Header("References Mask"), Space(10)]
@@ -64,6 +65,7 @@ public class PortillonScript : MonoBehaviour
         m_animator.SetBool(m_openAnim,true);
         Animator.StringToHash(m_openAnim);
         m_boxCollider.enabled = false;
+        m_thisMesh.enabled = false;
         Debug.Log("jouer l'anim");
         m_uiManager.DisableUi();
     }

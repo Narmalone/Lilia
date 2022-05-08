@@ -52,7 +52,14 @@ public class Doudou : MonoBehaviour
 
     }
     private float m_yRotation = 0f;
-
+    private void Update()
+    {
+        if(m_callEvent == true)
+        {
+            m_rbDoudou.isKinematic = true;
+            m_rbDoudou.useGravity = false;
+        }
+    }
     public void PickItem()
     {
         if(TakeBeforeChase == true)
@@ -73,10 +80,13 @@ public class Doudou : MonoBehaviour
         m_doudou.transform.localPosition = m_emplacementDoudou.transform.position;
         m_doudou.transform.SetParent(m_emplacementDoudou);
         m_doudou.transform.localRotation = Quaternion.Euler(0f,-0f,0f);
+        m_doudou.transform.parent = null;
+        if (m_callEventEnded == false)
+        {
+            m_rbDoudou.isKinematic = false;
+            m_rbDoudou.useGravity = true;
+        }
         
-        m_rbDoudou.isKinematic = false;
-        m_rbDoudou.useGravity = true;
-        m_doudou.transform.parent = null;      
     }
 
     public void CallEventEnded()
