@@ -20,7 +20,7 @@ public class MouseLock : MonoBehaviour
     Quaternion _initRotation;
 
     [SerializeField] private AssetMenuScriptValue m_assetMenuScriptable;
-    [SerializeField] private AudioManagerScript m_audioScript;
+
     private void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();
@@ -34,7 +34,6 @@ public class MouseLock : MonoBehaviour
             controls.Gameplay.Rotation.performed += ctx => rotateGamepad = ctx.ReadValue<Vector2>();
             controls.Gameplay.Rotation.canceled += ctx => rotateGamepad = Vector2.zero;
         }
-        m_audioScript.PlayMusic("AmbiantMusic");
     }
     void Start()
     {

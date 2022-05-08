@@ -60,7 +60,6 @@ MonoBehaviour:
   m_playerMask:
     serializedVersion: 2
     m_Bits: 128
-  m_menuManager: {fileID: 0}
 --- !u!1 &2873547174128195188
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,6 +73,7 @@ GameObject:
   - component: {fileID: 2873547174128195184}
   - component: {fileID: 2873547174128195185}
   - component: {fileID: 2873547174128195186}
+  - component: {fileID: 2873547174128195187}
   m_Layer: 16
   m_Name: IA
   m_TagString: Untagged
@@ -181,3 +181,20 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2873547174128195187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2873547174128195188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c8437319af7f6b4084671f58b58db46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_navAgent: {fileID: 2873547174128195186}
+  m_waypoints: {fileID: 0}
+  m_doudou: {fileID: 0}
+  m_triggeredEvent: {fileID: 0}
+  m_distanceDetection: 5

@@ -9,8 +9,7 @@ public class VoiceEvents : MonoBehaviour
 {
     [SerializeField] private AssetMenuScriptValue m_uiEvent;
     [SerializeField] private TextMeshProUGUI m_txtToModify;
-    [SerializeField] private AudioManagerScript m_audioScript;
-    public float valueToDisplay;
+
     private GameManager m_gameManager;
 
     Color m_selectedColor = Color.yellow;
@@ -20,18 +19,18 @@ public class VoiceEvents : MonoBehaviour
     {
         if (m_uiEvent == null) return;
 
+        m_uiEvent.doSetValue += UpdateValueToString;
     }
     private void OnDisable()
     {
         if (m_uiEvent == null) return;
 
+        m_uiEvent.doSetValue -= UpdateValueToString;
     }
     private void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();
-        m_audioScript = FindObjectOfType<AudioManagerScript>();
-        m_uiEvent.value = 0.5f;
-        valueToDisplay = 50f;
+        m_uiEvent.value = 50;
         UpdateValueToString();
     }
     private void Update()
@@ -59,15 +58,10 @@ public class VoiceEvents : MonoBehaviour
     {
         if(EventSystem.current.currentSelectedGameObject == gameObject)
         {
-            m_uiEvent.value += 0.1f;
-            valueToDisplay += 10f;
-            if (m_uiEvent.value >= 1f)
+            m_uiEvent.value += 5;
+            if (m_uiEvent.value >= 100)
             {
-                m_uiEvent.value = 1f;
-            }
-            if (valueToDisplay >= 100f)
-            {
-                valueToDisplay = 100f;
+                m_uiEvent.value = 100;
             }
             UpdateValueToString();
         }
@@ -82,24 +76,18 @@ public class VoiceEvents : MonoBehaviour
     {
         if (EventSystem.current.currentSelectedGameObject == gameObject)
         {
-            m_uiEvent.value -= 0.1f;
-            valueToDisplay -= 10f;
-            if (m_uiEvent.value <= 0f)
+            m_uiEvent.value -= 5;
+            if (m_uiEvent.value <= 0)
             {
-                m_uiEvent.value = 0f;
-            }
-            if (valueToDisplay <= 0f)
-            {
-                valueToDisplay = 0f;
+                m_uiEvent.value = 0;
             }
             UpdateValueToString();
-            m_audioScript.SetNewValue();
         }
         else { return; }       
     }
     public void UpdateValueToString()
     {
-        m_txtToModify.GetComponent<TextMeshProUGUI>().text = valueToDisplay.ToString();
+        m_txtToModify.GetComponent<TextMeshProUGUI>().text = m_uiEvent.value.ToString();
     }
 
     public void SetSelectedColor()
@@ -110,4 +98,8 @@ public class VoiceEvents : MonoBehaviour
     {
         m_txtToModify.color = m_unselectedColor;
     }
+
+
+
+
 }

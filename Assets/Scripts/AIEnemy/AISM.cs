@@ -29,9 +29,6 @@ public class AISM : StateMachine
     [NonSerialized] public float m_targetSpeed;
     
     [NonSerialized] public float m_pourcentSpeed = 1f;
-
-    public float m_basicIaSpeed = 5f;
-    public float m_speedAfterSpawn = 1f;
     
     public AnimationCurve m_courbeLimace;
     
@@ -49,10 +46,10 @@ public class AISM : StateMachine
         }
         m_patrouilleState = new Patrouille(this,m_navAgent,m_waypoints,m_target);
         m_chasseState = new Chasse(this,m_navAgent,m_target);
+        
     }
     void OnEnable()
     {
-        Awake();
         m_triggeredEvent.onTriggered += HandleTriggerEvent;
     }
 
@@ -66,10 +63,9 @@ public class AISM : StateMachine
         Debug.Log("Ok, Je suis triggered");
     }
     
+
     protected override BaseState GetInitialState()
     {
         return m_patrouilleState;
     }
-
-   
 }

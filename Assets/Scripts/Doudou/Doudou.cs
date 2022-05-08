@@ -10,13 +10,11 @@ public class Doudou : MonoBehaviour
     [SerializeField] private LayerMask m_stairsMask;
     [SerializeField, Tooltip("R�f�rence de la torche")]private GameObject m_doudou;
     [SerializeField] private Transform m_emplacementDoudou;
-    [SerializeField] private aiSpeed m_ai;
     private BoxCollider m_boxDoudouColider;
     private Rigidbody m_rbDoudou;
     [SerializeField] private float m_stepOffset = 0.2f;
     public bool m_callEvent = false;
     public bool m_callEventEnded = false;
-    public bool TakeBeforeChase = false;
     [SerializeField] WaypointsEvent m_waypointsEvent;
 
     private void Awake()
@@ -55,11 +53,6 @@ public class Doudou : MonoBehaviour
 
     public void PickItem()
     {
-        if(TakeBeforeChase == true)
-        {
-            //Set new Ai speed;
-            TakeBeforeChase = false;
-        }
         m_rbDoudou.isKinematic = true;
         m_rbDoudou.useGravity = false;
         m_doudou.transform.position = new Vector3(1100f, 1100f, 1100f);

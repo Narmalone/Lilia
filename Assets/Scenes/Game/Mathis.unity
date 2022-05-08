@@ -693,7 +693,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
   m_PrefabInstance: {fileID: 8172246454132700848}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1939117509}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24037df1209137c489d431dd54692cad, type: 3}
@@ -1299,6 +1299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4f76be07cfdcb4191b72601505f443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_containerPerso: {fileID: 656963573}
   m_sphereCol: {fileID: 747649315}
   m_rangeCol: 4
   m_tempsEntreQTE: 0
@@ -1306,8 +1307,6 @@ MonoBehaviour:
   m_layerPlayer:
     serializedVersion: 2
     m_Bits: 128
-  m_playerGO: {fileID: 1939117509}
-  m_containerPerso: {fileID: 656963573}
   m_keycodesQTE: 1b0100006800000067000000
 --- !u!65 &747649311
 BoxCollider:
@@ -1690,7 +1689,6 @@ MonoBehaviour:
   isPc: 1
   isGamepad: 1
   isPaused: 0
-  isDead: 0
 --- !u!1 &886882166
 GameObject:
   m_ObjectHideFlags: 0
@@ -3008,17 +3006,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_navAgent: {fileID: 1652985664}
   m_waypoints: {fileID: 1698167992}
-  m_target: {fileID: 0}
-  m_triggeredEvent: {fileID: 11400000, guid: 4c6861d28e471b14793c61f67048ca61, type: 2}
-  m_player: {fileID: 0}
   m_doudou: {fileID: 697310044}
+  m_triggeredEvent: {fileID: 11400000, guid: 4c6861d28e471b14793c61f67048ca61, type: 2}
   m_distanceDetection: 5
-  m_courbeLimace:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1698167991
 GameObject:
   m_ObjectHideFlags: 0
@@ -3748,11 +3738,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938819021}
   m_CullTransparentMesh: 1
---- !u!1 &1939117509 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8172246454592653239, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
-  m_PrefabInstance: {fileID: 8172246454132700848}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1958463935
 GameObject:
   m_ObjectHideFlags: 0
@@ -3868,8 +3853,6 @@ MonoBehaviour:
   m_indicInteraction: {fileID: 635774800}
   m_UILampe: {fileID: 886882166}
   m_UIDoudou: {fileID: 340483026}
-  m_objDoudouUi: {fileID: 0}
-  m_objVeilleuseUi: {fileID: 0}
 --- !u!4 &2066910957
 Transform:
   m_ObjectHideFlags: 0

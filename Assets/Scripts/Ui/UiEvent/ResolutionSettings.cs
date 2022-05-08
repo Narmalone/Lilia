@@ -15,7 +15,7 @@ public class ResolutionSettings : MonoBehaviour
     Color m_unselectedColor = Color.white;
     
     public List<ResolutionTab> resolution = new List<ResolutionTab>();
-    public int indexResolution;
+    private int indexResolution;
     
     public void SetSelectedColor()
     {

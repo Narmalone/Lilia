@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TxtEvent m_txtEvent;
 
     [SerializeField] private TimelinePlayerScript m_timePlayerScript;
-    [SerializeField] private AudioManagerScript m_audioScript;
+
     private MenuManager m_menuManager;
 
     [SerializeField] private FunRadio m_phone;
@@ -62,7 +62,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask m_iaMask;
     [SerializeField] private LayerMask m_portillonMask;
     [SerializeField] private LayerMask m_radioMask;
-
     //-----------------------------------------------Systeme Stress------------------------------------------
 
 
@@ -149,10 +148,7 @@ public class PlayerController : MonoBehaviour
         m_stressBar.SetMaxHealth(m_maxStress);
 
         m_camShake.camShakeActive = false;
-        if(m_AIStateMachine == null)
-        {
-            return;
-        }
+        
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_dOFSettings));
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_vignetteSettings));
 
@@ -190,6 +186,13 @@ public class PlayerController : MonoBehaviour
         m_myChara.Move(m_velocity * Time.deltaTime);
 
         m_velocity.y += m_gravity * Time.deltaTime;
+
+
+        //Inputs venant du joueur
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Stressing(m_makeMeStress);
+        }
 
         if (m_gameManager.isPc == true)
         {
@@ -239,14 +242,14 @@ public class PlayerController : MonoBehaviour
 
         if (m_doudouIsPossessed == true)
         {
-            if (ReferenceEquals(m_target, gameObject) == false)
+            if (GameObject.ReferenceEquals(m_target, gameObject) == false)
             {
                 m_target = gameObject;
             }
         }
         else
         {
-            if (ReferenceEquals(m_target,m_doudou.gameObject) == false)
+            if (GameObject.ReferenceEquals(m_target,m_doudou.gameObject) == false)
             {
                 m_target = m_doudou.gameObject;
             }
@@ -523,7 +526,6 @@ public class PlayerController : MonoBehaviour
                     {
                         m_createNarrativeEvent.actionComplete = true;
                         m_createNarrativeEvent.isWaitingAction = true;
-                        m_audioScript.Play("PhoneEvent");
                     }
                     //Debug.Log("doit être chase");
                 }
