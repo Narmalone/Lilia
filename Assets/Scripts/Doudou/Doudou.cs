@@ -10,7 +10,7 @@ public class Doudou : MonoBehaviour
     [SerializeField] private LayerMask m_stairsMask;
     [SerializeField, Tooltip("R�f�rence de la torche")]private GameObject m_doudou;
     [SerializeField] private Transform m_emplacementDoudou;
-    [SerializeField] private aiSpeed m_ai;
+    [SerializeField] private AppearThings m_appear;
     private BoxCollider m_boxDoudouColider;
     private Rigidbody m_rbDoudou;
     [SerializeField] private float m_stepOffset = 0.2f;
@@ -57,7 +57,7 @@ public class Doudou : MonoBehaviour
     {
         if(TakeBeforeChase == true)
         {
-            //Set new Ai speed;
+            m_appear.IAdontMove = false;
             TakeBeforeChase = false;
         }
         m_rbDoudou.isKinematic = true;
@@ -86,8 +86,9 @@ public class Doudou : MonoBehaviour
         {
             Debug.Log("l'event est fini");
             m_boxDoudouColider.enabled = true;
-            m_rbDoudou.isKinematic = false;
-            m_rbDoudou.useGravity = true;
+            m_rbDoudou.isKinematic = true;
+            m_rbDoudou.useGravity = false;
+            TakeBeforeChase = true;
         }
     }
 }

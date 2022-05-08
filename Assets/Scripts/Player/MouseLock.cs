@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class MouseLock : MonoBehaviour
 {
-    public float mouseSensitivity;
     private GameManager m_gameManager;
 
     [Tooltip("Référence du transform du joueur")]public Transform playerBody;
@@ -16,11 +15,12 @@ public class MouseLock : MonoBehaviour
     private Vector2 rotateGamepad;
 
     float pitch;
-
+    public float mouseSensitivity;
     Quaternion _initRotation;
 
     [SerializeField] private AssetMenuScriptValue m_assetMenuScriptable;
     [SerializeField] private AudioManagerScript m_audioScript;
+
     private void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();
@@ -52,6 +52,7 @@ public class MouseLock : MonoBehaviour
 
             xRotation -= mouseY;
             xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            Debug.Log(mouseY);
 
             transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
@@ -77,5 +78,6 @@ public class MouseLock : MonoBehaviour
     private void OnEnable()
     {
         controls.Gameplay.Enable();
+        Awake();
     }
 }

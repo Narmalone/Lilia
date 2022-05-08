@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class Shake : MonoBehaviour
 {
     #region variables
+    [SerializeField] private MouseLock m_activeMouse;
     public bool camShakeActive = true; //on or off
     [SerializeField, Tooltip("Position ou le shake se lance")] private Transform m_originalPos;
     [Range(0, 1)]
@@ -55,6 +56,7 @@ public class Shake : MonoBehaviour
     private void Awake()
     {
         camShakeActive = false;
+        m_activeMouse.enabled = true;
     }
 
     private void Update()

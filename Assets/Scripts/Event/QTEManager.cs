@@ -19,6 +19,7 @@ public class QTEManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI m_txtToModify;
     [SerializeField] private TextMeshProUGUI m_txtPushTheBox;
+    [SerializeField] private TextMeshProUGUI m_txtCancelAction;
     [SerializeField] private TxtPuzzle_1 m_txtPuzzle;
 
     [SerializeField] private PlayerController m_playerController;
@@ -45,6 +46,7 @@ public class QTEManager : MonoBehaviour
     private void Awake()
     {
         m_txtPushTheBox.gameObject.SetActive(false);
+        m_txtCancelAction.gameObject.SetActive(false);
     }
     void Start()
     {
@@ -75,7 +77,8 @@ public class QTEManager : MonoBehaviour
             else if (m_currentNumberQTE < m_nombreQTE)
             {
                 m_txtPuzzle.UpdateText();
-                Debug.Log("dans le else if connard");
+                m_txtCancelAction.gameObject.SetActive(true);
+                DelockPos();
                 if (m_startedCoroutine == false)
                 {
                     Debug.Log($"Press key {m_keycodesQTE[m_index]}");
@@ -96,6 +99,7 @@ public class QTEManager : MonoBehaviour
                 m_currentNumberQTE = 0;
                 m_qteIsOver = true;
                 StopAllCoroutines();
+                m_txtCancelAction.gameObject.SetActive(false);
                 m_txtToModify.gameObject.SetActive(false);
             }
         }
@@ -131,6 +135,7 @@ public class QTEManager : MonoBehaviour
                     if(m_playerController.m_doudouIsPossessed == false && m_playerController.m_flashlightIsPossessed == false)
                     {
                         Debug.Log("Qte started");
+                        m_txtCancelAction.gameObject.SetActive(false);
                         m_txtToModify.gameObject.SetActive(true);
                         m_txtPushTheBox.gameObject.SetActive(false);
                         m_qteStarted = true;
@@ -148,6 +153,16 @@ public class QTEManager : MonoBehaviour
             m_txtPushTheBox.gameObject.SetActive(false);
         }
 
+    }
+
+    public void DelockPos()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            m_txtCancelAction.gameObject.SetActive(false);
+            m_txtToModify.gameObject.SetActive(false);
+            m_qteStarted = false;
+        }
     }
 
 }
