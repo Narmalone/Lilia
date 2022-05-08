@@ -194,8 +194,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8172246454592653245}
+  - component: {fileID: 6917023384709950080}
   - component: {fileID: 8172246454592653244}
-  - component: {fileID: 8172246454592653243}
   - component: {fileID: 8172246454592653242}
   - component: {fileID: 8172246454592653241}
   - component: {fileID: 8172246454592653240}
@@ -222,6 +222,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6917023384709950080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8172246454592653239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fce54c7247bbbb4b89af200ca17ef6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_toRespawn: {fileID: 8172246454592653245}
+  m_respawnPoint: []
+  isNextCheckpoint: 0
+  m_gameManager: {fileID: 0}
 --- !u!33 &8172246454592653244
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -230,47 +246,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8172246454592653239}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &8172246454592653243
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8172246454592653239}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5aea3b5ad0823594ea32ef9f4cd62a37, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &8172246454592653242
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -299,6 +274,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UIManager: {fileID: 0}
   m_createNarrativeEvent: {fileID: 0}
+  m_txtEvent: {fileID: 0}
+  m_timePlayerScript: {fileID: 0}
+  m_audioScript: {fileID: 0}
   m_phone: {fileID: 0}
   m_doudou: {fileID: 0}
   m_flm: {fileID: 0}
@@ -315,9 +293,9 @@ MonoBehaviour:
   m_TwoHandsItemMask:
     serializedVersion: 2
     m_Bits: 2048
-  m_interactableMask:
+  m_iaMask:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 0
   m_portillonMask:
     serializedVersion: 2
     m_Bits: 8192
@@ -461,9 +439,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 221e092e0643aec4d9217a657c73cc88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 300
   playerBody: {fileID: 8172246454592653245}
+  mouseSensitivity: 300
   m_assetMenuScriptable: {fileID: 11400000, guid: c824cfc070c17324380d74d09a3ee81c, type: 2}
+  m_audioScript: {fileID: 0}
 --- !u!114 &8172246454978275390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,6 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103645be10b5d9243abc949109c933db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_activeMouse: {fileID: 0}
   camShakeActive: 1
   m_originalPos: {fileID: 4391044826920521507}
   trauma: 0
