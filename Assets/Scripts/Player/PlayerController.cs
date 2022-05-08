@@ -310,16 +310,8 @@ public class PlayerController : MonoBehaviour
         m_ray = Camera.main.ScreenPointToRay(new Vector3(0.5f, 0.5f, 0f));
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
         {
-            if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_flashlightMask))
-            {
-                m_UIManager.TakableObject();
-                TakeFlashlight();
-            }
-            else
-            {
-                m_UIManager.DisableUi();
-                return;
-            }
+            m_UIManager.TakableObject();
+            TakeFlashlight();
         }
 
         else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false)
@@ -353,27 +345,20 @@ public class PlayerController : MonoBehaviour
         else if ((m_portillonMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
         {
             Debug.Log("dans le portillon");
-            if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_portillonMask))
+            m_UIManager.TakableObject();
+            if (m_gameManager.isPc == true)
             {
-                m_UIManager.TakableObject();
-                if (m_gameManager.isPc == true)
+                if (Input.GetKey(KeyCode.E))
                 {
-                    if (Input.GetKey(KeyCode.E))
-                    {
-                        m_portillon.UnlockPortillon();
-                    }
+                    m_portillon.UnlockPortillon();
                 }
-                else if (m_gameManager.isGamepad == true)
-                {
+            }
+            else if (m_gameManager.isGamepad == true)
+            {
 
-                }
-                Debug.Log("raycast portillon");
             }
-            else
-            {
-                m_UIManager.DisableUi();
-                return;
-            }
+            Debug.Log("raycast portillon");
+           
         }
         else if ((m_radioMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
