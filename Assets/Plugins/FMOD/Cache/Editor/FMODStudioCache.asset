@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8511421970624985260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voices/DialogPhone
+  m_EditorClassIdentifier: 
+  Path: event:/Voices/DialogPhone
+  Guid:
+    Data1: -43763992
+    Data2: 1119041079
+    Data3: 1084500401
+    Data4: -80234758
+  Banks:
+  - {fileID: -8315650692764663352}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 5310
 --- !u!114 &-8339541721316272822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19,6 +46,26 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 2032
+  Exists: 1
+--- !u!114 &-8315650692764663352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Voices.bank
+  m_EditorClassIdentifier: 
+  Path: FmodProject/Second/Build/Desktop/Voices.bank
+  Name: Voices
+  StudioPath: bank:/Voices
+  lastModified: 637877351452107206
+  FileSizes:
+  - Name: Desktop
+    Value: 44704
   Exists: 1
 --- !u!114 &-7539931956180183554
 MonoBehaviour:
@@ -47,6 +94,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 17475
+--- !u!114 &-7435057904955706446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Hits/KeyDropFromBox
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Hits/KeyDropFromBox
+  Guid:
+    Data1: 1540604811
+    Data2: 1308501917
+    Data3: -928801122
+    Data4: 543231078
+  Banks:
+  - {fileID: 8591615241895475423}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 816
 --- !u!114 &-7016073335477802118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +168,60 @@ MonoBehaviour:
   - Name: Desktop
     Value: 2110624
   Exists: 1
+--- !u!114 &-6188681719689578694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Phone/PhoneCall
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Phone/PhoneCall
+  Guid:
+    Data1: 1855847930
+    Data2: 1215896063
+    Data3: -55972442
+    Data4: -439486445
+  Banks:
+  - {fileID: 8591615241895475423}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 17475
+--- !u!114 &-6025603560854553159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/LesPotes/Julien_1
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/LesPotes/Julien_1
+  Guid:
+    Data1: -891858308
+    Data2: 1304586381
+    Data3: -2066293343
+    Data4: 702200443
+  Banks:
+  - {fileID: 8591615241895475423}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6720
 --- !u!114 &-5199428060287531885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +269,53 @@ MonoBehaviour:
   - Name: Desktop
     Value: 275072
   Exists: 1
+--- !u!114 &-2002311006019571660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FmodProject/Second/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637877351450605235
+  FileSizes:
+  - Name: Desktop
+    Value: 2032
+  Exists: 1
+--- !u!114 &-766183523630847551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/LesPotes/Julien
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/LesPotes/Julien
+  Guid:
+    Data1: -1308353413
+    Data2: 1141618755
+    Data3: -1198669145
+    Data4: 872367579
+  Banks:
+  - {fileID: 8591615241895475423}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2580
 --- !u!114 &-663487308552558892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,26 +349,26 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 8795651803889515970}
-  - {fileID: -8339541721316272822}
-  - {fileID: -6294520363157540637}
-  - {fileID: -4323139442411857579}
-  - {fileID: -663487308552558892}
+  - {fileID: 2990399283587356083}
+  - {fileID: -2002311006019571660}
+  - {fileID: 6720455214374226764}
+  - {fileID: 8591615241895475423}
+  - {fileID: -8315650692764663352}
   EditorEvents:
-  - {fileID: -5199428060287531885}
-  - {fileID: 6736460741371522555}
-  - {fileID: 4405670800902215766}
-  - {fileID: 8467623981774759872}
-  - {fileID: -7016073335477802118}
-  - {fileID: 8271794846249251084}
-  - {fileID: -7539931956180183554}
-  - {fileID: 398118932756384195}
+  - {fileID: 895584400008475739}
+  - {fileID: -766183523630847551}
+  - {fileID: -6025603560854553159}
+  - {fileID: -7435057904955706446}
+  - {fileID: 5223556747364103488}
+  - {fileID: 7258427573194265295}
+  - {fileID: -6188681719689578694}
+  - {fileID: -8511421970624985260}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -8339541721316272822}
+  - {fileID: -2002311006019571660}
   StringsBanks:
-  - {fileID: 8795651803889515970}
-  cacheTime: 637877127518238598
+  - {fileID: 2990399283587356083}
+  cacheTime: 637877351452107206
   cacheVersion: 10
 --- !u!114 &398118932756384195
 MonoBehaviour:
@@ -222,6 +397,53 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3620
+--- !u!114 &895584400008475739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Ambiant/AmbiantMusic.tpe1
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Ambiant/AmbiantMusic.tpe1
+  Guid:
+    Data1: -518835408
+    Data2: 1098783581
+    Data3: 1361168814
+    Data4: -1168719447
+  Banks:
+  - {fileID: 6720455214374226764}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 154618
+--- !u!114 &2990399283587356083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: FmodProject/Second/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637877351450615252
+  FileSizes:
+  - Name: Desktop
+    Value: 1576
+  Exists: 1
 --- !u!114 &4405670800902215766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +471,53 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 6720
+--- !u!114 &5223556747364103488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Hits/Puzzle_HitBox
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Hits/Puzzle_HitBox
+  Guid:
+    Data1: 245796041
+    Data2: 1160800057
+    Data3: -1306144121
+    Data4: 1591531773
+  Banks:
+  - {fileID: 8591615241895475423}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1280
+--- !u!114 &6720455214374226764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: FmodProject/Second/Build/Desktop/Music.bank
+  Name: Music
+  StudioPath: bank:/Music
+  lastModified: 637877351451054548
+  FileSizes:
+  - Name: Desktop
+    Value: 2110624
+  Exists: 1
 --- !u!114 &6736460741371522555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +545,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2580
+--- !u!114 &7258427573194265295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Phone/HangUpPhone
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Phone/HangUpPhone
+  Guid:
+    Data1: -1790704415
+    Data2: 1135028924
+    Data3: 1686708149
+    Data4: 1475868546
+  Banks:
+  - {fileID: 8591615241895475423}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 500
 --- !u!114 &8271794846249251084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +626,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 816
+--- !u!114 &8591615241895475423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Sounds.bank
+  m_EditorClassIdentifier: 
+  Path: FmodProject/Second/Build/Desktop/Sounds.bank
+  Name: Sounds
+  StudioPath: bank:/Sounds
+  lastModified: 637877351451284758
+  FileSizes:
+  - Name: Desktop
+    Value: 275072
+  Exists: 1
 --- !u!114 &8795651803889515970
 MonoBehaviour:
   m_ObjectHideFlags: 0

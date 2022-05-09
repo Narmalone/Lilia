@@ -45,11 +45,19 @@ public class PortillonScript : MonoBehaviour
         sliderInstance.value = m_incrementValue;
         sliderInstance.maxValue = m_speedToOpen;
     }
-
+    private void OnDisable()
+    {
+        
+    }
+    private void OnEnable()
+    {
+        Awake();
+        Start();
+    }
     private void Start()
     {
-        m_txtTutoNoItem.gameObject.SetActive(false);
         sliderInstance.gameObject.SetActive(false);
+        m_txtTutoNoItem.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -75,6 +83,7 @@ public class PortillonScript : MonoBehaviour
         if (m_isActivable == true)
         {
             Activable();
+            Debug.Log("lancer f activable");
         }
         else if (m_isActivable == false)
         {
@@ -95,9 +104,10 @@ public class PortillonScript : MonoBehaviour
 
     public void UnlockPortillon()
     {
+        Debug.Log("dans le unlock portillon");
         if (m_isActivable == true)
         {
-            Debug.Log("dans le unlock portillon");
+            Debug.Log("si le portillon est activable");
             sliderInstance.gameObject.SetActive(true);
             if (m_incrementValue < m_speedToOpen)
             {

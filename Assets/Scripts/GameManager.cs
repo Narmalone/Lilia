@@ -13,8 +13,9 @@ public class GameManager : MonoBehaviour
     public bool isPc;
     public bool isGamepad;
     public bool isPaused;
-
+    public bool gotKey = false;
     public bool isDead;
+    public bool canPick = true;
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
