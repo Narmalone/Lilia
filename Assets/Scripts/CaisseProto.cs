@@ -24,6 +24,12 @@ public class CaisseProto : MonoBehaviour
     
     [SerializeField][Range(1,100)] private float m_speedPourcentReduction;
 
+    [SerializeField] private Vector3 m_positionFinal;
+    
+    [SerializeField] private Vector3 m_rotationFinal;
+    
+    private float m_pourcentSpeed;
+
     public bool onHand;
     public bool canTake;
 
@@ -46,9 +52,11 @@ public class CaisseProto : MonoBehaviour
         onHand = false;
         canTake = false;
     }
+    
     private void OnEnable()
     {
         m_triggerEvent.onTriggered += HandleTriggerEvent;
+        
     }
     
     private void OnValidate()
@@ -58,21 +66,28 @@ public class CaisseProto : MonoBehaviour
             m_sphereCollider = GetComponent<SphereCollider>();
         }
         m_sphereCollider.radius = m_rangeCol;
+
+        m_pourcentSpeed = 100 - m_speedPourcentReduction;
     }
     
     private void OnDisable()
     {
         m_triggerEvent.onTriggered -= HandleTriggerEvent;
     }
+    
     public void HandleTriggerEvent(Vector3 p_newPos)
     {
-        if (onHand == false)
-        {
-            CanTake();
-            canTake = true;
-            m_uiManager.TakableObject();
-            
+        if (onHand == true){
+            transform.position = m_positionFinal;
+            transform.rotation = Quaternion.Euler(m_rotationFinal);
+            m_thisGameObject.transform.parent = null;
+            m_rbody.useGravity = true;
+            m_rbody.isKinematic = false;
+            onHand = false;
+            m_player.m_speed /= m_pourcentSpeed / 100; 
+            Debug.Log("l�cher la caisse");
         }
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -95,11 +110,13 @@ public class CaisseProto : MonoBehaviour
         }
         Debug.Log("trigger exit");
     }
+    
     private void Update()
     {
         CanTake();
         OnHand();
     }
+    
     public void CanTake()
     {
         if (Input.GetKeyDown(KeyCode.E) && canTake == true && m_player.m_doudouIsPossessed == false && m_player.m_flashlightIsPossessed == false && onHand == false)
@@ -110,11 +127,12 @@ public class CaisseProto : MonoBehaviour
             m_rbody.useGravity = false;
             m_rbody.isKinematic = true;
             onHand = true;
-            m_player.m_speed *= m_speedPourcentReduction / 100; 
+            m_player.m_speed *= m_pourcentSpeed / 100; 
             Debug.Log("prendre l'objet");
             
         }
     }
+    
     public void OnHand()
     {
         if (Input.GetKeyDown(KeyCode.G) && onHand == true)
@@ -123,7 +141,7 @@ public class CaisseProto : MonoBehaviour
             m_rbody.useGravity = true;
             m_rbody.isKinematic = false;
             onHand = false;
-            m_player.m_speed /= m_speedPourcentReduction / 100; 
+            m_player.m_speed /= m_pourcentSpeed / 100; 
             Debug.Log("l�cher la caisse");
         }
         if(onHand == true)
