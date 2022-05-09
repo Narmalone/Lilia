@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
+[RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(Rigidbody))]
+
 public class CaisseProto : MonoBehaviour
 {
 
@@ -11,19 +15,30 @@ public class CaisseProto : MonoBehaviour
     private PlayerController m_player;
     private Rigidbody m_rbody;
     private UiManager m_uiManager;
-    private BoxCollider m_boxCollider;
+    private SphereCollider m_sphereCollider;
     [SerializeField] private Transform m_twoHandsContainer;
     [SerializeField] private LayerMask m_playerMask;
+    
+    [SerializeField] [Range(0.1f, 5)] private float m_rangeCol;
 
     public bool onHand;
     public bool canTake;
 
     private void Awake()
     {
-        m_player = FindObjectOfType<PlayerController>();
+        if ((m_player = FindObjectOfType<PlayerController>()) == null)
+        {
+            Debug.Log("Pas de joueur", this);
+        }
+        
         m_rbody = GetComponent<Rigidbody>();
-        m_uiManager = FindObjectOfType<UiManager>();
-        m_boxCollider = GetComponent<BoxCollider>();
+        
+        if ((m_uiManager = FindObjectOfType<UiManager>()) == null)
+        {
+            Debug.Log("Pas de UiManager", this);
+        }
+        
+        m_sphereCollider = GetComponent<SphereCollider>();
 
         onHand = false;
         canTake = false;
@@ -32,6 +47,12 @@ public class CaisseProto : MonoBehaviour
     {
         m_triggerEvent.onTriggered += HandleTriggerEvent;
     }
+    
+    private void OnValidate()
+    {
+        m_sphereCollider.radius = m_rangeCol;
+    }
+    
     private void OnDisable()
     {
         m_triggerEvent.onTriggered -= HandleTriggerEvent;
@@ -84,7 +105,7 @@ public class CaisseProto : MonoBehaviour
             m_rbody.useGravity = true;
             m_rbody.isKinematic = false;
             onHand = false;
-            Debug.Log("lâcher la caisse");
+            Debug.Log("lï¿½cher la caisse");
         }
         if(onHand == true)
         {
