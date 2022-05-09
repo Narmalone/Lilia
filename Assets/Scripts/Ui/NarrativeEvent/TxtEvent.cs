@@ -26,6 +26,12 @@ public class TxtEvent : MonoBehaviour
     {
         OnFade();
         m_txtToDisplay.alpha = currentAlpha;
+
+
+        if (m_createNarrativeEvent.index == 2)
+        {
+            NextSentence();
+        }
     }
     
     //fonction de l'apparation/disparition
@@ -37,6 +43,7 @@ public class TxtEvent : MonoBehaviour
             //L'alpha va à 1
             desiredAlpha = 1;
             currentAlpha = Mathf.MoveTowards(currentAlpha, desiredAlpha, m_createNarrativeEvent.speedToDisplayValue * Time.deltaTime);
+            
         }
 
         else if (m_createNarrativeEvent.actionComplete == true)
@@ -75,6 +82,10 @@ public class TxtEvent : MonoBehaviour
             {
                 Debug.Log("en attente que le joueur fasse quelque chose");
             }
+        }
+        else if(m_createNarrativeEvent.index == 2)
+        {
+            m_createNarrativeEvent.actionComplete = true;
         }
     }
 

@@ -376,39 +376,28 @@ public class PlayerController : MonoBehaviour
         {
             if (m_createNarrativeEvent.index == 1)
             {
-                m_createNarrativeEvent.isWaitingAction = false;
                 m_createNarrativeEvent.actionComplete = true;
-                m_txtEvent.OnFade();
             }
-            Debug.Log("dans le layer téléphone");
-            if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_radioMask))
+            m_UIManager.TakableObject();
+            if (m_gameManager.isPc == true)
             {
-                m_UIManager.TakableObject();
-                if (m_gameManager.isPc == true)
+                if (Input.GetKey(KeyCode.E))
                 {
-                    if (Input.GetKey(KeyCode.E))
+                    if (m_doudouIsPossessed == false && m_flashlightIsPossessed == false)
                     {
-                        if (m_doudouIsPossessed == false && m_flashlightIsPossessed == false)
+                        if (m_createNarrativeEvent.index == 2)
                         {
-                            if (m_createNarrativeEvent.index == 2)
-                            {
-                                m_phone.AnswerToCall();
-                                m_timePlayerScript.StartTimeline();
-                            }
+                            m_phone.AnswerToCall();
+                            m_timePlayerScript.StartTimeline();
                         }
                     }
                 }
-                else if (m_gameManager.isGamepad == true)
-                {
-
-                }
-                Debug.Log("raycast téléphone");
             }
-            else
+            else if (m_gameManager.isGamepad == true)
             {
-                m_UIManager.DisableUi();
-                return;
+
             }
+            
         }
     }
 
@@ -538,7 +527,6 @@ public class PlayerController : MonoBehaviour
                     {
                         m_doudouIsUsed = true;
                         m_createNarrativeEvent.actionComplete = true;
-                        m_createNarrativeEvent.isWaitingAction = true;
                         m_phone.StartPhoneSound();
                     }
                     //Debug.Log("doit être chase");

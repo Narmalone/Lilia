@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class PortillonScript : MonoBehaviour
 {
     [Header("References scripts")]
     [SerializeField] private GameManager m_gameManager;
     [SerializeField] private UiManager m_uiManager;
-    
+    [SerializeField] private TextMeshProUGUI m_txtTutoNoItem;
+    [SerializeField] private CreateNarrativeEvent m_createNarrativeEvent;
     [Header("References dans l'objet"), Space(10)]
     [SerializeField] private BoxCollider m_boxCollider;
     [SerializeField] private MeshCollider m_thisMesh;
@@ -29,6 +31,7 @@ public class PortillonScript : MonoBehaviour
 
     [Header("Références Renderer et materials"), Space(10)]
     private Renderer m_myRend;
+    public bool firstTimeToSee = false;
     private void Awake()
     {
         if (m_animator == null)
@@ -45,9 +48,28 @@ public class PortillonScript : MonoBehaviour
 
     private void Start()
     {
+        m_txtTutoNoItem.gameObject.SetActive(false);
         sliderInstance.gameObject.SetActive(false);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
+        {
+            if(m_createNarrativeEvent.index > 1)
+            {
+                if(firstTimeToSee == false)
+                {
+                    m_txtTutoNoItem.gameObject.SetActive(true);
+                    firstTimeToSee = true;
+                }
+            }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        m_txtTutoNoItem.gameObject.SetActive(false);
+    }
     private void Update()
     {
         if (m_isActivable == true)
