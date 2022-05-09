@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class Doudou : MonoBehaviour
 {
     [SerializeField]UiManager uiManager;
+    [SerializeField] private GameManager m_gameManager;
     [SerializeField] private LayerMask m_stairsMask;
     [SerializeField, Tooltip("R�f�rence de la torche")]private GameObject m_doudou;
     [SerializeField] private Transform m_emplacementDoudou;
@@ -24,6 +25,7 @@ public class Doudou : MonoBehaviour
         m_boxDoudouColider = m_doudou.GetComponent<BoxCollider>();
         m_rbDoudou = m_doudou.GetComponent<Rigidbody>();
         m_callEvent = false;
+        m_gameManager = FindObjectOfType<GameManager>();
     }
     private float m_yRotation = 0f;
     private void Update()
@@ -32,6 +34,7 @@ public class Doudou : MonoBehaviour
         {
             m_rbDoudou.isKinematic = true;
             m_rbDoudou.useGravity = false;
+            m_gameManager.canPick = false;
         }
     }
     public void PickItem()
@@ -70,6 +73,7 @@ public class Doudou : MonoBehaviour
             m_rbDoudou.isKinematic = false;
             m_rbDoudou.useGravity = true;
             m_callEvent = false;
+            m_gameManager.canPick = true;
             TakeBeforeChase = true;
         }
     }

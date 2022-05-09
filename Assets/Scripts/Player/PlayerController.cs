@@ -315,22 +315,34 @@ public class PlayerController : MonoBehaviour
         m_ray = Camera.main.ScreenPointToRay(new Vector3(0.5f, 0.5f, 0f));
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
         {
-            if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_flashlightMask))
+            if(m_gameManager.gotKey == false)
             {
-                m_UIManager.TakableObject();
-                TakeFlashlight();
+                if(m_gameManager.canPick == true)
+                {
+                    m_UIManager.TakableObject();
+                    TakeFlashlight();
+                }
+                else
+                {
+                    m_UIManager.DisableUi();
+                }
+               
             }
-            else
-            {
-                m_UIManager.DisableUi();
-                return;
-            }
+            
         }
 
         else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false)
         {
-            m_UIManager.TakableObject();
-            TakeDoudou();
+            if(m_gameManager.canPick == true)
+            {
+                m_UIManager.TakableObject();
+                TakeDoudou();
+            }
+            else
+            {
+                m_UIManager.DisableUi();
+            }
+            
         }
 
         else if ((m_TwoHandsItemMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false && m_flashlightIsPossessed == false)
@@ -349,10 +361,10 @@ public class PlayerController : MonoBehaviour
 
         else if ((m_portillonMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
         {
-            Debug.Log("dans le portillon");
             if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_portillonMask))
             {
                 m_UIManager.TakableObject();
+                m_gameManager.canPick = true;
                 if (m_gameManager.isPc == true)
                 {
                     if (Input.GetKey(KeyCode.E))
@@ -364,7 +376,6 @@ public class PlayerController : MonoBehaviour
                 {
 
                 }
-                Debug.Log("raycast portillon");
             }
             else
             {
@@ -379,6 +390,7 @@ public class PlayerController : MonoBehaviour
                 m_createNarrativeEvent.actionComplete = true;
             }
             m_UIManager.TakableObject();
+            m_gameManager.canPick = false;
             if (m_gameManager.isPc == true)
             {
                 if (Input.GetKey(KeyCode.E))
@@ -415,10 +427,12 @@ public class PlayerController : MonoBehaviour
         else if ((m_portillonMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             m_UIManager.DisableUi();
+            m_gameManager.canPick = true;
         }
         else if ((m_radioMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             m_UIManager.DisableUi();
+            m_gameManager.canPick = true;
         }
 
     }

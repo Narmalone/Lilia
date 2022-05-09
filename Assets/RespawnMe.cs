@@ -61,6 +61,7 @@ public class RespawnMe : MonoBehaviour
     }
     public void Respawn()
     {
+        m_player.transform.position = m_playercheckpoints.transform.position;
         m_iaTransform.position = m_iaCheckpoint.position;
 
         if (m_player.m_doudouIsPossessed == true)
@@ -73,8 +74,7 @@ public class RespawnMe : MonoBehaviour
         }
         m_doudoutransform.transform.position = m_doudoucheckpoint.transform.position;
         m_veilleuseTransform.position = m_veilleuseCheckPoint.position;
-
-        m_player.transform.position = m_playercheckpoints.transform.position;
+        Debug.Log("fonction respawn");
 
         m_menuManager.OnRespawn();
         m_gameManager.isDead = false;

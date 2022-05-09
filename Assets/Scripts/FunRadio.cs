@@ -35,6 +35,7 @@ public class FunRadio : MonoBehaviour
     {
         if(isFirstAnswer == true)
         {
+            m_uiManager.DisableUi();
             m_waypointMoveDoudou.isEventCalled = true;
             m_doudou.m_callEvent = true;
             m_audioScript.Stop("PhoneEvent");
