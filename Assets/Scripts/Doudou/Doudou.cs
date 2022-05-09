@@ -25,32 +25,6 @@ public class Doudou : MonoBehaviour
         m_rbDoudou = m_doudou.GetComponent<Rigidbody>();
         m_callEvent = false;
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if ((m_stairsMask.value & (1 << collision.gameObject.layer)) > 0)
-        {
-            if (m_callEvent == true)
-            {
-                Debug.Log("collision stairs enter");
-                m_doudou.transform.localPosition = new Vector3(m_doudou.transform.localPosition.x, m_doudou.transform.localPosition.y + m_stepOffset, m_doudou.transform.localPosition.z);
-                m_rbDoudou.isKinematic = true;
-                m_rbDoudou.useGravity = false;
-                m_boxDoudouColider.enabled = false;
-            }
-        }
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        if ((m_stairsMask.value & (1 << collision.gameObject.layer)) > 0)
-        {
-            if (m_callEvent == true)
-            {
-                m_rbDoudou.isKinematic = false;
-                m_rbDoudou.useGravity = true;
-            }
-        }
-
-    }
     private float m_yRotation = 0f;
     private void Update()
     {
@@ -81,12 +55,9 @@ public class Doudou : MonoBehaviour
         m_doudou.transform.SetParent(m_emplacementDoudou);
         m_doudou.transform.localRotation = Quaternion.Euler(0f,-0f,0f);
         m_doudou.transform.parent = null;
-        if (m_callEventEnded == false)
-        {
-            m_rbDoudou.isKinematic = false;
-            m_rbDoudou.useGravity = true;
-        }
-        
+        m_rbDoudou.isKinematic = false;
+        m_rbDoudou.useGravity = true;
+
     }
 
     public void CallEventEnded()
@@ -96,8 +67,9 @@ public class Doudou : MonoBehaviour
         {
             Debug.Log("l'event est fini");
             m_boxDoudouColider.enabled = true;
-            m_rbDoudou.isKinematic = true;
-            m_rbDoudou.useGravity = false;
+            m_rbDoudou.isKinematic = false;
+            m_rbDoudou.useGravity = true;
+            m_callEvent = false;
             TakeBeforeChase = true;
         }
     }
