@@ -12815,6 +12815,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1741553606}
+  - component: {fileID: 1741553607}
   m_Layer: 0
   m_Name: SpawnPortillons
   m_TagString: Untagged
@@ -12839,6 +12840,20 @@ Transform:
   m_Father: {fileID: 1928383514}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1741553607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741553605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01021f806fcf55a489eca97bfa9cf5db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_disapear: {fileID: 4075055851583946304}
+  m_disapear_2: {fileID: 1171713281}
 --- !u!1 &1790721834
 GameObject:
   m_ObjectHideFlags: 0
@@ -14615,6 +14630,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1607349580}
+    - target: {fileID: 4075055851039448009, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4075055851266985823, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
       propertyPath: valueToDisplay
       value: 50
@@ -14763,6 +14782,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1607349580}
+    - target: {fileID: 4075055852143973520, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_Text
+      value: '"E" to interact'
+      objectReference: {fileID: 0}
     - target: {fileID: 4221709987039947545, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
       propertyPath: m_RootOrder
       value: 9
