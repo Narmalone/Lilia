@@ -7,7 +7,7 @@ public class MouseLock : MonoBehaviour
 {
     private GameManager m_gameManager;
 
-    [Tooltip("Référence du transform du joueur")]public Transform playerBody;
+    [Tooltip("Rï¿½fï¿½rence du transform du joueur")]public Transform playerBody;
     private float xRotation = 0f;
 
     PlayerControls controls;
@@ -28,13 +28,13 @@ public class MouseLock : MonoBehaviour
         controls = new PlayerControls();
 
         _initRotation = transform.localRotation;
-
+            
         if (m_gameManager.isGamepad)
         {
             controls.Gameplay.Rotation.performed += ctx => rotateGamepad = ctx.ReadValue<Vector2>();
             controls.Gameplay.Rotation.canceled += ctx => rotateGamepad = Vector2.zero;
         }
-        m_audioScript.PlayMusic("AmbiantMusic");
+        //m_audioScript.PlayMusic("AmbiantMusic");
     }
     void Start()
     {
