@@ -194,7 +194,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8172246454592653245}
-  - component: {fileID: 6917023384709950080}
   - component: {fileID: 8172246454592653244}
   - component: {fileID: 8172246454592653242}
   - component: {fileID: 8172246454592653241}
@@ -222,22 +221,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6917023384709950080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8172246454592653239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fce54c7247bbbb4b89af200ca17ef6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_toRespawn: {fileID: 8172246454592653245}
-  m_respawnPoint: []
-  isNextCheckpoint: 0
-  m_gameManager: {fileID: 0}
 --- !u!33 &8172246454592653244
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -280,7 +263,6 @@ MonoBehaviour:
   m_phone: {fileID: 0}
   m_doudou: {fileID: 0}
   m_flm: {fileID: 0}
-  m_caisseProtoScript: {fileID: 0}
   m_AIStateMachine: {fileID: 0}
   m_gameManager: {fileID: 0}
   m_portillon: {fileID: 0}

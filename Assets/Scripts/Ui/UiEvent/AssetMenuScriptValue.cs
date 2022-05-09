@@ -5,7 +5,7 @@ using UnityEngine;
 public class AssetMenuScriptValue : ScriptableObject
 {
     public float value;
-
+    public int CheckPoints;
     public bool uiBool;
 
     public enum Enumerate

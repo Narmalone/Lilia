@@ -78,11 +78,10 @@ public class MenuManager : MonoBehaviour
 
     public void OnDeath()
     {
-        if (Input.anyKeyDown)
-        {
-            SceneManager.LoadScene("InGame");
-        }
         m_pannelDeath.SetActive(true);
+    }public void OnRespawn()
+    {
+        m_pannelDeath.SetActive(false);
     }
     public void DisableOptionPannel(GameObject p_obj)
     {

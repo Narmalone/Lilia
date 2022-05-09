@@ -16,6 +16,7 @@ public class FunRadio : MonoBehaviour
     [SerializeField] private AppearThings m_appearsChamber;
     public bool isPlay = false;
     public bool isFirstAnswer = true;
+    public bool StartPhone = false;
     [Header("References Mask"), Space(10)]
     [SerializeField] private LayerMask m_playerMask;
 
@@ -46,5 +47,13 @@ public class FunRadio : MonoBehaviour
         }
         else { return; }
         
+    }
+    public void StartPhoneSound()
+    {
+        if(StartPhone == false)
+        {
+            m_audioScript.Play("PhoneEvent");
+            StartPhone = true;
+        }
     }
 }

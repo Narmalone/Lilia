@@ -25,14 +25,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TimelinePlayerScript m_timePlayerScript;
     [SerializeField] private AudioManagerScript m_audioScript;
     private MenuManager m_menuManager;
+    [SerializeField] private RespawnMe m_respawn;
 
     [SerializeField] private FunRadio m_phone;
 
     [SerializeField, Tooltip("Script du doudou")] Doudou m_doudou;
 
     [SerializeField, Tooltip("Script de la lampe torche")] private FlashlightManager m_flm;
-
-    [SerializeField] private CaisseProto m_caisseProtoScript;
 
     [NonSerialized]
     public bool m_flashlightIsPossessed = false;
@@ -137,8 +136,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-
-        m_caisseProtoScript = FindObjectOfType<CaisseProto>();
         m_gameManager = FindObjectOfType<GameManager>();
         m_menuManager = FindObjectOfType<MenuManager>();
         m_controls = new PlayerControls();
@@ -160,6 +157,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(m_doudouIsUsed);
+
         m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Cr�ation d'une sphere qui chech si le joueur touche le sol
 
         if (m_isGrounded && m_velocity.y < 0)        //Reset de la gravit� quand le joueur touche le sol
@@ -239,6 +238,10 @@ public class PlayerController : MonoBehaviour
 
         if (m_doudouIsPossessed == true)
         {
+            if (m_doudouIsUsed == true)
+            {
+                Stressing(-m_StressPower);
+            }
             if (ReferenceEquals(m_target, gameObject) == false)
             {
                 m_target = gameObject;
@@ -271,10 +274,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (m_doudouIsUsed == true)
-        {
-            Stressing(-m_StressPower);
-        }
+       
     }
     private void Stressing(float p_stressNum)
     {
@@ -536,9 +536,10 @@ public class PlayerController : MonoBehaviour
 
                     if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 1)
                     {
+                        m_doudouIsUsed = true;
                         m_createNarrativeEvent.actionComplete = true;
                         m_createNarrativeEvent.isWaitingAction = true;
-                        m_audioScript.Play("PhoneEvent");
+                        m_phone.StartPhoneSound();
                     }
                     //Debug.Log("doit être chase");
                 }
@@ -547,8 +548,6 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("touche r non appuyé");
                 m_doudouIsUsed = false;
-                //m_camShake.camShakeActive = false;
-                //m_AIStateMachine.m_chasing = false;
             }
             if (Input.GetKeyDown(KeyCode.G) && m_doudouIsPossessed == true)
             {

@@ -66,6 +66,7 @@ public class PortillonScript : MonoBehaviour
         Animator.StringToHash(m_openAnim);
         m_boxCollider.enabled = false;
         m_thisMesh.enabled = false;
+        m_isActivable = false;
         Debug.Log("jouer l'anim");
         m_uiManager.DisableUi();
     }
