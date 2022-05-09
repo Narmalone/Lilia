@@ -329,16 +329,8 @@ public class PlayerController : MonoBehaviour
 
         else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false)
         {
-            if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_doudouMask))
-            {
-                m_UIManager.TakableObject();
-                TakeDoudou();
-            }
-            else
-            {
-                m_UIManager.DisableUi();
-                return;
-            }
+            m_UIManager.TakableObject();
+            TakeDoudou();
         }
 
         else if ((m_TwoHandsItemMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false && m_flashlightIsPossessed == false)
