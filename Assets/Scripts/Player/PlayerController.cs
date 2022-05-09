@@ -295,11 +295,19 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        m_currentStress = Mathf.Clamp(m_currentStress - amount, 0f, m_maxStress);
+        if(m_gameManager.isPaused == true)
+        {
+            m_maxStress = m_currentStress;
+        }
+        else
+        {
+            m_maxStress = 100f;
+            m_currentStress = Mathf.Clamp(m_currentStress - amount, 0f, m_maxStress);
 
-        float damagePercent = Mathf.Clamp01(amount / m_maxStress);
+            float damagePercent = Mathf.Clamp01(amount / m_maxStress);
 
-        m_targetIntensity = Mathf.Clamp01(m_targetIntensity + damagePercent);
+            m_targetIntensity = Mathf.Clamp01(m_targetIntensity + damagePercent);
+        }
     }
 
     private void OnTriggerStay(Collider p_collide)

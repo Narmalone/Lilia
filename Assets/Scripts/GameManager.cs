@@ -54,12 +54,14 @@ public class GameManager : MonoBehaviour
 
     public void GamePaused()
     {
+        isPaused = true;
         Time.timeScale = 0;
         Debug.Log("jeu en pause");
     }
 
     public void GameResume()
     {
+        isPaused = false;
         Time.timeScale = 1;
     }
 
