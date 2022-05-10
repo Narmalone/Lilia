@@ -62,8 +62,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask m_portillonMask;
     [SerializeField] private LayerMask m_radioMask;
 
-    //-----------------------------------------------Systeme Stress------------------------------------------
+    //-----------------------------------------------Sound System------------------------------------------//
+  
+    public FMODUnity.EventReference m_fmodEvent;
 
+    private FMOD.Studio.EventInstance m_fmodInstance;
+
+    [SerializeField] [Range(0,10)] private float m_speedFeet;
+
+    
 
     //----------------------------------------------- Player controls system ------------------------------------------//
 
@@ -153,10 +160,16 @@ public class PlayerController : MonoBehaviour
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_dOFSettings));
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_vignetteSettings));
 
+        m_fmodInstance = FMODUnity.RuntimeManager.CreateInstance(m_fmodEvent);
+        Debug.Log(m_fmodInstance.start());
+       
+       
     }
 
     private void Update()
     {
+        m_fmodInstance.setParameterByName("Speed", m_speedFeet);
+
         Debug.Log(m_doudouIsUsed);
 
         m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Cr�ation d'une sphere qui chech si le joueur touche le sol

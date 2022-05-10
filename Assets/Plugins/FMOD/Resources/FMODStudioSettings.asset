@@ -399,8 +399,8 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: 
-  sourceBankPath: 
+  sourceProjectPath: FmodProject/Second/Second.fspro
+  sourceBankPath: FmodProject/Second/Build
   SourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -422,8 +422,12 @@ MonoBehaviour:
   VirtualChannelSettings: []
   RealChannelSettings: []
   Plugins: []
-  MasterBanks: []
-  Banks: []
+  MasterBanks:
+  - Master
+  Banks:
+  - Music
+  - Sounds
+  - Voices
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
@@ -438,17 +442,17 @@ MonoBehaviour:
   HideSetupWizard: 0
   LastEventReferenceScanVersion: 0
   Platforms:
-  - {fileID: -5443134213378966974}
-  - {fileID: 6385338441058421441}
-  - {fileID: 7796242164101487575}
   - {fileID: -6576428360661346027}
-  - {fileID: -3693463536254962643}
+  - {fileID: -5443134213378966974}
   - {fileID: -4355319127551087536}
-  - {fileID: -733259595410569224}
-  - {fileID: 5709490374041434786}
+  - {fileID: -3693463536254962643}
   - {fileID: -1308291650907151285}
+  - {fileID: -733259595410569224}
   - {fileID: 1032207106154622029}
+  - {fileID: 5709490374041434786}
+  - {fileID: 6385338441058421441}
   - {fileID: 7450005780806909427}
+  - {fileID: 7796242164101487575}
   MigratedPlatforms: 12000000150000000a000000090000000b000000080000000c00000005000000060000000200000001000000
 --- !u!114 &1032207106154622029
 MonoBehaviour:
@@ -642,15 +646,15 @@ MonoBehaviour:
     HasValue: 0
   displaySortOrder: 0
   childIdentifiers:
-  - c88d16e5272a4e241b0ef0ac2e53b73d
   - fd7c55dab0fce234b8c25f6ffca523c1
-  - 2c5177b11d81d824dbb064f9ac8527da
   - e7a046c753c3c3d4aacc91f6597f310d
-  - 52eb9df5db46521439908db3a29a1bbb
-  - b7716510a1f36934c87976f3a81dbf3d
+  - 2c5177b11d81d824dbb064f9ac8527da
   - 0f8eb3f400726694eb47beb1a9f94ce8
+  - 52eb9df5db46521439908db3a29a1bbb
   - 46fbfdf3fc43db0458918377fd40293e
+  - b7716510a1f36934c87976f3a81dbf3d
   - 2fea114e74ecf3c4f920e1d5cc1c4c40
+  - c88d16e5272a4e241b0ef0ac2e53b73d
 --- !u!114 &7450005780806909427
 MonoBehaviour:
   m_ObjectHideFlags: 0
