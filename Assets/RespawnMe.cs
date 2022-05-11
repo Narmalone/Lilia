@@ -43,14 +43,11 @@ public class RespawnMe : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
+                m_player.transform.position = m_playercheckpoints.transform.position;
                 Respawn();
                 Debug.Log("mort et appuie sur une touche");
             }
         }
-    }
-    private void FixedUpdate()
-    {
-        
     }
     public void NextCheckpoint()
     {
@@ -61,7 +58,6 @@ public class RespawnMe : MonoBehaviour
     }
     public void Respawn()
     {
-        m_player.transform.position = m_playercheckpoints.transform.position;
         m_iaTransform.position = m_iaCheckpoint.position;
 
         if (m_player.m_doudouIsPossessed == true)
