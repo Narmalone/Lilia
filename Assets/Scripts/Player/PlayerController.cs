@@ -175,7 +175,7 @@ public class PlayerController : MonoBehaviour
 
             m_myChara.Move(move * m_speed * Time.deltaTime);
         }
-        if (m_doudouIsUsed == true)
+        else if (m_doudouIsUsed == true)
         {
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");

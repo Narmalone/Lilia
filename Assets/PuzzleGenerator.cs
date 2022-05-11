@@ -6,6 +6,7 @@ public class PuzzleGenerator : MonoBehaviour
 {
     [SerializeField] PlayerController m_player;
     [SerializeField] Transform m_containerPlayer;
+    [SerializeField] BoxCollider m_puzzleBox;
     [SerializeField] private GameManager m_gameManager;
     [SerializeField] private UiManager m_uiManager;
     [SerializeField] float m_rangeToNotOut = 0.3f;
@@ -25,21 +26,25 @@ public class PuzzleGenerator : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        m_uiManager.TakableObject();
+    }
+    private void OnTriggerStay(Collider other)
+    {
         if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
         {
-            if(m_gameManager.isPc == true)
+            if (m_gameManager.isPc == true)
             {
-                if(isLocked == false)
+                if (isLocked == false)
                 {
-                    m_uiManager.TakableObject();
+                    Debug.Log("dans le bool isLocked false");
                     if (Input.GetKeyDown(KeyCode.E))
                     {
+                        Debug.Log("Input E detected");
                         LockPlayer();
                     }
                 }
             }
         }
-
     }
     private void OnTriggerExit(Collider other)
     {
@@ -53,13 +58,17 @@ public class PuzzleGenerator : MonoBehaviour
     }
     public void LockPlayer()
     {
-        m_player.transform.position = m_containerPlayer.transform.position;
+
         if (Vector3.Distance(m_player.transform.position, m_containerPlayer.transform.position) > m_rangeToNotOut)
         {
-            m_player.transform.position = m_containerPlayer.transform.position;
+            m_player.transform.position = Vector3.MoveTowards(m_player.transform.position, m_containerPlayer.transform.position, 0.1f);
         }
-        isLocked = true;
-        Select();
+        else
+        {
+            isLocked = true;
+            Select();
+        }
+        
     }
     public void UnlockPlayer()
     {
@@ -78,6 +87,7 @@ public class PuzzleGenerator : MonoBehaviour
     public void Select()
     {
         m_currentSelected = m_interruptersList[m_index];
+        Debug.Log(m_currentSelected.gameObject.name);
         foreach(GameObject p_obj in m_interruptersList)
         {
             
