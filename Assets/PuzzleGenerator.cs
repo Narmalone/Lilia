@@ -39,11 +39,17 @@ public class PuzzleGenerator : MonoBehaviour
                     Debug.Log("dans le bool isLocked false");
                     if (Input.GetKeyDown(KeyCode.E))
                     {
-                        Debug.Log("Input E detected");
-                        LockPlayer();
+                        isLocked = true;
                     }
                 }
             }
+        }
+    }
+    public void LateUpdate()
+    {
+        if(isLocked == true)
+        {
+            LockPlayer();
         }
     }
     private void OnTriggerExit(Collider other)
@@ -58,17 +64,16 @@ public class PuzzleGenerator : MonoBehaviour
     }
     public void LockPlayer()
     {
-
         if (Vector3.Distance(m_player.transform.position, m_containerPlayer.transform.position) > m_rangeToNotOut)
         {
             m_player.transform.position = Vector3.MoveTowards(m_player.transform.position, m_containerPlayer.transform.position, 0.1f);
         }
         else
         {
-            isLocked = true;
             Select();
+            isLocked = false;
         }
-        
+
     }
     public void UnlockPlayer()
     {
