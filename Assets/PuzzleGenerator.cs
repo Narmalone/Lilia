@@ -101,9 +101,10 @@ public class PuzzleGenerator : MonoBehaviour
         if(m_currentSelected != null)
         {
             m_lastObjSelected = m_currentSelected;
-            SwitchSelect();
-            m_currentSelected.SetActive(false);
+            m_currentSelected.GetComponent<Renderer>().material.color = m_selectedColor;
         }
+        SwitchSelect();
+
     }
 
     public void SwitchSelect()
