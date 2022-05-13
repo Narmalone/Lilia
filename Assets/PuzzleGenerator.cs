@@ -14,6 +14,7 @@ public class PuzzleGenerator : MonoBehaviour
     [SerializeField] public List<GameObject> m_interruptersList;
     [SerializeField] public GameObject m_currentSelected;
     private GameObject m_lastObjSelected;
+    [SerializeField] private Material m_objMat;
     [SerializeField] private Color m_selectedColor;
     [SerializeField] private Color m_notSelectedColor;
 
@@ -26,6 +27,7 @@ public class PuzzleGenerator : MonoBehaviour
     {
         m_index = 0;
         m_gameManager = FindObjectOfType<GameManager>();
+        m_objMat.color = m_notSelectedColor;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,13 +44,20 @@ public class PuzzleGenerator : MonoBehaviour
     public void LateUpdate()
     {
         LockedPlayer();
-        if (isLocked == true && isTrigger == true)
+        
+        
+        if (isLocked == true)
         {
-            m_uiManager.DisableUi();
-            if (Vector3.Distance(m_player.transform.position, m_containerPlayer.transform.position) > m_rangeToNotOut)
+            
+            if (isTrigger == true)
             {
-                m_player.transform.position = Vector3.MoveTowards(m_player.transform.position, m_containerPlayer.transform.position, 0.1f);
-                m_player.m_speed = 0f;
+                SwitchSelect();
+                m_uiManager.DisableUi();
+                if (Vector3.Distance(m_player.transform.position, m_containerPlayer.transform.position) > m_rangeToNotOut)
+                {
+                    m_player.transform.position = Vector3.MoveTowards(m_player.transform.position, m_containerPlayer.transform.position, 0.1f);
+                    m_player.m_speed = 0f;
+                }
             }
         }
     }
@@ -89,6 +98,7 @@ public class PuzzleGenerator : MonoBehaviour
                 {
                     isLocked = false;
                     isTrigger = false;
+                    m_player.m_speed = 2f;
                 }
             }
         }
@@ -96,14 +106,14 @@ public class PuzzleGenerator : MonoBehaviour
 
     public void Select()
     {
-        m_currentSelected = m_interruptersList[m_index];
-        
-        if(m_currentSelected != null)
+        if (m_currentSelected != null)
         {
             m_lastObjSelected = m_currentSelected;
-            m_currentSelected.GetComponent<Renderer>().material.color = m_selectedColor;
+            m_lastObjSelected.GetComponent<Renderer>().material.color = m_notSelectedColor;
         }
-        SwitchSelect();
+        
+        m_currentSelected = m_interruptersList[m_index];
+        m_currentSelected.GetComponent<Renderer>().material.color = m_selectedColor;
 
     }
 
@@ -123,11 +133,12 @@ public class PuzzleGenerator : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Q))
             {
                 m_index--;
-                if(m_index <= 0)
+                if(m_index < 0)
                 {
                     m_index = 0;
                 }
                 Select();
+                Debug.Log("Q"+ m_index);
             }
         }
     }
