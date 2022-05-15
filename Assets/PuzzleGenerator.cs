@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class PuzzleGenerator : MonoBehaviour
 {
     [SerializeField] PlayerController m_player;
@@ -14,11 +14,10 @@ public class PuzzleGenerator : MonoBehaviour
     [SerializeField] public List<GameObject> m_interruptersList;
     [SerializeField] public List<ButtonGeneratorPuzzle> m_buttons;
     [SerializeField] public GameObject m_currentSelected;
-    private GameObject m_lastObjSelected;
+    [NonSerialized] public GameObject m_lastObjSelected;
     [SerializeField] private Material m_objMat;
     [SerializeField] private Color m_selectedColor;
     [SerializeField] private Color m_notSelectedColor;
-    [SerializeField] private Color m_activeColor;
 
     private int m_index;
 
@@ -108,38 +107,14 @@ public class PuzzleGenerator : MonoBehaviour
 
     public void Select()
     {
-        if(m_buttons[m_index].isActivated == false)
+        if (m_currentSelected != null)
         {
-            if (m_currentSelected != null)
-            {
-                m_lastObjSelected = m_currentSelected;
-                m_lastObjSelected.GetComponent<Renderer>().material.color = m_notSelectedColor;
-            }
-            
-            m_currentSelected = m_interruptersList[m_index];
-            m_currentSelected.GetComponent<Renderer>().material.color = m_selectedColor;
-
-            if (Input.GetKeyDown(KeyCode.J))
-            {
-                m_buttons[m_index].isActivated = true;
-                Debug.Log("J pressed");
-            }
-        } 
-        else if(m_buttons[m_index].isActivated == true)
-        {
-            foreach(ButtonGeneratorPuzzle button in m_buttons)
-            {
-                if(button.isActivated == true)
-                {
-                    button.gameObject.GetComponent<Renderer>().material.color = m_activeColor;
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.J))
-            {
-                m_buttons[m_index].isActivated = false;
-            }
-
+            m_lastObjSelected = m_currentSelected;
+            m_lastObjSelected.GetComponent<Renderer>().material.color = m_notSelectedColor;
         }
+        m_currentSelected = m_interruptersList[m_index];
+        m_currentSelected.GetComponent<Renderer>().material.color = m_selectedColor;
+        m_buttons[m_index].OnSelected();
     }
 
     public void SwitchSelect()
