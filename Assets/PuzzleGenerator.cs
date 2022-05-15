@@ -115,7 +115,7 @@ public class PuzzleGenerator : MonoBehaviour
                 m_lastObjSelected = m_currentSelected;
                 m_lastObjSelected.GetComponent<Renderer>().material.color = m_notSelectedColor;
             }
-
+            
             m_currentSelected = m_interruptersList[m_index];
             m_currentSelected.GetComponent<Renderer>().material.color = m_selectedColor;
 
@@ -152,7 +152,6 @@ public class PuzzleGenerator : MonoBehaviour
                 {
                     m_index++;
                     Select();
-                    Debug.Log(m_index);
                 }
             }
             else if (Input.GetKeyDown(KeyCode.Q))
@@ -163,7 +162,6 @@ public class PuzzleGenerator : MonoBehaviour
                     m_index = 0;
                 }
                 Select();
-                Debug.Log("Q"+ m_index);
             }
         }
     }
