@@ -12,7 +12,9 @@ public class PuzzleGenerator : MonoBehaviour
     [SerializeField] private LayerMask m_playerMask;
  
     [SerializeField] public List<GameObject> m_interruptersList;
+    [SerializeField] public List<GameObject> m_getSolution;
     [SerializeField] public List<ButtonGeneratorPuzzle> m_buttons;
+
     [SerializeField] public GameObject m_currentSelected;
     [NonSerialized] public GameObject m_lastObjSelected;
     [SerializeField] private Material m_objMat;
@@ -20,6 +22,7 @@ public class PuzzleGenerator : MonoBehaviour
     [SerializeField] private Color m_notSelectedColor;
 
     private int m_index;
+    private int m_indexTableau;
 
     public bool isLocked = false;
     public bool isTrigger = false;
@@ -27,6 +30,7 @@ public class PuzzleGenerator : MonoBehaviour
     private void Awake()
     {
         m_index = 0;
+        m_indexTableau = 0;
         m_gameManager = FindObjectOfType<GameManager>();
         m_objMat.color = m_notSelectedColor;
     }
@@ -115,6 +119,7 @@ public class PuzzleGenerator : MonoBehaviour
         m_currentSelected = m_interruptersList[m_index];
         m_currentSelected.GetComponent<Renderer>().material.color = m_selectedColor;
         m_buttons[m_index].OnSelected();
+        CheckSolution();
     }
 
     public void SwitchSelect()
@@ -139,5 +144,22 @@ public class PuzzleGenerator : MonoBehaviour
                 Select();
             }
         }
+    }
+
+    public void CheckSolution()
+    {
+        foreach(GameObject p_button in m_buttons)
+        {
+            foreach (GameObject p_obj in m_getSolution)
+            {
+                
+                if (p_obj.isActivated == true)
+                {
+                    Debug.Log("vous avez complété l'énigme");
+                    //okdoqjkd
+                }
+            }
+        }
+       
     }
 }
