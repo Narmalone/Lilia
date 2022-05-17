@@ -9,7 +9,6 @@ public class ButtonGeneratorPuzzle : MonoBehaviour
 
     [SerializeField] private Color m_activatedColor;
     [SerializeField] private Color m_notSelectedColor;
-
     [SerializeField] private Animator m_myAnim;
     string m_nameAnim = "isActivate";
 
@@ -33,17 +32,18 @@ public class ButtonGeneratorPuzzle : MonoBehaviour
             {
                 isActivated = false;
                 m_puzzle.CheckSolution();
-                m_myAnim.SetBool(m_nameAnim, true);
-                Animator.StringToHash(m_nameAnim);
+                //m_myAnim.SetBool(m_nameAnim, true);
             }
         }
         else
         {
+            m_myAnim.SetTrigger(m_nameAnim);
+            Animator.StringToHash(m_nameAnim);
             gameObject.GetComponent<Renderer>().material.color = m_notSelectedColor;
             if (Input.GetKeyDown(KeyCode.J))
             {
                 isActivated = true;
-                m_myAnim.SetBool(m_nameAnim, false);
+                //m_myAnim.SetBool(m_nameAnim, false);
                 m_puzzle.CheckSolution();
             }
         }
