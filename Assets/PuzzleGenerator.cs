@@ -15,7 +15,7 @@ public class PuzzleGenerator : MonoBehaviour
     [SerializeField] public List<ButtonGeneratorPuzzle> m_getSolution;
     [SerializeField] public List<ButtonGeneratorPuzzle> m_notSolution;
     [SerializeField] public List<ButtonGeneratorPuzzle> m_buttons;
-
+    [SerializeField] public paper m_paper;
     [SerializeField] public GameObject m_currentSelected;
     [NonSerialized] public GameObject m_lastObjSelected;
     [SerializeField] private Material m_objMat;
@@ -25,6 +25,7 @@ public class PuzzleGenerator : MonoBehaviour
     private int m_index = 0;
     private int m_indexSolution = 0;
     private int m_indexNotSolution = 0;
+    private int m_indexPaper = 0;
 
     public bool isLocked = false;
     public bool isTrigger = false;
@@ -37,6 +38,7 @@ public class PuzzleGenerator : MonoBehaviour
         m_index = 0;
         m_indexSolution = 0;
         m_indexNotSolution = 0;
+        m_indexPaper = 0;
         completeSolution = false;
         notSolutionComplete = false;
         m_gameManager = FindObjectOfType<GameManager>();
@@ -160,33 +162,46 @@ public class PuzzleGenerator : MonoBehaviour
             
             completeSolution = true;
             Debug.Log("les 3 sont actifs");
-            
         }
         else
         {
             Debug.Log("il en manque");
-        }
-        if (m_notSolution[m_notSolution.Count - 1].isActivated == false)
+        }  
+
+        if (m_getSolution[m_indexSolution].isActivated == true)
         {
-            notSolutionComplete = true;
-        }
-        else
-        {
-            notSolutionComplete = false;
-        }
-        for(int i = 0; i < m_notSolution.Count; i++)
-        {
-            if(m_notSolution[i].isActivated == false)
+            if(m_indexSolution == m_getSolution.Count - 1)
             {
-                i++;
+                m_indexSolution++;
             }
-            Debug.Log(i);
         }
-        
+        if (m_notSolution[m_indexNotSolution].isActivated == true)
+        {
+            if (m_indexNotSolution == m_notSolution.Count - 1)
+            {
+                m_indexNotSolution++;
+            }
+        }     
         
        if(completeSolution == true && notSolutionComplete == true)
         {
             Debug.Log("puzzle ended");
+        }       
+    }
+    public void nextIndicePaper()
+    {
+        if(m_indexPaper == m_getSolution.Count -1)
+        {
+            if (m_getSolution[m_indexPaper].isActivated == true)
+            {
+                m_paper.NextDisplayContent();
+                m_indexPaper++;
+            }
+            Debug.Log("dans la condition");
+        }
+        else
+        {
+            Debug.Log("plus rien dans le tableau");
         }
        
     }
