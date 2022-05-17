@@ -19,8 +19,9 @@ public class PuzzleGenerator : MonoBehaviour
     [SerializeField] public GameObject m_currentSelected;
     [NonSerialized] public GameObject m_lastObjSelected;
     [SerializeField] private Material m_objMat;
-    [SerializeField] private Color m_selectedColor;
-    [SerializeField] private Color m_notSelectedColor;
+
+    [SerializeField] public Color m_selectedColor;
+    [SerializeField] public Color m_notSelectedColor;
 
     private int m_index = 0;
     private int m_indexSolution = 0;
