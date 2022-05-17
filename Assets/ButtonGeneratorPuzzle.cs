@@ -11,6 +11,7 @@ public class ButtonGeneratorPuzzle : MonoBehaviour
     [SerializeField] private Color m_notSelectedColor;
     [SerializeField] private Animator m_myAnim;
     string m_nameAnim = "isActivate";
+    string m_nameAnim_2 = "isDisable";
 
 
     private void Awake()
@@ -20,6 +21,7 @@ public class ButtonGeneratorPuzzle : MonoBehaviour
         {
             m_myAnim.GetComponent<Animator>();
         }
+        SwitchAnim();
     }
     public void OnSelected()
     {
@@ -27,25 +29,37 @@ public class ButtonGeneratorPuzzle : MonoBehaviour
         {
             
             gameObject.GetComponent<Renderer>().material.color = m_activatedColor;
-            
+
             if (Input.GetKeyDown(KeyCode.J))
             {
                 isActivated = false;
                 m_puzzle.CheckSolution();
-                //m_myAnim.SetBool(m_nameAnim, true);
+                SwitchAnim();
             }
+        }
+        else
+        {
+            gameObject.GetComponent<Renderer>().material.color = m_notSelectedColor;
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                isActivated = true;
+                m_puzzle.CheckSolution();
+                SwitchAnim();
+            }
+        }
+    }
+
+    public void SwitchAnim()
+    {
+        if(isActivated == true)
+        {
+            m_myAnim.SetTrigger(m_nameAnim_2);
+            Animator.StringToHash(m_nameAnim_2);
         }
         else
         {
             m_myAnim.SetTrigger(m_nameAnim);
             Animator.StringToHash(m_nameAnim);
-            gameObject.GetComponent<Renderer>().material.color = m_notSelectedColor;
-            if (Input.GetKeyDown(KeyCode.J))
-            {
-                isActivated = true;
-                //m_myAnim.SetBool(m_nameAnim, false);
-                m_puzzle.CheckSolution();
-            }
         }
     }
 }
