@@ -12,7 +12,8 @@ public class PuzzleGenerator : MonoBehaviour
     [SerializeField] private LayerMask m_playerMask;
  
     [SerializeField] public List<GameObject> m_interruptersList;
-    [SerializeField] public List<GameObject> m_getSolution;
+    [SerializeField] public List<ButtonGeneratorPuzzle> m_getSolution;
+    [SerializeField] public List<ButtonGeneratorPuzzle> m_notSolution;
     [SerializeField] public List<ButtonGeneratorPuzzle> m_buttons;
 
     [SerializeField] public GameObject m_currentSelected;
@@ -21,16 +22,23 @@ public class PuzzleGenerator : MonoBehaviour
     [SerializeField] private Color m_selectedColor;
     [SerializeField] private Color m_notSelectedColor;
 
-    private int m_index;
-    private int m_indexTableau;
+    private int m_index = 0;
+    private int m_indexSolution = 0;
+    private int m_indexNotSolution = 0;
 
     public bool isLocked = false;
     public bool isTrigger = false;
 
+    public bool completeSolution = false;
+    public bool notSolutionComplete = false;
+
     private void Awake()
     {
         m_index = 0;
-        m_indexTableau = 0;
+        m_indexSolution = 0;
+        m_indexNotSolution = 0;
+        completeSolution = false;
+        notSolutionComplete = false;
         m_gameManager = FindObjectOfType<GameManager>();
         m_objMat.color = m_notSelectedColor;
     }
@@ -148,7 +156,38 @@ public class PuzzleGenerator : MonoBehaviour
 
     public void CheckSolution()
     {
+        //index solution base 0
+        if (m_getSolution[m_indexSolution].isActivated == true)
+        {
+            m_indexSolution++;
+            completeSolution = true;
+            Debug.Log(m_getSolution[m_getSolution.Count -1]);
+        }
+        else
+        {
+            completeSolution = false;
+        } 
         
+        if(m_notSolution[m_notSolution.Capacity - 1].isActivated == false)
+        {
+            notSolutionComplete = true;
+            Debug.Log("tous les boutons sont désactivés");
+        }
+        else
+        {
+            notSolutionComplete = false;
+            Debug.Log("il y'en a au - 1 qui est activé");
+        }
+        
+        
+       if(completeSolution == true && notSolutionComplete == true)
+        {
+            Debug.Log("puzzle ended");
+        }
        
+    }
+    public void ResetNotSolution()
+    {
+        m_indexNotSolution = 0;
     }
 }
