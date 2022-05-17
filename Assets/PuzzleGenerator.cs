@@ -127,7 +127,6 @@ public class PuzzleGenerator : MonoBehaviour
         m_currentSelected = m_interruptersList[m_index];
         m_currentSelected.GetComponent<Renderer>().material.color = m_selectedColor;
         m_buttons[m_index].OnSelected();
-        CheckSolution();
     }
 
     public void SwitchSelect()
@@ -156,27 +155,32 @@ public class PuzzleGenerator : MonoBehaviour
 
     public void CheckSolution()
     {
-        //index solution base 0
-        if (m_getSolution[m_indexSolution].isActivated == true)
+        if (m_getSolution[0].isActivated == true && m_getSolution[1].isActivated == true && m_getSolution[2].isActivated == true)
         {
-            m_indexSolution++;
+            
             completeSolution = true;
-            Debug.Log(m_getSolution[m_getSolution.Count -1]);
+            Debug.Log("les 3 sont actifs");
+            
         }
         else
         {
-            completeSolution = false;
-        } 
-        
-        if(m_notSolution[m_notSolution.Capacity - 1].isActivated == false)
+            Debug.Log("il en manque");
+        }
+        if (m_notSolution[m_notSolution.Count - 1].isActivated == false)
         {
             notSolutionComplete = true;
-            Debug.Log("tous les boutons sont désactivés");
         }
         else
         {
             notSolutionComplete = false;
-            Debug.Log("il y'en a au - 1 qui est activé");
+        }
+        for(int i = 0; i < m_notSolution.Count; i++)
+        {
+            if(m_notSolution[i].isActivated == false)
+            {
+                i++;
+            }
+            Debug.Log(i);
         }
         
         
@@ -185,9 +189,5 @@ public class PuzzleGenerator : MonoBehaviour
             Debug.Log("puzzle ended");
         }
        
-    }
-    public void ResetNotSolution()
-    {
-        m_indexNotSolution = 0;
     }
 }

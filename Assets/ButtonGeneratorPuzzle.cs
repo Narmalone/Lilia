@@ -15,6 +15,7 @@ public class ButtonGeneratorPuzzle : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.J))
             {
                 isActivated = false;
+                m_puzzle.CheckSolution();
             }
         }
         else
@@ -22,6 +23,7 @@ public class ButtonGeneratorPuzzle : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.J))
             {
                 isActivated = true;
+                m_puzzle.CheckSolution();
             }
         }
     }
