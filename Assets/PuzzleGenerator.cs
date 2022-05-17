@@ -148,18 +148,7 @@ public class PuzzleGenerator : MonoBehaviour
 
     public void CheckSolution()
     {
-        foreach(GameObject p_button in m_buttons)
-        {
-            foreach (GameObject p_obj in m_getSolution)
-            {
-                
-                if (p_obj.isActivated == true)
-                {
-                    Debug.Log("vous avez complété l'énigme");
-                    //okdoqjkd
-                }
-            }
-        }
+        
        
     }
 }
