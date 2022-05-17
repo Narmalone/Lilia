@@ -121,14 +121,17 @@ public class PuzzleGenerator : MonoBehaviour
 
     public void Select()
     {
+
         if (m_currentSelected != null)
         {
             m_lastObjSelected = m_currentSelected;
-            m_lastObjSelected.GetComponent<Renderer>().material.color = m_notSelectedColor;
         }
+
+        m_lastObjSelected = m_currentSelected;
+
         m_currentSelected = m_interruptersList[m_index];
-        m_currentSelected.GetComponent<Renderer>().material.color = m_selectedColor;
         m_buttons[m_index].OnSelected();
+
     }
 
     public void SwitchSelect()
@@ -157,7 +160,9 @@ public class PuzzleGenerator : MonoBehaviour
 
     public void CheckSolution()
     {
-        if (m_getSolution[0].isActivated == true && m_getSolution[1].isActivated == true && m_getSolution[2].isActivated == true)
+        NextIndicePaper();
+
+        if (m_getSolution[0].isActivated == true && m_getSolution[1].isActivated == true && m_getSolution[2].isActivated == true && m_getSolution[3].isActivated == true && m_getSolution[4].isActivated == true)
         {
             
             completeSolution = true;
@@ -165,44 +170,43 @@ public class PuzzleGenerator : MonoBehaviour
         }
         else
         {
-            Debug.Log("il en manque");
-        }  
+            completeSolution = false;
+        }
 
-        if (m_getSolution[m_indexSolution].isActivated == true)
+        if (m_notSolution[0].isActivated == false && m_notSolution[1].isActivated == false && m_notSolution[2].isActivated == false && m_notSolution[3].isActivated == false && m_notSolution[4].isActivated == false)
         {
-            if(m_indexSolution == m_getSolution.Count - 1)
+            if (m_notSolution[5].isActivated == false && m_notSolution[6].isActivated == false && m_notSolution[7].isActivated == false && m_notSolution[8].isActivated == false)
             {
-                m_indexSolution++;
+                notSolutionComplete = true;
+            }
+            else
+            {
+                notSolutionComplete = false;
             }
         }
-        if (m_notSolution[m_indexNotSolution].isActivated == true)
+        else
         {
-            if (m_indexNotSolution == m_notSolution.Count - 1)
-            {
-                m_indexNotSolution++;
-            }
-        }     
-        
-       if(completeSolution == true && notSolutionComplete == true)
+            notSolutionComplete = false;
+        }
+
+        if (completeSolution == true && notSolutionComplete == true)
         {
             Debug.Log("puzzle ended");
+            isLocked = false;
+            isTrigger = false;
+            m_player.m_speed = 2f;
         }       
     }
-    public void nextIndicePaper()
+    public void NextIndicePaper()
     {
-        if(m_indexPaper == m_getSolution.Count -1)
+        if(m_indexPaper < m_getSolution.Count - 1)
         {
             if (m_getSolution[m_indexPaper].isActivated == true)
             {
                 m_paper.NextDisplayContent();
                 m_indexPaper++;
+                Debug.Log("dans la condition");
             }
-            Debug.Log("dans la condition");
         }
-        else
-        {
-            Debug.Log("plus rien dans le tableau");
-        }
-       
     }
 }
