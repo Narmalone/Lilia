@@ -1031,9 +1031,8 @@ GameObject:
   - component: {fileID: 591415264}
   - component: {fileID: 591415263}
   - component: {fileID: 591415262}
-  - component: {fileID: 591415261}
   m_Layer: 7
-  m_Name: r
+  m_Name: Haut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1053,22 +1052,6 @@ Transform:
   m_Father: {fileID: 1679807399}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 180}
---- !u!111 &591415261
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591415259}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: 25b1617346236e0468b7769e10165884, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!64 &591415262
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1628,7 +1611,9 @@ MonoBehaviour:
   isPc: 1
   isGamepad: 1
   isPaused: 0
+  gotKey: 0
   isDead: 0
+  canPick: 1
 --- !u!1 &886882166
 GameObject:
   m_ObjectHideFlags: 0
@@ -2458,9 +2443,8 @@ GameObject:
   - component: {fileID: 1117118620}
   - component: {fileID: 1117118619}
   - component: {fileID: 1117118618}
-  - component: {fileID: 1117118617}
   m_Layer: 7
-  m_Name: r (1)
+  m_Name: Bas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2474,31 +2458,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1117118615}
   m_LocalRotation: {x: -0.70710677, y: -0.00000070620257, z: 0.0000006738713, w: 0.7071069}
-  m_LocalPosition: {x: 0.00000017029897, y: 0.02, z: -0.000000059604645}
+  m_LocalPosition: {x: 0.000000170299, y: 0.02, z: -0.00000005960464}
   m_LocalScale: {x: 0.39408, y: 1, z: 0.30642}
   m_Children: []
   m_Father: {fileID: 1679807399}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!95 &1117118617
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1117118615}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9e24bbed63923254484a3a240fcb0f58, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!64 &1117118618
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3126,6 +3091,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1679807399}
+  - component: {fileID: 1679807400}
+  - component: {fileID: 1679807401}
   m_Layer: 7
   m_Name: TestCamera
   m_TagString: Untagged
@@ -3149,6 +3116,38 @@ Transform:
   m_Father: {fileID: 72630830}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1679807400
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679807398}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7eef001ec22770c4a884e7ab05adfdf5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1679807401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679807398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b41f44d5be80c4980f316662b183ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_animatorPourTest: {fileID: 1679807400}
 --- !u!1 &1698167991
 GameObject:
   m_ObjectHideFlags: 0
