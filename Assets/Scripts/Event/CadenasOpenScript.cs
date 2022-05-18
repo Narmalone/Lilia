@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FMOD.Studio;
 using UnityEngine;
 
 public class CadenasOpenScript : MonoBehaviour
@@ -7,6 +8,9 @@ public class CadenasOpenScript : MonoBehaviour
     [SerializeField] private Animator m_animKey;
     [SerializeField] private Animator m_animDoor;
     [SerializeField] private Animator m_animCadenas;
+    [SerializeField] private FMODUnity.EventReference m_fmodEvent;
+
+    private FMOD.Studio.EventInstance m_fmodInstance;
 
     string m_name = "isOpen";
 
@@ -14,6 +18,10 @@ public class CadenasOpenScript : MonoBehaviour
     [SerializeField] private LayerMask m_layerPlayer;
     private void Awake()
     {
+        m_fmodInstance = FMODUnity.RuntimeManager.CreateInstance(m_fmodEvent);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstance,  GetComponent<Transform>(), GetComponent<Rigidbody>());
+        
+        
         if(m_gameManager == null)
         {
             m_gameManager = FindObjectOfType<GameManager>();
@@ -28,6 +36,7 @@ public class CadenasOpenScript : MonoBehaviour
                 m_animCadenas.SetBool(m_name, true);
                 m_animKey.SetBool(m_name, true);
                 m_animDoor.SetBool(m_name, true);
+                m_fmodInstance.start();
                 Animator.StringToHash(m_name);
             }
         }
