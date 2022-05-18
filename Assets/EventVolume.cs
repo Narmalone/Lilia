@@ -10,26 +10,31 @@ public class EventVolume : MonoBehaviour
     Vignette vignette;
     [SerializeField] private PlayerController m_player;
 
-    [Range(0,1)] public float m_maxValue = 1;
-    [Range(0, 1)] public float m_minValue = 0;
+    [Range(0,7)] public float m_maxValue = 1f;
+    [Range(0, 5)] public float m_minValue = 0f;
     private float m_currentValue;
-    [Range(0,3)] public float m_Speed;
+    [Range(0,10)] public float m_Speed;
     private int m_currentNB;
     [SerializeField] private int m_nbMax;
     private bool isOpen = false;
     private bool isOver = false;
-    private void Start()
+    private void Awake()
     {
         m_currentNB = 0;
         if (volume.profile.TryGet<Vignette>(out vignette))
         {
-            //vignette.color.value = new Color(255f, 25f, 25f);
+            vignette.intensity.max = m_maxValue;
         }
     }
 
     void Update()
     {
-        if(isOver == false)
+        ClignementDesYeux();
+
+    }
+    public void ClignementDesYeux()
+    {
+        if (isOver == false)
         {
             if (isOpen == false)
             {
@@ -44,7 +49,7 @@ public class EventVolume : MonoBehaviour
             {
                 m_currentValue = vignette.intensity.value;
                 vignette.intensity.value = Mathf.MoveTowards(m_currentValue, m_minValue, m_Speed * Time.deltaTime);
-                if (m_currentValue <= 0f)
+                if (m_currentValue <= m_minValue)
                 {
                     isOpen = false;
                     m_currentNB++;
@@ -61,6 +66,5 @@ public class EventVolume : MonoBehaviour
         {
             return;
         }
-     
     }
 }

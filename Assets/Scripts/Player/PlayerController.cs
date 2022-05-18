@@ -237,10 +237,9 @@ public class PlayerController : MonoBehaviour
             m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
 
         }
+
         ActiveFlashlight();
         ActiveDoudou();
-
-
         
 
         if (m_doudouIsPossessed == true)
