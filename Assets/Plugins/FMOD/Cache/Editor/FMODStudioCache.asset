@@ -62,7 +62,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Voices.bank
   Name: Voices
   StudioPath: bank:/Voices
-  lastModified: 637877351452107206
+  lastModified: 637884885607169083
   FileSizes:
   - Name: Desktop
     Value: 44704
@@ -284,7 +284,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637877351450605235
+  lastModified: 637884885606458262
   FileSizes:
   - Name: Desktop
     Value: 2032
@@ -363,12 +363,13 @@ MonoBehaviour:
   - {fileID: 7258427573194265295}
   - {fileID: -6188681719689578694}
   - {fileID: -8511421970624985260}
+  - {fileID: 1406844112196677736}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2002311006019571660}
   StringsBanks:
   - {fileID: 2990399283587356083}
-  cacheTime: 637877351452107206
+  cacheTime: 637884885607169083
   cacheVersion: 10
 --- !u!114 &398118932756384195
 MonoBehaviour:
@@ -424,6 +425,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 154618
+--- !u!114 &1406844112196677736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/BruitPas/Pas
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/BruitPas/Pas
+  Guid:
+    Data1: -1398225717
+    Data2: 1297638522
+    Data3: -771669373
+    Data4: 1061648962
+  Banks:
+  - {fileID: 8591615241895475423}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 5074890331365894961}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 7000
 --- !u!114 &2990399283587356083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -439,10 +468,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637877351450615252
+  lastModified: 637884885606478267
   FileSizes:
   - Name: Desktop
-    Value: 1576
+    Value: 1666
   Exists: 1
 --- !u!114 &4405670800902215766
 MonoBehaviour:
@@ -471,6 +500,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 6720
+--- !u!114 &5074890331365894961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Pas/Speed
+  m_EditorClassIdentifier: 
+  Name: Speed
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 3264674803
+    data2: 252286697
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &5223556747364103488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,7 +566,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637877351451054548
+  lastModified: 637884885606718672
   FileSizes:
   - Name: Desktop
     Value: 2110624
@@ -641,10 +694,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Sounds.bank
   Name: Sounds
   StudioPath: bank:/Sounds
-  lastModified: 637877351451284758
+  lastModified: 637884885606988914
   FileSizes:
   - Name: Desktop
-    Value: 275072
+    Value: 296864
   Exists: 1
 --- !u!114 &8795651803889515970
 MonoBehaviour:
