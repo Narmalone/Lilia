@@ -130,12 +130,14 @@ public class PlayerController : MonoBehaviour
     Vector3 m_velocity;
 
     private bool m_isGrounded;
+    public bool isCinematic = false;
 
     private RaycastHit m_hit;
     private Ray m_ray;
 
     private void Awake()
     {
+        isCinematic = true;
         m_gameManager = FindObjectOfType<GameManager>();
         m_menuManager = FindObjectOfType<MenuManager>();
         m_controls = new PlayerControls();
@@ -209,32 +211,37 @@ public class PlayerController : MonoBehaviour
 
 
         //Check Fonctions
+        if(isCinematic == false)
+        {
+            AutoStress();
 
-        AutoStress();
+            // test shader
+            // decay the target intensity
+            if (m_targetIntensity > 0f)
+            {
+                m_targetIntensity = Mathf.Clamp01(m_targetIntensity - m_frequendeReduction * Time.deltaTime);
+                m_targetIntensity = Mathf.Max(m_intensityDueToHealth.Evaluate(m_currentStress / m_maxStress), m_targetIntensity);
+            }
+
+            // intensity needs updating
+            if (m_currentIntensity != m_targetIntensity)
+            {
+                float rate = m_targetIntensity > m_currentIntensity ? m_frequenceAttaque : m_frequenceRelache;
+                m_currentIntensity = Mathf.MoveTowards(m_currentIntensity, m_targetIntensity, rate * Time.deltaTime);
+            }
+
+            m_intenseFieldOfView = m_currentStress / 100;
+            //Debug.Log(m_overlaySettings);
+            m_materialStress.SetFloat("_Intensity", Mathf.Lerp(0f, 2f, m_currentIntensity));
+            m_vignetteSettings.intensity.value = Mathf.Lerp(0f, m_intesiteMaxEffet, m_currentIntensity);
+            m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
+
+        }
         ActiveFlashlight();
         ActiveDoudou();
 
 
-        // test shader
-        // decay the target intensity
-        if (m_targetIntensity > 0f)
-        {
-            m_targetIntensity = Mathf.Clamp01(m_targetIntensity - m_frequendeReduction * Time.deltaTime);
-            m_targetIntensity = Mathf.Max(m_intensityDueToHealth.Evaluate(m_currentStress / m_maxStress), m_targetIntensity);
-        }
-
-        // intensity needs updating
-        if (m_currentIntensity != m_targetIntensity)
-        {
-            float rate = m_targetIntensity > m_currentIntensity ? m_frequenceAttaque : m_frequenceRelache;
-            m_currentIntensity = Mathf.MoveTowards(m_currentIntensity, m_targetIntensity, rate * Time.deltaTime);
-        }
-
-        m_intenseFieldOfView = m_currentStress / 100;
-        //Debug.Log(m_overlaySettings);
-        m_materialStress.SetFloat("_Intensity", Mathf.Lerp(0f, 2f, m_currentIntensity));
-        m_vignetteSettings.intensity.value = Mathf.Lerp(0f, m_intesiteMaxEffet, m_currentIntensity);
-        m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
+        
 
         if (m_doudouIsPossessed == true)
         {
