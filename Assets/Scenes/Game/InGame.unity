@@ -7500,6 +7500,13 @@ MonoBehaviour:
   m_animKey: {fileID: 189767481}
   m_animDoor: {fileID: 189767484}
   m_animCadenas: {fileID: 189767485}
+  m_fmodEvent:
+    Guid:
+      Data1: 175253242
+      Data2: 1137279336
+      Data3: 1930312106
+      Data4: 737897604
+    Path: event:/SoundsEvent/Porte/OuverturePorte
   m_gameManager: {fileID: 0}
   m_layerPlayer:
     serializedVersion: 2
@@ -15206,6 +15213,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 576080451}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEvent.Path
+      value: event:/SoundsEvent/BruitPas/Pas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_narrativeEvent
       value: 
       objectReference: {fileID: 11400000, guid: 0943acb97a59cac4cb2fc5392c6286c8, type: 2}
@@ -15233,6 +15244,22 @@ PrefabInstance:
       propertyPath: m_createNarrativeEvent
       value: 
       objectReference: {fileID: 11400000, guid: 0943acb97a59cac4cb2fc5392c6286c8, type: 2}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEvent.Guid.Data1
+      value: -1398225717
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEvent.Guid.Data2
+      value: 1297638522
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEvent.Guid.Data3
+      value: -771669373
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEvent.Guid.Data4
+      value: 1061648962
+      objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_TwoHandsItemMask.m_Bits
       value: 2048

@@ -33,14 +33,19 @@ public class CadenasOpenScript : MonoBehaviour
         {
             if (m_gameManager.gotKey == true)
             {
+                m_fmodInstance.start();
                 m_animCadenas.SetBool(m_name, true);
                 m_animKey.SetBool(m_name, true);
-                m_animDoor.SetBool(m_name, true);
-                m_fmodInstance.start();
+                
                 Animator.StringToHash(m_name);
+                StartCoroutine(OuverturePorte());
             }
-        }
+        }      
+    }
 
-           
+    private IEnumerator OuverturePorte()
+    {
+        yield return new WaitForSeconds(0.5f);
+        m_animDoor.SetBool(m_name, true);
     }
 }
