@@ -69,6 +69,10 @@ public class PlayerController : MonoBehaviour
     private FMOD.Studio.EventInstance m_fmodInstance;
 
     [SerializeField] [Range(0,10)] private float m_speedFeet;
+    
+    private Vector3 previous;
+    private float velocity;
+    
 
     
 
@@ -161,14 +165,28 @@ public class PlayerController : MonoBehaviour
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_vignetteSettings));
 
         m_fmodInstance = FMODUnity.RuntimeManager.CreateInstance(m_fmodEvent);
-        Debug.Log(m_fmodInstance.start());
-       
-       
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstance,  GetComponent<Transform>(), GetComponent<Rigidbody>());
+        Debug.Log($"Démarage du son de pas : {m_fmodInstance.start()}");
+        //m_fmodInstance.start();
+
+        previous = Vector3.zero;
     }
 
     private void Update()
     {
-        m_fmodInstance.setParameterByName("Speed", m_speedFeet);
+        velocity = ((transform.position - previous).magnitude) / Time.deltaTime;
+        previous = transform.position;
+ 
+        Debug.Log(velocity);
+        if (velocity < 0.2)
+        {
+            m_fmodInstance.setParameterByName("Speed", 0);
+        }
+        else
+        {
+            m_fmodInstance.setParameterByName("Speed", velocity*2);
+        }
+        
 
         Debug.Log(m_doudouIsUsed);
 
@@ -289,12 +307,20 @@ public class PlayerController : MonoBehaviour
 
        
     }
+    
+    /// <summary>
+    /// Applique le stress au autre systeme manuellement
+    /// </summary>
+    /// <param name="p_stressNum">La quantité de stress appliqué</param>
     private void Stressing(float p_stressNum)
     {
         TakeDamage(p_stressNum);
         m_stressBar.SetStress(m_currentStress);
     }
 
+    /// <summary>
+    /// Augmente le stress automatiquement (Dans l'update)
+    /// </summary>
     public void AutoStress()
     {
         if (m_isStressTick == false)
@@ -306,6 +332,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Modifie l'effet UI du stress sur le personnage selon une valeur donné
+    /// </summary>
+    /// <param name="amount">Quantité de "dégats"</param>
     public void TakeDamage(float amount)
     {
         if(m_gameManager.isPaused == true)
@@ -453,6 +483,9 @@ public class PlayerController : MonoBehaviour
 
     //Variables, r�f�rences et fonctions de la lampe par rapport au joueur
 
+    /// <summary>
+    /// Rassemble les fonctions pour le ramassage de la lampe
+    /// </summary>
     public void TakeFlashlight()
     {
         if (m_gameManager.isPc == true)
@@ -480,7 +513,10 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
+    
+    /// <summary>
+    /// Rassemble les fonctions pour le ramassage du doudou
+    /// </summary>
     public void TakeDoudou()
     {
         if (m_gameManager.isPc == true)
@@ -514,6 +550,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    
+    /// <summary>
+    /// Rassemble les fonctions pour le drop de la lampe
+    /// </summary>
     public void ActiveFlashlight()
     {
         if (m_gameManager.isPc == true)
@@ -538,7 +578,9 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
+/// <summary>
+/// Rassemble les fonctions pour l'utilisation et le drop du doudou
+/// </summary>
     public void ActiveDoudou()
     {
         if (m_gameManager.isPc == true)
