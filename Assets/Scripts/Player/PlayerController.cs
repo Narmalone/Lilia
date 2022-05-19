@@ -176,8 +176,6 @@ public class PlayerController : MonoBehaviour
     {
         velocity = ((transform.position - previous).magnitude) / Time.deltaTime;
         previous = transform.position;
- 
-        Debug.Log(velocity);
         if (velocity < 0.2)
         {
             m_fmodInstance.setParameterByName("Speed", 0);
@@ -187,8 +185,7 @@ public class PlayerController : MonoBehaviour
             m_fmodInstance.setParameterByName("Speed", velocity*2);
         }
         
-
-        Debug.Log(m_doudouIsUsed);
+        
 
         m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Cr�ation d'une sphere qui chech si le joueur touche le sol
 
