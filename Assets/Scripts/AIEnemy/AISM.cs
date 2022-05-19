@@ -116,6 +116,7 @@ public class AISM : StateMachine
         yield return new WaitForSeconds(3+Random.Range(0,7));
         m_fmodInstanceSonBB.start();
         StartCoroutine(SonBB());
+        Debug.Log("Je fais le bb");
     }
     
     protected override BaseState GetInitialState()
