@@ -62,8 +62,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask m_portillonMask;
     [SerializeField] private LayerMask m_radioMask;
 
-    //-----------------------------------------------Systeme Stress------------------------------------------
+    //-----------------------------------------------Sound System------------------------------------------//
+  
+    public FMODUnity.EventReference m_fmodEvent;
 
+    private FMOD.Studio.EventInstance m_fmodInstance;
+
+    [SerializeField] [Range(0,10)] private float m_speedFeet;
+    
+    private Vector3 previous;
+    private float velocity;
+    
+
+    
 
     //----------------------------------------------- Player controls system ------------------------------------------//
 
@@ -153,11 +164,28 @@ public class PlayerController : MonoBehaviour
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_dOFSettings));
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_vignetteSettings));
 
+        m_fmodInstance = FMODUnity.RuntimeManager.CreateInstance(m_fmodEvent);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstance,  GetComponent<Transform>(), GetComponent<Rigidbody>());
+        Debug.Log($"Démarage du son de pas : {m_fmodInstance.start()}");
+        //m_fmodInstance.start();
+
+        previous = Vector3.zero;
     }
 
     private void Update()
     {
-        Debug.Log(m_doudouIsUsed);
+        velocity = ((transform.position - previous).magnitude) / Time.deltaTime;
+        previous = transform.position;
+        if (velocity < 0.2)
+        {
+            m_fmodInstance.setParameterByName("Speed", 0);
+        }
+        else
+        {
+            m_fmodInstance.setParameterByName("Speed", velocity*2);
+        }
+        
+        
 
         m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Cr�ation d'une sphere qui chech si le joueur touche le sol
 
@@ -276,12 +304,20 @@ public class PlayerController : MonoBehaviour
 
        
     }
+    
+    /// <summary>
+    /// Applique le stress au autre systeme manuellement
+    /// </summary>
+    /// <param name="p_stressNum">La quantité de stress appliqué</param>
     private void Stressing(float p_stressNum)
     {
         TakeDamage(p_stressNum);
         m_stressBar.SetStress(m_currentStress);
     }
 
+    /// <summary>
+    /// Augmente le stress automatiquement (Dans l'update)
+    /// </summary>
     public void AutoStress()
     {
         if (m_isStressTick == false)
@@ -293,6 +329,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Modifie l'effet UI du stress sur le personnage selon une valeur donné
+    /// </summary>
+    /// <param name="amount">Quantité de "dégats"</param>
     public void TakeDamage(float amount)
     {
         if(m_gameManager.isPaused == true)
@@ -315,22 +355,34 @@ public class PlayerController : MonoBehaviour
         m_ray = Camera.main.ScreenPointToRay(new Vector3(0.5f, 0.5f, 0f));
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
         {
-            if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_flashlightMask))
+            if(m_gameManager.gotKey == false)
             {
-                m_UIManager.TakableObject();
-                TakeFlashlight();
+                if(m_gameManager.canPick == true)
+                {
+                    m_UIManager.TakableObject();
+                    TakeFlashlight();
+                }
+                else
+                {
+                    m_UIManager.DisableUi();
+                }
+               
             }
-            else
-            {
-                m_UIManager.DisableUi();
-                return;
-            }
+            
         }
 
         else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false)
         {
-            m_UIManager.TakableObject();
-            TakeDoudou();
+            if(m_gameManager.canPick == true)
+            {
+                m_UIManager.TakableObject();
+                TakeDoudou();
+            }
+            else
+            {
+                m_UIManager.DisableUi();
+            }
+            
         }
 
         else if ((m_TwoHandsItemMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false && m_flashlightIsPossessed == false)
@@ -349,10 +401,10 @@ public class PlayerController : MonoBehaviour
 
         else if ((m_portillonMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
         {
-            Debug.Log("dans le portillon");
             if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_portillonMask))
             {
                 m_UIManager.TakableObject();
+                m_gameManager.canPick = true;
                 if (m_gameManager.isPc == true)
                 {
                     if (Input.GetKey(KeyCode.E))
@@ -364,7 +416,6 @@ public class PlayerController : MonoBehaviour
                 {
 
                 }
-                Debug.Log("raycast portillon");
             }
             else
             {
@@ -379,6 +430,7 @@ public class PlayerController : MonoBehaviour
                 m_createNarrativeEvent.actionComplete = true;
             }
             m_UIManager.TakableObject();
+            m_gameManager.canPick = false;
             if (m_gameManager.isPc == true)
             {
                 if (Input.GetKey(KeyCode.E))
@@ -415,10 +467,12 @@ public class PlayerController : MonoBehaviour
         else if ((m_portillonMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             m_UIManager.DisableUi();
+            m_gameManager.canPick = true;
         }
         else if ((m_radioMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             m_UIManager.DisableUi();
+            m_gameManager.canPick = true;
         }
 
     }
@@ -426,6 +480,9 @@ public class PlayerController : MonoBehaviour
 
     //Variables, r�f�rences et fonctions de la lampe par rapport au joueur
 
+    /// <summary>
+    /// Rassemble les fonctions pour le ramassage de la lampe
+    /// </summary>
     public void TakeFlashlight()
     {
         if (m_gameManager.isPc == true)
@@ -453,7 +510,10 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
+    
+    /// <summary>
+    /// Rassemble les fonctions pour le ramassage du doudou
+    /// </summary>
     public void TakeDoudou()
     {
         if (m_gameManager.isPc == true)
@@ -487,6 +547,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    
+    /// <summary>
+    /// Rassemble les fonctions pour le drop de la lampe
+    /// </summary>
     public void ActiveFlashlight()
     {
         if (m_gameManager.isPc == true)
@@ -511,7 +575,9 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
+/// <summary>
+/// Rassemble les fonctions pour l'utilisation et le drop du doudou
+/// </summary>
     public void ActiveDoudou()
     {
         if (m_gameManager.isPc == true)

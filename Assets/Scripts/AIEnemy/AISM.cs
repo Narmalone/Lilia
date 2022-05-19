@@ -1,8 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FMOD.Studio;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
+
 
 public class AISM : StateMachine
 {
@@ -35,6 +39,27 @@ public class AISM : StateMachine
     
     public AnimationCurve m_courbeLimace;
     
+    [SerializeField]
+    private FMODUnity.EventReference m_fmodEventConstant;
+    
+    private FMOD.Studio.EventInstance m_fmodInstanceConstant;
+    
+    [SerializeField]
+    private FMODUnity.EventReference m_fmodEventDrag;
+
+    [NonSerialized]
+    public FMOD.Studio.EventInstance m_fmodInstanceDrag;
+    
+    [SerializeField]
+    private FMODUnity.EventReference m_fmodEventContinuous;
+    
+    private FMOD.Studio.EventInstance m_fmodInstanceContinuous;
+    
+    [SerializeField]
+    private FMODUnity.EventReference m_fmodEventSonBB;
+    
+    private FMOD.Studio.EventInstance m_fmodInstanceSonBB;
+    
     private void Awake()
     {
         m_targetSpeed = m_navAgent.speed;
@@ -49,6 +74,26 @@ public class AISM : StateMachine
         }
         m_patrouilleState = new Patrouille(this,m_navAgent,m_waypoints,m_target);
         m_chasseState = new Chasse(this,m_navAgent,m_target);
+        
+        m_fmodInstanceContinuous = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventContinuous);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceContinuous,  GetComponent<Transform>());
+        m_fmodInstanceContinuous.start();
+        
+        m_fmodInstanceConstant = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventConstant);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceConstant,  GetComponent<Transform>());
+        m_fmodInstanceConstant.start();
+        
+        m_fmodInstanceSonBB = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventSonBB);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceSonBB,  GetComponent<Transform>());
+        m_fmodInstanceSonBB.start();
+        m_fmodInstanceSonBB.release();
+        StartCoroutine(SonBB());
+        
+        m_fmodInstanceDrag = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventDrag);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDrag,  GetComponent<Transform>());
+        m_fmodInstanceDrag.start();
+        m_fmodInstanceDrag.release();
+        //Debug.Log($"Démarage du son de drag : {m_fmodInstanceDrag.start()}");
     }
     void OnEnable()
     {
@@ -64,6 +109,14 @@ public class AISM : StateMachine
     private void HandleTriggerEvent(Vector3 p_position)
     {
         Debug.Log("Ok, Je suis triggered");
+    }
+
+    private IEnumerator SonBB()
+    {
+        yield return new WaitForSeconds(3+Random.Range(0,7));
+        m_fmodInstanceSonBB.start();
+        StartCoroutine(SonBB());
+        Debug.Log("Je fais le bb");
     }
     
     protected override BaseState GetInitialState()
