@@ -55,7 +55,7 @@ public class Patrouille : BaseState
         if (m_sm.m_pourcentSpeed >= 1f)
         {
             m_sm.m_pourcentSpeed = 0;
-            m_sm.m_fmodInstanceDrag.start();
+            FMODUnity.RuntimeManager.PlayOneShotAttached(m_sm.m_fmodEventDrag.Guid,  m_sm.gameObject);
         }
 
         m_navAgent.speed = Mathf.Lerp(0f,m_sm.m_targetSpeed*2f,m_sm.m_courbeLimace.Evaluate(m_sm.m_pourcentSpeed));

@@ -297,7 +297,6 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Debug.Log("ne doit plus chasser");
                 m_camShake.camShakeActive = false;
             }
         }

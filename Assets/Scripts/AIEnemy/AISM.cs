@@ -42,26 +42,21 @@ public class AISM : StateMachine
     [SerializeField]
     private FMODUnity.EventReference m_fmodEventConstant;
     
-    private FMOD.Studio.EventInstance m_fmodInstanceConstant;
+    private EventInstance m_fmodInstanceConstant;
     
-    [SerializeField]
-    private FMODUnity.EventReference m_fmodEventDrag;
+    public FMODUnity.EventReference m_fmodEventDrag;
 
-    [NonSerialized]
-    public FMOD.Studio.EventInstance m_fmodInstanceDrag;
-    
     [SerializeField]
     private FMODUnity.EventReference m_fmodEventContinuous;
     
-    private FMOD.Studio.EventInstance m_fmodInstanceContinuous;
-    
+    private EventInstance m_fmodInstanceContinuous;
+
     [SerializeField]
     private FMODUnity.EventReference m_fmodEventSonBB;
-    
-    private FMOD.Studio.EventInstance m_fmodInstanceSonBB;
-    
+
     private void Awake()
     {
+        Debug.Log("Awake");
         m_targetSpeed = m_navAgent.speed;
         m_path = new NavMeshPath();
         if (m_player.m_doudouIsPossessed == true)
@@ -83,21 +78,11 @@ public class AISM : StateMachine
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceConstant,  GetComponent<Transform>());
         m_fmodInstanceConstant.start();
         
-        m_fmodInstanceSonBB = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventSonBB);
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceSonBB,  GetComponent<Transform>());
-        m_fmodInstanceSonBB.start();
-        m_fmodInstanceSonBB.release();
         StartCoroutine(SonBB());
         
-        m_fmodInstanceDrag = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventDrag);
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDrag,  GetComponent<Transform>());
-        m_fmodInstanceDrag.start();
-        m_fmodInstanceDrag.release();
-        //Debug.Log($"Démarage du son de drag : {m_fmodInstanceDrag.start()}");
     }
     void OnEnable()
     {
-        Awake();
         m_triggeredEvent.onTriggered += HandleTriggerEvent;
     }
 
@@ -113,10 +98,13 @@ public class AISM : StateMachine
 
     private IEnumerator SonBB()
     {
-        yield return new WaitForSeconds(3+Random.Range(0,7));
-        m_fmodInstanceSonBB.start();
-        StartCoroutine(SonBB());
-        Debug.Log("Je fais le bb");
+        while(true)
+        {
+            int time = 10 + Random.Range(0, 10);
+            yield return new WaitForSeconds(time);
+            FMODUnity.RuntimeManager.PlayOneShotAttached(m_fmodEventSonBB.Guid, gameObject);
+            Debug.Log($"Je fais le bb {time}"); 
+        }
     }
     
     protected override BaseState GetInitialState()
