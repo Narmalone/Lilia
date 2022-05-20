@@ -67,4 +67,9 @@ public class EventVolume : MonoBehaviour
             return;
         }
     }
+
+    public void TriggerScreamer()
+    {
+
+    }
 }
