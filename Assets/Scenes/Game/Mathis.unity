@@ -3100,13 +3100,13 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_fmodEventConstant:
+  m_fmodEventRespiration:
     Guid:
-      Data1: -1490063551
-      Data2: 1190372012
-      Data3: 335015330
-      Data4: 608535171
-    Path: event:/SoundsEvent/Baby/ContinuousBabyNoise
+      Data1: -382007823
+      Data2: 1127377340
+      Data3: -524514921
+      Data4: -1855257768
+    Path: event:/SoundsEvent/Baby/Respiration
   m_fmodEventDrag:
     Guid:
       Data1: 1610553309
@@ -4535,6 +4535,10 @@ PrefabInstance:
       value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventPas.Path
+      value: event:/SoundsEvent/BruitPas/Pas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_linkedPostProcess
       value: 
       objectReference: {fileID: 1086000664}
@@ -4542,6 +4546,10 @@ PrefabInstance:
       propertyPath: m_intenseFieldOfView
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_createNarrativeEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 0943acb97a59cac4cb2fc5392c6286c8, type: 2}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_fmodEvent.Guid.Data1
       value: -1398225717
@@ -4559,8 +4567,44 @@ PrefabInstance:
       value: 1061648962
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventDoudou.Path
+      value: event:/SoundsEvent/Doudou/UtilisationDoudou
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_flashlightMask.m_Bits
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventPas.Guid.Data1
+      value: -1398225717
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventPas.Guid.Data2
+      value: 1297638522
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventPas.Guid.Data3
+      value: -771669373
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventPas.Guid.Data4
+      value: 1061648962
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventDoudou.Guid.Data1
+      value: -995624965
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventDoudou.Guid.Data2
+      value: 1148206418
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventDoudou.Guid.Data3
+      value: -2112027520
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventDoudou.Guid.Data4
+      value: -2107392880
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_intensityDueToHealth.m_Curve.Array.size

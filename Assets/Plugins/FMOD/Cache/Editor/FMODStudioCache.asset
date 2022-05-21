@@ -27,6 +27,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 816
+--- !u!114 &-8561647614913166062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/RamassageEtLachage/Doudou/DropDoudou
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/RamassageEtLachage/Doudou/DropDoudou
+  Guid:
+    Data1: 1006949352
+    Data2: 1104796797
+    Data3: -672511818
+    Data4: 1081390729
+  Banks:
+  - {fileID: -4250151385257737303}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-8552785383281803644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +148,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 44704
   Exists: 1
+--- !u!114 &-8111452452763798347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Baby/Respiration
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Baby/Respiration
+  Guid:
+    Data1: -382007823
+    Data2: 1127377340
+    Data3: -524514921
+    Data4: -1855257768
+  Banks:
+  - {fileID: -4250151385257737303}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4500
 --- !u!114 &-7704596329350062382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +284,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 816
+--- !u!114 &-7307019195370834805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Stress/StressHorreur
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Stress/StressHorreur
+  Guid:
+    Data1: -1023106931
+    Data2: 1218139651
+    Data3: -314798696
+    Data4: -237360077
+  Banks:
+  - {fileID: -4250151385257737303}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -1307987121049607141}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 37500
 --- !u!114 &-7016073335477802118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,30 +453,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 17475
---- !u!114 &-6180372098451331195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/AmbiantMusic.tpe1/Fade
-  m_EditorClassIdentifier: 
-  Name: Fade
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 753684841
-    data2: 4173508815
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
 --- !u!114 &-6025603560854553159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,6 +535,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 7000
+--- !u!114 &-5608223386385781494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Doudou/UtilisationDoudou
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Doudou/UtilisationDoudou
+  Guid:
+    Data1: -995624965
+    Data2: 1148206418
+    Data3: -2112027520
+    Data4: -2107392880
+  Banks:
+  - {fileID: -4250151385257737303}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 44500
+--- !u!114 &-5515930432726529931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/RamassageEtLachage/Lampe/PickUpLampe
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/RamassageEtLachage/Lampe/PickUpLampe
+  Guid:
+    Data1: 1203360393
+    Data2: 1244540880
+    Data3: -886582120
+    Data4: 349235023
+  Banks:
+  - {fileID: -4250151385257737303}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-5199428060287531885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,10 +705,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Sounds.bank
   Name: Sounds
   StudioPath: bank:/Sounds
-  lastModified: 637885872094506405
+  lastModified: 637887778459924080
   FileSizes:
   - Name: Desktop
-    Value: 1800192
+    Value: 3657312
   Exists: 1
 --- !u!114 &-2931186491512557235
 MonoBehaviour:
@@ -698,7 +810,31 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1280
+  Length: 800
+--- !u!114 &-1307987121049607141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/StressHorreur/Stress
+  m_EditorClassIdentifier: 
+  Name: Stress
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 87529076
+    data2: 771149325
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-1094246833183411891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,7 +901,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637885872094360159
+  lastModified: 637887778458428826
   FileSizes:
   - Name: Desktop
     Value: 2032
@@ -897,12 +1033,21 @@ MonoBehaviour:
   - {fileID: -2536085540442589537}
   - {fileID: 5241980110571615011}
   - {fileID: 8899007370720169842}
+  - {fileID: 8849313630749677424}
+  - {fileID: 3978408589368352649}
+  - {fileID: 5612371615870391058}
+  - {fileID: -8561647614913166062}
+  - {fileID: 8135667003550252613}
+  - {fileID: -5515930432726529931}
+  - {fileID: -8111452452763798347}
+  - {fileID: -5608223386385781494}
+  - {fileID: -7307019195370834805}
   EditorParameters: []
   MasterBanks:
   - {fileID: -998194020304668067}
   StringsBanks:
   - {fileID: 4597257062988781288}
-  cacheTime: 637885872094516415
+  cacheTime: 637887778460119120
   cacheVersion: 10
 --- !u!114 &78751809745569274
 MonoBehaviour:
@@ -1032,11 +1177,10 @@ MonoBehaviour:
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
-  Parameters:
-  - {fileID: -6180372098451331195}
+  Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 144618
+  Length: 144000
 --- !u!114 &2364567848389995273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1079,7 +1223,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Voices.bank
   Name: Voices
   StudioPath: bank:/Voices
-  lastModified: 637885872094516415
+  lastModified: 637887778460119120
   FileSizes:
   - Name: Desktop
     Value: 44704
@@ -1185,7 +1329,34 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 816
+  Length: 672
+--- !u!114 &3978408589368352649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/DropKey"
+  m_EditorClassIdentifier: 
+  Path: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/DropKey"
+  Guid:
+    Data1: -1328929280
+    Data2: 1308074205
+    Data3: 1166356363
+    Data4: 654575473
+  Banks:
+  - {fileID: -4250151385257737303}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &4399814238163374534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1248,10 +1419,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637885872094365156
+  lastModified: 637887778458448828
   FileSizes:
   - Name: Desktop
-    Value: 1992
+    Value: 2472
   Exists: 1
 --- !u!114 &5223556747364103488
 MonoBehaviour:
@@ -1307,6 +1478,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 17475
+--- !u!114 &5612371615870391058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/RamassageEtLachage/Doudou/PickUpDoudou
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/RamassageEtLachage/Doudou/PickUpDoudou
+  Guid:
+    Data1: -2060455845
+    Data2: 1123760112
+    Data3: -1585368397
+    Data4: 1973425487
+  Banks:
+  - {fileID: -4250151385257737303}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &6360808476272309025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1389,10 +1587,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637885872094445168
+  lastModified: 637887778458668857
   FileSizes:
   - Name: Desktop
-    Value: 2112192
+    Value: 2111648
   Exists: 1
 --- !u!114 &7258427573194265295
 MonoBehaviour:
@@ -1526,6 +1724,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &8135667003550252613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/RamassageEtLachage/Lampe/DropLampe
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/RamassageEtLachage/Lampe/DropLampe
+  Guid:
+    Data1: -1742877841
+    Data2: 1203100284
+    Data3: 1432700069
+    Data4: -1009109787
+  Banks:
+  - {fileID: -4250151385257737303}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &8271794846249251084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1647,6 +1872,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1576
   Exists: 1
+--- !u!114 &8849313630749677424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/PickUpClef"
+  m_EditorClassIdentifier: 
+  Path: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/PickUpClef"
+  Guid:
+    Data1: -509378906
+    Data2: 1178982841
+    Data3: 1068845747
+    Data4: -228688395
+  Banks:
+  - {fileID: -4250151385257737303}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &8874101222048835695
 MonoBehaviour:
   m_ObjectHideFlags: 0

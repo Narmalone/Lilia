@@ -5595,6 +5595,34 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  m_fmodEventConstant:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventDrag:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventContinuous:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventSonBB:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!195 &576080452 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 2873547174128195186, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
@@ -5946,6 +5974,46 @@ PrefabInstance:
     - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
       propertyPath: m_stairsMask.m_Bits
       value: 32768
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
+      propertyPath: m_fmodEventDrop.Path
+      value: event:/SoundsEvent/RamassageEtLachage/Doudou/DropDoudou
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
+      propertyPath: m_fmodEventPickUp.Path
+      value: event:/SoundsEvent/RamassageEtLachage/Doudou/PickUpDoudou
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data1
+      value: 1006949352
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data2
+      value: 1104796797
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data3
+      value: -672511818
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data4
+      value: 1081390729
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data1
+      value: -2060455845
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data2
+      value: 1123760112
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data3
+      value: -1585368397
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data4
+      value: 1973425487
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
@@ -14085,9 +14153,49 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1130536192}
     - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_fmodEventDrop.Path
+      value: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/DropKey"
+      objectReference: {fileID: 0}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_fmodEventPickUp.Path
+      value: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/PickUpClef"
+      objectReference: {fileID: 0}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
       propertyPath: m_containerKeyAfterEvent
       value: 
       objectReference: {fileID: 2014403702}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data1
+      value: -1328929280
+      objectReference: {fileID: 0}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data2
+      value: 1308074205
+      objectReference: {fileID: 0}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data3
+      value: 1166356363
+      objectReference: {fileID: 0}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data4
+      value: 654575473
+      objectReference: {fileID: 0}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data1
+      value: -509378906
+      objectReference: {fileID: 0}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data2
+      value: 1178982841
+      objectReference: {fileID: 0}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data3
+      value: 1068845747
+      objectReference: {fileID: 0}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data4
+      value: -228688395
+      objectReference: {fileID: 0}
     - target: {fileID: 1239945900658834765, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -14144,6 +14252,10 @@ PrefabInstance:
       propertyPath: m_Icon
       value: 
       objectReference: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 7293353700622068635, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: volume
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7330266202838987449, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.499
@@ -15237,6 +15349,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventPas.Path
+      value: event:/SoundsEvent/BruitPas/Pas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_linkedPostProcess
       value: 
       objectReference: {fileID: 1790721835}
@@ -15263,6 +15379,22 @@ PrefabInstance:
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_TwoHandsItemMask.m_Bits
       value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventPas.Guid.Data1
+      value: -1398225717
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventPas.Guid.Data2
+      value: 1297638522
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventPas.Guid.Data3
+      value: -771669373
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventPas.Guid.Data4
+      value: 1061648962
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_interactableMask.m_Bits
@@ -15578,6 +15710,46 @@ PrefabInstance:
     - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
       propertyPath: m_playerMask.m_Bits
       value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
+      propertyPath: m_fmodEventDrop.Path
+      value: event:/SoundsEvent/RamassageEtLachage/Lampe/DropLampe
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
+      propertyPath: m_fmodEventPickUp.Path
+      value: event:/SoundsEvent/RamassageEtLachage/Lampe/PickUpLampe
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data1
+      value: -1742877841
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data2
+      value: 1203100284
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data3
+      value: 1432700069
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data4
+      value: -1009109787
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data1
+      value: 1203360393
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data2
+      value: 1244540880
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data3
+      value: -886582120
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data4
+      value: 349235023
       objectReference: {fileID: 0}
     - target: {fileID: 5211057799115821150, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
       propertyPath: m_Size.x

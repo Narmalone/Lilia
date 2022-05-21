@@ -40,9 +40,9 @@ public class AISM : StateMachine
     public AnimationCurve m_courbeLimace;
     
     [SerializeField]
-    private FMODUnity.EventReference m_fmodEventConstant;
+    private FMODUnity.EventReference m_fmodEventRespiration;
     
-    private EventInstance m_fmodInstanceConstant;
+    private EventInstance m_fmodInstanceRespiration;
     
     public FMODUnity.EventReference m_fmodEventDrag;
 
@@ -72,11 +72,11 @@ public class AISM : StateMachine
         
         m_fmodInstanceContinuous = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventContinuous);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceContinuous,  GetComponent<Transform>());
-        m_fmodInstanceContinuous.start();
+        //m_fmodInstanceContinuous.start();
         
-        m_fmodInstanceConstant = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventConstant);
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceConstant,  GetComponent<Transform>());
-        m_fmodInstanceConstant.start();
+        m_fmodInstanceRespiration = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventRespiration);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceRespiration,  GetComponent<Transform>());
+        m_fmodInstanceRespiration.start();
         
         StartCoroutine(SonBB());
         
@@ -102,9 +102,18 @@ public class AISM : StateMachine
         {
             int time = 10 + Random.Range(0, 10);
             yield return new WaitForSeconds(time);
+            m_fmodInstanceRespiration.stop(STOP_MODE.ALLOWFADEOUT);
+            StartCoroutine(ReEnableRespiration());
             FMODUnity.RuntimeManager.PlayOneShotAttached(m_fmodEventSonBB.Guid, gameObject);
             Debug.Log($"Je fais le bb {time}"); 
         }
+    }
+
+    private IEnumerator ReEnableRespiration()
+    {
+        yield return new WaitForSeconds(7f);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceRespiration,  GetComponent<Transform>());
+        m_fmodInstanceRespiration.start();
     }
     
     protected override BaseState GetInitialState()
