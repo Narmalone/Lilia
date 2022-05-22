@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using FMOD.Studio;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -63,12 +64,25 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask m_radioMask;
 
     //-----------------------------------------------Sound System------------------------------------------//
-  
-    public FMODUnity.EventReference m_fmodEvent;
+    [Space(10)]
+    [Header("System de son")]
+    public FMODUnity.EventReference m_fmodEventPas;
 
-    private FMOD.Studio.EventInstance m_fmodInstance;
+    private EventInstance m_fmodInstancePas;
+    
+    public FMODUnity.EventReference m_fmodEventDoudou;
 
-    [SerializeField] [Range(0,10)] private float m_speedFeet;
+    private EventInstance m_fmodInstanceDoudou;
+    
+    public FMODUnity.EventReference m_fmodEventStress;
+
+    private EventInstance m_fmodInstanceStress;
+
+    [SerializeField] [Range(0,10)] private float m_stressTest;
+    
+    private Vector3 previous;
+    private float velocity;
+    
 
     
 
@@ -139,6 +153,9 @@ public class PlayerController : MonoBehaviour
     private bool m_isGrounded;
 
     private RaycastHit m_hit;
+
+    private RaycastHit m_pastHit;
+
     private Ray m_ray;
 
     private void Awake()
@@ -160,18 +177,48 @@ public class PlayerController : MonoBehaviour
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_dOFSettings));
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_vignetteSettings));
 
-        m_fmodInstance = FMODUnity.RuntimeManager.CreateInstance(m_fmodEvent);
-        Debug.Log(m_fmodInstance.start());
-       
-       
+        m_fmodInstancePas = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventPas);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstancePas,  GetComponent<Transform>(), GetComponent<Rigidbody>());
+        Debug.Log($"Démarage du son de pas : {m_fmodInstancePas.start()}");
+        
+        m_fmodInstanceStress = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventStress);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceStress,  GetComponent<Transform>(), GetComponent<Rigidbody>());
+        m_fmodInstanceStress.start();
+        //m_fmodInstance.start();
+        
+        m_fmodInstanceDoudou = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventDoudou);
+        
+        previous = Vector3.zero;
     }
 
     private void Update()
     {
-        m_fmodInstance.setParameterByName("Speed", m_speedFeet);
-
-        Debug.Log(m_doudouIsUsed);
-
+        m_ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        Debug.DrawRay(m_ray.GetPoint(0f),m_ray.direction*10);
+        if (Physics.Raycast(m_ray, out m_hit, 1, ~(1 << gameObject.layer)))
+        {
+            m_pastHit = m_hit;
+            OnRayCastHit(m_hit.collider);
+        }
+        else
+        {
+            if (m_pastHit.collider != null) OnRaycastExit(m_pastHit.collider);
+        }
+        
+        //Debug.Log(m_hit.collider.name);
+        
+        velocity = ((transform.position - previous).magnitude) / Time.deltaTime;
+        previous = transform.position;
+        if (velocity < 0.2)
+        {
+            m_fmodInstancePas.setParameterByName("Speed", 0);
+        }
+        else
+        {
+            m_fmodInstancePas.setParameterByName("Speed", velocity*3);
+        }
+        m_fmodInstanceStress.setParameterByName("Stress",10-m_currentStress*10/m_maxStress);
+        
         m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Cr�ation d'une sphere qui chech si le joueur touche le sol
 
         if (m_isGrounded && m_velocity.y < 0)        //Reset de la gravit� quand le joueur touche le sol
@@ -181,6 +228,13 @@ public class PlayerController : MonoBehaviour
 
         if (m_doudouIsUsed == false)
         {
+            PLAYBACK_STATE state;
+            m_fmodInstanceDoudou.getPlaybackState(out state);
+            if (state != PLAYBACK_STATE.STOPPED)
+            {
+                m_fmodInstanceDoudou.stop(STOP_MODE.ALLOWFADEOUT);
+            }
+            
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
 
@@ -190,12 +244,20 @@ public class PlayerController : MonoBehaviour
         }
         if (m_doudouIsUsed == true)
         {
+            PLAYBACK_STATE state;
+            m_fmodInstanceDoudou.getPlaybackState(out state);
+            if (state == PLAYBACK_STATE.STOPPED)
+            {
+                FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDoudou,  GetComponent<Transform>(), GetComponent<Rigidbody>());
+                m_fmodInstanceDoudou.start();
+            }
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
 
             Vector3 move = transform.right * x + transform.forward * z;
 
             m_myChara.Move(move * m_speed * m_slow * Time.deltaTime);
+            
         }
         // D�placements du joueur
 
@@ -282,19 +344,26 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Debug.Log("ne doit plus chasser");
                 m_camShake.camShakeActive = false;
             }
         }
 
        
     }
+    
+    /// <summary>
+    /// Applique le stress au autre systeme manuellement
+    /// </summary>
+    /// <param name="p_stressNum">La quantité de stress appliqué</param>
     private void Stressing(float p_stressNum)
     {
         TakeDamage(p_stressNum);
         m_stressBar.SetStress(m_currentStress);
     }
 
+    /// <summary>
+    /// Augmente le stress automatiquement (Dans l'update)
+    /// </summary>
     public void AutoStress()
     {
         if (m_isStressTick == false)
@@ -306,6 +375,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Modifie l'effet UI du stress sur le personnage selon une valeur donné
+    /// </summary>
+    /// <param name="amount">Quantité de "dégats"</param>
     public void TakeDamage(float amount)
     {
         if(m_gameManager.isPaused == true)
@@ -325,7 +398,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay(Collider p_collide)
     {
-        m_ray = Camera.main.ScreenPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        
+    }
+
+    private void OnRayCastHit(Collider p_collide)
+    {
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
         {
             if(m_gameManager.gotKey == false)
@@ -425,10 +502,10 @@ public class PlayerController : MonoBehaviour
             
         }
     }
+    
 
-
-    private void OnTriggerExit(Collider p_collide)
-    {
+    private void OnRaycastExit(Collider p_collide)
+    { 
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             m_UIManager.DisableUi();
@@ -452,7 +529,7 @@ public class PlayerController : MonoBehaviour
     //----------------------------------------------- Fonctions correspondantes au doudou et � la lampe ------------------------------------------//
 
     //Variables, r�f�rences et fonctions de la lampe par rapport au joueur
-
+    /// </summary>
     public void TakeFlashlight()
     {
         if (m_gameManager.isPc == true)
@@ -480,7 +557,10 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
+    
+    /// <summary>
+    /// Rassemble les fonctions pour le ramassage du doudou
+    /// </summary>
     public void TakeDoudou()
     {
         if (m_gameManager.isPc == true)
@@ -514,6 +594,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    
+    /// <summary>
+    /// Rassemble les fonctions pour le drop de la lampe
+    /// </summary>
     public void ActiveFlashlight()
     {
         if (m_gameManager.isPc == true)
@@ -538,7 +622,9 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
+/// <summary>
+/// Rassemble les fonctions pour l'utilisation et le drop du doudou
+/// </summary>
     public void ActiveDoudou()
     {
         if (m_gameManager.isPc == true)

@@ -1,8 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FMOD.Studio;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
+
 
 public class AISM : StateMachine
 {
@@ -35,8 +39,27 @@ public class AISM : StateMachine
     
     public AnimationCurve m_courbeLimace;
     
+    [SerializeField]
+    private FMODUnity.EventReference m_fmodEventRespiration;
+    
+    private EventInstance m_fmodInstanceRespiration;
+    
+    public FMODUnity.EventReference m_fmodEventDrag;
+
+    [SerializeField]
+    private FMODUnity.EventReference m_fmodEventContinuous;
+    
+    private EventInstance m_fmodInstanceContinuous;
+
+    [SerializeField]
+    private FMODUnity.EventReference m_fmodEventSonBB;
+
+    private FirstPersonOcclusion m_occlusion;
+    
     private void Awake()
     {
+        m_occlusion = FindObjectOfType<FirstPersonOcclusion>();
+        Debug.Log("Awake");
         m_targetSpeed = m_navAgent.speed;
         m_path = new NavMeshPath();
         if (m_player.m_doudouIsPossessed == true)
@@ -49,10 +72,21 @@ public class AISM : StateMachine
         }
         m_patrouilleState = new Patrouille(this,m_navAgent,m_waypoints,m_target);
         m_chasseState = new Chasse(this,m_navAgent,m_target);
+        
+        m_fmodInstanceContinuous = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventContinuous);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceContinuous,  GetComponent<Transform>());
+        //m_fmodInstanceContinuous.start();
+        
+        m_fmodInstanceRespiration = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventRespiration);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceRespiration,  GetComponent<Transform>());
+        m_fmodInstanceRespiration.start();
+        m_occlusion.AddInstance(m_fmodInstanceRespiration);
+
+        StartCoroutine(SonBB());
+        
     }
     void OnEnable()
     {
-        Awake();
         m_triggeredEvent.onTriggered += HandleTriggerEvent;
     }
 
@@ -64,6 +98,35 @@ public class AISM : StateMachine
     private void HandleTriggerEvent(Vector3 p_position)
     {
         Debug.Log("Ok, Je suis triggered");
+    }
+
+    private IEnumerator SonBB()
+    {
+        while(true)
+        {
+            Debug.Log("Je rentre dans la boucle coroutine cri bb");
+            
+            int time = 10 + Random.Range(0, 10);
+            Debug.Log(time);
+            yield return new WaitForSeconds(time);
+            m_fmodInstanceRespiration.stop(STOP_MODE.ALLOWFADEOUT);
+            StartCoroutine(ReEnableRespiration());
+            var instance = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventSonBB.Guid);
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, gameObject.transform);
+            instance.start();
+            m_occlusion.AddInstance(instance);
+            instance.release();
+            
+            Debug.Log($"Je fais le bb {time}"); 
+        }
+    }
+
+    private IEnumerator ReEnableRespiration()
+    {
+        yield return new WaitForSeconds(7f);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceRespiration,  GetComponent<Transform>());
+        m_fmodInstanceRespiration.start();
+        m_occlusion.AddInstance(m_fmodInstanceRespiration);
     }
     
     protected override BaseState GetInitialState()

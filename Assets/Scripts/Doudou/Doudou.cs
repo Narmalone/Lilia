@@ -19,13 +19,19 @@ public class Doudou : MonoBehaviour
     public bool m_callEventEnded = false;
     public bool TakeBeforeChase = false;
     [SerializeField] WaypointsEvent m_waypointsEvent;
-
+    private GameObject m_gOPlayer;
+    
+    [SerializeField] private FMODUnity.EventReference m_fmodEventPickUp;
+    
+    [SerializeField] private FMODUnity.EventReference m_fmodEventDrop;
+    
     private void Awake()
     {
         m_boxDoudouColider = m_doudou.GetComponent<BoxCollider>();
         m_rbDoudou = m_doudou.GetComponent<Rigidbody>();
         m_callEvent = false;
         m_gameManager = FindObjectOfType<GameManager>();
+        m_gOPlayer = FindObjectOfType<PlayerController>().gameObject;
     }
     private float m_yRotation = 0f;
     private void Update()
@@ -49,6 +55,7 @@ public class Doudou : MonoBehaviour
         m_doudou.transform.position = new Vector3(1100f, 1100f, 1100f);
         m_doudou.GetComponent<BoxCollider>().enabled = false;
         uiManager.DisableUi();
+        FMODUnity.RuntimeManager.PlayOneShotAttached(m_fmodEventPickUp.Guid, m_gOPlayer.gameObject);
 
     }
 
@@ -60,9 +67,10 @@ public class Doudou : MonoBehaviour
         m_doudou.transform.parent = null;
         m_rbDoudou.isKinematic = false;
         m_rbDoudou.useGravity = true;
+        FMODUnity.RuntimeManager.PlayOneShotAttached(m_fmodEventDrop.Guid,gameObject);
 
     }
-
+    
     public void CallEventEnded()
     {
         m_callEventEnded = true;
