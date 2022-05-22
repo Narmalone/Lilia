@@ -9,20 +9,37 @@
 [LOG] DownMix::init                            : done.
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 00000294308B7CD8 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0000022ADAC894F8 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] PlaybackSystem::init                     : done
 [LOG] Thread::initThread                       : Init FMOD Studio bank load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] Manager::init                            : done.
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 141)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 141)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 141)
-[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 141)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 141)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 141)
+[LOG] SoundI::release                          :  (0000022A884B5428)
+[LOG] SoundI::release                          :     sfx_footstep1 (1) (0000022A8EEEFED8)
+[LOG] SoundI::release                          :  (0000022A574679D8)
+[LOG] SoundI::release                          :     sfx_footstep2 (0000022A8EEEF9F8)
+[LOG] SoundI::release                          :  (0000022A57467F98)
+[LOG] SoundI::release                          :     sfx_footstep5 (0000022A8EEEF518)
+[LOG] SoundI::release                          :  (0000022A884B5598)
+[LOG] SoundI::release                          :     sfx_footstep4 (0000022B3FC67308)
+[LOG] SoundI::release                          :  (0000022A884B59E8)
+[LOG] SoundI::release                          :     little_robot_sound_factory_Breath_Scared_06 (0000022B3FC66C88)
+[LOG] SoundI::release                          :  (0000022A57467E28)
+[LOG] SoundI::release                          :     little_robot_sound_factory_Breath_Scared_07 (0000022A8EEEFB98)
+[LOG] SoundI::release                          :  (0000022A574672A8)
+[LOG] SoundI::release                          :     little_robot_sound_factory_Breath_Scared_08 (0000022A899CFBB8)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 

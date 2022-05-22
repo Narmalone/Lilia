@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Data.Common;
 using FMOD;
 using UnityEngine;
 using FMODUnity;
@@ -25,7 +26,7 @@ public class FirstPersonOcclusion : MonoBehaviour
     private float ListenerDistance;
     private float lineCastHitCount = 0f;
     private Color colour;
-    
+    private float MaxDistance;
 
 
     private void Start()
@@ -51,7 +52,7 @@ public class FirstPersonOcclusion : MonoBehaviour
     
     private void FixedUpdate()
     {
-        Debug.Log($"nombre d'audio: {Audios.Count}");
+        //Debug.Log($"nombre d'audio: {Audios.Count}");
         for (int i = 0; i < Audios.Count; i++)
         {
             bool virtu;
@@ -59,7 +60,7 @@ public class FirstPersonOcclusion : MonoBehaviour
             Audios[i].isVirtual(out virtu);
             Audios[i].getPlaybackState(out pbs);
             Audios[i].get3DAttributes(out ATTRIBUTES_3D lessgo);
-            float MaxDistance;
+            
             AudioDes[i].getMinMaxDistance(out float yoink,out MaxDistance);
             ListenerDistance = Vector3.Distance(new Vector3(lessgo.position.x,lessgo.position.y,lessgo.position.z), Listener.transform.position);
 
@@ -137,21 +138,47 @@ public class FirstPersonOcclusion : MonoBehaviour
 
     private void CastLine(Vector3 Start, Vector3 End)
     {
-        RaycastHit hit;
-        Physics.Linecast(Start, End, out hit, OcclusionLayer);
-
-        if (hit.collider)
+        Vector3 direction =End - Start;
+        Ray ray = new Ray(Start, direction);
+        RaycastHit[] hit;
+        hit  = Physics.RaycastAll(ray, Vector3.Distance(Start,End), OcclusionLayer);
+        //Debug.DrawRay(Start, direction);
+        int maxCollider = 0;
+        if (hit.Length > 0)
         {
-            lineCastHitCount++;
-            Debug.DrawLine(Start, End, Color.red);
+            for (int i = 0; i < hit.Length;i++)
+            {
+                if(MaxDistance < hit[i].distance)
+                    Debug.Log($"Maxdistance : {MaxDistance} distance du hit : {hit[i].distance}");
+                
+                if (maxCollider < 3)
+                {
+                    maxCollider++;
+                    lineCastHitCount++;
+                }
+            }
+
+            switch (maxCollider)
+            {
+               case 1:
+                   Debug.DrawLine(Start, End, Color.yellow);
+                   break;
+               
+               case 2:
+                   Debug.DrawLine(Start, End, new Color(1f, 0.5f, 0f));
+                   break;
+               
+               case 3 :
+                   Debug.DrawLine(Start, End, Color.red);
+                   break;
+            }
         }
-        else
-            Debug.DrawLine(Start, End, colour);
+        else Debug.DrawLine(Start, End, colour);
     }
 
     private void SetParameter(int index)
     {
         
-        Audios[index].setParameterByName("Occlusion", lineCastHitCount / 11);
+        Audios[index].setParameterByName("Occlusion", lineCastHitCount / 33);
     }
 }
