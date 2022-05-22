@@ -36,7 +36,9 @@ public class KeyScript : MonoBehaviour
     }
     private void Update()
     {
-        m_ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        m_ray = m_player.m_ray;
+        //m_ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        Debug.DrawRay(m_ray.origin,m_ray.direction, Color.blue);
         if (Physics.Raycast(m_ray, out m_hit, 1, ~(1 << m_player.gameObject.layer)))
         {
             OnRayCastHit(m_hit.collider);

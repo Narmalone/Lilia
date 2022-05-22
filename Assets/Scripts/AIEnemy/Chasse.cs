@@ -33,14 +33,14 @@ public class Chasse : BaseState
 
         if (m_sm.m_player.m_doudouIsPossessed == true)
         {
-            if (GameObject.ReferenceEquals(m_target, m_sm.m_player.gameObject) == false)
+            if (ReferenceEquals(m_target, m_sm.m_player.gameObject) == false)
             {
                 m_target = m_sm.m_player.gameObject;
             }
         }
         else
         {
-            if (GameObject.ReferenceEquals(m_target, m_sm.m_doudou.gameObject) == false)
+            if (ReferenceEquals(m_target, m_sm.m_doudou.gameObject) == false)
             {
                 m_target = m_sm.m_doudou.gameObject;
             }

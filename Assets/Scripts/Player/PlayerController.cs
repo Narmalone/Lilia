@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour
 
     public PlayerControls m_controls;
 
+    [SerializeField] public Camera m_cam;
+    
     [SerializeField] private PortillonScript m_portillon;
 
     private NavMeshPath m_path;
@@ -156,7 +158,7 @@ public class PlayerController : MonoBehaviour
 
     private RaycastHit m_pastHit;
 
-    private Ray m_ray;
+    public Ray m_ray;
 
     private void Awake()
     {
@@ -193,12 +195,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        m_ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-        Debug.DrawRay(m_ray.GetPoint(0f),m_ray.direction*10);
+        Debug.DrawRay(m_ray.origin,m_ray.direction, Color.black);
         if (Physics.Raycast(m_ray, out m_hit, 1, ~(1 << gameObject.layer)))
         {
-            m_pastHit = m_hit;
+            Debug.Log($"Je touche avec le raycast: {m_hit.collider.name}");
             OnRayCastHit(m_hit.collider);
+            m_pastHit = m_hit;
         }
         else
         {
@@ -330,23 +332,23 @@ public class PlayerController : MonoBehaviour
             }
         }
         
-        Chasse.GetPath(m_path, m_target.transform.position, m_AIStateMachine.transform.position, NavMesh.AllAreas);
-        if (m_path.status == NavMeshPathStatus.PathComplete)
-        {
-            if (Chasse.GetPathLength(m_AIStateMachine.m_path) < 10f && m_AIStateMachine.currentState == m_AIStateMachine.m_chasseState)
-            {
-                float dist = Vector3.Distance(m_AIStateMachine.transform.position, m_doudou.transform.position);
-                float power = dist / 10;
-                float powerAdapted = Mathf.Lerp(0.1f, 0f, power);
-                m_camShake.camShakeActive = true;
-                
-                Debug.Log("dans la chasse");
-            }
-            else
-            {
-                m_camShake.camShakeActive = false;
-            }
-        }
+        // Chasse.GetPath(m_path, m_target.transform.position, m_AIStateMachine.transform.position, NavMesh.AllAreas);
+        // if (m_path.status == NavMeshPathStatus.PathComplete)
+        // {
+        //     if (Chasse.GetPathLength(m_AIStateMachine.m_path) < 10f && m_AIStateMachine.currentState == m_AIStateMachine.m_chasseState)
+        //     {
+        //         float dist = Vector3.Distance(m_AIStateMachine.transform.position, m_doudou.transform.position);
+        //         float power = dist / 10;
+        //         float powerAdapted = Mathf.Lerp(0.1f, 0f, power);
+        //         m_camShake.camShakeActive = true;
+        //         
+        //         Debug.Log("dans la chasse");
+        //     }
+        //     else
+        //     {
+        //         m_camShake.camShakeActive = false;
+        //     }
+        // }
 
        
     }
@@ -394,11 +396,6 @@ public class PlayerController : MonoBehaviour
 
             m_targetIntensity = Mathf.Clamp01(m_targetIntensity + damagePercent);
         }
-    }
-
-    private void OnTriggerStay(Collider p_collide)
-    {
-        
     }
 
     private void OnRayCastHit(Collider p_collide)

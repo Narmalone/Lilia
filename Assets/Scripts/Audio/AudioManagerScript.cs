@@ -13,7 +13,7 @@ public class AudioManagerScript : MonoBehaviour
 
     private void Awake()
     {
-        m_occlusion = FindObjectOfType<FirstPersonOcclusion>();
+        m_occlusion = GetComponent<FirstPersonOcclusion>();
     }
 
     public void Play(string name)
@@ -46,7 +46,6 @@ public class AudioManagerScript : MonoBehaviour
     {
         Music m = Array.Find(musics, musics => musics.m_name == name);
         m.clip.Play();
-        m_occlusion.AddInstance(m.clip.EventInstance);
     }
     public void PlayVoices(string name)
     {
