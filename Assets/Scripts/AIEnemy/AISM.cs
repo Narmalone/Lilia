@@ -81,7 +81,7 @@ public class AISM : StateMachine
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceRespiration,  GetComponent<Transform>());
         m_fmodInstanceRespiration.start();
         m_occlusion.AddInstance(m_fmodInstanceRespiration);
-        
+
         StartCoroutine(SonBB());
         
     }
