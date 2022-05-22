@@ -54,8 +54,11 @@ public class AISM : StateMachine
     [SerializeField]
     private FMODUnity.EventReference m_fmodEventSonBB;
 
+    private FirstPersonOcclusion m_occlusion;
+    
     private void Awake()
     {
+        m_occlusion = FindObjectOfType<FirstPersonOcclusion>();
         Debug.Log("Awake");
         m_targetSpeed = m_navAgent.speed;
         m_path = new NavMeshPath();
@@ -77,6 +80,7 @@ public class AISM : StateMachine
         m_fmodInstanceRespiration = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventRespiration);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceRespiration,  GetComponent<Transform>());
         m_fmodInstanceRespiration.start();
+        m_occlusion.AddInstance(m_fmodInstanceRespiration);
         
         StartCoroutine(SonBB());
         
@@ -100,11 +104,19 @@ public class AISM : StateMachine
     {
         while(true)
         {
+            Debug.Log("Je rentre dans la boucle coroutine cri bb");
+            
             int time = 10 + Random.Range(0, 10);
+            Debug.Log(time);
             yield return new WaitForSeconds(time);
             m_fmodInstanceRespiration.stop(STOP_MODE.ALLOWFADEOUT);
             StartCoroutine(ReEnableRespiration());
-            FMODUnity.RuntimeManager.PlayOneShotAttached(m_fmodEventSonBB.Guid, gameObject);
+            var instance = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventSonBB.Guid);
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, gameObject.transform);
+            instance.start();
+            m_occlusion.AddInstance(instance);
+            instance.release();
+            
             Debug.Log($"Je fais le bb {time}"); 
         }
     }
@@ -114,6 +126,7 @@ public class AISM : StateMachine
         yield return new WaitForSeconds(7f);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceRespiration,  GetComponent<Transform>());
         m_fmodInstanceRespiration.start();
+        m_occlusion.AddInstance(m_fmodInstanceRespiration);
     }
     
     protected override BaseState GetInitialState()

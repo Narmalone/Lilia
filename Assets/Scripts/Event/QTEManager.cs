@@ -167,7 +167,7 @@ public class QTEManager : MonoBehaviour
     
     private void OnRaycastExit(Collider other)
     {
-        if (ReferenceEquals( gameObject, m_pastHit.collider.gameObject) && other.isTrigger)
+        if (ReferenceEquals( gameObject, m_pastHit.collider?.gameObject) && other.isTrigger)
         {
             Debug.Log("Je ne vise plus le meuble");
             m_txtPushTheBox.gameObject.SetActive(false);

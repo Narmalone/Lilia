@@ -118,9 +118,12 @@ public class KeyScript : MonoBehaviour
     }
     private void OnRaycastExit(Collider other)
     {
-        if (ReferenceEquals( gameObject, other.gameObject))
+        if (other != null)
         {
-            m_uiManager.DisableUi();
+            if (ReferenceEquals( gameObject, other.gameObject))
+            {
+                m_uiManager.DisableUi();
+            }
         }
     }
     public void PlayerGotKey()

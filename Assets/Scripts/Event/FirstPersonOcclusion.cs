@@ -1,17 +1,16 @@
+using System.Collections.Generic;
+using FMOD;
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
+using Debug = UnityEngine.Debug;
 
 public class FirstPersonOcclusion : MonoBehaviour
 {
     [Header("FMOD Event")]
-    [SerializeField]
-    [EventRef]
-    private string SelectAudio;
-    private EventInstance Audio;
-    private EventDescription AudioDes;
+    List<EventInstance> Audios = new List<EventInstance>();
+    List<EventDescription> AudioDes = new List<EventDescription>();
     private StudioListener Listener;
-    private PLAYBACK_STATE pb;
 
     [Header("Occlusion Options")]
     [SerializeField]
@@ -22,40 +21,62 @@ public class FirstPersonOcclusion : MonoBehaviour
     private float PlayerOcclusionWidening = 1f;
     [SerializeField]
     private LayerMask OcclusionLayer;
-
-    private bool AudioIsVirtual;
-    private float MaxDistance;
+    
     private float ListenerDistance;
     private float lineCastHitCount = 0f;
     private Color colour;
+    
+
 
     private void Start()
     {
-        Audio = RuntimeManager.CreateInstance(SelectAudio);
-        RuntimeManager.AttachInstanceToGameObject(Audio, GetComponent<Transform>(), GetComponent<Rigidbody>());
-        Audio.start();
-        Audio.release();
-
-        AudioDes = RuntimeManager.GetEventDescription(SelectAudio);
-        AudioDes.getMaximumDistance(out MaxDistance);
-
         Listener = FindObjectOfType<StudioListener>();
+        
+    }
+
+    public void AddInstance(EventInstance p_instance)
+    {
+        Debug.Log($"Je rentre dans la fonction d'add");
+        Audios.Add(p_instance);
+        EventDescription ya;
+        p_instance.getDescription(out ya);
+        AudioDes.Add(ya);
+    }
+
+    public void RemoveInstance(int index)
+    {
+        AudioDes.Remove(AudioDes[index]);
+        Audios.Remove(Audios[index]);
     }
     
     private void FixedUpdate()
     {
-        Audio.isVirtual(out AudioIsVirtual);
-        Audio.getPlaybackState(out pb);
-        ListenerDistance = Vector3.Distance(transform.position, Listener.transform.position);
+        Debug.Log($"nombre d'audio: {Audios.Count}");
+        for (int i = 0; i < Audios.Count; i++)
+        {
+            bool virtu;
+            PLAYBACK_STATE pbs;
+            Audios[i].isVirtual(out virtu);
+            Audios[i].getPlaybackState(out pbs);
+            Audios[i].get3DAttributes(out ATTRIBUTES_3D lessgo);
+            float MaxDistance;
+            AudioDes[i].getMinMaxDistance(out float yoink,out MaxDistance);
+            ListenerDistance = Vector3.Distance(new Vector3(lessgo.position.x,lessgo.position.y,lessgo.position.z), Listener.transform.position);
 
-        if (!AudioIsVirtual && pb == PLAYBACK_STATE.PLAYING && ListenerDistance <= MaxDistance)
-            OccludeBetween(transform.position, Listener.transform.position);
-
-        lineCastHitCount = 0f;
+            if (!virtu && pbs == PLAYBACK_STATE.PLAYING && ListenerDistance <= MaxDistance)
+                OccludeBetween(new Vector3(lessgo.position.x,lessgo.position.y,lessgo.position.z), Listener.transform.position,i);
+            else if (pbs == PLAYBACK_STATE.STOPPED)
+            {
+                RemoveInstance(i);
+                Debug.Log($"je remove un son");
+            }
+            lineCastHitCount = 0f;
+        }
     }
 
-    private void OccludeBetween(Vector3 sound, Vector3 listener)
+    private void OccludeBetween(Vector3 sound, Vector3 listener,int index)
     {
+        
         Vector3 SoundLeft = CalculatePoint(sound, listener, SoundOcclusionWidening, true);
         Vector3 SoundRight = CalculatePoint(sound, listener, SoundOcclusionWidening, false);
 
@@ -92,7 +113,7 @@ public class FirstPersonOcclusion : MonoBehaviour
             colour = Color.green;
         }
 
-        SetParameter();
+        SetParameter(index);
     }
 
     private Vector3 CalculatePoint(Vector3 a, Vector3 b, float m, bool posOrneg)
@@ -128,8 +149,9 @@ public class FirstPersonOcclusion : MonoBehaviour
             Debug.DrawLine(Start, End, colour);
     }
 
-    private void SetParameter()
+    private void SetParameter(int index)
     {
-        Audio.setParameterByName("Occlusion", lineCastHitCount / 11);
+        
+        Audios[index].setParameterByName("Occlusion", lineCastHitCount / 11);
     }
 }

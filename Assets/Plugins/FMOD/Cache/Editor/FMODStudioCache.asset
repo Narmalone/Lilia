@@ -171,7 +171,8 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
-  Parameters: []
+  Parameters:
+  - {fileID: 2297150863585606592}
   MinDistance: 1
   MaxDistance: 20
   Length: 4500
@@ -705,10 +706,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Sounds.bank
   Name: Sounds
   StudioPath: bank:/Sounds
-  lastModified: 637887778459924080
+  lastModified: 637887858964325078
   FileSizes:
   - Name: Desktop
-    Value: 3657312
+    Value: 3674656
   Exists: 1
 --- !u!114 &-2931186491512557235
 MonoBehaviour:
@@ -783,6 +784,30 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 2032
+  Exists: 1
+--- !u!114 &-1848259744367509470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PhoneCall/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
   Exists: 1
 --- !u!114 &-1645496169239241534
 MonoBehaviour:
@@ -901,7 +926,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637887778458428826
+  lastModified: 637887858962679788
   FileSizes:
   - Name: Desktop
     Value: 2032
@@ -1047,7 +1072,7 @@ MonoBehaviour:
   - {fileID: -998194020304668067}
   StringsBanks:
   - {fileID: 4597257062988781288}
-  cacheTime: 637887778460119120
+  cacheTime: 637887858964515114
   cacheVersion: 10
 --- !u!114 &78751809745569274
 MonoBehaviour:
@@ -1181,6 +1206,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 144000
+--- !u!114 &2297150863585606592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Respiration/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &2364567848389995273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1223,7 +1272,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Voices.bank
   Name: Voices
   StudioPath: bank:/Voices
-  lastModified: 637887778460119120
+  lastModified: 637887858964515114
   FileSizes:
   - Name: Desktop
     Value: 44704
@@ -1419,10 +1468,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637887778458448828
+  lastModified: 637887858962694793
   FileSizes:
   - Name: Desktop
-    Value: 2472
+    Value: 2524
   Exists: 1
 --- !u!114 &5223556747364103488
 MonoBehaviour:
@@ -1474,7 +1523,8 @@ MonoBehaviour:
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
-  Parameters: []
+  Parameters:
+  - {fileID: -1848259744367509470}
   MinDistance: 1
   MaxDistance: 20
   Length: 17475
@@ -1587,7 +1637,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637887778458668857
+  lastModified: 637887858962904833
   FileSizes:
   - Name: Desktop
     Value: 2111648
