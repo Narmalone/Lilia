@@ -30,11 +30,14 @@ public class TimelinePlayerScript : MonoBehaviour
             {
                 incrementDelta += 1f * Time.deltaTime;
                 m_player.m_speed = 0f;
+                m_player.m_stopStress = true;
+                m_player.TakeDamage(-100);
             }
             else
             {
                 m_director.Stop();
                 m_player.m_speed = 2f;
+                m_player.m_stopStress = false;
             }
         }
         else { return; }
