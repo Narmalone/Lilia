@@ -55,6 +55,7 @@ public class KeyScript : MonoBehaviour
                 m_thisBox.transform.position = m_containerDrop.transform.position;
                 m_audioScript.Play("KeySoundEvent_1");
                 m_dropKeyAfterEvent = true;
+                m_thisBox.enabled = true;
             }
         }
        if(m_gameManager.gotKey == true)

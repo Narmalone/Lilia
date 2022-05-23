@@ -42,7 +42,7 @@ public class QTEManager : MonoBehaviour
     public int m_index;
 
     public bool m_qteIsOver = false;
-
+    public bool isInQte = false;
     private Ray m_ray;
 
     private RaycastHit m_hit,m_pastHit;
@@ -51,6 +51,7 @@ public class QTEManager : MonoBehaviour
         
     private void Awake()
     {
+        isInQte = false;
         m_txtPushTheBox.gameObject.SetActive(false);
         m_txtCancelAction.gameObject.SetActive(false);
     }
@@ -89,7 +90,7 @@ public class QTEManager : MonoBehaviour
         
         if (m_qteStarted == true)
         {
-            if (Vector3.Distance(m_playerGO.transform.position, m_containerPerso.transform.position) > 0.3f)
+            if (Vector3.Distance(m_playerGO.transform.position, m_containerPerso.transform.position) > 0.2f)
             {
                 m_playerGO.transform.position = Vector3.MoveTowards(m_playerGO.transform.position,m_containerPerso.transform.position,0.1f);
                 Debug.Log($"bouger le joueur vers le container : {Vector3.Distance(transform.position, m_containerPerso.transform.position)}");
@@ -121,6 +122,8 @@ public class QTEManager : MonoBehaviour
                 StopAllCoroutines();
                 m_txtCancelAction.gameObject.SetActive(false);
                 m_txtToModify.gameObject.SetActive(false);
+                m_txtPushTheBox.gameObject.SetActive(false);
+                DelockPos();
             }
         }
         
@@ -141,7 +144,10 @@ public class QTEManager : MonoBehaviour
             Debug.Log("Je vise le meuble");
             if (m_qteIsOver == false && m_txtPushTheBox.gameObject.activeInHierarchy == false)
             {
-                m_txtPushTheBox.gameObject.SetActive(true);
+                if(isInQte == false)
+                {
+                    m_txtPushTheBox.gameObject.SetActive(true);
+                }
             }
 
             if (Input.GetKey(KeyCode.E) && m_qteStarted == false)
@@ -156,6 +162,7 @@ public class QTEManager : MonoBehaviour
                         m_txtToModify.gameObject.SetActive(true);
                         m_txtPushTheBox.gameObject.SetActive(false);
                         m_qteStarted = true;
+                        isInQte = true;
                     }
                    
                 }
@@ -185,6 +192,7 @@ public class QTEManager : MonoBehaviour
             m_txtCancelAction.gameObject.SetActive(false);
             m_txtToModify.gameObject.SetActive(false);
             m_qteStarted = false;
+            isInQte = false;
         }
     }
 

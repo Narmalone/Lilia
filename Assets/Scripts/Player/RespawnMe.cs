@@ -20,15 +20,18 @@ public class RespawnMe : MonoBehaviour
     [SerializeField] private MenuManager m_menuManager;
 
     private int index;
-
+    public bool makeRespawn = true;
     public bool isNextCheckpoint = false;
     [SerializeField] private GameManager m_gameManager;
 
     private void Awake()
     {
+        makeRespawn = true;
         m_gameManager = FindObjectOfType<GameManager>();
         index = 0;
+       
     }
+
     private void OnEnable()
     {
         Awake();
@@ -39,6 +42,13 @@ public class RespawnMe : MonoBehaviour
     }
     private void LateUpdate()
     {
+        //if (Input.GetKeyDown(KeyCode.T))
+        //{
+            //if (makeRespawn == true)
+            //{
+                //Respawn();
+            //}
+        //}  
         if (m_gameManager.isDead == true)
         {
             if (Input.anyKeyDown)
@@ -47,10 +57,6 @@ public class RespawnMe : MonoBehaviour
                 Debug.Log("mort et appuie sur une touche");
             }
         }
-    }
-    private void FixedUpdate()
-    {
-        
     }
     public void NextCheckpoint()
     {
@@ -62,25 +68,21 @@ public class RespawnMe : MonoBehaviour
     public void Respawn()
     {
         m_player.transform.position = m_playercheckpoints.transform.position;
+
         m_iaTransform.position = m_iaCheckpoint.position;
 
-        if (m_player.m_doudouIsPossessed == true)
+        if(m_player.m_doudouIsPossessed == false)
         {
-            m_doudoutransform.SetParent(null);
+            m_doudoutransform.transform.position = m_doudoucheckpoint.transform.position;
+            Debug.Log("joueur a pas le doudou donc tp");
         }
-        if(m_player.m_flashlightIsPossessed == true)
+
+        if(m_player.m_flashlightIsPossessed == false)
         {
-            m_veilleuseTransform.SetParent(null);
+            m_veilleuseTransform.position = m_veilleuseCheckPoint.position;
         }
-        m_doudoutransform.transform.position = m_doudoucheckpoint.transform.position;
-        m_veilleuseTransform.position = m_veilleuseCheckPoint.position;
-        Debug.Log("fonction respawn");
 
         m_menuManager.OnRespawn();
         m_gameManager.isDead = false;
-    }
-    public void RespawnPlayer()
-    {
-        m_player.transform.position = m_playercheckpoints.transform.position;
     }
 }

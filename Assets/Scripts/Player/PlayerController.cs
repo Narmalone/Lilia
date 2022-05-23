@@ -160,8 +160,10 @@ public class PlayerController : MonoBehaviour
 
     public Ray m_ray;
 
+    public bool isCinematic = true;
     private void Awake()
     {
+        isCinematic = true;
         m_gameManager = FindObjectOfType<GameManager>();
         m_menuManager = FindObjectOfType<MenuManager>();
         m_controls = new PlayerControls();
@@ -179,18 +181,19 @@ public class PlayerController : MonoBehaviour
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_dOFSettings));
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_vignetteSettings));
 
-        m_fmodInstancePas = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventPas);
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstancePas,  GetComponent<Transform>(), GetComponent<Rigidbody>());
-        Debug.Log($"Démarage du son de pas : {m_fmodInstancePas.start()}");
-        
-        m_fmodInstanceStress = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventStress);
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceStress,  GetComponent<Transform>(), GetComponent<Rigidbody>());
-        m_fmodInstanceStress.start();
-        //m_fmodInstance.start();
-        
-        m_fmodInstanceDoudou = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventDoudou);
-        
-        previous = Vector3.zero;
+            m_fmodInstancePas = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventPas);
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstancePas, GetComponent<Transform>(), GetComponent<Rigidbody>());
+            Debug.Log($"Démarage du son de pas : {m_fmodInstancePas.start()}");
+
+            m_fmodInstanceStress = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventStress);
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceStress, GetComponent<Transform>(), GetComponent<Rigidbody>());
+            m_fmodInstanceStress.start();
+            //m_fmodInstance.start();
+
+            m_fmodInstanceDoudou = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventDoudou);
+
+            previous = Vector3.zero;
+     
     }
 
     private void Update()
@@ -294,24 +297,28 @@ public class PlayerController : MonoBehaviour
 
         // test shader
         // decay the target intensity
-        if (m_targetIntensity > 0f)
+        if(isCinematic == false)
         {
-            m_targetIntensity = Mathf.Clamp01(m_targetIntensity - m_frequendeReduction * Time.deltaTime);
-            m_targetIntensity = Mathf.Max(m_intensityDueToHealth.Evaluate(m_currentStress / m_maxStress), m_targetIntensity);
-        }
+            if (m_targetIntensity > 0f)
+            {
+                m_targetIntensity = Mathf.Clamp01(m_targetIntensity - m_frequendeReduction * Time.deltaTime);
+                m_targetIntensity = Mathf.Max(m_intensityDueToHealth.Evaluate(m_currentStress / m_maxStress), m_targetIntensity);
+            }
 
-        // intensity needs updating
-        if (m_currentIntensity != m_targetIntensity)
-        {
-            float rate = m_targetIntensity > m_currentIntensity ? m_frequenceAttaque : m_frequenceRelache;
-            m_currentIntensity = Mathf.MoveTowards(m_currentIntensity, m_targetIntensity, rate * Time.deltaTime);
-        }
+            // intensity needs updating
+            if (m_currentIntensity != m_targetIntensity)
+            {
+                float rate = m_targetIntensity > m_currentIntensity ? m_frequenceAttaque : m_frequenceRelache;
+                m_currentIntensity = Mathf.MoveTowards(m_currentIntensity, m_targetIntensity, rate * Time.deltaTime);
+            }
 
-        m_intenseFieldOfView = m_currentStress / 100;
-        //Debug.Log(m_overlaySettings);
-        m_materialStress.SetFloat("_Intensity", Mathf.Lerp(0f, 2f, m_currentIntensity));
-        m_vignetteSettings.intensity.value = Mathf.Lerp(0f, m_intesiteMaxEffet, m_currentIntensity);
-        m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
+            m_intenseFieldOfView = m_currentStress / 100;
+            //Debug.Log(m_overlaySettings);
+            m_materialStress.SetFloat("_Intensity", Mathf.Lerp(0f, 2f, m_currentIntensity));
+            m_vignetteSettings.intensity.value = Mathf.Lerp(0f, m_intesiteMaxEffet, m_currentIntensity);
+            m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
+        }
+      
 
         if (m_doudouIsPossessed == true)
         {
