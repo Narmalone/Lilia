@@ -56,6 +56,8 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private PortillonScript m_portillon;
 
+    [NonSerialized] public bool m_stopStress = false;
+
     private NavMeshPath m_path;
     [Space(10)]
     [SerializeField] private LayerMask m_flashlightMask;
@@ -287,7 +289,8 @@ public class PlayerController : MonoBehaviour
 
         //Check Fonctions
 
-        AutoStress();
+        if (!m_stopStress) AutoStress();
+
         ActiveFlashlight();
         ActiveDoudou();
 
@@ -385,11 +388,10 @@ public class PlayerController : MonoBehaviour
     {
         if(m_gameManager.isPaused == true)
         {
-            m_maxStress = m_currentStress;
+            m_currentStress = m_maxStress;
         }
         else
         {
-            m_maxStress = 100f;
             m_currentStress = Mathf.Clamp(m_currentStress - amount, 0f, m_maxStress);
 
             float damagePercent = Mathf.Clamp01(amount / m_maxStress);
