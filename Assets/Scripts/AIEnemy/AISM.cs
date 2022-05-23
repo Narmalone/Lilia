@@ -46,6 +46,8 @@ public class AISM : StateMachine
     
     public FMODUnity.EventReference m_fmodEventDrag;
 
+    public EventInstance m_fmodInstanceDrag;
+
     [SerializeField]
     private FMODUnity.EventReference m_fmodEventContinuous;
     
@@ -54,7 +56,9 @@ public class AISM : StateMachine
     [SerializeField]
     private FMODUnity.EventReference m_fmodEventSonBB;
 
-    private FirstPersonOcclusion m_occlusion;
+    public FirstPersonOcclusion m_occlusion;
+
+    private Vector3 m_previousPos;
     
     private void Awake()
     {
@@ -85,6 +89,17 @@ public class AISM : StateMachine
         StartCoroutine(SonBB());
         
     }
+
+    private void Update()
+    {
+        base.Update();
+        if(transform.position == m_previousPos)
+        {
+            m_fmodInstanceDrag.stop(STOP_MODE.ALLOWFADEOUT);
+        }
+        m_previousPos = transform.position;
+    }
+
     void OnEnable()
     {
         m_triggeredEvent.onTriggered += HandleTriggerEvent;
