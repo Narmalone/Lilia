@@ -5623,6 +5623,7 @@ MonoBehaviour:
       Data3: -75015237
       Data4: 26522174
     Path: event:/SoundsEvent/Baby/Crying
+  m_occlusion: {fileID: 0}
 --- !u!195 &576080452 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 2873547174128195186, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
@@ -11209,7 +11210,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.3, y: 0.3, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1550332497
 MeshRenderer:
@@ -15345,7 +15346,7 @@ PrefabInstance:
       objectReference: {fileID: 2066910958}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_StressPower
-      value: 1
+      value: 0.197
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_audioScript
@@ -15353,7 +15354,7 @@ PrefabInstance:
       objectReference: {fileID: 1096440343}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_makeMeStress
-      value: 10
+      value: 2.9
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_iaMask.m_Bits
