@@ -122,11 +122,11 @@ public class CaisseProto : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && canTake == true && m_player.m_doudouIsPossessed == false && m_player.m_flashlightIsPossessed == false && onHand == false)
         {
             m_thisGameObject.transform.SetParent(m_twoHandsContainer);
-            transform.localPosition = Vector3.zero;
-            transform.localRotation = Quaternion.Euler(90f, 180f, 0f);
+            m_thisGameObject.transform.localPosition = new Vector3(0f, -0.8f, 0f);
+            m_thisGameObject.transform.localRotation = Quaternion.Euler(-90f, m_twoHandsContainer.transform.localRotation.y, m_twoHandsContainer.transform.localRotation.z);
             m_rbody.useGravity = false;
             m_rbody.isKinematic = true;
-            onHand = true;
+            canTake = false;
             m_player.m_speed *= m_pourcentSpeed / 100; 
             Debug.Log("prendre l'objet");
             
