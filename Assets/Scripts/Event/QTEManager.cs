@@ -154,16 +154,17 @@ public class QTEManager : MonoBehaviour
             {
                 if(m_qteIsOver == false)
                 {
-                    if(m_playerController.m_doudouIsPossessed == false && m_playerController.m_flashlightIsPossessed == false)
-                    {
-                        Debug.Log(m_nombre_de_départ_qte++);
-                        Debug.Log("Qte started");
-                        m_txtCancelAction.gameObject.SetActive(false);
-                        m_txtToModify.gameObject.SetActive(true);
-                        m_txtPushTheBox.gameObject.SetActive(false);
-                        m_qteStarted = true;
-                        isInQte = true;
-                    }
+                    Debug.Log(m_nombre_de_départ_qte++);
+                    Debug.Log("Qte started");
+                    m_txtCancelAction.gameObject.SetActive(false);
+                    m_txtToModify.gameObject.SetActive(true);
+                    m_txtPushTheBox.gameObject.SetActive(false);
+                    m_qteStarted = true;
+                    isInQte = true;
+                    //if (m_playerController.m_doudouIsPossessed == false && m_playerController.m_flashlightIsPossessed == false)
+                    //{
+                       
+                    //}
                    
                 }
                 

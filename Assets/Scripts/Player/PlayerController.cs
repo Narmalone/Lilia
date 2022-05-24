@@ -338,7 +338,26 @@ public class PlayerController : MonoBehaviour
                 m_target = m_doudou.gameObject;
             }
         }
-        
+
+        //Si raycast avec portillon
+        if (Physics.Raycast(m_ray, out m_hit, 1, m_portillonMask))
+        {
+            Debug.Log(gameObject.name);
+            m_UIManager.TakableObject();
+            if (Input.GetKey(KeyCode.E))
+            {
+                m_hit.collider.gameObject.GetComponent<Doors>().ActiveDoors();
+            }
+            if (m_hit.collider.gameObject.GetComponent<Doors>().isOpen == true)
+            {
+                m_UIManager.DisableUi();
+            }
+        }
+        else
+        {
+            FindObjectOfType<Doors>().DisableSlider();
+        }
+       
         // Chasse.GetPath(m_path, m_target.transform.position, m_AIStateMachine.transform.position, NavMesh.AllAreas);
         // if (m_path.status == NavMeshPathStatus.PathComplete)
         // {
@@ -357,7 +376,7 @@ public class PlayerController : MonoBehaviour
         //     }
         // }
 
-       
+
     }
     
     /// <summary>
@@ -427,7 +446,7 @@ public class PlayerController : MonoBehaviour
 
         else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false)
         {
-            if(m_gameManager.canPick == true)
+            if (m_gameManager.canPick == true)
             {
                 m_UIManager.TakableObject();
                 TakeDoudou();
@@ -452,31 +471,7 @@ public class PlayerController : MonoBehaviour
                 return;
             }
         }
-
-        else if ((m_portillonMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
-        {
-            if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_portillonMask))
-            {
-                m_UIManager.TakableObject();
-                m_gameManager.canPick = true;
-                if (m_gameManager.isPc == true)
-                {
-                    if (Input.GetKey(KeyCode.E))
-                    {
-                        m_portillon.UnlockPortillon();
-                    }
-                }
-                else if (m_gameManager.isGamepad == true)
-                {
-
-                }
-            }
-            else
-            {
-                m_UIManager.DisableUi();
-                return;
-            }
-        }
+       
         else if ((m_radioMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             if (m_createNarrativeEvent.index == 1)
@@ -633,7 +628,7 @@ public class PlayerController : MonoBehaviour
     {
         if (m_gameManager.isPc == true)
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (m_doudouIsPossessed == true)
                 {
@@ -649,7 +644,7 @@ public class PlayerController : MonoBehaviour
                     //Debug.Log("doit être chase");
                 }
             }
-            if (Input.GetKeyUp(KeyCode.R))
+            if (Input.GetKeyUp(KeyCode.Space))
             {
                 Debug.Log("touche r non appuyé");
                 m_doudouIsUsed = false;
