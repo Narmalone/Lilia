@@ -85,7 +85,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] [Range(0,10)] private float m_stressTest;
     
     private Vector3 previous;
-    private float velocity;
+    [NonSerialized]
+    public float velocity;
     
 
     
@@ -164,8 +165,12 @@ public class PlayerController : MonoBehaviour
 
     public Ray m_ray;
 
+
+
     private void Awake()
     {
+        
+
         m_gameManager = FindObjectOfType<GameManager>();
         m_menuManager = FindObjectOfType<MenuManager>();
         m_controls = new PlayerControls();
@@ -199,6 +204,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        
         Debug.DrawRay(m_ray.origin,m_ray.direction, Color.black);
         if (Physics.Raycast(m_ray, out m_hit, 1, ~(1 << gameObject.layer)))
         {
@@ -213,7 +219,7 @@ public class PlayerController : MonoBehaviour
         
         //Debug.Log(m_hit.collider.name);
         
-        velocity = ((transform.position - previous).magnitude) / Time.deltaTime;
+        velocity = Vector3.Distance(transform.position,previous) / Time.deltaTime;
         previous = transform.position;
         if (velocity < 0.2)
         {

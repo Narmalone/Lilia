@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,9 +9,11 @@ public class HeadBob : MonoBehaviour
     private float m_hauteur;
 
     private float m_goal;
+
+    private PlayerController m_playerController;
     
-    [SerializeField]
-    private float m_frequence;
+    [NonSerialized]
+    public float m_frequence;
 
     private float m_hauteurBase;
 
@@ -21,48 +24,70 @@ public class HeadBob : MonoBehaviour
     private AnimationCurve m_curve2;
     
     private float time;
-
+    private bool m_changedValue;
+    private float m_currentFrequence;
 
     // Start is called before the first frame update
     void Start()
     {
+        m_playerController = FindObjectOfType<PlayerController>();
         time = 0f;
         m_hauteurBase = transform.localPosition.y;
-        StartCoroutine(HeadBobbing(m_frequence));
+        StartCoroutine(HeadBobbing());
         Debug.Log($"test de valeur de mort {Mathf.Lerp(10,5,0.5f)}");
+        m_changedValue = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        time+=Time.deltaTime;
-        var rajoutHauteur = 0f;
-        if (m_goal>0)
+        m_currentFrequence = Mathf.Clamp(1 / m_playerController.velocity,0.01f,1);
+        if (m_currentFrequence >= 1f)
         {
-            rajoutHauteur = Mathf.Lerp(transform.localPosition.y,m_hauteurBase+m_goal,m_curve.Evaluate(Mathf.Clamp(time/(m_frequence/2),0,1)));
+            StopCoroutine(HeadBobbing());
         }
-        else if(m_goal == 0)
+        else
         {
-            rajoutHauteur = Mathf.Lerp(m_hauteurBase,transform.localPosition.y,m_curve2.Evaluate(Mathf.Clamp(time/(m_frequence/2),0,1)));
-            //Debug.Log($"test de valeur de mort {m_hauteurBase}");
+            if (!m_changedValue)
+            {
+                m_frequence = m_currentFrequence;
+                StartCoroutine(HeadBobbing());
+                m_changedValue = true;
+                time = 0.001f;
+            }
+            UpdatePosition();
         }
-        
-        
-        
-        transform.localPosition= new Vector3(transform.localPosition.x,rajoutHauteur,transform.localPosition.z);
-
     }
 
-    public IEnumerator HeadBobbing(float p_frequence)
+    private void UpdatePosition()
     {
-        while (true)
+        Debug.Log(m_frequence);
+        time+=Time.deltaTime;
+        var rajoutHauteur = 0f;
+        
+        if(m_goal == 0)
         {
-            time = 0.001f;
-            m_goal = m_hauteur;
-            yield return new WaitForSeconds(p_frequence/2);
-            time = 0.001f;
-            m_goal = 0;
-            yield return new WaitForSeconds(p_frequence/2);
+            rajoutHauteur = Mathf.Lerp(m_hauteurBase,m_hauteurBase+m_hauteur,m_curve.Evaluate(Mathf.Clamp(time/(m_frequence/2),0,1)));
+            //Debug.Log($"test de valeur de mort {m_hauteurBase}");
         }
+        else if (m_goal>0)
+        {
+            rajoutHauteur = Mathf.Lerp(m_hauteurBase,m_hauteurBase+m_hauteur,m_curve2.Evaluate(Mathf.Clamp(time/(m_frequence/2),0,1)));
+        }
+                
+        transform.localPosition= new Vector3(transform.localPosition.x,rajoutHauteur,transform.localPosition.z);
+    }
+    
+    public IEnumerator HeadBobbing()
+    {
+        Debug.Log("Je suis dans la coroutine");
+        time = 0.001f;
+        m_goal = m_hauteur;
+        yield return new WaitForSeconds(m_frequence/2);
+        
+        time = 0.001f;
+        m_goal = 0;
+        yield return new WaitForSeconds(m_frequence/2);
+        m_changedValue = false;
     }
 }
