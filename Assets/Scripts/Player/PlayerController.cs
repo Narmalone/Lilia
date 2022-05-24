@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
     
 
     //----------------------------------------------- Player controls system ------------------------------------------//
-
+    [Space(10)]
     [Header("System de controle joueur")]
     [SerializeField, Tooltip("R�f�rences du Chara controller")] private CharacterController m_myChara;
 
@@ -106,6 +106,7 @@ public class PlayerController : MonoBehaviour
 
 
     //-----------------------------------------------Post-Processing------------------------------------------
+    [Space(10)]
     [Header("Post-Processing")]
     [SerializeField, Tooltip("Volume de post-process")] Volume m_linkedPostProcess;
 
@@ -143,6 +144,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("Script de secouement")] private Shake m_camShake;
 
     //-----------------------------------------------Systeme Physics------------------------------------------
+    [Space(10)]
     [Header("Systeme de physique")]
     [SerializeField, Tooltip("Transform d'un empty ou sera cr�e la sphere pour savoir si le joueur est sur le sol")] private Transform groundCheck;
 

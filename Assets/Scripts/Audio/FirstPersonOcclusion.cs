@@ -37,7 +37,6 @@ public class FirstPersonOcclusion : MonoBehaviour
 
     public void AddInstance(EventInstance p_instance)
     {
-        Debug.Log($"Je rentre dans la fonction d'add");
         Audios.Add(p_instance);
         EventDescription ya;
         p_instance.getDescription(out ya);
@@ -69,7 +68,6 @@ public class FirstPersonOcclusion : MonoBehaviour
             else if (pbs == PLAYBACK_STATE.STOPPED)
             {
                 RemoveInstance(i);
-                Debug.Log($"je remove un son");
             }
             lineCastHitCount = 0f;
         }
