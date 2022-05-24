@@ -9,6 +9,7 @@ public class HeadBob : MonoBehaviour
 
     private float m_goal;
     
+    [SerializeField]
     private float m_frequence;
 
     private float m_hauteurBase;
@@ -16,6 +17,9 @@ public class HeadBob : MonoBehaviour
     [SerializeField]
     private AnimationCurve m_curve;
 
+    [SerializeField]
+    private AnimationCurve m_curve2;
+    
     private float time;
 
 
@@ -24,7 +28,7 @@ public class HeadBob : MonoBehaviour
     {
         time = 0f;
         m_hauteurBase = transform.localPosition.y;
-        StartCoroutine(HeadBobbing(1));
+        StartCoroutine(HeadBobbing(m_frequence));
         Debug.Log($"test de valeur de mort {Mathf.Lerp(10,5,0.5f)}");
     }
 
@@ -35,12 +39,12 @@ public class HeadBob : MonoBehaviour
         var rajoutHauteur = 0f;
         if (m_goal>0)
         {
-            //rajoutHauteur = Mathf.Lerp(transform.localPosition.y,m_hauteurBase+m_goal,m_curve.Evaluate(time/m_frequence));
+            rajoutHauteur = Mathf.Lerp(transform.localPosition.y,m_hauteurBase+m_goal,m_curve.Evaluate(Mathf.Clamp(time/(m_frequence/2),0,1)));
         }
-        else
+        else if(m_goal == 0)
         {
-            //rajoutHauteur = Mathf.Lerp(transform.localPosition.y,m_hauteurBase+m_goal,m_curve.Evaluate(1f - time/m_frequence));
-            Debug.Log($"test de valeur de mort {m_curve.Evaluate(time/(m_frequence/2))}");
+            rajoutHauteur = Mathf.Lerp(m_hauteurBase,transform.localPosition.y,m_curve2.Evaluate(Mathf.Clamp(time/(m_frequence/2),0,1)));
+            //Debug.Log($"test de valeur de mort {m_hauteurBase}");
         }
         
         
@@ -53,10 +57,10 @@ public class HeadBob : MonoBehaviour
     {
         while (true)
         {
-            time = 0f;
+            time = 0.001f;
             m_goal = m_hauteur;
             yield return new WaitForSeconds(p_frequence/2);
-            time = 0f;
+            time = 0.001f;
             m_goal = 0;
             yield return new WaitForSeconds(p_frequence/2);
         }
