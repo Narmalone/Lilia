@@ -34,7 +34,7 @@ public class MouseLock : MonoBehaviour
             controls.Gameplay.Rotation.performed += ctx => rotateGamepad = ctx.ReadValue<Vector2>();
             controls.Gameplay.Rotation.canceled += ctx => rotateGamepad = Vector2.zero;
         }
-        //m_audioScript.PlayMusic("AmbiantMusic");
+        m_audioScript.PlayMusic("AmbiantMusic");
     }
     void Start()
     {

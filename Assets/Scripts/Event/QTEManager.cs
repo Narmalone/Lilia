@@ -73,9 +73,12 @@ public class QTEManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        m_ray = m_playerController.m_cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        m_playerController.m_ray = m_ray;
+        Debug.DrawRay(m_ray.origin,m_ray.direction, Color.red);
         if (Physics.Raycast(m_ray, out m_hit, 1, ~m_layerPlayer))
         {
+            Debug.Log($"Je touche avec le raycast: {m_hit.collider.name}");
             OnRayCastHit(m_hit.collider);
             m_pastHit = m_hit;
         }

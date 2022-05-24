@@ -33,14 +33,14 @@ public class Chasse : BaseState
 
         if (m_sm.m_player.m_doudouIsPossessed == true)
         {
-            if (GameObject.ReferenceEquals(m_target, m_sm.m_player.gameObject) == false)
+            if (ReferenceEquals(m_target, m_sm.m_player.gameObject) == false)
             {
                 m_target = m_sm.m_player.gameObject;
             }
         }
         else
         {
-            if (GameObject.ReferenceEquals(m_target, m_sm.m_doudou.gameObject) == false)
+            if (ReferenceEquals(m_target, m_sm.m_doudou.gameObject) == false)
             {
                 m_target = m_sm.m_doudou.gameObject;
             }
@@ -50,7 +50,12 @@ public class Chasse : BaseState
         if (m_sm.m_pourcentSpeed >= 1)
         {
             m_sm.m_pourcentSpeed = 0;
-            FMODUnity.RuntimeManager.PlayOneShotAttached(m_sm.m_fmodEventDrag.Guid,  m_sm.gameObject);
+            m_sm.m_fmodInstanceDrag = FMODUnity.RuntimeManager.CreateInstance(m_sm.m_fmodEventDrag.Guid);
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_sm.m_fmodInstanceDrag, m_sm.gameObject.transform);
+            m_sm.m_fmodInstanceDrag.start();
+            m_sm.m_occlusion.AddInstance(m_sm.m_fmodInstanceDrag);
+            m_sm.m_fmodInstanceDrag.release();
+            //FMODUnity.RuntimeManager.PlayOneShotAttached(m_sm.m_fmodEventDrag.Guid,  m_sm.gameObject);
         }
 
         m_navAgent.speed = Mathf.Lerp(0f,m_sm.m_targetSpeed*2f,m_sm.m_courbeLimace.Evaluate(m_sm.m_pourcentSpeed));
