@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using FMOD.Studio;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -51,7 +52,11 @@ public class PlayerController : MonoBehaviour
 
     public PlayerControls m_controls;
 
+    [SerializeField] public Camera m_cam;
+    
     [SerializeField] private PortillonScript m_portillon;
+
+    [NonSerialized] public bool m_stopStress = false;
 
     private NavMeshPath m_path;
     [Space(10)]
@@ -63,21 +68,31 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask m_radioMask;
 
     //-----------------------------------------------Sound System------------------------------------------//
-  
-    public FMODUnity.EventReference m_fmodEvent;
+    [Space(10)]
+    [Header("System de son")]
+    public FMODUnity.EventReference m_fmodEventPas;
 
-    private FMOD.Studio.EventInstance m_fmodInstance;
+    private EventInstance m_fmodInstancePas;
+    
+    public FMODUnity.EventReference m_fmodEventDoudou;
 
-    [SerializeField] [Range(0,10)] private float m_speedFeet;
+    private EventInstance m_fmodInstanceDoudou;
+    
+    public FMODUnity.EventReference m_fmodEventStress;
+
+    private EventInstance m_fmodInstanceStress;
+
+    [SerializeField] [Range(0,10)] private float m_stressTest;
     
     private Vector3 previous;
-    private float velocity;
+    [NonSerialized]
+    public float velocity;
     
 
     
 
     //----------------------------------------------- Player controls system ------------------------------------------//
-
+    [Space(10)]
     [Header("System de controle joueur")]
     [SerializeField, Tooltip("R�f�rences du Chara controller")] private CharacterController m_myChara;
 
@@ -92,6 +107,7 @@ public class PlayerController : MonoBehaviour
 
 
     //-----------------------------------------------Post-Processing------------------------------------------
+    [Space(10)]
     [Header("Post-Processing")]
     [SerializeField, Tooltip("Volume de post-process")] Volume m_linkedPostProcess;
 
@@ -129,6 +145,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("Script de secouement")] private Shake m_camShake;
 
     //-----------------------------------------------Systeme Physics------------------------------------------
+    [Space(10)]
     [Header("Systeme de physique")]
     [SerializeField, Tooltip("Transform d'un empty ou sera cr�e la sphere pour savoir si le joueur est sur le sol")] private Transform groundCheck;
 
@@ -143,10 +160,17 @@ public class PlayerController : MonoBehaviour
     private bool m_isGrounded;
 
     private RaycastHit m_hit;
-    private Ray m_ray;
+
+    private RaycastHit m_pastHit;
+
+    public Ray m_ray;
+
+
 
     private void Awake()
     {
+        
+
         m_gameManager = FindObjectOfType<GameManager>();
         m_menuManager = FindObjectOfType<MenuManager>();
         m_controls = new PlayerControls();
@@ -164,29 +188,49 @@ public class PlayerController : MonoBehaviour
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_dOFSettings));
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_vignetteSettings));
 
-        m_fmodInstance = FMODUnity.RuntimeManager.CreateInstance(m_fmodEvent);
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstance,  GetComponent<Transform>(), GetComponent<Rigidbody>());
-        Debug.Log($"Démarage du son de pas : {m_fmodInstance.start()}");
+        m_fmodInstancePas = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventPas);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstancePas,  GetComponent<Transform>(), GetComponent<Rigidbody>());
+        Debug.Log($"Démarage du son de pas : {m_fmodInstancePas.start()}");
+        
+        m_fmodInstanceStress = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventStress);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceStress,  GetComponent<Transform>(), GetComponent<Rigidbody>());
+        m_fmodInstanceStress.start();
         //m_fmodInstance.start();
-
+        
+        m_fmodInstanceDoudou = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventDoudou);
+        
         previous = Vector3.zero;
     }
 
     private void Update()
     {
-        velocity = ((transform.position - previous).magnitude) / Time.deltaTime;
-        previous = transform.position;
-        if (velocity < 0.2)
+        
+        Debug.DrawRay(m_ray.origin,m_ray.direction, Color.black);
+        if (Physics.Raycast(m_ray, out m_hit, 1, ~(1 << gameObject.layer)))
         {
-            m_fmodInstance.setParameterByName("Speed", 0);
+            Debug.Log($"Je touche avec le raycast: {m_hit.collider.name}");
+            OnRayCastHit(m_hit.collider);
+            m_pastHit = m_hit;
         }
         else
         {
-            m_fmodInstance.setParameterByName("Speed", velocity*2);
+            if (m_pastHit.collider != null) OnRaycastExit(m_pastHit.collider);
         }
         
+        //Debug.Log(m_hit.collider.name);
         
-
+        velocity = Vector3.Distance(transform.position,previous) / Time.deltaTime;
+        previous = transform.position;
+        if (velocity < 0.2)
+        {
+            m_fmodInstancePas.setParameterByName("Speed", 0);
+        }
+        else
+        {
+            m_fmodInstancePas.setParameterByName("Speed", velocity*3);
+        }
+        m_fmodInstanceStress.setParameterByName("Stress",10-m_currentStress*10/m_maxStress);
+        
         m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Cr�ation d'une sphere qui chech si le joueur touche le sol
 
         if (m_isGrounded && m_velocity.y < 0)        //Reset de la gravit� quand le joueur touche le sol
@@ -196,6 +240,13 @@ public class PlayerController : MonoBehaviour
 
         if (m_doudouIsUsed == false)
         {
+            PLAYBACK_STATE state;
+            m_fmodInstanceDoudou.getPlaybackState(out state);
+            if (state != PLAYBACK_STATE.STOPPED)
+            {
+                m_fmodInstanceDoudou.stop(STOP_MODE.ALLOWFADEOUT);
+            }
+            
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
 
@@ -205,12 +256,20 @@ public class PlayerController : MonoBehaviour
         }
         if (m_doudouIsUsed == true)
         {
+            PLAYBACK_STATE state;
+            m_fmodInstanceDoudou.getPlaybackState(out state);
+            if (state == PLAYBACK_STATE.STOPPED)
+            {
+                FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDoudou,  GetComponent<Transform>(), GetComponent<Rigidbody>());
+                m_fmodInstanceDoudou.start();
+            }
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
 
             Vector3 move = transform.right * x + transform.forward * z;
 
             m_myChara.Move(move * m_speed * m_slow * Time.deltaTime);
+            
         }
         // D�placements du joueur
 
@@ -238,7 +297,8 @@ public class PlayerController : MonoBehaviour
 
         //Check Fonctions
 
-        AutoStress();
+        if (!m_stopStress) AutoStress();
+
         ActiveFlashlight();
         ActiveDoudou();
 
@@ -283,23 +343,23 @@ public class PlayerController : MonoBehaviour
             }
         }
         
-        Chasse.GetPath(m_path, m_target.transform.position, m_AIStateMachine.transform.position, NavMesh.AllAreas);
-        if (m_path.status == NavMeshPathStatus.PathComplete)
-        {
-            if (Chasse.GetPathLength(m_AIStateMachine.m_path) < 10f && m_AIStateMachine.currentState == m_AIStateMachine.m_chasseState)
-            {
-                float dist = Vector3.Distance(m_AIStateMachine.transform.position, m_doudou.transform.position);
-                float power = dist / 10;
-                float powerAdapted = Mathf.Lerp(0.1f, 0f, power);
-                m_camShake.camShakeActive = true;
-                
-                Debug.Log("dans la chasse");
-            }
-            else
-            {
-                m_camShake.camShakeActive = false;
-            }
-        }
+        // Chasse.GetPath(m_path, m_target.transform.position, m_AIStateMachine.transform.position, NavMesh.AllAreas);
+        // if (m_path.status == NavMeshPathStatus.PathComplete)
+        // {
+        //     if (Chasse.GetPathLength(m_AIStateMachine.m_path) < 10f && m_AIStateMachine.currentState == m_AIStateMachine.m_chasseState)
+        //     {
+        //         float dist = Vector3.Distance(m_AIStateMachine.transform.position, m_doudou.transform.position);
+        //         float power = dist / 10;
+        //         float powerAdapted = Mathf.Lerp(0.1f, 0f, power);
+        //         m_camShake.camShakeActive = true;
+        //         
+        //         Debug.Log("dans la chasse");
+        //     }
+        //     else
+        //     {
+        //         m_camShake.camShakeActive = false;
+        //     }
+        // }
 
        
     }
@@ -336,11 +396,10 @@ public class PlayerController : MonoBehaviour
     {
         if(m_gameManager.isPaused == true)
         {
-            m_maxStress = m_currentStress;
+            m_currentStress = m_maxStress;
         }
         else
         {
-            m_maxStress = 100f;
             m_currentStress = Mathf.Clamp(m_currentStress - amount, 0f, m_maxStress);
 
             float damagePercent = Mathf.Clamp01(amount / m_maxStress);
@@ -349,9 +408,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider p_collide)
+    private void OnRayCastHit(Collider p_collide)
     {
-        m_ray = Camera.main.ScreenPointToRay(new Vector3(0.5f, 0.5f, 0f));
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
         {
             if(m_gameManager.gotKey == false)
@@ -451,10 +509,10 @@ public class PlayerController : MonoBehaviour
             
         }
     }
+    
 
-
-    private void OnTriggerExit(Collider p_collide)
-    {
+    private void OnRaycastExit(Collider p_collide)
+    { 
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             m_UIManager.DisableUi();
@@ -478,9 +536,6 @@ public class PlayerController : MonoBehaviour
     //----------------------------------------------- Fonctions correspondantes au doudou et � la lampe ------------------------------------------//
 
     //Variables, r�f�rences et fonctions de la lampe par rapport au joueur
-
-    /// <summary>
-    /// Rassemble les fonctions pour le ramassage de la lampe
     /// </summary>
     public void TakeFlashlight()
     {

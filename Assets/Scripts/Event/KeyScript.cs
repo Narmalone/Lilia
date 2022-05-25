@@ -7,7 +7,7 @@ public class KeyScript : MonoBehaviour
     [SerializeField] private GameObject m_thisObject;
     [SerializeField] private Rigidbody m_thisRb;
     [SerializeField] private GameObject m_keyUi;
-    [SerializeField, Tooltip("Une fois que le joueur ramasse la clé")] private Transform m_containerKeyAfterEvent;
+    [SerializeField, Tooltip("Une fois que le joueur ramasse la clï¿½")] private Transform m_containerKeyAfterEvent;
     [SerializeField, Tooltip("Une fois que le joueur finis le QTE")] private Transform m_containerDrop;
     [SerializeField] private GameManager m_gameManager;
     [SerializeField] private PlayerController m_player;
@@ -16,7 +16,15 @@ public class KeyScript : MonoBehaviour
     [SerializeField] private QTEManager m_qte;
     [SerializeField] private LayerMask m_playerMask;
     [SerializeField] private BoxCollider m_thisBox;
+    
+    [SerializeField] private FMODUnity.EventReference m_fmodEventPickUp;
+    
+    [SerializeField] private FMODUnity.EventReference m_fmodEventDrop;
 
+    private Ray m_ray;
+
+    private RaycastHit m_hit,m_pastHit;
+    
     public bool m_setKeyPos = false;
     public bool m_dropKeyAfterEvent = false;
     private void Awake()
@@ -24,10 +32,22 @@ public class KeyScript : MonoBehaviour
         m_gameManager = FindObjectOfType<GameManager>();
         m_thisRb = GetComponent<Rigidbody>();
         m_keyUi.SetActive(false);
-        m_thisBox.enabled = true;
+        m_thisBox.enabled = false;
     }
     private void Update()
     {
+        m_ray = m_player.m_ray;
+        //m_ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        Debug.DrawRay(m_ray.origin,m_ray.direction, Color.blue);
+        if (Physics.Raycast(m_ray, out m_hit, 1, ~(1 << m_player.gameObject.layer)))
+        {
+            OnRayCastHit(m_hit.collider);
+            m_pastHit = m_hit;
+        }
+        else
+        {
+            if (m_pastHit.collider != null) OnRaycastExit(m_pastHit.collider);
+        }
        if(m_qte.m_qteIsOver == true)
         {
             if(m_dropKeyAfterEvent == false)
@@ -54,7 +74,8 @@ public class KeyScript : MonoBehaviour
                 m_thisObject.transform.position = m_containerKeyAfterEvent.transform.position;
                 m_thisBox.enabled = true;
                 m_gameManager.gotKey = false;
-                Debug.Log("le joueur a droppé la clé");
+                Debug.Log("le joueur a droppï¿½ la clï¿½");
+                FMODUnity.RuntimeManager.PlayOneShotAttached(m_fmodEventDrop.Guid, gameObject);
 
             }
         }
@@ -77,26 +98,34 @@ public class KeyScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnRayCastHit(Collider other)
     {
-        if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
+        if (ReferenceEquals( gameObject, other.gameObject))
         {
             if (m_player.m_flashlightIsPossessed == false)
             {
                 m_uiManager.TakableObject();
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    FMODUnity.RuntimeManager.PlayOneShotAttached(m_fmodEventPickUp.Guid, gameObject);
                     PlayerGotKey();
                     SetKeyPos();
                 }              
             }
         }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
+        else
         {
-            m_uiManager.DisableUi();
+            OnRaycastExit(m_pastHit.collider);
+        }
+    }
+    private void OnRaycastExit(Collider other)
+    {
+        if (other != null)
+        {
+            if (ReferenceEquals( gameObject, other.gameObject))
+            {
+                m_uiManager.DisableUi();
+            }
         }
     }
     public void PlayerGotKey()

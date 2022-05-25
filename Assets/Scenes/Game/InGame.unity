@@ -328,7 +328,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1488
+  m_Name: pb_Mesh-1546
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3658,7 +3658,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1436
+  m_Name: pb_Mesh-1494
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3858,7 +3858,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1292
+  m_Name: pb_Mesh-1350
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4234,7 +4234,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1384
+  m_Name: pb_Mesh-1442
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4422,7 +4422,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1340
+  m_Name: pb_Mesh-1398
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4751,7 +4751,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1280
+  m_Name: pb_Mesh-1338
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5141,7 +5141,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1564
+  m_Name: pb_Mesh-1622
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5364,7 +5364,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1304
+  m_Name: pb_Mesh-1362
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5595,6 +5595,35 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  m_fmodEventRespiration:
+    Guid:
+      Data1: -382007823
+      Data2: 1127377340
+      Data3: -524514921
+      Data4: -1855257768
+    Path: event:/SoundsEvent/Baby/Respiration
+  m_fmodEventDrag:
+    Guid:
+      Data1: 1610553309
+      Data2: 1342119385
+      Data3: 1328284064
+      Data4: -666646400
+    Path: event:/SoundsEvent/Baby/BabyDragging
+  m_fmodEventContinuous:
+    Guid:
+      Data1: -1490063551
+      Data2: 1190372012
+      Data3: 335015330
+      Data4: 608535171
+    Path: event:/SoundsEvent/Baby/ContinuousBabyNoise
+  m_fmodEventSonBB:
+    Guid:
+      Data1: 1694986241
+      Data2: 1157396051
+      Data3: -75015237
+      Data4: 26522174
+    Path: event:/SoundsEvent/Baby/Crying
+  m_occlusion: {fileID: 0}
 --- !u!195 &576080452 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 2873547174128195186, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
@@ -5630,7 +5659,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1256
+  m_Name: pb_Mesh-1314
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5805,15 +5834,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 912383188827490799, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
       propertyPath: m_Size.x
-      value: 1.7
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 912383188827490799, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
       propertyPath: m_Size.y
-      value: 1.7
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 912383188827490799, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
       propertyPath: m_Size.z
-      value: 1.7
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1536278942113088290, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
       propertyPath: m_RootOrder
@@ -5947,6 +5976,46 @@ PrefabInstance:
       propertyPath: m_stairsMask.m_Bits
       value: 32768
       objectReference: {fileID: 0}
+    - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
+      propertyPath: m_fmodEventDrop.Path
+      value: event:/SoundsEvent/RamassageEtLachage/Doudou/DropDoudou
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
+      propertyPath: m_fmodEventPickUp.Path
+      value: event:/SoundsEvent/RamassageEtLachage/Doudou/PickUpDoudou
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data1
+      value: 1006949352
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data2
+      value: 1104796797
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data3
+      value: -672511818
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data4
+      value: 1081390729
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data1
+      value: -2060455845
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data2
+      value: 1123760112
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data3
+      value: -1585368397
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216726446940087523, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data4
+      value: 1973425487
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bda69f2f1e871ef489357fd46564fa70, type: 3}
 --- !u!1 &604610447 stripped
@@ -5999,7 +6068,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1328
+  m_Name: pb_Mesh-1386
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6163,7 +6232,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1316
+  m_Name: pb_Mesh-1374
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6765,7 +6834,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1408
+  m_Name: pb_Mesh-1466
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7056,7 +7125,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 8172246454132700848}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 865760540}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 221e092e0643aec4d9217a657c73cc88, type: 3}
   m_Name: 
@@ -7078,6 +7147,11 @@ MonoBehaviour:
   VcaName: Music
   m_uiEvent: {fileID: 11400000, guid: fc03fab7047d4ca42bb232332ed8577d, type: 2}
   volume: 0
+--- !u!20 &865760548 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8172246455047256136, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+  m_PrefabInstance: {fileID: 8172246454132700848}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &865764627
 GameObject:
   m_ObjectHideFlags: 0
@@ -7317,7 +7391,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1396
+  m_Name: pb_Mesh-1454
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7598,7 +7672,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1540
+  m_Name: pb_Mesh-1598
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8100,6 +8174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1096440342}
   - component: {fileID: 1096440343}
+  - component: {fileID: 1096440344}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -8142,6 +8217,23 @@ MonoBehaviour:
   - {fileID: 865760547}
   voices:
   - {fileID: 650141009}
+--- !u!114 &1096440344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096440341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ee33ec78e5113439d8873db1524200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundOcclusionWidening: 0.2
+  PlayerOcclusionWidening: 0.2
+  OcclusionLayer:
+    serializedVersion: 2
+    m_Bits: 180087
 --- !u!1 &1098995502
 GameObject:
   m_ObjectHideFlags: 0
@@ -8216,7 +8308,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1372
+  m_Name: pb_Mesh-1430
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8703,7 +8795,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1528
+  m_Name: pb_Mesh-1586
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8867,7 +8959,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1516
+  m_Name: pb_Mesh-1574
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9170,7 +9262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4f76be07cfdcb4191b72601505f443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_sphereCol: {fileID: 1239205750}
+  m_boxCol: {fileID: 1239205750}
   m_rangeCol: 1
   m_tempsEntreQTE: 0.5
   m_txtToModify: {fileID: 4075055851583946305}
@@ -9188,8 +9280,8 @@ MonoBehaviour:
   m_keycodesQTE: 620000006800000074000000
   m_index: 0
   m_qteIsOver: 0
---- !u!135 &1239205750
-SphereCollider:
+--- !u!65 &1239205750
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -9199,8 +9291,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.52, y: 0.29, z: 0.36}
+  m_Center: {x: 0.09, y: 0.09, z: -0.66}
 --- !u!114 &1239205751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9493,7 +9585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4f76be07cfdcb4191b72601505f443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_sphereCol: {fileID: 1271263976}
+  m_boxCol: {fileID: 0}
   m_rangeCol: 2
   m_tempsEntreQTE: 0
   m_txtToModify: {fileID: 0}
@@ -9631,7 +9723,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1500
+  m_Name: pb_Mesh-1558
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9814,7 +9906,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1268
+  m_Name: pb_Mesh-1326
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10726,7 +10818,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1232
+  m_Name: pb_Mesh-1290
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10890,7 +10982,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1424
+  m_Name: pb_Mesh-1482
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11118,7 +11210,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.3, y: 0.3, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1550332497
 MeshRenderer:
@@ -11265,7 +11357,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1580
+  m_Name: pb_Mesh-1638
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11616,7 +11708,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1596
+  m_Name: pb_Mesh-1654
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11885,7 +11977,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1244
+  m_Name: pb_Mesh-1302
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12068,7 +12160,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1552
+  m_Name: pb_Mesh-1610
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12232,7 +12324,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1452
+  m_Name: pb_Mesh-1510
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12607,7 +12699,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1476
+  m_Name: pb_Mesh-1534
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13125,7 +13217,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1352
+  m_Name: pb_Mesh-1410
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13325,7 +13417,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1464
+  m_Name: pb_Mesh-1522
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14085,9 +14177,49 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1130536192}
     - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_fmodEventDrop.Path
+      value: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/DropKey"
+      objectReference: {fileID: 0}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_fmodEventPickUp.Path
+      value: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/PickUpClef"
+      objectReference: {fileID: 0}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
       propertyPath: m_containerKeyAfterEvent
       value: 
       objectReference: {fileID: 2014403702}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data1
+      value: -1328929280
+      objectReference: {fileID: 0}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data2
+      value: 1308074205
+      objectReference: {fileID: 0}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data3
+      value: 1166356363
+      objectReference: {fileID: 0}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data4
+      value: 654575473
+      objectReference: {fileID: 0}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data1
+      value: -509378906
+      objectReference: {fileID: 0}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data2
+      value: 1178982841
+      objectReference: {fileID: 0}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data3
+      value: 1068845747
+      objectReference: {fileID: 0}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data4
+      value: -228688395
+      objectReference: {fileID: 0}
     - target: {fileID: 1239945900658834765, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -14135,6 +14267,18 @@ PrefabInstance:
     - target: {fileID: 1909241016444577783, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
       propertyPath: m_Name
       value: cle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557785475308693941, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_Size.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557785475308693941, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_Size.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557785475308693941, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_Size.z
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2781808052514829032, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
       propertyPath: m_Mesh
@@ -15062,7 +15206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3562883709724059351, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3562883709724059351, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_audioScript
@@ -15153,6 +15297,10 @@ PrefabInstance:
       value: FirstPersonController
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_cam
+      value: 
+      objectReference: {fileID: 865760548}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_flm
       value: 
       objectReference: {fileID: 4550594669908905075}
@@ -15189,12 +15337,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2040928764}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_speedFeet
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_stressBar
       value: 
       objectReference: {fileID: 2066910958}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_StressPower
-      value: 1
+      value: 0.197
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_audioScript
@@ -15202,7 +15354,7 @@ PrefabInstance:
       objectReference: {fileID: 1096440343}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_makeMeStress
-      value: 10
+      value: 2.9
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_iaMask.m_Bits
@@ -15237,6 +15389,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventPas.Path
+      value: event:/SoundsEvent/BruitPas/Pas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_linkedPostProcess
       value: 
       objectReference: {fileID: 1790721835}
@@ -15261,12 +15417,68 @@ PrefabInstance:
       value: 1061648962
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventDoudou.Path
+      value: event:/SoundsEvent/Doudou/UtilisationDoudou
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventStress.Path
+      value: event:/SoundsEvent/Stress/StressHorreur
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_TwoHandsItemMask.m_Bits
       value: 2048
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventPas.Guid.Data1
+      value: -1398225717
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventPas.Guid.Data2
+      value: 1297638522
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventPas.Guid.Data3
+      value: -771669373
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventPas.Guid.Data4
+      value: 1061648962
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_interactableMask.m_Bits
       value: 4096
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventDoudou.Guid.Data1
+      value: -995624965
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventDoudou.Guid.Data2
+      value: 1148206418
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventDoudou.Guid.Data3
+      value: -2112027520
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventDoudou.Guid.Data4
+      value: -2107392880
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventStress.Guid.Data1
+      value: -1023106931
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventStress.Guid.Data2
+      value: 1218139651
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventStress.Guid.Data3
+      value: -314798696
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_fmodEventStress.Guid.Data4
+      value: -237360077
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_intensityDueToHealth.m_Curve.Array.size
@@ -15579,17 +15791,57 @@ PrefabInstance:
       propertyPath: m_playerMask.m_Bits
       value: 128
       objectReference: {fileID: 0}
+    - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
+      propertyPath: m_fmodEventDrop.Path
+      value: event:/SoundsEvent/RamassageEtLachage/Lampe/DropLampe
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
+      propertyPath: m_fmodEventPickUp.Path
+      value: event:/SoundsEvent/RamassageEtLachage/Lampe/PickUpLampe
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data1
+      value: -1742877841
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data2
+      value: 1203100284
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data3
+      value: 1432700069
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
+      propertyPath: m_fmodEventDrop.Guid.Data4
+      value: -1009109787
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data1
+      value: 1203360393
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data2
+      value: 1244540880
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data3
+      value: -886582120
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957012713997907890, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
+      propertyPath: m_fmodEventPickUp.Guid.Data4
+      value: 349235023
+      objectReference: {fileID: 0}
     - target: {fileID: 5211057799115821150, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
       propertyPath: m_Size.x
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5211057799115821150, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
       propertyPath: m_Size.y
-      value: 2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5211057799115821150, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
       propertyPath: m_Size.z
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5211057799115821150, guid: 63ead9ec1228f1d46a1d19a8b3cfcac4, type: 3}
       propertyPath: m_Enabled

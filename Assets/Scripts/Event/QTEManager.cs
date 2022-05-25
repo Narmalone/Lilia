@@ -8,10 +8,10 @@ using UnityEngine.UI;
 using Random=UnityEngine.Random;
 
 
-[RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(BoxCollider))]
 public class QTEManager : MonoBehaviour
 {
-    [SerializeField] private SphereCollider m_sphereCol;
+    [SerializeField] private BoxCollider m_boxCol;
 
     [SerializeField][Range(1,10)] private float m_rangeCol = 0f;
     
@@ -43,6 +43,12 @@ public class QTEManager : MonoBehaviour
 
     public bool m_qteIsOver = false;
 
+    private Ray m_ray;
+
+    private RaycastHit m_hit,m_pastHit;
+
+    private int m_nombre_de_départ_qte;
+        
     private void Awake()
     {
         m_txtPushTheBox.gameObject.SetActive(false);
@@ -59,14 +65,28 @@ public class QTEManager : MonoBehaviour
         
     }
 
-    private void OnValidate()
-    {
-        m_sphereCol.radius = m_rangeCol;
-    }
+    // private void OnValidate()
+    // {
+    //     //m_boxCol.size = new Vector3(m_rangeCol, m_rangeCol, m_rangeCol);
+    // }
 
     // Update is called once per frame
     void Update()
     {
+        m_ray = m_playerController.m_cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        m_playerController.m_ray = m_ray;
+        Debug.DrawRay(m_ray.origin,m_ray.direction, Color.red);
+        if (Physics.Raycast(m_ray, out m_hit, 1, ~m_layerPlayer))
+        {
+            Debug.Log($"Je touche avec le raycast: {m_hit.collider.name}");
+            OnRayCastHit(m_hit.collider);
+            m_pastHit = m_hit;
+        }
+        else
+        {
+            if (m_pastHit.collider != null) OnRaycastExit(m_pastHit.collider);
+        }
+        
         if (m_qteStarted == true)
         {
             if (Vector3.Distance(m_playerGO.transform.position, m_containerPerso.transform.position) > 0.3f)
@@ -112,28 +132,25 @@ public class QTEManager : MonoBehaviour
         yield return new WaitForSeconds(m_tempsEntreQTE);
         m_startedCoroutine = false;
     }
-    private void OnTriggerEnter(Collider other)
+    
+    private void OnRayCastHit(Collider other)
     {
-        if ((m_layerPlayer.value & (1 << other.gameObject.layer)) > 0)
+        Debug.Log("Je suis dans le raycast pour le qte");
+        if (ReferenceEquals( gameObject, other.gameObject) && other.isTrigger)
         {
-            if (m_qteIsOver == false)
+            Debug.Log("Je vise le meuble");
+            if (m_qteIsOver == false && m_txtPushTheBox.gameObject.activeInHierarchy == false)
             {
                 m_txtPushTheBox.gameObject.SetActive(true);
             }
-        }  
-    }
-    private void OnTriggerStay(Collider p_other)
-    {
-        if ((m_layerPlayer.value & (1 << p_other.gameObject.layer))>0)
-        {
-            m_playerGO = p_other.gameObject;
-            
+
             if (Input.GetKey(KeyCode.E) && m_qteStarted == false)
             {
                 if(m_qteIsOver == false)
                 {
                     if(m_playerController.m_doudouIsPossessed == false && m_playerController.m_flashlightIsPossessed == false)
                     {
+                        Debug.Log(m_nombre_de_départ_qte++);
                         Debug.Log("Qte started");
                         m_txtCancelAction.gameObject.SetActive(false);
                         m_txtToModify.gameObject.SetActive(true);
@@ -145,11 +162,17 @@ public class QTEManager : MonoBehaviour
                 
             }
         }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if ((m_layerPlayer.value & (1 << other.gameObject.layer)) > 0)
+        else
         {
+            OnRaycastExit(m_pastHit.collider);
+        }
+    }
+    
+    private void OnRaycastExit(Collider other)
+    {
+        if (ReferenceEquals( gameObject, m_pastHit.collider?.gameObject) && other.isTrigger)
+        {
+            Debug.Log("Je ne vise plus le meuble");
             m_txtPushTheBox.gameObject.SetActive(false);
         }
 

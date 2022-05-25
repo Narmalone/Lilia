@@ -40,11 +40,13 @@ public class AISM : StateMachine
     public AnimationCurve m_courbeLimace;
     
     [SerializeField]
-    private FMODUnity.EventReference m_fmodEventConstant;
+    private FMODUnity.EventReference m_fmodEventRespiration;
     
-    private EventInstance m_fmodInstanceConstant;
+    private EventInstance m_fmodInstanceRespiration;
     
     public FMODUnity.EventReference m_fmodEventDrag;
+
+    public EventInstance m_fmodInstanceDrag;
 
     [SerializeField]
     private FMODUnity.EventReference m_fmodEventContinuous;
@@ -54,8 +56,13 @@ public class AISM : StateMachine
     [SerializeField]
     private FMODUnity.EventReference m_fmodEventSonBB;
 
+    public FirstPersonOcclusion m_occlusion;
+
+    private Vector3 m_previousPos;
+    
     private void Awake()
     {
+        m_occlusion = FindObjectOfType<FirstPersonOcclusion>();
         Debug.Log("Awake");
         m_targetSpeed = m_navAgent.speed;
         m_path = new NavMeshPath();
@@ -72,15 +79,27 @@ public class AISM : StateMachine
         
         m_fmodInstanceContinuous = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventContinuous);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceContinuous,  GetComponent<Transform>());
-        m_fmodInstanceContinuous.start();
+        //m_fmodInstanceContinuous.start();
         
-        m_fmodInstanceConstant = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventConstant);
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceConstant,  GetComponent<Transform>());
-        m_fmodInstanceConstant.start();
-        
+        m_fmodInstanceRespiration = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventRespiration);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceRespiration,  GetComponent<Transform>());
+        m_fmodInstanceRespiration.start();
+        m_occlusion.AddInstance(m_fmodInstanceRespiration);
+
         StartCoroutine(SonBB());
         
     }
+
+    private void Update()
+    {
+        base.Update();
+        if(transform.position == m_previousPos)
+        {
+            m_fmodInstanceDrag.stop(STOP_MODE.ALLOWFADEOUT);
+        }
+        m_previousPos = transform.position;
+    }
+
     void OnEnable()
     {
         m_triggeredEvent.onTriggered += HandleTriggerEvent;
@@ -100,11 +119,29 @@ public class AISM : StateMachine
     {
         while(true)
         {
+            Debug.Log("Je rentre dans la boucle coroutine cri bb");
+            
             int time = 10 + Random.Range(0, 10);
+            Debug.Log(time);
             yield return new WaitForSeconds(time);
-            FMODUnity.RuntimeManager.PlayOneShotAttached(m_fmodEventSonBB.Guid, gameObject);
+            m_fmodInstanceRespiration.stop(STOP_MODE.ALLOWFADEOUT);
+            StartCoroutine(ReEnableRespiration());
+            var instance = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventSonBB.Guid);
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, gameObject.transform);
+            instance.start();
+            m_occlusion.AddInstance(instance);
+            instance.release();
+            
             Debug.Log($"Je fais le bb {time}"); 
         }
+    }
+
+    private IEnumerator ReEnableRespiration()
+    {
+        yield return new WaitForSeconds(7f);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceRespiration,  GetComponent<Transform>());
+        m_fmodInstanceRespiration.start();
+        m_occlusion.AddInstance(m_fmodInstanceRespiration);
     }
     
     protected override BaseState GetInitialState()

@@ -21,7 +21,12 @@ public class FlashlightManager : MonoBehaviour
     [SerializeField, Tooltip("R�f�rence de la torche")]private GameObject flashlight;
     [SerializeField] private Transform FlashlightContainer;    
     [SerializeField] private Rigidbody m_rbodyFlashlight;
+    
+    [SerializeField] private FMODUnity.EventReference m_fmodEventPickUp;
+    
+    [SerializeField] private FMODUnity.EventReference m_fmodEventDrop;
 
+    [NonSerialized]
     public bool GetDropped = false;
 
     private void Awake()
@@ -49,7 +54,7 @@ public class FlashlightManager : MonoBehaviour
     {
         m_rbodyFlashlight.useGravity = false;
         m_rbodyFlashlight.isKinematic = true;
-
+        FMODUnity.RuntimeManager.PlayOneShotAttached(m_fmodEventPickUp.Guid, m_playerController.gameObject);
         /*
         flashlight.transform.SetParent(FlashlightContainer);
         transform.localPosition = Vector3.zero;
@@ -60,6 +65,8 @@ public class FlashlightManager : MonoBehaviour
         flashlight.GetComponent<BoxCollider>().enabled = false;
         m_uiManager.DisableUi();
         m_lightReference.gameObject.SetActive(true);
+        Debug.Log("le code passe par le ramassage de la lampe");
+       
 
     }
     public void DropItem()
@@ -73,6 +80,6 @@ public class FlashlightManager : MonoBehaviour
         flashlight.transform.parent = null;
         Debug.Log("Drop l'item");
         m_lightReference.gameObject.SetActive(false);
-
+        FMODUnity.RuntimeManager.PlayOneShotAttached(m_fmodEventDrop.Guid, gameObject);
     }
 }
