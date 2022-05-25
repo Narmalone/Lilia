@@ -34,6 +34,7 @@ public class FlashlightManager : MonoBehaviour
         flashlight.GetComponent<BoxCollider>();
         m_rbodyFlashlight = flashlight.GetComponent<Rigidbody>();
         m_lightReference.gameObject.SetActive(false);
+        DropItem();
     }
     private void Update()
     {
