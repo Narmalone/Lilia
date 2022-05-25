@@ -41,16 +41,16 @@ public class HeadBob : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_currentFrequence = Mathf.Clamp(1 / m_playerController.velocity,0.01f,1);
-        if (m_currentFrequence >= 1f)
+        if (m_playerController.velocity < 0.1)
         {
             StopCoroutine(HeadBobbing());
         }
+        //m_currentFrequence = Mathf.Clamp(1 / m_playerController.velocity,0.01f,1);
         else
         {
             if (!m_changedValue)
             {
-                m_frequence = m_currentFrequence;
+                m_frequence = 1 / m_playerController.velocity;
                 StartCoroutine(HeadBobbing());
                 m_changedValue = true;
                 time = 0.001f;
