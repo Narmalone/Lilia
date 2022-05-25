@@ -9,6 +9,8 @@ public class UiManager : MonoBehaviour
     //----------------------------------------------- R�f�rences & variables ------------------------------------------//
 
     //Ui In game
+    public GameObject m_playingGameObject;
+    
     [SerializeField,Tooltip("image d'UI pour l'intercation")]private GameObject m_indicInteraction;
     [SerializeField,Tooltip("image d'UI pour l'indication de lampe")]private GameObject m_UILampe;
     [SerializeField,Tooltip("image d'UI pour l'indication de doudou")]private GameObject m_UIDoudou;

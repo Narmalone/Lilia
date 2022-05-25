@@ -67,6 +67,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask m_portillonMask;
     [SerializeField] private LayerMask m_radioMask;
 
+    private PlayerAnimation m_playerAnimationReveil;
+
+    private MouseLock m_mouseLock;
+
+    //private bool m_isStopped;
+
     //-----------------------------------------------Sound System------------------------------------------//
     [Space(10)]
     [Header("System de son")]
@@ -87,9 +93,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 previous;
     [NonSerialized]
     public float velocity;
-    
-
-    
 
     //----------------------------------------------- Player controls system ------------------------------------------//
     [Space(10)]
@@ -104,6 +107,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("Le joueur va stresser avec la touche espace en fonction de la valeur attribuée"), Range(0f, 10f)] private float m_makeMeStress;
 
     [SerializeField, Tooltip("Si la valeur est à 0.3 alors le joueur est slow de 70%"), Range(0f, 1f)] private float m_slow;
+
+    private float m_currentSpeed;
 
 
     //-----------------------------------------------Post-Processing------------------------------------------
@@ -169,8 +174,9 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        m_playerAnimationReveil = GetComponent<PlayerAnimation>();
+        m_mouseLock = FindObjectOfType<MouseLock>();
         
-
         m_gameManager = FindObjectOfType<GameManager>();
         m_menuManager = FindObjectOfType<MenuManager>();
         m_controls = new PlayerControls();
@@ -179,6 +185,8 @@ public class PlayerController : MonoBehaviour
 
         m_currentStress = m_maxStress;
         m_stressBar.SetMaxHealth(m_maxStress);
+
+        m_currentSpeed = m_speed;
 
         m_camShake.camShakeActive = false;
         if(m_AIStateMachine == null)
@@ -246,15 +254,10 @@ public class PlayerController : MonoBehaviour
             {
                 m_fmodInstanceDoudou.stop(STOP_MODE.ALLOWFADEOUT);
             }
-            
-            float x = Input.GetAxis("Horizontal");
-            float z = Input.GetAxis("Vertical");
 
-            Vector3 move = transform.right * x + transform.forward * z;
-
-            m_myChara.Move(move * m_speed * Time.deltaTime);
+            m_currentSpeed = 1f;
         }
-        if (m_doudouIsUsed == true)
+        if (m_doudouIsUsed)
         {
             PLAYBACK_STATE state;
             m_fmodInstanceDoudou.getPlaybackState(out state);
@@ -263,18 +266,30 @@ public class PlayerController : MonoBehaviour
                 FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDoudou,  GetComponent<Transform>(), GetComponent<Rigidbody>());
                 m_fmodInstanceDoudou.start();
             }
-            float x = Input.GetAxis("Horizontal");
-            float z = Input.GetAxis("Vertical");
-
-            Vector3 move = transform.right * x + transform.forward * z;
-
-            m_myChara.Move(move * m_speed * m_slow * Time.deltaTime);
+            m_currentSpeed = m_slow;
             
         }
+        
+        float xPlayer = Input.GetAxis("Horizontal");
+        float zPlayer = Input.GetAxis("Vertical");
+
+        Vector3 movePlayer = transform.right * xPlayer + transform.forward * zPlayer;
+        
         // D�placements du joueur
-
-        m_myChara.Move(m_velocity * Time.deltaTime);
-
+        
+        if (!m_playerAnimationReveil.m_stoppedMoving)
+        {
+            m_myChara.Move(movePlayer * m_speed * m_currentSpeed * Time.deltaTime);
+            m_UIManager.m_playingGameObject.SetActive(true);
+            m_mouseLock.IsMoving(true);
+        }
+            
+        else
+        {
+            m_mouseLock.IsMoving(false);
+            m_UIManager.m_playingGameObject.SetActive(false);
+        }
+        
         m_velocity.y += m_gravity * Time.deltaTime;
 
         if (m_gameManager.isPc == true)
