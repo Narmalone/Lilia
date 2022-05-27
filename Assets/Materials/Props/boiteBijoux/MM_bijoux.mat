@@ -7,36 +7,25 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_interact
-  m_Shader: {fileID: -6465566751694194690, guid: b3529edaaccd1ce4bafcc1241adb7dea, type: 3}
-  m_ShaderKeywords: 
+  m_Name: MM_bijoux
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_ShaderKeywords: _METALLICSPECGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_1:
-        m_Texture: {fileID: 2800000, guid: 4d8630df15cd48b42aac5f1e5f0df0da, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_2:
-        m_Texture: {fileID: 2800000, guid: 306065e554e162a4c9f001bb17db222a, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_35b0937534a44f078272d6027951179d:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 95624becc03335d418eb427a9580440d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 957bbfc5a6b18e74b9c79cc4e7440a9f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -56,11 +45,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 95624becc03335d418eb427a9580440d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 52242f58981fac04b8f68e0bb94e04eb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -88,22 +77,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Boolean_b62a829a0f4345e2a32b9b5c55d365c1: 0
-    - Boolean_e20d6ecc621e42858621421e9945f49c: 1
-    - Boolean_e20d6ecc621e42858621421e9945f49c_1: 1
-    - Boolean_e20d6ecc621e42858621421e9945f49c_2: 1
-    - Boolean_f6ded6b5dc1f4e628bd2b0620071b7e1: 1
-    - Vector1_a9189d411ba646c1b39211c82eea4723: 0
-    - Vector1_cb81f92b98bb471a9314dc04f5dcb64b: 0
-    - Vector1_e2764e08123747bdbcf37059e7ebf675: 0.016
-    - Vector1_eadddf71ec1d4856968ae25d95e23517: 0
-    - Vector1_eadddf71ec1d4856968ae25d95e23517_1: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _ColorMask: 15
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -122,24 +100,16 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
     - _Surface: 0
-    - _UseUIAlphaClip: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_6b0edf70109f4f0691172e7611279abc: {r: 0, g: 0, b: 0, a: 0}
-    - Color_dfd5100bd1a7479e8f8e08f9a3d8300d: {r: 1.1607844, g: 0.29779285, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &2258195711165141241
+--- !u!114 &4282396759254179733
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
