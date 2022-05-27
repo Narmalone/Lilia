@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private TimelinePlayerScript m_timePlayerScript;
     [SerializeField] private AudioManagerScript m_audioScript;
+    [SerializeField] private AssetMenuScriptValue m_assetMenu;
     private MenuManager m_menuManager;
     [SerializeField] private RespawnMe m_respawn;
 
@@ -181,19 +182,18 @@ public class PlayerController : MonoBehaviour
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_dOFSettings));
         Debug.Log(m_linkedPostProcess.profile.TryGet(out m_vignetteSettings));
 
-            m_fmodInstancePas = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventPas);
-            FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstancePas, GetComponent<Transform>(), GetComponent<Rigidbody>());
-            Debug.Log($"Démarage du son de pas : {m_fmodInstancePas.start()}");
+        m_fmodInstancePas = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventPas);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstancePas, GetComponent<Transform>(), GetComponent<Rigidbody>());
+        Debug.Log($"Démarage du son de pas : {m_fmodInstancePas.start()}");
 
-            m_fmodInstanceStress = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventStress);
-            FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceStress, GetComponent<Transform>(), GetComponent<Rigidbody>());
-            m_fmodInstanceStress.start();
-            //m_fmodInstance.start();
+        m_fmodInstanceStress = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventStress);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceStress, GetComponent<Transform>(), GetComponent<Rigidbody>());
+        m_fmodInstanceStress.start();
+        //m_fmodInstance.start();
 
-            m_fmodInstanceDoudou = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventDoudou);
+        m_fmodInstanceDoudou = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventDoudou);
+        previous = Vector3.zero;
 
-            previous = Vector3.zero;
-     
     }
 
     private void Update()
@@ -222,8 +222,10 @@ public class PlayerController : MonoBehaviour
         {
             m_fmodInstancePas.setParameterByName("Speed", velocity*3);
         }
+        m_fmodInstancePas.setVolume(m_assetMenu.value);
         m_fmodInstanceStress.setParameterByName("Stress",10-m_currentStress*10/m_maxStress);
-        
+        m_fmodInstanceStress.setVolume(m_assetMenu.value);
+
         m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Cr�ation d'une sphere qui chech si le joueur touche le sol
 
         if (m_isGrounded && m_velocity.y < 0)        //Reset de la gravit� quand le joueur touche le sol
@@ -255,6 +257,7 @@ public class PlayerController : MonoBehaviour
             {
                 FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDoudou,  GetComponent<Transform>(), GetComponent<Rigidbody>());
                 m_fmodInstanceDoudou.start();
+                m_fmodInstanceDoudou.setVolume(m_assetMenu.value);
             }
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
