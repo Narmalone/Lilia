@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class AppearThings : MonoBehaviour
 {
-    [Tooltip("Pour optimiser mettre un seul objet parent contenant tous les objets mais tu peux mettre tous les objets que tu le souhaites :p")]public List<GameObject> m_liliasChamber;
+    [Tooltip("Pour optimiser mettre un seul objet parent contenant tous les objets mais tu peux mettre tous les objets que tu le souhaites :p")] public List<GameObject> m_liliasChamber;
     [Tooltip("Pour optimiser mettre un seul objet parent contenant tous les objets mais tu peux mettre tous les objets que tu le souhaites :p")] public List<GameObject> m_sonsChamber;
+    [Tooltip("Liste d'objet qui spawn une fois que le second puzzle est finis")] public List<GameObject> m_lateGame;
 
     [SerializeField] private GameObject m_iaPosition;
     [SerializeField] public Transform m_iaSpawner;
@@ -23,6 +24,10 @@ public class AppearThings : MonoBehaviour
         foreach (GameObject p_obj in m_sonsChamber)
         {
             p_obj.SetActive(true);
+        } 
+        foreach (GameObject p_obj in m_lateGame)
+        {
+            p_obj.SetActive(false);
         }
 
     }
@@ -41,6 +46,14 @@ public class AppearThings : MonoBehaviour
             {
                 p_obj.SetActive(false);
             }
+        }
+    }
+
+    public void LateGameAppear()
+    {
+        foreach(GameObject p_obj in m_lateGame)
+        {
+
         }
     }
     private void Update()

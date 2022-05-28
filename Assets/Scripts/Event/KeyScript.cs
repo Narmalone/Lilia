@@ -6,7 +6,7 @@ public class KeyScript : MonoBehaviour
 {
     [SerializeField] private GameObject m_thisObject;
     [SerializeField] private Rigidbody m_thisRb;
-    [SerializeField] private GameObject m_keyUi;
+    [SerializeField] public GameObject m_keyUi;
     [SerializeField, Tooltip("Une fois que le joueur ramasse la cl�")] private Transform m_containerKeyAfterEvent;
     [SerializeField, Tooltip("Une fois que le joueur finis le QTE")] private Transform m_containerDrop;
     [SerializeField] private GameManager m_gameManager;
@@ -27,10 +27,13 @@ public class KeyScript : MonoBehaviour
     
     public bool m_setKeyPos = false;
     public bool m_dropKeyAfterEvent = false;
+
+    private Renderer m_thisRend;
     private void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();
         m_thisRb = GetComponent<Rigidbody>();
+        m_thisRend = GetComponent<Renderer>();
         m_keyUi.SetActive(false);
         m_thisBox.enabled = false;
     }
@@ -57,10 +60,6 @@ public class KeyScript : MonoBehaviour
                 m_dropKeyAfterEvent = true;
                 m_thisBox.enabled = true;
             }
-        }
-       if(m_gameManager.gotKey == true)
-        {
-            DropKey();
         }
     }
     public void DropKey()
@@ -91,9 +90,10 @@ public class KeyScript : MonoBehaviour
                 m_thisRb.useGravity = false;
                 m_thisRb.isKinematic = true;
                 m_thisBox.enabled = false;
-                m_thisObject.transform.SetParent(m_containerKeyAfterEvent);
-                m_thisObject.transform.localRotation = m_containerKeyAfterEvent.transform.localRotation;
-                m_thisObject.transform.position = m_containerKeyAfterEvent.transform.position;
+                m_thisObject.transform.position = new Vector3(0f, 0f, 100f);
+                //m_thisObject.transform.SetParent(m_containerKeyAfterEvent);
+                //m_thisObject.transform.localRotation = m_containerKeyAfterEvent.transform.localRotation;
+                //m_thisObject.transform.position = m_containerKeyAfterEvent.transform.position;
                 m_setKeyPos = true;
             }
         }
@@ -103,19 +103,18 @@ public class KeyScript : MonoBehaviour
     {
         if (ReferenceEquals( gameObject, other.gameObject))
         {
-            if (m_player.m_flashlightIsPossessed == false)
+            m_thisRend.material.SetFloat("_BooleanFloat", 1f);
+            m_uiManager.TakableObject();
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                m_uiManager.TakableObject();
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    FMODUnity.RuntimeManager.PlayOneShotAttached(m_fmodEventPickUp.Guid, gameObject);
-                    PlayerGotKey();
-                    SetKeyPos();
-                }              
+                FMODUnity.RuntimeManager.PlayOneShotAttached(m_fmodEventPickUp.Guid, gameObject);
+                PlayerGotKey();
+                SetKeyPos();
             }
         }
         else
         {
+            m_thisRend.material.SetFloat("_BooleanFloat", 0f);
             OnRaycastExit(m_pastHit.collider);
         }
     }
@@ -125,6 +124,7 @@ public class KeyScript : MonoBehaviour
         {
             if (ReferenceEquals( gameObject, other.gameObject))
             {
+                m_thisRend.material.SetFloat("_BooleanFloat", 0f);
                 m_uiManager.DisableUi();
             }
         }

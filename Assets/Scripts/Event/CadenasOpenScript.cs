@@ -16,6 +16,7 @@ public class CadenasOpenScript : MonoBehaviour
     string m_name = "isOpen";
 
     [SerializeField] private GameManager m_gameManager;
+    [SerializeField] private KeyScript m_key;
     [SerializeField] private LayerMask m_layerPlayer;
     private void Awake()
     {
@@ -40,6 +41,8 @@ public class CadenasOpenScript : MonoBehaviour
                 m_animKey.SetBool(m_name, true);
                 StartCoroutine(OuverturePorte());
                 m_gameManager.gotKey = false;
+                m_key.m_keyUi.SetActive(false);
+                m_key.gameObject.transform.position = new Vector3(0f, 0f, 200f);
             }
         }      
     }

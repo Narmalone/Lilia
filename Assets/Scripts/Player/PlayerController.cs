@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
 
     private bool m_isGrounded;
 
-    private RaycastHit m_hit;
+    public RaycastHit m_hit;
 
     private RaycastHit m_pastHit;
 
@@ -165,6 +165,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Renderer m_flashlightRend;
     [SerializeField] private Renderer m_doudouRend;
+    [SerializeField] private Renderer m_doorRend;
+    [SerializeField] private Renderer m_phoneRend;
     private void Awake()
     {
         isCinematic = true;
@@ -348,41 +350,25 @@ public class PlayerController : MonoBehaviour
         //Si raycast avec portillon
         if (Physics.Raycast(m_ray, out m_hit, 1, m_portillonMask))
         {
-            Debug.Log(gameObject.name);
+            m_doorRend = m_hit.collider.gameObject.GetComponent<Renderer>();
+            m_doorRend.material.SetFloat("_BooleanFloat", 1f);
             m_UIManager.TakableObject();
+
             if (Input.GetKey(KeyCode.E))
             {
                 m_hit.collider.gameObject.GetComponent<Doors>().ActiveDoors();
             }
             if (m_hit.collider.gameObject.GetComponent<Doors>().isOpen == true)
             {
+                m_doorRend.material.SetFloat("_BooleanFloat", 0f);
                 m_UIManager.DisableUi();
             }
         }
         else
         {
+            m_doorRend.material.SetFloat("_BooleanFloat", 0f);
             FindObjectOfType<Doors>().DisableSlider();
         }
-       
-        // Chasse.GetPath(m_path, m_target.transform.position, m_AIStateMachine.transform.position, NavMesh.AllAreas);
-        // if (m_path.status == NavMeshPathStatus.PathComplete)
-        // {
-        //     if (Chasse.GetPathLength(m_AIStateMachine.m_path) < 10f && m_AIStateMachine.currentState == m_AIStateMachine.m_chasseState)
-        //     {
-        //         float dist = Vector3.Distance(m_AIStateMachine.transform.position, m_doudou.transform.position);
-        //         float power = dist / 10;
-        //         float powerAdapted = Mathf.Lerp(0.1f, 0f, power);
-        //         m_camShake.camShakeActive = true;
-        //         
-        //         Debug.Log("dans la chasse");
-        //     }
-        //     else
-        //     {
-        //         m_camShake.camShakeActive = false;
-        //     }
-        // }
-
-
     }
     
     /// <summary>
@@ -436,19 +422,10 @@ public class PlayerController : MonoBehaviour
         {
             if (m_gameManager.gotKey == false)
             {
-                if(m_gameManager.canPick == true)
-                {
-                    m_flashlightRend = m_hit.collider.gameObject.GetComponent<Renderer>();
-                    m_flashlightRend.material.SetFloat("_BooleanFloat", 1f);
-                    m_UIManager.TakableObject();
-                    TakeFlashlight();
-                }
-                else
-                {
-                    m_flashlightRend.material.SetFloat("_BooleanFloat", 0f);
-                    m_UIManager.DisableUi();
-                }
-               
+                m_flashlightRend = m_hit.collider.gameObject.GetComponent<Renderer>();
+                m_flashlightRend.material.SetFloat("_BooleanFloat", 1f);
+                m_UIManager.TakableObject();
+                TakeFlashlight();
             }
             
         }
@@ -487,25 +464,43 @@ public class PlayerController : MonoBehaviour
        
         else if ((m_radioMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
-            if (m_createNarrativeEvent.index == 1)
+            m_phoneRend = m_hit.collider.gameObject.GetComponent<Renderer>();
+
+            if (m_phone.isFirstAnswer == true)
             {
-                m_createNarrativeEvent.actionComplete = true;
-            }
-            m_UIManager.TakableObject();
-            m_gameManager.canPick = false;
-            if (m_gameManager.isPc == true)
-            {
+                m_UIManager.TakableObject();
+                m_phoneRend.material.SetFloat("_BooleanFloat", 1f);
                 if (Input.GetKey(KeyCode.E))
                 {
-                    if (m_doudouIsPossessed == false && m_flashlightIsPossessed == false)
+                    if (m_createNarrativeEvent.index == 2)
                     {
-                        if (m_createNarrativeEvent.index == 2)
+                        if(m_doudouIsPossessed == true)
+                        {
+                            m_doudou.DropItem();
+                            m_doudouIsPossessed = false;
+                            m_UIManager.DropDoudou();
+                            m_doudou.GetComponent<BoxCollider>().enabled = true;
+                        }
+                        else if (m_doudouIsPossessed == false)
                         {
                             m_phone.AnswerToCall();
+                            m_phone.isFirstAnswer = false;
                             m_timePlayerScript.StartTimeline();
                         }
                     }
+                    
                 }
+            }
+            else
+            {
+                m_phoneRend.material.SetFloat("_BooleanFloat", 0f);
+            }
+
+            m_gameManager.canPick = false;
+
+            if (m_gameManager.isPc == true)
+            {
+               
             }
             else if (m_gameManager.isGamepad == true)
             {
@@ -531,11 +526,13 @@ public class PlayerController : MonoBehaviour
         }
         else if ((m_portillonMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
+            m_doorRend.material.SetFloat("_BooleanFloat", 0f);
             m_UIManager.DisableUi();
             m_gameManager.canPick = true;
         }
         else if ((m_radioMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
+            m_phoneRend.material.SetFloat("_BooleanFloat", 0f);
             m_UIManager.DisableUi();
             m_gameManager.canPick = true;
         }

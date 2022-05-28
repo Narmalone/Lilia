@@ -69,7 +69,6 @@ public class FirstPersonOcclusion : MonoBehaviour
             else if (pbs == PLAYBACK_STATE.STOPPED)
             {
                 RemoveInstance(i);
-                Debug.Log($"je remove un son");
             }
             lineCastHitCount = 0f;
         }

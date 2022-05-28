@@ -7,8 +7,11 @@ public class KillPlayer : MonoBehaviour
 
     [SerializeField] private LayerMask m_playerMask;
     [SerializeField] private LayerMask m_doudouMask;
+    [SerializeField] private LayerMask m_portillonMask;
     [SerializeField] private MenuManager m_menuManager;
     [SerializeField] private GameManager m_gameManager;
+
+    private Collider m_currentPortillon;
     private void Awake()
     {
        if(m_menuManager == null)
@@ -22,6 +25,11 @@ public class KillPlayer : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if ((m_portillonMask.value & (1 << other.gameObject.layer)) > 0)
+        {
+            other.gameObject.GetComponent<Doors>().OnComplete();
+            Debug.Log(other.name);
+        }
         if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
         {
             Debug.Log("GameOver");
@@ -33,5 +41,6 @@ public class KillPlayer : MonoBehaviour
             m_menuManager.OnDeath();
             m_gameManager.isDead = true;
         }
+     
     }
 }

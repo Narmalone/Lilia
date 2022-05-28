@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 public class PuzzleGenerator : MonoBehaviour
 {
     [SerializeField] PlayerController m_player;
@@ -19,6 +20,7 @@ public class PuzzleGenerator : MonoBehaviour
     [SerializeField] public GameObject m_currentSelected;
     [NonSerialized] public GameObject m_lastObjSelected;
 
+    [SerializeField] private TextMeshProUGUI m_txtCancelAction;
     private int m_index = 0;
     private int m_indexSolution = 0;
     private int m_indexNotSolution = 0;
@@ -53,12 +55,13 @@ public class PuzzleGenerator : MonoBehaviour
     {
         if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
         {
+            LockedPlayer();
             isTrigger = true;
         }
     }
     public void LateUpdate()
     {
-        LockedPlayer();
+
 
         if (isLocked == true)
         {
@@ -70,6 +73,7 @@ public class PuzzleGenerator : MonoBehaviour
                 if (Vector3.Distance(m_player.transform.position, m_containerPlayer.transform.position) > m_rangeToNotOut)
                 {
                     m_player.transform.position = Vector3.MoveTowards(m_player.transform.position, m_containerPlayer.transform.position, 0.1f);
+                    m_txtCancelAction.gameObject.SetActive(true);
                     m_player.m_speed = 0f;
                 }
             }
@@ -92,6 +96,8 @@ public class PuzzleGenerator : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 isLocked = true;
+                m_txtCancelAction.gameObject.SetActive(true);
+                Debug.Log("afficher txt action");
             }
         }
         else
@@ -113,6 +119,7 @@ public class PuzzleGenerator : MonoBehaviour
                     isLocked = false;
                     isTrigger = false;
                     m_player.m_speed = 2f;
+                    m_txtCancelAction.gameObject.SetActive(false);
                 }
             }
         }
@@ -123,20 +130,12 @@ public class PuzzleGenerator : MonoBehaviour
         if (m_currentSelected != null)
         {
             m_lastObjSelected = m_currentSelected;
-
-            
-            //Shader Part
-
         }
 
         m_lastObjSelected = m_currentSelected;
         m_currentSelected = m_interruptersList[m_index];
 
         m_buttons[m_index].OnSelected();
-
-
-        //m_myMat.SetFloat("Vector1_a9189d411ba646c1b3921", setShader);
-        //Debug.Log(m_myMat.GetFloat("Vector1_a9189d411ba646c1b3921"), this);
     }
 
     public void SwitchSelect()

@@ -10,7 +10,7 @@ public class Doors : MonoBehaviour
     [SerializeField] private UiManager m_uiManager;
     [SerializeField] private bool isActivable = false;
     [SerializeField] private bool isCompleted = false;
-    [SerializeField] private bool isDoor = false;
+    [SerializeField] public bool isDoor = false;
     [SerializeField] public bool isOpen = false;
     private bool isRay = false;
 
@@ -55,7 +55,7 @@ public class Doors : MonoBehaviour
     }
     private void LateUpdate()
     {
-      
+
     }
     //Fonction ou le joueur doit maintenir la touche
     public void ActiveDoors()
@@ -69,7 +69,6 @@ public class Doors : MonoBehaviour
                 {
                     m_incrementValue += m_incrementValue * Time.deltaTime;
                     mySlider.value = m_incrementValue;
-                    Debug.Log(m_incrementValue);
                 }
                 else if (m_incrementValue >= m_speedToOpen)
                 {
@@ -82,7 +81,7 @@ public class Doors : MonoBehaviour
     }
 
     //Lorsque le joueur à monté le slider au max
-    private void OnComplete()
+    public void OnComplete()
     {
         mySlider.gameObject.SetActive(false);
         m_uiManager.DisableUi();
@@ -101,6 +100,7 @@ public class Doors : MonoBehaviour
             isActivable = false;
             isOpen = true;
             StartCoroutine(Chrono());
+            Debug.Log("le bb");
         }
         //Jouer son
         //la porte l'objet n'est plus activable ou si c un portillon trouver sol
@@ -134,6 +134,5 @@ public class Doors : MonoBehaviour
     public void DisableSlider()
     {
         mySlider.gameObject.SetActive(false);
-        Debug.Log("désactiver slider");
     }
 }

@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public bool gotKey = false;
     public bool isDead;
     public bool canPick = true;
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
