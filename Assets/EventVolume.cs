@@ -54,7 +54,6 @@ public class EventVolume : MonoBehaviour
                     isOpen = false;
                     m_currentNB++;
                 }
-                Debug.Log(m_currentNB);
                 if (m_currentNB >= m_nbMax)
                 {
                     m_player.isCinematic = false;

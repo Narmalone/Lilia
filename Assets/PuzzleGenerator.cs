@@ -60,7 +60,6 @@ public class PuzzleGenerator : MonoBehaviour
     {
         LockedPlayer();
 
-        Debug.Log("late Update");
         if (isLocked == true)
         {
             
@@ -88,13 +87,11 @@ public class PuzzleGenerator : MonoBehaviour
     }
     public void LockedPlayer()
     {
-        Debug.Log("f lockedPlayer");
         if (isLocked == false)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 isLocked = true;
-                Debug.Log("go locked");
             }
         }
         else

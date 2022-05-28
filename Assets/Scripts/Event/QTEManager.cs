@@ -79,7 +79,7 @@ public class QTEManager : MonoBehaviour
         Debug.DrawRay(m_ray.origin,m_ray.direction, Color.red);
         if (Physics.Raycast(m_ray, out m_hit, 1, ~m_layerPlayer))
         {
-            Debug.Log($"Je touche avec le raycast: {m_hit.collider.name}");
+            //Debug.Log($"Je touche avec le raycast: {m_hit.collider.name}");
             OnRayCastHit(m_hit.collider);
             m_pastHit = m_hit;
         }
@@ -97,7 +97,7 @@ public class QTEManager : MonoBehaviour
                 DelockPos();
                 if (m_startedCoroutine == false)
                 {
-                    Debug.Log($"Press key {m_keycodesQTE[m_index]}");
+                    //Debug.Log($"Press key {m_keycodesQTE[m_index]}");
                     if (Input.GetKey(m_keycodesQTE[m_index]))
                     {
                         m_txtPuzzle.SetNewPosition();
@@ -144,10 +144,10 @@ public class QTEManager : MonoBehaviour
     
     private void OnRayCastHit(Collider other)
     {
-        Debug.Log("Je suis dans le raycast pour le qte");
+        //Debug.Log("Je suis dans le raycast pour le qte");
         if (ReferenceEquals( gameObject, other.gameObject) && other.isTrigger)
         {
-            Debug.Log("Je vise le meuble");
+           // Debug.Log("Je vise le meuble");
             if (m_qteIsOver == false && m_txtPushTheBox.gameObject.activeInHierarchy == false)
             {
                 if(isInQte == false)

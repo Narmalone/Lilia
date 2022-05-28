@@ -162,6 +162,9 @@ public class PlayerController : MonoBehaviour
     public Ray m_ray;
 
     public bool isCinematic = true;
+
+    [SerializeField] private Renderer m_flashlightRend;
+    [SerializeField] private Renderer m_doudouRend;
     private void Awake()
     {
         isCinematic = true;
@@ -431,15 +434,18 @@ public class PlayerController : MonoBehaviour
     {
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
         {
-            if(m_gameManager.gotKey == false)
+            if (m_gameManager.gotKey == false)
             {
                 if(m_gameManager.canPick == true)
                 {
+                    m_flashlightRend = m_hit.collider.gameObject.GetComponent<Renderer>();
+                    m_flashlightRend.material.SetFloat("_BooleanFloat", 1f);
                     m_UIManager.TakableObject();
                     TakeFlashlight();
                 }
                 else
                 {
+                    m_flashlightRend.material.SetFloat("_BooleanFloat", 0f);
                     m_UIManager.DisableUi();
                 }
                
@@ -449,16 +455,20 @@ public class PlayerController : MonoBehaviour
 
         else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false)
         {
+            m_doudouRend = m_hit.collider.gameObject.GetComponent<Renderer>();
+
             if (m_gameManager.canPick == true)
             {
+                m_doudouRend.material.SetFloat("_BooleanFloat", 1f);
                 m_UIManager.TakableObject();
                 TakeDoudou();
             }
             else
             {
+                m_doudouRend.material.SetFloat("_BooleanFloat", 0f);
                 m_UIManager.DisableUi();
             }
-            
+
         }
 
         else if ((m_TwoHandsItemMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false && m_flashlightIsPossessed == false)
@@ -510,6 +520,8 @@ public class PlayerController : MonoBehaviour
     { 
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
+            m_flashlightRend.material.SetFloat("_BooleanFloat", 0f);
+            Debug.Log("disable ui");
             m_UIManager.DisableUi();
         }
         else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0)
