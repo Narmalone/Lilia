@@ -32,6 +32,7 @@ public class Doudou : MonoBehaviour
         m_callEvent = false;
         m_gameManager = FindObjectOfType<GameManager>();
         m_gOPlayer = FindObjectOfType<PlayerController>().gameObject;
+        m_doudou.transform.localRotation = Quaternion.Euler(0f, -0f, 0f);
     }
     private float m_yRotation = 0f;
     private void Update()

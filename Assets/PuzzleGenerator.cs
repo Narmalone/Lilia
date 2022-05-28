@@ -30,6 +30,10 @@ public class PuzzleGenerator : MonoBehaviour
     public bool completeSolution = false;
     public bool notSolutionComplete = false;
 
+    [SerializeField]private Material m_myMat;
+
+    Renderer rend;
+
     private void Awake()
     {
         m_index = 0;
@@ -119,17 +123,23 @@ public class PuzzleGenerator : MonoBehaviour
 
     public void Select()
     {
-
         if (m_currentSelected != null)
         {
             m_lastObjSelected = m_currentSelected;
+
+            
+            //Shader Part
+
         }
 
         m_lastObjSelected = m_currentSelected;
-
         m_currentSelected = m_interruptersList[m_index];
+
         m_buttons[m_index].OnSelected();
 
+
+        //m_myMat.SetFloat("Vector1_a9189d411ba646c1b3921", setShader);
+        //Debug.Log(m_myMat.GetFloat("Vector1_a9189d411ba646c1b3921"), this);
     }
 
     public void SwitchSelect()
