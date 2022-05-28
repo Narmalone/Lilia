@@ -526,6 +526,7 @@ public class PlayerController : MonoBehaviour
         }
         else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
+            m_doudouRend.material.SetFloat("_BooleanFloat", 0f);
             m_UIManager.DisableUi();
         }
         else if ((m_portillonMask.value & (1 << p_collide.gameObject.layer)) > 0)

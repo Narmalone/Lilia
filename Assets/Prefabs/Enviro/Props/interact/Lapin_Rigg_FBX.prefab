@@ -282,125 +282,6 @@ Transform:
   m_Father: {fileID: 6402971697583674162}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2196736510064542500
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7540038068490587822}
-  - component: {fileID: 3785356428961912734}
-  m_Layer: 0
-  m_Name: Lapinou_Geo
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7540038068490587822
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2196736510064542500}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 552814313580495077}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!137 &3785356428961912734
-SkinnedMeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2196736510064542500}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 3
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 4154492fc9cf8424a872c0c114a27540, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  serializedVersion: 2
-  m_Quality: 0
-  m_UpdateWhenOffscreen: 0
-  m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: -7564194130529693757, guid: dfd499022380282498fc25645e1eacb4, type: 3}
-  m_Bones:
-  - {fileID: 7931739482146632236}
-  - {fileID: 5319908552260682334}
-  - {fileID: 235820072879700479}
-  - {fileID: 4740708604551907550}
-  - {fileID: 4203146359720299965}
-  - {fileID: 6798223522099110504}
-  - {fileID: 6022220558560185868}
-  - {fileID: 2079005002922006690}
-  - {fileID: 2090730322835300030}
-  - {fileID: 2782244308009431880}
-  - {fileID: 6917387841204926159}
-  - {fileID: 2287961333340779369}
-  - {fileID: 6594160728865650421}
-  - {fileID: 4946110076372332215}
-  - {fileID: 3011560808300877976}
-  - {fileID: 3805897502719368140}
-  - {fileID: 8012398036791514648}
-  - {fileID: 5413342221872581266}
-  - {fileID: 3431193247422634746}
-  - {fileID: 3491818626112926158}
-  - {fileID: 3017904473440903178}
-  - {fileID: 2401091908262003937}
-  - {fileID: 6065553358672200944}
-  - {fileID: 1053796539534885603}
-  - {fileID: 3634266666956053782}
-  - {fileID: 6402971697583674162}
-  - {fileID: 5437906826307496807}
-  - {fileID: 2191404481531706745}
-  - {fileID: 8512492944719258318}
-  - {fileID: 4809971911907442610}
-  - {fileID: 744765096165787853}
-  - {fileID: 3351239564362856513}
-  - {fileID: 6489067044006093768}
-  - {fileID: 5778374987254949134}
-  - {fileID: 5635151372414645830}
-  - {fileID: 8973317019225869261}
-  m_BlendShapeWeights: []
-  m_RootBone: {fileID: 7931739482146632236}
-  m_AABB:
-    m_Center: {x: -0.00095971674, y: 0.04277575, z: -0.007016372}
-    m_Extent: {x: 0.14570194, y: 0.20238942, z: 0.06381163}
-  m_DirtyAABB: 0
 --- !u!1 &2314847909106002650
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,8 +648,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 7540038068490587822}
+  m_Children: []
   m_Father: {fileID: 192724545429485066}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

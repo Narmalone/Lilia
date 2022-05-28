@@ -18,7 +18,7 @@ public class ButtonGeneratorPuzzle : MonoBehaviour
     private void Awake()
     {
         m_thisRend = GetComponent<Renderer>();
-        m_thisRend.material.SetFloat("_BooleanFloat", 1f);
+        m_thisRend.material.SetFloat("_BooleanFloat", 0f);
         if (m_myAnim == null)
         {
             m_myAnim.GetComponent<Animator>();
@@ -51,18 +51,21 @@ public class ButtonGeneratorPuzzle : MonoBehaviour
     {
         if(gameObject != m_puzzle.m_currentSelected)
         {
+            m_thisRend.material.SetFloat("_BooleanFloat", 0f);
+
             if (isActivated == false)
             {
-                m_thisRend.material.SetColor("Color_Interaction", m_notSelectedColor);
+                m_thisRend.material.SetColor("Color_obj", m_notSelectedColor);
             }
             else
             {
-                m_thisRend.material.SetColor("Color_Interaction", m_activatedColor);
+                m_thisRend.material.SetColor("Color_obj", m_activatedColor);
             }
         }
         else if(gameObject == m_puzzle.m_currentSelected)
         {
-            m_thisRend.material.SetColor("Color_Interaction", m_selectedColor);
+            m_thisRend.material.SetFloat("_BooleanFloat", 1f);
+            m_thisRend.material.SetColor("Color_obj", m_selectedColor);
         }
 
        
