@@ -210,7 +210,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Debug.DrawRay(m_ray.origin,m_ray.direction, Color.black);
-        if (Physics.Raycast(m_ray, out m_hit, 1, ~(1 << gameObject.layer)))
+       if (Physics.Raycast(m_ray, out m_hit, 1, ~(1 << gameObject.layer)))
         {
             Debug.Log($"Je touche avec le raycast: {m_hit.collider.name}");
             OnRayCastHit(m_hit.collider);
@@ -388,6 +388,22 @@ public class PlayerController : MonoBehaviour
             m_doorRend.material.SetFloat("_BooleanFloat", 0f);
             FindObjectOfType<Doors>().DisableSlider();
         }
+        if (Physics.Raycast(m_ray, out m_hit, 1f, m_doudouMask))
+        {
+            m_doudouRend = m_hit.collider.gameObject.GetComponent<Renderer>();
+
+            if (m_gameManager.canPick == true)
+            {
+                m_doudouRend.material.SetFloat("_BooleanFloat", 1f);
+                m_UIManager.TakableDoudou();
+                TakeDoudou();
+            }
+            else
+            {
+                m_doudouRend.material.SetFloat("_BooleanFloat", 0f);
+                m_UIManager.DisableUi();
+            }
+        }
     }
     
     /// <summary>
@@ -447,24 +463,6 @@ public class PlayerController : MonoBehaviour
                 TakeFlashlight();
             }
             
-        }
-
-        else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false)
-        {
-            m_doudouRend = m_hit.collider.gameObject.GetComponent<Renderer>();
-
-            if (m_gameManager.canPick == true)
-            {
-                m_doudouRend.material.SetFloat("_BooleanFloat", 1f);
-                m_UIManager.TakableDoudou();
-                TakeDoudou();
-            }
-            else
-            {
-                m_doudouRend.material.SetFloat("_BooleanFloat", 0f);
-                m_UIManager.DisableUi();
-            }
-
         }
 
         else if ((m_TwoHandsItemMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false && m_flashlightIsPossessed == false)
