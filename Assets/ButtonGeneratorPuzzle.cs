@@ -24,13 +24,12 @@ public class ButtonGeneratorPuzzle : MonoBehaviour
             m_myAnim.GetComponent<Animator>();
         }
         SwitchAnim();
-        OnSelected();
     }
     public void OnSelected()
     {
         if (isActivated == true)
         {
-            if (Input.GetKeyDown(KeyCode.J))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 isActivated = false;
                 m_puzzle.CheckSolution();
@@ -39,7 +38,7 @@ public class ButtonGeneratorPuzzle : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.J))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 isActivated = true;
                 m_puzzle.CheckSolution();
@@ -67,8 +66,6 @@ public class ButtonGeneratorPuzzle : MonoBehaviour
             m_thisRend.material.SetFloat("_BooleanFloat", 1f);
             m_thisRend.material.SetColor("Color_obj", m_selectedColor);
         }
-
-       
     }
     public void SwitchAnim()
     {

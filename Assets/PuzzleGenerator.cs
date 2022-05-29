@@ -20,7 +20,10 @@ public class PuzzleGenerator : MonoBehaviour
     [SerializeField] public GameObject m_currentSelected;
     [NonSerialized] public GameObject m_lastObjSelected;
 
+    [SerializeField] AppearThings m_appear;
+
     [SerializeField] private TextMeshProUGUI m_txtCancelAction;
+    [SerializeField] private List<GameObject> m_toActive;
     private int m_index = 0;
     private int m_indexSolution = 0;
     private int m_indexNotSolution = 0;
@@ -45,6 +48,10 @@ public class PuzzleGenerator : MonoBehaviour
         completeSolution = false;
         notSolutionComplete = false;
         m_gameManager = FindObjectOfType<GameManager>();
+        foreach(GameObject p_obj in m_toActive)
+        {
+            p_obj.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -55,14 +62,18 @@ public class PuzzleGenerator : MonoBehaviour
     {
         if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
         {
-            LockedPlayer();
             isTrigger = true;
+        }
+    }
+    private void Update()
+    {
+        if(isTrigger == true)
+        {
+            LockedPlayer();
         }
     }
     public void LateUpdate()
     {
-
-
         if (isLocked == true)
         {
             
@@ -73,7 +84,6 @@ public class PuzzleGenerator : MonoBehaviour
                 if (Vector3.Distance(m_player.transform.position, m_containerPlayer.transform.position) > m_rangeToNotOut)
                 {
                     m_player.transform.position = Vector3.MoveTowards(m_player.transform.position, m_containerPlayer.transform.position, 0.1f);
-                    m_txtCancelAction.gameObject.SetActive(true);
                     m_player.m_speed = 0f;
                 }
             }
@@ -97,7 +107,10 @@ public class PuzzleGenerator : MonoBehaviour
             {
                 isLocked = true;
                 m_txtCancelAction.gameObject.SetActive(true);
-                Debug.Log("afficher txt action");
+                foreach (GameObject p_obj in m_toActive)
+                {
+                    p_obj.SetActive(true);
+                }
             }
         }
         else
@@ -120,6 +133,10 @@ public class PuzzleGenerator : MonoBehaviour
                     isTrigger = false;
                     m_player.m_speed = 2f;
                     m_txtCancelAction.gameObject.SetActive(false);
+                    foreach (GameObject p_obj in m_toActive)
+                    {
+                        p_obj.SetActive(false);
+                    }
                 }
             }
         }
@@ -199,6 +216,7 @@ public class PuzzleGenerator : MonoBehaviour
             isLocked = false;
             isTrigger = false;
             m_player.m_speed = 2f;
+            m_appear.LateGameAppear();
         }       
     }
     public void NextIndicePaper()

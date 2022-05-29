@@ -53,7 +53,7 @@ public class AppearThings : MonoBehaviour
     {
         foreach(GameObject p_obj in m_lateGame)
         {
-
+            p_obj.SetActive(true);
         }
     }
     private void Update()
