@@ -70,6 +70,34 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Ui"",
+            ""id"": ""e8843bf4-b1de-4bf5-9afe-4b96f230459a"",
+            ""actions"": [
+                {
+                    ""name"": ""Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""82db150d-676e-4e4d-8ec8-0339144c6be0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""e32a6d1a-612a-45e1-8d4d-22f58aa6f2ed"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -101,6 +129,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_GamepadMove = m_Gameplay.FindAction("GamepadMove", throwIfNotFound: true);
         m_Gameplay_Rotation = m_Gameplay.FindAction("Rotation", throwIfNotFound: true);
+        // Ui
+        m_Ui = asset.FindActionMap("Ui", throwIfNotFound: true);
+        m_Ui_Click = m_Ui.FindAction("Click", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -197,6 +228,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         }
     }
     public GameplayActions @Gameplay => new GameplayActions(this);
+
+    // Ui
+    private readonly InputActionMap m_Ui;
+    private IUiActions m_UiActionsCallbackInterface;
+    private readonly InputAction m_Ui_Click;
+    public struct UiActions
+    {
+        private @PlayerControls m_Wrapper;
+        public UiActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Click => m_Wrapper.m_Ui_Click;
+        public InputActionMap Get() { return m_Wrapper.m_Ui; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UiActions set) { return set.Get(); }
+        public void SetCallbacks(IUiActions instance)
+        {
+            if (m_Wrapper.m_UiActionsCallbackInterface != null)
+            {
+                @Click.started -= m_Wrapper.m_UiActionsCallbackInterface.OnClick;
+                @Click.performed -= m_Wrapper.m_UiActionsCallbackInterface.OnClick;
+                @Click.canceled -= m_Wrapper.m_UiActionsCallbackInterface.OnClick;
+            }
+            m_Wrapper.m_UiActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Click.started += instance.OnClick;
+                @Click.performed += instance.OnClick;
+                @Click.canceled += instance.OnClick;
+            }
+        }
+    }
+    public UiActions @Ui => new UiActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -219,5 +283,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {
         void OnGamepadMove(InputAction.CallbackContext context);
         void OnRotation(InputAction.CallbackContext context);
+    }
+    public interface IUiActions
+    {
+        void OnClick(InputAction.CallbackContext context);
     }
 }

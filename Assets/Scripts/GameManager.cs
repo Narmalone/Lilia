@@ -20,8 +20,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     //----------------------------------------------- Choose Your Platform ------------------------------------------//
