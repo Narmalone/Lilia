@@ -42,10 +42,12 @@ public class RespawnMe : MonoBehaviour
     {
         if (m_gameManager.isDead == true)
         {
-            if (Input.anyKeyDown)
+            m_gameManager.isPc = false;
+            m_iaTransform.position = m_iaCheckpoint.position;
+            m_player.transform.position = m_playercheckpoints.transform.position;
+            if (Input.GetKeyDown(KeyCode.T))
             {
-                m_iaTransform.position = m_iaCheckpoint.position;
-                m_player.transform.position = m_playercheckpoints.transform.position;
+                m_gameManager.isPc = true;
                 Respawn();
                 Debug.Log("mort et appuie sur une touche");
             }
