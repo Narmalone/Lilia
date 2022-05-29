@@ -22,12 +22,13 @@ public class RespawnMe : MonoBehaviour
     public bool makeRespawn = true;
     public bool isNextCheckpoint = false;
     [SerializeField] private GameManager m_gameManager;
-
+    private float timeToWait = 1f;
     private void Awake()
     {
         makeRespawn = true;
         m_gameManager = FindObjectOfType<GameManager>();
         index = 0;
+        timeToWait = 1f;
     }
 
     private void OnEnable()
@@ -45,10 +46,28 @@ public class RespawnMe : MonoBehaviour
             m_gameManager.isPc = false;
             m_iaTransform.position = m_iaCheckpoint.position;
             m_player.transform.position = m_playercheckpoints.transform.position;
-            if (Input.GetKeyDown(KeyCode.T))
+            if (makeRespawn == true)
+            {
+                Debug.Log("lancer chrono");
+                StartChrono();
+            }
+        }
+    }
+    public void StartChrono()
+    {
+        Debug.Log("dans chrono");
+        if (timeToWait >= 0f)
+        {
+            timeToWait -= Time.deltaTime;
+        }
+        if(timeToWait <= 0f)
+        {
+            timeToWait = 0f;
+            if (Input.anyKeyDown)
             {
                 m_gameManager.isPc = true;
                 Respawn();
+                makeRespawn = false;
                 Debug.Log("mort et appuie sur une touche");
             }
         }
@@ -82,5 +101,6 @@ public class RespawnMe : MonoBehaviour
 
         m_menuManager.OnRespawn();
         m_gameManager.isDead = false;
+        timeToWait = 1f;
     }
 }

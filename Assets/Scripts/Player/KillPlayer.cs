@@ -10,7 +10,7 @@ public class KillPlayer : MonoBehaviour
     [SerializeField] private LayerMask m_portillonMask;
     [SerializeField] private MenuManager m_menuManager;
     [SerializeField] private GameManager m_gameManager;
-
+    [SerializeField] RespawnMe m_respawn;
     private Collider m_currentPortillon;
     private void Awake()
     {
@@ -35,12 +35,14 @@ public class KillPlayer : MonoBehaviour
             Debug.Log("GameOver");
             m_menuManager.OnDeath();
             m_gameManager.isDead = true;
+            m_respawn.makeRespawn = true;
         }
         if ((m_doudouMask.value & (1 << other.gameObject.layer)) > 0)
         {
             m_menuManager.OnDeath();
             m_gameManager.isDead = true;
+            m_respawn.makeRespawn = true;
         }
-     
+
     }
 }
