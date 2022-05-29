@@ -49,13 +49,15 @@ public class QTEManager : MonoBehaviour
     private RaycastHit m_hit,m_pastHit;
 
     private int m_nombre_de_départ_qte;
-        
+
+    private Renderer m_thisRend;
     private void Awake()
     {
         isInQte = false;
         canDoQte = false;
         m_txtPushTheBox.gameObject.SetActive(false);
         m_txtCancelAction.gameObject.SetActive(false);
+        m_thisRend = GetComponent<Renderer>();
     }
     void Start()
     {
@@ -156,6 +158,7 @@ public class QTEManager : MonoBehaviour
                 {
                     if(canDoQte == true)
                     {
+                        m_thisRend.GetComponent<Renderer>().material.SetFloat("_BooleanFloat", 1f);
                         m_txtPushTheBox.gameObject.SetActive(true);
                     }
                 }
@@ -190,6 +193,7 @@ public class QTEManager : MonoBehaviour
         if (ReferenceEquals( gameObject, m_pastHit.collider?.gameObject) && other.isTrigger)
         {
             Debug.Log("Je ne vise plus le meuble");
+            m_thisRend.GetComponent<Renderer>().material.SetFloat("_BooleanFloat", 0f);
             m_txtPushTheBox.gameObject.SetActive(false);
         }
 
