@@ -137,7 +137,8 @@ public class KeyScript : MonoBehaviour
             m_gameManager.gotKey = true;
             m_uiManager.DisableUi();
             m_keyUi.SetActive(true);
+            m_thisObject.transform.position = new Vector3(0f, 0f, 100f);
         }
-      
+
     }
 }

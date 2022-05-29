@@ -12,6 +12,7 @@ public class Doudou : MonoBehaviour
     [SerializeField, Tooltip("R�f�rence de la torche")]private GameObject m_doudou;
     [SerializeField] private Transform m_emplacementDoudou;
     [SerializeField] private AppearThings m_appear;
+    [SerializeField] private QTEManager m_qte;
     private BoxCollider m_boxDoudouColider;
     private Rigidbody m_rbDoudou;
     [SerializeField] private float m_stepOffset = 0.2f;
@@ -49,6 +50,7 @@ public class Doudou : MonoBehaviour
         if(TakeBeforeChase == true)
         {
             m_appear.IAdontMove = false;
+            m_qte.canDoQte = true;
             TakeBeforeChase = false;
         }
         m_rbDoudou.isKinematic = true;

@@ -36,10 +36,6 @@ public class MouseLock : MonoBehaviour
         }
         m_audioScript.PlayMusic("AmbiantMusic");
     }
-    void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
 
     // Update is called once per frame
     public void Update()

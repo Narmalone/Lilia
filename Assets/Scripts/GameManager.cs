@@ -17,11 +17,30 @@ public class GameManager : MonoBehaviour
     public bool isDead;
     public bool canPick = true;
 
+    public bool isPlayerInGame = false;
+
+    [SerializeField] private GameObject m_doudouUi;
+    [SerializeField] private GameObject m_veilleuseUi;
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
     }
-
+    public void PlayerNotIngame()
+    {
+        isPlayerInGame = false;
+        if (isPlayerInGame == false)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
+    public void PlayerInGame()
+    {
+        isPlayerInGame = true;
+        if (isPlayerInGame == true)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
     //----------------------------------------------- Choose Your Platform ------------------------------------------//
 
     public void PcSelected()
@@ -56,13 +75,15 @@ public class GameManager : MonoBehaviour
     {
         isPaused = true;
         Time.timeScale = 0;
-        Debug.Log("jeu en pause");
+        PlayerNotIngame();
     }
 
     public void GameResume()
     {
         isPaused = false;
         Time.timeScale = 1;
+        isPlayerInGame = true;
+        PlayerInGame();
     }
 
 }

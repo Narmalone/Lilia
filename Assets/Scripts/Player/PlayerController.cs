@@ -203,7 +203,10 @@ public class PlayerController : MonoBehaviour
         previous = Vector3.zero;
 
     }
-
+    private void Start()
+    {
+        m_gameManager.PlayerInGame();
+    }
     private void Update()
     {
         Debug.DrawRay(m_ray.origin,m_ray.direction, Color.black);

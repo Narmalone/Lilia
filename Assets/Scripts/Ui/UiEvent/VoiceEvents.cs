@@ -15,8 +15,6 @@ public class VoiceEvents : MonoBehaviour
 
     Color m_selectedColor = Color.yellow;
     Color m_unselectedColor = Color.white;
-
-    [SerializeField] private Button m_dicreaseBtn;
     private void OnEnable()
     {
         if (m_uiEvent == null) return;
@@ -85,6 +83,7 @@ public class VoiceEvents : MonoBehaviour
                 valueToDisplay = 100f;
             }
             UpdateValueToString();
+            m_audioScript.SetNewValue();
         }
         else
         {

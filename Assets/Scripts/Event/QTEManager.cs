@@ -43,6 +43,7 @@ public class QTEManager : MonoBehaviour
 
     public bool m_qteIsOver = false;
     public bool isInQte = false;
+    public bool canDoQte = false;
     private Ray m_ray;
 
     private RaycastHit m_hit,m_pastHit;
@@ -52,6 +53,7 @@ public class QTEManager : MonoBehaviour
     private void Awake()
     {
         isInQte = false;
+        canDoQte = false;
         m_txtPushTheBox.gameObject.SetActive(false);
         m_txtCancelAction.gameObject.SetActive(false);
     }
@@ -152,7 +154,10 @@ public class QTEManager : MonoBehaviour
             {
                 if(isInQte == false)
                 {
-                    m_txtPushTheBox.gameObject.SetActive(true);
+                    if(canDoQte == true)
+                    {
+                        m_txtPushTheBox.gameObject.SetActive(true);
+                    }
                 }
             }
 
@@ -160,18 +165,16 @@ public class QTEManager : MonoBehaviour
             {
                 if(m_qteIsOver == false)
                 {
-                    Debug.Log(m_nombre_de_départ_qte++);
-                    Debug.Log("Qte started");
-                    m_txtCancelAction.gameObject.SetActive(false);
-                    m_txtToModify.gameObject.SetActive(true);
-                    m_txtPushTheBox.gameObject.SetActive(false);
-                    m_qteStarted = true;
-                    isInQte = true;
-                    //if (m_playerController.m_doudouIsPossessed == false && m_playerController.m_flashlightIsPossessed == false)
-                    //{
-                       
-                    //}
-                   
+                    if(canDoQte == true)
+                    {
+                        Debug.Log(m_nombre_de_départ_qte++);
+                        Debug.Log("Qte started");
+                        m_txtCancelAction.gameObject.SetActive(false);
+                        m_txtToModify.gameObject.SetActive(true);
+                        m_txtPushTheBox.gameObject.SetActive(false);
+                        m_qteStarted = true;
+                        isInQte = true;
+                    }
                 }
                 
             }
