@@ -21,7 +21,7 @@ public class MouseLock : MonoBehaviour
     [SerializeField] private AssetMenuScriptValue m_assetMenuScriptable;
     [SerializeField] private AudioManagerScript m_audioScript;
 
-    private void Awake()
+    private void Start()
     {
         m_gameManager = FindObjectOfType<GameManager>();
 
@@ -52,6 +52,7 @@ public class MouseLock : MonoBehaviour
             transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
             playerBody.Rotate(Vector3.up * mouseX);
+            Debug.Log("gameManager true");
         }
         else if (m_gameManager.isGamepad == true)
         {
@@ -72,7 +73,6 @@ public class MouseLock : MonoBehaviour
 
     private void OnEnable()
     {
-        controls.Gameplay.Enable();
-        Awake();
+        
     }
 }
