@@ -25,6 +25,8 @@ public class Doudou : MonoBehaviour
     [SerializeField] private FMODUnity.EventReference m_fmodEventPickUp;
     
     [SerializeField] private FMODUnity.EventReference m_fmodEventDrop;
+
+    [SerializeField] private AssetMenuScriptValue m_asset;
     
     private void Awake()
     {
@@ -52,13 +54,22 @@ public class Doudou : MonoBehaviour
             m_appear.IAdontMove = false;
             m_qte.canDoQte = true;
             TakeBeforeChase = false;
+            m_rbDoudou.isKinematic = true;
+            m_rbDoudou.useGravity = false;
+            m_doudou.transform.position = new Vector3(1100f, 1100f, 1100f);
+            m_doudou.GetComponent<BoxCollider>().enabled = false;
+            uiManager.DisableUi();
+            FMODUnity.RuntimeManager.PlayOneShotAttached(m_fmodEventPickUp.Guid, m_gOPlayer.gameObject);
         }
-        m_rbDoudou.isKinematic = true;
-        m_rbDoudou.useGravity = false;
-        m_doudou.transform.position = new Vector3(1100f, 1100f, 1100f);
-        m_doudou.GetComponent<BoxCollider>().enabled = false;
-        uiManager.DisableUi();
-        FMODUnity.RuntimeManager.PlayOneShotAttached(m_fmodEventPickUp.Guid, m_gOPlayer.gameObject);
+        else
+        {
+            m_rbDoudou.isKinematic = true;
+            m_rbDoudou.useGravity = false;
+            m_doudou.transform.position = new Vector3(1100f, 1100f, 1100f);
+            m_doudou.GetComponent<BoxCollider>().enabled = false;
+            uiManager.DisableUi();
+            FMODUnity.RuntimeManager.PlayOneShotAttached(m_fmodEventPickUp.Guid, m_gOPlayer.gameObject);
+        }
 
     }
 

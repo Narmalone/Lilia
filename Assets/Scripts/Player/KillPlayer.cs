@@ -27,8 +27,11 @@ public class KillPlayer : MonoBehaviour
     {
         if ((m_portillonMask.value & (1 << other.gameObject.layer)) > 0)
         {
-            other.gameObject.GetComponent<Doors>().OnComplete();
-            Debug.Log(other.name);
+            if(other.gameObject.GetComponent<Doors>().isDoor == false)
+            {
+                other.gameObject.GetComponent<Doors>().OnComplete();
+                Debug.Log("ouvre le portillon");
+            }
         }
         if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
         {

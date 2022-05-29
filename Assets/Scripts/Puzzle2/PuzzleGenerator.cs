@@ -76,7 +76,7 @@ public class PuzzleGenerator : MonoBehaviour
     {
         if (isLocked == true)
         {
-            
+            m_player.m_speed = 0f;
             if (isTrigger == true)
             {
                 SwitchSelect();
@@ -84,7 +84,6 @@ public class PuzzleGenerator : MonoBehaviour
                 if (Vector3.Distance(m_player.transform.position, m_containerPlayer.transform.position) > m_rangeToNotOut)
                 {
                     m_player.transform.position = Vector3.MoveTowards(m_player.transform.position, m_containerPlayer.transform.position, 0.1f);
-                    m_player.m_speed = 0f;
                 }
             }
         }
@@ -106,6 +105,7 @@ public class PuzzleGenerator : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 isLocked = true;
+                m_player.m_speed = 0f;
                 m_txtCancelAction.gameObject.SetActive(true);
                 foreach (GameObject p_obj in m_toActive)
                 {

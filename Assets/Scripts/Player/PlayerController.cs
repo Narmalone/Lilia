@@ -235,8 +235,9 @@ public class PlayerController : MonoBehaviour
             m_fmodInstancePas.setParameterByName("Speed", velocity*3);
         }
         m_fmodInstancePas.setVolume(m_assetMenu.value);
-        m_fmodInstanceStress.setParameterByName("Stress",10-m_currentStress*10/m_maxStress);
         m_fmodInstanceStress.setVolume(m_assetMenu.value);
+
+        m_fmodInstanceStress.setParameterByName("Stress",10-m_currentStress*10/m_maxStress);
 
         m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Cr�ation d'une sphere qui chech si le joueur touche le sol
 
@@ -494,8 +495,8 @@ public class PlayerController : MonoBehaviour
                     {
                         if(m_doudouIsPossessed == true)
                         {
-                            m_doudou.DropItem();
                             m_doudouIsPossessed = false;
+                            m_doudou.DropItem();
                             m_UIManager.DropDoudou();
                             m_doudou.GetComponent<BoxCollider>().enabled = true;
                         }
@@ -568,6 +569,11 @@ public class PlayerController : MonoBehaviour
             {
                 if (m_flashlightIsPossessed == false)
                 {
+                    if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 0)
+                    {
+                        m_createNarrativeEvent.actionComplete = true;
+                        m_createNarrativeEvent.isWaitingAction = false;
+                    }
                     m_flashlightIsPossessed = true;
                     m_flm.GetComponent<BoxCollider>().enabled = false;
                     m_UIManager.TakeLampe();
@@ -634,11 +640,6 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 0)
-                    {
-                        m_createNarrativeEvent.actionComplete = true;
-                        m_createNarrativeEvent.isWaitingAction = false;
-                    }
                     m_UIManager.TakeDoudou();
                     m_doudou.PickItem();
                     m_doudouIsPossessed = true;
