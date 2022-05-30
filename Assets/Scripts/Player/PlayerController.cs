@@ -171,15 +171,6 @@ public class PlayerController : MonoBehaviour
 
     public Ray m_ray;
 
-<<<<<<< HEAD
-
-
-    private void Awake()
-    {
-        m_playerAnimationReveil = GetComponent<PlayerAnimation>();
-        m_mouseLock = FindObjectOfType<MouseLock>();
-        
-=======
     public bool isCinematic = true;
 
     [SerializeField] private Renderer m_flashlightRend;
@@ -191,8 +182,9 @@ public class PlayerController : MonoBehaviour
     private float timeBeforeDropVeilleuse = 0.3f;
     private void Awake()
     {
+        m_playerAnimationReveil = GetComponent<PlayerAnimation>();
+        m_mouseLock = FindObjectOfType<MouseLock>();
         isCinematic = true;
->>>>>>> origin/dev_Thomas
         m_gameManager = FindObjectOfType<GameManager>();
         m_menuManager = FindObjectOfType<MenuManager>();
         m_controls = new PlayerControls();
@@ -231,11 +223,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-<<<<<<< HEAD
-        
-=======
         m_ray = m_cam.ScreenPointToRay(Input.mousePosition);
->>>>>>> origin/dev_Thomas
         Debug.DrawRay(m_ray.origin,m_ray.direction, Color.black);
        if (Physics.Raycast(m_ray, out m_hit, 1, ~(1 << gameObject.layer)))
         {
@@ -338,14 +326,10 @@ public class PlayerController : MonoBehaviour
 
 
         //Check Fonctions
-
-<<<<<<< HEAD
+        
         if (!m_stopStress) AutoStress();
-
-        ActiveFlashlight();
-=======
+        
         AutoStress();
->>>>>>> origin/dev_Thomas
         ActiveDoudou();
 
         // test shader

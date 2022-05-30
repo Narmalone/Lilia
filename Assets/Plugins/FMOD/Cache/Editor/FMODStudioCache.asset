@@ -1,6 +1,26 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9131950529660344777
+--- !u!114 &-8521385923133531664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Voices.bank
+  m_EditorClassIdentifier: 
+  Path: FmodProject/Second/Build/Desktop/Voices.bank
+  Name: Voices
+  StudioPath: bank:/Voices
+  lastModified: 637895061130329959
+  FileSizes:
+  - Name: Desktop
+    Value: 44704
+  Exists: 1
+--- !u!114 &-7461947601037682179
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19,7 +39,7 @@ MonoBehaviour:
     Data3: -2066293343
     Data4: 702200443
   Banks:
-  - {fileID: 4628613683530071377}
+  - {fileID: 8573686791199892123}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -27,7 +47,31 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 6720
---- !u!114 &-9091499505101358599
+--- !u!114 &-5921680352850749363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Pas/Speed
+  m_EditorClassIdentifier: 
+  Name: Speed
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 3264674803
+    data2: 252286697
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-5389512971571946493
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -37,76 +81,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Hits/KeyDropFromBox
+  m_Name: event:/SoundsEvent/Baby/ContinuousBabyNoise
   m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Hits/KeyDropFromBox
+  Path: event:/SoundsEvent/Baby/ContinuousBabyNoise
   Guid:
-    Data1: 1540604811
-    Data2: 1308501917
-    Data3: -928801122
-    Data4: 543231078
+    Data1: -1490063551
+    Data2: 1190372012
+    Data3: 335015330
+    Data4: 608535171
   Banks:
-  - {fileID: 6360808476272309025}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 816
-<<<<<<< HEAD
---- !u!114 &-8871523430798019570
-=======
---- !u!114 &-9019110662017379669
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-<<<<<<< HEAD
-  m_Name: event:/Music/Ambiant/AmbiantMusic.tpe1
-  m_EditorClassIdentifier: 
-  Path: event:/Music/Ambiant/AmbiantMusic.tpe1
-  Guid:
-    Data1: -518835408
-    Data2: 1098783581
-    Data3: 1361168814
-    Data4: -1168719447
-  Banks:
-  - {fileID: 2841392921219726043}
+  - {fileID: 8573686791199892123}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 144000
---- !u!114 &-8633542563620055317
-=======
-  m_Name: event:/SoundsEvent/Hits/Puzzle_HitBox
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Hits/Puzzle_HitBox
-  Guid:
-    Data1: 245796041
-    Data2: 1160800057
-    Data3: -1306144121
-    Data4: 1591531773
-  Banks:
-  - {fileID: -2576418368697860947}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 800
---- !u!114 &-8903518947611705869
->>>>>>> origin/dev_Thomas
+  Length: 55000
+--- !u!114 &-4742695226193353171
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,38 +107,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Master.bank
   m_EditorClassIdentifier: 
   Path: FmodProject/Second/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637890681569466169
+  lastModified: 637895061129950985
   FileSizes:
   - Name: Desktop
     Value: 2032
   Exists: 1
-=======
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Porte/OuverturePorte
+--- !u!114 &-4675720963851066582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/StressHorreur/Stress
   m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Porte/OuverturePorte
-  Guid:
-    Data1: 175253242
-    Data2: 1137279336
-    Data3: 1930312106
-    Data4: 737897604
-  Banks:
-  - {fileID: -2576418368697860947}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-8883088686141427805
+  Name: Stress
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 87529076
+    data2: 771149325
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-4306285597838875738
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,25 +152,49 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/BabyDragging
+  m_Name: event:/SoundsEvent/BruitPas/Pas
   m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/BabyDragging
+  Path: event:/SoundsEvent/BruitPas/Pas
   Guid:
-    Data1: 1610553309
-    Data2: 1342119385
-    Data3: 1328284064
-    Data4: -666646400
+    Data1: -1398225717
+    Data2: 1297638522
+    Data3: -771669373
+    Data4: 1061648962
   Banks:
-  - {fileID: -2576418368697860947}
+  - {fileID: 8573686791199892123}
   IsStream: 0
   Is3D: 1
-  IsOneShot: 1
-  Parameters: []
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -5921680352850749363}
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
->>>>>>> origin/dev_Thomas
---- !u!114 &-8561647614913166062
+  Length: 7000
+--- !u!114 &-4121098502074258784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PhoneCall/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-3475042424753136911
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,51 +204,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/RamassageEtLachage/Doudou/DropDoudou
+  m_Name: event:/SoundsEvent/Phone/HangUpPhone
   m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/RamassageEtLachage/Doudou/DropDoudou
+  Path: event:/SoundsEvent/Phone/HangUpPhone
   Guid:
-    Data1: 1006949352
-    Data2: 1104796797
-    Data3: -672511818
-    Data4: 1081390729
+    Data1: -1790704415
+    Data2: 1135028924
+    Data3: 1686708149
+    Data4: 1475868546
   Banks:
-  - {fileID: -4250151385257737303}
+  - {fileID: 8573686791199892123}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
---- !u!114 &-8552785383281803644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/LesPotes/Julien
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/LesPotes/Julien
-  Guid:
-    Data1: -1308353413
-    Data2: 1141618755
-    Data3: -1198669145
-    Data4: 872367579
-  Banks:
-  - {fileID: -4250151385257737303}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 2580
---- !u!114 &-8511421970624985260
+  Length: 500
+--- !u!114 &-3438320986433233709
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -247,7 +240,7 @@ MonoBehaviour:
     Data3: 1084500401
     Data4: -80234758
   Banks:
-  - {fileID: -8315650692764663352}
+  - {fileID: -8521385923133531664}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -255,7 +248,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 5310
---- !u!114 &-8447790283764851556
+--- !u!114 &-3372099189889548653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Doudou/UtilisationDoudou
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Doudou/UtilisationDoudou
+  Guid:
+    Data1: -995624965
+    Data2: 1148206418
+    Data3: -2112027520
+    Data4: -2107392880
+  Banks:
+  - {fileID: 8573686791199892123}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 44500
+--- !u!114 &-3116212208830764206
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -274,36 +294,16 @@ MonoBehaviour:
     Data3: -524514921
     Data4: -1855257768
   Banks:
-  - {fileID: 4628613683530071377}
+  - {fileID: 8573686791199892123}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: -795300857721381946}
+  - {fileID: 6831792867049358213}
   MinDistance: 1
   MaxDistance: 20
   Length: 4500
---- !u!114 &-8339541721316272822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 637877119692146392
-  FileSizes:
-  - Name: Desktop
-    Value: 2032
-  Exists: 1
---- !u!114 &-8326077400855044155
+--- !u!114 &-3028130064654595886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -322,7 +322,7 @@ MonoBehaviour:
     Data3: -75015237
     Data4: 26522174
   Banks:
-  - {fileID: -7613309203841365879}
+  - {fileID: 8573686791199892123}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -330,7 +330,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-8315650692764663352
+--- !u!114 &-2748695504336268083
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -339,22 +339,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Voices.bank
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Hits/Puzzle_HitBox
   m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Voices.bank
-  Name: Voices
-  StudioPath: bank:/Voices
-  lastModified: 637877351452107206
-  FileSizes:
-  - Name: Desktop
-    Value: 44704
-  Exists: 1
-<<<<<<< HEAD
---- !u!114 &-8201382712109731264
-=======
---- !u!114 &-8305800782163669429
->>>>>>> origin/dev_Thomas
+  Path: event:/SoundsEvent/Hits/Puzzle_HitBox
+  Guid:
+    Data1: 245796041
+    Data2: 1160800057
+    Data3: -1306144121
+    Data4: 1591531773
+  Banks:
+  - {fileID: 8573686791199892123}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 800
+--- !u!114 &-2056544882489153872
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -363,19 +366,60 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/LesPotes/Julien
   m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 637895061129950985
-  FileSizes:
-  - Name: Desktop
-    Value: 2032
-  Exists: 1
-=======
+  Path: event:/SoundsEvent/LesPotes/Julien
+  Guid:
+    Data1: -1308353413
+    Data2: 1141618755
+    Data3: -1198669145
+    Data4: 872367579
+  Banks:
+  - {fileID: 8573686791199892123}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2580
+--- !u!114 &-1958937999354745490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Baby/ContinuousZblob
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Baby/ContinuousZblob
+  Guid:
+    Data1: -1473439197
+    Data2: 1256902212
+    Data3: 1837457826
+    Data4: 1537863522
+  Banks:
+  - {fileID: 8573686791199892123}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 56500
+--- !u!114 &-1694941781867685544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: event:/SoundsEvent/Hits/KeyDropFromBox
   m_EditorClassIdentifier: 
@@ -386,7 +430,7 @@ MonoBehaviour:
     Data3: -928801122
     Data4: 543231078
   Banks:
-  - {fileID: -2576418368697860947}
+  - {fileID: 8573686791199892123}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -394,7 +438,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 672
---- !u!114 &-8131936385571454547
+--- !u!114 &-782343455872713806
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -404,16 +448,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/RamassageEtLachage/Doudou/PickUpDoudou
+  m_Name: event:/SoundsEvent/Baby/BabyDragging
   m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/RamassageEtLachage/Doudou/PickUpDoudou
+  Path: event:/SoundsEvent/Baby/BabyDragging
   Guid:
-    Data1: -2060455845
-    Data2: 1123760112
-    Data3: -1585368397
-    Data4: 1973425487
+    Data1: 1610553309
+    Data2: 1342119385
+    Data3: 1328284064
+    Data4: -666646400
   Banks:
-  - {fileID: 8374606570878851619}
+  - {fileID: 8573686791199892123}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -421,8 +465,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
->>>>>>> origin/dev_Thomas
---- !u!114 &-8111452452763798347
+--- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -431,277 +474,47 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/Respiration
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/Respiration
-  Guid:
-    Data1: -382007823
-    Data2: 1127377340
-    Data3: -524514921
-    Data4: -1855257768
-  Banks:
-  - {fileID: -4250151385257737303}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 2297150863585606592}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 4500
-<<<<<<< HEAD
---- !u!114 &-7779499070124186818
-=======
---- !u!114 &-8053989406300352155
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/PickUpClef"
-  m_EditorClassIdentifier: 
-  Path: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/PickUpClef"
-  Guid:
-    Data1: -509378906
-    Data2: 1178982841
-    Data3: 1068845747
-    Data4: -228688395
-  Banks:
-  - {fileID: 4628613683530071377}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
-=======
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Pas/Speed
-  m_EditorClassIdentifier: 
-  Name: Speed
-  StudioPath: 
-  Min: 0
-  Max: 10
-  Default: 0
-  ID:
-    data1: 3264674803
-    data2: 252286697
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-7736474208085321896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Music.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Music.bank
-  Name: Music
-  StudioPath: bank:/Music
-  lastModified: 637890959498423872
-  FileSizes:
-  - Name: Desktop
-    Value: 2111680
-  Exists: 1
->>>>>>> origin/dev_Thomas
---- !u!114 &-7704596329350062382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/LesPotes/Julien_1
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/LesPotes/Julien_1
-  Guid:
-    Data1: -891858308
-    Data2: 1304586381
-    Data3: -2066293343
-    Data4: 702200443
-  Banks:
-  - {fileID: -4250151385257737303}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 6720
-<<<<<<< HEAD
---- !u!114 &-7613309203841365879
-=======
---- !u!114 &-7554167622091522912
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Sounds.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Sounds.bank
-  Name: Sounds
-  StudioPath: bank:/Sounds
-  lastModified: 637890681569984786
-  FileSizes:
-  - Name: Desktop
-    Value: 3674656
-  Exists: 1
-=======
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/Ambiant/AmbiantMusic.tpe1
-  m_EditorClassIdentifier: 
-  Path: event:/Music/Ambiant/AmbiantMusic.tpe1
-  Guid:
-    Data1: -518835408
-    Data2: 1098783581
-    Data3: 1361168814
-    Data4: -1168719447
-  Banks:
-  - {fileID: -7736474208085321896}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 144000
->>>>>>> origin/dev_Thomas
---- !u!114 &-7539931956180183554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Phone/PhoneCall
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Phone/PhoneCall
-  Guid:
-    Data1: 1855847930
-    Data2: 1215896063
-    Data3: -55972442
-    Data4: -439486445
-  Banks:
-  - {fileID: -4323139442411857579}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 17475
---- !u!114 &-7463425269824479448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/Ambiant/AmbiantMusic.tpe1
-  m_EditorClassIdentifier: 
-  Path: event:/Music/Ambiant/AmbiantMusic.tpe1
-  Guid:
-    Data1: -518835408
-    Data2: 1098783581
-    Data3: 1361168814
-    Data4: -1168719447
-  Banks:
-  - {fileID: -571838951856193954}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -1094246833183411891}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 144618
---- !u!114 &-7435057904955706446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Hits/KeyDropFromBox
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Hits/KeyDropFromBox
-  Guid:
-    Data1: 1540604811
-    Data2: 1308501917
-    Data3: -928801122
-    Data4: 543231078
-  Banks:
-  - {fileID: 8591615241895475423}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 816
-<<<<<<< HEAD
---- !u!114 &-7424738463067172973
-=======
---- !u!114 &-7326705617647044434
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-<<<<<<< HEAD
-  lastModified: 637890681569466169
-=======
-  lastModified: 637888603709373660
->>>>>>> origin/dev_Thomas
-  FileSizes:
-  - Name: Desktop
-    Value: 2524
-  Exists: 1
---- !u!114 &-7307019195370834805
+  EditorBanks:
+  - {fileID: 5306494497500027269}
+  - {fileID: -4742695226193353171}
+  - {fileID: 1352412776162888349}
+  - {fileID: 8573686791199892123}
+  - {fileID: -8521385923133531664}
+  EditorEvents:
+  - {fileID: 2175994640774923959}
+  - {fileID: 6808439213951012509}
+  - {fileID: -3028130064654595886}
+  - {fileID: -1958937999354745490}
+  - {fileID: -5389512971571946493}
+  - {fileID: 6897601970321216110}
+  - {fileID: 4929473158268606888}
+  - {fileID: -2056544882489153872}
+  - {fileID: -7461947601037682179}
+  - {fileID: 1051651322617240181}
+  - {fileID: -1694941781867685544}
+  - {fileID: 215315839100486125}
+  - {fileID: 6168955726612754099}
+  - {fileID: -2748695504336268083}
+  - {fileID: -4306285597838875738}
+  - {fileID: -782343455872713806}
+  - {fileID: -3475042424753136911}
+  - {fileID: 7632292560187407196}
+  - {fileID: -3116212208830764206}
+  - {fileID: 3271797968959288757}
+  - {fileID: 2918091259545952608}
+  - {fileID: -3372099189889548653}
+  - {fileID: -3438320986433233709}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: -4742695226193353171}
+  StringsBanks:
+  - {fileID: 5306494497500027269}
+  cacheTime: 637895068156683845
+  cacheVersion: 10
+--- !u!114 &215315839100486125
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -720,20 +533,16 @@ MonoBehaviour:
     Data3: -314798696
     Data4: -237360077
   Banks:
-  - {fileID: -4250151385257737303}
+  - {fileID: 8573686791199892123}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: -1307987121049607141}
+  - {fileID: -4675720963851066582}
   MinDistance: 1
   MaxDistance: 20
   Length: 37500
-<<<<<<< HEAD
---- !u!114 &-7086990601805921231
-=======
---- !u!114 &-7057268232426466467
->>>>>>> origin/dev_Thomas
+--- !u!114 &1051651322617240181
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -742,156 +551,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-<<<<<<< HEAD
-  m_Name: event:/SoundsEvent/Phone/HangUpPhone
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Phone/HangUpPhone
-  Guid:
-    Data1: -1790704415
-    Data2: 1135028924
-    Data3: 1686708149
-    Data4: 1475868546
-  Banks:
-  - {fileID: 4628613683530071377}
-=======
-  m_Name: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/PickUpClef"
-  m_EditorClassIdentifier: 
-  Path: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/PickUpClef"
-  Guid:
-    Data1: -509378906
-    Data2: 1178982841
-    Data3: 1068845747
-    Data4: -228688395
-  Banks:
-  - {fileID: 8374606570878851619}
->>>>>>> origin/dev_Thomas
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-<<<<<<< HEAD
-  Length: 500
-=======
-  Length: 0
->>>>>>> origin/dev_Thomas
---- !u!114 &-7016073335477802118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Hits/Puzzle_HitBox
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Hits/Puzzle_HitBox
-  Guid:
-    Data1: 245796041
-    Data2: 1160800057
-    Data3: -1306144121
-    Data4: 1591531773
-  Banks:
-  - {fileID: -4323139442411857579}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1280
---- !u!114 &-6921351772936867771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Voices.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Voices.bank
-  Name: Voices
-  StudioPath: bank:/Voices
-  lastModified: 637885595717348537
-  FileSizes:
-  - Name: Desktop
-    Value: 44704
-  Exists: 1
---- !u!114 &-6900489028716341285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/ContinuousZblob
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/ContinuousZblob
-  Guid:
-    Data1: -1473439197
-    Data2: 1256902212
-    Data3: 1837457826
-    Data4: 1537863522
-  Banks:
-  - {fileID: -7613309203841365879}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 56500
---- !u!114 &-6888887293965773100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/ContinuousZblob
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/ContinuousZblob
-  Guid:
-    Data1: -1473439197
-    Data2: 1256902212
-    Data3: 1837457826
-    Data4: 1537863522
-  Banks:
-  - {fileID: -4250151385257737303}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 56500
-<<<<<<< HEAD
---- !u!114 &-6840144565635006193
-=======
---- !u!114 &-6687318300782165087
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: event:/SoundsEvent/RamassageEtLachage/Lampe/PickUpLampe
   m_EditorClassIdentifier: 
@@ -902,7 +561,7 @@ MonoBehaviour:
     Data3: -886582120
     Data4: 349235023
   Banks:
-  - {fileID: -7613309203841365879}
+  - {fileID: 8573686791199892123}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -910,469 +569,27 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-6529432583634621626
-=======
+--- !u!114 &1352412776162888349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Music.bank
   m_EditorClassIdentifier: 
   Path: FmodProject/Second/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637893911512548838
+  lastModified: 637895068156514276
   FileSizes:
   - Name: Desktop
     Value: 2111680
   Exists: 1
---- !u!114 &-6438844683463897179
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Hits/Puzzle_HitBox
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Hits/Puzzle_HitBox
-  Guid:
-    Data1: 245796041
-    Data2: 1160800057
-    Data3: -1306144121
-    Data4: 1591531773
-  Banks:
-  - {fileID: 4628613683530071377}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 800
---- !u!114 &-6460542317806211597
-=======
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Voices.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Voices.bank
-  Name: Voices
-  StudioPath: bank:/Voices
-  lastModified: 637893911512688961
-  FileSizes:
-  - Name: Desktop
-    Value: 44704
-  Exists: 1
---- !u!114 &-6428611811817512449
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/RamassageEtLachage/Lampe/DropLampe
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/RamassageEtLachage/Lampe/DropLampe
-  Guid:
-    Data1: -1742877841
-    Data2: 1203100284
-    Data3: 1432700069
-    Data4: -1009109787
-  Banks:
-  - {fileID: -7613309203841365879}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
-=======
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Respiration/Occlusion
-  m_EditorClassIdentifier: 
-  Name: Occlusion
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 4035467436
-    data2: 77915238
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
->>>>>>> origin/dev_Thomas
---- !u!114 &-6328526830781190851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 637885595716291389
-  FileSizes:
-  - Name: Desktop
-    Value: 1992
-  Exists: 1
---- !u!114 &-6294520363157540637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Music.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Music.bank
-  Name: Music
-  StudioPath: bank:/Music
-  lastModified: 637877127518118966
-  FileSizes:
-  - Name: Desktop
-    Value: 2110624
-  Exists: 1
---- !u!114 &-6191726467946173337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Doudou/UtilisationDoudou
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Doudou/UtilisationDoudou
-  Guid:
-    Data1: -995624965
-    Data2: 1148206418
-    Data3: -2112027520
-    Data4: -2107392880
-  Banks:
-  - {fileID: 8374606570878851619}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 44500
---- !u!114 &-6188681719689578694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Phone/PhoneCall
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Phone/PhoneCall
-  Guid:
-    Data1: 1855847930
-    Data2: 1215896063
-    Data3: -55972442
-    Data4: -439486445
-  Banks:
-  - {fileID: 8591615241895475423}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 17475
---- !u!114 &-6102310305041883467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Porte/OuverturePorte
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Porte/OuverturePorte
-  Guid:
-    Data1: 175253242
-    Data2: 1137279336
-    Data3: 1930312106
-    Data4: 737897604
-  Banks:
-  - {fileID: -7613309203841365879}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-6025603560854553159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/LesPotes/Julien_1
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/LesPotes/Julien_1
-  Guid:
-    Data1: -891858308
-    Data2: 1304586381
-    Data3: -2066293343
-    Data4: 702200443
-  Banks:
-  - {fileID: 8591615241895475423}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 6720
---- !u!114 &-6005827189567278712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/ContinuousBabyNoise
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/ContinuousBabyNoise
-  Guid:
-    Data1: -1490063551
-    Data2: 1190372012
-    Data3: 335015330
-    Data4: 608535171
-  Banks:
-  - {fileID: -4250151385257737303}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 55000
---- !u!114 &-5935406794266970482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/BruitPas/Pas
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/BruitPas/Pas
-  Guid:
-    Data1: -1398225717
-    Data2: 1297638522
-    Data3: -771669373
-    Data4: 1061648962
-  Banks:
-  - {fileID: 6360808476272309025}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 8074888729202020532}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 7000
-<<<<<<< HEAD
---- !u!114 &-5853527086107656264
-=======
---- !u!114 &-5826257169243818897
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-<<<<<<< HEAD
-  m_Name: event:/SoundsEvent/Baby/Respiration
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/Respiration
-  Guid:
-    Data1: -382007823
-    Data2: 1127377340
-    Data3: -524514921
-    Data4: -1855257768
-  Banks:
-  - {fileID: -7613309203841365879}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -3960413128566125607}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 4500
-=======
-  m_Name: event:/SoundsEvent/RamassageEtLachage/Lampe/PickUpLampe
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/RamassageEtLachage/Lampe/PickUpLampe
-  Guid:
-    Data1: 1203360393
-    Data2: 1244540880
-    Data3: -886582120
-    Data4: 349235023
-  Banks:
-  - {fileID: 8374606570878851619}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
->>>>>>> origin/dev_Thomas
---- !u!114 &-5608223386385781494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Doudou/UtilisationDoudou
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Doudou/UtilisationDoudou
-  Guid:
-    Data1: -995624965
-    Data2: 1148206418
-    Data3: -2112027520
-    Data4: -2107392880
-  Banks:
-  - {fileID: -4250151385257737303}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 44500
---- !u!114 &-5575005711840312893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/StressHorreur/Stress
-  m_EditorClassIdentifier: 
-  Name: Stress
-  StudioPath: 
-  Min: 0
-  Max: 10
-  Default: 0
-  ID:
-    data1: 87529076
-    data2: 771149325
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-5515930432726529931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/RamassageEtLachage/Lampe/PickUpLampe
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/RamassageEtLachage/Lampe/PickUpLampe
-  Guid:
-    Data1: 1203360393
-    Data2: 1244540880
-    Data3: -886582120
-    Data4: 349235023
-  Banks:
-  - {fileID: -4250151385257737303}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-5486554328931809345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/BruitPas/Pas
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/BruitPas/Pas
-  Guid:
-    Data1: -1398225717
-    Data2: 1297638522
-    Data3: -771669373
-    Data4: 1061648962
-  Banks:
-  - {fileID: -2576418368697860947}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -8053989406300352155}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 7000
---- !u!114 &-5199428060287531885
+--- !u!114 &2175994640774923959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1391,117 +608,15 @@ MonoBehaviour:
     Data3: 1361168814
     Data4: -1168719447
   Banks:
-  - {fileID: -6294520363157540637}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 154618
---- !u!114 &-5088904689748810256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/Crying
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/Crying
-  Guid:
-    Data1: 1694986241
-    Data2: 1157396051
-    Data3: -75015237
-    Data4: 26522174
-  Banks:
-  - {fileID: -4250151385257737303}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
-<<<<<<< HEAD
---- !u!114 &-5014951530520689849
-=======
---- !u!114 &-4907612572815373594
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-<<<<<<< HEAD
-  m_Name: event:/SoundsEvent/Hits/KeyDropFromBox
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Hits/KeyDropFromBox
-  Guid:
-    Data1: 1540604811
-    Data2: 1308501917
-    Data3: -928801122
-    Data4: 543231078
-  Banks:
-  - {fileID: 4628613683530071377}
-=======
-  m_Name: event:/SoundsEvent/RamassageEtLachage/Lampe/PickUpLampe
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/RamassageEtLachage/Lampe/PickUpLampe
-  Guid:
-    Data1: 1203360393
-    Data2: 1244540880
-    Data3: -886582120
-    Data4: 349235023
-  Banks:
-  - {fileID: -2576418368697860947}
->>>>>>> origin/dev_Thomas
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-<<<<<<< HEAD
-  Length: 672
-=======
-  Length: 0
---- !u!114 &-4441700291523772781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/ContinuousZblob
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/ContinuousZblob
-  Guid:
-    Data1: -1473439197
-    Data2: 1256902212
-    Data3: 1837457826
-    Data4: 1537863522
-  Banks:
-  - {fileID: -2576418368697860947}
+  - {fileID: 1352412776162888349}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 56500
->>>>>>> origin/dev_Thomas
---- !u!114 &-4422997392938205610
+  Length: 144000
+--- !u!114 &2918091259545952608
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1511,68 +626,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Hits/Puzzle_HitBox
+  m_Name: event:/SoundsEvent/Phone/PhoneCall
   m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Hits/Puzzle_HitBox
+  Path: event:/SoundsEvent/Phone/PhoneCall
   Guid:
-    Data1: 245796041
-    Data2: 1160800057
-    Data3: -1306144121
-    Data4: 1591531773
+    Data1: 1855847930
+    Data2: 1215896063
+    Data3: -55972442
+    Data4: -439486445
   Banks:
-  - {fileID: 6360808476272309025}
-  IsStream: 0
+  - {fileID: 8573686791199892123}
+  IsStream: 1
   Is3D: 1
-  IsOneShot: 1
-  Parameters: []
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -4121098502074258784}
   MinDistance: 1
   MaxDistance: 20
-  Length: 1280
---- !u!114 &-4350094184165568127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/StressHorreur/Stress
-  m_EditorClassIdentifier: 
-  Name: Stress
-  StudioPath: 
-  Min: 0
-  Max: 10
-  Default: 0
-  ID:
-    data1: 87529076
-    data2: 771149325
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-4323139442411857579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Sounds.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Sounds.bank
-  Name: Sounds
-  StudioPath: bank:/Sounds
-  lastModified: 637877127518218643
-  FileSizes:
-  - Name: Desktop
-    Value: 275072
-  Exists: 1
---- !u!114 &-4298988683807960112
+  Length: 17475
+--- !u!114 &3271797968959288757
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1582,16 +654,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/DropKey"
+  m_Name: event:/SoundsEvent/Porte/OuverturePorte
   m_EditorClassIdentifier: 
-  Path: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/DropKey"
+  Path: event:/SoundsEvent/Porte/OuverturePorte
   Guid:
-    Data1: -1328929280
-    Data2: 1308074205
-    Data3: 1166356363
-    Data4: 654575473
+    Data1: 175253242
+    Data2: 1137279336
+    Data3: 1930312106
+    Data4: 737897604
   Banks:
-  - {fileID: 4628613683530071377}
+  - {fileID: 8573686791199892123}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1599,59 +671,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-4250151385257737303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Sounds.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Sounds.bank
-  Name: Sounds
-  StudioPath: bank:/Sounds
-<<<<<<< HEAD
-  lastModified: 637888974298877340
-=======
-  lastModified: 637890656483679380
->>>>>>> origin/dev_Thomas
-  FileSizes:
-  - Name: Desktop
-    Value: 3674656
-  Exists: 1
-<<<<<<< HEAD
---- !u!114 &-3960413128566125607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Respiration/Occlusion
-  m_EditorClassIdentifier: 
-  Name: Occlusion
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 4035467436
-    data2: 77915238
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-3475212053613142362
-=======
---- !u!114 &-3724538463764870563
->>>>>>> origin/dev_Thomas
+--- !u!114 &4929473158268606888
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1661,25 +681,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-<<<<<<< HEAD
-  m_Name: event:/SoundsEvent/Baby/ContinuousBabyNoise
+  m_Name: event:/SoundsEvent/RamassageEtLachage/Lampe/DropLampe
   m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/ContinuousBabyNoise
+  Path: event:/SoundsEvent/RamassageEtLachage/Lampe/DropLampe
   Guid:
-    Data1: -1490063551
-    Data2: 1190372012
-    Data3: 335015330
-    Data4: 608535171
+    Data1: -1742877841
+    Data2: 1203100284
+    Data3: 1432700069
+    Data4: -1009109787
   Banks:
-  - {fileID: -7613309203841365879}
-  IsStream: 1
+  - {fileID: 8573686791199892123}
+  IsStream: 0
   Is3D: 1
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 55000
---- !u!114 &-3142529142587765348
+  Length: 0
+--- !u!114 &5306494497500027269
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1699,27 +718,7 @@ MonoBehaviour:
   - Name: Desktop
     Value: 2524
   Exists: 1
---- !u!114 &-3096527321445204449
-=======
-  m_Name: event:/SoundsEvent/Hits/KeyDropFromBox
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Hits/KeyDropFromBox
-  Guid:
-    Data1: 1540604811
-    Data2: 1308501917
-    Data3: -928801122
-    Data4: 543231078
-  Banks:
-  - {fileID: 8374606570878851619}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 672
---- !u!114 &-3486455447211189552
->>>>>>> origin/dev_Thomas
+--- !u!114 &6168955726612754099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1729,35 +728,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-<<<<<<< HEAD
-  m_Name: event:/Music/Ambiant/AmbiantMusic.tpe1
+  m_Name: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/PickUpClef"
   m_EditorClassIdentifier: 
-  Path: event:/Music/Ambiant/AmbiantMusic.tpe1
+  Path: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/PickUpClef"
   Guid:
-    Data1: -518835408
-    Data2: 1098783581
-    Data3: 1361168814
-    Data4: -1168719447
+    Data1: -509378906
+    Data2: 1178982841
+    Data3: 1068845747
+    Data4: -228688395
   Banks:
-  - {fileID: 3065802328228435846}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 144000
-=======
-  m_Name: event:/SoundsEvent/Baby/BabyDragging
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/BabyDragging
-  Guid:
-    Data1: 1610553309
-    Data2: 1342119385
-    Data3: 1328284064
-    Data4: -666646400
-  Banks:
-  - {fileID: 8374606570878851619}
+  - {fileID: 8573686791199892123}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1765,7 +745,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-3433660325456049855
+--- !u!114 &6808439213951012509
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1775,44 +755,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Stress/StressHorreur
+  m_Name: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/DropKey"
   m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Stress/StressHorreur
+  Path: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/DropKey"
   Guid:
-    Data1: -1023106931
-    Data2: 1218139651
-    Data3: -314798696
-    Data4: -237360077
+    Data1: -1328929280
+    Data2: 1308074205
+    Data3: 1166356363
+    Data4: 654575473
   Banks:
-  - {fileID: 8374606570878851619}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -4350094184165568127}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 37500
---- !u!114 &-3153910250947311614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/Crying
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/Crying
-  Guid:
-    Data1: 1694986241
-    Data2: 1157396051
-    Data3: -75015237
-    Data4: 26522174
-  Banks:
-  - {fileID: -2576418368697860947}
+  - {fileID: 8573686791199892123}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1820,7 +772,31 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-3135040130361033110
+--- !u!114 &6831792867049358213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Respiration/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &6897601970321216110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1830,25 +806,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/LesPotes/Julien_1
+  m_Name: event:/SoundsEvent/RamassageEtLachage/Doudou/PickUpDoudou
   m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/LesPotes/Julien_1
+  Path: event:/SoundsEvent/RamassageEtLachage/Doudou/PickUpDoudou
   Guid:
-    Data1: -891858308
-    Data2: 1304586381
-    Data3: -2066293343
-    Data4: 702200443
+    Data1: -2060455845
+    Data2: 1123760112
+    Data3: -1585368397
+    Data4: 1973425487
   Banks:
-  - {fileID: -2576418368697860947}
+  - {fileID: 8573686791199892123}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 6720
->>>>>>> origin/dev_Thomas
---- !u!114 &-2931186491512557235
+  Length: 0
+--- !u!114 &7632292560187407196
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1858,24 +833,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/LesPotes/Julien
+  m_Name: event:/SoundsEvent/RamassageEtLachage/Doudou/DropDoudou
   m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/LesPotes/Julien
+  Path: event:/SoundsEvent/RamassageEtLachage/Doudou/DropDoudou
   Guid:
-    Data1: -1308353413
-    Data2: 1141618755
-    Data3: -1198669145
-    Data4: 872367579
+    Data1: 1006949352
+    Data2: 1104796797
+    Data3: -672511818
+    Data4: 1081390729
   Banks:
-  - {fileID: 6360808476272309025}
+  - {fileID: 8573686791199892123}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2580
---- !u!114 &-2576418368697860947
+  Length: 0
+--- !u!114 &8573686791199892123
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1890,3322 +865,8 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Sounds.bank
   Name: Sounds
   StudioPath: bank:/Sounds
-  lastModified: 637890959498550213
+  lastModified: 637895068156683845
   FileSizes:
   - Name: Desktop
     Value: 3674592
-  Exists: 1
---- !u!114 &-2536085540442589537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Porte/OuverturePorte
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Porte/OuverturePorte
-  Guid:
-    Data1: 175253242
-    Data2: 1137279336
-    Data3: 1930312106
-    Data4: 737897604
-  Banks:
-  - {fileID: -4250151385257737303}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-2443014867092682123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/ContinuousZblob
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/ContinuousZblob
-  Guid:
-    Data1: -1473439197
-    Data2: 1256902212
-    Data3: 1837457826
-    Data4: 1537863522
-  Banks:
-  - {fileID: 8374606570878851619}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 56500
---- !u!114 &-2107978742846856535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/DropKey"
-  m_EditorClassIdentifier: 
-  Path: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/DropKey"
-  Guid:
-    Data1: -1328929280
-    Data2: 1308074205
-    Data3: 1166356363
-    Data4: 654575473
-  Banks:
-  - {fileID: -2576418368697860947}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-2002311006019571660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 637877351450605235
-  FileSizes:
-  - Name: Desktop
-    Value: 2032
-  Exists: 1
-<<<<<<< HEAD
---- !u!114 &-1926862710252875388
-=======
---- !u!114 &-1923142031524709901
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-<<<<<<< HEAD
-  m_Name: event:/Voices/DialogPhone
-  m_EditorClassIdentifier: 
-  Path: event:/Voices/DialogPhone
-  Guid:
-    Data1: -43763992
-    Data2: 1119041079
-    Data3: 1084500401
-    Data4: -80234758
-  Banks:
-  - {fileID: 9167791441312205766}
-=======
-  m_Name: event:/SoundsEvent/Porte/OuverturePorte
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Porte/OuverturePorte
-  Guid:
-    Data1: 175253242
-    Data2: 1137279336
-    Data3: 1930312106
-    Data4: 737897604
-  Banks:
-  - {fileID: 8374606570878851619}
->>>>>>> origin/dev_Thomas
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-<<<<<<< HEAD
-  Length: 5310
-=======
-  Length: 0
---- !u!114 &-1867241566156252967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Phone/HangUpPhone
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Phone/HangUpPhone
-  Guid:
-    Data1: -1790704415
-    Data2: 1135028924
-    Data3: 1686708149
-    Data4: 1475868546
-  Banks:
-  - {fileID: 8374606570878851619}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 500
->>>>>>> origin/dev_Thomas
---- !u!114 &-1848259744367509470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/PhoneCall/Occlusion
-  m_EditorClassIdentifier: 
-  Name: Occlusion
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 4035467436
-    data2: 77915238
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
-<<<<<<< HEAD
---- !u!114 &-1811662337613078345
-=======
---- !u!114 &-1839408870489221126
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Pas/Speed
-  m_EditorClassIdentifier: 
-  Name: Speed
-  StudioPath: 
-  Min: 0
-  Max: 10
-  Default: 0
-  ID:
-    data1: 3264674803
-    data2: 252286697
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-1779354441457142349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/RamassageEtLachage/Doudou/PickUpDoudou
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/RamassageEtLachage/Doudou/PickUpDoudou
-  Guid:
-    Data1: -2060455845
-    Data2: 1123760112
-    Data3: -1585368397
-    Data4: 1973425487
-  Banks:
-  - {fileID: -7613309203841365879}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
-=======
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 637888603709263559
-  FileSizes:
-  - Name: Desktop
-    Value: 2032
-  Exists: 1
->>>>>>> origin/dev_Thomas
---- !u!114 &-1645496169239241534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Hits/Puzzle_HitBox
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Hits/Puzzle_HitBox
-  Guid:
-    Data1: 245796041
-    Data2: 1160800057
-    Data3: -1306144121
-    Data4: 1591531773
-  Banks:
-  - {fileID: -4250151385257737303}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 800
-<<<<<<< HEAD
---- !u!114 &-1480099775608856640
-=======
---- !u!114 &-1544326830286842938
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-<<<<<<< HEAD
-  m_Name: event:/SoundsEvent/Phone/PhoneCall
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Phone/PhoneCall
-  Guid:
-    Data1: 1855847930
-    Data2: 1215896063
-    Data3: -55972442
-    Data4: -439486445
-  Banks:
-  - {fileID: 4628613683530071377}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 4350549242860455636}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 17475
---- !u!114 &-1392263377142488229
-=======
-  m_Name: event:/SoundsEvent/Doudou/UtilisationDoudou
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Doudou/UtilisationDoudou
-  Guid:
-    Data1: -995624965
-    Data2: 1148206418
-    Data3: -2112027520
-    Data4: -2107392880
-  Banks:
-  - {fileID: -2576418368697860947}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 44500
---- !u!114 &-1467271037162104397
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-<<<<<<< HEAD
-  m_Name: event:/SoundsEvent/Porte/OuverturePorte
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Porte/OuverturePorte
-  Guid:
-    Data1: 175253242
-    Data2: 1137279336
-    Data3: 1930312106
-    Data4: 737897604
-  Banks:
-  - {fileID: 4628613683530071377}
-=======
-  m_Name: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/DropKey"
-  m_EditorClassIdentifier: 
-  Path: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/DropKey"
-  Guid:
-    Data1: -1328929280
-    Data2: 1308074205
-    Data3: 1166356363
-    Data4: 654575473
-  Banks:
-  - {fileID: 8374606570878851619}
->>>>>>> origin/dev_Thomas
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-1307987121049607141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/StressHorreur/Stress
-  m_EditorClassIdentifier: 
-  Name: Stress
-  StudioPath: 
-  Min: 0
-  Max: 10
-  Default: 0
-  ID:
-    data1: 87529076
-    data2: 771149325
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-1124361126594981714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/RamassageEtLachage/Doudou/DropDoudou
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/RamassageEtLachage/Doudou/DropDoudou
-  Guid:
-    Data1: 1006949352
-    Data2: 1104796797
-    Data3: -672511818
-    Data4: 1081390729
-  Banks:
-  - {fileID: 4628613683530071377}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-1094246833183411891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/AmbiantMusic.tpe1/Fade
-  m_EditorClassIdentifier: 
-  Name: Fade
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 753684841
-    data2: 4173508815
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-1037009256210496025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Respiration/Occlusion
-  m_EditorClassIdentifier: 
-  Name: Occlusion
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 4035467436
-    data2: 77915238
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-1011279751670801693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/BabyDragging
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/BabyDragging
-  Guid:
-    Data1: 1610553309
-    Data2: 1342119385
-    Data3: 1328284064
-    Data4: -666646400
-  Banks:
-  - {fileID: 6360808476272309025}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-998194020304668067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-<<<<<<< HEAD
-  lastModified: 637888974298656934
-=======
-  lastModified: 637890656483459970
->>>>>>> origin/dev_Thomas
-  FileSizes:
-  - Name: Desktop
-    Value: 2032
-  Exists: 1
---- !u!114 &-978064081147754669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/RamassageEtLachage/Lampe/DropLampe
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/RamassageEtLachage/Lampe/DropLampe
-  Guid:
-    Data1: -1742877841
-    Data2: 1203100284
-    Data3: 1432700069
-    Data4: -1009109787
-  Banks:
-  - {fileID: 8374606570878851619}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-905799461120033217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Phone/PhoneCall
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Phone/PhoneCall
-  Guid:
-    Data1: 1855847930
-    Data2: 1215896063
-    Data3: -55972442
-    Data4: -439486445
-  Banks:
-  - {fileID: 8374606570878851619}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 5359358716031445476}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 17475
---- !u!114 &-894068015387929208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Phone/PhoneCall
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Phone/PhoneCall
-  Guid:
-    Data1: 1855847930
-    Data2: 1215896063
-    Data3: -55972442
-    Data4: -439486445
-  Banks:
-  - {fileID: -2576418368697860947}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 4448156193631673613}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 17475
---- !u!114 &-856636563728449317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Phone/HangUpPhone
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Phone/HangUpPhone
-  Guid:
-    Data1: -1790704415
-    Data2: 1135028924
-    Data3: 1686708149
-    Data4: 1475868546
-  Banks:
-  - {fileID: -4250151385257737303}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 500
---- !u!114 &-795300857721381946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Respiration/Occlusion
-  m_EditorClassIdentifier: 
-  Name: Occlusion
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 4035467436
-    data2: 77915238
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-786016531926189801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Stress/StressHorreur
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Stress/StressHorreur
-  Guid:
-    Data1: -1023106931
-    Data2: 1218139651
-    Data3: -314798696
-    Data4: -237360077
-  Banks:
-  - {fileID: 4628613683530071377}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 7630306919305453160}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 37500
---- !u!114 &-766183523630847551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/LesPotes/Julien
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/LesPotes/Julien
-  Guid:
-    Data1: -1308353413
-    Data2: 1141618755
-    Data3: -1198669145
-    Data4: 872367579
-  Banks:
-  - {fileID: 8591615241895475423}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 2580
---- !u!114 &-663487308552558892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Voices.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Voices.bank
-  Name: Voices
-  StudioPath: bank:/Voices
-  lastModified: 637877127518238598
-  FileSizes:
-  - Name: Desktop
-    Value: 34208
-  Exists: 1
---- !u!114 &-571838951856193954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Music.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Music.bank
-  Name: Music
-  StudioPath: bank:/Music
-  lastModified: 637885595716620532
-  FileSizes:
-  - Name: Desktop
-    Value: 2112192
-  Exists: 1
-<<<<<<< HEAD
---- !u!114 &-105727145718963674
-=======
---- !u!114 &-168886559189170604
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-<<<<<<< HEAD
-  m_Name: event:/SoundsEvent/LesPotes/Julien_1
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/LesPotes/Julien_1
-  Guid:
-    Data1: -891858308
-    Data2: 1304586381
-    Data3: -2066293343
-    Data4: 702200443
-  Banks:
-  - {fileID: -7613309203841365879}
-=======
-  m_Name: event:/Voices/DialogPhone
-  m_EditorClassIdentifier: 
-  Path: event:/Voices/DialogPhone
-  Guid:
-    Data1: -43763992
-    Data2: 1119041079
-    Data3: 1084500401
-    Data4: -80234758
-  Banks:
-  - {fileID: -6438844683463897179}
->>>>>>> origin/dev_Thomas
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-<<<<<<< HEAD
-  Length: 6720
---- !u!114 &-37607790170156922
-=======
-  Length: 5310
---- !u!114 &-87628195768982602
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-<<<<<<< HEAD
-  m_Name: parameter:/PhoneCall/Occlusion
-  m_EditorClassIdentifier: 
-  Name: Occlusion
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 4035467436
-    data2: 77915238
-=======
-  m_Name: parameter:/Pas/Speed
-  m_EditorClassIdentifier: 
-  Name: Speed
-  StudioPath: 
-  Min: 0
-  Max: 10
-  Default: 0
-  ID:
-    data1: 3264674803
-    data2: 252286697
->>>>>>> origin/dev_Thomas
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: 
-  EditorBanks:
-<<<<<<< HEAD
-  - {fileID: -3142529142587765348}
-  - {fileID: -8201382712109731264}
-  - {fileID: 2841392921219726043}
-  - {fileID: 4628613683530071377}
-  - {fileID: 9167791441312205766}
-  EditorEvents:
-  - {fileID: -8871523430798019570}
-  - {fileID: -4298988683807960112}
-  - {fileID: 5027836518656722565}
-  - {fileID: 8141735486105400719}
-  - {fileID: 7996041201049485441}
-  - {fileID: 6118565894355064624}
-  - {fileID: 3613639095233338528}
-  - {fileID: 6311503218053177555}
-  - {fileID: -9131950529660344777}
-  - {fileID: 127706041208771263}
-  - {fileID: -5014951530520689849}
-  - {fileID: -786016531926189801}
-  - {fileID: -7779499070124186818}
-  - {fileID: -6529432583634621626}
-  - {fileID: 7626430643756558735}
-  - {fileID: 2808248165983958964}
-  - {fileID: -7086990601805921231}
-  - {fileID: -1124361126594981714}
-  - {fileID: -8447790283764851556}
-  - {fileID: -1392263377142488229}
-  - {fileID: -1480099775608856640}
-  - {fileID: 478035317523486617}
-  - {fileID: -1926862710252875388}
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: -8201382712109731264}
-  StringsBanks:
-  - {fileID: -3142529142587765348}
-  cacheTime: 637895061130329959
-=======
-  - {fileID: 3767420123906756206}
-  - {fileID: 7719054399326483656}
-  - {fileID: -6687318300782165087}
-  - {fileID: 8374606570878851619}
-  - {fileID: -6438844683463897179}
-  EditorEvents:
-  - {fileID: 2208877250574992195}
-  - {fileID: -1467271037162104397}
-  - {fileID: 526699392678676366}
-  - {fileID: -2443014867092682123}
-  - {fileID: 8293646440458298014}
-  - {fileID: -8131936385571454547}
-  - {fileID: -978064081147754669}
-  - {fileID: 3574052856650340486}
-  - {fileID: 7418652620811850443}
-  - {fileID: -5826257169243818897}
-  - {fileID: -3724538463764870563}
-  - {fileID: -3433660325456049855}
-  - {fileID: -7057268232426466467}
-  - {fileID: 8081385065561515126}
-  - {fileID: 3419315507547701826}
-  - {fileID: -3486455447211189552}
-  - {fileID: -1867241566156252967}
-  - {fileID: 9021824167370879320}
-  - {fileID: 8736256646207775238}
-  - {fileID: -1923142031524709901}
-  - {fileID: -905799461120033217}
-  - {fileID: -6191726467946173337}
-  - {fileID: -168886559189170604}
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: 7719054399326483656}
-  StringsBanks:
-  - {fileID: 3767420123906756206}
-  cacheTime: 637893911512688961
->>>>>>> origin/dev_Thomas
-  cacheVersion: 10
---- !u!114 &78751809745569274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/BabyDragging
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/BabyDragging
-  Guid:
-    Data1: 1610553309
-    Data2: 1342119385
-    Data3: 1328284064
-    Data4: -666646400
-  Banks:
-  - {fileID: -4250151385257737303}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &127706041208771263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/RamassageEtLachage/Lampe/PickUpLampe
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/RamassageEtLachage/Lampe/PickUpLampe
-  Guid:
-    Data1: 1203360393
-    Data2: 1244540880
-    Data3: -886582120
-    Data4: 349235023
-  Banks:
-  - {fileID: 4628613683530071377}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &398118932756384195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Voices/DialogPhone
-  m_EditorClassIdentifier: 
-  Path: event:/Voices/DialogPhone
-  Guid:
-    Data1: -43763992
-    Data2: 1119041079
-    Data3: 1084500401
-    Data4: -80234758
-  Banks:
-  - {fileID: -663487308552558892}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 3620
-<<<<<<< HEAD
---- !u!114 &478035317523486617
-=======
---- !u!114 &526699392678676366
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-<<<<<<< HEAD
-  m_Name: event:/SoundsEvent/Doudou/UtilisationDoudou
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Doudou/UtilisationDoudou
-  Guid:
-    Data1: -995624965
-    Data2: 1148206418
-    Data3: -2112027520
-    Data4: -2107392880
-  Banks:
-  - {fileID: 4628613683530071377}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 44500
-=======
-  m_Name: event:/SoundsEvent/Baby/Crying
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/Crying
-  Guid:
-    Data1: 1694986241
-    Data2: 1157396051
-    Data3: -75015237
-    Data4: 26522174
-  Banks:
-  - {fileID: 8374606570878851619}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
->>>>>>> origin/dev_Thomas
---- !u!114 &689713078259164818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Pas/Speed
-  m_EditorClassIdentifier: 
-  Name: Speed
-  StudioPath: 
-  Min: 0
-  Max: 10
-  Default: 0
-  ID:
-    data1: 3264674803
-    data2: 252286697
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &895584400008475739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/Ambiant/AmbiantMusic.tpe1
-  m_EditorClassIdentifier: 
-  Path: event:/Music/Ambiant/AmbiantMusic.tpe1
-  Guid:
-    Data1: -518835408
-    Data2: 1098783581
-    Data3: 1361168814
-    Data4: -1168719447
-  Banks:
-  - {fileID: 6720455214374226764}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 154618
---- !u!114 &904913773876449599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/RamassageEtLachage/Lampe/DropLampe
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/RamassageEtLachage/Lampe/DropLampe
-  Guid:
-    Data1: -1742877841
-    Data2: 1203100284
-    Data3: 1432700069
-    Data4: -1009109787
-  Banks:
-  - {fileID: -2576418368697860947}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &925745664025336293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/RamassageEtLachage/Doudou/DropDoudou
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/RamassageEtLachage/Doudou/DropDoudou
-  Guid:
-    Data1: 1006949352
-    Data2: 1104796797
-    Data3: -672511818
-    Data4: 1081390729
-  Banks:
-  - {fileID: -2576418368697860947}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &1081852005223082164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/Ambiant/AmbiantMusic.tpe1
-  m_EditorClassIdentifier: 
-  Path: event:/Music/Ambiant/AmbiantMusic.tpe1
-  Guid:
-    Data1: -518835408
-    Data2: 1098783581
-    Data3: 1361168814
-    Data4: -1168719447
-  Banks:
-  - {fileID: 7236381666324700859}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 144000
-<<<<<<< HEAD
---- !u!114 &1724532475104836694
-=======
---- !u!114 &1091208100504008496
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-<<<<<<< HEAD
-  m_Name: event:/Voices/DialogPhone
-  m_EditorClassIdentifier: 
-  Path: event:/Voices/DialogPhone
-  Guid:
-    Data1: -43763992
-    Data2: 1119041079
-    Data3: 1084500401
-    Data4: -80234758
-  Banks:
-  - {fileID: 5836178699929927435}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 5310
---- !u!114 &1753904491244244517
-=======
-  m_Name: event:/SoundsEvent/Baby/ContinuousBabyNoise
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/ContinuousBabyNoise
-  Guid:
-    Data1: -1490063551
-    Data2: 1190372012
-    Data3: 335015330
-    Data4: 608535171
-  Banks:
-  - {fileID: -2576418368697860947}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 55000
---- !u!114 &1094832614364715257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Voices.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Voices.bank
-  Name: Voices
-  StudioPath: bank:/Voices
-  lastModified: 637888603758075506
-  FileSizes:
-  - Name: Desktop
-    Value: 44704
-  Exists: 1
---- !u!114 &2208877250574992195
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-<<<<<<< HEAD
-  m_Name: event:/SoundsEvent/Phone/HangUpPhone
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Phone/HangUpPhone
-  Guid:
-    Data1: -1790704415
-    Data2: 1135028924
-    Data3: 1686708149
-    Data4: 1475868546
-  Banks:
-  - {fileID: -7613309203841365879}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 500
-=======
-  m_Name: event:/Music/Ambiant/AmbiantMusic.tpe1
-  m_EditorClassIdentifier: 
-  Path: event:/Music/Ambiant/AmbiantMusic.tpe1
-  Guid:
-    Data1: -518835408
-    Data2: 1098783581
-    Data3: 1361168814
-    Data4: -1168719447
-  Banks:
-  - {fileID: -6687318300782165087}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 144000
->>>>>>> origin/dev_Thomas
---- !u!114 &2297150863585606592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Respiration/Occlusion
-  m_EditorClassIdentifier: 
-  Name: Occlusion
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 4035467436
-    data2: 77915238
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &2316865928953856681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/Respiration
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/Respiration
-  Guid:
-    Data1: -382007823
-    Data2: 1127377340
-    Data3: -524514921
-    Data4: -1855257768
-  Banks:
-  - {fileID: -2576418368697860947}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -1037009256210496025}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 4500
---- !u!114 &2364567848389995273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/Crying
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/Crying
-  Guid:
-    Data1: 1694986241
-    Data2: 1157396051
-    Data3: -75015237
-    Data4: 26522174
-  Banks:
-  - {fileID: 6360808476272309025}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
-<<<<<<< HEAD
---- !u!114 &2808248165983958964
-=======
---- !u!114 &2845432879875008889
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-<<<<<<< HEAD
-  m_Name: event:/SoundsEvent/Baby/BabyDragging
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/BabyDragging
-  Guid:
-    Data1: 1610553309
-    Data2: 1342119385
-    Data3: 1328284064
-    Data4: -666646400
-  Banks:
-  - {fileID: 4628613683530071377}
-=======
-  m_Name: event:/SoundsEvent/Phone/HangUpPhone
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Phone/HangUpPhone
-  Guid:
-    Data1: -1790704415
-    Data2: 1135028924
-    Data3: 1686708149
-    Data4: 1475868546
-  Banks:
-  - {fileID: -2576418368697860947}
->>>>>>> origin/dev_Thomas
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-<<<<<<< HEAD
-  Length: 0
---- !u!114 &2841392921219726043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Music.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Music.bank
-  Name: Music
-  StudioPath: bank:/Music
-  lastModified: 637895061130130544
-  FileSizes:
-  - Name: Desktop
-    Value: 2111648
-  Exists: 1
-=======
-  Length: 500
->>>>>>> origin/dev_Thomas
---- !u!114 &2931169042740390610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Voices.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Voices.bank
-  Name: Voices
-  StudioPath: bank:/Voices
-<<<<<<< HEAD
-  lastModified: 637888974298887355
-=======
-  lastModified: 637890656354171575
->>>>>>> origin/dev_Thomas
-  FileSizes:
-  - Name: Desktop
-    Value: 44704
-  Exists: 1
---- !u!114 &2990399283587356083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 637877351450615252
-  FileSizes:
-  - Name: Desktop
-    Value: 1576
-  Exists: 1
-<<<<<<< HEAD
---- !u!114 &3065802328228435846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Music.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Music.bank
-  Name: Music
-  StudioPath: bank:/Music
-  lastModified: 637890681569685597
-  FileSizes:
-  - Name: Desktop
-    Value: 2111648
-  Exists: 1
---- !u!114 &3071255826119566349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Pas/Speed
-  m_EditorClassIdentifier: 
-  Name: Speed
-  StudioPath: 
-  Min: 0
-  Max: 10
-  Default: 0
-  ID:
-    data1: 3264674803
-    data2: 252286697
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &3095450334030068573
-=======
---- !u!114 &3077279500323803634
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-<<<<<<< HEAD
-  m_Name: event:/SoundsEvent/Hits/KeyDropFromBox
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Hits/KeyDropFromBox
-  Guid:
-    Data1: 1540604811
-    Data2: 1308501917
-    Data3: -928801122
-    Data4: 543231078
-  Banks:
-  - {fileID: -7613309203841365879}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 672
-=======
-  m_Name: event:/SoundsEvent/Stress/StressHorreur
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Stress/StressHorreur
-  Guid:
-    Data1: -1023106931
-    Data2: 1218139651
-    Data3: -314798696
-    Data4: -237360077
-  Banks:
-  - {fileID: -2576418368697860947}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -5575005711840312893}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 37500
->>>>>>> origin/dev_Thomas
---- !u!114 &3210047195562593669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/BruitPas/Pas
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/BruitPas/Pas
-  Guid:
-    Data1: -1398225717
-    Data2: 1297638522
-    Data3: -771669373
-    Data4: 1061648962
-  Banks:
-  - {fileID: -4250151385257737303}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 689713078259164818}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 7000
---- !u!114 &3210895791709697005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/ContinuousZblob
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/ContinuousZblob
-  Guid:
-    Data1: -1473439197
-    Data2: 1256902212
-    Data3: 1837457826
-    Data4: 1537863522
-  Banks:
-  - {fileID: 6360808476272309025}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 56500
-<<<<<<< HEAD
---- !u!114 &3613639095233338528
-=======
---- !u!114 &3419315507547701826
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-<<<<<<< HEAD
-  m_Name: event:/SoundsEvent/RamassageEtLachage/Lampe/DropLampe
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/RamassageEtLachage/Lampe/DropLampe
-  Guid:
-    Data1: -1742877841
-    Data2: 1203100284
-    Data3: 1432700069
-    Data4: -1009109787
-  Banks:
-  - {fileID: 4628613683530071377}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &3701733041235901735
-=======
-  m_Name: event:/SoundsEvent/BruitPas/Pas
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/BruitPas/Pas
-  Guid:
-    Data1: -1398225717
-    Data2: 1297638522
-    Data3: -771669373
-    Data4: 1061648962
-  Banks:
-  - {fileID: 8374606570878851619}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -87628195768982602}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 7000
---- !u!114 &3574052856650340486
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-<<<<<<< HEAD
-  m_Name: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/DropKey"
-  m_EditorClassIdentifier: 
-  Path: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/DropKey"
-  Guid:
-    Data1: -1328929280
-    Data2: 1308074205
-    Data3: 1166356363
-    Data4: 654575473
-  Banks:
-  - {fileID: -7613309203841365879}
-=======
-  m_Name: event:/SoundsEvent/LesPotes/Julien
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/LesPotes/Julien
-  Guid:
-    Data1: -1308353413
-    Data2: 1141618755
-    Data3: -1198669145
-    Data4: 872367579
-  Banks:
-  - {fileID: 8374606570878851619}
->>>>>>> origin/dev_Thomas
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-<<<<<<< HEAD
-  Length: 0
-=======
-  Length: 2580
---- !u!114 &3767420123906756206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 637893911512168673
-  FileSizes:
-  - Name: Desktop
-    Value: 2524
-  Exists: 1
->>>>>>> origin/dev_Thomas
---- !u!114 &3864181968681860868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Hits/KeyDropFromBox
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Hits/KeyDropFromBox
-  Guid:
-    Data1: 1540604811
-    Data2: 1308501917
-    Data3: -928801122
-    Data4: 543231078
-  Banks:
-  - {fileID: -4250151385257737303}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 672
---- !u!114 &3978408589368352649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/DropKey"
-  m_EditorClassIdentifier: 
-  Path: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/DropKey"
-  Guid:
-    Data1: -1328929280
-    Data2: 1308074205
-    Data3: 1166356363
-    Data4: 654575473
-  Banks:
-  - {fileID: -4250151385257737303}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &4204812448711698178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Doudou/UtilisationDoudou
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Doudou/UtilisationDoudou
-  Guid:
-    Data1: -995624965
-    Data2: 1148206418
-    Data3: -2112027520
-    Data4: -2107392880
-  Banks:
-  - {fileID: -7613309203841365879}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 44500
---- !u!114 &4350549242860455636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/PhoneCall/Occlusion
-  m_EditorClassIdentifier: 
-  Name: Occlusion
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 4035467436
-    data2: 77915238
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &4399814238163374534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 637885595716261472
-  FileSizes:
-  - Name: Desktop
-    Value: 2032
-  Exists: 1
---- !u!114 &4405670800902215766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/LesPotes/Julien_1
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/LesPotes/Julien_1
-  Guid:
-    Data1: -891858308
-    Data2: 1304586381
-    Data3: -2066293343
-    Data4: 702200443
-  Banks:
-  - {fileID: -4323139442411857579}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 6720
-<<<<<<< HEAD
---- !u!114 &4435267435069882756
-=======
---- !u!114 &4448156193631673613
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-<<<<<<< HEAD
-  m_Name: parameter:/StressHorreur/Stress
-  m_EditorClassIdentifier: 
-  Name: Stress
-  StudioPath: 
-  Min: 0
-  Max: 10
-  Default: 0
-  ID:
-    data1: 87529076
-    data2: 771149325
-=======
-  m_Name: parameter:/PhoneCall/Occlusion
-  m_EditorClassIdentifier: 
-  Name: Occlusion
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 4035467436
-    data2: 77915238
->>>>>>> origin/dev_Thomas
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
-<<<<<<< HEAD
-=======
---- !u!114 &4570120241915378025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/RamassageEtLachage/Doudou/PickUpDoudou
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/RamassageEtLachage/Doudou/PickUpDoudou
-  Guid:
-    Data1: -2060455845
-    Data2: 1123760112
-    Data3: -1585368397
-    Data4: 1973425487
-  Banks:
-  - {fileID: -2576418368697860947}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
->>>>>>> origin/dev_Thomas
---- !u!114 &4597257062988781288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-<<<<<<< HEAD
-  lastModified: 637888974298666949
-=======
-  lastModified: 637890656483469933
->>>>>>> origin/dev_Thomas
-  FileSizes:
-  - Name: Desktop
-    Value: 2524
-  Exists: 1
---- !u!114 &4628613683530071377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Sounds.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Sounds.bank
-  Name: Sounds
-  StudioPath: bank:/Sounds
-  lastModified: 637895061130319997
-  FileSizes:
-  - Name: Desktop
-    Value: 3674656
-  Exists: 1
---- !u!114 &4811256738694300091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/PickUpClef"
-  m_EditorClassIdentifier: 
-  Path: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/PickUpClef"
-  Guid:
-    Data1: -509378906
-    Data2: 1178982841
-    Data3: 1068845747
-    Data4: -228688395
-  Banks:
-  - {fileID: -7613309203841365879}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &4921859548777834680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/RamassageEtLachage/Doudou/DropDoudou
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/RamassageEtLachage/Doudou/DropDoudou
-  Guid:
-    Data1: 1006949352
-    Data2: 1104796797
-    Data3: -672511818
-    Data4: 1081390729
-  Banks:
-  - {fileID: -7613309203841365879}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &5027836518656722565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/Crying
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/Crying
-  Guid:
-    Data1: 1694986241
-    Data2: 1157396051
-    Data3: -75015237
-    Data4: 26522174
-  Banks:
-  - {fileID: 4628613683530071377}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &5223556747364103488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Hits/Puzzle_HitBox
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Hits/Puzzle_HitBox
-  Guid:
-    Data1: 245796041
-    Data2: 1160800057
-    Data3: -1306144121
-    Data4: 1591531773
-  Banks:
-  - {fileID: 8591615241895475423}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1280
---- !u!114 &5241980110571615011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Phone/PhoneCall
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Phone/PhoneCall
-  Guid:
-    Data1: 1855847930
-    Data2: 1215896063
-    Data3: -55972442
-    Data4: -439486445
-  Banks:
-  - {fileID: -4250151385257737303}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -1848259744367509470}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 17475
---- !u!114 &5359358716031445476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/PhoneCall/Occlusion
-  m_EditorClassIdentifier: 
-  Name: Occlusion
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 4035467436
-    data2: 77915238
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &5612371615870391058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/RamassageEtLachage/Doudou/PickUpDoudou
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/RamassageEtLachage/Doudou/PickUpDoudou
-  Guid:
-    Data1: -2060455845
-    Data2: 1123760112
-    Data3: -1585368397
-    Data4: 1973425487
-  Banks:
-  - {fileID: -4250151385257737303}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
-<<<<<<< HEAD
---- !u!114 &5635783934707480088
-=======
---- !u!114 &6128636977765445766
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/LesPotes/Julien
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/LesPotes/Julien
-  Guid:
-    Data1: -1308353413
-    Data2: 1141618755
-    Data3: -1198669145
-    Data4: 872367579
-  Banks:
-<<<<<<< HEAD
-  - {fileID: -7613309203841365879}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 2580
---- !u!114 &5836178699929927435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Voices.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Voices.bank
-  Name: Voices
-  StudioPath: bank:/Voices
-  lastModified: 637890681569994767
-  FileSizes:
-  - Name: Desktop
-    Value: 44704
-  Exists: 1
---- !u!114 &6070734759929466836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Hits/Puzzle_HitBox
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Hits/Puzzle_HitBox
-  Guid:
-    Data1: 245796041
-    Data2: 1160800057
-    Data3: -1306144121
-    Data4: 1591531773
-  Banks:
-  - {fileID: -7613309203841365879}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 800
---- !u!114 &6118565894355064624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/RamassageEtLachage/Doudou/PickUpDoudou
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/RamassageEtLachage/Doudou/PickUpDoudou
-  Guid:
-    Data1: -2060455845
-    Data2: 1123760112
-    Data3: -1585368397
-    Data4: 1973425487
-  Banks:
-  - {fileID: 4628613683530071377}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &6235826859725873992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/BruitPas/Pas
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/BruitPas/Pas
-  Guid:
-    Data1: -1398225717
-    Data2: 1297638522
-    Data3: -771669373
-    Data4: 1061648962
-  Banks:
-  - {fileID: -7613309203841365879}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 3071255826119566349}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 7000
---- !u!114 &6311503218053177555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/LesPotes/Julien
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/LesPotes/Julien
-  Guid:
-    Data1: -1308353413
-    Data2: 1141618755
-    Data3: -1198669145
-    Data4: 872367579
-  Banks:
-  - {fileID: 4628613683530071377}
-=======
-  - {fileID: -2576418368697860947}
->>>>>>> origin/dev_Thomas
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 2580
---- !u!114 &6360808476272309025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Sounds.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Sounds.bank
-  Name: Sounds
-  StudioPath: bank:/Sounds
-  lastModified: 637885595717139111
-  FileSizes:
-  - Name: Desktop
-    Value: 1800192
-  Exists: 1
---- !u!114 &6720455214374226764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Music.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Music.bank
-  Name: Music
-  StudioPath: bank:/Music
-  lastModified: 637877351451054548
-  FileSizes:
-  - Name: Desktop
-    Value: 2110624
-  Exists: 1
---- !u!114 &6736460741371522555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/LesPotes/Julien
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/LesPotes/Julien
-  Guid:
-    Data1: -1308353413
-    Data2: 1141618755
-    Data3: -1198669145
-    Data4: 872367579
-  Banks:
-  - {fileID: -4323139442411857579}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 2580
---- !u!114 &7236381666324700859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Music.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Music.bank
-  Name: Music
-  StudioPath: bank:/Music
-<<<<<<< HEAD
-  lastModified: 637888974298747128
-=======
-  lastModified: 637890656483549723
->>>>>>> origin/dev_Thomas
-  FileSizes:
-  - Name: Desktop
-    Value: 2111648
-  Exists: 1
---- !u!114 &7258427573194265295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Phone/HangUpPhone
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Phone/HangUpPhone
-  Guid:
-    Data1: -1790704415
-    Data2: 1135028924
-    Data3: 1686708149
-    Data4: 1475868546
-  Banks:
-  - {fileID: 8591615241895475423}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 500
---- !u!114 &7262640151413849783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/ContinuousBabyNoise
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/ContinuousBabyNoise
-  Guid:
-    Data1: -1490063551
-    Data2: 1190372012
-    Data3: 335015330
-    Data4: 608535171
-  Banks:
-  - {fileID: 6360808476272309025}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 55000
---- !u!114 &7399330598190222315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/PickUpClef"
-  m_EditorClassIdentifier: 
-  Path: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/PickUpClef"
-  Guid:
-    Data1: -509378906
-    Data2: 1178982841
-    Data3: 1068845747
-    Data4: -228688395
-  Banks:
-  - {fileID: -2576418368697860947}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &7418652620811850443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/LesPotes/Julien_1
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/LesPotes/Julien_1
-  Guid:
-    Data1: -891858308
-    Data2: 1304586381
-    Data3: -2066293343
-    Data4: 702200443
-  Banks:
-  - {fileID: 8374606570878851619}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 6720
---- !u!114 &7624950197758391765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Porte/OuverturePorte
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Porte/OuverturePorte
-  Guid:
-    Data1: 175253242
-    Data2: 1137279336
-    Data3: 1930312106
-    Data4: 737897604
-  Banks:
-  - {fileID: 6360808476272309025}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
-<<<<<<< HEAD
---- !u!114 &7626430643756558735
-=======
---- !u!114 &7719054399326483656
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/BruitPas/Pas
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/BruitPas/Pas
-  Guid:
-    Data1: -1398225717
-    Data2: 1297638522
-    Data3: -771669373
-    Data4: 1061648962
-  Banks:
-  - {fileID: 4628613683530071377}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -1811662337613078345}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 7000
---- !u!114 &7630306919305453160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/StressHorreur/Stress
-  m_EditorClassIdentifier: 
-  Name: Stress
-  StudioPath: 
-  Min: 0
-  Max: 10
-  Default: 0
-  ID:
-    data1: 87529076
-    data2: 771149325
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &7996041201049485441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/ContinuousBabyNoise
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/ContinuousBabyNoise
-  Guid:
-    Data1: -1490063551
-    Data2: 1190372012
-    Data3: 335015330
-    Data4: 608535171
-  Banks:
-  - {fileID: 4628613683530071377}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 55000
-=======
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 637893911512158663
-  FileSizes:
-  - Name: Desktop
-    Value: 2032
-  Exists: 1
->>>>>>> origin/dev_Thomas
---- !u!114 &8021510605217637266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/LesPotes/Julien_1
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/LesPotes/Julien_1
-  Guid:
-    Data1: -891858308
-    Data2: 1304586381
-    Data3: -2066293343
-    Data4: 702200443
-  Banks:
-  - {fileID: 6360808476272309025}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 6720
---- !u!114 &8074888729202020532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Pas/Speed
-  m_EditorClassIdentifier: 
-  Name: Speed
-  StudioPath: 
-  Min: 0
-  Max: 10
-  Default: 0
-  ID:
-    data1: 3264674803
-    data2: 252286697
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &8081385065561515126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Hits/Puzzle_HitBox
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Hits/Puzzle_HitBox
-  Guid:
-    Data1: 245796041
-    Data2: 1160800057
-    Data3: -1306144121
-    Data4: 1591531773
-  Banks:
-  - {fileID: 8374606570878851619}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 800
---- !u!114 &8135667003550252613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/RamassageEtLachage/Lampe/DropLampe
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/RamassageEtLachage/Lampe/DropLampe
-  Guid:
-    Data1: -1742877841
-    Data2: 1203100284
-    Data3: 1432700069
-    Data4: -1009109787
-  Banks:
-  - {fileID: -4250151385257737303}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &8141735486105400719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/ContinuousZblob
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/ContinuousZblob
-  Guid:
-    Data1: -1473439197
-    Data2: 1256902212
-    Data3: 1837457826
-    Data4: 1537863522
-  Banks:
-  - {fileID: 4628613683530071377}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 56500
---- !u!114 &8199209873236414377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Phone/PhoneCall
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Phone/PhoneCall
-  Guid:
-    Data1: 1855847930
-    Data2: 1215896063
-    Data3: -55972442
-    Data4: -439486445
-  Banks:
-  - {fileID: -7613309203841365879}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -37607790170156922}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 17475
---- !u!114 &8271794846249251084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Phone/HangUpPhone
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Phone/HangUpPhone
-  Guid:
-    Data1: -1790704415
-    Data2: 1135028924
-    Data3: 1686708149
-    Data4: 1475868546
-  Banks:
-  - {fileID: -4323139442411857579}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 500
---- !u!114 &8293646440458298014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/ContinuousBabyNoise
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/ContinuousBabyNoise
-  Guid:
-    Data1: -1490063551
-    Data2: 1190372012
-    Data3: 335015330
-    Data4: 608535171
-  Banks:
-  - {fileID: 8374606570878851619}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 55000
---- !u!114 &8374606570878851619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Sounds.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Sounds.bank
-  Name: Sounds
-  StudioPath: bank:/Sounds
-  lastModified: 637893911512678956
-  FileSizes:
-  - Name: Desktop
-    Value: 3674592
-  Exists: 1
---- !u!114 &8459783444930061605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Voices/DialogPhone
-  m_EditorClassIdentifier: 
-  Path: event:/Voices/DialogPhone
-  Guid:
-    Data1: -43763992
-    Data2: 1119041079
-    Data3: 1084500401
-    Data4: -80234758
-  Banks:
-  - {fileID: 1094832614364715257}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 5310
---- !u!114 &8467623981774759872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Hits/KeyDropFromBox
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Hits/KeyDropFromBox
-  Guid:
-    Data1: 1540604811
-    Data2: 1308501917
-    Data3: -928801122
-    Data4: 543231078
-  Banks:
-  - {fileID: -4323139442411857579}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 816
---- !u!114 &8559315683783692982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Voices/DialogPhone
-  m_EditorClassIdentifier: 
-  Path: event:/Voices/DialogPhone
-  Guid:
-    Data1: -43763992
-    Data2: 1119041079
-    Data3: 1084500401
-    Data4: -80234758
-  Banks:
-  - {fileID: -6921351772936867771}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 5310
---- !u!114 &8591615241895475423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Sounds.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Sounds.bank
-  Name: Sounds
-  StudioPath: bank:/Sounds
-  lastModified: 637877351451284758
-  FileSizes:
-  - Name: Desktop
-    Value: 275072
-  Exists: 1
-<<<<<<< HEAD
---- !u!114 &8686098302047096230
-=======
---- !u!114 &8736256646207775238
->>>>>>> origin/dev_Thomas
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-<<<<<<< HEAD
-  m_Name: event:/SoundsEvent/Baby/BabyDragging
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/BabyDragging
-  Guid:
-    Data1: 1610553309
-    Data2: 1342119385
-    Data3: 1328284064
-    Data4: -666646400
-  Banks:
-  - {fileID: -7613309203841365879}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
-=======
-  m_Name: event:/SoundsEvent/Baby/Respiration
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/Respiration
-  Guid:
-    Data1: -382007823
-    Data2: 1127377340
-    Data3: -524514921
-    Data4: -1855257768
-  Banks:
-  - {fileID: 8374606570878851619}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -6428611811817512449}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 4500
->>>>>>> origin/dev_Thomas
---- !u!114 &8795651803889515970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 637877119692226224
-  FileSizes:
-  - Name: Desktop
-    Value: 1576
-  Exists: 1
---- !u!114 &8849313630749677424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/PickUpClef"
-  m_EditorClassIdentifier: 
-  Path: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/PickUpClef"
-  Guid:
-    Data1: -509378906
-    Data2: 1178982841
-    Data3: 1068845747
-    Data4: -228688395
-  Banks:
-  - {fileID: -4250151385257737303}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &8874101222048835695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Phone/PhoneCall
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Phone/PhoneCall
-  Guid:
-    Data1: 1855847930
-    Data2: 1215896063
-    Data3: -55972442
-    Data4: -439486445
-  Banks:
-  - {fileID: 6360808476272309025}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 17475
---- !u!114 &8899007370720169842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Voices/DialogPhone
-  m_EditorClassIdentifier: 
-  Path: event:/Voices/DialogPhone
-  Guid:
-    Data1: -43763992
-    Data2: 1119041079
-    Data3: 1084500401
-    Data4: -80234758
-  Banks:
-  - {fileID: 2931169042740390610}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 5310
---- !u!114 &9021824167370879320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/RamassageEtLachage/Doudou/DropDoudou
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/RamassageEtLachage/Doudou/DropDoudou
-  Guid:
-    Data1: 1006949352
-    Data2: 1104796797
-    Data3: -672511818
-    Data4: 1081390729
-  Banks:
-  - {fileID: 8374606570878851619}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &9043462278815969686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Phone/HangUpPhone
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Phone/HangUpPhone
-  Guid:
-    Data1: -1790704415
-    Data2: 1135028924
-    Data3: 1686708149
-    Data4: 1475868546
-  Banks:
-  - {fileID: 6360808476272309025}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 500
---- !u!114 &9155929906682871368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Stress/StressHorreur
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Stress/StressHorreur
-  Guid:
-    Data1: -1023106931
-    Data2: 1218139651
-    Data3: -314798696
-    Data4: -237360077
-  Banks:
-  - {fileID: -7613309203841365879}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 4435267435069882756}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 37500
---- !u!114 &9167791441312205766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Voices.bank
-  m_EditorClassIdentifier: 
-  Path: FmodProject/Second/Build/Desktop/Voices.bank
-  Name: Voices
-  StudioPath: bank:/Voices
-  lastModified: 637895061130329959
-  FileSizes:
-  - Name: Desktop
-    Value: 44704
   Exists: 1

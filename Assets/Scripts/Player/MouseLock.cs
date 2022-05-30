@@ -20,14 +20,10 @@ public class MouseLock : MonoBehaviour
 
     [SerializeField] private AssetMenuScriptValue m_assetMenuScriptable;
     [SerializeField] private AudioManagerScript m_audioScript;
-
-<<<<<<< HEAD
+    
     private bool m_isActivated;
-
-    private void Awake()
-=======
+    
     private void Start()
->>>>>>> origin/dev_Thomas
     {
         m_isActivated = true;
         
@@ -56,20 +52,11 @@ public class MouseLock : MonoBehaviour
 
             xRotation -= mouseY;
             xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-<<<<<<< HEAD
-            
             if (m_isActivated)
             {
                 playerBody.Rotate(Vector3.up * mouseX);
                 transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
             }
-=======
-
-            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-
-            playerBody.Rotate(Vector3.up * mouseX);
-            Debug.Log("gameManager true");
->>>>>>> origin/dev_Thomas
         }
         else if (m_gameManager.isGamepad)
         {
