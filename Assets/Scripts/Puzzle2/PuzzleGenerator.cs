@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro;
+using FMODUnity;
+using FMOD.Studio;
+
 public class PuzzleGenerator : MonoBehaviour
 {
     [SerializeField] PlayerController m_player;
@@ -36,11 +39,17 @@ public class PuzzleGenerator : MonoBehaviour
     public bool notSolutionComplete = false;
 
     [SerializeField]private Material m_myMat;
+    
+    private FirstPersonOcclusion m_occlusion;
+    
+    [SerializeField]
+    private Transform m_soundPlace;
 
     Renderer rend;
 
     private void Awake()
     {
+        m_occlusion = FindObjectOfType<FirstPersonOcclusion>();
         m_index = 0;
         m_indexSolution = 0;
         m_indexNotSolution = 0;
@@ -217,6 +226,11 @@ public class PuzzleGenerator : MonoBehaviour
             isTrigger = false;
             m_player.m_speed = 2f;
             m_appear.LateGameAppear();
+            EventInstance m_fmodInstanceDrag = RuntimeManager.CreateInstance(m_appear.m_fmodEventTremblement.Guid);
+            RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDrag, m_soundPlace);
+            m_fmodInstanceDrag.start();
+            m_occlusion.AddInstance(m_fmodInstanceDrag);
+            m_fmodInstanceDrag.release();
         }       
     }
     public void NextIndicePaper()

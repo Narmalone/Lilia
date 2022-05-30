@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = System.Random;
 
 public class Patrouille : BaseState
 {
@@ -33,14 +34,14 @@ public class Patrouille : BaseState
         
         if (m_sm.m_player.m_doudouIsPossessed == true)
         {
-            if (GameObject.ReferenceEquals(m_target, m_sm.m_player.gameObject) == false)
+            if (ReferenceEquals(m_target, m_sm.m_player.gameObject) == false)
             {
                 m_target = m_sm.m_player.gameObject;
             }
         }
         else
         {
-            if (GameObject.ReferenceEquals(m_target, m_sm.m_doudou.gameObject) == false)
+            if (ReferenceEquals(m_target, m_sm.m_doudou.gameObject) == false)
             {
                 m_target = m_sm.m_doudou.gameObject;
             }
@@ -48,7 +49,14 @@ public class Patrouille : BaseState
         
         if (Vector3.Distance(m_sm.transform.position, m_waypoints.GetCurrentPoint().transform.position) <= 1)
         {
-            m_waypoints.NextPoint();
+            if (UnityEngine.Random.Range(0, 2) == 0)
+            {
+                m_waypoints.NextPoint();
+            }
+            else
+            {
+                m_sm.StartCoroutine(StopMovement());
+            }
         }
         
         m_sm.m_pourcentSpeed += 0.5f*Time.deltaTime;
@@ -81,6 +89,14 @@ public class Patrouille : BaseState
             stateMachine.ChangeState(m_sm.m_chasseState);
         }
     }
+
     
+    private IEnumerator StopMovement()
+    {
+        m_navAgent.isStopped = true;
+        yield return new WaitForSeconds(10f);
+        m_navAgent.isStopped = false;
+        m_waypoints.NextPoint();
+    }
     
 }

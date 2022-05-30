@@ -217,7 +217,6 @@ public class PlayerController : MonoBehaviour
         Debug.DrawRay(m_ray.origin,m_ray.direction, Color.black);
        if (Physics.Raycast(m_ray, out m_hit, 1, ~(1 << gameObject.layer)))
         {
-            Debug.Log($"Je touche avec le raycast: {m_hit.collider.name}");
             OnRayCastHit(m_hit.collider);
             m_pastHit = m_hit;
         }
@@ -353,7 +352,7 @@ public class PlayerController : MonoBehaviour
                 timeBeforeDropDoudou = 0f;
                 DropDoudou();
             }
-            Debug.Log(timeBeforeDropDoudou);
+
             if (m_doudouIsUsed == true)
             {
                 Stressing(-m_StressPower);

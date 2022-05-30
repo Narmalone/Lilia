@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
+using FMOD.Studio;
+
 public class Doors : MonoBehaviour
 {
     [SerializeField] private LayerMask m_targetMask;
@@ -15,11 +18,11 @@ public class Doors : MonoBehaviour
     private bool isRay = false;
 
     [Header("Variables en rapport avec le temps"), Space(10)]
-    [SerializeField, Tooltip("Vitesse à laquelle le joueur ouvre le portillon temps de secondes"), Range(0, 5)] private float m_speedToOpen;
-    [SerializeField, Tooltip("Vitesse à laquelle la valeur s'incrémente par seconde"), Range(0, 1)] private float m_incrementValue;
+    [SerializeField, Tooltip("Vitesse ï¿½ laquelle le joueur ouvre le portillon temps de secondes"), Range(0, 5)] private float m_speedToOpen;
+    [SerializeField, Tooltip("Vitesse ï¿½ laquelle la valeur s'incrï¿½mente par seconde"), Range(0, 1)] private float m_incrementValue;
 
-    [Header("Variables de références"), Space(10)]
-    [Tooltip("Référence du prefab"), SerializeField] private Slider sliderInstance;
+    [Header("Variables de rï¿½fï¿½rences"), Space(10)]
+    [Tooltip("Rï¿½fï¿½rence du prefab"), SerializeField] private Slider sliderInstance;
     [SerializeField, Tooltip("Position d'ou le Slider doit spawn")] private RectTransform m_pos;
 
     [Header("Animation"), Space(10)]
@@ -28,15 +31,30 @@ public class Doors : MonoBehaviour
     private string m_isOpenPortillonAnim = "isOpen";
     private string m_isClosedPortillonAnim = "isClose";
     [SerializeField] private float m_timeBeforeClose = 1f;
+    
+    [SerializeField]
+    private EventReference m_fmodEventPortillonOpen;
+    
+    [SerializeField]
+    private EventReference m_fmodEventPortillonClose;
+    
+    [SerializeField]
+    private EventReference m_fmodEventPorteOpen;
+
+    private FirstPersonOcclusion m_occlusion;
 
     private Ray m_ray;
     private RaycastHit m_hit;
     private Slider mySlider;
 
+
+
     private void Awake()
     {
         //Slider Instance et set variables
 
+        m_occlusion = FindObjectOfType<FirstPersonOcclusion>();
+        
         mySlider = sliderInstance;
         mySlider.minValue = 0;
         mySlider.value = m_incrementValue;
@@ -74,13 +92,13 @@ public class Doors : MonoBehaviour
                 {
                     //Lancer fonction qui ouvre
                     OnComplete();
-                    Debug.Log("Complété");
+                    Debug.Log("Complï¿½tï¿½");
                 }
             }
         }
     }
 
-    //Lorsque le joueur à monté le slider au max
+    //Lorsque le joueur ï¿½ montï¿½ le slider au max
     public void OnComplete()
     {
         mySlider.gameObject.SetActive(false);
@@ -92,6 +110,12 @@ public class Doors : MonoBehaviour
             m_doorController.SetTrigger(m_isOpenDoorAnim);
             isActivable = false;
             isOpen = true;
+            
+            EventInstance fmodInstance = RuntimeManager.CreateInstance(m_fmodEventPorteOpen.Guid);
+            RuntimeManager.AttachInstanceToGameObject(fmodInstance, gameObject.transform);
+            fmodInstance.start();
+            m_occlusion.AddInstance(fmodInstance);
+            fmodInstance.release();
         }
         //Si c'est un portillon
         else if (isDoor == false)
@@ -101,6 +125,12 @@ public class Doors : MonoBehaviour
             isOpen = true;
             StartCoroutine(Chrono());
             Debug.Log("le bb");
+            
+            EventInstance fmodInstance = RuntimeManager.CreateInstance(m_fmodEventPortillonOpen.Guid);
+            RuntimeManager.AttachInstanceToGameObject(fmodInstance, gameObject.transform);
+            fmodInstance.start();
+            m_occlusion.AddInstance(fmodInstance);
+            fmodInstance.release();
         }
         //Jouer son
         //la porte l'objet n'est plus activable ou si c un portillon trouver sol
@@ -108,12 +138,12 @@ public class Doors : MonoBehaviour
 
     IEnumerator Chrono()
     {
-        //Attendre le temps donné dans l'inspecteur en seconde
+        //Attendre le temps donnï¿½ dans l'inspecteur en seconde
         yield return new WaitForSeconds(m_timeBeforeClose);
         ResetPortillon();
     }
 
-    //Réinitialisation des variables et animations de fermeture de portillon
+    //Rï¿½initialisation des variables et animations de fermeture de portillon
     private void ResetPortillon()
     {
         StopAllCoroutines();
@@ -128,9 +158,18 @@ public class Doors : MonoBehaviour
         isOpen = false;
         isActivable = true;
         isCompleted = false;
+        if (!isDoor)
+        {
+            EventInstance fmodInstance = RuntimeManager.CreateInstance(m_fmodEventPortillonClose.Guid);
+            RuntimeManager.AttachInstanceToGameObject(fmodInstance, gameObject.transform);
+            fmodInstance.start();
+            m_occlusion.AddInstance(fmodInstance);
+            fmodInstance.release();
+        }
+
     }
 
-    //Désactiver slider si y'a pas de raycast
+    //Dï¿½sactiver slider si y'a pas de raycast
     public void DisableSlider()
     {
         mySlider.gameObject.SetActive(false);

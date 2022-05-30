@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
+using FMOD.Studio;
 
 public class FunRadio : MonoBehaviour
 {
@@ -20,10 +21,16 @@ public class FunRadio : MonoBehaviour
     [Header("References Mask"), Space(10)]
     [SerializeField] private LayerMask m_playerMask;
 
+    private FirstPersonOcclusion m_occlusion;
+    
+    [SerializeField]
+    private Transform m_soundPlace;
+
 
 
     private void Awake()
     {
+        m_occlusion = FindObjectOfType<FirstPersonOcclusion>();
         if (m_gameManager == null)
         {
             m_gameManager = FindObjectOfType<GameManager>();
@@ -45,6 +52,11 @@ public class FunRadio : MonoBehaviour
             m_audioScript.Play("HangUp");
             m_audioScript.PlayVoices("DialogPhone");
             m_appearsChamber.SwitchAppearing();
+            EventInstance m_fmodInstanceDrag = RuntimeManager.CreateInstance(m_appearsChamber.m_fmodEventTremblement.Guid);
+            RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDrag, m_soundPlace);
+            m_fmodInstanceDrag.start();
+            m_occlusion.AddInstance(m_fmodInstanceDrag);
+            m_fmodInstanceDrag.release();
             Debug.Log("a répondu au téléphone");
         }
         else { return; }

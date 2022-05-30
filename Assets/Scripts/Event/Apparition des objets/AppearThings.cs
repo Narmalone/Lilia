@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FMOD.Studio;
 using UnityEngine;
 
 public class AppearThings : MonoBehaviour
@@ -10,6 +11,8 @@ public class AppearThings : MonoBehaviour
 
     [SerializeField] private GameObject m_iaPosition;
     [SerializeField] public Transform m_iaSpawner;
+
+    public FMODUnity.EventReference m_fmodEventTremblement;
 
     public bool m_isAppear = false;
     public bool IAdontMove = false;

@@ -49,11 +49,6 @@ public class AISM : StateMachine
     public EventInstance m_fmodInstanceDrag;
 
     [SerializeField]
-    private FMODUnity.EventReference m_fmodEventContinuous;
-    
-    private EventInstance m_fmodInstanceContinuous;
-
-    [SerializeField]
     private FMODUnity.EventReference m_fmodEventSonBB;
 
     public FirstPersonOcclusion m_occlusion;
@@ -77,8 +72,6 @@ public class AISM : StateMachine
         m_patrouilleState = new Patrouille(this,m_navAgent,m_waypoints,m_target);
         m_chasseState = new Chasse(this,m_navAgent,m_target);
         
-        m_fmodInstanceContinuous = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventContinuous);
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceContinuous,  GetComponent<Transform>());
         //m_fmodInstanceContinuous.start();
         
         m_fmodInstanceRespiration = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventRespiration);
@@ -145,5 +138,6 @@ public class AISM : StateMachine
         return m_patrouilleState;
     }
 
+    
    
 }

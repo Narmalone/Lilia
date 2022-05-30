@@ -27,6 +27,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 44500
+--- !u!114 &-8560919738344884823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Portillon/PortillionOuvert
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Portillon/PortillionOuvert
+  Guid:
+    Data1: 602544046
+    Data2: 1078868210
+    Data3: -125545071
+    Data4: -941919868
+  Banks:
+  - {fileID: -8343902966666032979}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1104
 --- !u!114 &-8424545591749627713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50,7 +77,8 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: 5677597117813124719}
   MinDistance: 1
   MaxDistance: 20
   Length: 0
@@ -69,11 +97,38 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Sounds.bank
   Name: Sounds
   StudioPath: bank:/Sounds
-  lastModified: 637895068156683845
+  lastModified: 637895285692706825
   FileSizes:
   - Name: Desktop
-    Value: 3674592
+    Value: 2897248
   Exists: 1
+--- !u!114 &-8291960394993572323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Portillon/PortillionFerme
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Portillon/PortillionFerme
+  Guid:
+    Data1: -240474885
+    Data2: 1212527102
+    Data3: 665162686
+    Data4: 2119808065
+  Banks:
+  - {fileID: -8343902966666032979}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 523
 --- !u!114 &-8217780650933419535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,6 +156,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-7045850567370295543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Crying/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-6521770576072287457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +276,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Voices.bank
   Name: Voices
   StudioPath: bank:/Voices
-  lastModified: 637895061130329959
+  lastModified: 637895285692986078
   FileSizes:
   - Name: Desktop
     Value: 44704
@@ -253,6 +332,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-3186784395429354836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/ChangementEnviro
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/ChangementEnviro
+  Guid:
+    Data1: 1475880533
+    Data2: 1108231576
+    Data3: 1636214920
+    Data4: -129892740
+  Banks:
+  - {fileID: -8343902966666032979}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 141092383610645320}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 9555
 --- !u!114 &-3088422956306769104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,33 +442,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 500
---- !u!114 &-85218327328856623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/ContinuousZblob
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/ContinuousZblob
-  Guid:
-    Data1: -1473439197
-    Data2: 1256902212
-    Data3: 1837457826
-    Data4: 1537863522
-  Banks:
-  - {fileID: -8343902966666032979}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 56500
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,8 +464,6 @@ MonoBehaviour:
   - {fileID: -1431506126233104922}
   - {fileID: 2732902304227884204}
   - {fileID: 5070850647383392915}
-  - {fileID: -85218327328856623}
-  - {fileID: 7141004895409342712}
   - {fileID: -5693967044222602914}
   - {fileID: -8217780650933419535}
   - {fileID: 4584836110223669072}
@@ -404,13 +482,40 @@ MonoBehaviour:
   - {fileID: 5561444803874189933}
   - {fileID: -8810266038571060156}
   - {fileID: 8729135771116101850}
+  - {fileID: -3186784395429354836}
+  - {fileID: -8560919738344884823}
+  - {fileID: -8291960394993572323}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5980052921926315069}
   StringsBanks:
   - {fileID: 4453001036209173878}
-  cacheTime: 637895068156683845
+  cacheTime: 637895285692986078
   cacheVersion: 10
+--- !u!114 &141092383610645320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ChangementEnviro/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &358067617521912073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,7 +558,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637895068156514276
+  lastModified: 637895285691771884
   FileSizes:
   - Name: Desktop
     Value: 2111680
@@ -507,7 +612,7 @@ MonoBehaviour:
   - {fileID: -8343902966666032979}
   IsStream: 0
   Is3D: 1
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
@@ -629,10 +734,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637895061129960958
+  lastModified: 637895285691372945
   FileSizes:
   - Name: Desktop
-    Value: 2524
+    Value: 2574
   Exists: 1
 --- !u!114 &4584836110223669072
 MonoBehaviour:
@@ -684,7 +789,8 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: -7045850567370295543}
   MinDistance: 1
   MaxDistance: 20
   Length: 0
@@ -716,6 +822,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 17475
+--- !u!114 &5677597117813124719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BabyDragging/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &5980052921926315069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,7 +861,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637895061129950985
+  lastModified: 637895285691343006
   FileSizes:
   - Name: Desktop
     Value: 2032
@@ -764,33 +894,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 37500
---- !u!114 &7141004895409342712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Baby/ContinuousBabyNoise
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Baby/ContinuousBabyNoise
-  Guid:
-    Data1: -1490063551
-    Data2: 1190372012
-    Data3: 335015330
-    Data4: 608535171
-  Banks:
-  - {fileID: -8343902966666032979}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 55000
 --- !u!114 &8306169716361525010
 MonoBehaviour:
   m_ObjectHideFlags: 0

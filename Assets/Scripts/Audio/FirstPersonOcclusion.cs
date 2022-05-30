@@ -41,6 +41,7 @@ public class FirstPersonOcclusion : MonoBehaviour
         EventDescription ya;
         p_instance.getDescription(out ya);
         AudioDes.Add(ya);
+        Debug.Log("J'add une instance");
     }
 
     public void RemoveInstance(int index)
@@ -140,7 +141,7 @@ public class FirstPersonOcclusion : MonoBehaviour
         Ray ray = new Ray(Start, direction);
         RaycastHit[] hit;
         hit  = Physics.RaycastAll(ray, Vector3.Distance(Start,End), OcclusionLayer);
-        //Debug.DrawRay(Start, direction);
+        Debug.DrawRay(Start, direction);
         int maxCollider = 0;
         if (hit.Length > 0)
         {
@@ -176,7 +177,6 @@ public class FirstPersonOcclusion : MonoBehaviour
 
     private void SetParameter(int index)
     {
-        
         Audios[index].setParameterByName("Occlusion", lineCastHitCount / 33);
     }
 }
