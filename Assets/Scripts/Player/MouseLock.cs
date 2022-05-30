@@ -21,16 +21,8 @@ public class MouseLock : MonoBehaviour
     [SerializeField] private AssetMenuScriptValue m_assetMenuScriptable;
     [SerializeField] private AudioManagerScript m_audioScript;
 
-<<<<<<< HEAD
-    private bool m_isActivated;
-
-    private void Awake()
-=======
     private void Start()
->>>>>>> origin/dev_Thomas
     {
-        m_isActivated = true;
-        
         m_gameManager = FindObjectOfType<GameManager>();
 
         controls = new PlayerControls();
@@ -48,44 +40,33 @@ public class MouseLock : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        Debug.Log($"heu,c'est le state du lock :{m_isActivated}");
-        if (m_gameManager.isPc)
+
+        if (m_gameManager.isPc == true)
         {
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
             xRotation -= mouseY;
             xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-<<<<<<< HEAD
-            
-            if (m_isActivated)
-            {
-                playerBody.Rotate(Vector3.up * mouseX);
-                transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-            }
-=======
 
             transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
             playerBody.Rotate(Vector3.up * mouseX);
             Debug.Log("gameManager true");
->>>>>>> origin/dev_Thomas
         }
-        else if (m_gameManager.isGamepad)
+        else if (m_gameManager.isGamepad == true)
         {
 
             Vector2 r = new Vector2(rotateGamepad.x, -rotateGamepad.y) * mouseSensitivity * Time.deltaTime;
-            
-            if (m_isActivated)
-            {
-                transform.localRotation = _initRotation * Quaternion.Euler(pitch, 0f, 0f);
 
-                pitch = Mathf.Clamp(pitch - rotateGamepad.y * 1f, -90f, 90f);
-                
-                transform.Rotate(Vector3.right * r.y, Space.Self);
+            transform.localRotation = _initRotation * Quaternion.Euler(pitch, 0f, 0f);
 
-                playerBody.Rotate(Vector3.up * r.x, Space.Self);
-            }
+            pitch = Mathf.Clamp(pitch - rotateGamepad.y * 1f, -90f, 90f);
+
+            transform.Rotate(Vector3.right * r.y, Space.Self);
+
+            playerBody.Rotate(Vector3.up * r.x, Space.Self);
+
         }
         mouseSensitivity = m_assetMenuScriptable.value;
     }
@@ -93,10 +74,5 @@ public class MouseLock : MonoBehaviour
     private void OnEnable()
     {
         
-    }
-
-    public void IsMoving(bool p_activated)
-    {
-        m_isActivated = p_activated;
     }
 }

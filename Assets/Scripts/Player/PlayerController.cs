@@ -57,8 +57,6 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private PortillonScript m_portillon;
 
-    [NonSerialized] public bool m_stopStress = false;
-
     private NavMeshPath m_path;
     [Space(10)]
     [SerializeField] private LayerMask m_flashlightMask;
@@ -67,12 +65,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask m_iaMask;
     [SerializeField] private LayerMask m_portillonMask;
     [SerializeField] private LayerMask m_radioMask;
-
-    private PlayerAnimation m_playerAnimationReveil;
-
-    private MouseLock m_mouseLock;
-
-    //private bool m_isStopped;
 
     //-----------------------------------------------Sound System------------------------------------------//
     [Space(10)]
@@ -92,11 +84,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] [Range(0,10)] private float m_stressTest;
     
     private Vector3 previous;
-    [NonSerialized]
-    public float velocity;
+    private float velocity;
+    
+
+    
 
     //----------------------------------------------- Player controls system ------------------------------------------//
-    [Space(10)]
+
     [Header("System de controle joueur")]
     [SerializeField, Tooltip("R�f�rences du Chara controller")] private CharacterController m_myChara;
 
@@ -109,11 +103,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField, Tooltip("Si la valeur est à 0.3 alors le joueur est slow de 70%"), Range(0f, 1f)] private float m_slow;
 
-    private float m_currentSpeed;
-
 
     //-----------------------------------------------Post-Processing------------------------------------------
-    [Space(10)]
     [Header("Post-Processing")]
     [SerializeField, Tooltip("Volume de post-process")] Volume m_linkedPostProcess;
 
@@ -151,7 +142,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("Script de secouement")] private Shake m_camShake;
 
     //-----------------------------------------------Systeme Physics------------------------------------------
-    [Space(10)]
     [Header("Systeme de physique")]
     [SerializeField, Tooltip("Transform d'un empty ou sera cr�e la sphere pour savoir si le joueur est sur le sol")] private Transform groundCheck;
 
@@ -171,15 +161,6 @@ public class PlayerController : MonoBehaviour
 
     public Ray m_ray;
 
-<<<<<<< HEAD
-
-
-    private void Awake()
-    {
-        m_playerAnimationReveil = GetComponent<PlayerAnimation>();
-        m_mouseLock = FindObjectOfType<MouseLock>();
-        
-=======
     public bool isCinematic = true;
 
     [SerializeField] private Renderer m_flashlightRend;
@@ -192,7 +173,6 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         isCinematic = true;
->>>>>>> origin/dev_Thomas
         m_gameManager = FindObjectOfType<GameManager>();
         m_menuManager = FindObjectOfType<MenuManager>();
         m_controls = new PlayerControls();
@@ -201,8 +181,6 @@ public class PlayerController : MonoBehaviour
 
         m_currentStress = m_maxStress;
         m_stressBar.SetMaxHealth(m_maxStress);
-
-        m_currentSpeed = m_speed;
 
         m_camShake.camShakeActive = false;
         if(m_AIStateMachine == null)
@@ -231,11 +209,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-<<<<<<< HEAD
-        
-=======
         m_ray = m_cam.ScreenPointToRay(Input.mousePosition);
->>>>>>> origin/dev_Thomas
         Debug.DrawRay(m_ray.origin,m_ray.direction, Color.black);
        if (Physics.Raycast(m_ray, out m_hit, 1, ~(1 << gameObject.layer)))
         {
@@ -250,7 +224,7 @@ public class PlayerController : MonoBehaviour
         
         //Debug.Log(m_hit.collider.name);
         
-        velocity = Vector3.Distance(transform.position,previous) / Time.deltaTime;
+        velocity = ((transform.position - previous).magnitude) / Time.deltaTime;
         previous = transform.position;
         if (velocity < 0.2)
         {
@@ -280,10 +254,15 @@ public class PlayerController : MonoBehaviour
             {
                 m_fmodInstanceDoudou.stop(STOP_MODE.ALLOWFADEOUT);
             }
+            
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
 
-            m_currentSpeed = 1f;
+            Vector3 move = transform.right * x + transform.forward * z;
+
+            m_myChara.Move(move * m_speed * Time.deltaTime);
         }
-        if (m_doudouIsUsed)
+        if (m_doudouIsUsed == true)
         {
             PLAYBACK_STATE state;
             m_fmodInstanceDoudou.getPlaybackState(out state);
@@ -293,30 +272,18 @@ public class PlayerController : MonoBehaviour
                 m_fmodInstanceDoudou.start();
                 m_fmodInstanceDoudou.setVolume(m_assetMenu.value);
             }
-            m_currentSpeed = m_slow;
-            
-        }
-        
-        float xPlayer = Input.GetAxis("Horizontal");
-        float zPlayer = Input.GetAxis("Vertical");
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
 
-        Vector3 movePlayer = transform.right * xPlayer + transform.forward * zPlayer;
-        
-        // D�placements du joueur
-        
-        if (!m_playerAnimationReveil.m_stoppedMoving)
-        {
-            m_myChara.Move(movePlayer * m_speed * m_currentSpeed * Time.deltaTime);
-            m_UIManager.m_playingGameObject.SetActive(true);
-            m_mouseLock.IsMoving(true);
-        }
+            Vector3 move = transform.right * x + transform.forward * z;
+
+            m_myChara.Move(move * m_speed * m_slow * Time.deltaTime);
             
-        else
-        {
-            m_mouseLock.IsMoving(false);
-            m_UIManager.m_playingGameObject.SetActive(false);
         }
-        
+        // D�placements du joueur
+
+        m_myChara.Move(m_velocity * Time.deltaTime);
+
         m_velocity.y += m_gravity * Time.deltaTime;
 
         if (m_gameManager.isPc == true)
@@ -339,13 +306,7 @@ public class PlayerController : MonoBehaviour
 
         //Check Fonctions
 
-<<<<<<< HEAD
-        if (!m_stopStress) AutoStress();
-
-        ActiveFlashlight();
-=======
         AutoStress();
->>>>>>> origin/dev_Thomas
         ActiveDoudou();
 
         // test shader
@@ -463,10 +424,11 @@ public class PlayerController : MonoBehaviour
     {
         if(m_gameManager.isPaused == true)
         {
-            m_currentStress = m_maxStress;
+            m_maxStress = m_currentStress;
         }
         else
         {
+            m_maxStress = 100f;
             m_currentStress = Mathf.Clamp(m_currentStress - amount, 0f, m_maxStress);
 
             float damagePercent = Mathf.Clamp01(amount / m_maxStress);
