@@ -84,7 +84,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] [Range(0,10)] private float m_stressTest;
     
     private Vector3 previous;
-    private float velocity;
+    [NonSerialized]
+    public float velocity;
     
 
     
@@ -170,6 +171,9 @@ public class PlayerController : MonoBehaviour
 
     private float timeBeforeDropDoudou = 0.3f;
     private float timeBeforeDropVeilleuse = 0.3f;
+
+    [NonSerialized]
+    public bool m_stopStress;
     private void Awake()
     {
         isCinematic = true;
@@ -305,8 +309,7 @@ public class PlayerController : MonoBehaviour
 
 
         //Check Fonctions
-
-        AutoStress();
+        if (!m_stopStress) AutoStress();
         ActiveDoudou();
 
         // test shader
