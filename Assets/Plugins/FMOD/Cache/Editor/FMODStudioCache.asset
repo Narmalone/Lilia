@@ -50,7 +50,8 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: 9097981160586058749}
   MinDistance: 1
   MaxDistance: 20
   Length: 1104
@@ -97,10 +98,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Sounds.bank
   Name: Sounds
   StudioPath: bank:/Sounds
-  lastModified: 637895285692706825
+  lastModified: 637895319499297708
   FileSizes:
   - Name: Desktop
-    Value: 2897248
+    Value: 2898528
   Exists: 1
 --- !u!114 &-8291960394993572323
 MonoBehaviour:
@@ -125,10 +126,11 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: -6126293894900292102}
   MinDistance: 1
   MaxDistance: 20
-  Length: 523
+  Length: 463
 --- !u!114 &-8217780650933419535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,6 +236,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 672
+--- !u!114 &-6126293894900292102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PortillionFerme/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-5693967044222602914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,7 +302,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Voices.bank
   Name: Voices
   StudioPath: bank:/Voices
-  lastModified: 637895285692986078
+  lastModified: 637895319499686668
   FileSizes:
   - Name: Desktop
     Value: 44704
@@ -490,7 +516,7 @@ MonoBehaviour:
   - {fileID: 5980052921926315069}
   StringsBanks:
   - {fileID: 4453001036209173878}
-  cacheTime: 637895285692986078
+  cacheTime: 637895319499686668
   cacheVersion: 10
 --- !u!114 &141092383610645320
 MonoBehaviour:
@@ -558,7 +584,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637895285691771884
+  lastModified: 637895319494538827
   FileSizes:
   - Name: Desktop
     Value: 2111680
@@ -734,7 +760,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637895285691372945
+  lastModified: 637895319494139892
   FileSizes:
   - Name: Desktop
     Value: 2574
@@ -861,7 +887,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637895285691343006
+  lastModified: 637895319494030189
   FileSizes:
   - Name: Desktop
     Value: 2032
@@ -973,3 +999,27 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 5310
+--- !u!114 &9097981160586058749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PortillionOuvert/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1

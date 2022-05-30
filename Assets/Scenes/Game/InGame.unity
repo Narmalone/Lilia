@@ -179,6 +179,27 @@ MonoBehaviour:
   m_pos: {fileID: 4075055851583946304}
   m_doorController: {fileID: 1589387}
   m_timeBeforeClose: 1
+  m_fmodEventPortillonOpen:
+    Guid:
+      Data1: 602544046
+      Data2: 1078868210
+      Data3: -125545071
+      Data4: -941919868
+    Path: event:/SoundsEvent/Portillon/PortillionOuvert
+  m_fmodEventPortillonClose:
+    Guid:
+      Data1: -240474885
+      Data2: 1212527102
+      Data3: 665162686
+      Data4: 2119808065
+    Path: event:/SoundsEvent/Portillon/PortillionFerme
+  m_fmodEventPorteOpen:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!65 &1589391
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5274,6 +5295,7 @@ MonoBehaviour:
   m_playerMask:
     serializedVersion: 2
     m_Bits: 128
+  m_soundPlace: {fileID: 952115432}
 --- !u!114 &350210515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6050,6 +6072,27 @@ MonoBehaviour:
   m_pos: {fileID: 4075055851583946304}
   m_doorController: {fileID: 489844872}
   m_timeBeforeClose: 3
+  m_fmodEventPortillonOpen:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventPortillonClose:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventPorteOpen:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!65 &489844876
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6576,13 +6619,6 @@ MonoBehaviour:
       Data3: 1328284064
       Data4: -666646400
     Path: event:/SoundsEvent/Baby/BabyDragging
-  m_fmodEventContinuous:
-    Guid:
-      Data1: -1490063551
-      Data2: 1190372012
-      Data3: 335015330
-      Data4: 608535171
-    Path: event:/SoundsEvent/Baby/ContinuousBabyNoise
   m_fmodEventSonBB:
     Guid:
       Data1: 1694986241
@@ -6590,6 +6626,7 @@ MonoBehaviour:
       Data3: -75015237
       Data4: 26522174
     Path: event:/SoundsEvent/Baby/Crying
+  m_occlusion: {fileID: 0}
 --- !u!195 &576080452 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 2873547174128195186, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
@@ -7582,6 +7619,27 @@ MonoBehaviour:
   m_pos: {fileID: 4075055851583946304}
   m_doorController: {fileID: 710784402}
   m_timeBeforeClose: 3
+  m_fmodEventPortillonOpen:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventPortillonClose:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventPorteOpen:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!65 &710784401
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9116,6 +9174,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.30831948, y: 0.056832477, z: 0.87170696}
   m_Center: {x: -0.008382933, y: 0.00000035586342, z: 0.43585336}
+--- !u!1 &952115431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 952115432}
+  m_Layer: 0
+  m_Name: AudioChambre
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &952115432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952115431}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.332, y: 3.178, z: 6.712}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &976592415 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5397032731975841623, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -11048,6 +11136,27 @@ MonoBehaviour:
   m_pos: {fileID: 4075055851583946304}
   m_doorController: {fileID: 1267937836}
   m_timeBeforeClose: 3
+  m_fmodEventPortillonOpen:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventPortillonClose:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventPorteOpen:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!65 &1267937840
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11505,6 +11614,10 @@ PrefabInstance:
       propertyPath: m_uiManager
       value: 
       objectReference: {fileID: 2066910956}
+    - target: {fileID: 8024441013973086157, guid: 52bbbd64286334040abbedb01bc406e9, type: 3}
+      propertyPath: m_soundPlace
+      value: 
+      objectReference: {fileID: 1487884554}
     - target: {fileID: 8024441013973086157, guid: 52bbbd64286334040abbedb01bc406e9, type: 3}
       propertyPath: m_txtToInteract
       value: 
@@ -12734,6 +12847,27 @@ MonoBehaviour:
   m_pos: {fileID: 4075055851583946304}
   m_doorController: {fileID: 1404757747}
   m_timeBeforeClose: 3
+  m_fmodEventPortillonOpen:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventPortillonClose:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventPorteOpen:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!95 &1404757747
 Animator:
   serializedVersion: 3
@@ -16940,6 +17074,7 @@ MonoBehaviour:
       Data3: -672511818
       Data4: 1081390729
     Path: event:/SoundsEvent/RamassageEtLachage/Doudou/DropDoudou
+  m_asset: {fileID: 0}
 --- !u!65 &1426005578
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17402,6 +17537,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.30831942, y: 0.05683243, z: 0.87170696}
   m_Center: {x: -0.008383289, y: -0.0000004074196, z: 0.43585348}
+--- !u!1 &1487884553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1487884554}
+  m_Layer: 0
+  m_Name: AudioGarage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1487884554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487884553}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.63, y: -0.28, z: -1.082}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1492961682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5455398056315145982, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -18158,6 +18323,27 @@ MonoBehaviour:
   m_pos: {fileID: 4075055851583946304}
   m_doorController: {fileID: 1579836291}
   m_timeBeforeClose: 1
+  m_fmodEventPortillonOpen:
+    Guid:
+      Data1: 602544046
+      Data2: 1078868210
+      Data3: -125545071
+      Data4: -941919868
+    Path: event:/SoundsEvent/Portillon/PortillionOuvert
+  m_fmodEventPortillonClose:
+    Guid:
+      Data1: -240474885
+      Data2: 1212527102
+      Data3: 665162686
+      Data4: 2119808065
+    Path: event:/SoundsEvent/Portillon/PortillionFerme
+  m_fmodEventPorteOpen:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!95 &1579836291
 Animator:
   serializedVersion: 3
@@ -19946,6 +20132,27 @@ MonoBehaviour:
   m_pos: {fileID: 4075055851583946304}
   m_doorController: {fileID: 1749141759}
   m_timeBeforeClose: 3
+  m_fmodEventPortillonOpen:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventPortillonClose:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventPorteOpen:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!65 &1749141763
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21096,6 +21303,13 @@ MonoBehaviour:
   - {fileID: 347126042}
   m_iaPosition: {fileID: 576080450}
   m_iaSpawner: {fileID: 433328889}
+  m_fmodEventTremblement:
+    Guid:
+      Data1: 1475880533
+      Data2: 1108231576
+      Data3: 1636214920
+      Data4: -129892740
+    Path: event:/SoundsEvent/ChangementEnviro
   m_isAppear: 0
   IAdontMove: 0
 --- !u!4 &1929567142 stripped
@@ -21591,6 +21805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a051016cfa00d1344ac9777c39dab6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_playingGameObject: {fileID: 0}
   m_indicInteraction: {fileID: 635774800}
   m_UILampe: {fileID: 886882166}
   m_UIDoudou: {fileID: 340483026}
