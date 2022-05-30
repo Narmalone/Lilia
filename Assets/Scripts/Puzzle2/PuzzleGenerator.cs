@@ -44,8 +44,14 @@ public class PuzzleGenerator : MonoBehaviour
     
     [SerializeField]
     private Transform m_soundPlace;
+    
+    [SerializeField]
+    private Transform m_soundLumiere;
 
     Renderer rend;
+
+    [SerializeField]
+    private EventReference m_fmodEventAmpoule;
 
     private void Awake()
     {
@@ -80,6 +86,16 @@ public class PuzzleGenerator : MonoBehaviour
         {
             LockedPlayer();
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            EventInstance m_fmodInstanceDrag = RuntimeManager.CreateInstance(m_fmodEventAmpoule.Guid);
+            RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDrag, m_soundLumiere);
+            m_fmodInstanceDrag.start();
+            m_occlusion.AddInstance(m_fmodInstanceDrag);
+            m_fmodInstanceDrag.release();
+        }
+        
     }
     public void LateUpdate()
     {
@@ -228,6 +244,11 @@ public class PuzzleGenerator : MonoBehaviour
             m_appear.LateGameAppear();
             EventInstance m_fmodInstanceDrag = RuntimeManager.CreateInstance(m_appear.m_fmodEventTremblement.Guid);
             RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDrag, m_soundPlace);
+            m_fmodInstanceDrag.start();
+            m_occlusion.AddInstance(m_fmodInstanceDrag);
+            m_fmodInstanceDrag.release();
+            m_fmodInstanceDrag = RuntimeManager.CreateInstance(m_fmodEventAmpoule.Guid);
+            RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDrag, m_soundLumiere);
             m_fmodInstanceDrag.start();
             m_occlusion.AddInstance(m_fmodInstanceDrag);
             m_fmodInstanceDrag.release();

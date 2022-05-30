@@ -670,7 +670,6 @@ public class PlayerController : MonoBehaviour
     {
         if (m_doudouIsPossessed == true && timeBeforeDropDoudou <= 0f)
         {
-            Debug.Log("condition a le doudou");
             timeBeforeDropDoudou = 0;
 
             if (Input.GetMouseButtonDown(0))

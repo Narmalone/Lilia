@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 public class ButtonGeneratorPuzzle : MonoBehaviour
 {
@@ -13,8 +15,15 @@ public class ButtonGeneratorPuzzle : MonoBehaviour
     [SerializeField] private Animator m_myAnim;
     string m_nameAnim = "isActivate";
     string m_nameAnim_2 = "isDisable";
+    
+    private Renderer m_thisRend;
 
-    Renderer m_thisRend;
+    [SerializeField]
+    private EventReference m_fmodEventSwitchOn;
+    
+    [SerializeField]
+    private EventReference m_fmodEventSwitchOff;
+    
     private void Awake()
     {
         m_thisRend = GetComponent<Renderer>();
@@ -73,11 +82,13 @@ public class ButtonGeneratorPuzzle : MonoBehaviour
         {
             m_myAnim.SetTrigger(m_nameAnim_2);
             Animator.StringToHash(m_nameAnim_2);
+            RuntimeManager.PlayOneShotAttached(m_fmodEventSwitchOff.Guid, gameObject);
         }
         else
         {
             m_myAnim.SetTrigger(m_nameAnim);
             Animator.StringToHash(m_nameAnim);
+            RuntimeManager.PlayOneShotAttached(m_fmodEventSwitchOn.Guid, gameObject);
         }
     }
 }

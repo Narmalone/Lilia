@@ -195,11 +195,11 @@ MonoBehaviour:
     Path: event:/SoundsEvent/Portillon/PortillionFerme
   m_fmodEventPorteOpen:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1911058942
+      Data2: 1260372144
+      Data3: -850069342
+      Data4: 1206954172
+    Path: event:/SoundsEvent/Porte/PorteOuvert
 --- !u!65 &1589391
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6074,18 +6074,18 @@ MonoBehaviour:
   m_timeBeforeClose: 3
   m_fmodEventPortillonOpen:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 602544046
+      Data2: 1078868210
+      Data3: -125545071
+      Data4: -941919868
+    Path: event:/SoundsEvent/Portillon/PortillionOuvert
   m_fmodEventPortillonClose:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -240474885
+      Data2: 1212527102
+      Data3: 665162686
+      Data4: 2119808065
+    Path: event:/SoundsEvent/Portillon/PortillionFerme
   m_fmodEventPorteOpen:
     Guid:
       Data1: 0
@@ -7621,18 +7621,18 @@ MonoBehaviour:
   m_timeBeforeClose: 3
   m_fmodEventPortillonOpen:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 602544046
+      Data2: 1078868210
+      Data3: -125545071
+      Data4: -941919868
+    Path: event:/SoundsEvent/Portillon/PortillionOuvert
   m_fmodEventPortillonClose:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -240474885
+      Data2: 1212527102
+      Data3: 665162686
+      Data4: 2119808065
+    Path: event:/SoundsEvent/Portillon/PortillionFerme
   m_fmodEventPorteOpen:
     Guid:
       Data1: 0
@@ -11138,18 +11138,18 @@ MonoBehaviour:
   m_timeBeforeClose: 3
   m_fmodEventPortillonOpen:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 602544046
+      Data2: 1078868210
+      Data3: -125545071
+      Data4: -941919868
+    Path: event:/SoundsEvent/Portillon/PortillionOuvert
   m_fmodEventPortillonClose:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -240474885
+      Data2: 1212527102
+      Data3: 665162686
+      Data4: 2119808065
+    Path: event:/SoundsEvent/Portillon/PortillionFerme
   m_fmodEventPorteOpen:
     Guid:
       Data1: 0
@@ -11619,6 +11619,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1487884554}
     - target: {fileID: 8024441013973086157, guid: 52bbbd64286334040abbedb01bc406e9, type: 3}
+      propertyPath: m_soundLumiere
+      value: 
+      objectReference: {fileID: 1357605712}
+    - target: {fileID: 8024441013973086157, guid: 52bbbd64286334040abbedb01bc406e9, type: 3}
       propertyPath: m_txtToInteract
       value: 
       objectReference: {fileID: 980499663}
@@ -11694,6 +11698,10 @@ PrefabInstance:
       propertyPath: m_buttons.Array.data[9]
       value: 
       objectReference: {fileID: 1320749501}
+    - target: {fileID: 8024441013973086157, guid: 52bbbd64286334040abbedb01bc406e9, type: 3}
+      propertyPath: m_fmodEventAmpoule.Path
+      value: event:/SoundsEvent/AllumageLumiere
+      objectReference: {fileID: 0}
     - target: {fileID: 8024441013973086157, guid: 52bbbd64286334040abbedb01bc406e9, type: 3}
       propertyPath: m_buttons.Array.data[10]
       value: 
@@ -11794,6 +11802,22 @@ PrefabInstance:
       propertyPath: m_notSolution.Array.data[8]
       value: 
       objectReference: {fileID: 1320749496}
+    - target: {fileID: 8024441013973086157, guid: 52bbbd64286334040abbedb01bc406e9, type: 3}
+      propertyPath: m_fmodEventAmpoule.Guid.Data1
+      value: 1543757481
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024441013973086157, guid: 52bbbd64286334040abbedb01bc406e9, type: 3}
+      propertyPath: m_fmodEventAmpoule.Guid.Data2
+      value: 1223340305
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024441013973086157, guid: 52bbbd64286334040abbedb01bc406e9, type: 3}
+      propertyPath: m_fmodEventAmpoule.Guid.Data3
+      value: 284134830
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024441013973086157, guid: 52bbbd64286334040abbedb01bc406e9, type: 3}
+      propertyPath: m_fmodEventAmpoule.Guid.Data4
+      value: 269323261
+      objectReference: {fileID: 0}
     - target: {fileID: 8204957075627237168, guid: 52bbbd64286334040abbedb01bc406e9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -11924,6 +11948,20 @@ MonoBehaviour:
   m_notSelectedColor: {r: 0.6132076, g: 0.17065683, b: 0.17065683, a: 0}
   m_selectedColor: {r: 1, g: 0.52156866, b: 0, a: 1}
   m_myAnim: {fileID: 1320749482}
+  m_fmodEventSwitchOn:
+    Guid:
+      Data1: -595062721
+      Data2: 1130377346
+      Data3: 1731209624
+      Data4: 572385995
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOn
+  m_fmodEventSwitchOff:
+    Guid:
+      Data1: 936557294
+      Data2: 1088643077
+      Data3: 1208081341
+      Data4: 1381902196
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOff
 --- !u!95 &1320749497
 Animator:
   serializedVersion: 3
@@ -11961,6 +11999,20 @@ MonoBehaviour:
   m_notSelectedColor: {r: 0.6132076, g: 0.17065683, b: 0.17065683, a: 0}
   m_selectedColor: {r: 1, g: 0.52156866, b: 0, a: 1}
   m_myAnim: {fileID: 1320749497}
+  m_fmodEventSwitchOn:
+    Guid:
+      Data1: -595062721
+      Data2: 1130377346
+      Data3: 1731209624
+      Data4: 572385995
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOn
+  m_fmodEventSwitchOff:
+    Guid:
+      Data1: 936557294
+      Data2: 1088643077
+      Data3: 1208081341
+      Data4: 1381902196
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOff
 --- !u!114 &1320749499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11979,6 +12031,20 @@ MonoBehaviour:
   m_notSelectedColor: {r: 0.6132076, g: 0.17065683, b: 0.17065683, a: 0}
   m_selectedColor: {r: 1, g: 0.52156866, b: 0, a: 1}
   m_myAnim: {fileID: 1320749554}
+  m_fmodEventSwitchOn:
+    Guid:
+      Data1: -595062721
+      Data2: 1130377346
+      Data3: 1731209624
+      Data4: 572385995
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOn
+  m_fmodEventSwitchOff:
+    Guid:
+      Data1: 936557294
+      Data2: 1088643077
+      Data3: 1208081341
+      Data4: 1381902196
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOff
 --- !u!114 &1320749500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11997,6 +12063,20 @@ MonoBehaviour:
   m_notSelectedColor: {r: 0.6132076, g: 0.17065683, b: 0.17065683, a: 0}
   m_selectedColor: {r: 1, g: 0.52156866, b: 0, a: 1}
   m_myAnim: {fileID: 1320749555}
+  m_fmodEventSwitchOn:
+    Guid:
+      Data1: -595062721
+      Data2: 1130377346
+      Data3: 1731209624
+      Data4: 572385995
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOn
+  m_fmodEventSwitchOff:
+    Guid:
+      Data1: 936557294
+      Data2: 1088643077
+      Data3: 1208081341
+      Data4: 1381902196
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOff
 --- !u!114 &1320749501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12015,6 +12095,20 @@ MonoBehaviour:
   m_notSelectedColor: {r: 0.6132076, g: 0.17065683, b: 0.17065683, a: 0}
   m_selectedColor: {r: 1, g: 0.52156866, b: 0, a: 1}
   m_myAnim: {fileID: 1320749556}
+  m_fmodEventSwitchOn:
+    Guid:
+      Data1: -595062721
+      Data2: 1130377346
+      Data3: 1731209624
+      Data4: 572385995
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOn
+  m_fmodEventSwitchOff:
+    Guid:
+      Data1: 936557294
+      Data2: 1088643077
+      Data3: 1208081341
+      Data4: 1381902196
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOff
 --- !u!114 &1320749502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12033,6 +12127,20 @@ MonoBehaviour:
   m_notSelectedColor: {r: 0.6132076, g: 0.17065683, b: 0.17065683, a: 0}
   m_selectedColor: {r: 1, g: 0.52156866, b: 0, a: 1}
   m_myAnim: {fileID: 1320749557}
+  m_fmodEventSwitchOn:
+    Guid:
+      Data1: -595062721
+      Data2: 1130377346
+      Data3: 1731209624
+      Data4: 572385995
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOn
+  m_fmodEventSwitchOff:
+    Guid:
+      Data1: 936557294
+      Data2: 1088643077
+      Data3: 1208081341
+      Data4: 1381902196
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOff
 --- !u!114 &1320749503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12051,6 +12159,20 @@ MonoBehaviour:
   m_notSelectedColor: {r: 0.6132076, g: 0.17065683, b: 0.17065683, a: 0}
   m_selectedColor: {r: 1, g: 0.52156866, b: 0, a: 1}
   m_myAnim: {fileID: 1320749558}
+  m_fmodEventSwitchOn:
+    Guid:
+      Data1: -595062721
+      Data2: 1130377346
+      Data3: 1731209624
+      Data4: 572385995
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOn
+  m_fmodEventSwitchOff:
+    Guid:
+      Data1: 936557294
+      Data2: 1088643077
+      Data3: 1208081341
+      Data4: 1381902196
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOff
 --- !u!114 &1320749504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12069,6 +12191,20 @@ MonoBehaviour:
   m_notSelectedColor: {r: 0.6132076, g: 0.17065683, b: 0.17065683, a: 0}
   m_selectedColor: {r: 1, g: 0.52156866, b: 0, a: 1}
   m_myAnim: {fileID: 1320749559}
+  m_fmodEventSwitchOn:
+    Guid:
+      Data1: -595062721
+      Data2: 1130377346
+      Data3: 1731209624
+      Data4: 572385995
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOn
+  m_fmodEventSwitchOff:
+    Guid:
+      Data1: 936557294
+      Data2: 1088643077
+      Data3: 1208081341
+      Data4: 1381902196
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOff
 --- !u!114 &1320749505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12087,6 +12223,20 @@ MonoBehaviour:
   m_notSelectedColor: {r: 0.6132076, g: 0.17065683, b: 0.17065683, a: 0}
   m_selectedColor: {r: 1, g: 0.52156866, b: 0, a: 1}
   m_myAnim: {fileID: 1320749560}
+  m_fmodEventSwitchOn:
+    Guid:
+      Data1: -595062721
+      Data2: 1130377346
+      Data3: 1731209624
+      Data4: 572385995
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOn
+  m_fmodEventSwitchOff:
+    Guid:
+      Data1: 936557294
+      Data2: 1088643077
+      Data3: 1208081341
+      Data4: 1381902196
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOff
 --- !u!114 &1320749506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12105,6 +12255,20 @@ MonoBehaviour:
   m_notSelectedColor: {r: 0.6132076, g: 0.17065683, b: 0.17065683, a: 0}
   m_selectedColor: {r: 1, g: 0.52156866, b: 0, a: 1}
   m_myAnim: {fileID: 1320749561}
+  m_fmodEventSwitchOn:
+    Guid:
+      Data1: -595062721
+      Data2: 1130377346
+      Data3: 1731209624
+      Data4: 572385995
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOn
+  m_fmodEventSwitchOff:
+    Guid:
+      Data1: 936557294
+      Data2: 1088643077
+      Data3: 1208081341
+      Data4: 1381902196
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOff
 --- !u!114 &1320749507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12123,6 +12287,20 @@ MonoBehaviour:
   m_notSelectedColor: {r: 0.6132076, g: 0.17065683, b: 0.17065683, a: 0}
   m_selectedColor: {r: 1, g: 0.52156866, b: 0, a: 1}
   m_myAnim: {fileID: 1320749562}
+  m_fmodEventSwitchOn:
+    Guid:
+      Data1: -595062721
+      Data2: 1130377346
+      Data3: 1731209624
+      Data4: 572385995
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOn
+  m_fmodEventSwitchOff:
+    Guid:
+      Data1: 936557294
+      Data2: 1088643077
+      Data3: 1208081341
+      Data4: 1381902196
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOff
 --- !u!114 &1320749508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12141,6 +12319,20 @@ MonoBehaviour:
   m_notSelectedColor: {r: 0.6132076, g: 0.17065683, b: 0.17065683, a: 0}
   m_selectedColor: {r: 1, g: 0.52156866, b: 0, a: 1}
   m_myAnim: {fileID: 1320749563}
+  m_fmodEventSwitchOn:
+    Guid:
+      Data1: -595062721
+      Data2: 1130377346
+      Data3: 1731209624
+      Data4: 572385995
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOn
+  m_fmodEventSwitchOff:
+    Guid:
+      Data1: 936557294
+      Data2: 1088643077
+      Data3: 1208081341
+      Data4: 1381902196
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOff
 --- !u!114 &1320749509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12159,6 +12351,20 @@ MonoBehaviour:
   m_notSelectedColor: {r: 0.6132076, g: 0.17065683, b: 0.17065683, a: 0}
   m_selectedColor: {r: 1, g: 0.52156866, b: 0, a: 1}
   m_myAnim: {fileID: 1320749564}
+  m_fmodEventSwitchOn:
+    Guid:
+      Data1: -595062721
+      Data2: 1130377346
+      Data3: 1731209624
+      Data4: 572385995
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOn
+  m_fmodEventSwitchOff:
+    Guid:
+      Data1: 936557294
+      Data2: 1088643077
+      Data3: 1208081341
+      Data4: 1381902196
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOff
 --- !u!114 &1320749510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12177,6 +12383,20 @@ MonoBehaviour:
   m_notSelectedColor: {r: 0.6132076, g: 0.17065683, b: 0.17065683, a: 0}
   m_selectedColor: {r: 1, g: 0.52156866, b: 0, a: 1}
   m_myAnim: {fileID: 1320749565}
+  m_fmodEventSwitchOn:
+    Guid:
+      Data1: -595062721
+      Data2: 1130377346
+      Data3: 1731209624
+      Data4: 572385995
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOn
+  m_fmodEventSwitchOff:
+    Guid:
+      Data1: 936557294
+      Data2: 1088643077
+      Data3: 1208081341
+      Data4: 1381902196
+    Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOff
 --- !u!95 &1320749554
 Animator:
   serializedVersion: 3
@@ -12732,6 +12952,36 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5884580939788738644, guid: 01a5ee29b5ed558459799e608e3ff0a8, type: 3}
+--- !u!1 &1357605711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1357605712}
+  m_Layer: 0
+  m_Name: AudioGarageLumiere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1357605712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357605711}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.14, y: -1.19, z: 0.71}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1363545999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2980090796650003442, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -12849,18 +13099,18 @@ MonoBehaviour:
   m_timeBeforeClose: 3
   m_fmodEventPortillonOpen:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 602544046
+      Data2: 1078868210
+      Data3: -125545071
+      Data4: -941919868
+    Path: event:/SoundsEvent/Portillon/PortillionOuvert
   m_fmodEventPortillonClose:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -240474885
+      Data2: 1212527102
+      Data3: 665162686
+      Data4: 2119808065
+    Path: event:/SoundsEvent/Portillon/PortillionFerme
   m_fmodEventPorteOpen:
     Guid:
       Data1: 0
@@ -17585,6 +17835,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.12853086, y: 0.59597284, z: 0.3888719}
   m_Center: {x: -0.008518352, y: -0.007555965, z: 0.15851764}
+--- !u!114 &1492961687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492961682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b58b278285156d44bead0c78107fa4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_fmodEventStress:
+    Guid:
+      Data1: -1573268501
+      Data2: 1280782529
+      Data3: 501608621
+      Data4: 389650701
+    Path: event:/SoundsEvent/Television
 --- !u!43 &1495619740
 Mesh:
   m_ObjectHideFlags: 0
@@ -18339,11 +18608,11 @@ MonoBehaviour:
     Path: event:/SoundsEvent/Portillon/PortillionFerme
   m_fmodEventPorteOpen:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1911058942
+      Data2: 1260372144
+      Data3: -850069342
+      Data4: 1206954172
+    Path: event:/SoundsEvent/Porte/PorteOuvert
 --- !u!95 &1579836291
 Animator:
   serializedVersion: 3
@@ -20134,18 +20403,18 @@ MonoBehaviour:
   m_timeBeforeClose: 3
   m_fmodEventPortillonOpen:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 602544046
+      Data2: 1078868210
+      Data3: -125545071
+      Data4: -941919868
+    Path: event:/SoundsEvent/Portillon/PortillionOuvert
   m_fmodEventPortillonClose:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -240474885
+      Data2: 1212527102
+      Data3: 665162686
+      Data4: 2119808065
+    Path: event:/SoundsEvent/Portillon/PortillionFerme
   m_fmodEventPorteOpen:
     Guid:
       Data1: 0
@@ -23816,15 +24085,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653245, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.381
+      value: 2.493
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653245, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.541
+      value: 2.757
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653245, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.054
+      value: 6.841
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653245, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_LocalRotation.w

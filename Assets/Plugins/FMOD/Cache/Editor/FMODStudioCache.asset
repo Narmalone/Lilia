@@ -98,10 +98,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Sounds.bank
   Name: Sounds
   StudioPath: bank:/Sounds
-  lastModified: 637895319499297708
+  lastModified: 637895548695857037
   FileSizes:
   - Name: Desktop
-    Value: 2898528
+    Value: 4254656
   Exists: 1
 --- !u!114 &-8291960394993572323
 MonoBehaviour:
@@ -302,7 +302,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Voices.bank
   Name: Voices
   StudioPath: bank:/Voices
-  lastModified: 637895319499686668
+  lastModified: 637895548696047065
   FileSizes:
   - Name: Desktop
     Value: 44704
@@ -414,6 +414,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 7000
+--- !u!114 &-2474201460856894435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Disjoncteur/DisjoncteurOn
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOn
+  Guid:
+    Data1: -595062721
+    Data2: 1130377346
+    Data3: 1731209624
+    Data4: 572385995
+  Banks:
+  - {fileID: -8343902966666032979}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 800
+--- !u!114 &-2434825670568783847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Disjoncteur/DisjoncteurOff
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Disjoncteur/DisjoncteurOff
+  Guid:
+    Data1: 936557294
+    Data2: 1088643077
+    Data3: 1208081341
+    Data4: 1381902196
+  Banks:
+  - {fileID: -8343902966666032979}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 460
 --- !u!114 &-1431506126233104922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,12 +565,17 @@ MonoBehaviour:
   - {fileID: -3186784395429354836}
   - {fileID: -8560919738344884823}
   - {fileID: -8291960394993572323}
+  - {fileID: 1722819381004368137}
+  - {fileID: 715067365453329150}
+  - {fileID: -2474201460856894435}
+  - {fileID: -2434825670568783847}
+  - {fileID: 4059977476383233958}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5980052921926315069}
   StringsBanks:
   - {fileID: 4453001036209173878}
-  cacheTime: 637895319499686668
+  cacheTime: 637895548696047065
   cacheVersion: 10
 --- !u!114 &141092383610645320
 MonoBehaviour:
@@ -569,6 +628,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &715067365453329150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Television
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Television
+  Guid:
+    Data1: -1573268501
+    Data2: 1280782529
+    Data3: 501608621
+    Data4: 389650701
+  Banks:
+  - {fileID: -8343902966666032979}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 8773860324020299179}
+  MinDistance: 1
+  MaxDistance: 5
+  Length: 10600
 --- !u!114 &1363111451556931002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,10 +671,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637895319494538827
+  lastModified: 637895548694296761
   FileSizes:
   - Name: Desktop
-    Value: 2111680
+    Value: 2111648
   Exists: 1
 --- !u!114 &1683279064459709985
 MonoBehaviour:
@@ -616,6 +703,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &1722819381004368137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Porte/PorteOuvert
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Porte/PorteOuvert
+  Guid:
+    Data1: -1911058942
+    Data2: 1260372144
+    Data3: -850069342
+    Data4: 1206954172
+  Banks:
+  - {fileID: -8343902966666032979}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 816
 --- !u!114 &1887902602821277710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,7 +752,7 @@ MonoBehaviour:
   - {fileID: -8343902966666032979}
   IsStream: 0
   Is3D: 1
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
@@ -745,6 +859,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 6720
+--- !u!114 &4059977476383233958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/AllumageLumiere
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/AllumageLumiere
+  Guid:
+    Data1: 1543757481
+    Data2: 1223340305
+    Data3: 284134830
+    Data4: 269323261
+  Banks:
+  - {fileID: -8343902966666032979}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 7078248445148117943}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3700
 --- !u!114 &4453001036209173878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -760,10 +902,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637895319494139892
+  lastModified: 637895548694091725
   FileSizes:
   - Name: Desktop
-    Value: 2574
+    Value: 2828
   Exists: 1
 --- !u!114 &4584836110223669072
 MonoBehaviour:
@@ -887,7 +1029,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637895319494030189
+  lastModified: 637895548694071719
   FileSizes:
   - Name: Desktop
     Value: 2032
@@ -920,6 +1062,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 37500
+--- !u!114 &7078248445148117943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/AllumageLumiere/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &8306169716361525010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,6 +1165,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 5310
+--- !u!114 &8773860324020299179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Television/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &9097981160586058749
 MonoBehaviour:
   m_ObjectHideFlags: 0
