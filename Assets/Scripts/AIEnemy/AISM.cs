@@ -119,10 +119,8 @@ public class AISM : StateMachine
     {
         while(true)
         {
-            Debug.Log("Je rentre dans la boucle coroutine cri bb");
             
             int time = 10 + Random.Range(0, 10);
-            Debug.Log(time);
             yield return new WaitForSeconds(time);
             m_fmodInstanceRespiration.stop(STOP_MODE.ALLOWFADEOUT);
             StartCoroutine(ReEnableRespiration());
@@ -131,8 +129,6 @@ public class AISM : StateMachine
             instance.start();
             m_occlusion.AddInstance(instance);
             instance.release();
-            
-            Debug.Log($"Je fais le bb {time}"); 
         }
     }
 

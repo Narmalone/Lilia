@@ -42,17 +42,22 @@ public class QTEManager : MonoBehaviour
     public int m_index;
 
     public bool m_qteIsOver = false;
-
+    public bool isInQte = false;
+    public bool canDoQte = false;
     private Ray m_ray;
 
     private RaycastHit m_hit,m_pastHit;
 
     private int m_nombre_de_départ_qte;
-        
+
+    private Renderer m_thisRend;
     private void Awake()
     {
+        isInQte = false;
+        canDoQte = false;
         m_txtPushTheBox.gameObject.SetActive(false);
         m_txtCancelAction.gameObject.SetActive(false);
+        m_thisRend = GetComponent<Renderer>();
     }
     void Start()
     {
@@ -78,7 +83,7 @@ public class QTEManager : MonoBehaviour
         Debug.DrawRay(m_ray.origin,m_ray.direction, Color.red);
         if (Physics.Raycast(m_ray, out m_hit, 1, ~m_layerPlayer))
         {
-            Debug.Log($"Je touche avec le raycast: {m_hit.collider.name}");
+            //Debug.Log($"Je touche avec le raycast: {m_hit.collider.name}");
             OnRayCastHit(m_hit.collider);
             m_pastHit = m_hit;
         }
@@ -89,19 +94,14 @@ public class QTEManager : MonoBehaviour
         
         if (m_qteStarted == true)
         {
-            if (Vector3.Distance(m_playerGO.transform.position, m_containerPerso.transform.position) > 0.3f)
-            {
-                m_playerGO.transform.position = Vector3.MoveTowards(m_playerGO.transform.position,m_containerPerso.transform.position,0.1f);
-                Debug.Log($"bouger le joueur vers le container : {Vector3.Distance(transform.position, m_containerPerso.transform.position)}");
-            }
-            else if (m_currentNumberQTE < m_nombreQTE)
+            if (m_currentNumberQTE < m_nombreQTE)
             {
                 m_txtPuzzle.UpdateText();
                 m_txtCancelAction.gameObject.SetActive(true);
                 DelockPos();
                 if (m_startedCoroutine == false)
                 {
-                    Debug.Log($"Press key {m_keycodesQTE[m_index]}");
+                    //Debug.Log($"Press key {m_keycodesQTE[m_index]}");
                     if (Input.GetKey(m_keycodesQTE[m_index]))
                     {
                         m_txtPuzzle.SetNewPosition();
@@ -121,10 +121,23 @@ public class QTEManager : MonoBehaviour
                 StopAllCoroutines();
                 m_txtCancelAction.gameObject.SetActive(false);
                 m_txtToModify.gameObject.SetActive(false);
+                m_txtPushTheBox.gameObject.SetActive(false);
+                DelockPos();
             }
         }
         
         
+    }
+    private void LateUpdate()
+    {
+        if (m_qteStarted == true)
+        {
+            if (Vector3.Distance(m_playerGO.transform.position, m_containerPerso.transform.position) > 0.2f)
+            {
+                m_playerGO.transform.position = Vector3.MoveTowards(m_playerGO.transform.position, m_containerPerso.transform.position, 0.1f);
+                Debug.Log($"bouger le joueur vers le container : {Vector3.Distance(transform.position, m_containerPerso.transform.position)}");
+            }
+        }
     }
 
     IEnumerator CoroutineWait()
@@ -135,20 +148,27 @@ public class QTEManager : MonoBehaviour
     
     private void OnRayCastHit(Collider other)
     {
-        Debug.Log("Je suis dans le raycast pour le qte");
+        //Debug.Log("Je suis dans le raycast pour le qte");
         if (ReferenceEquals( gameObject, other.gameObject) && other.isTrigger)
         {
-            Debug.Log("Je vise le meuble");
+           // Debug.Log("Je vise le meuble");
             if (m_qteIsOver == false && m_txtPushTheBox.gameObject.activeInHierarchy == false)
             {
-                m_txtPushTheBox.gameObject.SetActive(true);
+                if(isInQte == false)
+                {
+                    if(canDoQte == true)
+                    {
+                        m_thisRend.GetComponent<Renderer>().material.SetFloat("_BooleanFloat", 1f);
+                        m_txtPushTheBox.gameObject.SetActive(true);
+                    }
+                }
             }
 
             if (Input.GetKey(KeyCode.E) && m_qteStarted == false)
             {
                 if(m_qteIsOver == false)
                 {
-                    if(m_playerController.m_doudouIsPossessed == false && m_playerController.m_flashlightIsPossessed == false)
+                    if(canDoQte == true)
                     {
                         Debug.Log(m_nombre_de_départ_qte++);
                         Debug.Log("Qte started");
@@ -156,8 +176,8 @@ public class QTEManager : MonoBehaviour
                         m_txtToModify.gameObject.SetActive(true);
                         m_txtPushTheBox.gameObject.SetActive(false);
                         m_qteStarted = true;
+                        isInQte = true;
                     }
-                   
                 }
                 
             }
@@ -173,6 +193,7 @@ public class QTEManager : MonoBehaviour
         if (ReferenceEquals( gameObject, m_pastHit.collider?.gameObject) && other.isTrigger)
         {
             Debug.Log("Je ne vise plus le meuble");
+            m_thisRend.GetComponent<Renderer>().material.SetFloat("_BooleanFloat", 0f);
             m_txtPushTheBox.gameObject.SetActive(false);
         }
 
@@ -185,6 +206,7 @@ public class QTEManager : MonoBehaviour
             m_txtCancelAction.gameObject.SetActive(false);
             m_txtToModify.gameObject.SetActive(false);
             m_qteStarted = false;
+            isInQte = false;
         }
     }
 

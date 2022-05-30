@@ -8,6 +8,7 @@ public class CadenasOpenScript : MonoBehaviour
     [SerializeField] private Animator m_animKey;
     [SerializeField] private Animator m_animDoor;
     [SerializeField] private Animator m_animCadenas;
+    [SerializeField] private BoxCollider m_doorBox;
     [SerializeField] private FMODUnity.EventReference m_fmodEvent;
 
     private FMOD.Studio.EventInstance m_fmodInstance;
@@ -15,14 +16,15 @@ public class CadenasOpenScript : MonoBehaviour
     string m_name = "isOpen";
 
     [SerializeField] private GameManager m_gameManager;
+    [SerializeField] private KeyScript m_key;
     [SerializeField] private LayerMask m_layerPlayer;
     private void Awake()
     {
         m_fmodInstance = FMODUnity.RuntimeManager.CreateInstance(m_fmodEvent);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstance,  GetComponent<Transform>(), GetComponent<Rigidbody>());
-        
-        
-        if(m_gameManager == null)
+
+        m_doorBox.enabled = true;
+        if (m_gameManager == null)
         {
             m_gameManager = FindObjectOfType<GameManager>();
         }
@@ -34,11 +36,13 @@ public class CadenasOpenScript : MonoBehaviour
             if (m_gameManager.gotKey == true)
             {
                 m_fmodInstance.start();
+                m_doorBox.enabled = false;
                 m_animCadenas.SetBool(m_name, true);
                 m_animKey.SetBool(m_name, true);
-                
-                Animator.StringToHash(m_name);
                 StartCoroutine(OuverturePorte());
+                m_gameManager.gotKey = false;
+                m_key.m_keyUi.SetActive(false);
+                m_key.gameObject.transform.position = new Vector3(0f, 0f, 200f);
             }
         }      
     }

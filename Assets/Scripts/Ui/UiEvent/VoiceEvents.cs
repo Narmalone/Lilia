@@ -15,7 +15,6 @@ public class VoiceEvents : MonoBehaviour
 
     Color m_selectedColor = Color.yellow;
     Color m_unselectedColor = Color.white;
-
     private void OnEnable()
     {
         if (m_uiEvent == null) return;
@@ -26,10 +25,24 @@ public class VoiceEvents : MonoBehaviour
         if (m_uiEvent == null) return;
 
     }
+    
     private void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();
-        m_audioScript = FindObjectOfType<AudioManagerScript>();
+        if(m_audioScript != null)
+        {
+            m_audioScript = FindObjectOfType<AudioManagerScript>();
+        }
+        else
+        {
+            return;
+        }
+        m_uiEvent.value = 0.5f;
+        valueToDisplay = 50f;
+        UpdateValueToString();
+    }
+    private void Start()
+    {
         m_uiEvent.value = 0.5f;
         valueToDisplay = 50f;
         UpdateValueToString();
@@ -70,6 +83,7 @@ public class VoiceEvents : MonoBehaviour
                 valueToDisplay = 100f;
             }
             UpdateValueToString();
+            m_audioScript.SetNewValue();
         }
         else
         {

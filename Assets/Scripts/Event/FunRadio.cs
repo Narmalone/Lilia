@@ -37,16 +37,15 @@ public class FunRadio : MonoBehaviour
     {
         if(isFirstAnswer == true)
         {
-            m_uiManager.DisableUi();
             m_waypointMoveDoudou.isEventCalled = true;
             m_doudou.m_callEvent = true;
+            m_doudou.TakeBeforeChase = true;
+            m_uiManager.DisableUi();
             m_audioScript.Stop("PhoneEvent");
             m_audioScript.Play("HangUp");
             m_audioScript.PlayVoices("DialogPhone");
             m_appearsChamber.SwitchAppearing();
-            m_doudou.TakeBeforeChase = true;
             Debug.Log("a répondu au téléphone");
-            isFirstAnswer = false;
         }
         else { return; }
         
@@ -56,6 +55,7 @@ public class FunRadio : MonoBehaviour
         if(StartPhone == false)
         {
             m_audioScript.Play("PhoneEvent");
+            Debug.Log("lancer phone event");
             StartPhone = true;
         }
     }

@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject m_pannelOption;
     [SerializeField] private GameObject m_pannelPause;
     [SerializeField] private GameObject m_pannelDeath;
+    [SerializeField] private GameObject m_pannelGame;
     //variables dans le Option depuis le menu
     [SerializeField] private GameObject m_newEventSystemFirstSelectedObject;
     [SerializeField] private GameObject m_newSystemCurrentSelectedObject;
@@ -55,18 +56,15 @@ public class MenuManager : MonoBehaviour
     }
     public void OnResume(GameObject p_obj)
     {
+        m_pannelGame.SetActive(true);
         p_obj.SetActive(false);
         m_gameManager.GameResume();
     }
 
     public void OnPause()
     {
+        m_pannelGame.SetActive(false);
         m_pannelPause.SetActive(true);
-    }
-
-    public void OnLoad()
-    {
-        Debug.Log("Recharger le niveau depuis le dernier checkpoint");
     }
 
     public void OnOptions()

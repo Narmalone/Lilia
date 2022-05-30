@@ -26,10 +26,14 @@ public class UiManager : MonoBehaviour
     [NonSerialized]
     public bool m_isActivated;
 
+    [SerializeField] private Sprite m_leftClickSprite;
+    [SerializeField] private Sprite m_rightClickSprite;
+    [SerializeField] private Sprite m_EKey;
 
     private void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();
+        m_indicInteraction.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
     private void Start()
     {
@@ -46,11 +50,23 @@ public class UiManager : MonoBehaviour
     //----------------------------------------------- Ui prendre et dropper un item ------------------------------------------//
 
 
-    //FLASHLIGHT//
+    //Interactions quand raycast//
 
+    public void TakableFlashlight()
+    {
+        m_indicInteraction.GetComponent<Image>().sprite = m_rightClickSprite;
+        m_indicInteraction.SetActive(true);
+    }
+     public void TakableDoudou()
+    {
+        m_indicInteraction.GetComponent<Image>().sprite = m_leftClickSprite;
+        m_indicInteraction.SetActive(true);
+    }
 
+    
     public void TakableObject()
     {
+        m_indicInteraction.GetComponent<Image>().sprite = m_EKey;
         m_indicInteraction.SetActive(true);
     }
 

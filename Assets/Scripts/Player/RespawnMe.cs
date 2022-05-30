@@ -5,30 +5,32 @@ using UnityEngine;
 public class RespawnMe : MonoBehaviour
 {
     [SerializeField] PlayerController m_player;
+    [SerializeField] Doudou m_doudou;
+    [SerializeField] FlashlightManager m_flm;
+    [SerializeField] UiManager m_uiManager;
     [Header("Objects Transform"), Space(10)]
-    [SerializeField] public Transform m_doudoutransform;
     [SerializeField] public Transform m_playertransform;
     [SerializeField] public Transform m_iaTransform;
-    [SerializeField] public Transform m_veilleuseTransform;
 
     [Header("Checkpoints_1"), Space(10)]
     [SerializeField] public Transform m_playercheckpoints;
-    [SerializeField] public Transform m_doudoucheckpoint;
     [SerializeField] public Transform m_iaCheckpoint;
-    [SerializeField] public Transform m_veilleuseCheckPoint;
 
     [SerializeField] private MenuManager m_menuManager;
 
     private int index;
-
+    public bool makeRespawn = true;
     public bool isNextCheckpoint = false;
     [SerializeField] private GameManager m_gameManager;
-
+    private float timeToWait = 1f;
     private void Awake()
     {
+        makeRespawn = true;
         m_gameManager = FindObjectOfType<GameManager>();
         index = 0;
+        timeToWait = 1f;
     }
+
     private void OnEnable()
     {
         Awake();
@@ -41,16 +43,34 @@ public class RespawnMe : MonoBehaviour
     {
         if (m_gameManager.isDead == true)
         {
-            if (Input.anyKeyDown)
+            m_gameManager.isPc = false;
+            m_iaTransform.position = m_iaCheckpoint.position;
+            m_player.transform.position = m_playercheckpoints.transform.position;
+            if (makeRespawn == true)
             {
-                Respawn();
-                Debug.Log("mort et appuie sur une touche");
+                Debug.Log("lancer chrono");
+                StartChrono();
             }
         }
     }
-    private void FixedUpdate()
+    public void StartChrono()
     {
-        
+        Debug.Log("dans chrono");
+        if (timeToWait >= 0f)
+        {
+            timeToWait -= Time.deltaTime;
+        }
+        if(timeToWait <= 0f)
+        {
+            timeToWait = 0f;
+            if (Input.anyKeyDown)
+            {
+                m_gameManager.isPc = true;
+                Respawn();
+                makeRespawn = false;
+                Debug.Log("mort et appuie sur une touche");
+            }
+        }
     }
     public void NextCheckpoint()
     {
@@ -61,26 +81,26 @@ public class RespawnMe : MonoBehaviour
     }
     public void Respawn()
     {
-        m_player.transform.position = m_playercheckpoints.transform.position;
-        m_iaTransform.position = m_iaCheckpoint.position;
 
-        if (m_player.m_doudouIsPossessed == true)
+        if(m_player.m_doudouIsPossessed == false)
         {
-            m_doudoutransform.SetParent(null);
+            m_uiManager.TakeDoudou();
+            m_doudou.PickItem();
+            m_player.m_doudouIsPossessed = true;
+            Debug.Log("joueur a pas le doudou donc l'attribuer au joueur");
         }
-        if(m_player.m_flashlightIsPossessed == true)
+
+        if(m_player.m_flashlightIsPossessed == false)
         {
-            m_veilleuseTransform.SetParent(null);
+            m_uiManager.TakeLampe();
+            m_flm.PickItem();
+            m_player.m_flashlightIsPossessed = true;
+            //m_veilleuseTransform.position = m_veilleuseCheckPoint.position;
+            Debug.Log("joueur a pas la veilleuse donc l'attribuer au joueur");
         }
-        m_doudoutransform.transform.position = m_doudoucheckpoint.transform.position;
-        m_veilleuseTransform.position = m_veilleuseCheckPoint.position;
-        Debug.Log("fonction respawn");
 
         m_menuManager.OnRespawn();
         m_gameManager.isDead = false;
-    }
-    public void RespawnPlayer()
-    {
-        m_player.transform.position = m_playercheckpoints.transform.position;
+        timeToWait = 1f;
     }
 }
