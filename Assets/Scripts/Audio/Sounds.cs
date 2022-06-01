@@ -21,7 +21,7 @@ public class Sounds : MonoBehaviour
     private void Awake()
     {
         clip = GetComponent<StudioEventEmitter>();
-        VCAcontroller = FMODUnity.RuntimeManager.GetVCA("vca:/" + VcaName);
+        VCAcontroller = RuntimeManager.GetVCA("vca:/" + VcaName);
     }
     public void SetVolume()
     {

@@ -4,6 +4,7 @@ using UnityEngine;
 using FMODUnity;
 using System;
 
+
 public class AudioManagerScript : MonoBehaviour
 {
     public Sounds[] sounds;

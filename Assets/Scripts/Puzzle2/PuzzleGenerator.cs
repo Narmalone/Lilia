@@ -52,6 +52,9 @@ public class PuzzleGenerator : MonoBehaviour
 
     [SerializeField]
     private EventReference m_fmodEventAmpoule;
+    
+    [SerializeField]
+    private EventReference m_fmodEventChair;
 
     private void Awake()
     {
@@ -86,16 +89,6 @@ public class PuzzleGenerator : MonoBehaviour
         {
             LockedPlayer();
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            EventInstance m_fmodInstanceDrag = RuntimeManager.CreateInstance(m_fmodEventAmpoule.Guid);
-            RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDrag, m_soundLumiere);
-            m_fmodInstanceDrag.start();
-            m_occlusion.AddInstance(m_fmodInstanceDrag);
-            m_fmodInstanceDrag.release();
-        }
-        
     }
     public void LateUpdate()
     {
@@ -242,16 +235,16 @@ public class PuzzleGenerator : MonoBehaviour
             isTrigger = false;
             m_player.m_speed = 2f;
             m_appear.LateGameAppear();
-            EventInstance m_fmodInstanceDrag = RuntimeManager.CreateInstance(m_appear.m_fmodEventTremblement.Guid);
-            RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDrag, m_soundPlace);
-            m_fmodInstanceDrag.start();
-            m_occlusion.AddInstance(m_fmodInstanceDrag);
-            m_fmodInstanceDrag.release();
-            m_fmodInstanceDrag = RuntimeManager.CreateInstance(m_fmodEventAmpoule.Guid);
-            RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDrag, m_soundLumiere);
-            m_fmodInstanceDrag.start();
-            m_occlusion.AddInstance(m_fmodInstanceDrag);
-            m_fmodInstanceDrag.release();
+            EventInstance m_fmodInstance = RuntimeManager.CreateInstance(m_fmodEventChair.Guid);
+            RuntimeManager.AttachInstanceToGameObject(m_fmodInstance, m_soundPlace);
+            m_fmodInstance.start();
+            m_occlusion.AddInstance(m_fmodInstance);
+            m_fmodInstance.release();
+            m_fmodInstance = RuntimeManager.CreateInstance(m_fmodEventAmpoule.Guid);
+            RuntimeManager.AttachInstanceToGameObject(m_fmodInstance, m_soundLumiere);
+            m_fmodInstance.start();
+            m_occlusion.AddInstance(m_fmodInstance);
+            m_fmodInstance.release();
         }       
     }
     public void NextIndicePaper()

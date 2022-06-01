@@ -8,7 +8,7 @@
 			<value>2</value>
 		</property>
 		<relationship name="folder">
-			<destination>{c3903672-4275-432e-8592-20d5e7bfc767}</destination>
+			<destination>{ff590077-0e42-4bf4-a517-8f4106376f54}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{1be7d4be-2f49-446d-b048-73a77e9549a5}</destination>
@@ -61,7 +61,7 @@
 			<destination>{27197aba-9651-4c89-9787-a9b4069f6217}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{99645349-123e-4408-bdeb-bc4a88335ad8}</destination>
+			<destination>{dd262b74-5bc7-4188-9b63-4b61060763a5}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{db28281c-47fb-412e-a7f3-bdff8414315d}">
@@ -162,7 +162,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{054245ac-a27c-475f-9ea5-7f77979fa0ed}">
 		<property name="volume">
-			<value>-9</value>
+			<value>-10</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -190,11 +190,12 @@
 		<relationship name="sounds">
 			<destination>{0a5060fd-6fbf-429f-bfcb-31ca0952bb27}</destination>
 			<destination>{f8f1462e-eeee-44d7-a690-e79f9103a68f}</destination>
+			<destination>{af528577-9857-4d3a-8f60-ca31a6c07a7b}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{d5d87103-ee39-424b-8912-5656dc62f0ea}">
 		<property name="volume">
-			<value>-21.5</value>
+			<value>-14.5</value>
 		</property>
 		<property name="name">
 			<value>Audio 2</value>
@@ -270,6 +271,14 @@
 	<object class="SingleSound" id="{f8f1462e-eeee-44d7-a690-e79f9103a68f}">
 		<relationship name="audioFile">
 			<destination>{be365033-fda5-4582-a85b-3c52226b4eba}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{af528577-9857-4d3a-8f60-ca31a6c07a7b}">
+		<property name="volume">
+			<value>10</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{3e5de488-d8ee-4c0d-8e2c-1f7b196e74ef}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{29a13c32-d1cf-459a-bf6b-37fe77c1d519}">

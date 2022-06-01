@@ -15,6 +15,7 @@ public class VoiceEvents : MonoBehaviour
 
     Color m_selectedColor = Color.yellow;
     Color m_unselectedColor = Color.white;
+    [SerializeField] private Test m_test;
     private void OnEnable()
     {
         if (m_uiEvent == null) return;
@@ -23,7 +24,7 @@ public class VoiceEvents : MonoBehaviour
     private void OnDisable()
     {
         if (m_uiEvent == null) return;
-
+        m_test.SetNewValue();
     }
     
     private void Awake()
@@ -37,18 +38,25 @@ public class VoiceEvents : MonoBehaviour
         {
             return;
         }
+
+        if (m_test == null)
+        {
+            m_test = FindObjectOfType<Test>();
+        }
         m_uiEvent.value = 0.5f;
         valueToDisplay = 50f;
-        UpdateValueToString();
     }
     private void Start()
     {
         m_uiEvent.value = 0.5f;
         valueToDisplay = 50f;
         UpdateValueToString();
+        m_test.SetNewValue();
+        Debug.Log("set la nouvelle value");
     }
     private void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.D))
         {
             OnInrease();
@@ -83,7 +91,7 @@ public class VoiceEvents : MonoBehaviour
                 valueToDisplay = 100f;
             }
             UpdateValueToString();
-            m_audioScript.SetNewValue();
+            m_test.SetNewValue();
         }
         else
         {
@@ -107,7 +115,7 @@ public class VoiceEvents : MonoBehaviour
                 valueToDisplay = 0f;
             }
             UpdateValueToString();
-            m_audioScript.SetNewValue();
+            m_test.SetNewValue();
         }
         else { return; }       
     }
