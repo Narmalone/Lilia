@@ -13,10 +13,8 @@ GameObject:
   - component: {fileID: 107524431251195426}
   - component: {fileID: 310709679670535151}
   - component: {fileID: 9022044644134806032}
-  - component: {fileID: 7293353700622068635}
   - component: {fileID: 2557785475308693941}
   - component: {fileID: 8989590793097338276}
-  - component: {fileID: 8872760457658350167}
   m_Layer: 0
   m_Name: cle
   m_TagString: Untagged
@@ -113,6 +111,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   m_thisBox: {fileID: 0}
+  m_fmodEventPickUp:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventDrop:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   m_setKeyPos: 0
   m_dropKeyAfterEvent: 0
 --- !u!114 &9022044644134806032
@@ -145,23 +157,6 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
---- !u!114 &7293353700622068635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909241016444577783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ddb4d6c6d3d2d241b7bfb83c2b73259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: {fileID: 9022044644134806032}
-  m_name: KeySoundEvent_1
-  VcaName: Sounds
-  m_uiEvent: {fileID: 11400000, guid: 8776f74c4fc7773468fbf7858975fdd5, type: 2}
-  volume: 0
 --- !u!65 &2557785475308693941
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -191,17 +186,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &8872760457658350167
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909241016444577783}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3049172315057216404, guid: 190754e0b8a9e0847acf13baa46c03b1, type: 3}

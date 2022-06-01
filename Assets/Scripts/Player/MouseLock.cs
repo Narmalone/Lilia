@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using FMODUnity;
 public class MouseLock : MonoBehaviour
 {
     private GameManager m_gameManager;
@@ -20,6 +20,8 @@ public class MouseLock : MonoBehaviour
 
     [SerializeField] private AssetMenuScriptValue m_assetMenuScriptable;
     [SerializeField] private AudioManagerScript m_audioScript;
+    public StudioEventEmitter m_sound;
+    [SerializeField] private PlayerController m_player;
 
     private void Start()
     {
@@ -34,13 +36,16 @@ public class MouseLock : MonoBehaviour
             controls.Gameplay.Rotation.performed += ctx => rotateGamepad = ctx.ReadValue<Vector2>();
             controls.Gameplay.Rotation.canceled += ctx => rotateGamepad = Vector2.zero;
         }
-        m_audioScript.PlayMusic("AmbiantMusic");
+        m_sound.Play();
     }
 
     // Update is called once per frame
     public void Update()
     {
-
+        if(m_player.isCinematic == false)
+        {
+            
+        }
         if (m_gameManager.isPc == true)
         {
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;

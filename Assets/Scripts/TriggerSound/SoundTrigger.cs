@@ -20,6 +20,6 @@ public class SoundTrigger : MonoBehaviour
     }
     public void PlayAssiette()
     {
-        m_audio.Play("Assiette");
+        //m_audio.Play("Assiette");
     }
 }

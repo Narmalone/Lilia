@@ -46,6 +46,7 @@ public class VoiceEvents : MonoBehaviour
         m_uiEvent.value = 0.5f;
         valueToDisplay = 50f;
         UpdateValueToString();
+        m_audioScript.SetNewVolume();
     }
     private void Update()
     {
@@ -83,7 +84,7 @@ public class VoiceEvents : MonoBehaviour
                 valueToDisplay = 100f;
             }
             UpdateValueToString();
-            m_audioScript.SetNewValue();
+            m_audioScript.SetNewVolume();
         }
         else
         {
@@ -107,7 +108,7 @@ public class VoiceEvents : MonoBehaviour
                 valueToDisplay = 0f;
             }
             UpdateValueToString();
-            m_audioScript.SetNewValue();
+            m_audioScript.SetNewVolume();
         }
         else { return; }       
     }

@@ -6,7 +6,9 @@ public class AppearThings : MonoBehaviour
 {
     [Tooltip("Pour optimiser mettre un seul objet parent contenant tous les objets mais tu peux mettre tous les objets que tu le souhaites :p")] public List<GameObject> m_liliasChamber;
     [Tooltip("Pour optimiser mettre un seul objet parent contenant tous les objets mais tu peux mettre tous les objets que tu le souhaites :p")] public List<GameObject> m_sonsChamber;
+
     [Tooltip("Liste d'objet qui spawn une fois que le second puzzle est finis")] public List<GameObject> m_lateGame;
+    [SerializeField] PuzzleGenerator m_puzzle;
 
     [SerializeField] private GameObject m_iaPosition;
     [SerializeField] public Transform m_iaSpawner;

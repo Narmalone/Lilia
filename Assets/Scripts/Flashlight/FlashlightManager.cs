@@ -2,7 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FMODUnity;
+using FMOD.Studio;
 public class FlashlightManager : MonoBehaviour
 {
 
@@ -15,6 +16,7 @@ public class FlashlightManager : MonoBehaviour
     [SerializeField] private LayerMask m_playerMask;
     [SerializeField] private Light m_lightReference;
     [SerializeField] private Light m_veilleuseLight;
+    [SerializeField] private AudioManagerScript m_audio;
     //----------------------------------------------- Par rapport � la veilleuse ------------------------------------------//
 
 
@@ -23,8 +25,9 @@ public class FlashlightManager : MonoBehaviour
     [SerializeField] private Rigidbody m_rbodyFlashlight;
     
     [SerializeField] private FMODUnity.EventReference m_fmodEventPickUp;
-    
+    private EventInstance m_instancePickUp;
     [SerializeField] private FMODUnity.EventReference m_fmodEventDrop;
+    private EventInstance m_instanceDrop;
 
     [NonSerialized]
     public bool GetDropped = false;
@@ -35,6 +38,14 @@ public class FlashlightManager : MonoBehaviour
         m_rbodyFlashlight = flashlight.GetComponent<Rigidbody>();
         m_lightReference.gameObject.SetActive(false);
         GetDropped = true;
+
+        //set instance pickup
+        m_instancePickUp = RuntimeManager.CreateInstance(m_fmodEventPickUp);
+        RuntimeManager.AttachInstanceToGameObject(m_instancePickUp, GetComponent<Transform>());
+
+        //set instance drop
+        m_instanceDrop = RuntimeManager.CreateInstance(m_fmodEventDrop);
+        RuntimeManager.AttachInstanceToGameObject(m_instanceDrop, GetComponent<Transform>());
     }
     private void Update()
     {
@@ -50,12 +61,12 @@ public class FlashlightManager : MonoBehaviour
         }
     }
     //----------------------------------------------- Fonctions li�es � la veilleuse ------------------------------------------//
-
     public void PickItem()
     {
+        m_instancePickUp.setVolume(m_audio.volumeSound);
+        m_instancePickUp.start();
         m_rbodyFlashlight.useGravity = false;
         m_rbodyFlashlight.isKinematic = true;
-        FMODUnity.RuntimeManager.PlayOneShotAttached(m_fmodEventPickUp.Guid, m_playerController.gameObject);
         flashlight.transform.position = new Vector3(1000f, 1000f, 1000f);
         GetDropped = false;
         flashlight.GetComponent<BoxCollider>().enabled = false;
@@ -64,6 +75,8 @@ public class FlashlightManager : MonoBehaviour
     }
     public void DropItem()
     {
+        m_instanceDrop.setVolume(m_audio.volumeSound);
+        m_instanceDrop.start();
         m_rbodyFlashlight.isKinematic = false;
         m_rbodyFlashlight.useGravity = true;
         flashlight.transform.position = FlashlightContainer.transform.position;
@@ -73,6 +86,5 @@ public class FlashlightManager : MonoBehaviour
         flashlight.transform.parent = null;
         Debug.Log("Drop l'item");
         m_lightReference.gameObject.SetActive(false);
-        FMODUnity.RuntimeManager.PlayOneShotAttached(m_fmodEventDrop.Guid, gameObject);
     }
 }

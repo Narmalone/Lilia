@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FMOD.Studio;
+using FMODUnity;
 public class KeyScript : MonoBehaviour
 {
     [SerializeField] private GameObject m_thisObject;
@@ -16,7 +17,7 @@ public class KeyScript : MonoBehaviour
     [SerializeField] private QTEManager m_qte;
     [SerializeField] private LayerMask m_playerMask;
     [SerializeField] private BoxCollider m_thisBox;
-    
+    [SerializeField] private StudioEventEmitter m_clip;
     [SerializeField] private FMODUnity.EventReference m_fmodEventPickUp;
     
     [SerializeField] private FMODUnity.EventReference m_fmodEventDrop;
@@ -56,7 +57,7 @@ public class KeyScript : MonoBehaviour
             if(m_dropKeyAfterEvent == false)
             {
                 m_thisBox.transform.position = m_containerDrop.transform.position;
-                m_audioScript.Play("KeySoundEvent_1");
+                //m_audioScript.Play("KeySoundEvent_1");
                 m_dropKeyAfterEvent = true;
                 m_thisBox.enabled = true;
             }
@@ -134,6 +135,7 @@ public class KeyScript : MonoBehaviour
         Debug.Log("player got key");
         if(m_gameManager.gotKey == false)
         {
+            m_clip.Play();
             m_gameManager.gotKey = true;
             m_uiManager.DisableUi();
             m_keyUi.SetActive(true);

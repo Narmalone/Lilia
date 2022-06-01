@@ -6,8 +6,6 @@ public class paper : MonoBehaviour
 {
     public List<GameObject> m_mustNotSelected;
     public List<GameObject> m_mustSelected;
-    public List<GameObject> m_fakeList;
-
 
     [SerializeField] private Material m_objMat;
     [SerializeField] private Color m_selectedColor;
@@ -32,10 +30,6 @@ public class paper : MonoBehaviour
         foreach(GameObject p_obj in m_mustNotSelected)
         {
             p_obj.GetComponent<Renderer>().material.color = m_notSelectedColor;
-        }
-        foreach(GameObject p_obj in m_fakeList)
-        {
-            p_obj.GetComponent<Renderer>().material.color = m_default;
         }
     }
     //Fonction pour afficher la prochaine couleur

@@ -68,7 +68,7 @@ public class TxtPuzzle_1 : MonoBehaviour
         {
             m_myAnim.SetBool(m_nameAnim, true);
             Animator.StringToHash(m_nameAnim);
-            m_audioScript.Play("hitMeuble");
+            //m_audioScript.Play("hitMeuble");
             isSucess = false;
         }
     }

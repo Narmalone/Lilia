@@ -9,6 +9,11 @@ public class EventVolume : MonoBehaviour
     public Volume volume;
     Vignette vignette;
     [SerializeField] private PlayerController m_player;
+    [SerializeField] private Transform m_playerTr;
+    [SerializeField] private Transform m_setPlayerPos;
+    [SerializeField] private Doudou m_doudou;
+    public bool isPlayerAwake = false;
+
 
     [Range(0,7)] public float m_maxValue = 1f;
     [Range(0, 5)] public float m_minValue = 0f;
@@ -26,11 +31,35 @@ public class EventVolume : MonoBehaviour
             vignette.intensity.max = m_maxValue;
         }
     }
-
+    private void Start()
+    {
+        if(isPlayerAwake == false)
+        {
+            //m_player.GetComponent<Animator>().SetTrigger("BeforeAwake");
+            //isPlayerAwake = true;
+            //StartCoroutine(NextCinematic());
+        }
+    }
+    IEnumerator NextCinematic()
+    {
+        yield return new WaitForSeconds(4.5f);
+        StartAnimDoudou();
+        yield return new WaitForSeconds(3f);
+        AwakePlayer();
+    }
+    public void AwakePlayer()
+    {
+        StopCoroutine(NextCinematic());
+        m_player.GetComponent<Animator>().SetTrigger("AwakePlayer");
+        return;
+    }
+    public void StartAnimDoudou()
+    {
+       // m_doudou.GetComponent<Animator>().SetTrigger("CinematicDoudou");
+    }
     void Update()
     {
         ClignementDesYeux();
-
     }
     public void ClignementDesYeux()
     {

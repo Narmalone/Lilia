@@ -19,7 +19,7 @@ public class FunRadio : MonoBehaviour
     public bool StartPhone = false;
     [Header("References Mask"), Space(10)]
     [SerializeField] private LayerMask m_playerMask;
-
+    [SerializeField, Tooltip("0 = phone ring, 1 = décrocher, 2 dialogue")] private StudioEventEmitter[] m_clips;
 
 
     private void Awake()
@@ -41,9 +41,12 @@ public class FunRadio : MonoBehaviour
             m_doudou.m_callEvent = true;
             m_doudou.TakeBeforeChase = true;
             m_uiManager.DisableUi();
-            m_audioScript.Stop("PhoneEvent");
-            m_audioScript.Play("HangUp");
-            m_audioScript.PlayVoices("DialogPhone");
+            m_clips[0].Stop();
+            m_clips[1].Play();
+            m_clips[2].Play();
+           // m_audioScript.Stop("PhoneEvent");
+            //m_audioScript.Play("HangUp");
+            //m_audioScript.PlayVoices("DialogPhone");
             m_appearsChamber.SwitchAppearing();
             Debug.Log("a répondu au téléphone");
             isFirstAnswer = false;
@@ -55,7 +58,8 @@ public class FunRadio : MonoBehaviour
     {
         if(StartPhone == false)
         {
-            m_audioScript.Play("PhoneEvent");
+            m_clips[0].Play();
+            //m_audioScript.Play("PhoneEvent");
             Debug.Log("lancer phone event");
             StartPhone = true;
         }

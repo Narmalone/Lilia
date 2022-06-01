@@ -38,7 +38,6 @@ public class AISM : StateMachine
     public float m_speedAfterSpawn = 1f;
     
     public AnimationCurve m_courbeLimace;
-    
     [SerializeField]
     private FMODUnity.EventReference m_fmodEventRespiration;
     
@@ -85,6 +84,7 @@ public class AISM : StateMachine
         StartCoroutine(SonBB());
         
     }
+    
     void OnEnable()
     {
         m_triggeredEvent.onTriggered += HandleTriggerEvent;
