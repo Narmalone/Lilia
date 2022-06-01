@@ -46,6 +46,7 @@ public class FunRadio : MonoBehaviour
             m_audioScript.PlayVoices("DialogPhone");
             m_appearsChamber.SwitchAppearing();
             Debug.Log("a répondu au téléphone");
+            isFirstAnswer = false;
         }
         else { return; }
         

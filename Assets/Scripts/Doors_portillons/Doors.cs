@@ -92,6 +92,7 @@ public class Doors : MonoBehaviour
             m_doorController.SetTrigger(m_isOpenDoorAnim);
             isActivable = false;
             isOpen = true;
+            gameObject.layer = default;
         }
         //Si c'est un portillon
         else if (isDoor == false)

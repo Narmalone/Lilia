@@ -14,6 +14,7 @@ public class UiManager : MonoBehaviour
     [SerializeField,Tooltip("image d'UI pour l'indication de doudou")]private GameObject m_UIDoudou;
     [SerializeField,Tooltip("Objet d'Ui du doudou quand il est en main")]private GameObject m_objDoudouUi;
     [SerializeField,Tooltip("Objet d'Ui de la veilleuse quand elle est en main")]private GameObject m_objVeilleuseUi;
+    [SerializeField] private PlayerController m_player;
 
     private GameManager m_gameManager;
 
@@ -61,7 +62,6 @@ public class UiManager : MonoBehaviour
         m_indicInteraction.SetActive(true);
     }
 
-    
     public void TakableObject()
     {
         m_indicInteraction.GetComponent<Image>().sprite = m_EKey;
@@ -88,6 +88,40 @@ public class UiManager : MonoBehaviour
 
     //----------------------------------------------- UI Objets du joueur ------------------------------------------//
 
+    //
+    public void DropSomethingBefore()
+    {
+        if(m_player.isLeftHandFull == true)
+        {
+            m_UIDoudou.GetComponent<Image>().color = Color.red;
+        }
+        if(m_player.isRightHandFull == true)
+        {
+            m_UILampe.GetComponent<Image>().color = Color.red;
+        }
+        if(m_player.isTwoHandFull == true)
+        {
+            m_UILampe.GetComponent<Image>().color = Color.red;
+            m_UIDoudou.GetComponent<Image>().color = Color.red;
+        }
+    }
+    public void StopRaycastBefore()
+    {
+        if (m_player.isLeftHandFull == true)
+        {
+            m_UIDoudou.GetComponent<Image>().color = Color.white;
+        }
+        if (m_player.isRightHandFull == true)
+        {
+            m_UILampe.GetComponent<Image>().color = Color.white;
+        }
+        if (m_player.isTwoHandFull == true)
+        {
+            m_UILampe.GetComponent<Image>().color = Color.white;
+            m_UIDoudou.GetComponent<Image>().color = Color.white;
+        }
+    }
+    //Affichage en bas à droite
     public void TakeLampe()
     {
         //D�sactiver la Ui qui prend l'objet
