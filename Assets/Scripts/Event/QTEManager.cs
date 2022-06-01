@@ -70,14 +70,10 @@ public class QTEManager : MonoBehaviour
         
     }
 
-    // private void OnValidate()
-    // {
-    //     //m_boxCol.size = new Vector3(m_rangeCol, m_rangeCol, m_rangeCol);
-    // }
-
     // Update is called once per frame
     void Update()
     {
+      
         m_ray = m_playerController.m_cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         m_playerController.m_ray = m_ray;
         Debug.DrawRay(m_ray.origin,m_ray.direction, Color.red);

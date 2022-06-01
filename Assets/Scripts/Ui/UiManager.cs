@@ -22,29 +22,33 @@ public class UiManager : MonoBehaviour
     public bool m_flashlightIsHandle = false;
     [NonSerialized]
     public bool m_doudouIsHandle = false;
+
+    private bool isAnimated = false;
+    private bool animActivated = false;
     [NonSerialized]
     public bool m_isActivated;
+    private int indexAnim = 0;
+    public int indexAnimMax = 2;
 
     [SerializeField] private Sprite m_leftClickSprite;
     [SerializeField] private Sprite m_rightClickSprite;
     [SerializeField] private Sprite m_EKey;
+    [SerializeField] private Sprite m_EKeyNotInteract;
 
+    [SerializeField] private Color m_dontInteract;
+    [SerializeField] private Color m_possessed;
     private void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();
         m_indicInteraction.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-    }
-    private void Start()
-    {
         m_indicInteraction.SetActive(false);
         m_objDoudouUi.SetActive(false);
         m_objVeilleuseUi.SetActive(false);
-        m_UILampe.GetComponent<Image>().color = new Color32(100,100,100,255);
-        m_UIDoudou.GetComponent<Image>().color = new Color32(100,100,100,255);
-    }
-    private void Update()
-    {
-        
+        m_UILampe.GetComponent<Image>().color = new Color32(100, 100, 100, 255);
+        m_UIDoudou.GetComponent<Image>().color = new Color32(100, 100, 100, 255);
+        isAnimated = false;
+        animActivated = false;
+        indexAnim = 0;
     }
     //----------------------------------------------- Ui prendre et dropper un item ------------------------------------------//
 
@@ -85,41 +89,85 @@ public class UiManager : MonoBehaviour
         m_UILampe.GetComponent<Image>().color = new Color32(255,255,225,255);
     }
 
-
+    private void LateUpdate()
+    {
+        if(animActivated == true)
+        {
+            AnimUi();
+        }
+    }
     //----------------------------------------------- UI Objets du joueur ------------------------------------------//
 
-    //
+    //Normal si le joueur appuie sur E sa blink
+    public void AnimUi()
+    {
+        if(m_player.isLeftHandFull == true)
+        if (isAnimated == false)
+        {
+            m_UIDoudou.GetComponent<Animator>().SetTrigger("FadeOut");
+            isAnimated = true;
+        }
+        if (isAnimated == true)
+        {
+            if (indexAnim <= indexAnimMax)
+            {
+                m_UIDoudou.GetComponent<Animator>().SetTrigger("FadeIn");
+                isAnimated = false;
+                indexAnim++;
+            }
+            else
+            {
+                animActivated = false;
+            }
+        }
+    }
     public void DropSomethingBefore()
     {
         if(m_player.isLeftHandFull == true)
         {
-            m_UIDoudou.GetComponent<Image>().color = Color.red;
-        }
-        if(m_player.isRightHandFull == true)
-        {
-            m_UILampe.GetComponent<Image>().color = Color.red;
-        }
-        if(m_player.isTwoHandFull == true)
-        {
-            m_UILampe.GetComponent<Image>().color = Color.red;
-            m_UIDoudou.GetComponent<Image>().color = Color.red;
-        }
-    }
-    public void StopRaycastBefore()
-    {
-        if (m_player.isLeftHandFull == true)
-        {
-            m_UIDoudou.GetComponent<Image>().color = Color.white;
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                indexAnim = 0;
+                animActivated = true;
+            }
+            
+            Debug.Log("doudou couleur rouge");
+            m_indicInteraction.GetComponent<Image>().sprite = m_EKeyNotInteract;
+            m_indicInteraction.SetActive(true);
         }
         if (m_player.isRightHandFull == true)
         {
-            m_UILampe.GetComponent<Image>().color = Color.white;
+            m_indicInteraction.GetComponent<Image>().sprite = m_EKeyNotInteract;
+            m_indicInteraction.SetActive(true);
+        }
+        if(m_player.isTwoHandFull == true)
+        {
+            m_indicInteraction.GetComponent<Image>().sprite = m_EKeyNotInteract;
+            m_indicInteraction.SetActive(true);
+        }
+        Debug.Log("dans le drop something");
+    }
+    public void StopRaycastBefore()
+    {
+        animActivated = false;
+        if (m_player.isLeftHandFull == true)
+        {
+            m_indicInteraction.SetActive(false);
+            m_UIDoudou.GetComponent<Animator>().SetTrigger("Reset");
+        }
+        if (m_player.isRightHandFull == true)
+        {
+            m_indicInteraction.SetActive(false);
+            m_UILampe.GetComponent<Image>().color = m_possessed;
+            m_UILampe.GetComponent<Animator>().SetTrigger("Reset");
         }
         if (m_player.isTwoHandFull == true)
         {
-            m_UILampe.GetComponent<Image>().color = Color.white;
-            m_UIDoudou.GetComponent<Image>().color = Color.white;
+            m_indicInteraction.SetActive(false);
+            m_UIDoudou.GetComponent<Animator>().SetTrigger("Reset");
+            m_UILampe.GetComponent<Animator>().SetTrigger("Reset");
         }
+        Debug.Log("stop raycast before");
     }
     //Affichage en bas à droite
     public void TakeLampe()
@@ -127,7 +175,7 @@ public class UiManager : MonoBehaviour
         //D�sactiver la Ui qui prend l'objet
         //Activer l'Ui en bas � droite
 
-        m_UILampe.GetComponent<Image>().color = Color.white;
+        m_UILampe.GetComponent<Image>().color = Color.red;
         m_objVeilleuseUi.SetActive(true);
     }
     

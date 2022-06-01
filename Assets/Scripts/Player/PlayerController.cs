@@ -16,7 +16,6 @@ using UnityEngine.EventSystems;
 public class PlayerController : MonoBehaviour
 {
     //Si le joueur ne peut pas monter les escalier il faut changer le step offset dans unity ou dans le code du chara controller
-
     [SerializeField, Tooltip("Script de Control de l'UI")] private UiManager m_UIManager;
 
     [SerializeField] private CreateNarrativeEvent m_createNarrativeEvent;
@@ -26,6 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TimelinePlayerScript m_timePlayerScript;
     [SerializeField] private AudioManagerScript m_audioScript;
     [SerializeField] private AssetMenuScriptValue m_assetMenu;
+    [SerializeField] private QTEManager m_qte;
     private MenuManager m_menuManager;
     [SerializeField] private RespawnMe m_respawn;
 
@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask m_iaMask;
     [SerializeField] private LayerMask m_portillonMask;
     [SerializeField] private LayerMask m_radioMask;
+    [SerializeField] private LayerMask m_commodeMask;
 
     //-----------------------------------------------Sound System------------------------------------------//
     [Space(10)]
@@ -169,7 +170,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Renderer m_doorRend;
     [SerializeField] private Renderer m_phoneRend;
     [SerializeField] private Renderer m_ChairRend;
-
     [Space(10)]
     public bool hasChair = false;
     public bool canInteractWithChair = false;
@@ -232,7 +232,7 @@ public class PlayerController : MonoBehaviour
         Debug.DrawRay(m_ray.origin,m_ray.direction, Color.black);
        if (Physics.Raycast(m_ray, out m_hit, 1f, ~(1 << gameObject.layer)))
         {
-            Debug.Log($"Je touche avec le raycast: {m_hit.collider.name}");
+            //Debug.Log($"Je touche avec le raycast: {m_hit.collider.name}");
             OnRayCastHit(m_hit.collider);
             m_pastHit = m_hit;
         }
@@ -255,7 +255,6 @@ public class PlayerController : MonoBehaviour
         }
         m_fmodInstancePas.setVolume(m_assetMenu.value);
         m_fmodInstanceStress.setVolume(m_assetMenu.value);
-
         m_fmodInstanceStress.setParameterByName("Stress",10-m_currentStress*10/m_maxStress);
 
         m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Cr�ation d'une sphere qui chech si le joueur touche le sol
@@ -321,8 +320,6 @@ public class PlayerController : MonoBehaviour
                 m_gameManager.GamePaused();
             }
         }
-
-
         //Check Fonctions
 
         AutoStress();
@@ -369,7 +366,6 @@ public class PlayerController : MonoBehaviour
                 timeBeforeDropDoudou = 0f;
                 DropDoudou();
             }
-            Debug.Log(timeBeforeDropDoudou);
             if (m_doudouIsUsed == true)
             {
                 Stressing(-m_StressPower);
@@ -405,6 +401,7 @@ public class PlayerController : MonoBehaviour
                     if (m_hit.collider.gameObject.GetComponent<Doors>().isOpen == true)
                     {
                         m_doorRend.material.SetFloat("_BooleanFloat", 0f);
+                        m_UIManager.StopRaycastBefore();
                         m_UIManager.DisableUi();
                     }
                 }
@@ -420,12 +417,62 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            m_UIManager.StopRaycastBefore();
             m_doorRend.material.SetFloat("_BooleanFloat", 0f);
             FindObjectOfType<Doors>().DisableSlider();
         }
+        
+        if(Physics.Raycast(m_ray, out m_hit, 1f, m_commodeMask))
+        {
+            Debug.Log("raycast commode");
+            if(isTwoHandFull == false)
+            {
+                if(isLeftHandFull == true || isRightHandFull == true)
+                {
+                    if(m_qte.canDoQte == true)
+                    {
+                        m_UIManager.DropSomethingBefore();
+                        Debug.Log("drop something before");
+                    }
+                }
+            }
+        }
+        if (Physics.Raycast(m_ray, out m_hit, 1, m_TwoHandsItemMask))
+        {
+            if (isTwoHandFull == false)
+            {
+                if (isLeftHandFull == true || isRightHandFull == true)
+                {
+                    m_UIManager.DropSomethingBefore();
+                }
+
+                if (isLeftHandFull == false && isRightHandFull == false)
+                {
+                    m_ChairRend = m_hit.collider.gameObject.GetComponent<Renderer>();
+                    if (hasChair == false)
+                    {
+                        m_ChairRend.material.SetFloat("_BooleanFloat", 1f);
+                        m_UIManager.TakableObject();
+                        if (Input.GetKeyDown(KeyCode.E))
+                        {
+                            m_hit.collider.gameObject.GetComponent<CaisseProto>().CanTake();
+                        }
+                    }
+                    if (hasChair == true)
+                    {
+                        m_UIManager.DisableUi();
+                        m_ChairRend.material.SetFloat("_BooleanFloat", 0f);
+                    }
+                    if (m_hit.collider.gameObject.GetComponent<CaisseProto>().isPlayerLocked == true)
+                    {
+                        m_UIManager.DisableUi();
+                        m_ChairRend.material.SetFloat("_BooleanFloat", 0f);
+                    }
+                }
+
+            }
+        }
     }
-    
+
     /// <summary>
     /// Applique le stress au autre systeme manuellement
     /// </summary>
@@ -473,8 +520,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnRayCastHit(Collider p_collide)
     {
-
-
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
         {
             if (isTwoHandFull == false)
@@ -513,42 +558,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        else if ((m_TwoHandsItemMask.value & (1 << p_collide.gameObject.layer)) > 0)
-        {
-            if (isTwoHandFull == false)
-            {
-                if (isLeftHandFull == false && isRightHandFull == false)
-                {
-                    m_ChairRend = m_hit.collider.gameObject.GetComponent<Renderer>();
-                    if (hasChair == false)
-                    {
-                        m_ChairRend.material.SetFloat("_BooleanFloat", 1f);
-                        m_UIManager.TakableObject();
-                        if (Input.GetKeyDown(KeyCode.E))
-                        {
-                            m_hit.collider.gameObject.GetComponent<CaisseProto>().CanTake();
-                        }
-                    }
-                    if (hasChair == true)
-                    {
-                        m_UIManager.DisableUi();
-                        m_ChairRend.material.SetFloat("_BooleanFloat", 0f);
-                    }
-                    if (m_hit.collider.gameObject.GetComponent<CaisseProto>().isPlayerLocked == true)
-                    {
-                        m_UIManager.DisableUi();
-                        m_ChairRend.material.SetFloat("_BooleanFloat", 0f);
-                    }
-                }
-                if(isLeftHandFull == true || isRightHandFull == true)
-                {
-                    m_UIManager.DropSomethingBefore();
-                }
-            }
-           
-        }
-       
-
+      
         else if ((m_radioMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             m_phoneRend = m_hit.collider.gameObject.GetComponent<Renderer>();
@@ -586,20 +596,8 @@ public class PlayerController : MonoBehaviour
                 {
                     m_phoneRend.material.SetFloat("_BooleanFloat", 0f);
                 }
-
             }
-
-            m_gameManager.canPick = false;
-
-            if (m_gameManager.isPc == true)
-            {
-               
-            }
-            else if (m_gameManager.isGamepad == true)
-            {
-
-            }
-            
+            m_gameManager.canPick = false; 
         }
     }
     
@@ -620,6 +618,7 @@ public class PlayerController : MonoBehaviour
         }
         else if ((m_portillonMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
+            m_UIManager.StopRaycastBefore();
             m_doorRend.material.SetFloat("_BooleanFloat", 0f);
             m_UIManager.DisableUi();
             m_gameManager.canPick = true;
@@ -633,7 +632,12 @@ public class PlayerController : MonoBehaviour
         }
         else if ((m_TwoHandsItemMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
+            m_UIManager.StopRaycastBefore();
             m_ChairRend.material.SetFloat("_BooleanFloat", 0f);
+            m_UIManager.DisableUi();
+        }
+        else if ((m_commodeMask.value & (1 << p_collide.gameObject.layer)) > 0)
+        {
             m_UIManager.StopRaycastBefore();
             m_UIManager.DisableUi();
         }
@@ -711,7 +715,6 @@ public class PlayerController : MonoBehaviour
                 m_UIManager.DropLampe();
             }
         }
-
     }
     /// <summary>
     /// Rassemble les fonctions pour le ramassage du doudou
@@ -732,8 +735,6 @@ public class PlayerController : MonoBehaviour
                     m_UIManager.DisableUi();               
                 }
             }
-            
-
         }
         else if (m_gameManager.isGamepad == true)
         {
@@ -753,7 +754,6 @@ public class PlayerController : MonoBehaviour
     {
         if (m_doudouIsPossessed == true && timeBeforeDropDoudou <= 0f)
         {
-            Debug.Log("condition a le doudou");
             timeBeforeDropDoudou = 0;
 
             if (Input.GetMouseButtonDown(0))
@@ -762,7 +762,6 @@ public class PlayerController : MonoBehaviour
                 m_doudouIsPossessed = false;
                 isLeftHandFull = false;
                 m_UIManager.DropDoudou();
-                Debug.Log("Drop doudou");
                 m_doudou.GetComponent<BoxCollider>().enabled = true;
                 timeBeforeDropDoudou = 0.3f;
             }

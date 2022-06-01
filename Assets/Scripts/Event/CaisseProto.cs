@@ -67,7 +67,6 @@ public class CaisseProto : MonoBehaviour
         if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
         {
             canTake = true;
-            Debug.Log("Trigger enter");
         }
     }
     private void OnTriggerStay(Collider other)
@@ -75,7 +74,6 @@ public class CaisseProto : MonoBehaviour
         if (other == m_boxPhone)
         {
             inPhoneBox = true;
-            Debug.Log("trigger la phone box");
         }
     }
     private void OnTriggerExit(Collider other)
@@ -88,7 +86,6 @@ public class CaisseProto : MonoBehaviour
         {            
             canTake = false;
             m_thisRend.material.SetFloat("_BooleanFloat", 0f);
-            Debug.Log("trigger exit");
         }
     }
     

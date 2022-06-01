@@ -34,6 +34,7 @@ public class FlashlightManager : MonoBehaviour
         flashlight.GetComponent<BoxCollider>();
         m_rbodyFlashlight = flashlight.GetComponent<Rigidbody>();
         m_lightReference.gameObject.SetActive(false);
+        GetDropped = true;
     }
     private void Update()
     {
@@ -55,19 +56,11 @@ public class FlashlightManager : MonoBehaviour
         m_rbodyFlashlight.useGravity = false;
         m_rbodyFlashlight.isKinematic = true;
         FMODUnity.RuntimeManager.PlayOneShotAttached(m_fmodEventPickUp.Guid, m_playerController.gameObject);
-        /*
-        flashlight.transform.SetParent(FlashlightContainer);
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.Euler(90f,180f,0f);
-        */
         flashlight.transform.position = new Vector3(1000f, 1000f, 1000f);
         GetDropped = false;
         flashlight.GetComponent<BoxCollider>().enabled = false;
         m_uiManager.DisableUi();
-        m_lightReference.gameObject.SetActive(true);
-        Debug.Log("le code passe par le ramassage de la lampe");
-       
-
+        m_lightReference.gameObject.SetActive(true);       
     }
     public void DropItem()
     {
