@@ -47,7 +47,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6672133774814735030
 Transform:
   m_ObjectHideFlags: 0
@@ -260,11 +260,14 @@ MonoBehaviour:
   m_txtEvent: {fileID: 0}
   m_timePlayerScript: {fileID: 0}
   m_audioScript: {fileID: 0}
+  m_assetMenu: {fileID: 0}
+  m_respawn: {fileID: 0}
   m_phone: {fileID: 0}
   m_doudou: {fileID: 0}
   m_flm: {fileID: 0}
   m_AIStateMachine: {fileID: 0}
   m_gameManager: {fileID: 0}
+  m_cam: {fileID: 0}
   m_portillon: {fileID: 0}
   m_flashlightMask:
     serializedVersion: 2
@@ -284,6 +287,28 @@ MonoBehaviour:
   m_radioMask:
     serializedVersion: 2
     m_Bits: 16384
+  m_fmodEventPas:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventDoudou:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventStress:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_stressTest: 0
   m_myChara: {fileID: 8172246454592653240}
   m_speed: 2
   m_StressPower: 0
@@ -310,6 +335,11 @@ MonoBehaviour:
   m_groundMask:
     serializedVersion: 2
     m_Bits: 256
+  isCinematic: 1
+  m_flashlightRend: {fileID: 0}
+  m_doudouRend: {fileID: 0}
+  m_doorRend: {fileID: 0}
+  m_phoneRend: {fileID: 0}
 --- !u!143 &8172246454592653240
 CharacterController:
   m_ObjectHideFlags: 0
