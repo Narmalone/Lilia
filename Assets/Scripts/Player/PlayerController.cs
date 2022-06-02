@@ -185,7 +185,6 @@ public class PlayerController : MonoBehaviour
     private float timeBeforeDropVeilleuse = 0.3f;
     private void Awake()
     {
-        isCinematic = true;
         isLeftHandFull = false;
         isRightHandFull = false;
         isTwoHandFull = false;
@@ -474,6 +473,33 @@ public class PlayerController : MonoBehaviour
 
                 }
             }
+
+            if(Physics.Raycast(m_ray, out m_hit, 8f, m_doudouMask))
+            {
+                Debug.Log("raycast doudou");
+                if (isTwoHandFull == false)
+                {
+                    if (isLeftHandFull == false)
+                    {
+                        if (m_gameManager.canPick == true)
+                        {
+                            Debug.Log("float le material à true");
+                            m_doudouRend.material.SetFloat("_BooleanFloat", 1f);
+                            m_UIManager.TakableDoudou();
+                            TakeDoudou();
+                        }
+                        else
+                        {
+                            m_doudouRend.material.SetFloat("_BooleanFloat", 0f);    
+                            m_UIManager.DisableUi();
+                        }
+                        if (m_hit.collider.gameObject.GetComponent<Renderer>() != null)
+                        {
+                            m_doudouRend = m_hit.collider.gameObject.GetComponent<Renderer>();
+                        }
+                    }
+                }
+            }            
         }
 
     }
@@ -537,28 +563,6 @@ public class PlayerController : MonoBehaviour
                         m_flashlightRend.material.SetFloat("_BooleanFloat", 1f);
                         m_UIManager.TakableFlashlight();
                         TakeFlashlight();
-                    }
-                }
-            }
-        }
-        else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false)
-        {
-            if (isTwoHandFull == false)
-            {
-                if (isLeftHandFull == false)
-                {
-                    m_doudouRend = m_hit.collider.gameObject.GetComponent<Renderer>();
-
-                    if (m_gameManager.canPick == true)
-                    {
-                        m_doudouRend.material.SetFloat("_BooleanFloat", 1f);
-                        m_UIManager.TakableDoudou();
-                        TakeDoudou();
-                    }
-                    else
-                    {
-                        m_doudouRend.material.SetFloat("_BooleanFloat", 0f);
-                        m_UIManager.DisableUi();
                     }
                 }
             }
@@ -736,7 +740,7 @@ public class PlayerController : MonoBehaviour
                     m_doudou.PickItem();
                     m_doudouIsPossessed = true;
                     isLeftHandFull = true;
-                    m_doudou.GetComponent<BoxCollider>().enabled = false;
+                    //m_doudou.GetComponent<BoxCollider>().enabled = false;
                     m_UIManager.DisableUi();               
                 }
             }
@@ -750,7 +754,7 @@ public class PlayerController : MonoBehaviour
                 Gamepad.current.SetMotorSpeeds(0.1f, 0.1f);
                 InputSystem.pollingFrequency = 10f;
                 m_doudouIsPossessed = true;
-                m_doudou.GetComponent<BoxCollider>().enabled = false;
+                //m_doudou.GetComponent<BoxCollider>().enabled = false;
                 m_UIManager.DisableUi();
             }
         }
@@ -767,7 +771,7 @@ public class PlayerController : MonoBehaviour
                 m_doudouIsPossessed = false;
                 isLeftHandFull = false;
                 m_UIManager.DropDoudou();
-                m_doudou.GetComponent<BoxCollider>().enabled = true;
+                //m_doudou.GetComponent<BoxCollider>().enabled = true;
                 timeBeforeDropDoudou = 0.3f;
             }
         }

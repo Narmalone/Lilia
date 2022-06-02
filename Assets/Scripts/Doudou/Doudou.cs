@@ -9,14 +9,14 @@ public class Doudou : MonoBehaviour
 {
     [SerializeField]UiManager uiManager;
     [SerializeField] private GameManager m_gameManager;
-    [SerializeField] private LayerMask m_stairsMask;
+    [SerializeField] private LayerMask m_groundMask;
     [SerializeField, Tooltip("R�f�rence de la torche")]private GameObject m_doudou;
-    public List<Rigidbody> m_bones;
+
     [SerializeField] private Transform m_emplacementDoudou;
     [SerializeField] private AppearThings m_appear;
     [SerializeField] private QTEManager m_qte;
-    private BoxCollider m_boxDoudouColider;
-    private Rigidbody m_rbDoudou;
+    //private BoxCollider m_boxDoudouColider;
+    public Rigidbody m_rbDoudou;
     [SerializeField] private float m_stepOffset = 0.2f;
     public bool m_callEvent = false;
     public bool m_callEventEnded = false;
@@ -32,10 +32,13 @@ public class Doudou : MonoBehaviour
     private EventInstance m_instanceDrop;
 
     [SerializeField] private AudioManagerScript m_audio;
-    
+    public Renderer myRend;
+    public Transform m_RootComponent;
+
+    [SerializeField] RagdollScript m_ragdoll;
     private void Awake()
     {
-        m_boxDoudouColider = m_doudou.GetComponent<BoxCollider>();
+        //m_boxDoudouColider = m_doudou.GetComponent<BoxCollider>();
         m_rbDoudou = m_doudou.GetComponent<Rigidbody>();
         m_callEvent = false;
         m_gameManager = FindObjectOfType<GameManager>();
@@ -50,10 +53,14 @@ public class Doudou : MonoBehaviour
         m_instanceDrop = RuntimeManager.CreateInstance(m_fmodEventDrop);
         RuntimeManager.AttachInstanceToGameObject(m_instanceDrop, GetComponent<Transform>());
     }
+    private void Start()
+    {
+        m_ragdoll.ActivateRagdoll();
+    }
     private float m_yRotation = 0f;
     private void Update()
     {
-        if(m_callEvent == true)
+        if (m_callEvent == true)
         {
             m_rbDoudou.isKinematic = true;
             m_rbDoudou.useGravity = false;
@@ -62,20 +69,15 @@ public class Doudou : MonoBehaviour
     }
     public void PickItem()
     {
-        foreach(Rigidbody p_rbody in m_bones)
-        {
-            p_rbody.isKinematic = true;
-            p_rbody.useGravity = false;
-        }
-        if(TakeBeforeChase == true)
+
+        if (TakeBeforeChase == true)
         {
             m_appear.IAdontMove = false;
             m_qte.canDoQte = true;
             TakeBeforeChase = false;
-            m_rbDoudou.isKinematic = true;
-            m_rbDoudou.useGravity = false;
+
             m_doudou.transform.position = new Vector3(1100f, 1100f, 1100f);
-            m_doudou.GetComponent<BoxCollider>().enabled = false;
+            //m_doudou.GetComponent<BoxCollider>().enabled = false;
             uiManager.DisableUi();
             m_instancePickUp.setVolume(m_audio.volumeSound);
             m_instancePickUp.start();
@@ -88,37 +90,33 @@ public class Doudou : MonoBehaviour
             m_rbDoudou.isKinematic = true;
             m_rbDoudou.useGravity = false;
             m_doudou.transform.position = new Vector3(1100f, 1100f, 1100f);
-            m_doudou.GetComponent<BoxCollider>().enabled = false;
+            //m_doudou.GetComponent<BoxCollider>().enabled = false;
             uiManager.DisableUi();
+            m_ragdoll.DisableRagdoll();
         }
 
     }
 
     public void DropItem()
     {
-        foreach (Rigidbody p_rbody in m_bones)
-        {
-            p_rbody.isKinematic = false;
-            p_rbody.useGravity = true;
-        }
+        m_RootComponent.transform.position = m_doudou.transform.position;
         m_doudou.transform.localPosition = m_emplacementDoudou.transform.position;
         m_doudou.transform.SetParent(m_emplacementDoudou);
         m_doudou.transform.localRotation = Quaternion.Euler(0f,-0f,0f);
         m_doudou.transform.parent = null;
-        m_rbDoudou.isKinematic = false;
-        m_rbDoudou.useGravity = true;
+
+        m_ragdoll.ActivateRagdoll();
         m_instanceDrop.setVolume(m_audio.volumeSound);
         m_instanceDrop.start();
 
     }
-    
     public void CallEventEnded()
     {
         m_callEventEnded = true;
         if(m_callEventEnded == true)
         {
             Debug.Log("l'event est fini");
-            m_boxDoudouColider.enabled = true;
+            //m_boxDoudouColider.enabled = true;
             m_rbDoudou.isKinematic = false;
             m_rbDoudou.useGravity = true;
             m_callEvent = false;

@@ -39,9 +39,9 @@ public class EventVolume : MonoBehaviour
     {
         if(isPlayerAwake == false)
         {
-            m_player.GetComponent<Animator>().SetTrigger("BeforeAwake");
+            //m_player.GetComponent<Animator>().SetTrigger("BeforeAwake");
             //isPlayerAwake = true;
-            StartCoroutine(NextCinematic());
+            //StartCoroutine(NextCinematic());
         }
     }
     IEnumerator NextCinematic()
