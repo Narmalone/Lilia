@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-
+using UnityEngine.UI;
 public class EventVolume : MonoBehaviour
 {
     public Volume volume;
@@ -14,6 +14,7 @@ public class EventVolume : MonoBehaviour
     [SerializeField] private Doudou m_doudou;
     public bool isPlayerAwake = false;
 
+    //[SerializeField] Image
 
     [Range(0,7)] public float m_maxValue = 1f;
     [Range(0, 5)] public float m_minValue = 0f;
@@ -21,6 +22,8 @@ public class EventVolume : MonoBehaviour
     [Range(0,10)] public float m_Speed;
     private int m_currentNB;
     [SerializeField] private int m_nbMax;
+
+    public Vector2Parameter m_newVector;
     private bool isOpen = false;
     private bool isOver = false;
     private void Awake()
@@ -30,32 +33,37 @@ public class EventVolume : MonoBehaviour
         {
             vignette.intensity.max = m_maxValue;
         }
+        isPlayerAwake = false;
     }
     private void Start()
     {
         if(isPlayerAwake == false)
         {
-            //m_player.GetComponent<Animator>().SetTrigger("BeforeAwake");
+            m_player.GetComponent<Animator>().SetTrigger("BeforeAwake");
             //isPlayerAwake = true;
-            //StartCoroutine(NextCinematic());
+            StartCoroutine(NextCinematic());
         }
     }
     IEnumerator NextCinematic()
     {
-        yield return new WaitForSeconds(4.5f);
-        StartAnimDoudou();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(10f);
         AwakePlayer();
+    }
+    IEnumerator EndCinematic()
+    {
+        yield return new WaitForSeconds(.1f);
+        ResetTrigger();
     }
     public void AwakePlayer()
     {
         StopCoroutine(NextCinematic());
         m_player.GetComponent<Animator>().SetTrigger("AwakePlayer");
-        return;
+        StartCoroutine(EndCinematic());
     }
-    public void StartAnimDoudou()
+    public void ResetTrigger()
     {
-       // m_doudou.GetComponent<Animator>().SetTrigger("CinematicDoudou");
+        StopCoroutine(EndCinematic());
+        m_player.GetComponent<Animator>().SetTrigger("Reset");
     }
     void Update()
     {
@@ -69,6 +77,7 @@ public class EventVolume : MonoBehaviour
             {
                 m_currentValue = vignette.intensity.value;
                 vignette.intensity.value = Mathf.MoveTowards(m_currentValue, m_maxValue, m_Speed * Time.deltaTime);
+
                 if (m_currentValue >= m_maxValue)
                 {
                     isOpen = true;
@@ -96,6 +105,10 @@ public class EventVolume : MonoBehaviour
         }
     }
 
+    public void FadeInFadeOut()
+    {
+
+    }
     public void TriggerScreamer()
     {
 
