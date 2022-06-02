@@ -16,7 +16,6 @@ using UnityEngine.EventSystems;
 public class PlayerController : MonoBehaviour
 {
     //Si le joueur ne peut pas monter les escalier il faut changer le step offset dans unity ou dans le code du chara controller
-
     [SerializeField, Tooltip("Script de Control de l'UI")] private UiManager m_UIManager;
 
     [SerializeField] private CreateNarrativeEvent m_createNarrativeEvent;
@@ -26,6 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TimelinePlayerScript m_timePlayerScript;
     [SerializeField] private AudioManagerScript m_audioScript;
     [SerializeField] private AssetMenuScriptValue m_assetMenu;
+    [SerializeField] private QTEManager m_qte;
     private MenuManager m_menuManager;
     [SerializeField] private RespawnMe m_respawn;
 
@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask m_iaMask;
     [SerializeField] private LayerMask m_portillonMask;
     [SerializeField] private LayerMask m_radioMask;
+    [SerializeField] private LayerMask m_commodeMask;
 
     //-----------------------------------------------Sound System------------------------------------------//
     [Space(10)]
@@ -163,16 +164,31 @@ public class PlayerController : MonoBehaviour
 
     public bool isCinematic = true;
 
+    [Space(10)]
     [SerializeField] private Renderer m_flashlightRend;
     [SerializeField] private Renderer m_doudouRend;
     [SerializeField] private Renderer m_doorRend;
     [SerializeField] private Renderer m_phoneRend;
+    [SerializeField] private Renderer m_ChairRend;
+    [Space(10)]
+    public bool hasChair = false;
+    public bool canInteractWithChair = false;
+    public bool OnChair = false;
+    [SerializeField] Collider phone;
+
+    [Space(10)]
+    public bool isLeftHandFull = false;
+    public bool isRightHandFull = false;
+    public bool isTwoHandFull = false;
 
     private float timeBeforeDropDoudou = 0.3f;
     private float timeBeforeDropVeilleuse = 0.3f;
     private void Awake()
     {
-        isCinematic = true;
+        isLeftHandFull = false;
+        isRightHandFull = false;
+        isTwoHandFull = false;
+
         m_gameManager = FindObjectOfType<GameManager>();
         m_menuManager = FindObjectOfType<MenuManager>();
         m_controls = new PlayerControls();
@@ -192,7 +208,7 @@ public class PlayerController : MonoBehaviour
 
         m_fmodInstancePas = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventPas);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstancePas, GetComponent<Transform>(), GetComponent<Rigidbody>());
-        Debug.Log($"Démarage du son de pas : {m_fmodInstancePas.start()}");
+        //Debug.Log($"Démarage du son de pas : {m_fmodInstancePas.start()}");
 
         m_fmodInstanceStress = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventStress);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceStress, GetComponent<Transform>(), GetComponent<Rigidbody>());
@@ -202,195 +218,292 @@ public class PlayerController : MonoBehaviour
         m_fmodInstanceDoudou = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventDoudou);
         previous = Vector3.zero;
 
+        hasChair = false;
+        OnChair = false;
     }
     private void Start()
     {
         m_gameManager.PlayerInGame();
+        
     }
     private void Update()
     {
-        m_ray = m_cam.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(m_ray.origin,m_ray.direction, Color.black);
-       if (Physics.Raycast(m_ray, out m_hit, 1, ~(1 << gameObject.layer)))
-        {
-            Debug.Log($"Je touche avec le raycast: {m_hit.collider.name}");
-            OnRayCastHit(m_hit.collider);
-            m_pastHit = m_hit;
-        }
-        else
-        {
-            if (m_pastHit.collider != null) OnRaycastExit(m_pastHit.collider);
-        }
-        
-        //Debug.Log(m_hit.collider.name);
-        
-        velocity = ((transform.position - previous).magnitude) / Time.deltaTime;
-        previous = transform.position;
-        if (velocity < 0.2)
-        {
-            m_fmodInstancePas.setParameterByName("Speed", 0);
-        }
-        else
-        {
-            m_fmodInstancePas.setParameterByName("Speed", velocity*3);
-        }
-        m_fmodInstancePas.setVolume(m_assetMenu.value);
-        m_fmodInstanceStress.setParameterByName("Stress",10-m_currentStress*10/m_maxStress);
-        m_fmodInstanceStress.setVolume(m_assetMenu.value);
-
-        m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Cr�ation d'une sphere qui chech si le joueur touche le sol
-
-        if (m_isGrounded && m_velocity.y < 0)        //Reset de la gravit� quand le joueur touche le sol
-        {
-            m_velocity.y = -2f;
-        }
-
-        if (m_doudouIsUsed == false)
-        {
-            PLAYBACK_STATE state;
-            m_fmodInstanceDoudou.getPlaybackState(out state);
-            if (state != PLAYBACK_STATE.STOPPED)
-            {
-                m_fmodInstanceDoudou.stop(STOP_MODE.ALLOWFADEOUT);
-            }
-            
-            float x = Input.GetAxis("Horizontal");
-            float z = Input.GetAxis("Vertical");
-
-            Vector3 move = transform.right * x + transform.forward * z;
-
-            m_myChara.Move(move * m_speed * Time.deltaTime);
-        }
-        if (m_doudouIsUsed == true)
-        {
-            PLAYBACK_STATE state;
-            m_fmodInstanceDoudou.getPlaybackState(out state);
-            if (state == PLAYBACK_STATE.STOPPED)
-            {
-                FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDoudou,  GetComponent<Transform>(), GetComponent<Rigidbody>());
-                m_fmodInstanceDoudou.start();
-                m_fmodInstanceDoudou.setVolume(m_assetMenu.value);
-            }
-            float x = Input.GetAxis("Horizontal");
-            float z = Input.GetAxis("Vertical");
-
-            Vector3 move = transform.right * x + transform.forward * z;
-
-            m_myChara.Move(move * m_speed * m_slow * Time.deltaTime);
-            
-        }
-        // D�placements du joueur
-
-        m_myChara.Move(m_velocity * Time.deltaTime);
-
-        m_velocity.y += m_gravity * Time.deltaTime;
-
-        if (m_gameManager.isPc == true)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                m_gameManager.GamePaused();
-                m_menuManager.OnPause();
-            }
-        }
-        else if (m_gameManager.isGamepad == true)
-        {
-            if (Gamepad.current.startButton.wasPressedThisFrame)
-            {
-                m_menuManager.OnPause();
-                m_gameManager.GamePaused();
-            }
-        }
-
-
-        //Check Fonctions
-
-        AutoStress();
-        ActiveDoudou();
-
-        // test shader
-        // decay the target intensity
         if(isCinematic == false)
         {
-            if (m_targetIntensity > 0f)
+            m_ray = m_cam.ScreenPointToRay(Input.mousePosition);
+            Debug.DrawRay(m_ray.origin, m_ray.direction, Color.black);
+            if (Physics.Raycast(m_ray, out m_hit, 1f, ~(1 << gameObject.layer)))
             {
-                m_targetIntensity = Mathf.Clamp01(m_targetIntensity - m_frequendeReduction * Time.deltaTime);
-                m_targetIntensity = Mathf.Max(m_intensityDueToHealth.Evaluate(m_currentStress / m_maxStress), m_targetIntensity);
+                //Debug.Log($"Je touche avec le raycast: {m_hit.collider.name}");
+                OnRayCastHit(m_hit.collider);
+                m_pastHit = m_hit;
+            }
+            else
+            {
+                if (m_pastHit.collider != null) OnRaycastExit(m_pastHit.collider);
             }
 
-            // intensity needs updating
-            if (m_currentIntensity != m_targetIntensity)
+            //Debug.Log(m_hit.collider.name);
+
+            velocity = ((transform.position - previous).magnitude) / Time.deltaTime;
+            previous = transform.position;
+            if (velocity < 0.2)
             {
-                float rate = m_targetIntensity > m_currentIntensity ? m_frequenceAttaque : m_frequenceRelache;
-                m_currentIntensity = Mathf.MoveTowards(m_currentIntensity, m_targetIntensity, rate * Time.deltaTime);
+                m_fmodInstancePas.setParameterByName("Speed", 0);
+            }
+            else
+            {
+                m_fmodInstancePas.setParameterByName("Speed", velocity * 3);
+            }
+            m_fmodInstancePas.setVolume(m_assetMenu.value);
+            m_fmodInstanceStress.setVolume(m_assetMenu.value);
+            m_fmodInstanceStress.setParameterByName("Stress", 10 - m_currentStress * 10 / m_maxStress);
+
+            m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Cr�ation d'une sphere qui chech si le joueur touche le sol
+
+            if (m_isGrounded && m_velocity.y < 0)        //Reset de la gravit� quand le joueur touche le sol
+            {
+                m_velocity.y = -2f;
             }
 
-            m_intenseFieldOfView = m_currentStress / 100;
-            //Debug.Log(m_overlaySettings);
-            m_materialStress.SetFloat("_Intensity", Mathf.Lerp(0f, 2f, m_currentIntensity));
-            m_vignetteSettings.intensity.value = Mathf.Lerp(0f, m_intesiteMaxEffet, m_currentIntensity);
-            m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
-        }
-      
-        if(m_flashlightIsPossessed == true)
-        {
-            timeBeforeDropVeilleuse -= Time.deltaTime;
-            if (timeBeforeDropVeilleuse <= 0f)
+            if (m_doudouIsUsed == false)
             {
-                timeBeforeDropVeilleuse = 0f;
-                DropFlashlight();
+                PLAYBACK_STATE state;
+                m_fmodInstanceDoudou.getPlaybackState(out state);
+                if (state != PLAYBACK_STATE.STOPPED)
+                {
+                    m_fmodInstanceDoudou.stop(STOP_MODE.ALLOWFADEOUT);
+                }
+
+                float x = Input.GetAxis("Horizontal");
+                float z = Input.GetAxis("Vertical");
+
+                Vector3 move = transform.right * x + transform.forward * z;
+
+                m_myChara.Move(move * m_speed * Time.deltaTime);
             }
-        }
-        if (m_doudouIsPossessed == true)
-        {
-            timeBeforeDropDoudou -= Time.deltaTime;
-            if(timeBeforeDropDoudou <= 0f)
-            {
-                timeBeforeDropDoudou = 0f;
-                DropDoudou();
-            }
-            Debug.Log(timeBeforeDropDoudou);
             if (m_doudouIsUsed == true)
             {
-                Stressing(-m_StressPower);
-            }
-            if (ReferenceEquals(m_target, gameObject) == false)
-            {
-                m_target = gameObject;
-            }
-        }
-        else
-        {
-            if (ReferenceEquals(m_target,m_doudou.gameObject) == false)
-            {
-                m_target = m_doudou.gameObject;
-            }
-        }
+                PLAYBACK_STATE state;
+                m_fmodInstanceDoudou.getPlaybackState(out state);
+                if (state == PLAYBACK_STATE.STOPPED)
+                {
+                    FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDoudou, GetComponent<Transform>(), GetComponent<Rigidbody>());
+                    m_fmodInstanceDoudou.start();
+                    m_fmodInstanceDoudou.setVolume(m_assetMenu.value);
+                }
+                float x = Input.GetAxis("Horizontal");
+                float z = Input.GetAxis("Vertical");
 
-        //Si raycast avec portillon
-        if (Physics.Raycast(m_ray, out m_hit, 1, m_portillonMask))
-        {
-            m_doorRend = m_hit.collider.gameObject.GetComponent<Renderer>();
-            m_doorRend.material.SetFloat("_BooleanFloat", 1f);
-            m_UIManager.TakableObject();
+                Vector3 move = transform.right * x + transform.forward * z;
 
-            if (Input.GetKey(KeyCode.E))
-            {
-                m_hit.collider.gameObject.GetComponent<Doors>().ActiveDoors();
+                m_myChara.Move(move * m_speed * m_slow * Time.deltaTime);
+
             }
-            if (m_hit.collider.gameObject.GetComponent<Doors>().isOpen == true)
+            // D�placements du joueur
+
+            m_myChara.Move(m_velocity * Time.deltaTime);
+
+            m_velocity.y += m_gravity * Time.deltaTime;
+
+            if (m_gameManager.isPc == true)
+            {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    m_gameManager.GamePaused();
+                    m_menuManager.OnPause();
+                }
+            }
+            else if (m_gameManager.isGamepad == true)
+            {
+                if (Gamepad.current.startButton.wasPressedThisFrame)
+                {
+                    m_menuManager.OnPause();
+                    m_gameManager.GamePaused();
+                }
+            }
+            //Check Fonctions
+
+            AutoStress();
+            ActiveDoudou();
+
+            // test shader
+            // decay the target intensity
+            if (isCinematic == false)
+            {
+                if (m_targetIntensity > 0f)
+                {
+                    m_targetIntensity = Mathf.Clamp01(m_targetIntensity - m_frequendeReduction * Time.deltaTime);
+                    m_targetIntensity = Mathf.Max(m_intensityDueToHealth.Evaluate(m_currentStress / m_maxStress), m_targetIntensity);
+                }
+
+                // intensity needs updating
+                if (m_currentIntensity != m_targetIntensity)
+                {
+                    float rate = m_targetIntensity > m_currentIntensity ? m_frequenceAttaque : m_frequenceRelache;
+                    m_currentIntensity = Mathf.MoveTowards(m_currentIntensity, m_targetIntensity, rate * Time.deltaTime);
+                }
+
+                m_intenseFieldOfView = m_currentStress / 100;
+                //Debug.Log(m_overlaySettings);
+                m_materialStress.SetFloat("_Intensity", Mathf.Lerp(0f, 2f, m_currentIntensity));
+                m_vignetteSettings.intensity.value = Mathf.Lerp(0f, m_intesiteMaxEffet, m_currentIntensity);
+                m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
+            }
+
+            if (m_flashlightIsPossessed == true)
+            {
+                timeBeforeDropVeilleuse -= Time.deltaTime;
+                if (timeBeforeDropVeilleuse <= 0f)
+                {
+                    timeBeforeDropVeilleuse = 0f;
+                    DropFlashlight();
+                }
+            }
+            if (m_doudouIsPossessed == true)
+            {
+                timeBeforeDropDoudou -= Time.deltaTime;
+                if (timeBeforeDropDoudou <= 0f)
+                {
+                    timeBeforeDropDoudou = 0f;
+                    DropDoudou();
+                }
+                if (m_doudouIsUsed == true)
+                {
+                    Stressing(-m_StressPower);
+                }
+                if (ReferenceEquals(m_target, gameObject) == false)
+                {
+                    m_target = gameObject;
+                }
+            }
+            else
+            {
+                if (ReferenceEquals(m_target, m_doudou.gameObject) == false)
+                {
+                    m_target = m_doudou.gameObject;
+                }
+            }
+
+            //Si raycast avec portillon
+            if (Physics.Raycast(m_ray, out m_hit, 1, m_portillonMask))
+            {
+                if (isLeftHandFull == false || isRightHandFull == false)
+                {
+                    if (isTwoHandFull == false)
+                    {
+                        m_doorRend = m_hit.collider.gameObject.GetComponent<Renderer>();
+                        m_doorRend.material.SetFloat("_BooleanFloat", 1f);
+                        m_UIManager.TakableObject();
+
+                        if (Input.GetKey(KeyCode.E))
+                        {
+                            m_hit.collider.gameObject.GetComponent<Doors>().ActiveDoors();
+                        }
+                        if (m_hit.collider.gameObject.GetComponent<Doors>().isOpen == true)
+                        {
+                            m_doorRend.material.SetFloat("_BooleanFloat", 0f);
+                            m_UIManager.StopRaycastBefore();
+                            m_UIManager.DisableUi();
+                        }
+                    }
+                    else if (isTwoHandFull == true)
+                    {
+                        m_UIManager.DropSomethingBefore();
+                    }
+                }
+                if (isLeftHandFull == true && isRightHandFull == true)
+                {
+                    m_UIManager.DropSomethingBefore();
+                }
+            }
+            else
             {
                 m_doorRend.material.SetFloat("_BooleanFloat", 0f);
-                m_UIManager.DisableUi();
+                FindObjectOfType<Doors>().DisableSlider();
             }
+
+            if (Physics.Raycast(m_ray, out m_hit, 1f, m_commodeMask))
+            {
+                Debug.Log("raycast commode");
+                if (isTwoHandFull == false)
+                {
+                    if (isLeftHandFull == true || isRightHandFull == true)
+                    {
+                        if (m_qte.canDoQte == true)
+                        {
+                            m_UIManager.DropSomethingBefore();
+                            Debug.Log("drop something before");
+                        }
+                    }
+                }
+            }
+            if (Physics.Raycast(m_ray, out m_hit, 1, m_TwoHandsItemMask))
+            {
+                if (isTwoHandFull == false)
+                {
+                    if (isLeftHandFull == true || isRightHandFull == true)
+                    {
+                        m_UIManager.DropSomethingBefore();
+                    }
+
+                    if (isLeftHandFull == false && isRightHandFull == false)
+                    {
+                        m_ChairRend = m_hit.collider.gameObject.GetComponent<Renderer>();
+                        if (hasChair == false)
+                        {
+                            m_ChairRend.material.SetFloat("_BooleanFloat", 1f);
+                            m_UIManager.TakableObject();
+                            if (Input.GetKeyDown(KeyCode.E))
+                            {
+                                m_hit.collider.gameObject.GetComponent<CaisseProto>().CanTake();
+                            }
+                        }
+                        if (hasChair == true)
+                        {
+                            m_UIManager.DisableUi();
+                            m_ChairRend.material.SetFloat("_BooleanFloat", 0f);
+                        }
+                        if (m_hit.collider.gameObject.GetComponent<CaisseProto>().isPlayerLocked == true)
+                        {
+                            m_UIManager.DisableUi();
+                            m_ChairRend.material.SetFloat("_BooleanFloat", 0f);
+                        }
+                    }
+
+                }
+            }
+
+            if(Physics.Raycast(m_ray, out m_hit, 8f, m_doudouMask))
+            {
+                Debug.Log("raycast doudou");
+                if (isTwoHandFull == false)
+                {
+                    if (isLeftHandFull == false)
+                    {
+                        if (m_gameManager.canPick == true)
+                        {
+                            Debug.Log("float le material à true");
+                            m_doudouRend.material.SetFloat("_BooleanFloat", 1f);
+                            m_UIManager.TakableDoudou();
+                            TakeDoudou();
+                        }
+                        else
+                        {
+                            m_doudouRend.material.SetFloat("_BooleanFloat", 0f);    
+                            m_UIManager.DisableUi();
+                        }
+                        if (m_hit.collider.gameObject.GetComponent<Renderer>() != null)
+                        {
+                            m_doudouRend = m_hit.collider.gameObject.GetComponent<Renderer>();
+                        }
+                    }
+                }
+            }            
         }
-        else
-        {
-            m_doorRend.material.SetFloat("_BooleanFloat", 0f);
-            FindObjectOfType<Doors>().DisableSlider();
-        }
+
     }
-    
+
     /// <summary>
     /// Applique le stress au autre systeme manuellement
     /// </summary>
@@ -440,91 +553,60 @@ public class PlayerController : MonoBehaviour
     {
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
         {
-            if (m_gameManager.gotKey == false)
+            if (isTwoHandFull == false)
             {
-                m_flashlightRend = m_hit.collider.gameObject.GetComponent<Renderer>();
-                m_flashlightRend.material.SetFloat("_BooleanFloat", 1f);
-                m_UIManager.TakableFlashlight();
-                TakeFlashlight();
-            }
-            
-        }
-        else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false)
-        {
-            m_doudouRend = m_hit.collider.gameObject.GetComponent<Renderer>();
-
-            if (m_gameManager.canPick == true)
-            {
-                m_doudouRend.material.SetFloat("_BooleanFloat", 1f);
-                m_UIManager.TakableDoudou();
-                TakeDoudou();
-            }
-            else
-            {
-                m_doudouRend.material.SetFloat("_BooleanFloat", 0f);
-                m_UIManager.DisableUi();
-            }
-
-        }
-        else if ((m_TwoHandsItemMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_doudouIsPossessed == false && m_flashlightIsPossessed == false)
-        {
-            if (Physics.Raycast(m_ray, out m_hit, Mathf.Infinity, m_TwoHandsItemMask))
-            {
-                m_UIManager.TakableObject();
-
-            }
-            else
-            {
-                m_UIManager.DisableUi();
-                return;
+                if(isRightHandFull == false)
+                {
+                    if (m_gameManager.gotKey == false)
+                    {
+                        m_flashlightRend = m_hit.collider.gameObject.GetComponent<Renderer>();
+                        m_flashlightRend.material.SetFloat("_BooleanFloat", 1f);
+                        m_UIManager.TakableFlashlight();
+                        TakeFlashlight();
+                    }
+                }
             }
         }
-       
+      
         else if ((m_radioMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             m_phoneRend = m_hit.collider.gameObject.GetComponent<Renderer>();
-
-            if (m_phone.isFirstAnswer == true)
+            if(OnChair == true)
             {
-                m_UIManager.TakableObject();
-                m_phoneRend.material.SetFloat("_BooleanFloat", 1f);
-                if (Input.GetKey(KeyCode.E))
+                if (m_phone.isFirstAnswer == true)
                 {
+
                     if (m_createNarrativeEvent.index == 2)
                     {
-                        if(m_doudouIsPossessed == true)
+                        m_UIManager.TakableObject();
+                        m_phoneRend.material.SetFloat("_BooleanFloat", 1f);
+                        if (Input.GetKeyDown(KeyCode.E))
                         {
-                            m_doudou.DropItem();
-                            m_doudouIsPossessed = false;
-                            m_UIManager.DropDoudou();
-                            m_doudou.GetComponent<BoxCollider>().enabled = true;
-                        }
-                        else if (m_doudouIsPossessed == false)
-                        {
-                            m_phone.AnswerToCall();
-                            m_phone.isFirstAnswer = false;
-                            m_timePlayerScript.StartTimeline();
+                            if (m_doudouIsPossessed == true)
+                            {
+                                m_doudouIsPossessed = false;
+                                m_doudou.DropItem();
+                                m_UIManager.DropDoudou();
+                                m_doudou.GetComponent<BoxCollider>().enabled = true;
+                                timeBeforeDropDoudou = 0.3f;
+                            }
+                            else if (m_doudouIsPossessed == false)
+                            {
+                                m_phone.AnswerToCall();
+                                m_phone.isFirstAnswer = false;
+                                m_timePlayerScript.StartTimeline(0);
+                            }
+
                         }
                     }
-                    
+
+                }
+                else
+                {
+                    m_phoneRend.material.SetFloat("_BooleanFloat", 0f);
                 }
             }
-            else
-            {
-                m_phoneRend.material.SetFloat("_BooleanFloat", 0f);
-            }
-
-            m_gameManager.canPick = false;
-
-            if (m_gameManager.isPc == true)
-            {
-               
-            }
-            else if (m_gameManager.isGamepad == true)
-            {
-
-            }
-            
+            m_gameManager.canPick = false; 
         }
     }
     
@@ -534,16 +616,18 @@ public class PlayerController : MonoBehaviour
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             m_flashlightRend.material.SetFloat("_BooleanFloat", 0f);
-            Debug.Log("disable ui");
             m_UIManager.DisableUi();
+            m_UIManager.StopRaycastBefore();
         }
         else if ((m_doudouMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             m_doudouRend.material.SetFloat("_BooleanFloat", 0f);
             m_UIManager.DisableUi();
+            m_UIManager.StopRaycastBefore();
         }
         else if ((m_portillonMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
+            m_UIManager.StopRaycastBefore();
             m_doorRend.material.SetFloat("_BooleanFloat", 0f);
             m_UIManager.DisableUi();
             m_gameManager.canPick = true;
@@ -552,7 +636,19 @@ public class PlayerController : MonoBehaviour
         {
             m_phoneRend.material.SetFloat("_BooleanFloat", 0f);
             m_UIManager.DisableUi();
+            m_UIManager.StopRaycastBefore();
             m_gameManager.canPick = true;
+        }
+        else if ((m_TwoHandsItemMask.value & (1 << p_collide.gameObject.layer)) > 0)
+        {
+            m_UIManager.StopRaycastBefore();
+            m_ChairRend.material.SetFloat("_BooleanFloat", 0f);
+            m_UIManager.DisableUi();
+        }
+        else if ((m_commodeMask.value & (1 << p_collide.gameObject.layer)) > 0)
+        {
+            m_UIManager.StopRaycastBefore();
+            m_UIManager.DisableUi();
         }
 
     }
@@ -568,7 +664,13 @@ public class PlayerController : MonoBehaviour
             {
                 if (m_flashlightIsPossessed == false)
                 {
+                    if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 0)
+                    {
+                        m_createNarrativeEvent.actionComplete = true;
+                        m_createNarrativeEvent.isWaitingAction = false;
+                    }
                     m_flashlightIsPossessed = true;
+                    isRightHandFull = true;
                     m_flm.GetComponent<BoxCollider>().enabled = false;
                     m_UIManager.TakeLampe();
                     m_flm.PickItem();
@@ -603,6 +705,7 @@ public class PlayerController : MonoBehaviour
                 {
                     m_flm.DropItem();
                     m_flm.GetComponent<BoxCollider>().enabled = true;
+                    isRightHandFull = false;
                     m_flashlightIsPossessed = false;
                     m_UIManager.DropLampe();
                     Debug.Log("Drop Light");
@@ -621,7 +724,6 @@ public class PlayerController : MonoBehaviour
                 m_UIManager.DropLampe();
             }
         }
-
     }
     /// <summary>
     /// Rassemble les fonctions pour le ramassage du doudou
@@ -634,20 +736,14 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 0)
-                    {
-                        m_createNarrativeEvent.actionComplete = true;
-                        m_createNarrativeEvent.isWaitingAction = false;
-                    }
                     m_UIManager.TakeDoudou();
                     m_doudou.PickItem();
                     m_doudouIsPossessed = true;
-                    m_doudou.GetComponent<BoxCollider>().enabled = false;
+                    isLeftHandFull = true;
+                    //m_doudou.GetComponent<BoxCollider>().enabled = false;
                     m_UIManager.DisableUi();               
                 }
             }
-            
-
         }
         else if (m_gameManager.isGamepad == true)
         {
@@ -658,7 +754,7 @@ public class PlayerController : MonoBehaviour
                 Gamepad.current.SetMotorSpeeds(0.1f, 0.1f);
                 InputSystem.pollingFrequency = 10f;
                 m_doudouIsPossessed = true;
-                m_doudou.GetComponent<BoxCollider>().enabled = false;
+                //m_doudou.GetComponent<BoxCollider>().enabled = false;
                 m_UIManager.DisableUi();
             }
         }
@@ -667,16 +763,15 @@ public class PlayerController : MonoBehaviour
     {
         if (m_doudouIsPossessed == true && timeBeforeDropDoudou <= 0f)
         {
-            Debug.Log("condition a le doudou");
             timeBeforeDropDoudou = 0;
 
             if (Input.GetMouseButtonDown(0))
             {
                 m_doudou.DropItem();
                 m_doudouIsPossessed = false;
+                isLeftHandFull = false;
                 m_UIManager.DropDoudou();
-                Debug.Log("Drop doudou");
-                m_doudou.GetComponent<BoxCollider>().enabled = true;
+                //m_doudou.GetComponent<BoxCollider>().enabled = true;
                 timeBeforeDropDoudou = 0.3f;
             }
         }

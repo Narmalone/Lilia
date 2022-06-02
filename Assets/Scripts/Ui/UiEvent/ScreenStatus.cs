@@ -63,7 +63,6 @@ public class ScreenStatus : MonoBehaviour
             OnDecrease();
         }
 
-        Debug.Log(screenCount);
     }
 
     public void UpdateScreenSize()

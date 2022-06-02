@@ -27,7 +27,13 @@ public class Doors : MonoBehaviour
     private string m_isOpenDoorAnim = "isOpen";
     private string m_isOpenPortillonAnim = "isOpen";
     private string m_isClosedPortillonAnim = "isClose";
+    
+    private string m_isOpenBackwardPortillonAnim = "isOpenBackward";
+    private string m_isClosedBackwardPortillonAnim = "isCloseBackward";
     [SerializeField] private float m_timeBeforeClose = 1f;
+
+    //false = animation 1, true = animation 2
+    public bool isLeftTrigger = false;
 
     private Ray m_ray;
     private RaycastHit m_hit;
@@ -39,7 +45,7 @@ public class Doors : MonoBehaviour
 
         mySlider = sliderInstance;
         mySlider.minValue = 0;
-        mySlider.value = m_incrementValue;
+        mySlider.value = mySlider.minValue;
         mySlider.maxValue = m_speedToOpen;
 
         mySlider.gameObject.SetActive(false);
@@ -49,14 +55,10 @@ public class Doors : MonoBehaviour
         {
             m_doorController.GetComponent<Animator>();
         }
-
         isCompleted = false;
         isOpen = false;
     }
-    private void LateUpdate()
-    {
 
-    }
     //Fonction ou le joueur doit maintenir la touche
     public void ActiveDoors()
     {
@@ -74,12 +76,10 @@ public class Doors : MonoBehaviour
                 {
                     //Lancer fonction qui ouvre
                     OnComplete();
-                    Debug.Log("Complété");
                 }
             }
         }
     }
-
     //Lorsque le joueur à monté le slider au max
     public void OnComplete()
     {
@@ -92,15 +92,23 @@ public class Doors : MonoBehaviour
             m_doorController.SetTrigger(m_isOpenDoorAnim);
             isActivable = false;
             isOpen = true;
+            gameObject.layer = default;
         }
         //Si c'est un portillon
         else if (isDoor == false)
         {
-            m_doorController.SetTrigger(m_isOpenPortillonAnim);
+            if(isLeftTrigger == false)
+            {
+                m_doorController.SetTrigger(m_isOpenBackwardPortillonAnim);
+            }
+            if(isLeftTrigger == true)
+            {
+                m_doorController.SetTrigger(m_isOpenPortillonAnim);
+                Debug.Log("open anim portillon normal");
+            }
             isActivable = false;
             isOpen = true;
             StartCoroutine(Chrono());
-            Debug.Log("le bb");
         }
         //Jouer son
         //la porte l'objet n'est plus activable ou si c un portillon trouver sol
@@ -118,12 +126,19 @@ public class Doors : MonoBehaviour
     {
         StopAllCoroutines();
         mySlider.minValue = 0;
-        m_incrementValue = 0.2f;
-        mySlider.value = m_incrementValue;
+        m_incrementValue = 0.5f;
+        mySlider.value = mySlider.minValue;
         mySlider.maxValue = m_speedToOpen;
         if(isOpen == true)
         {
-            m_doorController.SetTrigger(m_isClosedPortillonAnim);
+            if(isLeftTrigger == false)
+            {
+                m_doorController.SetTrigger(m_isClosedBackwardPortillonAnim);
+            }
+            if(isLeftTrigger == true)
+            {
+                m_doorController.SetTrigger(m_isClosedPortillonAnim);
+            }
         }
         isOpen = false;
         isActivable = true;

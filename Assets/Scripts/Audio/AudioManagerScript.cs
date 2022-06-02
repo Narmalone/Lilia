@@ -6,51 +6,37 @@ using System;
 
 public class AudioManagerScript : MonoBehaviour
 {
-    public Sounds[] sounds;
-    public Music[] musics;
-    public Voices[] voices;
-    private FirstPersonOcclusion m_occlusion;
+    FMOD.Studio.VCA m_vcaSound;
+    FMOD.Studio.VCA m_vcaMusic;
+    FMOD.Studio.VCA m_vcaVoices;
 
+    [Range(0, 1)] public float volumeSound;
+    [Range(0, 1)] public float volumeMusics;
+    [Range(0, 1)] public float volumeVoices;
+    [SerializeField] private AssetMenuScriptValue m_sounds;
+    [SerializeField] private AssetMenuScriptValue m_musics;
+    [SerializeField] private AssetMenuScriptValue m_voices;
     private void Awake()
     {
-        m_occlusion = GetComponent<FirstPersonOcclusion>();
-    }
+        m_vcaSound = RuntimeManager.GetVCA("vca:/Sounds");
+        m_vcaMusic = RuntimeManager.GetVCA("vca:/Music");
+        m_vcaVoices = RuntimeManager.GetVCA("vca:/Voices");
 
-    public void Play(string name)
-    {
-        Sounds s = Array.Find(sounds, sounds => sounds.m_name == name);
-        s.clip.Play();
-        m_occlusion.AddInstance(s.clip.EventInstance);
     }
-    public void Stop(string name)
+    private void Start()
     {
-        Sounds s = Array.Find(sounds, sounds => sounds.m_name == name);
-        s.clip.Stop(); 
+        SetNewVolume();
     }
-    public void SetNewValue()
+    public void SetNewVolume()
     {
-        foreach(Sounds s in sounds)
-        {
-            s.SetVolume();
-        }
-        foreach(Music m in musics)
-        {
-            m.SetVolume();
-        }
-        foreach(Voices v in voices)
-        {
-            v.SetVolume();
-        }
-    }
-    public void PlayMusic(string name)
-    {
-        Music m = Array.Find(musics, musics => musics.m_name == name);
-        m.clip.Play();
-    }
-    public void PlayVoices(string name)
-    {
-        Voices v = Array.Find(voices, voices => voices.m_name == name);
-        v.clip.Play();
-        m_occlusion.AddInstance(v.clip.EventInstance);
+        //Set sounds
+        volumeSound = m_sounds.value;
+        m_vcaSound.setVolume(volumeSound);
+
+        volumeMusics = m_musics.value;
+        m_vcaMusic.setVolume(volumeMusics);
+
+        volumeVoices = m_voices.value;
+        m_vcaVoices.setVolume(volumeVoices);
     }
 }
