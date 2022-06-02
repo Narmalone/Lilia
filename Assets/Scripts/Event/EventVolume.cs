@@ -22,10 +22,10 @@ public class EventVolume : MonoBehaviour
     [Range(0,10)] public float m_Speed;
     private int m_currentNB;
     [SerializeField] private int m_nbMax;
-
-    public Vector2Parameter m_newVector;
     private bool isOpen = false;
     private bool isOver = false;
+
+    [SerializeField] private Animator m_imgBlikImage;
     private void Awake()
     {
         m_currentNB = 0;
@@ -107,7 +107,7 @@ public class EventVolume : MonoBehaviour
 
     public void FadeInFadeOut()
     {
-
+        m_imgBlikImage.SetBool("FadeActive", true);
     }
     public void TriggerScreamer()
     {
