@@ -158,7 +158,6 @@ public class UiManager : MonoBehaviour
         if (m_player.isRightHandFull == true)
         {
             m_indicInteraction.SetActive(false);
-            m_UILampe.GetComponent<Image>().color = m_possessed;
             m_UILampe.GetComponent<Animator>().SetTrigger("Reset");
         }
         if (m_player.isTwoHandFull == true)

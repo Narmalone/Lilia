@@ -113,10 +113,6 @@ public class CaisseProto : MonoBehaviour
                     canTake = false;
                     m_player.isTwoHandFull = true;
                 }
-                else
-                {
-                    playerCanLock = true;
-                }
             }
             
         }
@@ -175,6 +171,7 @@ public class CaisseProto : MonoBehaviour
                 m_thisGameObject.transform.position = m_finalPosition.transform.position;
                 m_sphereCollider.enabled = true;
                 m_boxPhone.enabled = false;
+                playerCanLock = true;
                 chairLocked = true;
             }
         }
