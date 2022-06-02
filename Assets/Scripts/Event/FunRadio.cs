@@ -14,6 +14,7 @@ public class FunRadio : MonoBehaviour
     [SerializeField] private Doudou m_doudou;
     [SerializeField] private AudioManagerScript m_audioScript;
     [SerializeField] private AppearThings m_appearsChamber;
+    [SerializeField] RagdollScript m_ragdoll;
     public bool isPlay = false;
     public bool isFirstAnswer = true;
     public bool StartPhone = false;
@@ -37,6 +38,7 @@ public class FunRadio : MonoBehaviour
     {
         if(isFirstAnswer == true)
         {
+            m_ragdoll.DisableRagdoll();
             m_waypointMoveDoudou.isEventCalled = true;
             m_doudou.m_callEvent = true;
             m_doudou.TakeBeforeChase = true;
@@ -44,11 +46,7 @@ public class FunRadio : MonoBehaviour
             m_clips[0].Stop();
             m_clips[1].Play();
             m_clips[2].Play();
-           // m_audioScript.Stop("PhoneEvent");
-            //m_audioScript.Play("HangUp");
-            //m_audioScript.PlayVoices("DialogPhone");
             m_appearsChamber.SwitchAppearing();
-            Debug.Log("a répondu au téléphone");
             isFirstAnswer = false;
         }
         else { return; }
@@ -59,8 +57,6 @@ public class FunRadio : MonoBehaviour
         if(StartPhone == false)
         {
             m_clips[0].Play();
-            //m_audioScript.Play("PhoneEvent");
-            Debug.Log("lancer phone event");
             StartPhone = true;
         }
     }

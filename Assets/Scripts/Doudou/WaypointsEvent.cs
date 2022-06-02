@@ -12,7 +12,7 @@ public class WaypointsEvent : MonoBehaviour
     [Tooltip("Au minimum un point de départ et 1 point d'arrêt, le dernier et avant-dernier point doivent être collés")]public List<GameObject> m_waypoints;
 
     [SerializeField] Doudou m_doudou;
-
+    [SerializeField] private RagdollScript m_ragdoll;
     public bool isEventCalled;
 
     public Transform m_positionAfterCall;

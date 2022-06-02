@@ -113,6 +113,10 @@ public class CaisseProto : MonoBehaviour
                     canTake = false;
                     m_player.isTwoHandFull = true;
                 }
+                else
+                {
+                    playerCanLock = true;
+                }
             }
             
         }
@@ -120,6 +124,7 @@ public class CaisseProto : MonoBehaviour
 
     public void LockPlayer()
     {
+        Debug.Log("locker le joueur");
         isPlayerLocked = true;
         m_sphereCollider.enabled = false;
         m_player.OnChair = true;
@@ -170,8 +175,9 @@ public class CaisseProto : MonoBehaviour
                 m_thisGameObject.transform.rotation = Quaternion.Euler(-90f, m_finalPosition.transform.localRotation.y, transform.localRotation.z);
                 m_thisGameObject.transform.position = m_finalPosition.transform.position;
                 m_sphereCollider.enabled = true;
+                m_player.isTwoHandFull = false;
+                m_player.hasChair = false;
                 m_boxPhone.enabled = false;
-                playerCanLock = true;
                 chairLocked = true;
             }
         }

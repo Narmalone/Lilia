@@ -174,8 +174,6 @@ public class PlayerController : MonoBehaviour
     public bool hasChair = false;
     public bool canInteractWithChair = false;
     public bool OnChair = false;
-    [SerializeField] Collider phone;
-
     [Space(10)]
     public bool isLeftHandFull = false;
     public bool isRightHandFull = false;
@@ -499,7 +497,51 @@ public class PlayerController : MonoBehaviour
                         }
                     }
                 }
-            }            
+            }
+
+            if (Physics.Raycast(m_ray, out m_hit, 2f, m_radioMask))
+            {
+                if (OnChair == true)
+                {
+                    if (m_phone.isFirstAnswer == true)
+                    {
+
+                        if (m_createNarrativeEvent.index == 2)
+                        {
+                            m_phoneRend = m_hit.collider.gameObject.GetComponent<Renderer>();
+                            m_UIManager.TakableObject();
+                            m_phoneRend.material.SetFloat("_BooleanFloat", 1f);
+                            Debug.Log("peut interagir");
+                            if (Input.GetKeyDown(KeyCode.E))
+                            {
+                                if (m_doudouIsPossessed == true)
+                                {
+                                    m_doudouIsPossessed = false;
+                                    m_doudou.DropItem();
+                                    m_UIManager.DropDoudou();
+                                    m_doudou.GetComponent<BoxCollider>().enabled = true;
+                                    timeBeforeDropDoudou = 0.3f;
+                                }
+                                else if (m_doudouIsPossessed == false)
+                                {
+                                    m_phone.AnswerToCall();
+                                    m_phone.isFirstAnswer = false;
+                                    m_timePlayerScript.StartTimeline(0);
+                                }
+
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        m_phoneRend.material.SetFloat("_BooleanFloat", 0f);
+                    }
+                }
+                m_gameManager.canPick = false;
+
+            }
+
         }
 
     }
@@ -548,7 +590,6 @@ public class PlayerController : MonoBehaviour
             m_targetIntensity = Mathf.Clamp01(m_targetIntensity + damagePercent);
         }
     }
-
     private void OnRayCastHit(Collider p_collide)
     {
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0 && m_flashlightIsPossessed == false)
@@ -566,47 +607,6 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-        }
-      
-        else if ((m_radioMask.value & (1 << p_collide.gameObject.layer)) > 0)
-        {
-            m_phoneRend = m_hit.collider.gameObject.GetComponent<Renderer>();
-            if(OnChair == true)
-            {
-                if (m_phone.isFirstAnswer == true)
-                {
-
-                    if (m_createNarrativeEvent.index == 2)
-                    {
-                        m_UIManager.TakableObject();
-                        m_phoneRend.material.SetFloat("_BooleanFloat", 1f);
-                        if (Input.GetKeyDown(KeyCode.E))
-                        {
-                            if (m_doudouIsPossessed == true)
-                            {
-                                m_doudouIsPossessed = false;
-                                m_doudou.DropItem();
-                                m_UIManager.DropDoudou();
-                                m_doudou.GetComponent<BoxCollider>().enabled = true;
-                                timeBeforeDropDoudou = 0.3f;
-                            }
-                            else if (m_doudouIsPossessed == false)
-                            {
-                                m_phone.AnswerToCall();
-                                m_phone.isFirstAnswer = false;
-                                m_timePlayerScript.StartTimeline(0);
-                            }
-
-                        }
-                    }
-
-                }
-                else
-                {
-                    m_phoneRend.material.SetFloat("_BooleanFloat", 0f);
-                }
-            }
-            m_gameManager.canPick = false; 
         }
     }
     

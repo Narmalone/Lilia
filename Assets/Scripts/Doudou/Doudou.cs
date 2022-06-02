@@ -115,10 +115,9 @@ public class Doudou : MonoBehaviour
         m_callEventEnded = true;
         if(m_callEventEnded == true)
         {
+            m_ragdoll.ActivateRagdoll();
             Debug.Log("l'event est fini");
             //m_boxDoudouColider.enabled = true;
-            m_rbDoudou.isKinematic = false;
-            m_rbDoudou.useGravity = true;
             m_callEvent = false;
             m_gameManager.canPick = true;
             TakeBeforeChase = true;
