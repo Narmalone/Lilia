@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class CadenasOpenScript : MonoBehaviour
 {
-    [SerializeField] private Animator m_animKey;
     [SerializeField] private Animator m_animDoor;
     [SerializeField] private Animator m_animCadenas;
     [SerializeField] private BoxCollider m_doorBox;
@@ -38,7 +37,6 @@ public class CadenasOpenScript : MonoBehaviour
                 m_fmodInstance.start();
                 m_doorBox.enabled = false;
                 m_animCadenas.SetBool(m_name, true);
-                m_animKey.SetBool(m_name, true);
                 StartCoroutine(OuverturePorte());
                 m_gameManager.gotKey = false;
                 m_key.m_keyUi.SetActive(false);

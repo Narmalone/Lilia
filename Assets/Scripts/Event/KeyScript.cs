@@ -32,12 +32,30 @@ public class KeyScript : MonoBehaviour
         m_thisRb = GetComponent<Rigidbody>();
         m_thisRend = GetComponent<Renderer>();
         m_keyUi.SetActive(false);
+        m_setKeyPos = false;
     }
 
+    private void LateUpdate()
+    {
+        if(m_qte.m_qteIsOver == true)
+        {
+            SetKeyPos();
+        }
+    }
+    public void SetKeyPos()
+    {
+        if (m_setKeyPos == false)
+        {
+            m_thisObject.transform.position = m_containerDrop.transform.position;
+            m_thisObject.transform.rotation = m_containerDrop.transform.rotation;
+            m_setKeyPos = true;
+        }
+    }
     public void CanTake()
     {
         if (m_qte.m_qteIsOver == true)
         {
+            
             if (Input.GetKeyDown(KeyCode.E))
             {
                 PlayerGotKey();
@@ -45,45 +63,11 @@ public class KeyScript : MonoBehaviour
             }
             if (m_dropKeyAfterEvent == false)
             {
-                m_thisObject.transform.position = m_containerKeyAfterEvent.transform.position;
                 m_clip[0].Play();
                 m_dropKeyAfterEvent = true;
             }
         }
     }
-    public void DropKey()
-    {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            if(m_player.m_flashlightIsPossessed == false)
-            {
-                m_thisObject.transform.SetParent(null);
-                m_keyUi.SetActive(false);
-                m_setKeyPos = false;
-                m_thisObject.transform.position = m_containerKeyAfterEvent.transform.position;
-                m_gameManager.gotKey = false;
-                Debug.Log("le joueur a dropp� la cl�");
-            }
-        }
-    }
-    public void SetKeyPos()
-    {
-        if(m_setKeyPos == false)
-        {
-            if (m_player.m_flashlightIsPossessed == false)
-            {
-                Debug.Log("set key pos");
-                m_thisRb.useGravity = false;
-                m_thisRb.isKinematic = true;
-                m_thisObject.transform.position = new Vector3(0f, 0f, 100f);
-                //m_thisObject.transform.SetParent(m_containerKeyAfterEvent);
-                //m_thisObject.transform.localRotation = m_containerKeyAfterEvent.transform.localRotation;
-                //m_thisObject.transform.position = m_containerKeyAfterEvent.transform.position;
-                m_setKeyPos = true;
-            }
-        }
-    }
-  
     public void PlayerGotKey()
     {
         Debug.Log("player got key");
@@ -91,9 +75,9 @@ public class KeyScript : MonoBehaviour
         {
             m_clip[1].Play();
             m_gameManager.gotKey = true;
+            m_thisObject.transform.position = new Vector3(1000f, 0f, 0f);
             m_uiManager.DisableUi();
             m_keyUi.SetActive(true);
-            m_thisObject.transform.position = new Vector3(0f, 0f, 100f);
         }
 
     }
