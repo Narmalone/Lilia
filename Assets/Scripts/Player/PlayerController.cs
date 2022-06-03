@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask m_portillonMask;
     [SerializeField] private LayerMask m_radioMask;
     [SerializeField] private LayerMask m_commodeMask;
+    [SerializeField] private LayerMask m_keyMask;
 
     //-----------------------------------------------Sound System------------------------------------------//
     [Space(10)]
@@ -472,7 +473,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if(Physics.Raycast(m_ray, out m_hit, 8f, m_doudouMask))
+            if(Physics.Raycast(m_ray, out m_hit, 3f, m_doudouMask))
             {
                 Debug.Log("raycast doudou");
                 if (isTwoHandFull == false)
@@ -481,16 +482,17 @@ public class PlayerController : MonoBehaviour
                     {
                         if (m_gameManager.canPick == true)
                         {
-                            Debug.Log("float le material à true");
                             m_doudouRend.material.SetFloat("_BooleanFloat", 1f);
                             m_UIManager.TakableDoudou();
+                            Debug.Log("float le material à true");
                             TakeDoudou();
                         }
                         else
                         {
-                            m_doudouRend.material.SetFloat("_BooleanFloat", 0f);    
+                            m_doudouRend.material.SetFloat("_BooleanFloat", 1f);
                             m_UIManager.DisableUi();
                         }
+
                         if (m_hit.collider.gameObject.GetComponent<Renderer>() != null)
                         {
                             m_doudouRend = m_hit.collider.gameObject.GetComponent<Renderer>();
@@ -540,6 +542,19 @@ public class PlayerController : MonoBehaviour
                 }
                 m_gameManager.canPick = false;
 
+            }
+            if (Physics.Raycast(m_ray, out m_hit, 2f, m_keyMask))
+            {
+                
+                if (m_hit.collider.gameObject.GetComponent<KeyScript>())
+                {
+                    m_UIManager.TakableObject();
+                    m_hit.collider.gameObject.GetComponent<KeyScript>().CanTake();
+                }
+                else
+                {
+                    m_UIManager.DisableUi();
+                }
             }
 
         }

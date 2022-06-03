@@ -20,7 +20,7 @@ public class KeyScript : MonoBehaviour
 
     private Ray m_ray;
 
-    private RaycastHit m_hit,m_pastHit;
+    private RaycastHit m_hit;
     
     public bool m_setKeyPos = false;
     public bool m_dropKeyAfterEvent = false;
@@ -33,27 +33,16 @@ public class KeyScript : MonoBehaviour
         m_thisRend = GetComponent<Renderer>();
         m_keyUi.SetActive(false);
     }
-    private void Update()
+
+    public void CanTake()
     {
-        //m_ray = m_player.m_ray;
-        m_ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-
-       if(m_qte.m_qteIsOver == true)
+        if (m_qte.m_qteIsOver == true)
         {
-            if (Physics.Raycast(m_ray, out m_hit, 2, ~(1 << m_player.gameObject.layer)))
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                if(m_hit.collider == m_thisObject)
-                {
-                    m_thisRend.material.SetFloat("_BooleanFloat", 1f);
-                    m_uiManager.TakableObject();
-                    Debug.Log("raycast la clé");
-                    if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        PlayerGotKey();
-                    }
-                }
+                PlayerGotKey();
+                Debug.Log("raycast la clé");
             }
-
             if (m_dropKeyAfterEvent == false)
             {
                 m_thisObject.transform.position = m_containerKeyAfterEvent.transform.position;
