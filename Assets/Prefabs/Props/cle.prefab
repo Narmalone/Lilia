@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 107524431251195426}
   - component: {fileID: 310709679670535151}
   - component: {fileID: 9022044644134806032}
-  - component: {fileID: 2557785475308693941}
   - component: {fileID: 8989590793097338276}
   m_Layer: 0
   m_Name: cle
@@ -111,20 +110,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   m_thisBox: {fileID: 0}
-  m_fmodEventPickUp:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  m_fmodEventDrop:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+  m_clip: []
   m_setKeyPos: 0
   m_dropKeyAfterEvent: 0
 --- !u!114 &9022044644134806032
@@ -157,19 +143,6 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
---- !u!65 &2557785475308693941
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909241016444577783}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: -0.00033455808, y: 0.011562222, z: 0.00000047683716}
 --- !u!54 &8989590793097338276
 Rigidbody:
   m_ObjectHideFlags: 0

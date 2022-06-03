@@ -1254,7 +1254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_player: {fileID: 494317833}
-  m_doudou: {fileID: 0}
+  m_doudou: {fileID: 1594657157}
   m_flm: {fileID: 919132148065112292}
   m_uiManager: {fileID: 2066910956}
   m_playertransform: {fileID: 465092767}
@@ -1987,7 +1987,6 @@ GameObject:
   m_Component:
   - component: {fileID: 395268519}
   - component: {fileID: 395268521}
-  - component: {fileID: 395268520}
   m_Layer: 14
   m_Name: HangUp
   m_TagString: Untagged
@@ -2009,23 +2008,6 @@ Transform:
   m_Father: {fileID: 350210511}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &395268520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 395268518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ddb4d6c6d3d2d241b7bfb83c2b73259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: {fileID: 395268521}
-  m_name: HangUp
-  VcaName: Sounds
-  m_uiEvent: {fileID: 11400000, guid: 8776f74c4fc7773468fbf7858975fdd5, type: 2}
-  volume: 0
 --- !u!114 &395268521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2578,7 +2560,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9022044644134806032, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
   m_PrefabInstance: {fileID: 1639192922607935909}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1192235083}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
@@ -2642,7 +2624,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
   m_PrefabInstance: {fileID: 1639192922607935909}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1192235083}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45a0b68b55f3ab640a04130ad11a1e8f, type: 3}
@@ -4602,7 +4584,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1130536191}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.172, y: -1.628, z: -1.094}
+  m_LocalPosition: {x: 0.061, y: -1.628, z: 0.978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1579730576}
@@ -4728,6 +4710,54 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.46338698, y: 0.5587898, z: 0.5184255}
   m_Center: {x: 0.021548947, y: 0.00000023841858, z: 0.26061985}
+--- !u!1 &1192235083 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1909241016444577783, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+  m_PrefabInstance: {fileID: 1639192922607935909}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1192235084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192235083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1328929280
+      Data2: 1308074205
+      Data3: 1166356363
+      Data4: 654575473
+    Path: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/DropKey"
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!65 &1192235085
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192235083}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.031654116, y: 0.07284483, z: 0.0057577942}
+  m_Center: {x: -0.00033479647, y: 0.011562368, z: -2.464664e-16}
 --- !u!1 &1194125331
 GameObject:
   m_ObjectHideFlags: 0
@@ -14244,7 +14274,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2143748730}
   - component: {fileID: 2143748732}
-  - component: {fileID: 2143748731}
   m_Layer: 14
   m_Name: VoiceAnswer
   m_TagString: Untagged
@@ -14266,23 +14295,6 @@ Transform:
   m_Father: {fileID: 350210511}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2143748731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2143748729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d9ce12c54a1f4e409a4ea61b65add7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: {fileID: 2143748732}
-  m_name: DialogPhone
-  VcaName: Voices
-  m_uiEvent: {fileID: 11400000, guid: 347089ac8c7e08149953aed9d295d8f7, type: 2}
-  volume: 0
 --- !u!114 &2143748732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14322,11 +14334,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8572353600276797507, guid: c8febe94013c3714da077bc0c0538194, type: 3}
   m_PrefabInstance: {fileID: 8177876474710968789}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &919132147504744022 stripped
-BoxCollider:
-  m_CorrespondingSourceObject: {fileID: 2557785475308693941, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
-  m_PrefabInstance: {fileID: 1639192922607935909}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &919132148065112291 stripped
 GameObject:
@@ -14472,7 +14479,7 @@ PrefabInstance:
     - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
       propertyPath: m_thisBox
       value: 
-      objectReference: {fileID: 919132147504744022}
+      objectReference: {fileID: 0}
     - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
       propertyPath: m_uiManager
       value: 
@@ -14485,6 +14492,18 @@ PrefabInstance:
       propertyPath: m_containerDrop
       value: 
       objectReference: {fileID: 1130536192}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_clip.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_clip.Array.data[0]
+      value: 
+      objectReference: {fileID: 602904018}
+    - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+      propertyPath: m_clip.Array.data[1]
+      value: 
+      objectReference: {fileID: 1192235084}
     - target: {fileID: 310709679670535151, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
       propertyPath: m_fmodEventDrop.Path
       value: "event:/SoundsEvent/RamassageEtLachage/Cl\xE9/DropKey"
@@ -14577,18 +14596,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: cle
       objectReference: {fileID: 0}
-    - target: {fileID: 2557785475308693941, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
-      propertyPath: m_Size.x
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557785475308693941, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
-      propertyPath: m_Size.y
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557785475308693941, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
-      propertyPath: m_Size.z
-      value: 0.6
-      objectReference: {fileID: 0}
     - target: {fileID: 2781808052514829032, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -14617,8 +14624,7 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8872760457658350167, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
 --- !u!23 &1711813854612140342 stripped
 MeshRenderer:
