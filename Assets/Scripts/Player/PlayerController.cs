@@ -545,17 +545,9 @@ public class PlayerController : MonoBehaviour
             }
             if (Physics.Raycast(m_ray, out m_hit, 2f, m_keyMask))
             {
-                if (m_gameManager.gotKey == true)
+                if (m_hit.collider.gameObject.GetComponent<KeyScript>())
                 {
-                    if (m_hit.collider.gameObject.GetComponent<KeyScript>())
-                    {
-                        m_UIManager.TakableObject();
-                        m_hit.collider.gameObject.GetComponent<KeyScript>().CanTake();
-                    }
-                }
-                else
-                {
-                    m_UIManager.DisableUi();
+                    m_hit.collider.gameObject.GetComponent<KeyScript>().CanTake();
                 }
             }
 

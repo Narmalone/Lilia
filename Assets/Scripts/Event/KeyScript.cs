@@ -55,7 +55,7 @@ public class KeyScript : MonoBehaviour
     {
         if (m_qte.m_qteIsOver == true)
         {
-            
+            m_uiManager.TakableObject();
             if (Input.GetKeyDown(KeyCode.E))
             {
                 PlayerGotKey();

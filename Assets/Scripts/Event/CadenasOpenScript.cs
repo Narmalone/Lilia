@@ -40,7 +40,6 @@ public class CadenasOpenScript : MonoBehaviour
                 StartCoroutine(OuverturePorte());
                 m_gameManager.gotKey = false;
                 m_key.m_keyUi.SetActive(false);
-                m_key.gameObject.transform.position = new Vector3(0f, 0f, 200f);
             }
         }      
     }
