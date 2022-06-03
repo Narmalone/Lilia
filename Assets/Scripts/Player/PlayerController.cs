@@ -227,7 +227,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if(isCinematic == false)
+        if (isCinematic == false)
         {
             m_ray = m_cam.ScreenPointToRay(Input.mousePosition);
             Debug.DrawRay(m_ray.origin, m_ray.direction, Color.black);
@@ -473,7 +473,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if(Physics.Raycast(m_ray, out m_hit, 1.5f, m_doudouMask))
+            if (Physics.Raycast(m_ray, out m_hit, 1.5f, m_doudouMask))
             {
                 Debug.Log("raycast doudou");
                 if (isTwoHandFull == false)
@@ -543,19 +543,21 @@ public class PlayerController : MonoBehaviour
                 m_gameManager.canPick = false;
 
             }
-            if (Physics.Raycast(m_ray, out m_hit, 2f, m_keyMask))
+            if(m_gameManager.gotKey == false)
             {
-                if (m_hit.collider.gameObject.GetComponent<KeyScript>())
+                if (Physics.Raycast(m_ray, out m_hit, 2f, m_keyMask))
                 {
-                    m_hit.collider.gameObject.GetComponent<KeyScript>().CanTake();
+                    if (m_hit.collider.gameObject.GetComponent<KeyScript>())
+                    {
+                        m_hit.collider.gameObject.GetComponent<KeyScript>().CanTake();
+                    }
                 }
             }
-
-
         }
 
-    }
+        
 
+    }
     /// <summary>
     /// Applique le stress au autre systeme manuellement
     /// </summary>
@@ -586,7 +588,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="amount">Quantité de "dégats"</param>
     public void TakeDamage(float amount)
     {
-        if(m_gameManager.isPaused == true)
+        if (m_gameManager.isPaused == true)
         {
             m_maxStress = m_currentStress;
         }
@@ -606,7 +608,7 @@ public class PlayerController : MonoBehaviour
         {
             if (isTwoHandFull == false)
             {
-                if(isRightHandFull == false)
+                if (isRightHandFull == false)
                 {
                     if (m_gameManager.gotKey == false)
                     {
@@ -619,10 +621,10 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    
+
 
     private void OnRaycastExit(Collider p_collide)
-    { 
+    {
         if ((m_flashlightMask.value & (1 << p_collide.gameObject.layer)) > 0)
         {
             m_flashlightRend.material.SetFloat("_BooleanFloat", 0f);
@@ -709,7 +711,7 @@ public class PlayerController : MonoBehaviour
     {
         if (m_gameManager.isPc == true)
         {
-            if(Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1))
             {
                 if (m_flashlightIsPossessed == true && timeBeforeDropVeilleuse <= 0f)
                 {
@@ -722,7 +724,7 @@ public class PlayerController : MonoBehaviour
                     timeBeforeDropVeilleuse = 0.3f;
                 }
             }
-           
+
         }
         else if (m_gameManager.isGamepad == true)
         {
@@ -751,7 +753,7 @@ public class PlayerController : MonoBehaviour
                     m_doudouIsPossessed = true;
                     isLeftHandFull = true;
                     //m_doudou.GetComponent<BoxCollider>().enabled = false;
-                    m_UIManager.DisableUi();               
+                    m_UIManager.DisableUi();
                 }
             }
         }
@@ -787,10 +789,10 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-   
-/// <summary>
-/// Rassemble les fonctions pour l'utilisation et le drop du doudou
-/// </summary>
+
+    /// <summary>
+    /// Rassemble les fonctions pour l'utilisation et le drop du doudou
+    /// </summary>
     public void ActiveDoudou()
     {
         if (m_gameManager.isPc == true)
@@ -840,6 +842,4 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
-
 }

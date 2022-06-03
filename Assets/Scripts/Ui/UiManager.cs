@@ -102,24 +102,71 @@ public class UiManager : MonoBehaviour
     public void AnimUi()
     {
         if(m_player.isLeftHandFull == true)
-        if (isAnimated == false)
         {
-            m_UIDoudou.GetComponent<Animator>().SetTrigger("FadeOut");
-            isAnimated = true;
+            if (isAnimated == false)
+            {
+                m_UIDoudou.GetComponent<Animator>().SetTrigger("FadeOut");
+                isAnimated = true;
+            }
+            if (isAnimated == true)
+            {
+                if (indexAnim <= indexAnimMax)
+                {
+                    m_UIDoudou.GetComponent<Animator>().SetTrigger("FadeIn");
+                    isAnimated = false;
+                    indexAnim++;
+                }
+                else
+                {
+                    animActivated = false;
+                }
+            }
         }
-        if (isAnimated == true)
+        if(m_player.isRightHandFull == true)
         {
-            if (indexAnim <= indexAnimMax)
+            if (isAnimated == false)
             {
-                m_UIDoudou.GetComponent<Animator>().SetTrigger("FadeIn");
-                isAnimated = false;
-                indexAnim++;
+                m_UILampe.GetComponent<Animator>().SetTrigger("FadeOut");
+                isAnimated = true;
             }
-            else
+            if (isAnimated == true)
             {
-                animActivated = false;
+                if (indexAnim <= indexAnimMax)
+                {
+                    m_UILampe.GetComponent<Animator>().SetTrigger("FadeIn");
+                    isAnimated = false;
+                    indexAnim++;
+                }
+                else
+                {
+                    animActivated = false;
+                }
             }
         }
+        if(m_player.isTwoHandFull == true)
+        {
+            if (isAnimated == false)
+            {
+                m_UILampe.GetComponent<Animator>().SetTrigger("FadeOut");
+                m_UIDoudou.GetComponent<Animator>().SetTrigger("FadeOut");
+                isAnimated = true;
+            }
+            if (isAnimated == true)
+            {
+                if (indexAnim <= indexAnimMax)
+                {
+                    m_UILampe.GetComponent<Animator>().SetTrigger("FadeIn");
+                    m_UIDoudou.GetComponent<Animator>().SetTrigger("FadeIn");
+                    isAnimated = false;
+                    indexAnim++;
+                }
+                else
+                {
+                    animActivated = false;
+                }
+            }
+        }
+     
     }
     public void DropSomethingBefore()
     {
@@ -174,7 +221,7 @@ public class UiManager : MonoBehaviour
         //D�sactiver la Ui qui prend l'objet
         //Activer l'Ui en bas � droite
 
-        m_UILampe.GetComponent<Image>().color = Color.red;
+        m_UILampe.GetComponent<Image>().color = new Color32(255, 255, 225, 255);
         m_objVeilleuseUi.SetActive(true);
     }
     

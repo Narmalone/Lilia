@@ -126,7 +126,7 @@ public class Doors : MonoBehaviour
     {
         StopAllCoroutines();
         mySlider.minValue = 0;
-        m_incrementValue = 0.5f;
+        m_incrementValue = 0.2f;
         mySlider.value = mySlider.minValue;
         mySlider.maxValue = m_speedToOpen;
         if(isOpen == true)

@@ -5,6 +5,7 @@ using UnityEngine;
 public class TriggerFacingPortillon : MonoBehaviour
 {
     [SerializeField, Tooltip("target == joueur")] private LayerMask m_target;
+    [SerializeField, Tooltip("target == IA mask")] private LayerMask m_IA;
     [SerializeField] private Doors m_thisDoor;
 
     private void Awake()
@@ -16,6 +17,12 @@ public class TriggerFacingPortillon : MonoBehaviour
         if ((m_target.value & (1 << other.gameObject.layer)) > 0)
         {
             m_thisDoor.isLeftTrigger = false;
+        }
+
+        if ((m_IA.value & (1 << other.gameObject.layer)) > 0)
+        {
+            m_thisDoor.OnComplete();
+            m_thisDoor.isLeftTrigger = true;
         }
     }
 }

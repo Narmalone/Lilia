@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 1864492332765182387}
   - component: {fileID: 3337126026343314966}
   - component: {fileID: 696700291285222108}
+  - component: {fileID: 1624301959517910706}
+  - component: {fileID: 7168823464418018775}
+  - component: {fileID: 5406147102043092361}
   m_Layer: 0
   m_Name: barriere_bebe_2
   m_TagString: Untagged
@@ -83,6 +86,66 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &1624301959517910706
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345399027148530441}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a0287096899dfc4c8177fb719bf8ae1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7168823464418018775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345399027148530441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1729bff6477f2044cb995be2919449aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_targetMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  m_player: {fileID: 0}
+  m_uiManager: {fileID: 0}
+  isActivable: 1
+  isCompleted: 0
+  isDoor: 0
+  isOpen: 0
+  m_speedToOpen: 0.5
+  m_incrementValue: 0.2
+  sliderInstance: {fileID: 0}
+  m_pos: {fileID: 0}
+  m_doorController: {fileID: 1624301959517910706}
+  m_timeBeforeClose: 1
+  isLeftTrigger: 0
+--- !u!65 &5406147102043092361
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345399027148530441}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.045568865, y: 0.5471021, z: 0.7694103}
+  m_Center: {x: -0.0000000018626451, y: 0.25982863, z: 0.011438313}
 --- !u!1 &5918493668832070971
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,6 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 890398159450825196}
   - component: {fileID: 1546416690480484881}
+  - component: {fileID: 2601924096769948614}
   m_Layer: 0
   m_Name: RightTrigger
   m_TagString: Untagged
@@ -127,6 +191,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2601924096769948614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5918493668832070971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c5e10ef61dcb04499d8774532ff170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_target:
+    serializedVersion: 2
+    m_Bits: 128
+  m_thisDoor: {fileID: 7168823464418018775}
+  m_IA:
+    serializedVersion: 2
+    m_Bits: 65536
 --- !u!1 &7609850232173095842
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,6 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6280957754739152317}
   - component: {fileID: 8177846503479846045}
+  - component: {fileID: 1626122815646834485}
   m_Layer: 0
   m_Name: LeftTrigger
   m_TagString: Untagged
@@ -171,3 +255,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1626122815646834485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7609850232173095842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2fcb8849d4a20546988f0da9a68528d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_target:
+    serializedVersion: 2
+    m_Bits: 128
+  m_thisDoor: {fileID: 7168823464418018775}

@@ -26,6 +26,9 @@ public class KeyScript : MonoBehaviour
     public bool m_dropKeyAfterEvent = false;
 
     private Renderer m_thisRend;
+
+    //IntencityDetails = 0.2f
+    //bool float 1f
     private void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();
@@ -39,6 +42,8 @@ public class KeyScript : MonoBehaviour
     {
         if(m_qte.m_qteIsOver == true)
         {
+            m_thisRend.material.SetFloat("IntencityDetails", 0.2f);
+            m_thisRend.material.SetFloat("_BooleanFloat", 1f);
             SetKeyPos();
         }
     }
