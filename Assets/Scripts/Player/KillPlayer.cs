@@ -11,6 +11,7 @@ public class KillPlayer : MonoBehaviour
     [SerializeField] private MenuManager m_menuManager;
     [SerializeField] private GameManager m_gameManager;
     [SerializeField] RespawnMe m_respawn;
+    [SerializeField] private FinalScript m_final;
     private Collider m_currentPortillon;
     private void Awake()
     {
@@ -33,19 +34,21 @@ public class KillPlayer : MonoBehaviour
                 Debug.Log("ouvre le portillon");
             }
         }
-        if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
+        if(m_final.finalTriggered == false)
         {
-            Debug.Log("GameOver");
-            m_menuManager.OnDeath();
-            m_gameManager.isDead = true;
-            m_respawn.makeRespawn = true;
+            if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
+            {
+                Debug.Log("GameOver");
+                m_menuManager.OnDeath();
+                m_gameManager.isDead = true;
+                m_respawn.makeRespawn = true;
+            }
+            if ((m_doudouMask.value & (1 << other.gameObject.layer)) > 0)
+            {
+                m_menuManager.OnDeath();
+                m_gameManager.isDead = true;
+                m_respawn.makeRespawn = true;
+            }
         }
-        if ((m_doudouMask.value & (1 << other.gameObject.layer)) > 0)
-        {
-            m_menuManager.OnDeath();
-            m_gameManager.isDead = true;
-            m_respawn.makeRespawn = true;
-        }
-
     }
 }

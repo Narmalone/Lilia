@@ -31,6 +31,8 @@ public class UiManager : MonoBehaviour
     public int indexAnimMax = 2;
 
     [SerializeField] private Sprite m_leftClickSprite;
+    [SerializeField] private Sprite m_leftClickNotPossibleSprite;
+    [SerializeField] private Sprite m_rightClickNotPossibleSprite;
     [SerializeField] private Sprite m_rightClickSprite;
     [SerializeField] private Sprite m_EKey;
     [SerializeField] private Sprite m_EKeyNotInteract;
@@ -60,18 +62,31 @@ public class UiManager : MonoBehaviour
         m_indicInteraction.GetComponent<Image>().sprite = m_rightClickSprite;
         m_indicInteraction.SetActive(true);
     }
+    //récup doudou ou la chaise
      public void TakableDoudou()
     {
         m_indicInteraction.GetComponent<Image>().sprite = m_leftClickSprite;
         m_indicInteraction.SetActive(true);
-    }
+    }  
+    
+    public void NotChairTakable()
+    {
+        if(m_player.isLeftHandFull == true)
+        {
+            m_indicInteraction.GetComponent<Image>().sprite = m_leftClickNotPossibleSprite;
+        }
+        if (m_player.isRightHandFull == true)
+        {
+            m_indicInteraction.GetComponent<Image>().sprite = m_rightClickNotPossibleSprite;
+        }
+        m_indicInteraction.SetActive(true);
+    } 
 
     public void TakableObject()
     {
         m_indicInteraction.GetComponent<Image>().sprite = m_EKey;
         m_indicInteraction.SetActive(true);
     }
-
 
     public void DisableUi()
     {
@@ -101,7 +116,30 @@ public class UiManager : MonoBehaviour
     //Normal si le joueur appuie sur E sa blink
     public void AnimUi()
     {
-        if(m_player.isLeftHandFull == true)
+        if(m_player.isLeftHandFull == true && m_player.isRightHandFull == true)
+        {
+            if (isAnimated == false)
+            {
+                m_UIDoudou.GetComponent<Animator>().SetTrigger("FadeOut");
+                m_UILampe.GetComponent<Animator>().SetTrigger("FadeOut");
+                isAnimated = true;
+            }
+            if (isAnimated == true)
+            {
+                if (indexAnim <= indexAnimMax)
+                {
+                    m_UIDoudou.GetComponent<Animator>().SetTrigger("FadeIn");
+                    m_UILampe.GetComponent<Animator>().SetTrigger("FadeIn");
+                    isAnimated = false;
+                    indexAnim++;
+                }
+                else
+                {
+                    animActivated = false;
+                }
+            }
+        }
+        if (m_player.isLeftHandFull == true && m_player.isRightHandFull == false)
         {
             if (isAnimated == false)
             {
@@ -122,25 +160,13 @@ public class UiManager : MonoBehaviour
                 }
             }
         }
-        if(m_player.isRightHandFull == true)
+        if(m_player.isRightHandFull == true && m_player.isLeftHandFull == false)
         {
-            if (isAnimated == false)
+            m_UILampe.GetComponent<Animator>().SetTrigger("FadeOut");
+            if (indexAnim <= indexAnimMax)
             {
-                m_UILampe.GetComponent<Animator>().SetTrigger("FadeOut");
-                isAnimated = true;
-            }
-            if (isAnimated == true)
-            {
-                if (indexAnim <= indexAnimMax)
-                {
-                    m_UILampe.GetComponent<Animator>().SetTrigger("FadeIn");
-                    isAnimated = false;
-                    indexAnim++;
-                }
-                else
-                {
-                    animActivated = false;
-                }
+                m_UILampe.GetComponent<Animator>().SetTrigger("FadeIn");
+                indexAnim++;
             }
         }
         if(m_player.isTwoHandFull == true)

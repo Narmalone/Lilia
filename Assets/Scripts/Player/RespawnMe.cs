@@ -87,7 +87,7 @@ public class RespawnMe : MonoBehaviour
             m_uiManager.TakeDoudou();
             m_doudou.PickItem();
             m_player.m_doudouIsPossessed = true;
-            Debug.Log("joueur a pas le doudou donc l'attribuer au joueur");
+            m_player.isLeftHandFull = true;
         }
 
         if(m_player.m_flashlightIsPossessed == false)
@@ -95,8 +95,7 @@ public class RespawnMe : MonoBehaviour
             m_uiManager.TakeLampe();
             m_flm.PickItem();
             m_player.m_flashlightIsPossessed = true;
-            //m_veilleuseTransform.position = m_veilleuseCheckPoint.position;
-            Debug.Log("joueur a pas la veilleuse donc l'attribuer au joueur");
+            m_player.isRightHandFull = true;
         }
 
         m_menuManager.OnRespawn();

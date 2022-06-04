@@ -92,6 +92,11 @@ public class CaisseProto : MonoBehaviour
     private void Update()
     {
         OnHand();
+        if(m_phone.isFirstAnswer == false)
+        {
+            UnlockPlayer();
+            enabled = false;
+        }
     }
     
     public void CanTake()
@@ -108,7 +113,7 @@ public class CaisseProto : MonoBehaviour
                     m_rbody.useGravity = false;
                     m_rbody.isKinematic = true;
                     m_sphereCollider.enabled = false;
-                    m_player.m_speed = 1.5f;
+                    m_player.m_speed = 1f;
                     m_player.hasChair = true;
                     canTake = false;
                     m_player.isTwoHandFull = true;
@@ -131,10 +136,6 @@ public class CaisseProto : MonoBehaviour
         m_player.m_speed = 0f;
         m_player.transform.position = m_playerLocked.transform.position;
         m_thisRend.material.SetFloat("_BooleanFloat", 0f);
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            UnlockPlayer();
-        }
     }
     public void UnlockPlayer()
     {
@@ -156,7 +157,7 @@ public class CaisseProto : MonoBehaviour
     }
     public void OnHand()
     {
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetMouseButtonDown(0))
         {
             if (inPhoneBox == false)
             {
@@ -164,7 +165,7 @@ public class CaisseProto : MonoBehaviour
                 m_rbody.useGravity = true;
                 m_rbody.isKinematic = false;
                 m_sphereCollider.enabled = true;
-                m_player.m_speed = 2f;
+                m_player.m_speed = 1.5f;
                 m_player.hasChair = false;
                 Debug.Log("dropper la chaise car il n'est pas dans le collider du phone");
                 m_player.isTwoHandFull = false;

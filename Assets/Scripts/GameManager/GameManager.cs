@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public bool gotKey = false;
     public bool isDead;
     public bool canPick = true;
-
+    public bool canDrop = true;
     public bool isPlayerInGame = false;
 
     [SerializeField] private GameObject m_doudouUi;
@@ -25,12 +25,14 @@ public class GameManager : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         canPick = true;
+        canDrop = true;
     }
     public void PlayerNotIngame()
     {
         isPlayerInGame = false;
         if (isPlayerInGame == false)
         {
+            canDrop = false;
             Cursor.lockState = CursorLockMode.None;
         }
     }
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
         isPlayerInGame = true;
         if (isPlayerInGame == true)
         {
+            canDrop = true;
             Cursor.lockState = CursorLockMode.Locked;
         }
     }

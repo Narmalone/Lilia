@@ -51,6 +51,7 @@ public class KeyScript : MonoBehaviour
     {
         if (m_setKeyPos == false)
         {
+            m_clip[0].Play();
             m_thisObject.transform.position = m_containerDrop.transform.position;
             m_thisObject.transform.rotation = m_containerDrop.transform.rotation;
             m_setKeyPos = true;
@@ -68,7 +69,6 @@ public class KeyScript : MonoBehaviour
             }
             if (m_dropKeyAfterEvent == false)
             {
-                m_clip[0].Play();
                 m_dropKeyAfterEvent = true;
             }
         }
@@ -80,6 +80,7 @@ public class KeyScript : MonoBehaviour
         {
             m_clip[1].Play();
             m_gameManager.gotKey = true;
+            m_gameManager.canDrop = true;
             m_thisObject.transform.position = new Vector3(1000f, 0f, 0f);
             m_uiManager.DisableUi();
             m_keyUi.SetActive(true);

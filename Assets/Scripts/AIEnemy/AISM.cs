@@ -84,7 +84,6 @@ public class AISM : StateMachine
         StartCoroutine(SonBB());
         
     }
-    
     void OnEnable()
     {
         m_triggeredEvent.onTriggered += HandleTriggerEvent;
@@ -129,6 +128,4 @@ public class AISM : StateMachine
     {
         return m_patrouilleState;
     }
-
-   
 }

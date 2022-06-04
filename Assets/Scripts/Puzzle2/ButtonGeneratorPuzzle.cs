@@ -29,7 +29,7 @@ public class ButtonGeneratorPuzzle : MonoBehaviour
     {
         if (isActivated == true)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetMouseButtonDown(0))
             {
                 isActivated = false;
                 m_puzzle.CheckSolution();
@@ -38,7 +38,7 @@ public class ButtonGeneratorPuzzle : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetMouseButtonDown(0))
             {
                 isActivated = true;
                 m_puzzle.CheckSolution();

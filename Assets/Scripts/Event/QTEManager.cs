@@ -16,7 +16,8 @@ public class QTEManager : MonoBehaviour
     [SerializeField][Range(1,10)] private float m_rangeCol = 0f;
     
     [SerializeField][Range(0,3)] private float m_tempsEntreQTE = 0f;
-
+    [SerializeField] private PlayerController m_player;
+    [SerializeField] private GameObject m_img;
     [SerializeField] private TextMeshProUGUI m_txtToModify;
     [SerializeField] private TextMeshProUGUI m_txtPushTheBox;
     [SerializeField] private TextMeshProUGUI m_txtCancelAction;
@@ -56,6 +57,7 @@ public class QTEManager : MonoBehaviour
         isInQte = false;
         canDoQte = false;
         m_txtPushTheBox.gameObject.SetActive(false);
+        m_img.gameObject.SetActive(false);
         m_txtCancelAction.gameObject.SetActive(false);
         m_thisRend = GetComponent<Renderer>();
     }
@@ -92,9 +94,10 @@ public class QTEManager : MonoBehaviour
         {
             if (m_currentNumberQTE < m_nombreQTE)
             {
+                m_img.SetActive(true);
                 m_txtPuzzle.UpdateText();
                 m_txtCancelAction.gameObject.SetActive(true);
-                DelockPos();
+                StartCoroutine(canUnlock());
                 if (m_startedCoroutine == false)
                 {
                     //Debug.Log($"Press key {m_keycodesQTE[m_index]}");
@@ -114,11 +117,13 @@ public class QTEManager : MonoBehaviour
                 m_qteStarted = false;
                 m_currentNumberQTE = 0;
                 m_qteIsOver = true;
-                StopAllCoroutines();
+                isInQte = false;
+                StopCoroutine(CoroutineWait());
+                m_img.SetActive(false);
                 m_txtCancelAction.gameObject.SetActive(false);
                 m_txtToModify.gameObject.SetActive(false);
-                m_txtPushTheBox.gameObject.SetActive(false);
-                DelockPos();
+                m_uiManager.DisableUi();
+                StartCoroutine(canUnlock());
             }
         }
         
@@ -155,27 +160,33 @@ public class QTEManager : MonoBehaviour
                     if(canDoQte == true)
                     {
                         m_thisRend.GetComponent<Renderer>().material.SetFloat("_BooleanFloat", 1f);
-                        m_txtPushTheBox.gameObject.SetActive(true);
-                    }
-                }
-            }
+                        if (m_player.isLeftHandFull == false && m_player.isLeftHandFull == false)
+                        {
+                            m_uiManager.TakableObject();
+                            if (Input.GetKeyDown(KeyCode.E) && m_qteStarted == false)
+                            {
+                                if (m_qteIsOver == false)
+                                {
+                                    if (canDoQte == true)
+                                    {
+                                        Debug.Log(m_nombre_de_départ_qte++);
+                                        m_txtCancelAction.gameObject.SetActive(false);
+                                        m_uiManager.DisableUi();
+                                        m_txtToModify.gameObject.SetActive(true);
+                                        m_qteStarted = true;
+                                        isInQte = true;
+                                    }
+                                }
 
-            if (Input.GetKey(KeyCode.E) && m_qteStarted == false)
-            {
-                if(m_qteIsOver == false)
-                {
-                    if(canDoQte == true)
-                    {
-                        Debug.Log(m_nombre_de_départ_qte++);
-                        Debug.Log("Qte started");
-                        m_txtCancelAction.gameObject.SetActive(false);
-                        m_txtToModify.gameObject.SetActive(true);
-                        m_txtPushTheBox.gameObject.SetActive(false);
-                        m_qteStarted = true;
-                        isInQte = true;
+                            }
+                        }
+                        else
+                        {
+                            m_uiManager.DropSomethingBefore();
+                            m_uiManager.AnimUi();
+                        }
                     }
                 }
-                
             }
         }
         else
@@ -189,16 +200,25 @@ public class QTEManager : MonoBehaviour
         if (ReferenceEquals( gameObject, m_pastHit.collider?.gameObject) && other.isTrigger)
         {
             Debug.Log("Je ne vise plus le meuble");
+            m_uiManager.DisableUi();
+            m_uiManager.StopRaycastBefore();
             m_thisRend.GetComponent<Renderer>().material.SetFloat("_BooleanFloat", 0f);
             m_txtPushTheBox.gameObject.SetActive(false);
         }
 
     }
 
+    IEnumerator canUnlock()
+    {
+        yield return new WaitForSeconds(0.2f);
+        DelockPos();
+    }
     public void DelockPos()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        StopCoroutine(canUnlock());
+        if (Input.GetKeyDown(KeyCode.E))
         {
+            m_img.SetActive(false);
             m_txtCancelAction.gameObject.SetActive(false);
             m_txtToModify.gameObject.SetActive(false);
             m_qteStarted = false;

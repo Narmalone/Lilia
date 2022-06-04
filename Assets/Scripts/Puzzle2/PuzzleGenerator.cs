@@ -37,7 +37,7 @@ public class PuzzleGenerator : MonoBehaviour
 
     [SerializeField]private Material m_myMat;
 
-    Renderer rend;
+    public Renderer m_thisRend;
 
     private void Awake()
     {
@@ -57,6 +57,7 @@ public class PuzzleGenerator : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         m_uiManager.TakableObject();
+        m_thisRend.material.SetFloat("_BooleanFloat", 1f);
     }
     private void OnTriggerStay(Collider other)
     {
@@ -76,15 +77,13 @@ public class PuzzleGenerator : MonoBehaviour
     {
         if (isLocked == true)
         {
-            m_player.m_speed = 0f;
+            m_player.NoVelocity();
             if (isTrigger == true)
             {
                 SwitchSelect();
                 m_uiManager.DisableUi();
-                if (Vector3.Distance(m_player.transform.position, m_containerPlayer.transform.position) > m_rangeToNotOut)
-                {
-                    m_player.transform.position = Vector3.MoveTowards(m_player.transform.position, m_containerPlayer.transform.position, 0.1f);
-                }
+                m_player.inCompteur = true;
+                m_player.transform.position = Vector3.MoveTowards(m_player.transform.position, m_containerPlayer.transform.position, 0.1f);
             }
         }
     }
@@ -94,7 +93,9 @@ public class PuzzleGenerator : MonoBehaviour
         {
             if (m_gameManager.isPc == true)
             {
+                isTrigger = false;
                 m_uiManager.DisableUi();
+                m_thisRend.material.SetFloat("_BooleanFloat", 0f);
             }
         }
     }
@@ -104,8 +105,9 @@ public class PuzzleGenerator : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                m_player.NoVelocity();
                 isLocked = true;
-                m_player.m_speed = 0f;
+                m_gameManager.canDrop = false;
                 m_txtCancelAction.gameObject.SetActive(true);
                 foreach (GameObject p_obj in m_toActive)
                 {
@@ -115,24 +117,33 @@ public class PuzzleGenerator : MonoBehaviour
         }
         else
         {
-            UnlockPlayer();
+            StartCoroutine(canUnlock());
             Select();
         }
 
 
     }
+    IEnumerator canUnlock()
+    {
+        yield return new WaitForSeconds(0.2f);
+        UnlockPlayer();
+    }
     public void UnlockPlayer()
     {
+        StopCoroutine(canUnlock());
         if(m_gameManager.isPc == true)
         {
             if(isLocked == true)
             {
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
+                    m_player.inCompteur = false;
+                    m_gameManager.canDrop = true;
                     isLocked = false;
                     isTrigger = false;
-                    m_player.m_speed = 2f;
+                    m_player.m_speed = 1.5f;
                     m_txtCancelAction.gameObject.SetActive(false);
+                    m_thisRend.material.SetFloat("_BooleanFloat", 0f);
                     foreach (GameObject p_obj in m_toActive)
                     {
                         p_obj.SetActive(false);
@@ -215,8 +226,10 @@ public class PuzzleGenerator : MonoBehaviour
             Debug.Log("puzzle ended");
             isLocked = false;
             isTrigger = false;
-            m_player.m_speed = 2f;
+            m_thisRend.material.SetFloat("_BooleanFloat", 0f);
+            m_player.m_speed = 1.5f;
             m_appear.LateGameAppear();
+            enabled = false;
         }       
     }
     public void NextIndicePaper()

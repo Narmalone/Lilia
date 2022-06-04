@@ -23,6 +23,7 @@ public class TxtPuzzle_1 : MonoBehaviour
     [SerializeField, Tooltip("vitesse à laquelle la fontSize grandi ou rapeti en s")] public float m_speedToGrow = 5f;
     public bool m_switchToward = false;
 
+    [SerializeField] private Animator m_txtAnimator;
     private void OnEnable()
     {
         UpdateText();
@@ -40,21 +41,14 @@ public class TxtPuzzle_1 : MonoBehaviour
     {
         if(m_switchToward == false)
         {
-            m_thisTxt.fontSize = Mathf.MoveTowards(m_thisTxt.fontSize, m_upperFontSize, m_speedToGrow * Time.deltaTime);
-            if(m_thisTxt.fontSize == m_upperFontSize)
-            {
-                m_switchToward = true;
-            }
+            m_txtAnimator.SetTrigger("FadeIn");
+            m_switchToward = true;
         }
-        else if(m_switchToward == true)
+        else
         {
-            m_thisTxt.fontSize = Mathf.MoveTowards(m_thisTxt.fontSize, m_lowerFontSize, m_speedToGrow * Time.deltaTime);
-            if(m_thisTxt.fontSize == m_lowerFontSize)
-            {
-                m_switchToward = false;
-            }
+            m_txtAnimator.SetTrigger("FadeOut");
+            m_switchToward = false;
         }
-      
     }
     public void UpdateText()
     {
@@ -67,7 +61,6 @@ public class TxtPuzzle_1 : MonoBehaviour
         if(isSucess == true)
         {
             m_myAnim.SetBool(m_nameAnim, true);
-            Animator.StringToHash(m_nameAnim);
             //m_audioScript.Play("hitMeuble");
             isSucess = false;
         }
@@ -79,7 +72,6 @@ public class TxtPuzzle_1 : MonoBehaviour
         if (isNewPos == false)
         {
             m_thisObj.localPosition = m_randomPos[Random.Range(0, m_randomPos.Count)].transform.localPosition;
-            //m_thisObj.Translate(m_randomPos[Random.Range(0, m_randomPos.Count)].transform.localPosition, Space.Self);
             isNewPos = true;
             isSucess = true;
             SuccessQte();

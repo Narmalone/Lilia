@@ -22,13 +22,14 @@ public class StateMachine : MonoBehaviour
     void LateUpdate()
     {
         if (currentState != null)
+        {
             currentState.UpdatePhysics();
+        }
     }
 
     public void ChangeState(BaseState newState)
     {
         currentState.Exit();
-
         currentState = newState;
         currentState.Enter();
     }
