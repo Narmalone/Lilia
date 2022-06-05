@@ -33,38 +33,8 @@ public class EventVolume : MonoBehaviour
         {
             vignette.intensity.max = m_maxValue;
         }
-        isPlayerAwake = false;
     }
-    private void Start()
-    {
-        if(isPlayerAwake == false)
-        {
-            //m_player.GetComponent<Animator>().SetTrigger("BeforeAwake");
-            //isPlayerAwake = true;
-            //StartCoroutine(NextCinematic());
-        }
-    }
-    IEnumerator NextCinematic()
-    {
-        yield return new WaitForSeconds(10f);
-        AwakePlayer();
-    }
-    IEnumerator EndCinematic()
-    {
-        yield return new WaitForSeconds(.1f);
-        ResetTrigger();
-    }
-    public void AwakePlayer()
-    {
-        StopCoroutine(NextCinematic());
-        m_player.GetComponent<Animator>().SetTrigger("AwakePlayer");
-        StartCoroutine(EndCinematic());
-    }
-    public void ResetTrigger()
-    {
-        StopCoroutine(EndCinematic());
-        m_player.GetComponent<Animator>().SetTrigger("Reset");
-    }
+  
     void Update()
     {
         ClignementDesYeux();
@@ -94,7 +64,6 @@ public class EventVolume : MonoBehaviour
                 }
                 if (m_currentNB >= m_nbMax)
                 {
-                    m_player.isCinematic = false;
                     isOver = true;
                 }
             }
@@ -103,14 +72,5 @@ public class EventVolume : MonoBehaviour
         {
             return;
         }
-    }
-
-    public void FadeInFadeOut()
-    {
-        m_imgBlikImage.SetBool("FadeActive", true);
-    }
-    public void TriggerScreamer()
-    {
-
     }
 }

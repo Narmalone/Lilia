@@ -10,15 +10,53 @@ public class FinalScript : MonoBehaviour
     [SerializeField] private LayerMask m_playMask;
     [SerializeField] private GameObject m_lastPoint;
     [SerializeField] private GameObject m_TrigDoorActivate;
+    [SerializeField] private Doudou m_doudou;
+    [SerializeField] private UiManager m_uiManager;
+    [SerializeField] private GameManager m_gameManager;
+    [SerializeField, Tooltip("IA")] private GameObject m_finalPosition;
+    [SerializeField, Tooltip("PlayerDansCabanne")] private Transform m_finalPlayerPosition;
+    [SerializeField] private Transform m_cabanneDoudouTransform;
+    [SerializeField] private Animator m_playerAnimator;
+    [SerializeField] private RagdollScript m_ragdoll;
+    public bool canFinal = false;
+    public bool CallMobNewWaypoint = false;
     public bool finalTriggered = false;
     public bool MobInPlace = false;
+    public bool MobFinalPosition = false;
 
     private void Awake()
     {
         finalTriggered = false;
+        CallMobNewWaypoint = false;
         MobInPlace = false;
+        canFinal = false;
+        MobFinalPosition = false;
     }
-
+    public void PlayAnim()
+    {
+        m_player.isCinematic = true;
+        m_player.transform.position = m_finalPlayerPosition.position;
+        m_player.transform.rotation = m_finalPlayerPosition.localRotation;
+        m_playerAnimator.SetTrigger("InCabanne");
+        StartCoroutine(CorourtineAnim());
+    }
+    IEnumerator CorourtineAnim()
+    {
+        yield return new WaitForSeconds(2f);
+        m_gameManager.canPick = false;
+        m_doudou.DropItem();
+        m_player.m_doudouIsPossessed = false;
+        m_player.isLeftHandFull = false;
+        m_uiManager.DropDoudou();
+        m_ragdoll.DisableRagdoll();
+        m_playerAnimator.enabled = false;
+        m_doudou.transform.position = m_cabanneDoudouTransform.position;
+        yield return new WaitForSeconds(2f);
+        m_player.isCinematic = false;
+        CallMobNewWaypoint = true;
+        TriggerEnd();
+        StopCoroutine(CorourtineAnim());
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(finalTriggered == false)
@@ -26,7 +64,7 @@ public class FinalScript : MonoBehaviour
             if ((m_playMask.value & (1 << other.gameObject.layer)) > 0)
             {
                 finalTriggered = true;
-                TriggerEnd();
+                PlayAnim();
                 Debug.Log("lancer fonction Trigger end");
             }
         }
@@ -35,10 +73,9 @@ public class FinalScript : MonoBehaviour
     {
         if(finalTriggered == true)
         {
-            m_player.m_speed = 0f;
+            m_player.NoVelocity();
             m_player.NoNeedStress();
             IA.transform.position = m_newWaypoint.transform.position;
-            Debug.Log("le joueur ne peut plus bouger");
         }
     }
     public void OnPlace()
@@ -53,9 +90,17 @@ public class FinalScript : MonoBehaviour
 
     private void Update()
     {
-        if(MobInPlace == true)
+        if(MobFinalPosition == false)
         {
-            IA.transform.position = m_lastPoint.transform.position;
+            if (MobInPlace == true)
+            {
+                IA.transform.position = m_lastPoint.transform.position;
+            }
         }
+        else
+        {
+            IA.transform.position = m_finalPosition.transform.position;
+        }
+       
     }
 }

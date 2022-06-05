@@ -31,20 +31,32 @@ public class Patrouille : BaseState
     {
         base.UpdateLogic();
         
-        if (m_sm.m_player.m_doudouIsPossessed == true)
+        if(m_sm.m_final.CallMobNewWaypoint == false)
         {
-            if (GameObject.ReferenceEquals(m_target, m_sm.m_player.gameObject) == false)
+            if (m_sm.m_player.m_doudouIsPossessed == true)
             {
-                m_target = m_sm.m_player.gameObject;
+                if (GameObject.ReferenceEquals(m_target, m_sm.m_player.gameObject) == false)
+                {
+                    m_target = m_sm.m_player.gameObject;
+                }
+            }
+            else
+            {
+                if (GameObject.ReferenceEquals(m_target, m_sm.m_doudou.gameObject) == false)
+                {
+                    m_target = m_sm.m_doudou.gameObject;
+                }
             }
         }
         else
         {
-            if (GameObject.ReferenceEquals(m_target, m_sm.m_doudou.gameObject) == false)
+            if (GameObject.ReferenceEquals(m_target, m_sm.m_noTarget) == false)
             {
-                m_target = m_sm.m_doudou.gameObject;
+                m_target = m_sm.m_noTarget;
+                Debug.Log("no target");
             }
         }
+       
         
         if (Vector3.Distance(m_sm.transform.position, m_waypoints.GetCurrentPoint().transform.position) <= 1)
         {

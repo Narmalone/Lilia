@@ -71,13 +71,11 @@ public class ButtonGeneratorPuzzle : MonoBehaviour
     {
         if(isActivated == true)
         {
-            m_myAnim.SetTrigger(m_nameAnim_2);
-            Animator.StringToHash(m_nameAnim_2);
+            gameObject.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         }
         else
         {
-            m_myAnim.SetTrigger(m_nameAnim);
-            Animator.StringToHash(m_nameAnim);
+            gameObject.transform.localRotation = Quaternion.Euler(-180f, 0f, 0f);
         }
     }
 }

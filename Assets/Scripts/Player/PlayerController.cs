@@ -184,12 +184,18 @@ public class PlayerController : MonoBehaviour
     public bool inCompteur = false;
     private float timeBeforeDropDoudou = 0.3f;
     private float timeBeforeDropVeilleuse = 0.3f;
+    [SerializeField] private FinalScript m_final;
+    [SerializeField] private Animator m_myAnim;
+    [SerializeField] private Animator m_imgBlikImage;
+    [SerializeField] private Transform m_StartingPlayerPosition;
+    [SerializeField] private Transform m_AwakePlaterPosition;
     private void Awake()
     {
+        isCinematic = true;
         isLeftHandFull = false;
         isRightHandFull = false;
         isTwoHandFull = false;
-
+        m_txtEvent.gameObject.SetActive(false);
         noNeedStress = false;
         m_gameManager = FindObjectOfType<GameManager>();
         m_menuManager = FindObjectOfType<MenuManager>();
@@ -226,7 +232,45 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         m_gameManager.PlayerInGame();
-        
+        bool startCinematic = false;
+        if(startCinematic == false)
+        {
+            m_myAnim.SetTrigger("BeforeAwake");
+            gameObject.transform.position = m_StartingPlayerPosition.position;
+            gameObject.transform.rotation = m_StartingPlayerPosition.rotation;
+            startCinematic = true;
+            StartCoroutine(Faded());
+            StartCoroutine(CoroutineAwake());
+        }
+    }
+    IEnumerator CoroutineAwake()
+    {
+        yield return new WaitForSeconds(9.5f);
+        gameObject.transform.position = m_AwakePlaterPosition.position;
+        gameObject.transform.rotation = m_AwakePlaterPosition.rotation;
+        m_myAnim.SetTrigger("AwakePlayer");
+
+        yield return new WaitForSeconds(2f);
+        isCinematic = false;
+        m_txtEvent.gameObject.SetActive(true);
+        StopCoroutine(CoroutineAwake());
+    }
+    IEnumerator Faded()
+    {
+        m_imgBlikImage.SetBool("FadeActive", true);
+        yield return new WaitForSeconds(0.7f);
+        m_imgBlikImage.SetBool("FadeActive", false);
+        yield return new WaitForSeconds(0.7f);
+        m_imgBlikImage.SetBool("FadeActive", true);
+        yield return new WaitForSeconds(0.7f);
+        m_imgBlikImage.SetBool("FadeActive", false); 
+        yield return new WaitForSeconds(3f);
+        m_imgBlikImage.SetBool("FadeActive", true);
+        yield return new WaitForSeconds(1f);
+        m_imgBlikImage.SetTrigger("EndAnim");
+        yield return new WaitForSeconds(3.5f);
+        m_imgBlikImage.gameObject.SetActive(false);
+        StopCoroutine(Faded());
     }
     private void Update()
     {
@@ -249,6 +293,8 @@ public class PlayerController : MonoBehaviour
 
         if (isCinematic == false)
         {
+            m_myAnim.enabled = false;
+
             m_ray = m_cam.ScreenPointToRay(Input.mousePosition);
             Debug.DrawRay(m_ray.origin, m_ray.direction, Color.black);
             if (Physics.Raycast(m_ray, out m_hit, 1f, ~(1 << gameObject.layer)))
@@ -380,17 +426,6 @@ public class PlayerController : MonoBehaviour
                 {
                     Stressing(-m_StressPower);
                 }
-                if (ReferenceEquals(m_target, gameObject) == false)
-                {
-                    m_target = gameObject;
-                }
-            }
-            else
-            {
-                if (ReferenceEquals(m_target, m_doudou.gameObject) == false)
-                {
-                    m_target = m_doudou.gameObject;
-                }
             }
 
             //Si raycast avec portillon
@@ -434,7 +469,7 @@ public class PlayerController : MonoBehaviour
          
             if (Physics.Raycast(m_ray, out m_hit, 1, m_TwoHandsItemMask))
             {
-                if (m_createNarrativeEvent.index == 2)
+                if (m_createNarrativeEvent.index == 3)
                 {
                     if(m_phone.isFirstAnswer == true)
                     {
@@ -511,7 +546,7 @@ public class PlayerController : MonoBehaviour
                     if (m_phone.isFirstAnswer == true)
                     {
 
-                        if (m_createNarrativeEvent.index == 2)
+                        if (m_createNarrativeEvent.index == 3)
                         {
                             m_phoneRend = m_hit.collider.gameObject.GetComponent<Renderer>();
                             m_UIManager.TakableObject();
@@ -558,7 +593,10 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-
+        else
+        {
+            m_myAnim.enabled = true;
+        }
         
 
     }
@@ -690,10 +728,9 @@ public class PlayerController : MonoBehaviour
                 {
                     if (m_flashlightIsPossessed == false)
                     {
-                        if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 0)
+                        if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 2)
                         {
                             m_createNarrativeEvent.actionComplete = true;
-                            m_createNarrativeEvent.isWaitingAction = false;
                         }
                         m_flashlightIsPossessed = true;
                         isRightHandFull = true;
@@ -732,6 +769,12 @@ public class PlayerController : MonoBehaviour
                 {
                     if (m_flashlightIsPossessed == true && timeBeforeDropVeilleuse <= 0f)
                     {
+                        if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 3)
+                        {
+                            m_phone.StartPhoneSound();
+                            m_createNarrativeEvent.actionComplete = true;
+                            m_txtEvent.gameObject.SetActive(false);
+                        }
                         m_flm.DropItem();
                         m_flm.GetComponent<BoxCollider>().enabled = true;
                         isRightHandFull = false;
@@ -769,6 +812,11 @@ public class PlayerController : MonoBehaviour
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
+                        if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 0)
+                        {
+                            m_createNarrativeEvent.actionComplete = true;
+                            m_createNarrativeEvent.isWaitingAction = false;
+                        }
                         m_UIManager.TakeDoudou();
                         m_doudou.PickItem();
                         m_doudouIsPossessed = true;
@@ -802,6 +850,12 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
+                    if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 3)
+                    {
+                        m_phone.StartPhoneSound();
+                        m_createNarrativeEvent.actionComplete = true;
+                        m_txtEvent.gameObject.SetActive(false);
+                    }
                     m_doudou.DropItem();
                     m_doudouIsPossessed = false;
                     isLeftHandFull = false;
@@ -832,7 +886,6 @@ public class PlayerController : MonoBehaviour
                     {
                         m_doudouIsUsed = true;
                         m_createNarrativeEvent.actionComplete = true;
-                        m_phone.StartPhoneSound();
                     }
                     //Debug.Log("doit être chase");
                 }

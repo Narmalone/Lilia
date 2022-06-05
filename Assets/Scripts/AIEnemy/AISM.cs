@@ -54,6 +54,9 @@ public class AISM : StateMachine
     private FMODUnity.EventReference m_fmodEventSonBB;
 
     private FirstPersonOcclusion m_occlusion;
+
+    [SerializeField] public FinalScript m_final;
+    [SerializeField] public GameObject m_noTarget;
     
     private void Awake()
     {
@@ -61,14 +64,22 @@ public class AISM : StateMachine
         Debug.Log("Awake");
         m_targetSpeed = m_navAgent.speed;
         m_path = new NavMeshPath();
-        if (m_player.m_doudouIsPossessed == true)
+        if(m_final.CallMobNewWaypoint == false)
         {
-            m_target = m_player.gameObject;
+            if (m_player.m_doudouIsPossessed == true)
+            {
+                m_target = m_player.gameObject;
+            }
+            else
+            {
+                m_target = m_doudou.gameObject;
+            }
         }
         else
         {
-            m_target = m_doudou.gameObject;
+            m_target = m_noTarget;
         }
+        
         m_patrouilleState = new Patrouille(this,m_navAgent,m_waypoints,m_target);
         m_chasseState = new Chasse(this,m_navAgent,m_target);
         

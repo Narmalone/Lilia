@@ -21,7 +21,7 @@ public class PuzzleGenerator : MonoBehaviour
     [NonSerialized] public GameObject m_lastObjSelected;
 
     [SerializeField] AppearThings m_appear;
-
+    [SerializeField] private GameObject m_FinalCollider;
     [SerializeField] private TextMeshProUGUI m_txtCancelAction;
     [SerializeField] private List<GameObject> m_toActive;
     private int m_index = 0;
@@ -47,6 +47,7 @@ public class PuzzleGenerator : MonoBehaviour
         m_indexPaper = 0;
         completeSolution = false;
         notSolutionComplete = false;
+        m_FinalCollider.SetActive(false);
         m_gameManager = FindObjectOfType<GameManager>();
         foreach(GameObject p_obj in m_toActive)
         {
@@ -56,14 +57,23 @@ public class PuzzleGenerator : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        m_uiManager.TakableObject();
-        m_thisRend.material.SetFloat("_BooleanFloat", 1f);
+        
     }
     private void OnTriggerStay(Collider other)
     {
         if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
         {
-            isTrigger = true;
+            if (m_player.isLeftHandFull == false && m_player.isRightHandFull == false)
+            {
+                m_uiManager.TakableObject();
+                isTrigger = true;
+                m_thisRend.material.SetFloat("_BooleanFloat", 1f);
+            }
+            else
+            {
+                m_uiManager.DropSomethingBefore();
+                m_uiManager.AnimUi();
+            }
         }
     }
     private void Update()
@@ -105,6 +115,7 @@ public class PuzzleGenerator : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                m_thisRend.material.SetFloat("_BooleanFloat", 0f);
                 m_player.NoVelocity();
                 isLocked = true;
                 m_gameManager.canDrop = false;
@@ -225,10 +236,13 @@ public class PuzzleGenerator : MonoBehaviour
         {
             Debug.Log("puzzle ended");
             isLocked = false;
+            m_player.inCompteur = false;
             isTrigger = false;
             m_thisRend.material.SetFloat("_BooleanFloat", 0f);
             m_player.m_speed = 1.5f;
+            m_FinalCollider.SetActive(true);
             m_appear.LateGameAppear();
+            gameObject.layer = default;
             enabled = false;
         }       
     }

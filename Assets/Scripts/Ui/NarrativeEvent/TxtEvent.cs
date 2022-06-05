@@ -9,7 +9,6 @@ public class TxtEvent : MonoBehaviour
 {
     [SerializeField, Tooltip("R�f�rence du texte que vous souhaitez afficher")] public TextMeshProUGUI m_txtToDisplay; //Texte à modifier
     [SerializeField] CreateNarrativeEvent m_createNarrativeEvent;   //référence du script narrative event
-    
     private float desiredAlpha; //Alpha désiré entre 0 et 1
     private float currentAlpha; //Alpha actuelle
 
@@ -26,12 +25,6 @@ public class TxtEvent : MonoBehaviour
     {
         OnFade();
         m_txtToDisplay.alpha = currentAlpha;
-
-
-        if (m_createNarrativeEvent.index == 2)
-        {
-            NextSentence();
-        }
     }
     
     //fonction de l'apparation/disparition
@@ -82,10 +75,6 @@ public class TxtEvent : MonoBehaviour
             {
                 Debug.Log("en attente que le joueur fasse quelque chose");
             }
-        }
-        else if(m_createNarrativeEvent.index == 2)
-        {
-            m_createNarrativeEvent.actionComplete = true;
         }
     }
 

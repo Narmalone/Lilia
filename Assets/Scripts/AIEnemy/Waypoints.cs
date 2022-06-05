@@ -10,14 +10,14 @@ public class Waypoints : MonoBehaviour
     [SerializeField] private List<GameObject> m_listWaypoints = new List<GameObject>();
     [SerializeField] private List<GameObject> m_finalWaypoints = new List<GameObject>();
     [SerializeField] private GameObject m_waypointsPref;
-
+    [SerializeField] private AISM m_ai;
     public void NextPoint()
     {
-        if (m_final.finalTriggered == true)
+        if (m_final.CallMobNewWaypoint == true)
         {
             if(index == m_finalWaypoints.Count-1)
             {
-                Debug.Log("est au 3° point");
+                m_ai.m_distanceDetection = 0f;
                 m_final.OnPlace();
             }
             index = (index + 1) % m_finalWaypoints.Count;
@@ -30,7 +30,7 @@ public class Waypoints : MonoBehaviour
 
     public GameObject GetCurrentPoint()
     {
-        if (m_final.finalTriggered == true)
+        if (m_final.CallMobNewWaypoint == true)
         {
             return m_finalWaypoints[index];
         }

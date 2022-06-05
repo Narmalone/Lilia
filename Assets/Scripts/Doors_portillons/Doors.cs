@@ -8,7 +8,7 @@ public class Doors : MonoBehaviour
     [SerializeField] private LayerMask m_targetMask;
     [SerializeField] private PlayerController m_player;
     [SerializeField] private UiManager m_uiManager;
-    [SerializeField] private bool isActivable = false;
+    [SerializeField] public bool isActivable = false;
     [SerializeField] private bool isCompleted = false;
     [SerializeField] public bool isDoor = false;
     [SerializeField] public bool isOpen = false;
@@ -39,6 +39,14 @@ public class Doors : MonoBehaviour
     private RaycastHit m_hit;
     private Slider mySlider;
 
+    private void OnEnable()
+    {
+        
+    }
+    private void OnDisable()
+    {
+        
+    }
     private void Awake()
     {
         //Slider Instance et set variables
