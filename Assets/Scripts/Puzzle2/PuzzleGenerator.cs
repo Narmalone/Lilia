@@ -237,6 +237,7 @@ public class PuzzleGenerator : MonoBehaviour
             Debug.Log("puzzle ended");
             isLocked = false;
             m_player.inCompteur = false;
+            m_gameManager.canDrop = true;
             isTrigger = false;
             m_thisRend.material.SetFloat("_BooleanFloat", 0f);
             m_player.m_speed = 1.5f;
