@@ -733,6 +733,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 816
+--- !u!114 &-7415725553564482992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/OuverturePorte/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-7330495675475673477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -969,7 +993,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637900735083101301
+  lastModified: 637900798569583016
   FileSizes:
   - Name: Desktop
     Value: 2032
@@ -3255,10 +3279,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Sounds.bank
   Name: Sounds
   StudioPath: bank:/Sounds
-  lastModified: 637900735084918006
+  lastModified: 637900798571420789
   FileSizes:
   - Name: Desktop
-    Value: 5537088
+    Value: 5537184
   Exists: 1
 --- !u!114 &-168886559189170604
 MonoBehaviour:
@@ -3366,7 +3390,7 @@ MonoBehaviour:
   - {fileID: -6916075422848283517}
   StringsBanks:
   - {fileID: 8441995482524795051}
-  cacheTime: 637900735085123258
+  cacheTime: 637900798571611033
   cacheVersion: 10
 --- !u!114 &68467238725858441
 MonoBehaviour:
@@ -5133,7 +5157,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Voices.bank
   Name: Voices
   StudioPath: bank:/Voices
-  lastModified: 637900735085123258
+  lastModified: 637900798571611033
   FileSizes:
   - Name: Desktop
     Value: 44704
@@ -5414,7 +5438,8 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: -7415725553564482992}
   MinDistance: 1
   MaxDistance: 20
   Length: 0
@@ -5863,7 +5888,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637900735083371560
+  lastModified: 637900798569959335
   FileSizes:
   - Name: Desktop
     Value: 2111648
@@ -6163,7 +6188,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637900735083111331
+  lastModified: 637900798569599101
   FileSizes:
   - Name: Desktop
     Value: 2936

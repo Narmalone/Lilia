@@ -36,6 +36,8 @@ public class Doudou : MonoBehaviour
     public Transform m_RootComponent;
 
     [SerializeField] RagdollScript m_ragdoll;
+
+    [SerializeField] private StudioEventEmitter m_clip;
     private void Awake()
     {
         //m_boxDoudouColider = m_doudou.GetComponent<BoxCollider>();
@@ -79,11 +81,13 @@ public class Doudou : MonoBehaviour
             m_doudou.transform.position = new Vector3(1100f, 1100f, 1100f);
             //m_doudou.GetComponent<BoxCollider>().enabled = false;
             uiManager.DisableUi();
+            m_clip.Play();
             m_instancePickUp.setVolume(m_audio.volumeSound);
             m_instancePickUp.start();
         }
         else
         {
+            m_clip.Play();
             m_instancePickUp.setVolume(m_audio.volumeSound);
             m_instancePickUp.start();
             //m_clips.Play();
