@@ -7,11 +7,15 @@ public class PlayerScriptAnim : MonoBehaviour
     [SerializeField] private PlayerController m_player;
     [SerializeField] private Animator m_playerAnims;
 
-
     //DoudouWalkOnly, LampeWalkOnly, Doudou&LampWalk, Default s
+
+    private void Awake()
+    {
+        m_playerAnims.gameObject.SetActive(false);
+    }
     private void Update()
     {
-        if (m_player.m_velocity.x == 0)
+        if (m_player.move.x == 0)
         {
             m_playerAnims.speed = 0;
         }
