@@ -12,8 +12,6 @@ public class UiManager : MonoBehaviour
     [SerializeField,Tooltip("image d'UI pour l'intercation")]private GameObject m_indicInteraction;
     [SerializeField,Tooltip("image d'UI pour l'indication de lampe")]private GameObject m_UILampe;
     [SerializeField,Tooltip("image d'UI pour l'indication de doudou")]private GameObject m_UIDoudou;
-    [SerializeField,Tooltip("Objet d'Ui du doudou quand il est en main")]private GameObject m_objDoudouUi;
-    [SerializeField,Tooltip("Objet d'Ui de la veilleuse quand elle est en main")]private GameObject m_objVeilleuseUi;
     [SerializeField] private PlayerController m_player;
 
     private GameManager m_gameManager;
@@ -44,8 +42,6 @@ public class UiManager : MonoBehaviour
         m_gameManager = FindObjectOfType<GameManager>();
         m_indicInteraction.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         m_indicInteraction.SetActive(false);
-        m_objDoudouUi.SetActive(false);
-        m_objVeilleuseUi.SetActive(false);
         m_UILampe.GetComponent<Image>().color = new Color32(100, 100, 100, 255);
         m_UIDoudou.GetComponent<Image>().color = new Color32(100, 100, 100, 255);
         isAnimated = false;
@@ -248,9 +244,7 @@ public class UiManager : MonoBehaviour
         //D�sactiver la Ui qui prend l'objet
         //Activer l'Ui en bas � droite
 
-        m_UILampe.GetComponent<Image>().color = new Color32(255, 255, 225, 255);
-        m_objVeilleuseUi.SetActive(true);
-     
+        m_UILampe.GetComponent<Image>().color = new Color32(255, 255, 225, 255);     
     }
 
     public void DropLampe()
@@ -259,7 +253,6 @@ public class UiManager : MonoBehaviour
         //Activer l'Ui en bas � droite
 
         m_UILampe.GetComponent<Image>().color = new Color32(100,100,100,255);
-        m_objVeilleuseUi.SetActive(false);
     }
 
     public void TakeDoudou()
@@ -268,7 +261,6 @@ public class UiManager : MonoBehaviour
         //Activer l'Ui en bas � droite
      
         m_UIDoudou.GetComponent<Image>().color = new Color32(255,255,225,255);
-        m_objDoudouUi.SetActive(true);
     }
     
     public void DropDoudou()
@@ -276,6 +268,5 @@ public class UiManager : MonoBehaviour
         //D�sactiver la Ui qui prend l'objet
       
         m_UIDoudou.GetComponent<Image>().color = new Color32(100,100,100,255);
-        m_objDoudouUi.SetActive(false);
     }
 }

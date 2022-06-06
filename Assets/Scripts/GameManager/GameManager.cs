@@ -18,9 +18,6 @@ public class GameManager : MonoBehaviour
     public bool canPick = true;
     public bool canDrop = true;
     public bool isPlayerInGame = false;
-
-    [SerializeField] private GameObject m_doudouUi;
-    [SerializeField] private GameObject m_veilleuseUi;
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
