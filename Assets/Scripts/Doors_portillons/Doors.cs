@@ -110,6 +110,7 @@ public class Doors : MonoBehaviour
             isActivable = false;
             isOpen = true;
             gameObject.layer = default;
+            m_pcAnim.canPlayAnim = true;
             m_pcAnim.PlayAnimPlayerToPortillons();
         }
         //Si c'est un portillon
@@ -125,15 +126,13 @@ public class Doors : MonoBehaviour
             {
                 m_clip[2].Play();
                 m_doorController.SetTrigger(m_isOpenPortillonAnim);
-                Debug.Log("open anim portillon normal");
+                m_pcAnim.canPlayAnim = true;
                 m_pcAnim.PlayAnimPlayerToPortillons();
             }
             isActivable = false;
             isOpen = true;
             StartCoroutine(Chrono());
         }
-        //Jouer son
-        //la porte l'objet n'est plus activable ou si c un portillon trouver sol
     }
 
     IEnumerator Chrono()

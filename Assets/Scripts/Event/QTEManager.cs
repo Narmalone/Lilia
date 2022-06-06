@@ -55,6 +55,7 @@ public class QTEManager : MonoBehaviour
     private Renderer m_thisRend;
 
     [SerializeField] private StudioEventEmitter m_clip;
+    [SerializeField] private PlayerScriptAnim m_pcAnim;
     private void Awake()
     {
         isInQte = false;
@@ -109,6 +110,7 @@ public class QTEManager : MonoBehaviour
                         m_startedCoroutine = true;
                         m_currentNumberQTE++;
                         m_index = Random.Range(0, m_keycodesQTE.Length);
+                        m_pcAnim.PlayAnimToArmoire();
                         StartCoroutine(CoroutineWait());
                     }
                 }
