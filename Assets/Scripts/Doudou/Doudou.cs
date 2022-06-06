@@ -94,7 +94,6 @@ public class Doudou : MonoBehaviour
             m_rbDoudou.isKinematic = true;
             m_rbDoudou.useGravity = false;
             m_doudou.transform.position = new Vector3(1100f, 1100f, 1100f);
-            //m_doudou.GetComponent<BoxCollider>().enabled = false;
             uiManager.DisableUi();
             m_ragdoll.DisableRagdoll();
         }

@@ -153,8 +153,8 @@ public class PlayerController : MonoBehaviour
 
     private float m_gravity = -9.81f;
 
-    Vector3 m_velocity;
-
+    [NonSerialized] public Vector3 m_velocity;
+    public Vector3 move;
     private bool m_isGrounded;
 
     public RaycastHit m_hit;
@@ -182,6 +182,7 @@ public class PlayerController : MonoBehaviour
 
     public bool noNeedStress = false;
     public bool inCompteur = false;
+    public bool isMoving = false;
     private float timeBeforeDropDoudou = 0.3f;
     private float timeBeforeDropVeilleuse = 0.3f;
     [SerializeField] private FinalScript m_final;
@@ -189,12 +190,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator m_imgBlikImage;
     [SerializeField] private Transform m_StartingPlayerPosition;
     [SerializeField] private Transform m_AwakePlaterPosition;
+    [SerializeField] private GameObject handUi;
     private void Awake()
     {
         isCinematic = true;
         isLeftHandFull = false;
         isRightHandFull = false;
         isTwoHandFull = false;
+        isMoving = false;
         m_txtEvent.gameObject.SetActive(false);
         noNeedStress = false;
         m_gameManager = FindObjectOfType<GameManager>();
@@ -324,6 +327,8 @@ public class PlayerController : MonoBehaviour
             m_fmodInstanceStress.setVolume(m_assetMenu.value);
             m_fmodInstanceStress.setParameterByName("Stress", 10 - m_currentStress * 10 / m_maxStress);
 
+           
+
             m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Cr�ation d'une sphere qui chech si le joueur touche le sol
 
             if (m_isGrounded && m_velocity.y < 0)        //Reset de la gravit� quand le joueur touche le sol
@@ -345,7 +350,7 @@ public class PlayerController : MonoBehaviour
                     float x = Input.GetAxis("Horizontal");
                     float z = Input.GetAxis("Vertical");
 
-                    Vector3 move = transform.right * x + transform.forward * z;
+                    move = transform.right * x + transform.forward * z;
 
                     m_myChara.Move(move * m_speed * Time.deltaTime);
                 }
@@ -362,7 +367,7 @@ public class PlayerController : MonoBehaviour
                     float x = Input.GetAxis("Horizontal");
                     float z = Input.GetAxis("Vertical");
 
-                    Vector3 move = transform.right * x + transform.forward * z;
+                    move = transform.right * x + transform.forward * z;
 
                     m_myChara.Move(move * m_speed * m_slow * Time.deltaTime);
 
@@ -512,8 +517,6 @@ public class PlayerController : MonoBehaviour
 
             if (Physics.Raycast(m_ray, out m_hit, 1.5f, m_doudouMask))
             {
-                Debug.Log("raycast doudou");
-
                 if (isTwoHandFull == false)
                 {
                     if (isLeftHandFull == false)

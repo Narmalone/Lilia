@@ -110,6 +110,7 @@ public class UiManager : MonoBehaviour
         {
             AnimUi();
         }
+      
     }
     //----------------------------------------------- UI Objets du joueur ------------------------------------------//
 
@@ -249,12 +250,14 @@ public class UiManager : MonoBehaviour
 
         m_UILampe.GetComponent<Image>().color = new Color32(255, 255, 225, 255);
         m_objVeilleuseUi.SetActive(true);
+     
     }
-    
+
     public void DropLampe()
     {
         //D�sactiver la Ui qui prend l'objet
         //Activer l'Ui en bas � droite
+
         m_UILampe.GetComponent<Image>().color = new Color32(100,100,100,255);
         m_objVeilleuseUi.SetActive(false);
     }
@@ -263,7 +266,7 @@ public class UiManager : MonoBehaviour
     {
         //D�sactiver la Ui qui prend l'objet
         //Activer l'Ui en bas � droite
-
+     
         m_UIDoudou.GetComponent<Image>().color = new Color32(255,255,225,255);
         m_objDoudouUi.SetActive(true);
     }
@@ -271,6 +274,7 @@ public class UiManager : MonoBehaviour
     public void DropDoudou()
     {
         //D�sactiver la Ui qui prend l'objet
+      
         m_UIDoudou.GetComponent<Image>().color = new Color32(100,100,100,255);
         m_objDoudouUi.SetActive(false);
     }
