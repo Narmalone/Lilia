@@ -78,7 +78,7 @@ public class KeyScript : MonoBehaviour
         Debug.Log("player got key");
         if(m_gameManager.gotKey == false)
         {
-            m_clip[1].Play();
+            m_clip[0].Play();
             m_gameManager.gotKey = true;
             m_gameManager.canDrop = true;
             m_thisObject.transform.position = new Vector3(1000f, 0f, 0f);

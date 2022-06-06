@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FMODUnity;
 public class ButtonGeneratorPuzzle : MonoBehaviour
 {
     public bool isActivated = true;
@@ -15,6 +15,7 @@ public class ButtonGeneratorPuzzle : MonoBehaviour
     string m_nameAnim_2 = "isDisable";
 
     Renderer m_thisRend;
+    [SerializeField, Tooltip("0 = activer l'interrupteur, 1 = le désactiver")] private StudioEventEmitter[] m_clip;
     private void Awake()
     {
         m_thisRend = GetComponent<Renderer>();
@@ -34,6 +35,7 @@ public class ButtonGeneratorPuzzle : MonoBehaviour
                 isActivated = false;
                 m_puzzle.CheckSolution();
                 SwitchAnim();
+                m_clip[0].Play();
             }
         }
         else
@@ -43,6 +45,7 @@ public class ButtonGeneratorPuzzle : MonoBehaviour
                 isActivated = true;
                 m_puzzle.CheckSolution();
                 SwitchAnim();
+                m_clip[1].Play();
             }
         }
     }

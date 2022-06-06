@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 public class Doors : MonoBehaviour
 {
     [SerializeField] private LayerMask m_targetMask;
@@ -39,6 +40,7 @@ public class Doors : MonoBehaviour
     private RaycastHit m_hit;
     private Slider mySlider;
 
+    [SerializeField, Tooltip("0 = ouverture d'une porte, 1 = ouverture portillon, 2 = fermeture portillon")] private StudioEventEmitter[] m_clip;
     private void OnEnable()
     {
         
@@ -97,6 +99,7 @@ public class Doors : MonoBehaviour
         //Si c'est une porte
         if (isDoor == true)
         {
+            m_clip[0].Play();
             m_doorController.SetTrigger(m_isOpenDoorAnim);
             isActivable = false;
             isOpen = true;
@@ -107,10 +110,12 @@ public class Doors : MonoBehaviour
         {
             if(isLeftTrigger == false)
             {
+                m_clip[1].Play();
                 m_doorController.SetTrigger(m_isOpenBackwardPortillonAnim);
             }
             if(isLeftTrigger == true)
             {
+                m_clip[2].Play();
                 m_doorController.SetTrigger(m_isOpenPortillonAnim);
                 Debug.Log("open anim portillon normal");
             }

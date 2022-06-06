@@ -261,6 +261,7 @@ MonoBehaviour:
   m_timePlayerScript: {fileID: 0}
   m_audioScript: {fileID: 0}
   m_assetMenu: {fileID: 0}
+  m_qte: {fileID: 0}
   m_respawn: {fileID: 0}
   m_phone: {fileID: 0}
   m_doudou: {fileID: 0}
@@ -287,6 +288,12 @@ MonoBehaviour:
   m_radioMask:
     serializedVersion: 2
     m_Bits: 16384
+  m_commodeMask:
+    serializedVersion: 2
+    m_Bits: 0
+  m_keyMask:
+    serializedVersion: 2
+    m_Bits: 0
   m_fmodEventPas:
     Guid:
       Data1: 0
@@ -340,6 +347,20 @@ MonoBehaviour:
   m_doudouRend: {fileID: 0}
   m_doorRend: {fileID: 0}
   m_phoneRend: {fileID: 0}
+  m_ChairRend: {fileID: 0}
+  hasChair: 0
+  canInteractWithChair: 0
+  OnChair: 0
+  isLeftHandFull: 0
+  isRightHandFull: 0
+  isTwoHandFull: 0
+  noNeedStress: 0
+  inCompteur: 0
+  m_final: {fileID: 0}
+  m_myAnim: {fileID: 0}
+  m_imgBlikImage: {fileID: 0}
+  m_StartingPlayerPosition: {fileID: 0}
+  m_AwakePlaterPosition: {fileID: 0}
 --- !u!143 &8172246454592653240
 CharacterController:
   m_ObjectHideFlags: 0
@@ -370,7 +391,6 @@ GameObject:
   - component: {fileID: 8172246455047256136}
   - component: {fileID: 3562883709724059351}
   - component: {fileID: 8172246454978275390}
-  - component: {fileID: 7320954766857035618}
   - component: {fileID: 6033248893781526100}
   m_Layer: 7
   m_Name: Main Camera
@@ -455,6 +475,8 @@ MonoBehaviour:
   mouseSensitivity: 300
   m_assetMenuScriptable: {fileID: 11400000, guid: c824cfc070c17324380d74d09a3ee81c, type: 2}
   m_audioScript: {fileID: 0}
+  m_sound: {fileID: 0}
+  m_player: {fileID: 0}
 --- !u!114 &8172246454978275390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,20 +498,6 @@ MonoBehaviour:
   m_shakeRotation: 17
   m_shakeDepthMultiplier: 0.6
   m_shakeDecay: 1.3
---- !u!114 &7320954766857035618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8172246455047256134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 0}
-  ListenerNumber: -1
 --- !u!114 &6033248893781526100
 MonoBehaviour:
   m_ObjectHideFlags: 0

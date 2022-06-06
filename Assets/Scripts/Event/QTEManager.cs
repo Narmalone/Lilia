@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using FMODUnity;
 using Random=UnityEngine.Random;
 
 
@@ -52,6 +53,8 @@ public class QTEManager : MonoBehaviour
     private int m_nombre_de_départ_qte;
 
     private Renderer m_thisRend;
+
+    [SerializeField] private StudioEventEmitter m_clip;
     private void Awake()
     {
         isInQte = false;
@@ -81,7 +84,6 @@ public class QTEManager : MonoBehaviour
         Debug.DrawRay(m_ray.origin,m_ray.direction, Color.red);
         if (Physics.Raycast(m_ray, out m_hit, 1, ~m_layerPlayer))
         {
-            //Debug.Log($"Je touche avec le raycast: {m_hit.collider.name}");
             OnRayCastHit(m_hit.collider);
             m_pastHit = m_hit;
         }
@@ -100,9 +102,9 @@ public class QTEManager : MonoBehaviour
                 StartCoroutine(canUnlock());
                 if (m_startedCoroutine == false)
                 {
-                    //Debug.Log($"Press key {m_keycodesQTE[m_index]}");
                     if (Input.GetKey(m_keycodesQTE[m_index]))
                     {
+                        m_clip.Play();
                         m_txtPuzzle.SetNewPosition();
                         m_startedCoroutine = true;
                         m_currentNumberQTE++;
