@@ -14,6 +14,7 @@ public class Doors : MonoBehaviour
     [SerializeField] private bool isCompleted = false;
     [SerializeField] public bool isDoor = false;
     [SerializeField] public bool isOpen = false;
+    public bool isNotReactivable = false;
     private bool isRay = false;
 
     [Header("Variables en rapport avec le temps"), Space(10)]
@@ -159,8 +160,10 @@ public class Doors : MonoBehaviour
             }
             isActivable = false;
             isOpen = true;
-            StartCoroutine(Chrono());
-            Debug.Log("le bb");
+            if(isNotReactivable == false)
+            {
+                StartCoroutine(Chrono());
+            }
             
             EventInstance fmodInstance = RuntimeManager.CreateInstance(m_fmodEventPortillonOpen.Guid);
             RuntimeManager.AttachInstanceToGameObject(fmodInstance, gameObject.transform);

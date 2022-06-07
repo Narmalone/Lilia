@@ -35,7 +35,8 @@ public class FunRadio : MonoBehaviour
     [SerializeField]
     private Transform m_soundPlace;
 
-
+    [SerializeField] private BoxCollider m_chairBox;
+    [SerializeField] private BoxCollider m_activeBebe;
 
     private void Awake()
     {
@@ -53,10 +54,11 @@ public class FunRadio : MonoBehaviour
     {
         if(isFirstAnswer == true)
         {
+            m_activeBebe.enabled = true;
+            m_chairBox.enabled = false;
             m_player.m_stopStress = true;
             m_player.NoNeedStress();
             m_playerAnim.SetTrigger("Anwser");
-            Debug.Log(m_playerAnim);
             m_ragdoll.DisableRagdoll();
             m_waypointMoveDoudou.isEventCalled = true;
             m_player.m_doudouIsPossessed = false;
@@ -92,6 +94,10 @@ public class FunRadio : MonoBehaviour
     {
         if(StartPhone == false)
         {
+            if(m_player.hasChair == false)
+            {
+                m_chairBox.enabled = true;
+            }
             m_eventInstance = RuntimeManager.CreateInstance(m_fmodDringDring.Guid);
             RuntimeManager.AttachInstanceToGameObject(m_eventInstance, m_soundPlace);
             m_eventInstance.start();

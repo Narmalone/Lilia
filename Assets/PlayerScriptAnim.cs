@@ -14,6 +14,7 @@ public class PlayerScriptAnim : MonoBehaviour
 
     private void Awake()
     {
+        m_playerAnims.SetTrigger("Default");
         m_playerAnims.gameObject.SetActive(false);
         m_playerOpening.gameObject.SetActive(false);
         canPlayAnim = true;
@@ -23,6 +24,11 @@ public class PlayerScriptAnim : MonoBehaviour
         if (m_player.move.x == 0)
         {
             m_playerAnims.speed = 0.1f;
+            if (m_player.m_doudouIsPossessed == false && m_player.m_flashlightIsPossessed == false)
+            {
+                m_playerAnims.SetTrigger("Default");
+                m_walksHands.SetActive(false);
+            }
             if (m_player.m_doudouIsPossessed == true && m_player.m_flashlightIsPossessed == false)
             {
                 m_walksHands.SetActive(true);
@@ -37,11 +43,7 @@ public class PlayerScriptAnim : MonoBehaviour
             {
                 m_playerAnims.SetTrigger("Doudou&LampWalk");
             }
-            if (m_player.m_doudouIsPossessed == false && m_player.m_flashlightIsPossessed == false)
-            {
-                m_playerAnims.SetTrigger("Default");
-                m_walksHands.SetActive(false);
-            }
+           
         }
         else
         {

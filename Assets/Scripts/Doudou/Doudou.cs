@@ -78,7 +78,6 @@ public class Doudou : MonoBehaviour
 
         if (TakeBeforeChase == true)
         {
-            StartCoroutine(StartIaMoove());
             m_qte.canDoQte = true;
             TakeBeforeChase = false;
             m_doudou.transform.position = new Vector3(1100f, 1100f, 1100f);
@@ -96,13 +95,6 @@ public class Doudou : MonoBehaviour
             uiManager.DisableUi();
             m_ragdoll.DisableRagdoll();
         }
-
-    }
-    IEnumerator StartIaMoove()
-    {
-        yield return new WaitForSeconds(5f);
-        m_appear.IAdontMove = false;
-        StopCoroutine(StartIaMoove());
     }
     public void DropItem()
     {

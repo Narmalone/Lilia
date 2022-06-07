@@ -12,13 +12,11 @@ public class AppearThings : MonoBehaviour
     [Tooltip("Liste d'objet qui spawn une fois que le joueur est sorti(tentacules bébé et doudou au milieu de la pièce)")] public List<GameObject> m_lastAppear;
     [SerializeField] PuzzleGenerator m_puzzle;
 
-    [SerializeField] private GameObject m_iaPosition;
     [SerializeField] public Transform m_iaSpawner;
 
     public FMODUnity.EventReference m_fmodEventTremblement;
 
     public bool m_isAppear = false;
-    public bool IAdontMove = false;
 
     private void Awake()
     {
@@ -49,8 +47,6 @@ public class AppearThings : MonoBehaviour
             foreach(GameObject p_obj in m_liliasChamber)
             {
                 p_obj.SetActive(true);
-                m_iaPosition.transform.position = m_iaSpawner.transform.position;
-                IAdontMove = true;
             }
             foreach (GameObject p_obj in m_sonsChamber)
             {
@@ -76,9 +72,6 @@ public class AppearThings : MonoBehaviour
     }
     private void Update()
     {
-        if(IAdontMove == true)
-        {
-            m_iaPosition.transform.position = m_iaSpawner.transform.position;
-        }
+      
     }
 }
