@@ -50,7 +50,7 @@ public class AISM : StateMachine
     [SerializeField]
     private FMODUnity.EventReference m_fmodEventSonBB;
 
-    private FirstPersonOcclusion m_occlusion;
+    public FirstPersonOcclusion m_occlusion;
 
     [SerializeField] public FinalScript m_final;
     [SerializeField] public GameObject m_noTarget;

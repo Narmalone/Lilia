@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     private bool m_doudouIsUsed = false;
 
     private GameObject m_target;
-    
+
     //private DateTime startTime;
 
     public GameManager m_gameManager;
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     public PlayerControls m_controls;
 
     [SerializeField] public Camera m_cam;
-    
+
     [SerializeField] private PortillonScript m_portillon;
 
     private NavMeshPath m_path;
@@ -73,23 +73,23 @@ public class PlayerController : MonoBehaviour
     public FMODUnity.EventReference m_fmodEventPas;
 
     private EventInstance m_fmodInstancePas;
-    
+
     public FMODUnity.EventReference m_fmodEventDoudou;
 
     private EventInstance m_fmodInstanceDoudou;
-    
+
     public FMODUnity.EventReference m_fmodEventStress;
 
     private EventInstance m_fmodInstanceStress;
 
-    [SerializeField] [Range(0,10)] private float m_stressTest;
-    
+    [SerializeField] [Range(0, 10)] private float m_stressTest;
+
     private Vector3 previous;
     [NonSerialized]
     public float velocity;
-    
 
-    
+
+
 
     //----------------------------------------------- Player controls system ------------------------------------------//
 
@@ -213,7 +213,7 @@ public class PlayerController : MonoBehaviour
         m_stressBar.SetMaxHealth(m_maxStress);
 
         m_camShake.camShakeActive = false;
-        if(m_AIStateMachine == null)
+        if (m_AIStateMachine == null)
         {
             return;
         }
@@ -239,7 +239,7 @@ public class PlayerController : MonoBehaviour
     {
         m_gameManager.PlayerInGame();
         bool startCinematic = false;
-        if(startCinematic == false)
+        if (startCinematic == false)
         {
             m_myAnim.SetTrigger("BeforeAwake");
             gameObject.transform.position = m_StartingPlayerPosition.position;
@@ -269,11 +269,11 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.7f);
         m_imgBlikImage.SetBool("FadeActive", true);
         yield return new WaitForSeconds(0.7f);
-        m_imgBlikImage.SetBool("FadeActive", false);   
+        m_imgBlikImage.SetBool("FadeActive", false);
         yield return new WaitForSeconds(0.7f);
-        m_imgBlikImage.SetBool("FadeActive", true);   
+        m_imgBlikImage.SetBool("FadeActive", true);
         yield return new WaitForSeconds(0.7f);
-        m_imgBlikImage.SetBool("FadeActive", false); 
+        m_imgBlikImage.SetBool("FadeActive", false);
         yield return new WaitForSeconds(3f);
         m_imgBlikImage.SetBool("FadeActive", true);
         yield return new WaitForSeconds(1f);
@@ -284,113 +284,99 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        m_ray = m_cam.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(m_ray.origin,m_ray.direction, Color.black);
-       if (Physics.Raycast(m_ray, out m_hit, 1, ~(1 << gameObject.layer)))
-        {
-            OnRayCastHit(m_hit.collider);
-            m_pastHit = m_hit;
-        }
-        else
-        {
-            if (m_pastHit.collider != null) OnRaycastExit(m_pastHit.collider);
-        }
-        
-        //Debug.Log(m_hit.collider.name);
-        
-        velocity = ((transform.position - previous).magnitude) / Time.deltaTime;
-        previous = transform.position;
-        if (velocity < 0.2)
-        {
-            m_fmodInstancePas.setParameterByName("Speed", 0);
-        }
-        else
-        {
-            m_fmodInstancePas.setParameterByName("Speed", velocity*3);
-        }
-        m_fmodInstancePas.setVolume(m_assetMenu.value);
-        m_fmodInstanceStress.setVolume(m_assetMenu.value);
+        //m_ray = m_cam.ScreenPointToRay(Input.mousePosition);
+        //Debug.DrawRay(m_ray.origin, m_ray.direction, Color.black);
+        //if (Physics.Raycast(m_ray, out m_hit, 1, ~(1 << gameObject.layer)))
+        //{
+        //    OnRayCastHit(m_hit.collider);
+        //    m_pastHit = m_hit;
+        //}
+        //else
+        //{
+        //    if (m_pastHit.collider != null) OnRaycastExit(m_pastHit.collider);
+        //}
 
-        m_fmodInstanceStress.setParameterByName("Stress",10-m_currentStress*10/m_maxStress);
+        ////Debug.Log(m_hit.collider.name);
 
-        m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Cr�ation d'une sphere qui chech si le joueur touche le sol
+        //velocity = ((transform.position - previous).magnitude) / Time.deltaTime;
+        //previous = transform.position;
+        //if (velocity < 0.2)
+        //{
+        //    m_fmodInstancePas.setParameterByName("Speed", 0);
+        //}
+        //else
+        //{
+        //    m_fmodInstancePas.setParameterByName("Speed", velocity * 3);
+        //}
+        //m_fmodInstancePas.setVolume(m_assetMenu.value);
+        //m_fmodInstanceStress.setVolume(m_assetMenu.value);
 
-        if (m_isGrounded && m_velocity.y < 0)        //Reset de la gravit� quand le joueur touche le sol
-        {
-            m_velocity.y = -2f;
-        }
+        //m_fmodInstanceStress.setParameterByName("Stress", 10 - m_currentStress * 10 / m_maxStress);
 
-        if (m_doudouIsUsed == false)
-        {
-            PLAYBACK_STATE state;
-            m_fmodInstanceDoudou.getPlaybackState(out state);
-            if (state != PLAYBACK_STATE.STOPPED)
-            {
-                m_fmodInstanceDoudou.stop(STOP_MODE.ALLOWFADEOUT);
-            }
-            
-            float x = Input.GetAxis("Horizontal");
-            float z = Input.GetAxis("Vertical");
+        //m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Cr�ation d'une sphere qui chech si le joueur touche le sol
 
-            Vector3 move = transform.right * x + transform.forward * z;
+        //if (m_isGrounded && m_velocity.y < 0)        //Reset de la gravit� quand le joueur touche le sol
+        //{
+        //    m_velocity.y = -2f;
+        //}
 
-            m_myChara.Move(move * m_speed * Time.deltaTime);
-        }
-        if (m_doudouIsUsed == true)
-        {
-            PLAYBACK_STATE state;
-            m_fmodInstanceDoudou.getPlaybackState(out state);
-            if (state == PLAYBACK_STATE.STOPPED)
-            {
-                FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDoudou,  GetComponent<Transform>(), GetComponent<Rigidbody>());
-                m_fmodInstanceDoudou.start();
-                m_fmodInstanceDoudou.setVolume(m_assetMenu.value);
-            }
-            float x = Input.GetAxis("Horizontal");
-            float z = Input.GetAxis("Vertical");
+        //if (m_doudouIsUsed == false)
+        //{
+        //    PLAYBACK_STATE state;
+        //    m_fmodInstanceDoudou.getPlaybackState(out state);
+        //    if (state != PLAYBACK_STATE.STOPPED)
+        //    {
+        //        m_fmodInstanceDoudou.stop(STOP_MODE.ALLOWFADEOUT);
+        //    }
+        //}
+        //if (m_doudouIsUsed == true)
+        //{
+        //    PLAYBACK_STATE state;
+        //    m_fmodInstanceDoudou.getPlaybackState(out state);
+        //    if (state == PLAYBACK_STATE.STOPPED)
+        //    {
+        //        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDoudou, GetComponent<Transform>(), GetComponent<Rigidbody>());
+        //        m_fmodInstanceDoudou.start();
+        //        m_fmodInstanceDoudou.setVolume(m_assetMenu.value);
+        //    }
 
-            Vector3 move = transform.right * x + transform.forward * z;
+        //}
+        //// D�placements du joueur
 
-            m_myChara.Move(move * m_speed * m_slow * Time.deltaTime);
-            
-        }
-        // D�placements du joueur
+        //m_myChara.Move(m_velocity * Time.deltaTime);
 
-        m_myChara.Move(m_velocity * Time.deltaTime);
+        //m_velocity.y += m_gravity * Time.deltaTime;
 
-        m_velocity.y += m_gravity * Time.deltaTime;
-
-        if (m_gameManager.isPc == true)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                m_gameManager.GamePaused();
-                m_menuManager.OnPause();
-            }
-        }
-        else if (m_gameManager.isGamepad == true)
-        {
-            if (Gamepad.current.startButton.wasPressedThisFrame)
-            {
-                m_menuManager.OnPause();
-                m_gameManager.GamePaused();
-            }
-        }
+        //if (m_gameManager.isPc == true)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Escape))
+        //    {
+        //        m_gameManager.GamePaused();
+        //        m_menuManager.OnPause();
+        //    }
+        //}
+        //else if (m_gameManager.isGamepad == true)
+        //{
+        //    if (Gamepad.current.startButton.wasPressedThisFrame)
+        //    {
+        //        m_menuManager.OnPause();
+        //        m_gameManager.GamePaused();
+        //    }
+        //}
 
 
-        //Check Fonctions
-        if (!m_stopStress) AutoStress();
-        ActiveDoudou();
+        ////Check Fonctions
+
+        //ActiveDoudou();
 
         // test shader
         // decay the target intensity
-        if(isCinematic == false)
+        if (isCinematic == false)
         {
             m_myAnim.enabled = false;
 
-            m_ray = m_cam.ScreenPointC
-            velocity = ((transform.position - previous).magnitude) / Time.deltaTime;
-            previous = transform.position;
+            m_ray = m_cam.ScreenPointToRay(Input.mousePosition);
+           
             if (velocity < 0.2)
             {
                 m_fmodInstancePas.setParameterByName("Speed", 0);
@@ -403,7 +389,7 @@ public class PlayerController : MonoBehaviour
             m_fmodInstanceStress.setVolume(m_assetMenu.value);
             m_fmodInstanceStress.setParameterByName("Stress", 10 - m_currentStress * 10 / m_maxStress);
 
-           
+
 
             m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Cr�ation d'une sphere qui chech si le joueur touche le sol
 
@@ -412,7 +398,18 @@ public class PlayerController : MonoBehaviour
                 m_velocity.y = -2f;
             }
 
-            if(inCompteur == false)
+            velocity = ((transform.position - previous).magnitude) / Time.deltaTime;
+            previous = transform.position;
+
+            // Deplacements du joueur
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
+
+            move = transform.right * x + transform.forward * z;
+
+            m_myChara.Move(move * m_speed * m_slow * Time.deltaTime);
+
+            if (inCompteur == false)
             {
                 if (m_doudouIsUsed == false)
                 {
@@ -422,73 +419,54 @@ public class PlayerController : MonoBehaviour
                     {
                         m_fmodInstanceDoudou.stop(STOP_MODE.ALLOWFADEOUT);
                     }
+                }
                 timeBeforeDropVeilleuse = 0f;
                 DropFlashlight();
             }
-        }
-        if (m_doudouIsPossessed == true)
-        {
-            timeBeforeDropDoudou -= Time.deltaTime;
-            if(timeBeforeDropDoudou <= 0f)
+
+            if (m_doudouIsPossessed == true)
             {
-                timeBeforeDropDoudou = 0f;
-                DropDoudou();
+                timeBeforeDropDoudou -= Time.deltaTime;
+                if (timeBeforeDropDoudou <= 0f)
+                {
+                    timeBeforeDropDoudou = 0f;
+                    DropDoudou();
+                }
+
+                if (m_doudouIsUsed == true)
+                {
+                    Stressing(-m_StressPower);
+                }
+                if (ReferenceEquals(m_target, gameObject) == false)
+                {
+                    m_target = gameObject;
+                }
+            }
+            else
+            {
+                if (ReferenceEquals(m_target, m_doudou.gameObject) == false)
+                {
+                    m_target = m_doudou.gameObject;
+                }
             }
 
             if (m_doudouIsUsed == true)
             {
-                Stressing(-m_StressPower);
-            }
-            if (ReferenceEquals(m_target, gameObject) == false)
-            {
-                m_target = gameObject;
-            }
-        }
-        else
-        {
-            if (ReferenceEquals(m_target,m_doudou.gameObject) == false)
-            {
-                m_target = m_doudou.gameObject;
-            }
-        }
-
-                    float x = Input.GetAxis("Horizontal");
-                    float z = Input.GetAxis("Vertical");
-
-                    move = transform.right * x + transform.forward * z;
-
-                    m_myChara.Move(move * m_speed * Time.deltaTime);
-                }
-                if (m_doudouIsUsed == true)
+                PLAYBACK_STATE state;
+                m_fmodInstanceDoudou.getPlaybackState(out state);
+                if (state == PLAYBACK_STATE.STOPPED)
                 {
-                    PLAYBACK_STATE state;
-                    m_fmodInstanceDoudou.getPlaybackState(out state);
-                    if (state == PLAYBACK_STATE.STOPPED)
-                    {
-                        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDoudou, GetComponent<Transform>(), GetComponent<Rigidbody>());
-                        m_fmodInstanceDoudou.start();
-                        m_fmodInstanceDoudou.setVolume(m_assetMenu.value);
-                    }
-                    float x = Input.GetAxis("Horizontal");
-                    float z = Input.GetAxis("Vertical");
-
-                    move = transform.right * x + transform.forward * z;
-
-                    m_myChara.Move(move * m_speed * m_slow * Time.deltaTime);
-
+                    FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDoudou, GetComponent<Transform>(), GetComponent<Rigidbody>());
+                    m_fmodInstanceDoudou.start();
+                    m_fmodInstanceDoudou.setVolume(m_assetMenu.value);
                 }
-                // D�placements du joueur
-
-                m_myChara.Move(m_velocity * Time.deltaTime);
-
-                m_velocity.y += m_gravity * Time.deltaTime;
 
             }
 
 
             //Check Fonctions
 
-            AutoStress();
+            if (!m_stopStress) AutoStress();
             ActiveDoudou();
             Debug.Log(noNeedStress);
             // test shader
@@ -576,12 +554,12 @@ public class PlayerController : MonoBehaviour
                 FindObjectOfType<Doors>().DisableSlider();
             }
 
-         
+
             if (Physics.Raycast(m_ray, out m_hit, 1, m_TwoHandsItemMask))
             {
                 if (m_createNarrativeEvent.index == 3)
                 {
-                    if(m_phone.isFirstAnswer == true)
+                    if (m_phone.isFirstAnswer == true)
                     {
                         if (isTwoHandFull == false)
                         {
@@ -617,7 +595,7 @@ public class PlayerController : MonoBehaviour
                             }
                         }
                     }
-                }     
+                }
             }
 
             if (Physics.Raycast(m_ray, out m_hit, 1.5f, m_doudouMask))
@@ -691,7 +669,7 @@ public class PlayerController : MonoBehaviour
                 m_gameManager.canPick = false;
 
             }
-            if(m_gameManager.gotKey == false)
+            if (m_gameManager.gotKey == false)
             {
                 if (Physics.Raycast(m_ray, out m_hit, 2f, m_keyMask))
                 {
@@ -701,12 +679,12 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                m_myAnim.enabled = true;
+            }
         }
-        else
-        {
-            m_myAnim.enabled = true;
-        }
-        
+       
 
     }
     public void NoVelocity()
@@ -726,7 +704,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="p_stressNum">La quantité de stress appliqué</param>
     private void Stressing(float p_stressNum)
     {
-        if(noNeedStress == false)
+        if (noNeedStress == false)
         {
             TakeDamage(p_stressNum);
             m_stressBar.SetStress(m_currentStress);
@@ -834,7 +812,7 @@ public class PlayerController : MonoBehaviour
     {
         if (m_gameManager.isPc == true)
         {
-            if(m_gameManager.canDrop == true)
+            if (m_gameManager.canDrop == true)
             {
                 if (Input.GetMouseButtonDown(1))
                 {
@@ -843,7 +821,7 @@ public class PlayerController : MonoBehaviour
                         if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 2)
                         {
                             m_createNarrativeEvent.actionComplete = true;
-                        } 
+                        }
                         if (m_createNarrativeEvent.index >= 2)
                         {
                             m_flashlightIsPossessed = true;
@@ -878,7 +856,7 @@ public class PlayerController : MonoBehaviour
     {
         if (m_gameManager.isPc == true)
         {
-            if(m_gameManager.canDrop == true)
+            if (m_gameManager.canDrop == true)
             {
                 if (Input.GetMouseButtonDown(1))
                 {
@@ -900,7 +878,7 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-          
+
 
         }
         else if (m_gameManager.isGamepad == true)
@@ -940,7 +918,7 @@ public class PlayerController : MonoBehaviour
                         m_UIManager.DisableUi();
                     }
                 }
-            }             
+            }
         }
         else if (m_gameManager.isGamepad == true)
         {
@@ -961,7 +939,7 @@ public class PlayerController : MonoBehaviour
         if (m_doudouIsPossessed == true && timeBeforeDropDoudou <= 0f)
         {
             timeBeforeDropDoudou = 0;
-            if(m_gameManager.canDrop == true)
+            if (m_gameManager.canDrop == true)
             {
                 if (Input.GetMouseButtonDown(0))
                 {

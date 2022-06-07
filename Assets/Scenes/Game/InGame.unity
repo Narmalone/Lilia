@@ -1094,6 +1094,27 @@ MonoBehaviour:
   m_pos: {fileID: 4075055851583946304}
   m_doorController: {fileID: 348998809}
   m_timeBeforeClose: 1
+  m_fmodEventPortillonOpen:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventPortillonClose:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventPorteOpen:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   isLeftTrigger: 0
   m_clip:
   - {fileID: 348998810}
@@ -1835,13 +1856,6 @@ MonoBehaviour:
       Data3: 1328284064
       Data4: -666646400
     Path: event:/SoundsEvent/Baby/BabyDragging
-  m_fmodEventContinuous:
-    Guid:
-      Data1: -1490063551
-      Data2: 1190372012
-      Data3: 335015330
-      Data4: 608535171
-    Path: event:/SoundsEvent/Baby/ContinuousBabyNoise
   m_fmodEventSonBB:
     Guid:
       Data1: 1694986241
@@ -1849,6 +1863,7 @@ MonoBehaviour:
       Data3: -75015237
       Data4: 26522174
     Path: event:/SoundsEvent/Baby/Crying
+  m_occlusion: {fileID: 1096440344}
   m_final: {fileID: 358116801}
   m_noTarget: {fileID: 627167574}
   m_bebeAnimator: {fileID: 202696973}
@@ -6920,38 +6935,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5852084944320119403, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
   m_PrefabInstance: {fileID: 1422353500}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1401216060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1401216059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 1855847930
-      Data2: 1215896063
-      Data3: -55972442
-      Data4: -439486445
-    Path: event:/SoundsEvent/Phone/PhoneCall
-  Event: 
-  PlayEvent: 0
-  StopEvent: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params:
-  - Name: Occlusion
-    Value: 0.5
-  OverrideAttenuation: 1
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 7
 --- !u!114 &1401216061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7945,6 +7928,66 @@ PrefabInstance:
       propertyPath: m_clip.Array.data[2]
       value: 
       objectReference: {fileID: 1271779180}
+    - target: {fileID: 1709347442959131829, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPorteOpen.Path
+      value: event:/SoundsEvent/Porte/PorteOuvert
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709347442959131829, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonOpen.Path
+      value: event:/SoundsEvent/Portillon/PortillionOuvert
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709347442959131829, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonClose.Path
+      value: event:/SoundsEvent/Portillon/PortillionFerme
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709347442959131829, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPorteOpen.Guid.Data1
+      value: -1911058942
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709347442959131829, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPorteOpen.Guid.Data2
+      value: 1260372144
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709347442959131829, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPorteOpen.Guid.Data3
+      value: -850069342
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709347442959131829, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPorteOpen.Guid.Data4
+      value: 1206954172
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709347442959131829, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonOpen.Guid.Data1
+      value: 602544046
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709347442959131829, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonOpen.Guid.Data2
+      value: 1078868210
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709347442959131829, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonOpen.Guid.Data3
+      value: -125545071
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709347442959131829, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonOpen.Guid.Data4
+      value: -941919868
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709347442959131829, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonClose.Guid.Data1
+      value: -240474885
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709347442959131829, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonClose.Guid.Data2
+      value: 1212527102
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709347442959131829, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonClose.Guid.Data3
+      value: 665162686
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709347442959131829, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonClose.Guid.Data4
+      value: 2119808065
+      objectReference: {fileID: 0}
     - target: {fileID: 1712892373510131489, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 1
@@ -8133,6 +8176,66 @@ PrefabInstance:
       propertyPath: m_clip.Array.data[2]
       value: 
       objectReference: {fileID: 284483883}
+    - target: {fileID: 2025050860895913441, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPorteOpen.Path
+      value: event:/SoundsEvent/Porte/PorteOuvert
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025050860895913441, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonOpen.Path
+      value: event:/SoundsEvent/Portillon/PortillionOuvert
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025050860895913441, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonClose.Path
+      value: event:/SoundsEvent/Portillon/PortillionFerme
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025050860895913441, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPorteOpen.Guid.Data1
+      value: -1911058942
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025050860895913441, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPorteOpen.Guid.Data2
+      value: 1260372144
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025050860895913441, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPorteOpen.Guid.Data3
+      value: -850069342
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025050860895913441, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPorteOpen.Guid.Data4
+      value: 1206954172
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025050860895913441, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonOpen.Guid.Data1
+      value: 602544046
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025050860895913441, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonOpen.Guid.Data2
+      value: 1078868210
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025050860895913441, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonOpen.Guid.Data3
+      value: -125545071
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025050860895913441, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonOpen.Guid.Data4
+      value: -941919868
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025050860895913441, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonClose.Guid.Data1
+      value: -240474885
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025050860895913441, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonClose.Guid.Data2
+      value: 1212527102
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025050860895913441, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonClose.Guid.Data3
+      value: 665162686
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025050860895913441, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonClose.Guid.Data4
+      value: 2119808065
+      objectReference: {fileID: 0}
     - target: {fileID: 2032726868202913610, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 1
@@ -10789,6 +10892,66 @@ PrefabInstance:
       propertyPath: m_clip.Array.data[2]
       value: 
       objectReference: {fileID: 1215330929}
+    - target: {fileID: 6374381081119130130, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPorteOpen.Path
+      value: event:/SoundsEvent/Porte/PorteOuvert
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374381081119130130, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonOpen.Path
+      value: event:/SoundsEvent/Portillon/PortillionOuvert
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374381081119130130, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonClose.Path
+      value: event:/SoundsEvent/Portillon/PortillionFerme
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374381081119130130, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPorteOpen.Guid.Data1
+      value: -1911058942
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374381081119130130, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPorteOpen.Guid.Data2
+      value: 1260372144
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374381081119130130, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPorteOpen.Guid.Data3
+      value: -850069342
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374381081119130130, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPorteOpen.Guid.Data4
+      value: 1206954172
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374381081119130130, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonOpen.Guid.Data1
+      value: 602544046
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374381081119130130, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonOpen.Guid.Data2
+      value: 1078868210
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374381081119130130, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonOpen.Guid.Data3
+      value: -125545071
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374381081119130130, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonOpen.Guid.Data4
+      value: -941919868
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374381081119130130, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonClose.Guid.Data1
+      value: -240474885
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374381081119130130, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonClose.Guid.Data2
+      value: 1212527102
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374381081119130130, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonClose.Guid.Data3
+      value: 665162686
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374381081119130130, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_fmodEventPortillonClose.Guid.Data4
+      value: 2119808065
+      objectReference: {fileID: 0}
     - target: {fileID: 6374878450195442424, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -11867,7 +12030,7 @@ PrefabInstance:
       objectReference: {fileID: 1928383515}
     - target: {fileID: 8371592768302931693, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_clips.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8371592768302931693, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_playerMask.m_Bits
@@ -11880,11 +12043,11 @@ PrefabInstance:
     - target: {fileID: 8371592768302931693, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_clips.Array.data[0]
       value: 
-      objectReference: {fileID: 1401216060}
+      objectReference: {fileID: 1401216062}
     - target: {fileID: 8371592768302931693, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_clips.Array.data[1]
       value: 
-      objectReference: {fileID: 1401216062}
+      objectReference: {fileID: 1401216061}
     - target: {fileID: 8371592768302931693, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_clips.Array.data[2]
       value: 
@@ -12741,6 +12904,27 @@ MonoBehaviour:
   m_pos: {fileID: 4075055851583946304}
   m_doorController: {fileID: 1422353524}
   m_timeBeforeClose: 1
+  m_fmodEventPortillonOpen:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventPortillonClose:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventPorteOpen:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   isLeftTrigger: 0
   m_clip:
   - {fileID: 1422353519}
@@ -12822,6 +13006,27 @@ MonoBehaviour:
   m_pos: {fileID: 4075055851583946304}
   m_doorController: {fileID: 1422353529}
   m_timeBeforeClose: 1
+  m_fmodEventPortillonOpen:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventPortillonClose:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_fmodEventPorteOpen:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   isLeftTrigger: 0
   m_clip:
   - {fileID: 1422353522}
@@ -14165,6 +14370,13 @@ MonoBehaviour:
   m_puzzle: {fileID: 2021961058}
   m_iaPosition: {fileID: 576080450}
   m_iaSpawner: {fileID: 433328889}
+  m_fmodEventTremblement:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   m_isAppear: 0
   IAdontMove: 0
 --- !u!4 &1929567142 stripped
@@ -23922,6 +24134,10 @@ PrefabInstance:
     - target: {fileID: 8172246455047256137, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172246455215608435, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8172246455961300246, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_LocalPosition.x

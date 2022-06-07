@@ -27,7 +27,11 @@ public class FunRadio : MonoBehaviour
     [SerializeField] private Animator m_playerAnim;
 
     private FirstPersonOcclusion m_occlusion;
-    
+
+    private EventReference m_fmodDringDring;
+
+    private EventInstance m_eventInstance;
+
     [SerializeField]
     private Transform m_soundPlace;
 
@@ -57,9 +61,9 @@ public class FunRadio : MonoBehaviour
             m_player.isLeftHandFull = false;
             m_doudou.m_callEvent = true;
             m_doudou.TakeBeforeChase = true;
-            m_clips[0].Stop();
+            m_eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            m_clips[0].Play();
             m_clips[1].Play();
-            m_clips[2].Play();
             m_appearsChamber.SwitchAppearing();
             isFirstAnswer = false;
             m_uiManager.DisableUi();
@@ -86,7 +90,11 @@ public class FunRadio : MonoBehaviour
     {
         if(StartPhone == false)
         {
-            m_clips[0].Play();
+            m_eventInstance = RuntimeManager.CreateInstance(m_fmodDringDring.Guid);
+            RuntimeManager.AttachInstanceToGameObject(m_eventInstance, m_soundPlace);
+            m_eventInstance.start();
+            m_occlusion.AddInstance(m_eventInstance);
+            //m_clips[0].Play();
             StartPhone = true;
         }
     }
