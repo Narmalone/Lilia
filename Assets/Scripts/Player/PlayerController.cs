@@ -301,6 +301,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        
         if (isCinematic == false)
         {
             m_myAnim.enabled = false;
@@ -317,6 +318,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (m_pastHit.collider != null) OnRaycastExit(m_pastHit.collider);
             }
+
 
             //Debug.Log(m_hit.collider.name);
 
@@ -380,6 +382,29 @@ public class PlayerController : MonoBehaviour
                     m_myChara.Move(move * m_speed * m_slow * Time.deltaTime);
 
                 }
+                if (m_flashlightIsPossessed == true)
+                {
+                    timeBeforeDropVeilleuse -= Time.deltaTime;
+                    if (timeBeforeDropVeilleuse <= 0f)
+                    {
+                        timeBeforeDropVeilleuse = 0f;
+                        DropFlashlight();
+                    }
+                }
+                if (m_doudouIsPossessed == true)
+                {
+                    timeBeforeDropDoudou -= Time.deltaTime;
+                    if (timeBeforeDropDoudou <= 0f)
+                    {
+                        timeBeforeDropDoudou = 0f;
+                        DropDoudou();
+                    }
+                    if (m_doudouIsUsed == true)
+                    {
+                        Stressing(-m_StressPower);
+                    }
+                }
+
                 // D�placements du joueur
 
                 m_myChara.Move(m_velocity * Time.deltaTime);
@@ -392,7 +417,6 @@ public class PlayerController : MonoBehaviour
             //Check Fonctions
 
             ActiveDoudou();
-            Debug.Log(noNeedStress);
             // test shader
             // decay the target intensity
             if (noNeedStress == false)
@@ -417,29 +441,7 @@ public class PlayerController : MonoBehaviour
                 m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
             }
 
-            if (m_flashlightIsPossessed == true)
-            {
-                timeBeforeDropVeilleuse -= Time.deltaTime;
-                if (timeBeforeDropVeilleuse <= 0f)
-                {
-                    timeBeforeDropVeilleuse = 0f;
-                    DropFlashlight();
-                }
-            }
-            if (m_doudouIsPossessed == true)
-            {
-                timeBeforeDropDoudou -= Time.deltaTime;
-                if (timeBeforeDropDoudou <= 0f)
-                {
-                    timeBeforeDropDoudou = 0f;
-                    DropDoudou();
-                }
-                if (m_doudouIsUsed == true)
-                {
-                    Stressing(-m_StressPower);
-                }
-            }
-
+          
             //Si raycast avec portillon
             if (Physics.Raycast(m_ray, out m_hit, 1, m_portillonMask))
             {
@@ -618,9 +620,8 @@ public class PlayerController : MonoBehaviour
     public void NoNeedStress()
     {
         noNeedStress = true;
-        m_intenseFieldOfView = 0;
+        m_intenseFieldOfView = 1f;
         m_currentStress = 0f;
-        m_fmodInstanceStress.setVolume(0);
     }
     /// <summary>
     /// Applique le stress au autre systeme manuellement
@@ -755,6 +756,7 @@ public class PlayerController : MonoBehaviour
                             m_UIManager.TakeLampe();
                             m_flm.PickItem();
                             m_UIManager.DisableUi();
+                            Debug.Log("prendre veilleuse connard ");
                         }
                     }
                 }

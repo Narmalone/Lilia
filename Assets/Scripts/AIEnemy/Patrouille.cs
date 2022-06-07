@@ -35,7 +35,6 @@ public class Patrouille : BaseState
         if(m_sm.m_final.CallMobNewWaypoint == false)
         {
 
-            m_sm.m_bebeAnimator.Update(2f);
             m_sm.m_bebeAnimator.SetTrigger("Walk");
 
             if (ReferenceEquals(m_target, m_sm.m_player.gameObject) == false)
@@ -56,6 +55,11 @@ public class Patrouille : BaseState
         else
         {
             if (ReferenceEquals(m_target, m_sm.m_doudou.gameObject) == false)
+            {
+                m_target = m_sm.m_noTarget;
+                Debug.Log("no target");
+            }
+            if (ReferenceEquals(m_target, m_sm.m_player.gameObject) == false)
             {
                 m_target = m_sm.m_noTarget;
                 Debug.Log("no target");

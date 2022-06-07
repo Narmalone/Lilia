@@ -28,7 +28,7 @@ public class FunRadio : MonoBehaviour
 
     private FirstPersonOcclusion m_occlusion;
 
-    private EventReference m_fmodDringDring;
+    public EventReference m_fmodDringDring;
 
     private EventInstance m_eventInstance;
 
@@ -53,6 +53,8 @@ public class FunRadio : MonoBehaviour
     {
         if(isFirstAnswer == true)
         {
+            m_player.m_stopStress = true;
+            m_player.NoNeedStress();
             m_playerAnim.SetTrigger("Anwser");
             Debug.Log(m_playerAnim);
             m_ragdoll.DisableRagdoll();
@@ -68,11 +70,11 @@ public class FunRadio : MonoBehaviour
             isFirstAnswer = false;
             m_uiManager.DisableUi();
             StartCoroutine(StopPhoneCinematic());
-            EventInstance m_fmodInstanceDrag = RuntimeManager.CreateInstance(m_appearsChamber.m_fmodEventTremblement.Guid);
-            RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDrag, m_soundPlace);
-            m_fmodInstanceDrag.start();
-            m_occlusion.AddInstance(m_fmodInstanceDrag);
-            m_fmodInstanceDrag.release();
+            //EventInstance m_fmodInstanceDrag = RuntimeManager.CreateInstance(m_appearsChamber.m_fmodEventTremblement.Guid);
+            //RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDrag, m_soundPlace);
+            //m_fmodInstanceDrag.start();
+            //m_occlusion.AddInstance(m_fmodInstanceDrag);
+            //m_fmodInstanceDrag.release();
             Debug.Log("a répondu au téléphone");
         }
         else { return; }

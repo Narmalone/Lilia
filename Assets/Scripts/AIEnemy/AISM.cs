@@ -43,6 +43,7 @@ public class AISM : StateMachine
     
     private EventInstance m_fmodInstanceRespiration;
     
+
     public FMODUnity.EventReference m_fmodEventDrag;
 
     public EventInstance m_fmodInstanceDrag;
