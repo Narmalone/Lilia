@@ -33,6 +33,8 @@ public class Patrouille : BaseState
         
         if(m_sm.m_final.CallMobNewWaypoint == false)
         {
+            m_sm.m_bebeAnimator.Update(2f);
+            m_sm.m_bebeAnimator.SetTrigger("Walk");
             if (m_sm.m_player.m_doudouIsPossessed == true)
             {
                 if (GameObject.ReferenceEquals(m_target, m_sm.m_player.gameObject) == false)

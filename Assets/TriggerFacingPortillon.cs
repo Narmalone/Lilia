@@ -6,6 +6,7 @@ public class TriggerFacingPortillon : MonoBehaviour
 {
     [SerializeField, Tooltip("target == joueur")] private LayerMask m_target;
     [SerializeField, Tooltip("target == IA mask")] private LayerMask m_IA;
+    public bool isMobActivated = false;
     [SerializeField] private Doors m_thisDoor;
 
     [SerializeField] private PlayerScriptAnim m_pcAnim;
@@ -28,6 +29,7 @@ public class TriggerFacingPortillon : MonoBehaviour
 
         if ((m_IA.value & (1 << other.gameObject.layer)) > 0)
         {
+            isMobActivated = true;
             m_thisDoor.OnComplete();
             m_thisDoor.isLeftTrigger = true;
         }
@@ -38,6 +40,12 @@ public class TriggerFacingPortillon : MonoBehaviour
         if ((m_target.value & (1 << other.gameObject.layer)) > 0)
         {
             m_pcAnim.canPlayAnim = false;
+            isMobActivated = false;
+        }
+        if ((m_IA.value & (1 << other.gameObject.layer)) > 0)
+        {
+            m_pcAnim.canPlayAnim = false;
+            isMobActivated = false;
         }
     }
 }

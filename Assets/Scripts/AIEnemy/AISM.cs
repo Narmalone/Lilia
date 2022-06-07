@@ -57,11 +57,10 @@ public class AISM : StateMachine
 
     [SerializeField] public FinalScript m_final;
     [SerializeField] public GameObject m_noTarget;
-    
+    [SerializeField] public Animator m_bebeAnimator;
     private void Awake()
     {
         m_occlusion = FindObjectOfType<FirstPersonOcclusion>();
-        Debug.Log("Awake");
         m_targetSpeed = m_navAgent.speed;
         m_path = new NavMeshPath();
         if(m_final.CallMobNewWaypoint == false)

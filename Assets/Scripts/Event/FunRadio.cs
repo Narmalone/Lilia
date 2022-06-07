@@ -23,7 +23,7 @@ public class FunRadio : MonoBehaviour
     [SerializeField] private LayerMask m_playerMask;
     [SerializeField, Tooltip("0 = phone ring, 1 = décrocher, 2 dialogue")] private StudioEventEmitter[] m_clips;
 
-
+    [SerializeField] private Animator m_playerAnim;
     private void Awake()
     {
         if (m_gameManager == null)
@@ -39,7 +39,8 @@ public class FunRadio : MonoBehaviour
     {
         if(isFirstAnswer == true)
         {
-            m_player.m_myAnim.SetBool("PhoneAnswering", true);
+            m_playerAnim.SetTrigger("Anwser");
+            Debug.Log(m_playerAnim);
             m_ragdoll.DisableRagdoll();
             m_waypointMoveDoudou.isEventCalled = true;
             m_player.m_doudouIsPossessed = false;
@@ -52,9 +53,18 @@ public class FunRadio : MonoBehaviour
             m_appearsChamber.SwitchAppearing();
             isFirstAnswer = false;
             m_uiManager.DisableUi();
+            StartCoroutine(StopPhoneCinematic());
         }
         else { return; }
         
+    }
+    IEnumerator StopPhoneCinematic()
+    {
+        yield return new WaitForSeconds(7f);
+        m_playerAnim.SetTrigger("Reset");
+        m_player.isCinematic = false;
+        m_player.m_speed = 1.5f;
+        StopCoroutine(StopPhoneCinematic());
     }
     public void StartPhoneSound()
     {

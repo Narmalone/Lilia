@@ -43,8 +43,13 @@ public class Doors : MonoBehaviour
     [SerializeField, Tooltip("0 = ouverture d'une porte, 1 = ouverture portillon, 2 = fermeture portillon")] private StudioEventEmitter[] m_clip;
 
     private PlayerScriptAnim m_pcAnim;
+
+    TriggerFacingPortillon m_triggLeft;
+    TriggerBackwardPortillon m_triggRight;
     private void Awake()
     {
+        m_triggLeft = GetComponentInChildren<TriggerFacingPortillon>();
+        m_triggRight = GetComponentInChildren<TriggerBackwardPortillon>();
         //Slider Instance et set variables
 
         mySlider = sliderInstance;
@@ -95,6 +100,7 @@ public class Doors : MonoBehaviour
         m_uiManager.DisableUi();
         isCompleted = true;
         //Si c'est une porte
+       
         if (isDoor == true)
         {
             m_clip[0].Play();
@@ -112,14 +118,20 @@ public class Doors : MonoBehaviour
             {
                 m_clip[1].Play();
                 m_doorController.SetTrigger(m_isOpenBackwardPortillonAnim);
-                m_pcAnim.PlayAnimPlayerToPortillons();
+                if (m_triggLeft.isMobActivated == false || m_triggRight == false)
+                {
+                    m_pcAnim.PlayAnimPlayerToPortillons();
+                }
             }
             if (isLeftTrigger == true)
             {
                 m_clip[1].Play();
                 m_doorController.SetTrigger(m_isOpenPortillonAnim);
                 m_pcAnim.canPlayAnim = true;
-                m_pcAnim.PlayAnimPlayerToPortillons();
+                if (m_triggLeft.isMobActivated == false || m_triggRight == false)
+                {
+                    m_pcAnim.PlayAnimPlayerToPortillons();
+                }
             }
             isActivable = false;
             isOpen = true;

@@ -387,7 +387,7 @@ public class PlayerController : MonoBehaviour
 
             AutoStress();
             ActiveDoudou();
-
+            Debug.Log(noNeedStress);
             // test shader
             // decay the target intensity
             if (noNeedStress == false)
@@ -569,6 +569,8 @@ public class PlayerController : MonoBehaviour
                                 }
                                 else if (m_doudouIsPossessed == false)
                                 {
+                                    NoNeedStress();
+                                    isCinematic = true;
                                     m_phone.AnswerToCall();
                                     m_phone.isFirstAnswer = false;
                                     m_phoneRend.material.SetFloat("_BooleanFloat", 0f);
@@ -621,8 +623,11 @@ public class PlayerController : MonoBehaviour
     /// <param name="p_stressNum">La quantité de stress appliqué</param>
     private void Stressing(float p_stressNum)
     {
-        TakeDamage(p_stressNum);
-        m_stressBar.SetStress(m_currentStress);
+        if(noNeedStress == false)
+        {
+            TakeDamage(p_stressNum);
+            m_stressBar.SetStress(m_currentStress);
+        }
     }
 
     /// <summary>

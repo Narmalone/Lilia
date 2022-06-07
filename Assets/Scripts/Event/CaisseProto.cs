@@ -142,7 +142,6 @@ public class CaisseProto : MonoBehaviour
         m_player.OnChair = false;
         playerCanLock = false;
         isPlayerLocked = false;
-        m_player.m_speed = 2f;
     }
     private void LateUpdate()
     {

@@ -79,23 +79,19 @@ public class Doudou : MonoBehaviour
 
         if (TakeBeforeChase == true)
         {
-            m_appear.IAdontMove = false;
+            StartCoroutine(StartIaMoove());
             m_qte.canDoQte = true;
             TakeBeforeChase = false;
-
-            m_doudou.transform.position = new Vector3(1100f, 1100f, 1100f);
-            //m_doudou.GetComponent<BoxCollider>().enabled = false;
-            uiManager.DisableUi();
             m_clip.Play();
+            m_doudou.transform.position = new Vector3(1100f, 1100f, 1100f);
+            uiManager.DisableUi();
             m_instancePickUp.setVolume(m_audio.volumeSound);
             m_instancePickUp.start();
         }
         else
         {
-            m_clip.Play();
             m_instancePickUp.setVolume(m_audio.volumeSound);
             m_instancePickUp.start();
-            //m_clips.Play();
             m_rbDoudou.isKinematic = true;
             m_rbDoudou.useGravity = false;
             m_doudou.transform.position = new Vector3(1100f, 1100f, 1100f);
@@ -104,7 +100,12 @@ public class Doudou : MonoBehaviour
         }
 
     }
-
+    IEnumerator StartIaMoove()
+    {
+        yield return new WaitForSeconds(5f);
+        m_appear.IAdontMove = false;
+        StopCoroutine(StartIaMoove());
+    }
     public void DropItem()
     {
         m_RootComponent.transform.position = m_doudou.transform.position;

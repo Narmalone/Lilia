@@ -1018,7 +1018,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637901561506671068
+  lastModified: 637901753360599751
   FileSizes:
   - Name: Desktop
     Value: 2032
@@ -2053,6 +2053,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 275072
   Exists: 1
+--- !u!114 &-4317193766812401348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Baby/Screamer
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Baby/Screamer
+  Guid:
+    Data1: 1875459400
+    Data2: 1240373541
+    Data3: -1288834150
+    Data4: -904820463
+  Banks:
+  - {fileID: -189433896212975394}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 888
 --- !u!114 &-4257177265077479841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3464,10 +3491,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Sounds.bank
   Name: Sounds
   StudioPath: bank:/Sounds
-  lastModified: 637901561508006595
+  lastModified: 637901753362101148
   FileSizes:
   - Name: Desktop
-    Value: 6170496
+    Value: 6191424
   Exists: 1
 --- !u!114 &-168886559189170604
 MonoBehaviour:
@@ -3575,12 +3602,14 @@ MonoBehaviour:
   - {fileID: -6497720758873444953}
   - {fileID: -1547701417153192935}
   - {fileID: 7150306395035969030}
+  - {fileID: 2514977286947452294}
+  - {fileID: -4317193766812401348}
   EditorParameters: []
   MasterBanks:
   - {fileID: -6916075422848283517}
   StringsBanks:
   - {fileID: 8441995482524795051}
-  cacheTime: 637901561508231378
+  cacheTime: 637901753362351390
   cacheVersion: 10
 --- !u!114 &68467238725858441
 MonoBehaviour:
@@ -4347,6 +4376,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 55000
+--- !u!114 &2514977286947452294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Baby/ScreamWhenSpawned
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Baby/ScreamWhenSpawned
+  Guid:
+    Data1: -1302762778
+    Data2: 1303115646
+    Data3: 1064879533
+    Data4: 1678472560
+  Banks:
+  - {fileID: -189433896212975394}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1392
 --- !u!114 &2845432879875008889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5347,7 +5403,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Voices.bank
   Name: Voices
   StudioPath: bank:/Voices
-  lastModified: 637901561508231378
+  lastModified: 637901753362351390
   FileSizes:
   - Name: Desktop
     Value: 243264
@@ -6130,7 +6186,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637901561506981343
+  lastModified: 637901753360970081
   FileSizes:
   - Name: Desktop
     Value: 2111648
@@ -6430,10 +6486,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637901561506691075
+  lastModified: 637901753360629779
   FileSizes:
   - Name: Desktop
-    Value: 3282
+    Value: 3374
   Exists: 1
 --- !u!114 &8459783444930061605
 MonoBehaviour:
