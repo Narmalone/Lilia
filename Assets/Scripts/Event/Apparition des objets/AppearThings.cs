@@ -70,8 +70,4 @@ public class AppearThings : MonoBehaviour
             p_obj.SetActive(true);
         }
     }
-    private void Update()
-    {
-      
-    }
 }

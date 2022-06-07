@@ -13,12 +13,12 @@ public class FinalDoorScript : MonoBehaviour
     [SerializeField] private GameObject m_lastBoxDoor;
     [SerializeField] private Doors m_DoorCanOpen;
     [SerializeField] private FinalScript m_final;
-    [SerializeField] private Transform m_ia;
-    [SerializeField] private Transform m_wpIa;
     [SerializeField] private RagdollScript m_ragdoll;
     [SerializeField] private GameObject DoorFinal;
+    [SerializeField] private GameObject IaUnable;
+    [SerializeField] private GameObject IAEndAnim;
     [SerializeField] private GameManager m_gameManager;
-
+    [SerializeField] private Animator m_bebePls;
     [SerializeField] private GameObject m_ColliderMobToGive;
 
     private void Awake()
@@ -45,6 +45,9 @@ public class FinalDoorScript : MonoBehaviour
     IEnumerator CorouBeforeSpawn()
     {
         yield return new WaitForSeconds(1f);
+        IaUnable.SetActive(false);
+        IAEndAnim.SetActive(true);
+        m_bebePls.SetTrigger("LastAnim");
         m_appear.SpawnAfterCloseDoor();
         m_DoorCanOpen.isActivable = true;
         m_final.canFinal = true;

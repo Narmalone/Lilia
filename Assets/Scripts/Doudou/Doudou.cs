@@ -114,7 +114,7 @@ public class Doudou : MonoBehaviour
         m_callEventEnded = true;
         if(m_callEventEnded == true)
         {
-            m_ragdoll.ActivateRagdoll();
+            m_ragdoll.DisableRagdoll();
             Debug.Log("l'event est fini");
             //m_boxDoudouColider.enabled = true;
             m_callEvent = false;
