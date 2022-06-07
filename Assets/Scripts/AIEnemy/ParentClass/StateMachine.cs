@@ -13,7 +13,7 @@ public class StateMachine : MonoBehaviour
             currentState.Enter();
     }
 
-    void Update()
+    protected void Update()
     {
         if (currentState != null)
             currentState.UpdateLogic();

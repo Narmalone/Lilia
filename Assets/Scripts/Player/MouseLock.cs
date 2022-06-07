@@ -71,6 +71,7 @@ public class MouseLock : MonoBehaviour
 
             }
             mouseSensitivity = m_assetMenuScriptable.value;
+
         }
       
     }

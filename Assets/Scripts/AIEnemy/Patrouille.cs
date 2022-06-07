@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = System.Random;
 
 public class Patrouille : BaseState
 {
@@ -33,9 +34,11 @@ public class Patrouille : BaseState
         
         if(m_sm.m_final.CallMobNewWaypoint == false)
         {
+
             m_sm.m_bebeAnimator.Update(2f);
             m_sm.m_bebeAnimator.SetTrigger("Walk");
-            if (m_sm.m_player.m_doudouIsPossessed == true)
+
+            if (ReferenceEquals(m_target, m_sm.m_player.gameObject) == false)
             {
                 if (GameObject.ReferenceEquals(m_target, m_sm.m_player.gameObject) == false)
                 {
@@ -52,7 +55,7 @@ public class Patrouille : BaseState
         }
         else
         {
-            if (GameObject.ReferenceEquals(m_target, m_sm.m_noTarget) == false)
+            if (ReferenceEquals(m_target, m_sm.m_doudou.gameObject) == false)
             {
                 m_target = m_sm.m_noTarget;
                 Debug.Log("no target");
@@ -62,14 +65,26 @@ public class Patrouille : BaseState
         
         if (Vector3.Distance(m_sm.transform.position, m_waypoints.GetCurrentPoint().transform.position) <= 1)
         {
-            m_waypoints.NextPoint();
+            if (UnityEngine.Random.Range(0, 2) == 0)
+            {
+                m_waypoints.NextPoint();
+            }
+            else
+            {
+                m_sm.StartCoroutine(StopMovement());
+            }
         }
         
         m_sm.m_pourcentSpeed += 0.5f*Time.deltaTime;
         if (m_sm.m_pourcentSpeed >= 1f)
         {
             m_sm.m_pourcentSpeed = 0;
-            FMODUnity.RuntimeManager.PlayOneShotAttached(m_sm.m_fmodEventDrag.Guid,  m_sm.gameObject);
+            m_sm.m_fmodInstanceDrag = FMODUnity.RuntimeManager.CreateInstance(m_sm.m_fmodEventDrag.Guid);
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_sm.m_fmodInstanceDrag, m_sm.gameObject.transform);
+            m_sm.m_fmodInstanceDrag.start();
+            m_sm.m_occlusion.AddInstance(m_sm.m_fmodInstanceDrag);
+            m_sm.m_fmodInstanceDrag.release();
+            //FMODUnity.RuntimeManager.PlayOneShotAttached(m_sm.m_fmodEventDrag.Guid,  m_sm.gameObject);
         }
 
         m_navAgent.speed = Mathf.Lerp(0f,m_sm.m_targetSpeed*2f,m_sm.m_courbeLimace.Evaluate(m_sm.m_pourcentSpeed));
@@ -90,6 +105,14 @@ public class Patrouille : BaseState
             stateMachine.ChangeState(m_sm.m_chasseState);
         }
     }
+
     
+    private IEnumerator StopMovement()
+    {
+        m_navAgent.isStopped = true;
+        yield return new WaitForSeconds(10f);
+        m_navAgent.isStopped = false;
+        m_waypoints.NextPoint();
+    }
     
 }

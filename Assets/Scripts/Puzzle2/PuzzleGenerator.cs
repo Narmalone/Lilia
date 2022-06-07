@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro;
+using FMODUnity;
+using FMOD.Studio;
+
 public class PuzzleGenerator : MonoBehaviour
 {
     [SerializeField] PlayerController m_player;
@@ -36,11 +39,26 @@ public class PuzzleGenerator : MonoBehaviour
     public bool notSolutionComplete = false;
 
     [SerializeField]private Material m_myMat;
+    
+    private FirstPersonOcclusion m_occlusion;
+    
+    [SerializeField]
+    private Transform m_soundPlace;
+    
+    [SerializeField]
+    private Transform m_soundLumiere;
 
     public Renderer m_thisRend;
 
+    [SerializeField]
+    private EventReference m_fmodEventAmpoule;
+    
+    [SerializeField]
+    private EventReference m_fmodEventChair;
+
     private void Awake()
     {
+        m_occlusion = FindObjectOfType<FirstPersonOcclusion>();
         m_index = 0;
         m_indexSolution = 0;
         m_indexNotSolution = 0;
@@ -245,6 +263,16 @@ public class PuzzleGenerator : MonoBehaviour
             m_appear.LateGameAppear();
             gameObject.layer = default;
             enabled = false;
+            EventInstance m_fmodInstance = RuntimeManager.CreateInstance(m_fmodEventChair.Guid);
+            RuntimeManager.AttachInstanceToGameObject(m_fmodInstance, m_soundPlace);
+            m_fmodInstance.start();
+            m_occlusion.AddInstance(m_fmodInstance);
+            m_fmodInstance.release();
+            m_fmodInstance = RuntimeManager.CreateInstance(m_fmodEventAmpoule.Guid);
+            RuntimeManager.AttachInstanceToGameObject(m_fmodInstance, m_soundLumiere);
+            m_fmodInstance.start();
+            m_occlusion.AddInstance(m_fmodInstance);
+            m_fmodInstance.release();
         }       
     }
     public void NextIndicePaper()

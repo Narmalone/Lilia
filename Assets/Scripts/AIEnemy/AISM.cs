@@ -45,10 +45,7 @@ public class AISM : StateMachine
     
     public FMODUnity.EventReference m_fmodEventDrag;
 
-    [SerializeField]
-    private FMODUnity.EventReference m_fmodEventContinuous;
-    
-    private EventInstance m_fmodInstanceContinuous;
+    public EventInstance m_fmodInstanceDrag;
 
     [SerializeField]
     private FMODUnity.EventReference m_fmodEventSonBB;
@@ -58,6 +55,9 @@ public class AISM : StateMachine
     [SerializeField] public FinalScript m_final;
     [SerializeField] public GameObject m_noTarget;
     [SerializeField] public Animator m_bebeAnimator;
+
+    private Vector3 m_previousPos;
+    
     private void Awake()
     {
         m_occlusion = FindObjectOfType<FirstPersonOcclusion>();
@@ -82,8 +82,6 @@ public class AISM : StateMachine
         m_patrouilleState = new Patrouille(this,m_navAgent,m_waypoints,m_target);
         m_chasseState = new Chasse(this,m_navAgent,m_target);
         
-        m_fmodInstanceContinuous = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventContinuous);
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceContinuous,  GetComponent<Transform>());
         //m_fmodInstanceContinuous.start();
         
         m_fmodInstanceRespiration = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventRespiration);
@@ -94,6 +92,17 @@ public class AISM : StateMachine
         StartCoroutine(SonBB());
         
     }
+
+    private void Update()
+    {
+        base.Update();
+        if(transform.position == m_previousPos)
+        {
+            m_fmodInstanceDrag.stop(STOP_MODE.ALLOWFADEOUT);
+        }
+        m_previousPos = transform.position;
+    }
+
     void OnEnable()
     {
         m_triggeredEvent.onTriggered += HandleTriggerEvent;

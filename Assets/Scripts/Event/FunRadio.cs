@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
+using FMOD.Studio;
 
 public class FunRadio : MonoBehaviour
 {
@@ -24,8 +25,17 @@ public class FunRadio : MonoBehaviour
     [SerializeField, Tooltip("0 = phone ring, 1 = décrocher, 2 dialogue")] private StudioEventEmitter[] m_clips;
 
     [SerializeField] private Animator m_playerAnim;
+
+    private FirstPersonOcclusion m_occlusion;
+    
+    [SerializeField]
+    private Transform m_soundPlace;
+
+
+
     private void Awake()
     {
+        m_occlusion = FindObjectOfType<FirstPersonOcclusion>();
         if (m_gameManager == null)
         {
             m_gameManager = FindObjectOfType<GameManager>();
@@ -54,6 +64,12 @@ public class FunRadio : MonoBehaviour
             isFirstAnswer = false;
             m_uiManager.DisableUi();
             StartCoroutine(StopPhoneCinematic());
+            EventInstance m_fmodInstanceDrag = RuntimeManager.CreateInstance(m_appearsChamber.m_fmodEventTremblement.Guid);
+            RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceDrag, m_soundPlace);
+            m_fmodInstanceDrag.start();
+            m_occlusion.AddInstance(m_fmodInstanceDrag);
+            m_fmodInstanceDrag.release();
+            Debug.Log("a répondu au téléphone");
         }
         else { return; }
         
