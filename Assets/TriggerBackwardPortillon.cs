@@ -27,4 +27,12 @@ public class TriggerBackwardPortillon : MonoBehaviour
             m_thisDoor.isLeftTrigger = true;
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if ((m_target.value & (1 << other.gameObject.layer)) > 0)
+        {
+            m_pcAnim.canPlayAnim = false;
+        }
+    }
 }

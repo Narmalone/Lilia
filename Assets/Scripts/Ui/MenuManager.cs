@@ -89,6 +89,7 @@ public class MenuManager : MonoBehaviour
     }
     public void OnCredits()
     {
+        SceneManager.LoadScene("Credits");
         Debug.Log("Afficher la scene des cr�dits");
     }
 

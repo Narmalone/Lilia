@@ -43,14 +43,6 @@ public class Doors : MonoBehaviour
     [SerializeField, Tooltip("0 = ouverture d'une porte, 1 = ouverture portillon, 2 = fermeture portillon")] private StudioEventEmitter[] m_clip;
 
     private PlayerScriptAnim m_pcAnim;
-    private void OnEnable()
-    {
-        
-    }
-    private void OnDisable()
-    {
-        
-    }
     private void Awake()
     {
         //Slider Instance et set variables
@@ -124,7 +116,7 @@ public class Doors : MonoBehaviour
             }
             if (isLeftTrigger == true)
             {
-                m_clip[2].Play();
+                m_clip[1].Play();
                 m_doorController.SetTrigger(m_isOpenPortillonAnim);
                 m_pcAnim.canPlayAnim = true;
                 m_pcAnim.PlayAnimPlayerToPortillons();
@@ -150,7 +142,8 @@ public class Doors : MonoBehaviour
         m_incrementValue = 0.2f;
         mySlider.value = mySlider.minValue;
         mySlider.maxValue = m_speedToOpen;
-        if(isOpen == true)
+        m_clip[2].Play();
+        if (isOpen == true)
         {
             if(isLeftTrigger == false)
             {

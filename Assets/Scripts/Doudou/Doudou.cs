@@ -68,6 +68,11 @@ public class Doudou : MonoBehaviour
             m_rbDoudou.useGravity = false;
             m_gameManager.canPick = false;
         }
+
+        if(m_RootComponent.transform.position.y <= -20)
+        {
+            m_rbDoudou.transform.position = m_doudou.transform.position;
+        }
     }
     public void PickItem()
     {

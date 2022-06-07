@@ -23,10 +23,11 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: 8673994875326169612}
   MinDistance: 1
   MaxDistance: 20
-  Length: 5310
+  Length: 8597
 --- !u!114 &-9091499505101358599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +242,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 8
   Length: 500
 --- !u!114 &-8339541721316272822
 MonoBehaviour:
@@ -310,6 +311,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 672
+--- !u!114 &-8267529833271399987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/IThinkMyWaterJustBroke/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-8252553958212131309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -993,7 +1018,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637901217014730493
+  lastModified: 637901561506671068
   FileSizes:
   - Name: Desktop
     Value: 2032
@@ -1072,6 +1097,34 @@ MonoBehaviour:
   - Name: Desktop
     Value: 2111680
   Exists: 1
+--- !u!114 &-6497720758873444953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voices/IntroGame/Mathis/Dad's Awake
+  m_EditorClassIdentifier: 
+  Path: event:/Voices/IntroGame/Mathis/Dad's Awake
+  Guid:
+    Data1: 1948686912
+    Data2: 1329893509
+    Data3: 2049177251
+    Data4: -1530321766
+  Banks:
+  - {fileID: 5590158827588279384}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 6956404694717950942}
+  MinDistance: 1
+  MaxDistance: 8.2
+  Length: 2832
 --- !u!114 &-6438844683463897179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1608,6 +1661,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 7000
+--- !u!114 &-5473095864835023339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ParentsLeavingHouse/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-5327965252583996185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2050,6 +2127,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-3815316942072008534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/VEHCar_Voiture sur route (ID 1286)_LS/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-3724538463764870563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2795,6 +2896,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 800
+--- !u!114 &-1547701417153192935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voices/IntroGame/Mathis/ParentsLeavingHouse
+  m_EditorClassIdentifier: 
+  Path: event:/Voices/IntroGame/Mathis/ParentsLeavingHouse
+  Guid:
+    Data1: -1717533097
+    Data2: 1285681151
+    Data3: 927248055
+    Data4: 1346035811
+  Banks:
+  - {fileID: 5590158827588279384}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -5473095864835023339}
+  MinDistance: 1
+  MaxDistance: 100
+  Length: 6864
 --- !u!114 &-1544326830286842938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2873,6 +3002,34 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-1296724126829874242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voices/IntroGame/Eve/HoneyPleaseWakeUp
+  m_EditorClassIdentifier: 
+  Path: event:/Voices/IntroGame/Eve/HoneyPleaseWakeUp
+  Guid:
+    Data1: -11241638
+    Data2: 1188088532
+    Data3: 1187217310
+    Data4: -1713447223
+  Banks:
+  - {fileID: -189433896212975394}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 9011793612163385254}
+  MinDistance: 1
+  MaxDistance: 8
+  Length: 5800
 --- !u!114 &-1237555430909887785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2921,6 +3078,34 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-1061380864010903928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voices/IntroGame/Eve/IThinkMyWaterJustBroke
+  m_EditorClassIdentifier: 
+  Path: event:/Voices/IntroGame/Eve/IThinkMyWaterJustBroke
+  Guid:
+    Data1: 2125334013
+    Data2: 1203996173
+    Data3: -1391431800
+    Data4: -393661876
+  Banks:
+  - {fileID: -189433896212975394}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -8267529833271399987}
+  MinDistance: 1
+  MaxDistance: 8.2
+  Length: 1632
 --- !u!114 &-1037009256210496025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3279,10 +3464,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Sounds.bank
   Name: Sounds
   StudioPath: bank:/Sounds
-  lastModified: 637901262175266123
+  lastModified: 637901561508006595
   FileSizes:
   - Name: Desktop
-    Value: 5537184
+    Value: 6170496
   Exists: 1
 --- !u!114 &-168886559189170604
 MonoBehaviour:
@@ -3385,12 +3570,17 @@ MonoBehaviour:
   - {fileID: 1614116939656360793}
   - {fileID: -4570494420475497412}
   - {fileID: -2754456667736153695}
+  - {fileID: -1296724126829874242}
+  - {fileID: -1061380864010903928}
+  - {fileID: -6497720758873444953}
+  - {fileID: -1547701417153192935}
+  - {fileID: 7150306395035969030}
   EditorParameters: []
   MasterBanks:
   - {fileID: -6916075422848283517}
   StringsBanks:
   - {fileID: 8441995482524795051}
-  cacheTime: 637901262175266123
+  cacheTime: 637901561508231378
   cacheVersion: 10
 --- !u!114 &68467238725858441
 MonoBehaviour:
@@ -5157,10 +5347,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Voices.bank
   Name: Voices
   StudioPath: bank:/Voices
-  lastModified: 637901217032094642
+  lastModified: 637901561508231378
   FileSizes:
   - Name: Desktop
-    Value: 44704
+    Value: 243264
   Exists: 1
 --- !u!114 &5612371615870391058
 MonoBehaviour:
@@ -5568,6 +5758,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &6956404694717950942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Dad's Awake/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &6965064543131801992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5620,6 +5834,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 4500
+--- !u!114 &7150306395035969030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Car/VEHCar_Voiture sur route (ID 1286)_LS
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Car/VEHCar_Voiture sur route (ID 1286)_LS
+  Guid:
+    Data1: -523018191
+    Data2: 1156611341
+    Data3: -1145819979
+    Data4: 693507703
+  Banks:
+  - {fileID: -189433896212975394}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -3815316942072008534}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6000
 --- !u!114 &7236381666324700859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5888,7 +6130,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637901217018829138
+  lastModified: 637901561506981343
   FileSizes:
   - Name: Desktop
     Value: 2111648
@@ -6188,10 +6430,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637901217014740499
+  lastModified: 637901561506691075
   FileSizes:
   - Name: Desktop
-    Value: 2936
+    Value: 3282
   Exists: 1
 --- !u!114 &8459783444930061605
 MonoBehaviour:
@@ -6294,6 +6536,30 @@ MonoBehaviour:
   - Name: Desktop
     Value: 275072
   Exists: 1
+--- !u!114 &8673994875326169612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/DialogPhone/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &8674436255923338075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6320,7 +6586,7 @@ MonoBehaviour:
   Parameters:
   - {fileID: 6948165491921386028}
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 7.4
   Length: 17475
 --- !u!114 &8736256646207775238
 MonoBehaviour:
@@ -6478,6 +6744,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 5310
+--- !u!114 &9011793612163385254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/HoneyPleaseWakeUp/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &9021824167370879320
 MonoBehaviour:
   m_ObjectHideFlags: 0

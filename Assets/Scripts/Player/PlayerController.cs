@@ -10,7 +10,6 @@ using UnityEngine.Rendering.Universal;
 using Unity.VisualScripting;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
-
 //----------------------------------------------- References from other Class ------------------------------------------//
 
 public class PlayerController : MonoBehaviour
@@ -186,11 +185,10 @@ public class PlayerController : MonoBehaviour
     private float timeBeforeDropDoudou = 0.3f;
     private float timeBeforeDropVeilleuse = 0.3f;
     [SerializeField] private FinalScript m_final;
-    [SerializeField] private Animator m_myAnim;
+    [SerializeField] public Animator m_myAnim;
     [SerializeField] private Animator m_imgBlikImage;
     [SerializeField] private Transform m_StartingPlayerPosition;
     [SerializeField] private Transform m_AwakePlaterPosition;
-    [SerializeField] private GameObject handUi;
     private void Awake()
     {
         isCinematic = true;
@@ -248,7 +246,7 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator CoroutineAwake()
     {
-        yield return new WaitForSeconds(9.5f);
+        yield return new WaitForSeconds(25f);
         gameObject.transform.position = m_AwakePlaterPosition.position;
         gameObject.transform.rotation = m_AwakePlaterPosition.rotation;
         m_myAnim.SetTrigger("AwakePlayer");
@@ -266,12 +264,16 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.7f);
         m_imgBlikImage.SetBool("FadeActive", true);
         yield return new WaitForSeconds(0.7f);
+        m_imgBlikImage.SetBool("FadeActive", false);   
+        yield return new WaitForSeconds(0.7f);
+        m_imgBlikImage.SetBool("FadeActive", true);   
+        yield return new WaitForSeconds(0.7f);
         m_imgBlikImage.SetBool("FadeActive", false); 
         yield return new WaitForSeconds(3f);
         m_imgBlikImage.SetBool("FadeActive", true);
         yield return new WaitForSeconds(1f);
         m_imgBlikImage.SetTrigger("EndAnim");
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(18f);
         m_imgBlikImage.gameObject.SetActive(false);
         StopCoroutine(Faded());
     }
@@ -569,7 +571,6 @@ public class PlayerController : MonoBehaviour
                                 {
                                     m_phone.AnswerToCall();
                                     m_phone.isFirstAnswer = false;
-                                    m_timePlayerScript.StartTimeline(0);
                                     m_phoneRend.material.SetFloat("_BooleanFloat", 0f);
                                 }
 
@@ -734,13 +735,16 @@ public class PlayerController : MonoBehaviour
                         if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 2)
                         {
                             m_createNarrativeEvent.actionComplete = true;
+                        } 
+                        if (m_createNarrativeEvent.index >= 2)
+                        {
+                            m_flashlightIsPossessed = true;
+                            isRightHandFull = true;
+                            m_flm.GetComponent<BoxCollider>().enabled = false;
+                            m_UIManager.TakeLampe();
+                            m_flm.PickItem();
+                            m_UIManager.DisableUi();
                         }
-                        m_flashlightIsPossessed = true;
-                        isRightHandFull = true;
-                        m_flm.GetComponent<BoxCollider>().enabled = false;
-                        m_UIManager.TakeLampe();
-                        m_flm.PickItem();
-                        m_UIManager.DisableUi();
                     }
                 }
             }
