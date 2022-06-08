@@ -98,10 +98,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Sounds.bank
   Name: Sounds
   StudioPath: bank:/Sounds
-  lastModified: 637902814857447001
+  lastModified: 637902103994986453
   FileSizes:
   - Name: Desktop
-    Value: 4909184
+    Value: 5172928
   Exists: 1
 --- !u!114 &-8291960394993572323
 MonoBehaviour:
@@ -158,6 +158,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-7483709605489073789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/AllumageLumiere/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-7045850567370295543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,30 +284,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-5761369868573718418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/AllumageLumiere/Occlusion
-  m_EditorClassIdentifier: 
-  Name: Occlusion
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 4035467436
-    data2: 77915238
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
 --- !u!114 &-5693967044222602914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +326,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Voices.bank
   Name: Voices
   StudioPath: bank:/Voices
-  lastModified: 637902814857526771
+  lastModified: 637902103997579865
   FileSizes:
   - Name: Desktop
     Value: 243424
@@ -484,7 +484,7 @@ MonoBehaviour:
   Parameters:
   - {fileID: -3096248156527465333}
   MinDistance: 1
-  MaxDistance: 55
+  MaxDistance: 8.2
   Length: 1632
 --- !u!114 &-2843973148977313696
 MonoBehaviour:
@@ -537,34 +537,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 888
---- !u!114 &-2837484319779697976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/ChangementEnviro
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/ChangementEnviro
-  Guid:
-    Data1: 1475880533
-    Data2: 1108231576
-    Data3: 1636214920
-    Data4: -129892740
-  Banks:
-  - {fileID: -8343902966666032979}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 1
-  Parameters:
-  - {fileID: -1836634250180011744}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 9555
 --- !u!114 &-2474201460856894435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,7 +591,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 460
---- !u!114 &-1836634250180011744
+--- !u!114 &-2216509569399668072
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -629,7 +601,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/ChangementEnviro/Occlusion
+  m_Name: parameter:/Television/Occlusion
   m_EditorClassIdentifier: 
   Name: Occlusion
   StudioPath: 
@@ -697,6 +669,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 8
   Length: 500
+--- !u!114 &-1126028040454629500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/RamassageEtLachage/Chaise/ChaisePickUp
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/RamassageEtLachage/Chaise/ChaisePickUp
+  Guid:
+    Data1: -1618079639
+    Data2: 1092825665
+    Data3: 1350964140
+    Data4: -756582914
+  Banks:
+  - {fileID: -8343902966666032979}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 850
 --- !u!114 &-603551647846392374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,6 +720,86 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-498059288640625539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Environment/MachineALaver
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Environment/MachineALaver
+  Guid:
+    Data1: 578117249
+    Data2: 1187550656
+    Data3: 219877555
+    Data4: -680408507
+  Banks:
+  - {fileID: -8343902966666032979}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -490884494376164645}
+  MinDistance: 1
+  MaxDistance: 7.4
+  Length: 9000
+--- !u!114 &-490884494376164645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MachineALaver/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-91491163909614201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Environment/ChangementEnviro
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Environment/ChangementEnviro
+  Guid:
+    Data1: 1475880533
+    Data2: 1108231576
+    Data3: 1636214920
+    Data4: -129892740
+  Banks:
+  - {fileID: -8343902966666032979}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 8642860220100042881}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 9555
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -768,20 +847,23 @@ MonoBehaviour:
   - {fileID: -2434825670568783847}
   - {fileID: 170076176237000913}
   - {fileID: -2842369684995093061}
-  - {fileID: -2837484319779697976}
   - {fileID: 1730907234604749721}
-  - {fileID: 2924614510300982511}
   - {fileID: 6875394528419324399}
-  - {fileID: 3981554655784949329}
   - {fileID: -3002891504912677878}
   - {fileID: 3028121861059265326}
   - {fileID: 5223971282129431988}
+  - {fileID: -91491163909614201}
+  - {fileID: -1126028040454629500}
+  - {fileID: -498059288640625539}
+  - {fileID: 7427625102059580471}
+  - {fileID: 5177814680563949983}
+  - {fileID: 1029680005344084262}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5980052921926315069}
   StringsBanks:
   - {fileID: 4453001036209173878}
-  cacheTime: 637902814857526771
+  cacheTime: 637902103997579865
   cacheVersion: 10
 --- !u!114 &170076176237000913
 MonoBehaviour:
@@ -863,6 +945,34 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &1029680005344084262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Environment/Television
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Environment/Television
+  Guid:
+    Data1: -1573268501
+    Data2: 1280782529
+    Data3: 501608621
+    Data4: 389650701
+  Banks:
+  - {fileID: -8343902966666032979}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -2216509569399668072}
+  MinDistance: 1
+  MaxDistance: 5
+  Length: 10600
 --- !u!114 &1363111451556931002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -878,7 +988,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637902001087070895
+  lastModified: 637902103982466054
   FileSizes:
   - Name: Desktop
     Value: 2111680
@@ -936,7 +1046,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 816
+  Length: 1126
 --- !u!114 &1730907234604749721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -963,7 +1073,7 @@ MonoBehaviour:
   Parameters:
   - {fileID: 2874282786246609358}
   MinDistance: 1
-  MaxDistance: 55
+  MaxDistance: 8
   Length: 5800
 --- !u!114 &1887902602821277710
 MonoBehaviour:
@@ -1067,34 +1177,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &2924614510300982511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/AllumageLumiere
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/AllumageLumiere
-  Guid:
-    Data1: 1543757481
-    Data2: 1223340305
-    Data3: 284134830
-    Data4: 269323261
-  Banks:
-  - {fileID: -8343902966666032979}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 1
-  Parameters:
-  - {fileID: -5761369868573718418}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 3700
 --- !u!114 &3028121861059265326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1121,7 +1203,7 @@ MonoBehaviour:
   Parameters:
   - {fileID: 400601844887660975}
   MinDistance: 1
-  MaxDistance: 55
+  MaxDistance: 8.2
   Length: 2832
 --- !u!114 &3715500426806485916
 MonoBehaviour:
@@ -1174,34 +1256,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 6720
---- !u!114 &3981554655784949329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundsEvent/Television
-  m_EditorClassIdentifier: 
-  Path: event:/SoundsEvent/Television
-  Guid:
-    Data1: -1573268501
-    Data2: 1280782529
-    Data3: 501608621
-    Data4: 389650701
-  Banks:
-  - {fileID: -8343902966666032979}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 6156354416095460665}
-  MinDistance: 1
-  MaxDistance: 5
-  Length: 10600
 --- !u!114 &4453001036209173878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1217,10 +1271,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637902814857107833
+  lastModified: 637902103980425353
   FileSizes:
   - Name: Desktop
-    Value: 3266
+    Value: 3440
   Exists: 1
 --- !u!114 &4584836110223669072
 MonoBehaviour:
@@ -1277,6 +1331,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &5177814680563949983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Environment/ApparitionChair
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Environment/ApparitionChair
+  Guid:
+    Data1: 128474044
+    Data2: 1089900200
+    Data3: 1220021149
+    Data4: 1102188297
+  Banks:
+  - {fileID: -8343902966666032979}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1302
 --- !u!114 &5223971282129431988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1372,34 +1453,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637902814857107833
+  lastModified: 637902103980375480
   FileSizes:
   - Name: Desktop
     Value: 2032
-  Exists: 1
---- !u!114 &6156354416095460665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Television/Occlusion
-  m_EditorClassIdentifier: 
-  Name: Occlusion
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 4035467436
-    data2: 77915238
-  Type: 0
-  IsGlobal: 0
-  Labels: []
   Exists: 1
 --- !u!114 &6875394528419324399
 MonoBehaviour:
@@ -1456,6 +1513,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 37500
+--- !u!114 &7427625102059580471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Environment/AllumageLumiere
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Environment/AllumageLumiere
+  Guid:
+    Data1: 1543757481
+    Data2: 1223340305
+    Data3: 284134830
+    Data4: 269323261
+  Banks:
+  - {fileID: -8343902966666032979}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -7483709605489073789}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3700
 --- !u!114 &8306169716361525010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1484,6 +1569,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 4500
+--- !u!114 &8642860220100042881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ChangementEnviro/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &8678555656026374175
 MonoBehaviour:
   m_ObjectHideFlags: 0
