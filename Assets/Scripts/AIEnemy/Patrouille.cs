@@ -71,6 +71,7 @@ public class Patrouille : BaseState
         {
             if (UnityEngine.Random.Range(0, 2) == 0)
             {
+                m_sm.m_bebeAnimator.Update(1);
                 m_waypoints.NextPoint();
             }
             else
@@ -113,6 +114,7 @@ public class Patrouille : BaseState
     
     private IEnumerator StopMovement()
     {
+        m_sm.m_bebeAnimator.Update(0);
         m_navAgent.isStopped = true;
         yield return new WaitForSeconds(10f);
         m_navAgent.isStopped = false;

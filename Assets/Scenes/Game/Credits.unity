@@ -725,13 +725,13 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'thanks for playing
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 
 '
   m_isRightToLeft: 0
@@ -978,9 +978,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1622348669}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: OnQuit
+      - m_Target: {fileID: 1826757013}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1355,7 +1355,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1622348668
+--- !u!1 &1826757012
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1363,44 +1363,44 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1622348670}
-  - component: {fileID: 1622348669}
+  - component: {fileID: 1826757014}
+  - component: {fileID: 1826757013}
   m_Layer: 0
-  m_Name: MenuManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1622348669
+--- !u!114 &1826757013
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1622348668}
+  m_GameObject: {fileID: 1826757012}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34bdc25600c1abf4ab1e507bffbb20ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 70889176ea5ff8545b77ca799f8df811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_pannelOption: {fileID: 0}
-  m_pannelPause: {fileID: 0}
-  m_pannelDeath: {fileID: 0}
-  m_pannelGame: {fileID: 0}
-  m_newEventSystemFirstSelectedObject: {fileID: 0}
-  m_newSystemCurrentSelectedObject: {fileID: 0}
-  m_newEventSystemFirstSelectedObject_b: {fileID: 0}
-  m_newSystemCurrentSelectedObject_b: {fileID: 0}
---- !u!4 &1622348670
+  isPc: 0
+  isGamepad: 0
+  isPaused: 0
+  gotKey: 0
+  isDead: 0
+  canPick: 0
+  canDrop: 0
+  isPlayerInGame: 0
+--- !u!4 &1826757014
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1622348668}
+  m_GameObject: {fileID: 1826757012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -28.400251, y: -1.9529165, z: 0.77820957}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

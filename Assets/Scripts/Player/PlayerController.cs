@@ -201,7 +201,6 @@ public class PlayerController : MonoBehaviour
         isMoving = false;
         m_txtEvent.gameObject.SetActive(false);
         m_stopStress = true;
-        noNeedStress = false;
         m_gameManager = FindObjectOfType<GameManager>();
         m_menuManager = FindObjectOfType<MenuManager>();
         m_controls = new PlayerControls();
@@ -563,7 +562,6 @@ public class PlayerController : MonoBehaviour
                             m_phoneRend = m_hit.collider.gameObject.GetComponent<Renderer>();
                             m_UIManager.TakableObject();
                             m_phoneRend.material.SetFloat("_BooleanFloat", 1f);
-                            Debug.Log("peut interagir");
                             if (Input.GetKeyDown(KeyCode.E))
                             {
                                 if (m_doudouIsPossessed == true)
@@ -576,7 +574,8 @@ public class PlayerController : MonoBehaviour
                                 }
                                 else if (m_doudouIsPossessed == false)
                                 {
-                                    NoNeedStress();
+                                    m_stopStress = true;
+                                    noNeedStress = true;
                                     isCinematic = true;
                                     m_phone.AnswerToCall();
                                     m_phone.isFirstAnswer = false;
@@ -622,6 +621,7 @@ public class PlayerController : MonoBehaviour
         noNeedStress = true;
         m_intenseFieldOfView = 1f;
         m_currentStress = 0f;
+        Debug.Log("no need stress");
     }
     /// <summary>
     /// Applique le stress au autre systeme manuellement

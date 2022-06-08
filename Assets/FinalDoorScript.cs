@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using FMODUnity;
+using FMOD.Studio;
 public class FinalDoorScript : MonoBehaviour
 {
     [SerializeField] private LayerMask m_playerMask;
@@ -22,6 +24,11 @@ public class FinalDoorScript : MonoBehaviour
     [SerializeField] private GameObject m_ColliderMobToGive;
 
     [SerializeField] private TextMeshProUGUI m_RunAway;
+    [SerializeField]
+    private EventReference m_fmodEventChair;
+    [SerializeField]
+    private Transform m_soundPlace;
+    [SerializeField] private FirstPersonOcclusion m_occlusion;
     private void Awake()
     {
         gameObject.SetActive(false);
@@ -31,7 +38,6 @@ public class FinalDoorScript : MonoBehaviour
     {
         if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
         {
-
             m_doudou.transform.position = m_midWaypoint.position;
             m_ragdoll.ActivateRagdoll();
             m_final.MobFinalPosition = true;
@@ -47,6 +53,11 @@ public class FinalDoorScript : MonoBehaviour
     IEnumerator CorouBeforeSpawn()
     {
         yield return new WaitForSeconds(3f);
+        EventInstance m_fmodInstance = RuntimeManager.CreateInstance(m_fmodEventChair.Guid);
+        RuntimeManager.AttachInstanceToGameObject(m_fmodInstance, m_soundPlace);
+        m_fmodInstance.start();
+        m_occlusion.AddInstance(m_fmodInstance);
+        m_fmodInstance.release();
         IaUnable.SetActive(false);
         IAEndAnim.SetActive(true);
         m_bebePls.SetTrigger("LastAnim");

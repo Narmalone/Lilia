@@ -69,7 +69,10 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-
+    public void Quit()
+    {
+        Application.Quit();
+    }
     //----------------------------------------------- Statut du jeu (en pause) ------------------------------------------//
 
     public void GamePaused()

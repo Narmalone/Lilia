@@ -37,17 +37,14 @@ public class KillPlayer : MonoBehaviour
             if(other.gameObject.GetComponent<Doors>().isDoor == false)
             {
                 other.gameObject.GetComponent<Doors>().OnComplete();
-                Debug.Log("ouvre le portillon");
             }
         }
         if(m_final.finalTriggered == false)
         {
             if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
             {
-                Debug.Log("GameOver");
                 m_screamerObj.SetActive(true);
                 m_screamerBebe.SetTrigger("Screamer");
-                m_screamerSound.Play();
                 m_menuManager.OnDeath();
                 m_gameManager.isDead = true;
                 m_respawn.makeRespawn = true;
@@ -68,7 +65,9 @@ public class KillPlayer : MonoBehaviour
 
     IEnumerator CorouBeforeDeath()
     {
-        yield return new WaitForSeconds(2.3f);
+        yield return new WaitForSeconds(1f);
+        m_screamerSound.Play();
+        yield return new WaitForSeconds(1.5f);
         m_screamerObj.SetActive(false);
         StopCoroutine(CorouBeforeDeath());
     }

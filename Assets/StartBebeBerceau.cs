@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FMODUnity;
 public class StartBebeBerceau : MonoBehaviour
 {
     //Bebe a remplacer a la fin
     [SerializeField] private LayerMask m_playerMask;
     [SerializeField] private Animator m_animBebe;
     [SerializeField] private GameObject IA;
+
+    [SerializeField, Tooltip("bébé spawn crie")] StudioEventEmitter[] m_clip;
     private void Awake()
     {
         GetComponent<BoxCollider>().enabled = false;
@@ -21,6 +23,7 @@ public class StartBebeBerceau : MonoBehaviour
         {
             m_animBebe.gameObject.SetActive(true);
             m_animBebe.SetTrigger("LeaveBed");
+            m_clip[0].Play();
             GetComponent<BoxCollider>().enabled = false;
             StartCoroutine(MatchWithWalk());
         }

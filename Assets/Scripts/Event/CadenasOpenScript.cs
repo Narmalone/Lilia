@@ -6,7 +6,7 @@ public class CadenasOpenScript : MonoBehaviour
 {
     [SerializeField] private Animator m_animDoor;
     [SerializeField] private BoxCollider m_doorBox;
-
+    [SerializeField] private PlayerController m_player;
     string m_name = "isOpen";
     [SerializeField] private StudioEventEmitter m_clip;
     [SerializeField] private GameManager m_gameManager;
@@ -45,6 +45,7 @@ public class CadenasOpenScript : MonoBehaviour
                 {
                     m_doorBox.enabled = false;
                     m_uiManager.DisableUi();
+                    m_player.m_stopStress = true;
                     StartCoroutine(OuverturePorte());
                     m_gameManager.gotKey = false;
                     m_key.m_keyUi.SetActive(false);

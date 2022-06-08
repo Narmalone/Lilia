@@ -24,7 +24,6 @@ public class TriggerBackwardPortillon : MonoBehaviour
         if ((m_IA.value & (1 << other.gameObject.layer)) > 0)
         {
             isMobActivated = true;
-            m_pcAnim.canPlayAnim = false;
             m_thisDoor.OnComplete();
             m_thisDoor.isLeftTrigger = true;
         }
@@ -34,13 +33,11 @@ public class TriggerBackwardPortillon : MonoBehaviour
     {
         if ((m_target.value & (1 << other.gameObject.layer)) > 0)
         {
-            isMobActivated = false;
             m_pcAnim.canPlayAnim = false;
         }
         if ((m_IA.value & (1 << other.gameObject.layer)) > 0)
         {
             isMobActivated = false;
-            m_pcAnim.canPlayAnim = false;
         }
     }
 }

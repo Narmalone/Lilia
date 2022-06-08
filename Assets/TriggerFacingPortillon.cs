@@ -40,11 +40,9 @@ public class TriggerFacingPortillon : MonoBehaviour
         if ((m_target.value & (1 << other.gameObject.layer)) > 0)
         {
             m_pcAnim.canPlayAnim = false;
-            isMobActivated = false;
         }
         if ((m_IA.value & (1 << other.gameObject.layer)) > 0)
         {
-            m_pcAnim.canPlayAnim = false;
             isMobActivated = false;
         }
     }

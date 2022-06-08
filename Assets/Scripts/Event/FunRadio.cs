@@ -57,7 +57,6 @@ public class FunRadio : MonoBehaviour
             m_activeBebe.enabled = true;
             m_chairBox.enabled = false;
             m_player.m_stopStress = true;
-            m_player.NoNeedStress();
             m_playerAnim.SetTrigger("Anwser");
             m_ragdoll.DisableRagdoll();
             m_waypointMoveDoudou.isEventCalled = true;
@@ -87,6 +86,8 @@ public class FunRadio : MonoBehaviour
         yield return new WaitForSeconds(7f);
         m_playerAnim.SetTrigger("Reset");
         m_player.isCinematic = false;
+        m_player.m_stopStress = false;
+        m_player.noNeedStress = false;
         m_player.m_speed = 1.5f;
         StopCoroutine(StopPhoneCinematic());
     }

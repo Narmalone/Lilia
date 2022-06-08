@@ -89,6 +89,7 @@ public class MenuManager : MonoBehaviour
     }
     public void OnCredits()
     {
+        m_gameManager.PlayerNotIngame();
         SceneManager.LoadScene("Credits");
     }
 

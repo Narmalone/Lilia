@@ -52,9 +52,6 @@ public class PuzzleGenerator : MonoBehaviour
 
     [SerializeField]
     private EventReference m_fmodEventAmpoule;
-    
-    //[SerializeField]
-    //private EventReference m_fmodEventChair;
 
     private void Awake()
     {
@@ -264,11 +261,6 @@ public class PuzzleGenerator : MonoBehaviour
             m_appear.LateGameAppear();
             gameObject.layer = default;
             enabled = false;
-            //EventInstance m_fmodInstance = RuntimeManager.CreateInstance(m_fmodEventChair.Guid);
-            //RuntimeManager.AttachInstanceToGameObject(m_fmodInstance, m_soundPlace);
-            //m_fmodInstance.start();
-            //m_occlusion.AddInstance(m_fmodInstance);
-            //m_fmodInstance.release();
             EventInstance m_fmodInstance = RuntimeManager.CreateInstance(m_fmodEventAmpoule.Guid);
             RuntimeManager.AttachInstanceToGameObject(m_fmodInstance, m_soundLumiere);
             m_fmodInstance.start();
