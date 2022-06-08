@@ -57,6 +57,8 @@ public class AISM : StateMachine
     [SerializeField] public GameObject m_noTarget;
     [SerializeField] public Animator m_bebeAnimator;
 
+    [SerializeField] public MouseLock m_mouselock;
+
     private Vector3 m_previousPos;
     
     private void Awake()

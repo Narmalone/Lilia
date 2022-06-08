@@ -8,13 +8,14 @@ public class CadenasOpenScript : MonoBehaviour
     [SerializeField] private BoxCollider m_doorBox;
     [SerializeField] private PlayerController m_player;
     string m_name = "isOpen";
-    [SerializeField] private StudioEventEmitter m_clip;
+    [SerializeField] private StudioEventEmitter[] m_clip;
     [SerializeField] private GameManager m_gameManager;
     [SerializeField] private KeyScript m_key;
     [SerializeField] private LayerMask m_layerPlayer;
     [SerializeField] private Renderer m_CadenasRenderer;
     [SerializeField] private Transform m_Cadenas;
     [SerializeField] private UiManager m_uiManager;
+    
     private bool hasOpenened;
     private void Awake()
     {
@@ -32,6 +33,10 @@ public class CadenasOpenScript : MonoBehaviour
             {
                 m_uiManager.TakableObject();
                 m_CadenasRenderer.material.SetFloat("_BooleanFloat", 1f);
+            }
+            else
+            {
+                m_clip[1].Play();
             }
         }
     }
@@ -67,7 +72,7 @@ public class CadenasOpenScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         m_CadenasRenderer.material.SetFloat("_BooleanFloat", 0f);
-        m_clip.Play();
+        m_clip[0].Play();
         m_animDoor.SetBool(m_name, true);
         m_Cadenas.position = new Vector3(0f, 0f, 200f);
     }

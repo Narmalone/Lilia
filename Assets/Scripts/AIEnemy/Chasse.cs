@@ -67,6 +67,7 @@ public class Chasse : BaseState
             if (GetPathLength(m_path) > m_sm.m_distanceDetection && m_sm.m_chasing == false)
             {
                 stateMachine.ChangeState(m_sm.m_patrouilleState);
+                m_sm.m_mouselock.m_sound.EventInstance.setParameterByName("Parameter 1",0);
             }
         }
     }
