@@ -1808,7 +1808,7 @@ MonoBehaviour:
     m_Bits: 128
   m_txtToDisplay: {fileID: 559534481}
   m_player: {fileID: 494317833}
-  m_txt: I should grab something to answer.
+  m_txt: You're not tall enough to reach the phone.
 --- !u!1 &515355857 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8881777182198064248, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
@@ -3558,6 +3558,50 @@ Transform:
   m_Father: {fileID: 1698167993}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1154607647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1154607648}
+  - component: {fileID: 1154607649}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1154607648
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154607647}
+  m_LocalRotation: {x: 0, y: -0.24319176, z: 0, w: 0.9699783}
+  m_LocalPosition: {x: -3.387, y: 0.102, z: -0.63}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1383099669}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -28.15, z: 0}
+--- !u!65 &1154607649
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154607647}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.91, z: 0.36}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1177943423 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3210594397146790881, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -6358,6 +6402,51 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6324023854328927070, guid: 01a27c2133c41b646bd8d3998f429b8c, type: 3}
   m_PrefabInstance: {fileID: 279142201}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1383099668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1383099669}
+  - component: {fileID: 1383099670}
+  m_Layer: 0
+  m_Name: blocageJoueur
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1383099669
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383099668}
+  m_LocalRotation: {x: -0, y: 0.31464598, z: -0, w: 0.9492091}
+  m_LocalPosition: {x: 7.746, y: -0.155, z: -4.802}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1154607648}
+  m_Father: {fileID: 1422353516}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 36.679, z: 0}
+--- !u!65 &1383099670
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383099668}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.28, y: 1.54, z: 0.44}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1391351707 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2274039686392203914, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -12691,6 +12780,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1376419348210125738, guid: 7bfd8d5988eaeb14083ee3512423022b, type: 3}
+--- !u!4 &1422353516 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7337379222814887873, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+  m_PrefabInstance: {fileID: 1422353500}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1422353518
 MonoBehaviour:
   m_ObjectHideFlags: 0
