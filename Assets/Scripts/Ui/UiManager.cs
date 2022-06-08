@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
+
 public class UiManager : MonoBehaviour
 {
     //----------------------------------------------- R�f�rences & variables ------------------------------------------//
@@ -27,6 +29,8 @@ public class UiManager : MonoBehaviour
     public bool m_isActivated;
     private int indexAnim = 0;
     public int indexAnimMax = 2;
+    private int m_alreadyShrinkingDoudou = 0;
+    private int m_alreadyShrinkingLampe = 0;
 
     [SerializeField] private Sprite m_leftClickSprite;
     [SerializeField] private Sprite m_leftClickNotPossibleSprite;
@@ -37,6 +41,9 @@ public class UiManager : MonoBehaviour
 
     [SerializeField] private Color m_dontInteract;
     [SerializeField] private Color m_possessed;
+
+    private Vector3 m_initialSizeDoudouUi;
+    private Vector3 m_initialSizeLampeUi;
     private void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();
@@ -47,6 +54,10 @@ public class UiManager : MonoBehaviour
         isAnimated = false;
         animActivated = false;
         indexAnim = 0;
+        m_initialSizeDoudouUi = m_UIDoudou.transform.localScale;
+        m_initialSizeLampeUi = m_UILampe.transform.localScale;
+        m_alreadyShrinkingDoudou = 0;
+        m_alreadyShrinkingLampe = 0;
     }
     //----------------------------------------------- Ui prendre et dropper un item ------------------------------------------//
 
@@ -108,6 +119,48 @@ public class UiManager : MonoBehaviour
         }
       
     }
+
+    private IEnumerator GrowUpAndDown(GameObject p_go)
+    {
+        Vector3 beginningSize;
+        if (ReferenceEquals(p_go, m_UIDoudou))
+        {
+            beginningSize = m_initialSizeDoudouUi;
+            m_alreadyShrinkingDoudou++;
+        }
+        else
+        {
+            beginningSize = m_initialSizeLampeUi;
+            m_alreadyShrinkingLampe++;
+        }
+
+        if ((ReferenceEquals(p_go, m_UIDoudou) && m_alreadyShrinkingDoudou < 2) || (ReferenceEquals(p_go, m_UILampe) && m_alreadyShrinkingLampe < 2))
+        {
+            while(p_go.transform.localScale.x < beginningSize.x * 2)
+            {
+                p_go.transform.localScale = Vector3.MoveTowards(p_go.transform.localScale, new Vector3(beginningSize.x*2, beginningSize.y*2, 1), 0.1f);
+                yield return null;
+            }
+            while(p_go.transform.localScale.x > beginningSize.x)
+            {
+                p_go.transform.localScale = Vector3.MoveTowards(p_go.transform.localScale, beginningSize, 0.1f);
+                Debug.Log("Je vérifie que je rédescend a la bonne taille");
+                yield return null;
+            }
+        }
+
+        if (ReferenceEquals(p_go, m_UIDoudou))
+        {
+            m_alreadyShrinkingDoudou--;
+        }
+        else
+        {
+            m_alreadyShrinkingLampe--;
+        }
+
+
+
+    }
     //----------------------------------------------- UI Objets du joueur ------------------------------------------//
 
     //Normal si le joueur appuie sur E sa blink
@@ -118,7 +171,9 @@ public class UiManager : MonoBehaviour
             if (isAnimated == false)
             {
                 m_UIDoudou.GetComponent<Animator>().SetTrigger("FadeOut");
+                StartCoroutine(GrowUpAndDown(m_UIDoudou));
                 m_UILampe.GetComponent<Animator>().SetTrigger("FadeOut");
+                StartCoroutine(GrowUpAndDown(m_UILampe));
                 isAnimated = true;
             }
             if (isAnimated == true)
@@ -141,6 +196,7 @@ public class UiManager : MonoBehaviour
             if (isAnimated == false)
             {
                 m_UIDoudou.GetComponent<Animator>().SetTrigger("FadeOut");
+                StartCoroutine(GrowUpAndDown(m_UIDoudou));
                 isAnimated = true;
             }
             if (isAnimated == true)
@@ -160,6 +216,7 @@ public class UiManager : MonoBehaviour
         if(m_player.isRightHandFull == true && m_player.isLeftHandFull == false)
         {
             m_UILampe.GetComponent<Animator>().SetTrigger("FadeOut");
+            StartCoroutine(GrowUpAndDown(m_UILampe));
             if (indexAnim <= indexAnimMax)
             {
                 m_UILampe.GetComponent<Animator>().SetTrigger("FadeIn");
@@ -172,6 +229,8 @@ public class UiManager : MonoBehaviour
             {
                 m_UILampe.GetComponent<Animator>().SetTrigger("FadeOut");
                 m_UIDoudou.GetComponent<Animator>().SetTrigger("FadeOut");
+                StartCoroutine(GrowUpAndDown(m_UIDoudou));
+                StartCoroutine(GrowUpAndDown(m_UILampe));
                 isAnimated = true;
             }
             if (isAnimated == true)
@@ -205,12 +264,12 @@ public class UiManager : MonoBehaviour
             m_indicInteraction.GetComponent<Image>().sprite = m_EKeyNotInteract;
             m_indicInteraction.SetActive(true);
         }
-        if (m_player.isRightHandFull == true)
+        else if (m_player.isRightHandFull == true)
         {
             m_indicInteraction.GetComponent<Image>().sprite = m_EKeyNotInteract;
             m_indicInteraction.SetActive(true);
         }
-        if(m_player.isTwoHandFull == true)
+        else if(m_player.isTwoHandFull == true)
         {
             m_indicInteraction.GetComponent<Image>().sprite = m_EKeyNotInteract;
             m_indicInteraction.SetActive(true);
@@ -225,12 +284,12 @@ public class UiManager : MonoBehaviour
             m_indicInteraction.SetActive(false);
             m_UIDoudou.GetComponent<Animator>().SetTrigger("Reset");
         }
-        if (m_player.isRightHandFull == true)
+        else if (m_player.isRightHandFull == true)
         {
             m_indicInteraction.SetActive(false);
             m_UILampe.GetComponent<Animator>().SetTrigger("Reset");
         }
-        if (m_player.isTwoHandFull == true)
+        else if (m_player.isTwoHandFull == true)
         {
             m_indicInteraction.SetActive(false);
             m_UIDoudou.GetComponent<Animator>().SetTrigger("Reset");
@@ -238,6 +297,7 @@ public class UiManager : MonoBehaviour
         }
         Debug.Log("stop raycast before");
     }
+    
     //Affichage en bas à droite
     public void TakeLampe()
     {

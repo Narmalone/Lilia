@@ -164,7 +164,7 @@ public class QTEManager : MonoBehaviour
                     if(canDoQte == true)
                     {
                         m_thisRend.GetComponent<Renderer>().material.SetFloat("_BooleanFloat", 1f);
-                        if (m_player.isLeftHandFull == false && m_player.isLeftHandFull == false)
+                        if (m_player.isLeftHandFull == false && m_player.isRightHandFull == false)
                         {
                             m_uiManager.TakableObject();
                             if (Input.GetKeyDown(KeyCode.E) && m_qteStarted == false)

@@ -182,6 +182,8 @@ public class PlayerController : MonoBehaviour
     public bool noNeedStress = false;
     public bool inCompteur = false;
     public bool isMoving = false;
+    private bool m_isNotInteractible;
+    
     private float timeBeforeDropDoudou = 0.3f;
     private float timeBeforeDropVeilleuse = 0.3f;
     [SerializeField] private FinalScript m_final;
@@ -283,7 +285,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-            if (m_gameManager.isPc == true)
+        if (m_gameManager.isPc == true)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -316,7 +318,7 @@ public class PlayerController : MonoBehaviour
                 if (m_pastHit.collider != null) OnRaycastExit(m_pastHit.collider);
             }
 
-
+            m_isNotInteractible = true;
             //Debug.Log(m_hit.collider.name);
 
             velocity = ((transform.position - previous).magnitude) / Time.deltaTime;
@@ -441,6 +443,7 @@ public class PlayerController : MonoBehaviour
             //Si raycast avec portillon
             if (Physics.Raycast(m_ray, out m_hit, 1, m_portillonMask))
             {
+                m_isNotInteractible = false;
                 if (isLeftHandFull == false || isRightHandFull == false)
                 {
                     if (isTwoHandFull == false)
@@ -479,6 +482,7 @@ public class PlayerController : MonoBehaviour
 
             if (Physics.Raycast(m_ray, out m_hit, 1, m_TwoHandsItemMask))
             {
+                m_isNotInteractible = false;
                 if (m_createNarrativeEvent.index == 3)
                 {
                     if (m_phone.isFirstAnswer == true)
@@ -522,6 +526,7 @@ public class PlayerController : MonoBehaviour
 
             if (Physics.Raycast(m_ray, out m_hit, 1.5f, m_doudouMask))
             {
+                m_isNotInteractible = false;
                 if (isTwoHandFull == false)
                 {
                     if (isLeftHandFull == false)
@@ -549,6 +554,7 @@ public class PlayerController : MonoBehaviour
 
             if (Physics.Raycast(m_ray, out m_hit, 2f, m_radioMask))
             {
+                m_isNotInteractible = false;
                 if (OnChair == true)
                 {
                     if (m_phone.isFirstAnswer == true)
@@ -595,6 +601,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (Physics.Raycast(m_ray, out m_hit, 2f, m_keyMask))
                 {
+                    m_isNotInteractible = false;
                     if (m_hit.collider.gameObject.GetComponent<KeyScript>())
                     {
                         m_hit.collider.gameObject.GetComponent<KeyScript>().CanTake();
@@ -607,6 +614,11 @@ public class PlayerController : MonoBehaviour
             m_myAnim.enabled = true;
         }
 
+        if (m_isNotInteractible)
+        {
+            m_UIManager.DisableUi();
+            m_UIManager.StopRaycastBefore();
+        }
 
     }
     public void NoVelocity()
@@ -656,7 +668,7 @@ public class PlayerController : MonoBehaviour
     {
         if (m_gameManager.isPaused == true)
         {
-            m_maxStress = m_currentStress;
+            m_currentStress = m_maxStress;
         }
         else
         {
@@ -725,7 +737,11 @@ public class PlayerController : MonoBehaviour
             m_UIManager.StopRaycastBefore();
             m_UIManager.DisableUi();
         }
-
+        else
+        {
+            m_UIManager.StopRaycastBefore();
+            m_UIManager.DisableUi();
+        }
     }
     //----------------------------------------------- Fonctions correspondantes au doudou et � la lampe ------------------------------------------//
 
