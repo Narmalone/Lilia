@@ -623,6 +623,7 @@ public class PlayerController : MonoBehaviour
         {
             TakeDamage(p_stressNum);
             m_stressBar.SetStress(m_currentStress);
+            m_fmodInstanceStress.setParameterByName("Stress", 10 - m_currentStress * 10 / m_maxStress);
         }
     }
 
