@@ -641,6 +641,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void ResetStress()
+    {
+        m_currentStress = m_maxStress;
+        m_stressBar.SetStress(m_currentStress);
+    }
+
     /// <summary>
     /// Modifie l'effet UI du stress sur le personnage selon une valeur donné
     /// </summary>
