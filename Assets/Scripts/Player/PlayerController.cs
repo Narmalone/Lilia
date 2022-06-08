@@ -191,7 +191,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform m_AwakePlaterPosition;
 
     public bool m_stopStress = true;
-
     private void Awake()
     {
         isCinematic = true;
@@ -201,6 +200,7 @@ public class PlayerController : MonoBehaviour
         isMoving = false;
         m_txtEvent.gameObject.SetActive(false);
         m_stopStress = true;
+        noNeedStress = true;
         m_gameManager = FindObjectOfType<GameManager>();
         m_menuManager = FindObjectOfType<MenuManager>();
         m_controls = new PlayerControls();
@@ -283,7 +283,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if (m_gameManager.isPc == true)
+            if (m_gameManager.isPc == true)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -304,12 +304,10 @@ public class PlayerController : MonoBehaviour
         if (isCinematic == false)
         {
             m_myAnim.enabled = false;
-
             m_ray = m_cam.ScreenPointToRay(Input.mousePosition);
             Debug.DrawRay(m_ray.origin, m_ray.direction, Color.black);
             if (Physics.Raycast(m_ray, out m_hit, 1f, ~(1 << gameObject.layer)))
             {
-                //Debug.Log($"Je touche avec le raycast: {m_hit.collider.name}");
                 OnRayCastHit(m_hit.collider);
                 m_pastHit = m_hit;
             }
@@ -337,7 +335,6 @@ public class PlayerController : MonoBehaviour
 
 
             if (!m_stopStress) AutoStress();
-
             m_isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheckSphere, m_groundMask);      //Cr�ation d'une sphere qui chech si le joueur touche le sol
 
             if (m_isGrounded && m_velocity.y < 0)        //Reset de la gravit� quand le joueur touche le sol
@@ -615,13 +612,6 @@ public class PlayerController : MonoBehaviour
     public void NoVelocity()
     {
         m_speed = 0;
-    }
-    public void NoNeedStress()
-    {
-        noNeedStress = true;
-        m_intenseFieldOfView = 1f;
-        m_currentStress = 0f;
-        Debug.Log("no need stress");
     }
     /// <summary>
     /// Applique le stress au autre systeme manuellement

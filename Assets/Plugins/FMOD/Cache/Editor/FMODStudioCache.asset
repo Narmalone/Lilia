@@ -98,7 +98,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Sounds.bank
   Name: Sounds
   StudioPath: bank:/Sounds
-  lastModified: 637902826997501616
+  lastModified: 637902925411739628
   FileSizes:
   - Name: Desktop
     Value: 5172928
@@ -326,7 +326,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Voices.bank
   Name: Voices
   StudioPath: bank:/Voices
-  lastModified: 637902826997740973
+  lastModified: 637902925411979013
   FileSizes:
   - Name: Desktop
     Value: 243424
@@ -406,6 +406,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-3926953845161476664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Ambiant/AmbianceInGame
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Ambiant/AmbianceInGame
+  Guid:
+    Data1: 1194049916
+    Data2: 1339397542
+    Data3: 1515260552
+    Data4: 1146389092
+  Banks:
+  - {fileID: 1363111451556931002}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 104000
 --- !u!114 &-3096248156527465333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -858,12 +885,13 @@ MonoBehaviour:
   - {fileID: 7427625102059580471}
   - {fileID: 5177814680563949983}
   - {fileID: 1029680005344084262}
+  - {fileID: -3926953845161476664}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5980052921926315069}
   StringsBanks:
   - {fileID: 4453001036209173878}
-  cacheTime: 637902826997740973
+  cacheTime: 637902925411979013
   cacheVersion: 10
 --- !u!114 &170076176237000913
 MonoBehaviour:
@@ -988,10 +1016,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637902826996324770
+  lastModified: 637902925410493017
   FileSizes:
   - Name: Desktop
-    Value: 2111680
+    Value: 3775264
   Exists: 1
 --- !u!114 &1683279064459709985
 MonoBehaviour:
@@ -1271,10 +1299,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637902826995935807
+  lastModified: 637902925409864679
   FileSizes:
   - Name: Desktop
-    Value: 3440
+    Value: 3492
   Exists: 1
 --- !u!114 &4584836110223669072
 MonoBehaviour:
@@ -1453,7 +1481,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637902826995885980
+  lastModified: 637902925409794822
   FileSizes:
   - Name: Desktop
     Value: 2032

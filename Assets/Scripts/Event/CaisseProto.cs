@@ -164,6 +164,7 @@ public class CaisseProto : MonoBehaviour
                 m_rbody.useGravity = true;
                 m_rbody.isKinematic = false;
                 m_sphereCollider.enabled = true;
+                m_player.isTwoHandFull = false;
                 m_player.m_speed = 1.5f;
                 m_player.hasChair = false;
                 Debug.Log("dropper la chaise car il n'est pas dans le collider du phone");

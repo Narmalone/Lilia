@@ -77,7 +77,6 @@ public class FinalScript : MonoBehaviour
         if(finalTriggered == true)
         {
             m_player.NoVelocity();
-            m_player.NoNeedStress();
             IA.transform.position = m_newWaypoint.transform.position;
         }
     }

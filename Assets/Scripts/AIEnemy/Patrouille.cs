@@ -76,6 +76,7 @@ public class Patrouille : BaseState
             }
             else
             {
+                m_sm.m_bebeAnimator.Update(0f);
                 m_sm.StartCoroutine(StopMovement());
             }
         }
@@ -114,7 +115,6 @@ public class Patrouille : BaseState
     
     private IEnumerator StopMovement()
     {
-        m_sm.m_bebeAnimator.Update(0);
         m_navAgent.isStopped = true;
         yield return new WaitForSeconds(10f);
         m_navAgent.isStopped = false;

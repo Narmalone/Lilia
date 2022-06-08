@@ -22,7 +22,12 @@ public class MouseLock : MonoBehaviour
     [SerializeField] private AudioManagerScript m_audioScript;
     public StudioEventEmitter m_sound;
     [SerializeField] private PlayerController m_player;
+    private bool soundStart = false;
 
+    private void Awake()
+    {
+        soundStart = false;
+    }
     private void Start()
     {
         m_gameManager = FindObjectOfType<GameManager>();
@@ -36,7 +41,6 @@ public class MouseLock : MonoBehaviour
             controls.Gameplay.Rotation.performed += ctx => rotateGamepad = ctx.ReadValue<Vector2>();
             controls.Gameplay.Rotation.canceled += ctx => rotateGamepad = Vector2.zero;
         }
-        m_sound.Play();
     }
 
     // Update is called once per frame
@@ -44,6 +48,7 @@ public class MouseLock : MonoBehaviour
     {
         if(m_player.isCinematic == false)
         {
+            StartAmbiantMusic();
             if (m_gameManager.isPc == true)
             {
                 float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
@@ -76,8 +81,12 @@ public class MouseLock : MonoBehaviour
       
     }
 
-    private void OnEnable()
+    public void StartAmbiantMusic()
     {
-        
+        if(soundStart == false)
+        {
+            m_sound.Play();
+            soundStart = true;
+        }
     }
 }
