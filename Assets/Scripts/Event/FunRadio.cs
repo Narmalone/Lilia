@@ -87,7 +87,6 @@ public class FunRadio : MonoBehaviour
         m_playerAnim.SetTrigger("Reset");
         m_player.isCinematic = false;
         m_player.m_stopStress = false;
-        m_player.noNeedStress = false;
         m_player.m_speed = 1.5f;
         StopCoroutine(StopPhoneCinematic());
     }

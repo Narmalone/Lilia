@@ -179,7 +179,6 @@ public class PlayerController : MonoBehaviour
     public bool isRightHandFull = false;
     public bool isTwoHandFull = false;
 
-    public bool noNeedStress = false;
     public bool inCompteur = false;
     public bool isMoving = false;
     private bool m_isNotInteractible;
@@ -202,7 +201,6 @@ public class PlayerController : MonoBehaviour
         isMoving = false;
         m_txtEvent.gameObject.SetActive(false);
         m_stopStress = true;
-        noNeedStress = true;
         m_gameManager = FindObjectOfType<GameManager>();
         m_menuManager = FindObjectOfType<MenuManager>();
         m_controls = new PlayerControls();
@@ -310,15 +308,16 @@ public class PlayerController : MonoBehaviour
             Debug.DrawRay(m_ray.origin, m_ray.direction, Color.black);
             if (Physics.Raycast(m_ray, out m_hit, 1f, ~(1 << gameObject.layer)))
             {
+                m_isNotInteractible = false;
                 OnRayCastHit(m_hit.collider);
                 m_pastHit = m_hit;
             }
             else
             {
                 if (m_pastHit.collider != null) OnRaycastExit(m_pastHit.collider);
+                m_isNotInteractible = true;
             }
 
-            m_isNotInteractible = true;
             //Debug.Log(m_hit.collider.name);
 
             velocity = ((transform.position - previous).magnitude) / Time.deltaTime;
@@ -364,6 +363,8 @@ public class PlayerController : MonoBehaviour
                 }
                 if (m_doudouIsUsed == true)
                 {
+                    Stressing(-m_StressPower);
+                    Debug.Log(m_StressPower);
                     PLAYBACK_STATE state;
                     m_fmodInstanceDoudou.getPlaybackState(out state);
                     if (state == PLAYBACK_STATE.STOPPED)
@@ -397,10 +398,7 @@ public class PlayerController : MonoBehaviour
                         timeBeforeDropDoudou = 0f;
                         DropDoudou();
                     }
-                    if (m_doudouIsUsed == true)
-                    {
-                        Stressing(-m_StressPower);
-                    }
+                   
                 }
 
                 // D�placements du joueur
@@ -417,29 +415,25 @@ public class PlayerController : MonoBehaviour
             ActiveDoudou();
             // test shader
             // decay the target intensity
-            if (noNeedStress == false)
+            if (m_targetIntensity > 0f)
             {
-                if (m_targetIntensity > 0f)
-                {
-                    m_targetIntensity = Mathf.Clamp01(m_targetIntensity - m_frequendeReduction * Time.deltaTime);
-                    m_targetIntensity = Mathf.Max(m_intensityDueToHealth.Evaluate(m_currentStress / m_maxStress), m_targetIntensity);
-                }
-
-                // intensity needs updating
-                if (m_currentIntensity != m_targetIntensity)
-                {
-                    float rate = m_targetIntensity > m_currentIntensity ? m_frequenceAttaque : m_frequenceRelache;
-                    m_currentIntensity = Mathf.MoveTowards(m_currentIntensity, m_targetIntensity, rate * Time.deltaTime);
-                }
-
-                m_intenseFieldOfView = m_currentStress / 100;
-                //Debug.Log(m_overlaySettings);
-                m_materialStress.SetFloat("_Intensity", Mathf.Lerp(0f, 2f, m_currentIntensity));
-                m_vignetteSettings.intensity.value = Mathf.Lerp(0f, m_intesiteMaxEffet, m_currentIntensity);
-                m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
+                m_targetIntensity = Mathf.Clamp01(m_targetIntensity - m_frequendeReduction * Time.deltaTime);
+                m_targetIntensity = Mathf.Max(m_intensityDueToHealth.Evaluate(m_currentStress / m_maxStress), m_targetIntensity);
             }
 
-          
+            // intensity needs updating
+            if (m_currentIntensity != m_targetIntensity)
+            {
+                float rate = m_targetIntensity > m_currentIntensity ? m_frequenceAttaque : m_frequenceRelache;
+                m_currentIntensity = Mathf.MoveTowards(m_currentIntensity, m_targetIntensity, rate * Time.deltaTime);
+            }
+
+            m_intenseFieldOfView = m_currentStress / 100;
+            //Debug.Log(m_overlaySettings);
+            m_materialStress.SetFloat("_Intensity", Mathf.Lerp(0f, 2f, m_currentIntensity));
+            m_vignetteSettings.intensity.value = Mathf.Lerp(0f, m_intesiteMaxEffet, m_currentIntensity);
+            m_dOFSettings.focusDistance.value = Mathf.Lerp(0.1f, 4f, m_intenseFieldOfView);
+
             //Si raycast avec portillon
             if (Physics.Raycast(m_ray, out m_hit, 1, m_portillonMask))
             {
@@ -578,8 +572,8 @@ public class PlayerController : MonoBehaviour
                                 else if (m_doudouIsPossessed == false)
                                 {
                                     m_stopStress = true;
-                                    noNeedStress = true;
                                     isCinematic = true;
+                                    ResetStress();
                                     m_phone.AnswerToCall();
                                     m_phone.isFirstAnswer = false;
                                     m_phoneRend.material.SetFloat("_BooleanFloat", 0f);
@@ -631,12 +625,10 @@ public class PlayerController : MonoBehaviour
     /// <param name="p_stressNum">La quantité de stress appliqué</param>
     private void Stressing(float p_stressNum)
     {
-        if (noNeedStress == false)
-        {
+       
             TakeDamage(p_stressNum);
             m_stressBar.SetStress(m_currentStress);
             m_fmodInstanceStress.setParameterByName("Stress", 10 - m_currentStress * 10 / m_maxStress);
-        }
     }
 
     /// <summary>
@@ -653,11 +645,13 @@ public class PlayerController : MonoBehaviour
             Debug.Log("stress en cours");
         }
     }
-
+    //sds
     public void ResetStress()
     {
+        m_vignetteSettings.intensity.value = 0f;
         m_currentStress = m_maxStress;
         m_stressBar.SetStress(m_currentStress);
+        m_fmodInstanceStress.setParameterByName("Stress", 10 - m_currentStress * 10 / m_maxStress);
     }
 
     /// <summary>
