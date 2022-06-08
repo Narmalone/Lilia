@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class FinalScript : MonoBehaviour
 {
     [SerializeField] private GameObject IA;
@@ -18,6 +18,8 @@ public class FinalScript : MonoBehaviour
     [SerializeField] private Transform m_cabanneDoudouTransform;
     [SerializeField] private Animator m_playerAnimator;
     [SerializeField] private RagdollScript m_ragdoll;
+
+    [SerializeField] private TextMeshProUGUI m_RunAway;
     public bool canFinal = false;
     public bool CallMobNewWaypoint = false;
     public bool finalTriggered = false;
@@ -26,6 +28,7 @@ public class FinalScript : MonoBehaviour
 
     private void Awake()
     {
+        m_RunAway.gameObject.SetActive(false);
         finalTriggered = false;
         CallMobNewWaypoint = false;
         MobInPlace = false;
@@ -83,6 +86,7 @@ public class FinalScript : MonoBehaviour
         MobInPlace = true;
         if(MobInPlace == true)
         {
+            m_RunAway.gameObject.SetActive(true);
             m_player.m_speed = 1.5f;
             m_TrigDoorActivate.SetActive(true);
         }

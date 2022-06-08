@@ -253,6 +253,7 @@ public class PuzzleGenerator : MonoBehaviour
         if (completeSolution == true && notSolutionComplete == true)
         {
             Debug.Log("puzzle ended");
+            m_txtCancelAction.gameObject.SetActive(false);
             isLocked = false;
             m_player.inCompteur = false;
             m_gameManager.canDrop = true;

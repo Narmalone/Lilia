@@ -70,6 +70,9 @@ MonoBehaviour:
   m_gameManager: {fileID: 0}
   m_respawn: {fileID: 0}
   m_final: {fileID: 0}
+  m_screamerObj: {fileID: 0}
+  m_screamerBebe: {fileID: 0}
+  m_screamerSound: {fileID: 0}
 --- !u!1 &2873547174128195188
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +102,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 913552921762042177}
-  - {fileID: 7490418579753400253}
   - {fileID: 3604433903750108470}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -126,71 +128,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!1 &8343244535192211008
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7490418579753400253}
-  - component: {fileID: 2191956299758933516}
-  - component: {fileID: 7561496971312087091}
-  m_Layer: 16
-  m_Name: EndGameBox
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &7490418579753400253
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8343244535192211008}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.131, z: 0.993}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2873547174128195182}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2191956299758933516
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8343244535192211008}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5, z: 0.5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7561496971312087091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8343244535192211008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a8e146e4470a674cb7ddee5ce88c949, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_playerMask:
-    serializedVersion: 2
-    m_Bits: 128
-  m_player: {fileID: 0}
-  m_uiManager: {fileID: 0}
-  m_animGiveDoudou: {fileID: 0}
-  m_flashRend: {fileID: 0}
-  m_menuManager: {fileID: 0}
 --- !u!1001 &1256497428592771505
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -200,7 +137,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2551988791247148167, guid: c27b479cd82c7964e83726ff688acce2, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2551988791247148167, guid: c27b479cd82c7964e83726ff688acce2, type: 3}
       propertyPath: m_LocalPosition.x

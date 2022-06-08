@@ -143,7 +143,7 @@ public class Doors : MonoBehaviour
             {
                 m_clip[1].Play();
                 m_doorController.SetTrigger(m_isOpenBackwardPortillonAnim);
-                if (m_triggLeft.isMobActivated == false || m_triggRight == false)
+                if (m_triggLeft.isMobActivated == false && m_triggRight.isMobActivated == false)
                 {
                     m_pcAnim.PlayAnimPlayerToPortillons();
                 }
@@ -153,7 +153,7 @@ public class Doors : MonoBehaviour
                 m_clip[1].Play();
                 m_doorController.SetTrigger(m_isOpenPortillonAnim);
                 m_pcAnim.canPlayAnim = true;
-                if (m_triggLeft.isMobActivated == false || m_triggRight == false)
+                if (m_triggLeft.isMobActivated == false && m_triggRight.isMobActivated == false)
                 {
                     m_pcAnim.PlayAnimPlayerToPortillons();
                 }

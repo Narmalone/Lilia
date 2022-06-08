@@ -63,6 +63,12 @@ public class Doudou : MonoBehaviour
     {
         if (m_callEvent == true)
         {
+            if (m_RootComponent.transform.position.y <= -20)
+            {
+                m_rbDoudou.transform.position = m_doudou.transform.position;
+                m_ragdoll.ActivateRagdoll();
+                Debug.Log("tp doudou");
+            }
             m_rbDoudou.isKinematic = true;
             m_rbDoudou.useGravity = false;
             m_gameManager.canPick = false;
@@ -71,6 +77,8 @@ public class Doudou : MonoBehaviour
         if(m_RootComponent.transform.position.y <= -20)
         {
             m_rbDoudou.transform.position = m_doudou.transform.position;
+            m_ragdoll.ActivateRagdoll();
+            Debug.Log("tp doudou");
         }
     }
     public void PickItem()
@@ -84,6 +92,7 @@ public class Doudou : MonoBehaviour
             uiManager.DisableUi();
             m_instancePickUp.setVolume(m_audio.volumeSound);
             m_instancePickUp.start();
+            m_ragdoll.DisableRagdoll();
         }
         else
         {
@@ -109,14 +118,14 @@ public class Doudou : MonoBehaviour
         m_instanceDrop.start();
 
     }
+    //sd
     public void CallEventEnded()
     {
         m_callEventEnded = true;
         if(m_callEventEnded == true)
         {
-            m_ragdoll.DisableRagdoll();
+            m_ragdoll.ActivateRagdoll();
             Debug.Log("l'event est fini");
-            //m_boxDoudouColider.enabled = true;
             m_callEvent = false;
             m_gameManager.canPick = true;
             TakeBeforeChase = true;

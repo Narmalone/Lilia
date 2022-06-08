@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class ScriptGiveDoudou : MonoBehaviour
 {
+    //
     [SerializeField] private LayerMask m_playerMask;
     [SerializeField] private PlayerController m_player;
     [SerializeField] private UiManager m_uiManager;
     [SerializeField] private Animator m_animGiveDoudou;
     [SerializeField] private GameObject m_walkhands;
-    [SerializeField] private GameObject m_flashRend;
     [SerializeField] private MenuManager m_menuManager;
-  
+    [SerializeField] private GameManager m_gameManager;
+    [SerializeField] private Animator m_playerAnimator;
     private void OnTriggerStay(Collider other)
     {
         if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
@@ -38,12 +39,13 @@ public class ScriptGiveDoudou : MonoBehaviour
     {
         m_animGiveDoudou.gameObject.SetActive(true);
         m_walkhands.SetActive(false);
-        m_player.NoNeedStress();
+        m_playerAnimator.SetTrigger("GiveElDoudou");
         m_player.NoVelocity();
         m_player.isCinematic = true;
         m_uiManager.DisableUi();
         m_animGiveDoudou.SetTrigger("GiveDoudou");
         yield return new WaitForSeconds(5f);
+        m_gameManager.PlayerNotIngame();
         m_menuManager.OnCredits();
     }
 }

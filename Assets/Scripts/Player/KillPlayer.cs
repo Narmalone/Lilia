@@ -68,7 +68,7 @@ public class KillPlayer : MonoBehaviour
 
     IEnumerator CorouBeforeDeath()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.3f);
         m_screamerObj.SetActive(false);
         StopCoroutine(CorouBeforeDeath());
     }

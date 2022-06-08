@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class FinalDoorScript : MonoBehaviour
 {
     [SerializeField] private LayerMask m_playerMask;
@@ -21,6 +21,7 @@ public class FinalDoorScript : MonoBehaviour
     [SerializeField] private Animator m_bebePls;
     [SerializeField] private GameObject m_ColliderMobToGive;
 
+    [SerializeField] private TextMeshProUGUI m_RunAway;
     private void Awake()
     {
         gameObject.SetActive(false);
@@ -37,6 +38,7 @@ public class FinalDoorScript : MonoBehaviour
             m_EndDoorAnim.SetTrigger("isFinalClose");
             DoorFinal.layer = 13;
             m_thisBox.enabled = false;
+            m_RunAway.gameObject.SetActive(false);
             m_gameManager.canPick = true;
             StartCoroutine(CorouBeforeSpawn());
         }
@@ -44,7 +46,7 @@ public class FinalDoorScript : MonoBehaviour
     //dsds
     IEnumerator CorouBeforeSpawn()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         IaUnable.SetActive(false);
         IAEndAnim.SetActive(true);
         m_bebePls.SetTrigger("LastAnim");
