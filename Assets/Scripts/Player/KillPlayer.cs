@@ -45,7 +45,6 @@ public class KillPlayer : MonoBehaviour
             if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
             {
                 m_screamerObj.SetActive(true);
-                m_screamerBebe.Update(2);
                 m_screamerBebe.SetTrigger("Screamer");
                 m_screamerSound.Play();
                 m_respawn.makeRespawn = true;
@@ -54,7 +53,6 @@ public class KillPlayer : MonoBehaviour
             }
             if ((m_doudouMask.value & (1 << other.gameObject.layer)) > 0)
             {
-                m_screamerBebe.Update(2);
                 m_screamerObj.SetActive(true);
                 m_screamerBebe.SetTrigger("Screamer");
                 m_screamerSound.Play();
