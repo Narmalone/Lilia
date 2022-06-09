@@ -2426,6 +2426,24 @@ Transform:
   m_Father: {fileID: 155140660}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &820923069 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2822401301776491333, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+  m_PrefabInstance: {fileID: 1422353500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &820923070
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820923069}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.06, y: 1.21, z: 1.75}
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!1 &823322216 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 504269944826168459, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -8544,6 +8562,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2612570054769156785, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615945358249528104, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_Convex
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2622347899448172477, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -15923,6 +15945,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 250606469}
     - target: {fileID: 1206665905539447027, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
+      propertyPath: m_qteManager
+      value: 
+      objectReference: {fileID: 1872852326}
+    - target: {fileID: 1206665905539447027, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
       propertyPath: m_gameManager
       value: 
       objectReference: {fileID: 843970910}
@@ -15946,6 +15972,10 @@ PrefabInstance:
       propertyPath: m_screamerSound
       value: 
       objectReference: {fileID: 865760544}
+    - target: {fileID: 1206665905539447027, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
+      propertyPath: m_bebeGameObject
+      value: 
+      objectReference: {fileID: 576080450}
     - target: {fileID: 1206665905539447027, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
       propertyPath: m_doudouMask.m_Bits
       value: 1024
@@ -25580,7 +25610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_intesiteMaxEffet
-      value: 2
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_timePlayerScript

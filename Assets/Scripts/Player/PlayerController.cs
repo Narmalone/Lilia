@@ -520,6 +520,7 @@ public class PlayerController : MonoBehaviour
 
             if (Physics.Raycast(m_ray, out m_hit, 2f, m_doudouMask))
             {
+                Debug.Log("Je suis en train de touché le doudou");
                 m_isNotInteractible = false;
                 if (isTwoHandFull == false)
                 {
@@ -548,6 +549,7 @@ public class PlayerController : MonoBehaviour
 
             if (Physics.Raycast(m_ray, out m_hit, 2f, m_radioMask))
             {
+                Debug.Log("Je suis en train de touché le tel");
                 m_isNotInteractible = false;
                 if (OnChair == true)
                 {

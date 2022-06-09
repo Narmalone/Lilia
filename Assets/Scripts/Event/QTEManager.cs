@@ -230,4 +230,13 @@ public class QTEManager : MonoBehaviour
         }
     }
 
+    public void StopQTE()
+    {
+        m_img.SetActive(false);
+        m_txtCancelAction.gameObject.SetActive(false);
+        m_txtToModify.gameObject.SetActive(false);
+        m_qteStarted = false;
+        isInQte = false;
+    }
+
 }

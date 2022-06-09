@@ -18,6 +18,8 @@ public class KillPlayer : MonoBehaviour
     [SerializeField] private GameObject m_walkHandsUi;
     [SerializeField] private Animator m_screamerBebe;
     [SerializeField] private StudioEventEmitter m_screamerSound;
+    [SerializeField] private GameObject m_bebeGameObject;
+    [SerializeField] private QTEManager m_qteManager;
 
     private void Awake()
     {
@@ -68,6 +70,8 @@ public class KillPlayer : MonoBehaviour
         m_gameManager.isDead = true;
         m_respawn.makeRespawn = true;
         m_menuManager.OnDeath();
+        m_qteManager.StopQTE();
+        m_bebeGameObject.transform.position = new Vector3(-1.52199996f, -0.421999991f, -0.67900002f);
         StopCoroutine(CorouBeforeDeath());
     }
 }
