@@ -13,8 +13,8 @@ public class VoiceEvents : MonoBehaviour
     public float valueToDisplay;
     private GameManager m_gameManager;
 
-    Color m_selectedColor = Color.yellow;
-    Color m_unselectedColor = Color.white;
+    [SerializeField] Color m_selectedColor;
+    Color m_unselectedColor = Color.black;
     private void OnEnable()
     {
         if (m_uiEvent == null) return;

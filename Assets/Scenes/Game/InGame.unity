@@ -1743,8 +1743,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5544722, y: 0.28571177, z: 1}
+  m_Center: {x: 0.2227639, y: 0.35714412, z: 0}
 --- !u!114 &500086751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15009,6 +15009,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0313514, y: 1.3000004, z: 1.5000004}
   m_Center: {x: 0.115676105, y: -8.4165053e-13, z: 0.7500002}
+--- !u!114 &2045100453 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4075055852178200654, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+  m_PrefabInstance: {fileID: 4075055851583946303}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2058765441 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4162808390626456002, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
@@ -21017,6 +21028,10 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4075055851564638453, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 2045100453}
     - target: {fileID: 4075055851564638453, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
