@@ -47,7 +47,6 @@ public class KillPlayer : MonoBehaviour
                 m_screamerObj.SetActive(true);
                 m_screamerBebe.SetTrigger("Screamer");
                 m_screamerSound.Play();
-                m_respawn.makeRespawn = true;
                 m_walkHandsUi.SetActive(false);
                 StartCoroutine(CorouBeforeDeath());
             }
@@ -56,7 +55,6 @@ public class KillPlayer : MonoBehaviour
                 m_screamerObj.SetActive(true);
                 m_screamerBebe.SetTrigger("Screamer");
                 m_screamerSound.Play();
-                m_respawn.makeRespawn = true;
                 m_walkHandsUi.SetActive(false);
                 StartCoroutine(CorouBeforeDeath());
             }
@@ -67,8 +65,9 @@ public class KillPlayer : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         m_screamerObj.SetActive(false);
-        m_menuManager.OnDeath();
         m_gameManager.isDead = true;
+        m_respawn.makeRespawn = true;
+        m_menuManager.OnDeath();
         StopCoroutine(CorouBeforeDeath());
     }
 }

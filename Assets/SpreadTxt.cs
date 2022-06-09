@@ -12,6 +12,7 @@ public class SpreadTxt : MonoBehaviour
 
     private void Awake()
     {
+        GetComponent<BoxCollider>().enabled = false;
         m_txtToDisplay.gameObject.SetActive(false);
     }
     private void OnTriggerEnter(Collider other)
