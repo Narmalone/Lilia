@@ -124,17 +124,13 @@ public class Doors : MonoBehaviour
         if (isDoor == true)
         {
             m_clip[0].Play();
+            m_occlusion.AddInstance(m_clip[0].EventInstance);
             m_doorController.SetTrigger(m_isOpenDoorAnim);
             isActivable = false;
             isOpen = true;
             gameObject.layer = default;
             m_pcAnim.canPlayAnim = true;
             m_pcAnim.PlayAnimPlayerToPortillons();
-            EventInstance fmodInstance = RuntimeManager.CreateInstance(m_fmodEventPorteOpen.Guid);
-            RuntimeManager.AttachInstanceToGameObject(fmodInstance, gameObject.transform);
-            fmodInstance.start();
-            m_occlusion.AddInstance(fmodInstance);
-            fmodInstance.release();
         }
         //Si c'est un portillon
         else if (isDoor == false)

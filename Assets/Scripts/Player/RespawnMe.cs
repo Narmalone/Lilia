@@ -25,6 +25,7 @@ public class RespawnMe : MonoBehaviour
     [SerializeField] private GameManager m_gameManager;
     private float timeToWait = 1f;
     [SerializeField] private GameObject m_handsUi;
+    
     private void Awake()
     {
         makeRespawn = true;
@@ -46,7 +47,6 @@ public class RespawnMe : MonoBehaviour
             m_player.transform.position = m_playercheckpoints.transform.position;
             if (makeRespawn == true)
             {
-                Debug.Log("lancer chrono");
                 StartChrono();
             }
         }

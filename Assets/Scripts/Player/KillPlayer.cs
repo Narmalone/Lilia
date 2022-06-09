@@ -14,6 +14,8 @@ public class KillPlayer : MonoBehaviour
     [SerializeField] private FinalScript m_final;
     private Collider m_currentPortillon;
 
+    private bool m_screamerDone;
+
     [SerializeField] private GameObject m_screamerObj;
     [SerializeField] private GameObject m_walkHandsUi;
     [SerializeField] private Animator m_screamerBebe;
@@ -31,6 +33,7 @@ public class KillPlayer : MonoBehaviour
         {
             m_gameManager = FindObjectOfType<GameManager>();
         }
+        m_screamerDone = true;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -43,33 +46,29 @@ public class KillPlayer : MonoBehaviour
         }
         if(m_final.finalTriggered == false)
         {
-            if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
+            if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0 && m_screamerDone)
             {
                 m_screamerObj.SetActive(true);
                 m_screamerBebe.SetTrigger("Screamer");
+                Debug.Log("Screamer Maintenant");
                 m_screamerSound.Play();
                 m_walkHandsUi.SetActive(false);
+                m_screamerDone = false;
                 StartCoroutine(CorouBeforeDeath());
-            }
-            if ((m_doudouMask.value & (1 << other.gameObject.layer)) > 0)
-            {
-                m_screamerObj.SetActive(true);
-                m_screamerBebe.SetTrigger("Screamer");
-                m_screamerSound.Play();
-                m_walkHandsUi.SetActive(false);
-                StartCoroutine(CorouBeforeDeath());
+                
             }
         }
     }
 
     IEnumerator CorouBeforeDeath()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(.5f);
         m_screamerObj.SetActive(false);
         m_gameManager.isDead = true;
         m_respawn.makeRespawn = true;
         m_menuManager.OnDeath();
         m_qteManager.StopQTE();
+        m_screamerDone = true;
         StopCoroutine(CorouBeforeDeath());
     }
 }

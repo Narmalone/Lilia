@@ -364,7 +364,6 @@ public class PlayerController : MonoBehaviour
                 if (m_doudouIsUsed == true)
                 {
                     Stressing(-m_StressPower);
-                    Debug.Log(m_StressPower);
                     PLAYBACK_STATE state;
                     m_fmodInstanceDoudou.getPlaybackState(out state);
                     if (state == PLAYBACK_STATE.STOPPED)
@@ -520,7 +519,6 @@ public class PlayerController : MonoBehaviour
 
             if (Physics.Raycast(m_ray, out m_hit, 2f, m_doudouMask))
             {
-                Debug.Log("Je suis en train de touché le doudou");
                 m_isNotInteractible = false;
                 if (isTwoHandFull == false)
                 {
@@ -530,7 +528,6 @@ public class PlayerController : MonoBehaviour
                         {
                             m_doudouRend.material.SetFloat("_BooleanFloat", 1f);
                             m_UIManager.TakableDoudou();
-                            Debug.Log("float le material à true");
                             TakeDoudou();
                         }
                         else
@@ -549,7 +546,6 @@ public class PlayerController : MonoBehaviour
 
             if (Physics.Raycast(m_ray, out m_hit, 2f, m_radioMask))
             {
-                Debug.Log("Je suis en train de touché le tel");
                 m_isNotInteractible = false;
                 if (OnChair == true)
                 {

@@ -7,7 +7,7 @@ public class deathTxt : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI m_txtToModify;
 
-    [SerializeField] private float m_desiredAlpha = 1f; //Alpha désiré entre 0 et 1
+    [SerializeField] private float m_desiredAlpha = 1f; //Alpha dï¿½sirï¿½ entre 0 et 1
     [SerializeField] private float m_currentAlpha = 0f; //Alpha actuelle
     [SerializeField] private float speedToDisplayValue = 0.8f;
 
@@ -29,7 +29,6 @@ public class deathTxt : MonoBehaviour
     {
         OnFade();
         m_txtToModify.alpha = m_currentAlpha;
-        Debug.Log("dans l'update");
     }
     public void OnFade()
     {

@@ -41,7 +41,6 @@ public class FirstPersonOcclusion : MonoBehaviour
         EventDescription ya;
         p_instance.getDescription(out ya);
         AudioDes.Add(ya);
-        Debug.Log("J'add une instance");
     }
 
     public void RemoveInstance(int index)
