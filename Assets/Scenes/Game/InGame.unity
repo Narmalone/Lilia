@@ -504,6 +504,11 @@ Transform:
   m_Father: {fileID: 358116800}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &182768576 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 782587372394947782, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+  m_PrefabInstance: {fileID: 4075055851583946303}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &187944628 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3577735793551655657, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -1313,7 +1318,7 @@ MonoBehaviour:
   m_cabanneDoudouTransform: {fileID: 1591458737}
   m_playerAnimator: {fileID: 465092766}
   m_ragdoll: {fileID: 1686053731}
-  m_RunAway: {fileID: 691810592}
+  m_RunAway: {fileID: 182768576}
   canFinal: 0
   CallMobNewWaypoint: 0
   finalTriggered: 0
@@ -2251,17 +2256,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -143411984324922010, guid: b3a62833f6109e04ebb183642c4b060a, type: 3}
---- !u!114 &691810592 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6874977334065097579, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
-  m_PrefabInstance: {fileID: 4075055851583946303}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &710535065 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5124371216436277265, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -2880,7 +2874,7 @@ MonoBehaviour:
   m_bebePls: {fileID: 3053715015945025741}
   m_ColliderMobToGive: {fileID: 4716505358451393389}
   m_eventEmitterCry: {fileID: 1004652669}
-  m_RunAway: {fileID: 691810592}
+  m_RunAway: {fileID: 182768576}
   m_fmodEventChair:
     Guid:
       Data1: 128474044
