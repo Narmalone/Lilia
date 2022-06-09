@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RespawnMe : MonoBehaviour
 {
@@ -36,16 +37,12 @@ public class RespawnMe : MonoBehaviour
     {
         Awake();
     }
-    private void Update()
-    {
-       
-    }
     private void LateUpdate()
     {
         if (m_gameManager.isDead == true)
         {
             m_gameManager.isPc = false;
-            m_iaTransform.position = m_iaCheckpoint.position;
+            m_iaTransform.gameObject.GetComponent<NavMeshAgent>().Warp(m_iaCheckpoint.position);
             m_player.transform.position = m_playercheckpoints.transform.position;
             if (makeRespawn == true)
             {
@@ -69,6 +66,7 @@ public class RespawnMe : MonoBehaviour
                 m_gameManager.isPc = true;
                 Respawn();
                 makeRespawn = false;
+                m_handsUi.SetActive(true);
                 Debug.Log("mort et appuie sur une touche");
             }
         }
