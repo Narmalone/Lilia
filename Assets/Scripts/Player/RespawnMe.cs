@@ -23,6 +23,7 @@ public class RespawnMe : MonoBehaviour
     public bool isNextCheckpoint = false;
     [SerializeField] private GameManager m_gameManager;
     private float timeToWait = 1f;
+    [SerializeField] private GameObject m_handsUi;
     private void Awake()
     {
         makeRespawn = true;
@@ -101,5 +102,6 @@ public class RespawnMe : MonoBehaviour
         m_menuManager.OnRespawn();
         m_gameManager.isDead = false;
         timeToWait = 1f;
+        m_handsUi.SetActive(true);
     }
 }

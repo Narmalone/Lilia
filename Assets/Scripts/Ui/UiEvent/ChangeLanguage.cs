@@ -11,8 +11,8 @@ public class ChangeLanguage : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_txtToModify;
 
     private GameManager m_gameManager;
-    Color m_selectedColor = Color.yellow;
-    Color m_unselectedColor = Color.white;
+    [SerializeField] Color m_selectedColor;
+    Color m_unselectedColor = Color.black;
     private void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();

@@ -10,8 +10,8 @@ public class BrightnessScript : MonoBehaviour
     [SerializeField] private AssetMenuScriptValue m_uiEvent;
     [SerializeField] private TextMeshProUGUI m_txtToModify;
 
-    Color m_selectedColor = Color.yellow;
-    Color m_unselectedColor = Color.white;
+    [SerializeField] Color m_selectedColor;
+    Color m_unselectedColor = Color.black;
 
     private void OnDisable()
     {

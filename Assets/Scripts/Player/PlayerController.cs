@@ -518,7 +518,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (Physics.Raycast(m_ray, out m_hit, 1.5f, m_doudouMask))
+            if (Physics.Raycast(m_ray, out m_hit, 2f, m_doudouMask))
             {
                 m_isNotInteractible = false;
                 if (isTwoHandFull == false)
@@ -653,6 +653,13 @@ public class PlayerController : MonoBehaviour
         m_fmodInstanceStress.setParameterByName("Stress", 10 - m_currentStress * 10 / m_maxStress);
     }
 
+    public void SetStress()
+    {
+        m_vignetteSettings.intensity.value = 1f;
+        m_currentStress = 1f;
+        m_stressBar.SetStress(m_currentStress);
+        m_fmodInstanceStress.setParameterByName("Stress", 10 - m_currentStress * 10 / m_maxStress);
+    }
     /// <summary>
     /// Modifie l'effet UI du stress sur le personnage selon une valeur donné
     /// </summary>

@@ -25,12 +25,13 @@ public class FinalDoorScript : MonoBehaviour
 
     [SerializeField] private StudioEventEmitter m_eventEmitterCry;
     
-    [SerializeField] private TextMeshProUGUI m_RunAway;
+    [SerializeField] private GameObject m_RunAway;
     [SerializeField]
     private EventReference m_fmodEventChair;
     [SerializeField]
     private Transform m_soundPlace;
     [SerializeField] private FirstPersonOcclusion m_occlusion;
+    [SerializeField] private PlayerController m_player;
     private void Awake()
     {
         gameObject.SetActive(false);
@@ -47,8 +48,9 @@ public class FinalDoorScript : MonoBehaviour
             DoorFinal.layer = 13;
             m_thisBox.enabled = false;
             other.gameObject.GetComponentInChildren<MouseLock>().m_sound.EventInstance.setParameterByName("Parameter 1",0);
-            m_RunAway.gameObject.SetActive(false);
+            m_RunAway.SetActive(false);
             m_gameManager.canPick = true;
+            m_player.SetStress();
             StartCoroutine(CorouBeforeSpawn());
         }
     }
@@ -56,6 +58,7 @@ public class FinalDoorScript : MonoBehaviour
     IEnumerator CorouBeforeSpawn()
     {
         yield return new WaitForSeconds(3f);
+        m_RunAway.SetActive(false);
         EventInstance m_fmodInstance = RuntimeManager.CreateInstance(m_fmodEventChair.Guid);
         RuntimeManager.AttachInstanceToGameObject(m_fmodInstance, m_soundPlace);
         m_fmodInstance.start();
