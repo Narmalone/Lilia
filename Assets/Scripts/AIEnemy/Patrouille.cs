@@ -103,6 +103,7 @@ public class Patrouille : BaseState
             {
                 m_navAgent.isStopped = false;
                 stateMachine.ChangeState(m_sm.m_chasseState);
+                m_sm.m_bebeAnimator.SetTrigger("Run");
                 m_sm.m_mouselock.m_sound.EventInstance.setParameterByName("Parameter 1",1);
                 Debug.Log("change state");
             }
