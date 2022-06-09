@@ -34,39 +34,10 @@ public class Patrouille : BaseState
         
         if(m_sm.m_final.CallMobNewWaypoint == false)
         {
-
             m_sm.m_bebeAnimator.SetTrigger("Walk");
+        }
 
-            if (ReferenceEquals(m_target, m_sm.m_player.gameObject) == false)
-            {
-                if (GameObject.ReferenceEquals(m_target, m_sm.m_player.gameObject) == false)
-                {
-                    m_target = m_sm.m_player.gameObject;
-                }
-            }
-            else
-            {
-                if (GameObject.ReferenceEquals(m_target, m_sm.m_doudou.gameObject) == false)
-                {
-                    m_target = m_sm.m_doudou.gameObject;
-                }
-            }
-        }
-        else
-        {
-            if (ReferenceEquals(m_target, m_sm.m_doudou.gameObject) == false)
-            {
-                m_target = m_sm.m_noTarget;
-                Debug.Log("no target");
-            }
-            if (ReferenceEquals(m_target, m_sm.m_player.gameObject) == false)
-            {
-                m_target = m_sm.m_noTarget;
-                Debug.Log("no target");
-            }
-        }
-       
-        
+
         if (Vector3.Distance(m_sm.transform.position, m_waypoints.GetCurrentPoint().transform.position) <= 1)
         {
             if (UnityEngine.Random.Range(0, 2) == 0)
