@@ -32,20 +32,7 @@ public class Chasse : BaseState
         base.UpdateLogic();
 
         m_sm.m_bebeAnimator.SetTrigger("Run");
-        if (m_sm.m_player.m_doudouIsPossessed == true)
-        {
-            if (ReferenceEquals(m_target, m_sm.m_player.gameObject) == false)
-            {
-                m_target = m_sm.m_player.gameObject;
-            }
-        }
-        else
-        {
-            if (ReferenceEquals(m_target, m_sm.m_doudou.gameObject) == false)
-            {
-                m_target = m_sm.m_doudou.gameObject;
-            }
-        }
+        
         
         m_sm.m_pourcentSpeed += 0.5f*Time.deltaTime;
         if (m_sm.m_pourcentSpeed >= 1)

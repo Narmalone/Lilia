@@ -19,10 +19,7 @@ public class AISM : StateMachine
     [SerializeField, Tooltip("Reference script waypoints")] private Waypoints m_waypoints;
     [SerializeField, Tooltip("Instance du doudou")] private GameObject m_target;
     [SerializeField, Tooltip("Event détécté")] private Event1 m_triggeredEvent;
-    
-    [SerializeField, Tooltip("GO Joueur")] public PlayerController m_player;
-    [SerializeField, Tooltip("GO DouDou")] public Doudou m_doudou;
-    
+
     [SerializeField, Tooltip("Distance de détéction du bebs")]
     public float m_distanceDetection;
 
@@ -34,10 +31,8 @@ public class AISM : StateMachine
     
     [NonSerialized] public float m_pourcentSpeed = 1f;
 
-    public float m_basicIaSpeed = 5f;
-    public float m_speedAfterSpawn = 1f;
-    
     public AnimationCurve m_courbeLimace;
+    
     [SerializeField]
     private FMODUnity.EventReference m_fmodEventRespiration;
     
@@ -68,14 +63,6 @@ public class AISM : StateMachine
         m_path = new NavMeshPath();
         if(m_final.CallMobNewWaypoint == false)
         {
-            if (m_player.m_doudouIsPossessed == true)
-            {
-                m_target = m_player.gameObject;
-            }
-            else
-            {
-                m_target = m_doudou.gameObject;
-            }
         }
         else
         {
