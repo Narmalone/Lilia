@@ -29,7 +29,8 @@ public class CaisseProto : MonoBehaviour
     [SerializeField] private BoxCollider m_boxPhone;
     [SerializeField] private StudioEventEmitter m_eventEmitterPickup;
     [SerializeField] private StudioEventEmitter m_eventEmitterDrop;
-        
+
+    [SerializeField] private GameManager m_gameManager;
     private float m_pourcentSpeed;
 
     public bool canTake;
@@ -51,6 +52,8 @@ public class CaisseProto : MonoBehaviour
         playerCanLock = false;
         isPlayerLocked = false;
         hasPhoneAnwser = false;
+
+        m_gameManager = FindObjectOfType<GameManager>();
     }
     
     private void OnValidate()
@@ -66,8 +69,6 @@ public class CaisseProto : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
-
         if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
         {
             canTake = true;
@@ -163,20 +164,8 @@ public class CaisseProto : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (inPhoneBox == false && m_player.hasChair && gameObject.GetComponentInParent(typeof(Transform)).GetComponentInParent(typeof(MouseLock)) )
-            {
-                m_thisGameObject.transform.parent = null;
-                m_rbody.useGravity = true;
-                m_rbody.isKinematic = false;
-                m_sphereCollider.enabled = true;
-                m_player.isTwoHandFull = false;
-                m_player.m_speed = 1.5f;
-                m_player.hasChair = false;
-                Debug.Log("dropper la chaise car il n'est pas dans le collider du phone");
-                m_player.isTwoHandFull = false;
-                m_eventEmitterDrop.Play();
-            }
-            else if (m_player.hasChair && gameObject.GetComponentInParent(typeof(Transform)).GetComponentInParent(typeof(MouseLock)))
+          
+            if (inPhoneBox == true && m_player.hasChair == true && gameObject.GetComponentInParent(typeof(Transform)).GetComponentInParent(typeof(MouseLock)))
             {
                 m_thisGameObject.transform.parent = null;
                 m_thisGameObject.transform.rotation = Quaternion.Euler(-90f, m_finalPosition.transform.localRotation.y, transform.localRotation.z);
@@ -186,7 +175,25 @@ public class CaisseProto : MonoBehaviour
                 m_player.hasChair = false;
                 m_boxPhone.enabled = false;
                 chairLocked = true;
+                m_gameManager.canDrop = true;
+                m_gameManager.canPick = true;
                 m_eventEmitterDrop.Play();
+                Debug.Log("droppé dans la boxe");
+            }
+
+            if (inPhoneBox == false && m_player.hasChair == true && gameObject.GetComponentInParent(typeof(Transform)).GetComponentInParent(typeof(MouseLock)) )
+            {
+                m_thisGameObject.transform.parent = null;
+                m_rbody.useGravity = true;
+                m_rbody.isKinematic = false;
+                m_sphereCollider.enabled = true;
+                m_player.isTwoHandFull = false;
+                m_player.m_speed = 1.5f;
+                m_player.hasChair = false;
+                m_gameManager.canDrop = true;
+                m_gameManager.canPick = true;
+                m_eventEmitterDrop.Play();
+                Debug.Log("pas droppé dans la boxe");
             }
         }
 
