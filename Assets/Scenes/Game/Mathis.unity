@@ -426,6 +426,7 @@ MonoBehaviour:
     m_Bits: 128
   m_lightReference: {fileID: 0}
   m_veilleuseLight: {fileID: 39954714}
+  m_audio: {fileID: 0}
   flashlight: {fileID: 39954713}
   FlashlightContainer: {fileID: 0}
   m_rbodyFlashlight: {fileID: 39954718}
@@ -496,8 +497,8 @@ GameObject:
   m_Component:
   - component: {fileID: 46744211}
   - component: {fileID: 46744210}
-  - component: {fileID: 46744209}
   - component: {fileID: 46744208}
+  - component: {fileID: 46744209}
   m_Layer: 5
   m_Name: Canvas Cam (1)
   m_TagString: Untagged
@@ -538,14 +539,20 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &46744209
-AudioListener:
+--- !u!114 &46744209
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 46744207}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
 --- !u!20 &46744210
 Camera:
   m_ObjectHideFlags: 0
@@ -755,6 +762,7 @@ MonoBehaviour:
   m_lowerFontSize: 50
   m_speedToGrow: 15
   m_switchToward: 0
+  m_txtAnimator: {fileID: 0}
 --- !u!114 &154363499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3298,9 +3306,8 @@ MonoBehaviour:
   gotKey: 0
   isDead: 0
   canPick: 1
+  canDrop: 1
   isPlayerInGame: 0
-  m_doudouUi: {fileID: 0}
-  m_veilleuseUi: {fileID: 0}
 --- !u!1 &876996942
 GameObject:
   m_ObjectHideFlags: 0
@@ -5118,18 +5125,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManager: {fileID: 0}
   m_gameManager: {fileID: 0}
-  m_stairsMask:
+  m_groundMask:
     serializedVersion: 2
-    m_Bits: 32768
+    m_Bits: 0
   m_doudou: {fileID: 1322355338}
   m_emplacementDoudou: {fileID: 0}
   m_appear: {fileID: 0}
   m_qte: {fileID: 0}
+  m_rbDoudou: {fileID: 0}
   m_stepOffset: 0.5
   m_callEvent: 0
   m_callEventEnded: 0
   TakeBeforeChase: 0
   m_waypointsEvent: {fileID: 0}
+  m_clips: {fileID: 0}
   m_fmodEventPickUp:
     Guid:
       Data1: -2060455845
@@ -5144,7 +5153,10 @@ MonoBehaviour:
       Data3: -672511818
       Data4: 1081390729
     Path: event:/SoundsEvent/RamassageEtLachage/Doudou/DropDoudou
-  m_asset: {fileID: 0}
+  m_audio: {fileID: 0}
+  myRend: {fileID: 0}
+  m_RootComponent: {fileID: 0}
+  m_ragdoll: {fileID: 0}
 --- !u!137 &1322355376
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -5835,13 +5847,6 @@ MonoBehaviour:
       Data3: 1328284064
       Data4: -666646400
     Path: event:/SoundsEvent/Baby/BabyDragging
-  m_fmodEventContinuous:
-    Guid:
-      Data1: -1473439197
-      Data2: 1256902212
-      Data3: 1837457826
-      Data4: 1537863522
-    Path: event:/SoundsEvent/Baby/ContinuousZblob
   m_fmodEventSonBB:
     Guid:
       Data1: 1694986241
@@ -5850,6 +5855,10 @@ MonoBehaviour:
       Data4: 26522174
     Path: event:/SoundsEvent/Baby/Crying
   m_occlusion: {fileID: 0}
+  m_final: {fileID: 0}
+  m_noTarget: {fileID: 0}
+  m_bebeAnimator: {fileID: 0}
+  m_mouselock: {fileID: 0}
 --- !u!1 &1679807398
 GameObject:
   m_ObjectHideFlags: 0
@@ -6023,11 +6032,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5687f74af9048cd40af80a34cb6a7d0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_final: {fileID: 0}
   m_listWaypoints:
   - {fileID: 1934962090}
   - {fileID: 1912367910}
   - {fileID: 1143648992}
+  m_finalWaypoints: []
   m_waypointsPref: {fileID: 0}
+  m_ai: {fileID: 0}
 --- !u!4 &1698167993
 Transform:
   m_ObjectHideFlags: 0
@@ -6359,18 +6371,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14263e7f0f617cc41bd9974875d5d831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_triggerEvent: {fileID: 11400000, guid: 6a8176fd5bccf6340a7ee89e399fb202, type: 2}
   m_thisGameObject: {fileID: 1759219527}
+  m_player: {fileID: 0}
+  m_uiManager: {fileID: 0}
   m_twoHandsContainer: {fileID: 1116367278}
+  m_finalPosition: {fileID: 0}
+  m_playerLocked: {fileID: 0}
   m_playerMask:
     serializedVersion: 2
     m_Bits: 128
+  m_phone: {fileID: 0}
+  m_twoHandsMask:
+    serializedVersion: 2
+    m_Bits: 0
   m_rangeCol: 1.38
   m_speedPourcentReduction: 71.8
-  m_positionFinal: {x: 0.084, y: 0.455, z: 8.8}
-  m_rotationFinal: {x: 0, y: 0, z: 0}
-  onHand: 0
+  m_boxPhone: {fileID: 0}
+  m_eventEmitterPickup: {fileID: 0}
+  m_eventEmitterDrop: {fileID: 0}
   canTake: 0
+  isPlayerLocked: 0
+  hasPhoneAnwser: 0
 --- !u!54 &1759219529
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7364,15 +7385,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a051016cfa00d1344ac9777c39dab6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_playingGameObject: {fileID: 0}
   m_indicInteraction: {fileID: 0}
   m_UILampe: {fileID: 0}
   m_UIDoudou: {fileID: 0}
-  m_objDoudouUi: {fileID: 0}
-  m_objVeilleuseUi: {fileID: 0}
+  m_player: {fileID: 0}
+  indexAnimMax: 2
   m_leftClickSprite: {fileID: 0}
+  m_leftClickNotPossibleSprite: {fileID: 0}
+  m_rightClickNotPossibleSprite: {fileID: 0}
   m_rightClickSprite: {fileID: 0}
   m_EKey: {fileID: 0}
+  m_EKeyNotInteract: {fileID: 0}
+  m_dontInteract: {r: 0, g: 0, b: 0, a: 0}
+  m_possessed: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &2066910957
 Transform:
   m_ObjectHideFlags: 0

@@ -1714,6 +1714,7 @@ GameObject:
   m_Component:
   - component: {fileID: 500086749}
   - component: {fileID: 500086750}
+  - component: {fileID: 500086751}
   m_Layer: 0
   m_Name: ColliderChair
   m_TagString: Untagged
@@ -1750,6 +1751,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.66257703, y: 0.28571177, z: 1}
   m_Center: {x: 0.16871148, y: 0.35714412, z: 0}
+--- !u!114 &500086751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500086748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3a7b798cb961e40a4d0233b3249844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  m_txtToDisplay: {fileID: 559534481}
+  m_player: {fileID: 494317833}
+  m_txt: "you\u2019re too small to reach the phone"
 --- !u!1 &515355857 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8881777182198064248, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
@@ -1825,6 +1844,17 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &559534481 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3829117888078164899, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+  m_PrefabInstance: {fileID: 4075055851583946303}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &568205761 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4123208479979067757, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -20180,6 +20210,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3829117888078164899, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 44d6811953faeca42aaf9ed8394e2d79, type: 2}
+    - target: {fileID: 3829117888078164899, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6001756275928439646, guid: 44d6811953faeca42aaf9ed8394e2d79, type: 2}
     - target: {fileID: 3832949664286737617, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
       propertyPath: m_Layer
       value: 5
@@ -22654,7 +22692,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6124284616624130074, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6128141338165219725, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
