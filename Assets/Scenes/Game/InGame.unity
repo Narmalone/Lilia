@@ -587,6 +587,7 @@ MonoBehaviour:
   makeRespawn: 1
   isNextCheckpoint: 0
   m_gameManager: {fileID: 0}
+  m_handsUi: {fileID: 4636059490208974685}
 --- !u!114 &260436791 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4075055850226162428, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
@@ -3755,6 +3756,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.031654112, y: 0.07284482, z: 0.005757793}
   m_Center: {x: -0.00033479644, y: 0.011562485, z: 0.000000059604645}
+--- !u!198 &1192235087 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8823902093406569011, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
+  m_PrefabInstance: {fileID: 1639192922607935909}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1207701203
 GameObject:
   m_ObjectHideFlags: 0
@@ -14733,6 +14739,7 @@ MonoBehaviour:
     m_Bits: 128
   m_animBebe: {fileID: 1070435111451722819}
   IA: {fileID: 576080450}
+  m_keyParticle: {fileID: 1192235087}
   m_clip:
   - {fileID: 576080454}
 --- !u!1 &1912367910
@@ -15932,6 +15939,10 @@ PrefabInstance:
       propertyPath: m_screamerObj
       value: 
       objectReference: {fileID: 4625214566110584986}
+    - target: {fileID: 1206665905539447027, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
+      propertyPath: m_walkHandsUi
+      value: 
+      objectReference: {fileID: 4636059490208974685}
     - target: {fileID: 1206665905539447027, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
       propertyPath: m_screamerBebe
       value: 
@@ -25376,7 +25387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653240, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_StepOffset
-      value: 0.4
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653241, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_cam
