@@ -31,6 +31,7 @@ public class FinalDoorScript : MonoBehaviour
     [SerializeField]
     private Transform m_soundPlace;
     [SerializeField] private FirstPersonOcclusion m_occlusion;
+    [SerializeField] private PlayerController m_player;
     private void Awake()
     {
         gameObject.SetActive(false);
@@ -49,6 +50,7 @@ public class FinalDoorScript : MonoBehaviour
             other.gameObject.GetComponentInChildren<MouseLock>().m_sound.EventInstance.setParameterByName("Parameter 1",0);
             m_RunAway.SetActive(false);
             m_gameManager.canPick = true;
+            m_player.SetStress();
             StartCoroutine(CorouBeforeSpawn());
         }
     }
