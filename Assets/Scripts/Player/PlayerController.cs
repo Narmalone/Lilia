@@ -518,7 +518,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (Physics.Raycast(m_ray, out m_hit, 1.5f, m_doudouMask))
+            if (Physics.Raycast(m_ray, out m_hit, 2f, m_doudouMask))
             {
                 m_isNotInteractible = false;
                 if (isTwoHandFull == false)
