@@ -93,7 +93,7 @@ public class Patrouille : BaseState
             //FMODUnity.RuntimeManager.PlayOneShotAttached(m_sm.m_fmodEventDrag.Guid,  m_sm.gameObject);
         }
 
-        m_navAgent.speed = Mathf.Lerp(0f,m_sm.m_targetSpeed*2f,m_sm.m_courbeLimace.Evaluate(m_sm.m_pourcentSpeed));
+        m_navAgent.speed = Mathf.Lerp(0f,m_sm.m_targetSpeed,m_sm.m_courbeLimace.Evaluate(m_sm.m_pourcentSpeed));
         
         m_navAgent.SetDestination(m_waypoints.GetCurrentPoint().transform.position);
         Chasse.GetPath(m_path, m_target.transform.position, m_sm.transform.position, NavMesh.AllAreas);
