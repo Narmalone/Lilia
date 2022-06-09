@@ -493,6 +493,7 @@ public class PlayerController : MonoBehaviour
                                 if (hasChair == false)
                                 {
                                     m_gameManager.canDrop = true;
+                                    Debug.Log("le joueur peu get");
                                     m_ChairRend.material.SetFloat("_BooleanFloat", 1f);
                                     m_UIManager.TakableDoudou();
                                     if (Input.GetMouseButtonDown(0))
@@ -503,6 +504,7 @@ public class PlayerController : MonoBehaviour
                                 if (hasChair == true)
                                 {
                                     m_gameManager.canDrop = false;
+                                    Debug.Log("le joueur ne peut pas get");
                                     m_UIManager.DisableUi();
                                     m_ChairRend.material.SetFloat("_BooleanFloat", 0f);
                                 }
@@ -559,6 +561,7 @@ public class PlayerController : MonoBehaviour
                             m_phoneRend.material.SetFloat("_BooleanFloat", 1f);
                             if (Input.GetKeyDown(KeyCode.E))
                             {
+                                m_gameManager.canPick = false;
                                 if (m_doudouIsPossessed == true)
                                 {
                                     m_doudouIsPossessed = false;
@@ -586,8 +589,6 @@ public class PlayerController : MonoBehaviour
                         m_phoneRend.material.SetFloat("_BooleanFloat", 0f);
                     }
                 }
-                m_gameManager.canPick = false;
-
             }
             if (m_gameManager.gotKey == false)
             {
@@ -753,12 +754,14 @@ public class PlayerController : MonoBehaviour
         {
             if (m_gameManager.canDrop == true)
             {
+                Debug.Log("peut prendre la flash");
                 if (Input.GetMouseButtonDown(1))
                 {
                     if (m_flashlightIsPossessed == false)
                     {
                         if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 2)
                         {
+                            m_phone.StartPhoneSound();
                             m_createNarrativeEvent.actionComplete = true;
                         }
                         if (m_createNarrativeEvent.index >= 2)
@@ -804,16 +807,14 @@ public class PlayerController : MonoBehaviour
                     {
                         if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 3)
                         {
-                            m_phone.StartPhoneSound();
-                            m_createNarrativeEvent.actionComplete = true;
                             m_txtEvent.gameObject.SetActive(false);
+                            m_createNarrativeEvent.actionComplete = true;
                         }
                         m_flm.DropItem();
                         m_flm.GetComponent<BoxCollider>().enabled = true;
                         isRightHandFull = false;
                         m_flashlightIsPossessed = false;
                         m_UIManager.DropLampe();
-                        Debug.Log("Drop Light");
                         timeBeforeDropVeilleuse = 0.3f;
                     }
                 }
@@ -841,6 +842,7 @@ public class PlayerController : MonoBehaviour
         {
             if (m_gameManager.canDrop == true)
             {
+                Debug.Log("peut prendre le doudou");
                 if (m_doudouIsPossessed == false)
                 {
                     if (Input.GetMouseButtonDown(0))
@@ -893,7 +895,6 @@ public class PlayerController : MonoBehaviour
                     m_doudouIsPossessed = false;
                     isLeftHandFull = false;
                     m_UIManager.DropDoudou();
-                    //m_doudou.GetComponent<BoxCollider>().enabled = true;
                     timeBeforeDropDoudou = 0.3f;
                 }
             }
@@ -913,14 +914,11 @@ public class PlayerController : MonoBehaviour
                 if (m_doudouIsPossessed == true)
                 {
                     m_doudouIsUsed = true;
-                    //m_camShake.camShakeActive = true;
-
                     if (m_createNarrativeEvent.isFirstTime == true && m_createNarrativeEvent.index == 1)
                     {
                         m_doudouIsUsed = true;
                         m_createNarrativeEvent.actionComplete = true;
                     }
-                    //Debug.Log("doit être chase");
                 }
             }
             if (Input.GetKeyUp(KeyCode.Space))
