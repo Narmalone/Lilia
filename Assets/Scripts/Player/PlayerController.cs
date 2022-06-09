@@ -642,7 +642,6 @@ public class PlayerController : MonoBehaviour
             m_stressBar.SetStress(m_currentStress);
             m_isStressTick = true;
             Task.Delay(50).ContinueWith(t => m_isStressTick = false);
-            Debug.Log("stress en cours");
         }
     }
     //sds

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 
 public class ScriptGiveDoudou : MonoBehaviour
@@ -13,6 +14,7 @@ public class ScriptGiveDoudou : MonoBehaviour
     [SerializeField] private MenuManager m_menuManager;
     [SerializeField] private GameManager m_gameManager;
     [SerializeField] private Animator m_playerAnimator;
+    [SerializeField] private StudioEventEmitter m_eventEmitterCrying;
     private void OnTriggerStay(Collider other)
     {
         if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
@@ -25,6 +27,7 @@ public class ScriptGiveDoudou : MonoBehaviour
                     m_animGiveDoudou.gameObject.SetActive(true);
                     m_walkhands.SetActive(false);
                     StartCoroutine(StartCredits());
+                    m_eventEmitterCrying.StopInstance();
                 }
             }
         }

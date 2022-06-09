@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,6 +27,9 @@ public class CaisseProto : MonoBehaviour
     
     [SerializeField][Range(1,100)] private float m_speedPourcentReduction;
     [SerializeField] private BoxCollider m_boxPhone;
+    [SerializeField] private StudioEventEmitter m_eventEmitterPickup;
+    [SerializeField] private StudioEventEmitter m_eventEmitterDrop;
+        
     private float m_pourcentSpeed;
 
     public bool canTake;
@@ -117,6 +121,7 @@ public class CaisseProto : MonoBehaviour
                     m_player.hasChair = true;
                     canTake = false;
                     m_player.isTwoHandFull = true;
+                    m_eventEmitterPickup.Play();
                 }
                 else
                 {
@@ -158,7 +163,7 @@ public class CaisseProto : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (inPhoneBox == false)
+            if (inPhoneBox == false && m_player.hasChair && gameObject.GetComponentInParent(typeof(Transform)).GetComponentInParent(typeof(MouseLock)) )
             {
                 m_thisGameObject.transform.parent = null;
                 m_rbody.useGravity = true;
@@ -169,8 +174,9 @@ public class CaisseProto : MonoBehaviour
                 m_player.hasChair = false;
                 Debug.Log("dropper la chaise car il n'est pas dans le collider du phone");
                 m_player.isTwoHandFull = false;
+                m_eventEmitterDrop.Play();
             }
-            else
+            else if (m_player.hasChair && gameObject.GetComponentInParent(typeof(Transform)).GetComponentInParent(typeof(MouseLock)))
             {
                 m_thisGameObject.transform.parent = null;
                 m_thisGameObject.transform.rotation = Quaternion.Euler(-90f, m_finalPosition.transform.localRotation.y, transform.localRotation.z);
@@ -180,6 +186,7 @@ public class CaisseProto : MonoBehaviour
                 m_player.hasChair = false;
                 m_boxPhone.enabled = false;
                 chairLocked = true;
+                m_eventEmitterDrop.Play();
             }
         }
 

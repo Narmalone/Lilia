@@ -54,6 +54,7 @@ public class FinalScript : MonoBehaviour
         m_ragdoll.DisableRagdoll();
         m_playerAnimator.enabled = false;
         m_doudou.transform.position = m_cabanneDoudouTransform.position;
+        m_player.GetComponentInChildren<MouseLock>().m_sound.EventInstance.setParameterByName("Parameter 1",1);
         yield return new WaitForSeconds(2f);
         m_player.isCinematic = false;
         CallMobNewWaypoint = true;

@@ -1714,6 +1714,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2497605743841054275, guid: f6863aabf5ffb9d49b0c32111298f19e, type: 3}
+--- !u!1 &468671007 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4541881381032300836, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+  m_PrefabInstance: {fileID: 1422353500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &468671009
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468671007}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.71999997, y: 1.2200003, z: 1.1473887}
+  m_Center: {x: 0, y: 0.00000047683716, z: 0.5780674}
 --- !u!1 &491532061 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 808764856246708187, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -1819,6 +1837,71 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4075055851266985826, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
   m_PrefabInstance: {fileID: 4075055851583946303}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &524292293 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 109781911066168348, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+  m_PrefabInstance: {fileID: 1422353500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &524292294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524292293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 437453842
+      Data2: 1332670097
+      Data3: -1194022258
+      Data4: -1371546421
+    Path: event:/SoundsEvent/RamassageEtLachage/Chaise/ChaiseDrop
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &524292300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524292293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1618079639
+      Data2: 1092825665
+      Data3: 1350964140
+      Data4: -756582914
+    Path: event:/SoundsEvent/RamassageEtLachage/Chaise/ChaisePickUp
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!114 &559534481 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3829117888078164899, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
@@ -1923,6 +2006,7 @@ MonoBehaviour:
   m_final: {fileID: 358116801}
   m_noTarget: {fileID: 627167574}
   m_bebeAnimator: {fileID: 202696973}
+  m_mouselock: {fileID: 865760545}
 --- !u!195 &576080452 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 2873547174128195186, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
@@ -1976,6 +2060,71 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2873547174128195182, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
   m_PrefabInstance: {fileID: 2873547175523140927}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &584049873 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5040736848037750566, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+  m_PrefabInstance: {fileID: 1422353500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &584049874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584049873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 437453842
+      Data2: 1332670097
+      Data3: -1194022258
+      Data4: -1371546421
+    Path: event:/SoundsEvent/RamassageEtLachage/Chaise/ChaiseDrop
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &584049881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584049873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1618079639
+      Data2: 1092825665
+      Data3: 1350964140
+      Data4: -756582914
+    Path: event:/SoundsEvent/RamassageEtLachage/Chaise/ChaisePickUp
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!114 &602904018 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9022044644134806032, guid: e5eef4c6ec0d7e54d94f5219502f20e9, type: 3}
@@ -2872,6 +3021,7 @@ MonoBehaviour:
   m_gameManager: {fileID: 843970910}
   m_bebePls: {fileID: 3053715015945025741}
   m_ColliderMobToGive: {fileID: 4716505358451393389}
+  m_eventEmitterCry: {fileID: 1004652669}
   m_RunAway: {fileID: 691810592}
   m_fmodEventChair:
     Guid:
@@ -3006,6 +3156,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1004652668}
+  - component: {fileID: 1004652669}
   m_Layer: 0
   m_Name: FinalMobPoint
   m_TagString: Untagged
@@ -3027,6 +3178,36 @@ Transform:
   m_Father: {fileID: 1460391051}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1004652669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004652667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -876710966
+      Data2: 1138590460
+      Data3: -68078921
+      Data4: -21024139
+    Path: event:/SoundsEvent/Baby/PleureFinal
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1028462823 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5815085388800646735, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -3149,6 +3330,71 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5597792569690971725, guid: 52bbbd64286334040abbedb01bc406e9, type: 3}
   m_PrefabInstance: {fileID: 1320749479}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1061051418 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3910888811753339564, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+  m_PrefabInstance: {fileID: 1422353500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1061051419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061051418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 437453842
+      Data2: 1332670097
+      Data3: -1194022258
+      Data4: -1371546421
+    Path: event:/SoundsEvent/RamassageEtLachage/Chaise/ChaiseDrop
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1061051426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061051418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1618079639
+      Data2: 1092825665
+      Data3: 1350964140
+      Data4: -756582914
+    Path: event:/SoundsEvent/RamassageEtLachage/Chaise/ChaisePickUp
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!114 &1062373336 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 555931865158434874, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
@@ -3748,6 +3994,71 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207701203}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1210547706 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8368905327632181713, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+  m_PrefabInstance: {fileID: 1422353500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1210547707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210547706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 437453842
+      Data2: 1332670097
+      Data3: -1194022258
+      Data4: -1371546421
+    Path: event:/SoundsEvent/RamassageEtLachage/Chaise/ChaiseDrop
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1210547714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210547706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1618079639
+      Data2: 1092825665
+      Data3: 1350964140
+      Data4: -756582914
+    Path: event:/SoundsEvent/RamassageEtLachage/Chaise/ChaisePickUp
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1210611098
 GameObject:
   m_ObjectHideFlags: 0
@@ -3760,6 +4071,7 @@ GameObject:
   - component: {fileID: 1210611100}
   - component: {fileID: 1210611101}
   - component: {fileID: 1210611102}
+  - component: {fileID: 1210611103}
   m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
@@ -3797,7 +4109,9 @@ MonoBehaviour:
   m_animDoor: {fileID: 348998809}
   m_doorBox: {fileID: 1210611101}
   m_player: {fileID: 494317833}
-  m_clip: {fileID: 1210611102}
+  m_clip:
+  - {fileID: 1210611102}
+  - {fileID: 1210611103}
   m_gameManager: {fileID: 843970910}
   m_key: {fileID: 610141302}
   m_layerPlayer:
@@ -3839,6 +4153,36 @@ MonoBehaviour:
       Data3: 1930312106
       Data4: 737897604
     Path: event:/SoundsEvent/Porte/OuverturePorte
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1210611103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210611098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1024554908
+      Data2: 1158600820
+      Data3: 879429762
+      Data4: 1547851789
+    Path: "event:/SoundsEvent/Porte/PorteFerm\xE9"
   Event: 
   PlayEvent: 0
   StopEvent: 0
@@ -6973,6 +7317,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 306711460515121418, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 306711460515121418, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 9
       objectReference: {fileID: 0}
@@ -7006,6 +7354,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366155355751676953, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 374631332920894077, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 374631332920894077, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -7086,7 +7438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 578377502283827231, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_Radius
-      value: 0.43
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 578377502283827231, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_IsTrigger
@@ -7149,9 +7501,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 406121124}
     - target: {fileID: 627183024087539143, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_eventEmitterDrop
+      value: 
+      objectReference: {fileID: 584049874}
+    - target: {fileID: 627183024087539143, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_twoHandsContainer
       value: 
       objectReference: {fileID: 1775737337}
+    - target: {fileID: 627183024087539143, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_eventEmitterPickup
+      value: 
+      objectReference: {fileID: 584049881}
     - target: {fileID: 627183024087539143, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_speedPourcentReduction
       value: 20
@@ -7553,8 +7913,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1486180490573121034, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
-      propertyPath: m_StaticEditorFlags
+      propertyPath: m_NavMeshLayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486180490573121034, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1494172041678564629, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7933,6 +8297,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1934975975543317727, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934975975543317727, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 9
       objectReference: {fileID: 0}
@@ -8085,6 +8453,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2070753273238199096, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2070753273238199096, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 9
       objectReference: {fileID: 0}
@@ -8094,6 +8466,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2084797254861010162, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2085130149772967502, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2085130149772967502, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -8329,6 +8705,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2514099024823064112, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2514099024823064112, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 9
       objectReference: {fileID: 0}
@@ -8354,6 +8734,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2587551721608413127, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592316128501423252, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2592316128501423252, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -9197,6 +9581,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3937259692181094620, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3937259692181094620, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 9
       objectReference: {fileID: 0}
@@ -9389,16 +9777,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 406121124}
     - target: {fileID: 4135478572632789808, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_eventEmitterDrop
+      value: 
+      objectReference: {fileID: 1210547707}
+    - target: {fileID: 4135478572632789808, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_twoHandsContainer
       value: 
       objectReference: {fileID: 1775737337}
+    - target: {fileID: 4135478572632789808, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_eventEmitterPickup
+      value: 
+      objectReference: {fileID: 1210547714}
     - target: {fileID: 4135478572632789808, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_speedPourcentReduction
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4152721984281548927, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
-      propertyPath: m_StaticEditorFlags
+      propertyPath: m_NavMeshLayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4152721984281548927, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4154165162106220715, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -9414,7 +9814,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4167755161840928488, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_Radius
-      value: 0.43
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4167755161840928488, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_IsTrigger
@@ -9649,11 +10049,19 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4541881381032300836, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
-      propertyPath: m_StaticEditorFlags
+      propertyPath: m_NavMeshLayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541881381032300836, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4547848498337564338, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550967805419352323, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4550967805419352323, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -9682,6 +10090,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4592710963835827049, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594940020126661440, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4594940020126661440, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -9833,9 +10245,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 406121124}
     - target: {fileID: 4732162106016739150, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_eventEmitterDrop
+      value: 
+      objectReference: {fileID: 1593247405}
+    - target: {fileID: 4732162106016739150, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_twoHandsContainer
       value: 
       objectReference: {fileID: 1775737337}
+    - target: {fileID: 4732162106016739150, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_eventEmitterPickup
+      value: 
+      objectReference: {fileID: 1593247412}
     - target: {fileID: 4732162106016739150, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_speedPourcentReduction
       value: 20
@@ -10174,7 +10594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5314627338946441579, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5314627338946441579, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -10190,7 +10610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5360647979387329378, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_Radius
-      value: 0.43
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5360647979387329378, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_IsTrigger
@@ -10222,7 +10642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5397032731975841623, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5397032731975841623, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -10238,6 +10658,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5409325852719286055, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418316361547030258, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5418316361547030258, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -10258,6 +10682,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5455398054935187614, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5455398054973153642, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5455398054973153642, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -10298,6 +10726,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5455398055711641833, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5455398055799533276, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5455398055799533276, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -10365,6 +10797,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5468706565002921452, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468706565002921452, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 9
       objectReference: {fileID: 0}
@@ -10413,9 +10849,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 406121124}
     - target: {fileID: 5532248585396778749, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_eventEmitterDrop
+      value: 
+      objectReference: {fileID: 524292294}
+    - target: {fileID: 5532248585396778749, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_twoHandsContainer
       value: 
       objectReference: {fileID: 1775737337}
+    - target: {fileID: 5532248585396778749, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_eventEmitterPickup
+      value: 
+      objectReference: {fileID: 524292300}
     - target: {fileID: 5532248585396778749, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_speedPourcentReduction
       value: 20
@@ -11093,6 +11537,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6617490636273281965, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617490636273281965, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 9
       objectReference: {fileID: 0}
@@ -11106,6 +11554,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6671751426951362364, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6699647715294245844, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6699647715294245844, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -11341,6 +11793,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7178869924006409735, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178869924006409735, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 9
       objectReference: {fileID: 0}
@@ -11362,6 +11818,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7228516229331923030, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246180324109397630, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7246180324109397630, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -11898,7 +12358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8128681504617395297, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_Radius
-      value: 0.43
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8128681504617395297, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_IsTrigger
@@ -12126,6 +12586,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8467661306982330494, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469846237786468525, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8469846237786468525, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -12409,9 +12873,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 406121124}
     - target: {fileID: 8864839371262312525, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_eventEmitterDrop
+      value: 
+      objectReference: {fileID: 1061051419}
+    - target: {fileID: 8864839371262312525, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_twoHandsContainer
       value: 
       objectReference: {fileID: 1775737337}
+    - target: {fileID: 8864839371262312525, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_eventEmitterPickup
+      value: 
+      objectReference: {fileID: 1061051426}
     - target: {fileID: 8864839371262312525, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_speedPourcentReduction
       value: 20
@@ -12522,7 +12994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9053530859005259218, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_Radius
-      value: 0.43
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9053530859005259218, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_IsTrigger
@@ -13521,6 +13993,71 @@ Transform:
   m_Father: {fileID: 1460391051}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1593247404 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 931256159314548143, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+  m_PrefabInstance: {fileID: 1422353500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1593247405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593247404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 437453842
+      Data2: 1332670097
+      Data3: -1194022258
+      Data4: -1371546421
+    Path: event:/SoundsEvent/RamassageEtLachage/Chaise/ChaiseDrop
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1593247412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593247404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1618079639
+      Data2: 1092825665
+      Data3: 1350964140
+      Data4: -756582914
+    Path: event:/SoundsEvent/RamassageEtLachage/Chaise/ChaisePickUp
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!114 &1594657157 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1426005577, guid: ad9d90a957db5c742a62c1952235e9bf, type: 3}
@@ -24241,6 +24778,10 @@ PrefabInstance:
       propertyPath: m_playerAnimator
       value: 
       objectReference: {fileID: 465092766}
+    - target: {fileID: 3614090448397036639, guid: 3d07d37d48c6fc3489b4540047ff78f3, type: 3}
+      propertyPath: m_eventEmitterCrying
+      value: 
+      objectReference: {fileID: 1004652669}
     - target: {fileID: 3965366024998709283, guid: 3d07d37d48c6fc3489b4540047ff78f3, type: 3}
       propertyPath: m_IsActive
       value: 0

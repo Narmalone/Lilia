@@ -295,7 +295,6 @@ public class UiManager : MonoBehaviour
             m_UIDoudou.GetComponent<Animator>().SetTrigger("Reset");
             m_UILampe.GetComponent<Animator>().SetTrigger("Reset");
         }
-        Debug.Log("stop raycast before");
     }
     
     //Affichage en bas à droite

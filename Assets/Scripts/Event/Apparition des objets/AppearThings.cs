@@ -9,7 +9,7 @@ public class AppearThings : MonoBehaviour
     [Tooltip("Pour optimiser mettre un seul objet parent contenant tous les objets mais tu peux mettre tous les objets que tu le souhaites :p")] public List<GameObject> m_sonsChamber;
 
     [Tooltip("Liste d'objet qui spawn une fois que le second puzzle est finis(lighting)")] public List<GameObject> m_lateGame;
-    [Tooltip("Liste d'objet qui spawn une fois que le joueur est sorti(tentacules bébé et doudou au milieu de la pièce)")] public List<GameObject> m_lastAppear;
+    [Tooltip("Liste d'objet qui spawn une fois que le joueur est sorti(tentacules bÃ©bÃ© et doudou au milieu de la piÃ¨ce)")] public List<GameObject> m_lastAppear;
     [SerializeField] PuzzleGenerator m_puzzle;
 
     [SerializeField] public Transform m_iaSpawner;

@@ -23,6 +23,8 @@ public class FinalDoorScript : MonoBehaviour
     [SerializeField] private Animator m_bebePls;
     [SerializeField] private GameObject m_ColliderMobToGive;
 
+    [SerializeField] private StudioEventEmitter m_eventEmitterCry;
+    
     [SerializeField] private TextMeshProUGUI m_RunAway;
     [SerializeField]
     private EventReference m_fmodEventChair;
@@ -44,6 +46,7 @@ public class FinalDoorScript : MonoBehaviour
             m_EndDoorAnim.SetTrigger("isFinalClose");
             DoorFinal.layer = 13;
             m_thisBox.enabled = false;
+            other.gameObject.GetComponentInChildren<MouseLock>().m_sound.EventInstance.setParameterByName("Parameter 1",0);
             m_RunAway.gameObject.SetActive(false);
             m_gameManager.canPick = true;
             StartCoroutine(CorouBeforeSpawn());
@@ -66,6 +69,8 @@ public class FinalDoorScript : MonoBehaviour
         m_final.canFinal = true;
         m_lastBoxDoor.SetActive(true);
         m_ColliderMobToGive.SetActive(true);
+        m_eventEmitterCry.Play();
+        m_occlusion.AddInstance(m_eventEmitterCry.EventInstance);
         StopCoroutine(CorouBeforeSpawn());
     }
 

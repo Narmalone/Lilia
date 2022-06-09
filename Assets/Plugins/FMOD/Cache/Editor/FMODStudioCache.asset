@@ -98,10 +98,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Sounds.bank
   Name: Sounds
   StudioPath: bank:/Sounds
-  lastModified: 637903287266266126
+  lastModified: 637903333332808220
   FileSizes:
   - Name: Desktop
-    Value: 5199072
+    Value: 5763296
   Exists: 1
 --- !u!114 &-8291960394993572323
 MonoBehaviour:
@@ -193,6 +193,30 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/Crying/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4035467436
+    data2: 77915238
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-6957341339411719161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PleureFinal/Occlusion
   m_EditorClassIdentifier: 
   Name: Occlusion
   StudioPath: 
@@ -326,7 +350,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Voices.bank
   Name: Voices
   StudioPath: bank:/Voices
-  lastModified: 637903287266481127
+  lastModified: 637903333333038253
   FileSizes:
   - Name: Desktop
     Value: 243392
@@ -939,12 +963,14 @@ MonoBehaviour:
   - {fileID: 1029680005344084262}
   - {fileID: -3926953845161476664}
   - {fileID: -581679505498123423}
+  - {fileID: 8295858464303343348}
+  - {fileID: 8262551164498886275}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5980052921926315069}
   StringsBanks:
   - {fileID: 4453001036209173878}
-  cacheTime: 637903287266481127
+  cacheTime: 637903333333038253
   cacheVersion: 10
 --- !u!114 &170076176237000913
 MonoBehaviour:
@@ -1069,7 +1095,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637903287265265906
+  lastModified: 637903333331467982
   FileSizes:
   - Name: Desktop
     Value: 3832960
@@ -1352,10 +1378,10 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637903287264915853
+  lastModified: 637903333331107907
   FileSizes:
   - Name: Desktop
-    Value: 3582
+    Value: 3672
   Exists: 1
 --- !u!114 &4584836110223669072
 MonoBehaviour:
@@ -1534,7 +1560,7 @@ MonoBehaviour:
   Path: FmodProject/Second/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637903287264900842
+  lastModified: 637903333331087900
   FileSizes:
   - Name: Desktop
     Value: 2032
@@ -1622,6 +1648,61 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3700
+--- !u!114 &8262551164498886275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/RamassageEtLachage/Chaise/ChaiseDrop
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/RamassageEtLachage/Chaise/ChaiseDrop
+  Guid:
+    Data1: 437453842
+    Data2: 1332670097
+    Data3: -1194022258
+    Data4: -1371546421
+  Banks:
+  - {fileID: -8343902966666032979}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 250
+--- !u!114 &8295858464303343348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundsEvent/Baby/PleureFinal
+  m_EditorClassIdentifier: 
+  Path: event:/SoundsEvent/Baby/PleureFinal
+  Guid:
+    Data1: -876710966
+    Data2: 1138590460
+    Data3: -68078921
+    Data4: -21024139
+  Banks:
+  - {fileID: -8343902966666032979}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -6957341339411719161}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 62913
 --- !u!114 &8306169716361525010
 MonoBehaviour:
   m_ObjectHideFlags: 0
