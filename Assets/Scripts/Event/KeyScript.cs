@@ -52,6 +52,7 @@ public class KeyScript : MonoBehaviour
         if (m_setKeyPos == false)
         {
             m_clip[0].Play();
+            GetComponent<ParticleSystem>().Stop();
             m_thisObject.transform.position = m_containerDrop.transform.position;
             m_thisObject.transform.rotation = m_containerDrop.transform.rotation;
             m_setKeyPos = true;
