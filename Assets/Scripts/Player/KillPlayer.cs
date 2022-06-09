@@ -46,20 +46,20 @@ public class KillPlayer : MonoBehaviour
            
             if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
             {
-                m_screamerObj.SetActive(true);
-                m_screamerBebe.SetTrigger("Screamer");
                 m_menuManager.OnDeath();
                 m_respawn.makeRespawn = true;
+                m_screamerObj.SetActive(true);
+                m_screamerBebe.SetTrigger("Screamer");
                 m_screamerSound.Play();
                 m_walkHandsUi.SetActive(false);
                 StartCoroutine(CorouBeforeDeath());
             }
             if ((m_doudouMask.value & (1 << other.gameObject.layer)) > 0)
             {
-                m_screamerObj.SetActive(true);
-                m_screamerBebe.SetTrigger("Screamer");
                 m_menuManager.OnDeath();
                 m_respawn.makeRespawn = true;
+                m_screamerObj.SetActive(true);
+                m_screamerBebe.SetTrigger("Screamer");
                 m_screamerSound.Play();
                 m_walkHandsUi.SetActive(false);
                 StartCoroutine(CorouBeforeDeath());
