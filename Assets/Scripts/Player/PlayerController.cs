@@ -650,6 +650,7 @@ public class PlayerController : MonoBehaviour
         m_vignetteSettings.intensity.value = 0f;
         m_currentStress = m_maxStress;
         m_stressBar.SetStress(m_currentStress);
+        TakeDamage(0);
         m_fmodInstanceStress.setParameterByName("Stress", 10 - m_currentStress * 10 / m_maxStress);
     }
 
@@ -658,6 +659,7 @@ public class PlayerController : MonoBehaviour
         m_vignetteSettings.intensity.value = 1f;
         m_currentStress = 1f;
         m_stressBar.SetStress(m_currentStress);
+        TakeDamage(0);
         m_fmodInstanceStress.setParameterByName("Stress", 10 - m_currentStress * 10 / m_maxStress);
     }
     /// <summary>
