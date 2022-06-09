@@ -26,6 +26,7 @@ public class ScriptGiveDoudou : MonoBehaviour
                 {
                     m_animGiveDoudou.gameObject.SetActive(true);
                     m_walkhands.SetActive(false);
+                    m_playerAnimator.SetTrigger("GiveElDoudou");
                     StartCoroutine(StartCredits());
                     m_eventEmitterCrying.StopInstance();
                 }
@@ -42,7 +43,6 @@ public class ScriptGiveDoudou : MonoBehaviour
 
     IEnumerator StartCredits()
     {
-        m_playerAnimator.SetTrigger("GiveElDoudou");
         m_player.isCinematic = true;
         m_uiManager.DisableUi();
         yield return new WaitForSeconds(5f);

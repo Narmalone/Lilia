@@ -15,6 +15,7 @@ public class KillPlayer : MonoBehaviour
     private Collider m_currentPortillon;
 
     [SerializeField] private GameObject m_screamerObj;
+    [SerializeField] private GameObject m_walkHandsUi;
     [SerializeField] private Animator m_screamerBebe;
     [SerializeField] private StudioEventEmitter m_screamerSound;
 
@@ -45,9 +46,8 @@ public class KillPlayer : MonoBehaviour
             {
                 m_screamerObj.SetActive(true);
                 m_screamerBebe.SetTrigger("Screamer");
-                m_menuManager.OnDeath();
-                m_gameManager.isDead = true;
-                m_respawn.makeRespawn = true;
+                m_screamerSound.Play();
+                m_walkHandsUi.SetActive(false);
                 StartCoroutine(CorouBeforeDeath());
             }
             if ((m_doudouMask.value & (1 << other.gameObject.layer)) > 0)
@@ -55,9 +55,7 @@ public class KillPlayer : MonoBehaviour
                 m_screamerObj.SetActive(true);
                 m_screamerBebe.SetTrigger("Screamer");
                 m_screamerSound.Play();
-                m_menuManager.OnDeath();
-                m_gameManager.isDead = true;
-                m_respawn.makeRespawn = true;
+                m_walkHandsUi.SetActive(false);
                 StartCoroutine(CorouBeforeDeath());
             }
         }
@@ -65,10 +63,11 @@ public class KillPlayer : MonoBehaviour
 
     IEnumerator CorouBeforeDeath()
     {
-        yield return new WaitForSeconds(1f);
-        m_screamerSound.Play();
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(3f);
         m_screamerObj.SetActive(false);
+        m_menuManager.OnDeath();
+        m_gameManager.isDead = true;
+        m_respawn.makeRespawn = true;
         StopCoroutine(CorouBeforeDeath());
     }
 }

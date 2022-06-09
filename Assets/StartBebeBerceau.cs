@@ -9,6 +9,7 @@ public class StartBebeBerceau : MonoBehaviour
     [SerializeField] private Animator m_animBebe;
     [SerializeField] private GameObject IA;
 
+    [SerializeField] private ParticleSystem m_keyParticle;
     [SerializeField, Tooltip("b�b� spawn crie")] StudioEventEmitter[] m_clip;
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class StartBebeBerceau : MonoBehaviour
             m_animBebe.gameObject.SetActive(true);
             m_animBebe.SetTrigger("LeaveBed");
             m_clip[0].Play();
+            m_keyParticle.Play();
             IA.GetComponent<AISM>().m_mouselock.m_sound.EventInstance.setParameterByName("Parameter 1",1);
             GetComponent<BoxCollider>().enabled = false;
             StartCoroutine(MatchWithWalk());
