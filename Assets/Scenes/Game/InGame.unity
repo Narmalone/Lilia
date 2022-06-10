@@ -4010,6 +4010,8 @@ MonoBehaviour:
   m_CadenasRenderer: {fileID: 919132148266535726}
   m_Cadenas: {fileID: 543450652473414038}
   m_uiManager: {fileID: 2066910956}
+  m_cadenasParticle: {fileID: 8177876474710968792}
+  m_feuilleParticle: {fileID: 1765925092}
 --- !u!65 &1210611101
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4621,6 +4623,10 @@ PrefabInstance:
       propertyPath: m_soundPlace
       value: 
       objectReference: {fileID: 1002328383}
+    - target: {fileID: 8024441013973086157, guid: 52bbbd64286334040abbedb01bc406e9, type: 3}
+      propertyPath: m_aideFeuille
+      value: 
+      objectReference: {fileID: 1765925092}
     - target: {fileID: 8024441013973086157, guid: 52bbbd64286334040abbedb01bc406e9, type: 3}
       propertyPath: m_soundLumiere
       value: 
@@ -19630,6 +19636,7 @@ MonoBehaviour:
   m_animBebe: {fileID: 1070435111451722819}
   IA: {fileID: 576080450}
   m_keyParticle: {fileID: 1192235087}
+  m_cadenasParticle: {fileID: 8177876474710968792}
   m_clip:
   - {fileID: 576080454}
 --- !u!1 &1912367910
@@ -20851,11 +20858,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 913552921762042177, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.203
+      value: 0.216
       objectReference: {fileID: 0}
     - target: {fileID: 913552921762042177, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.251
+      value: -0.129
       objectReference: {fileID: 0}
     - target: {fileID: 968625183020850665, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

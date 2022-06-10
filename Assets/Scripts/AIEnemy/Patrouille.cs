@@ -35,9 +35,28 @@ public class Patrouille : BaseState
         if(m_sm.m_final.CallMobNewWaypoint == false)
         {
             m_sm.m_bebeAnimator.SetTrigger("Walk");
+            
+            Chasse.GetPath(m_path, m_target.transform.position, m_sm.transform.position, NavMesh.AllAreas);
+            if (m_path.status == NavMeshPathStatus.PathComplete)
+            {
+                if (Chasse.GetPathLength(m_path) < m_sm.m_distanceDetection)
+                {
+                    m_navAgent.isStopped = false;
+                    stateMachine.ChangeState(m_sm.m_chasseState);
+                    m_sm.m_bebeAnimator.SetTrigger("Run");
+                    m_sm.m_mouselock.m_sound.EventInstance.setParameterByName("Parameter 1",1);
+                    Debug.Log("change state");
+                }
+            }
+        
+            if (m_sm.m_chasing == true)
+            {
+                stateMachine.ChangeState(m_sm.m_chasseState);
+            }
         }
 
 
+       
         if (Vector3.Distance(m_sm.transform.position, m_waypoints.GetCurrentPoint().transform.position) <= 1)
         {
             if (UnityEngine.Random.Range(0, 2) == 0)
@@ -51,7 +70,6 @@ public class Patrouille : BaseState
                 m_sm.StartCoroutine(StopMovement());
             }
         }
-        
         m_sm.m_pourcentSpeed += 0.5f*Time.deltaTime;
         if (m_sm.m_pourcentSpeed >= 1f)
         {
@@ -67,23 +85,7 @@ public class Patrouille : BaseState
         m_navAgent.speed = Mathf.Lerp(0f,m_sm.m_targetSpeed,m_sm.m_courbeLimace.Evaluate(m_sm.m_pourcentSpeed));
         
         m_navAgent.SetDestination(m_waypoints.GetCurrentPoint().transform.position);
-        Chasse.GetPath(m_path, m_target.transform.position, m_sm.transform.position, NavMesh.AllAreas);
-        if (m_path.status == NavMeshPathStatus.PathComplete)
-        {
-            if (Chasse.GetPathLength(m_path) < m_sm.m_distanceDetection)
-            {
-                m_navAgent.isStopped = false;
-                stateMachine.ChangeState(m_sm.m_chasseState);
-                m_sm.m_bebeAnimator.SetTrigger("Run");
-                m_sm.m_mouselock.m_sound.EventInstance.setParameterByName("Parameter 1",1);
-                Debug.Log("change state");
-            }
-        }
-        
-        if (m_sm.m_chasing == true)
-        {
-            stateMachine.ChangeState(m_sm.m_chasseState);
-        }
+       
     }
 
     

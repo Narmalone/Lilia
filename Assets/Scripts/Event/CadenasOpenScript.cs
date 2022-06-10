@@ -15,7 +15,8 @@ public class CadenasOpenScript : MonoBehaviour
     [SerializeField] private Renderer m_CadenasRenderer;
     [SerializeField] private Transform m_Cadenas;
     [SerializeField] private UiManager m_uiManager;
-    
+    [SerializeField] private ParticleSystem m_cadenasParticle;
+    [SerializeField] private ParticleSystem m_feuilleParticle;
     private bool hasOpenened;
     private void Awake()
     {
@@ -48,6 +49,8 @@ public class CadenasOpenScript : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    m_cadenasParticle.Stop();
+                    m_feuilleParticle.Play();
                     m_doorBox.enabled = false;
                     m_uiManager.DisableUi();
                     m_player.m_stopStress = true;

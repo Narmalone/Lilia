@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.AI;
+
 public class FinalScript : MonoBehaviour
 {
     [SerializeField] private GameObject IA;
@@ -78,7 +80,9 @@ public class FinalScript : MonoBehaviour
         if(finalTriggered == true)
         {
             m_player.NoVelocity();
-            IA.transform.position = m_newWaypoint.transform.position;
+            //IA.transform.position = m_newWaypoint.transform.position;
+            IA.GetComponent<NavMeshAgent>().Warp(m_newWaypoint.transform.position);
+
         }
     }
     public void OnPlace()
@@ -98,12 +102,14 @@ public class FinalScript : MonoBehaviour
         {
             if (MobInPlace == true)
             {
-                IA.transform.position = m_lastPoint.transform.position;
+                IA.GetComponent<NavMeshAgent>().Warp(m_lastPoint.transform.position);
+                //IA.transform.position = m_lastPoint.transform.position;
             }
         }
         else
         {
-            IA.transform.position = m_finalPosition.transform.position;
+            IA.GetComponent<NavMeshAgent>().Warp(m_finalPosition.transform.position);
+            //IA.transform.position = m_finalPosition.transform.position;
         }
        
     }

@@ -27,6 +27,7 @@ public class PuzzleGenerator : MonoBehaviour
     [SerializeField] private GameObject m_FinalCollider;
     [SerializeField] private TextMeshProUGUI m_txtCancelAction;
     [SerializeField] private List<GameObject> m_toActive;
+    [SerializeField] private ParticleSystem m_aideFeuille;
     private int m_index = 0;
     private int m_indexSolution = 0;
     private int m_indexNotSolution = 0;
@@ -246,12 +247,15 @@ public class PuzzleGenerator : MonoBehaviour
         {
             notSolutionComplete = false;
         }
-
+        //quand solution finis
         if (completeSolution == true && notSolutionComplete == true)
         {
             Debug.Log("puzzle ended");
+            GetComponent<BoxCollider>().enabled = false;
+            m_uiManager.DisableUi();
             m_txtCancelAction.gameObject.SetActive(false);
             isLocked = false;
+            m_aideFeuille.Stop();
             m_player.inCompteur = false;
             m_gameManager.canDrop = true;
             isTrigger = false;
