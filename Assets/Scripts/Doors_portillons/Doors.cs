@@ -160,6 +160,10 @@ public class Doors : MonoBehaviour
             {
                 StartCoroutine(Chrono());
             }
+            if (isNotReactivable == true)
+            {
+                gameObject.layer = default;
+            }
             
             EventInstance fmodInstance = RuntimeManager.CreateInstance(m_fmodEventPortillonOpen.Guid);
             RuntimeManager.AttachInstanceToGameObject(fmodInstance, gameObject.transform);

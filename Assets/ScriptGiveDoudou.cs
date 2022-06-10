@@ -16,6 +16,8 @@ public class ScriptGiveDoudou : MonoBehaviour
     [SerializeField] private Animator m_playerAnimator;
     [SerializeField] private StudioEventEmitter m_eventEmitterCrying;
     [SerializeField] private StudioEventEmitter m_endVoice;
+
+    private bool hasgiven = false;
     private void OnTriggerStay(Collider other)
     {
         if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
@@ -29,8 +31,12 @@ public class ScriptGiveDoudou : MonoBehaviour
                     m_walkhands.SetActive(false);
                     m_animGiveDoudou.SetTrigger("GiveDoudou");
                     m_playerAnimator.SetTrigger("GiveElDoudou");
-                    StartCoroutine(StartCredits());
                     m_eventEmitterCrying.StopInstance();
+                    if (hasgiven == false)
+                    {
+                        StartCoroutine(StartCredits());
+                        hasgiven = true;
+                    }
                 }
             }
         }

@@ -21,6 +21,7 @@ public class FinalDoorScript : MonoBehaviour
     [SerializeField] private GameObject IAEndAnim;
     [SerializeField] private GameManager m_gameManager;
     [SerializeField] private Animator m_bebePls;
+    [SerializeField] private Animator m_playerAnimator;
     [SerializeField] private GameObject m_ColliderMobToGive;
 
     [SerializeField] private StudioEventEmitter m_eventEmitterCry;
@@ -41,10 +42,12 @@ public class FinalDoorScript : MonoBehaviour
     {
         if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
         {
+            m_player.isCinematic = true;
             m_doudou.transform.position = m_midWaypoint.position;
             m_ragdoll.ActivateRagdoll();
             m_final.MobFinalPosition = true;
             m_EndDoorAnim.SetTrigger("isFinalClose");
+            m_playerAnimator.SetTrigger("LookAtDoor");
             DoorFinal.layer = 13;
             m_thisBox.enabled = false;
             other.gameObject.GetComponentInChildren<MouseLock>().m_sound.EventInstance.setParameterByName("Parameter 1",0);
@@ -66,6 +69,7 @@ public class FinalDoorScript : MonoBehaviour
         m_fmodInstance.release();
         IaUnable.SetActive(false);
         IAEndAnim.SetActive(true);
+        m_player.isCinematic = false;
         m_bebePls.SetTrigger("LastAnim");
         m_appear.SpawnAfterCloseDoor();
         m_DoorCanOpen.isActivable = true;

@@ -1767,7 +1767,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8725718, y: 0.28571177, z: 1}
+  m_Size: {x: 0.8725718, y: 0.72, z: 1}
   m_Center: {x: 0.06371409, y: 0.35714412, z: 0}
 --- !u!114 &500086751
 MonoBehaviour:
@@ -1912,7 +1912,7 @@ MonoBehaviour:
   m_waypoints: {fileID: 1698167992}
   m_target: {fileID: 465092765}
   m_triggeredEvent: {fileID: 11400000, guid: 4c6861d28e471b14793c61f67048ca61, type: 2}
-  m_distanceDetection: 3.5
+  m_distanceDetection: 4
   m_courbeLimace:
     serializedVersion: 2
     m_Curve:
@@ -2904,6 +2904,7 @@ MonoBehaviour:
   IAEndAnim: {fileID: 3053715015945025740}
   m_gameManager: {fileID: 843970910}
   m_bebePls: {fileID: 3053715015945025741}
+  m_playerAnimator: {fileID: 465092766}
   m_ColliderMobToGive: {fileID: 4716505358451393389}
   m_eventEmitterCry: {fileID: 1004652669}
   m_RunAway: {fileID: 182768576}
@@ -6849,6 +6850,11 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!1 &1399052835 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1804623827790455523, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+  m_PrefabInstance: {fileID: 1422353500}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1401216059 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5852084944320119403, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -19639,6 +19645,11 @@ MonoBehaviour:
   m_cadenasParticle: {fileID: 8177876474710968792}
   m_clip:
   - {fileID: 576080454}
+--- !u!1 &1903191345 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1324223884082289652, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+  m_PrefabInstance: {fileID: 1422353500}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1912367910
 GameObject:
   m_ObjectHideFlags: 0
@@ -19719,8 +19730,10 @@ MonoBehaviour:
   - {fileID: 1422353507}
   - {fileID: 751056848}
   - {fileID: 1422353509}
+  - {fileID: 1903191345}
   m_sonsChamber:
   - {fileID: 1422353506}
+  - {fileID: 1399052835}
   m_lateGame:
   - {fileID: 160455672}
   m_lastAppear:
@@ -30770,15 +30783,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653245, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.988
+      value: -3.292
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653245, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.138
+      value: -0.167
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653245, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.338
+      value: -1.678
       objectReference: {fileID: 0}
     - target: {fileID: 8172246454592653245, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
       propertyPath: m_LocalRotation.w
