@@ -214,6 +214,22 @@ public class PuzzleGenerator : MonoBehaviour
                 }
                 Select();
             }
+            else if (Input.GetKeyDown(KeyCode.Z))
+            {
+                if(m_index > 6)
+                {
+                    m_index-=7;
+                }
+                Select();
+            }
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                if(m_index < 7)
+                {
+                    m_index+=7;
+                }
+                Select();
+            }
         }
     }
 

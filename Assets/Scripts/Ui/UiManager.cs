@@ -184,6 +184,7 @@ public class UiManager : MonoBehaviour
                     m_UILampe.GetComponent<Animator>().SetTrigger("FadeIn");
                     isAnimated = false;
                     indexAnim++;
+                    Debug.Log("Je suis dans le fadein quand les deux objets sont dans les mains du joueur");
                 }
                 else
                 {
@@ -259,8 +260,7 @@ public class UiManager : MonoBehaviour
                 indexAnim = 0;
                 animActivated = true;
             }
-            
-            Debug.Log("doudou couleur rouge");
+
             m_indicInteraction.GetComponent<Image>().sprite = m_EKeyNotInteract;
             m_indicInteraction.SetActive(true);
         }
@@ -274,7 +274,6 @@ public class UiManager : MonoBehaviour
             m_indicInteraction.GetComponent<Image>().sprite = m_EKeyNotInteract;
             m_indicInteraction.SetActive(true);
         }
-        Debug.Log("dans le drop something");
     }
     public void StopRaycastBefore()
     {

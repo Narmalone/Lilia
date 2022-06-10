@@ -203,7 +203,6 @@ public class QTEManager : MonoBehaviour
     {
         if (ReferenceEquals( gameObject, m_pastHit.collider?.gameObject) && other.isTrigger)
         {
-            Debug.Log("Je ne vise plus le meuble");
             m_uiManager.DisableUi();
             m_uiManager.StopRaycastBefore();
             m_thisRend.GetComponent<Renderer>().material.SetFloat("_BooleanFloat", 0f);
