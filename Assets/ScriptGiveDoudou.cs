@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using FMODUnity;
@@ -18,6 +19,12 @@ public class ScriptGiveDoudou : MonoBehaviour
     [SerializeField] private StudioEventEmitter m_endVoice;
 
     private bool hasgiven = false;
+
+    private void Awake()
+    {
+        hasgiven = false;
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0)
