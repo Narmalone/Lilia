@@ -31,7 +31,7 @@ public class SensibilityEvent : MonoBehaviour
     private void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();
-        m_uiEvent.value = 100f;
+        m_uiEvent.value = 50f;
         UpdateSensibility();
     }
     private void Update()
