@@ -24,7 +24,15 @@ public class ScriptGiveDoudou : MonoBehaviour
         {
             if(m_player.m_doudouIsPossessed == true)
             {
-                m_uiManager.TakableObject();
+                if (hasgiven == false)
+                {
+                    m_uiManager.TakableObject();
+                }
+                else
+                {
+                    m_uiManager.DisableUi();
+                }
+               
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     m_animGiveDoudou.gameObject.SetActive(true);
