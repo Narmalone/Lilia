@@ -88,7 +88,6 @@ public class PuzzleGenerator : MonoBehaviour
             else
             {
                 m_uiManager.DropSomethingBefore();
-                m_uiManager.AnimUi();
             }
         }
     }

@@ -187,7 +187,6 @@ public class QTEManager : MonoBehaviour
                         else
                         {
                             m_uiManager.DropSomethingBefore();
-                            m_uiManager.AnimUi();
                         }
                     }
                 }

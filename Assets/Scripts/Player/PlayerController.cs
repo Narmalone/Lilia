@@ -493,7 +493,6 @@ public class PlayerController : MonoBehaviour
                                 if (hasChair == false)
                                 {
                                     m_gameManager.canDrop = true;
-                                    Debug.Log("le joueur peu get");
                                     m_ChairRend.material.SetFloat("_BooleanFloat", 1f);
                                     m_UIManager.TakableDoudou();
                                     if (Input.GetMouseButtonDown(0))
@@ -504,7 +503,6 @@ public class PlayerController : MonoBehaviour
                                 if (hasChair == true)
                                 {
                                     m_gameManager.canDrop = false;
-                                    Debug.Log("le joueur ne peut pas get");
                                     m_UIManager.DisableUi();
                                     m_ChairRend.material.SetFloat("_BooleanFloat", 0f);
                                 }
@@ -751,7 +749,6 @@ public class PlayerController : MonoBehaviour
         {
             if (m_gameManager.canDrop == true)
             {
-                Debug.Log("peut prendre la flash");
                 if (Input.GetMouseButtonDown(1))
                 {
                     if (m_flashlightIsPossessed == false)
@@ -839,7 +836,6 @@ public class PlayerController : MonoBehaviour
         {
             if (m_gameManager.canDrop == true)
             {
-                Debug.Log("peut prendre le doudou");
                 if (m_doudouIsPossessed == false)
                 {
                     if (Input.GetMouseButtonDown(0))

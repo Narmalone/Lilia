@@ -31,6 +31,7 @@ public class UiManager : MonoBehaviour
     public int indexAnimMax = 2;
     private int m_alreadyShrinkingDoudou = 0;
     private int m_alreadyShrinkingLampe = 0;
+    private int m_alreadyFlashing;
 
     [SerializeField] private Sprite m_leftClickSprite;
     [SerializeField] private Sprite m_leftClickNotPossibleSprite;
@@ -113,11 +114,6 @@ public class UiManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(animActivated == true)
-        {
-            AnimUi();
-        }
-      
     }
 
     private IEnumerator GrowUpAndDown(GameObject p_go)
@@ -144,7 +140,6 @@ public class UiManager : MonoBehaviour
             while(p_go.transform.localScale.x > beginningSize.x)
             {
                 p_go.transform.localScale = Vector3.MoveTowards(p_go.transform.localScale, beginningSize, 0.1f);
-                Debug.Log("Je vérifie que je rédescend a la bonne taille");
                 yield return null;
             }
         }
@@ -161,106 +156,84 @@ public class UiManager : MonoBehaviour
 
 
     }
+    
+    private IEnumerator FadeInOut(GameObject p_go)
+    {
+        m_alreadyFlashing++;
+        int numberOfRepetition = 0;
+        while (numberOfRepetition <= 2)
+        {
+            p_go.GetComponent<Animator>().SetTrigger("FadeOut");
+            yield return new WaitForSeconds(0.2f);
+            p_go.GetComponent<Animator>().SetTrigger("FadeIn");
+            yield return new WaitForSeconds(0.2f);
+            numberOfRepetition++;
+        }
+
+        m_alreadyFlashing--;
+        yield return null;
+    }
+    
+    private IEnumerator FadeInOut(GameObject p_go,GameObject p_go2)
+    {
+        m_alreadyFlashing++;
+        int numberOfRepetition = 0;
+        while (numberOfRepetition <= 2)
+        {
+            p_go.GetComponent<Animator>().SetTrigger("FadeOut");
+            p_go2.GetComponent<Animator>().SetTrigger("FadeOut");
+            yield return new WaitForSeconds(0.2f);
+            p_go.GetComponent<Animator>().SetTrigger("FadeIn");
+            p_go2.GetComponent<Animator>().SetTrigger("FadeIn");
+            yield return new WaitForSeconds(0.2f);
+            numberOfRepetition++;
+        }
+        m_alreadyFlashing--;
+        yield return null;
+    }
     //----------------------------------------------- UI Objets du joueur ------------------------------------------//
 
     //Normal si le joueur appuie sur E sa blink
     public void AnimUi()
     {
-        if(m_player.isLeftHandFull == true && m_player.isRightHandFull == true)
+        if (m_alreadyFlashing < 2)
         {
-            if (isAnimated == false)
+            Debug.Log("Je rentre dans ANimUI");
+            if(m_player.isLeftHandFull == true && m_player.isRightHandFull == true)
             {
-                m_UIDoudou.GetComponent<Animator>().SetTrigger("FadeOut");
-                StartCoroutine(GrowUpAndDown(m_UIDoudou));
-                m_UILampe.GetComponent<Animator>().SetTrigger("FadeOut");
-                StartCoroutine(GrowUpAndDown(m_UILampe));
-                isAnimated = true;
-            }
-            if (isAnimated == true)
-            {
-                if (indexAnim <= indexAnimMax)
-                {
-                    m_UIDoudou.GetComponent<Animator>().SetTrigger("FadeIn");
-                    m_UILampe.GetComponent<Animator>().SetTrigger("FadeIn");
-                    isAnimated = false;
-                    indexAnim++;
-                    Debug.Log("Je suis dans le fadein quand les deux objets sont dans les mains du joueur");
-                }
-                else
-                {
-                    animActivated = false;
-                }
-            }
-        }
-        if (m_player.isLeftHandFull == true && m_player.isRightHandFull == false)
-        {
-            if (isAnimated == false)
-            {
-                m_UIDoudou.GetComponent<Animator>().SetTrigger("FadeOut");
-                StartCoroutine(GrowUpAndDown(m_UIDoudou));
-                isAnimated = true;
-            }
-            if (isAnimated == true)
-            {
-                if (indexAnim <= indexAnimMax)
-                {
-                    m_UIDoudou.GetComponent<Animator>().SetTrigger("FadeIn");
-                    isAnimated = false;
-                    indexAnim++;
-                }
-                else
-                {
-                    animActivated = false;
-                }
-            }
-        }
-        if(m_player.isRightHandFull == true && m_player.isLeftHandFull == false)
-        {
-            m_UILampe.GetComponent<Animator>().SetTrigger("FadeOut");
-            StartCoroutine(GrowUpAndDown(m_UILampe));
-            if (indexAnim <= indexAnimMax)
-            {
-                m_UILampe.GetComponent<Animator>().SetTrigger("FadeIn");
-                indexAnim++;
-            }
-        }
-        if(m_player.isTwoHandFull == true)
-        {
-            if (isAnimated == false)
-            {
-                m_UILampe.GetComponent<Animator>().SetTrigger("FadeOut");
-                m_UIDoudou.GetComponent<Animator>().SetTrigger("FadeOut");
+                StartCoroutine(FadeInOut(m_UIDoudou, m_UILampe));
                 StartCoroutine(GrowUpAndDown(m_UIDoudou));
                 StartCoroutine(GrowUpAndDown(m_UILampe));
-                isAnimated = true;
             }
-            if (isAnimated == true)
+        
+            if (m_player.isLeftHandFull == true && m_player.isRightHandFull == false)
             {
-                if (indexAnim <= indexAnimMax)
-                {
-                    m_UILampe.GetComponent<Animator>().SetTrigger("FadeIn");
-                    m_UIDoudou.GetComponent<Animator>().SetTrigger("FadeIn");
-                    isAnimated = false;
-                    indexAnim++;
-                }
-                else
-                {
-                    animActivated = false;
-                }
+                StartCoroutine(FadeInOut(m_UIDoudou));
+                StartCoroutine(GrowUpAndDown(m_UIDoudou));
+            }
+        
+            if(m_player.isRightHandFull == true && m_player.isLeftHandFull == false)
+            {
+                StartCoroutine(FadeInOut(m_UILampe));
+                StartCoroutine(GrowUpAndDown(m_UILampe));
+                Debug.Log("Je rentre dans ");
+            }
+            if(m_player.isTwoHandFull == true)
+            {
+                StartCoroutine(FadeInOut(m_UIDoudou, m_UILampe));
+                StartCoroutine(GrowUpAndDown(m_UIDoudou));
+                StartCoroutine(GrowUpAndDown(m_UILampe));
             }
         }
-     
     }
     public void DropSomethingBefore()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            AnimUi();
+        }
         if(m_player.isLeftHandFull == true)
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                indexAnim = 0;
-                animActivated = true;
-            }
-
             m_indicInteraction.GetComponent<Image>().sprite = m_EKeyNotInteract;
             m_indicInteraction.SetActive(true);
         }
