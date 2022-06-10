@@ -1867,6 +1867,7 @@ MonoBehaviour:
   m_noTarget: {fileID: 627167574}
   m_bebeAnimator: {fileID: 202696973}
   m_mouselock: {fileID: 865760545}
+  canRespiration: 1
 --- !u!195 &576080452 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 2873547174128195186, guid: dc142fe6765e91247b21cd014b5bcc40, type: 3}
@@ -6583,7 +6584,7 @@ MonoBehaviour:
   - 'Dad: Heuuuu whe whe wha... What ?'
   - 'Mom: I think my waters just broke.'
   - Dad:O-o-oh right, I'll get our coats and... shoes and we'll go right away !
-  - (The car leaving the house).
+  - (The car is leaving the house).
 --- !u!114 &1393096428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30956,6 +30957,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3614090448397036639, guid: 3d07d37d48c6fc3489b4540047ff78f3, type: 3}
+      propertyPath: m_ia
+      value: 
+      objectReference: {fileID: 576080451}
+    - target: {fileID: 3614090448397036639, guid: 3d07d37d48c6fc3489b4540047ff78f3, type: 3}
       propertyPath: m_player
       value: 
       objectReference: {fileID: 494317833}
@@ -36744,19 +36749,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8904518098776200509, guid: 85520c21f41dacf4ab357156c8467573, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7068168
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8904518098776200509, guid: 85520c21f41dacf4ab357156c8467573, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7068168
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8904518098776200509, guid: 85520c21f41dacf4ab357156c8467573, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.020250218
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8904518098776200509, guid: 85520c21f41dacf4ab357156c8467573, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.020250218
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8904518098776200509, guid: 85520c21f41dacf4ab357156c8467573, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -36768,7 +36773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8904518098776200509, guid: 85520c21f41dacf4ab357156c8467573, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 3.282
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85520c21f41dacf4ab357156c8467573, type: 3}

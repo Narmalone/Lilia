@@ -36,7 +36,7 @@ public class AISM : StateMachine
     [SerializeField]
     private FMODUnity.EventReference m_fmodEventRespiration;
     
-    private EventInstance m_fmodInstanceRespiration;
+    public EventInstance m_fmodInstanceRespiration;
     
 
     public FMODUnity.EventReference m_fmodEventDrag;
@@ -53,11 +53,12 @@ public class AISM : StateMachine
     [SerializeField] public Animator m_bebeAnimator;
 
     [SerializeField] public MouseLock m_mouselock;
-
+    public bool canRespiration = true;
     private Vector3 m_previousPos;
     
     private void Awake()
     {
+        canRespiration = true;
         m_occlusion = FindObjectOfType<FirstPersonOcclusion>();
         m_targetSpeed = m_navAgent.speed;
         m_path = new NavMeshPath();
@@ -112,25 +113,32 @@ public class AISM : StateMachine
     {
         while(true)
         {
-            
-            int time = 10 + Random.Range(0, 10);
-            yield return new WaitForSeconds(time);
-            m_fmodInstanceRespiration.stop(STOP_MODE.ALLOWFADEOUT);
-            StartCoroutine(ReEnableRespiration());
-            var instance = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventSonBB.Guid);
-            FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, gameObject.transform);
-            instance.start();
-            m_occlusion.AddInstance(instance);
-            instance.release();
+            if(canRespiration == true)
+            {
+                int time = 10 + Random.Range(0, 10);
+                yield return new WaitForSeconds(time);
+                m_fmodInstanceRespiration.stop(STOP_MODE.ALLOWFADEOUT);
+                StartCoroutine(ReEnableRespiration());
+                var instance = FMODUnity.RuntimeManager.CreateInstance(m_fmodEventSonBB.Guid);
+                FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, gameObject.transform);
+                instance.start();
+                m_occlusion.AddInstance(instance);
+                instance.release();
+            }
+          
         }
     }
 
     private IEnumerator ReEnableRespiration()
     {
-        yield return new WaitForSeconds(7f);
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceRespiration,  GetComponent<Transform>());
-        m_fmodInstanceRespiration.start();
-        m_occlusion.AddInstance(m_fmodInstanceRespiration);
+        if (canRespiration == true)
+        {
+            yield return new WaitForSeconds(7f);
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_fmodInstanceRespiration, GetComponent<Transform>());
+            m_fmodInstanceRespiration.start();
+            m_occlusion.AddInstance(m_fmodInstanceRespiration);
+        }
+           
     }
     
     protected override BaseState GetInitialState()

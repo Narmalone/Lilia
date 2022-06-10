@@ -17,7 +17,7 @@ public class ScriptGiveDoudou : MonoBehaviour
     [SerializeField] private Animator m_playerAnimator;
     [SerializeField] private StudioEventEmitter m_eventEmitterCrying;
     [SerializeField] private StudioEventEmitter m_endVoice;
-
+    [SerializeField] private AISM m_ia;
     private bool hasgiven = false;
 
     private void Awake()
@@ -63,14 +63,15 @@ public class ScriptGiveDoudou : MonoBehaviour
             m_uiManager.DisableUi();
         }
     }
-
+    //sd
     IEnumerator StartCredits()
     {
         m_player.isCinematic = true;
         m_uiManager.DisableUi();
-        yield return new WaitForSeconds(2f);
+        m_ia.canRespiration = false;
+        m_ia.m_fmodInstanceRespiration.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         m_endVoice.Play();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         m_gameManager.PlayerNotIngame();
         m_menuManager.OnCredits();
     }
