@@ -80,7 +80,7 @@ public class FlashlightManager : MonoBehaviour
         m_rbodyFlashlight.isKinematic = false;
         m_rbodyFlashlight.useGravity = true;
         flashlight.transform.position = FlashlightContainer.transform.position;
-        transform.localRotation = Quaternion.Euler(-90f, m_playerController.transform.localEulerAngles.y, m_playerController.transform.localEulerAngles.z);
+        transform.rotation = Quaternion.Euler(-90f, m_playerController.transform.localEulerAngles.y, m_playerController.transform.localEulerAngles.z);
         GetDropped = true;
         flashlight.transform.SetParent(FlashlightContainer);
         flashlight.transform.parent = null;

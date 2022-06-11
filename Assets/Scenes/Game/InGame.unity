@@ -1264,6 +1264,11 @@ Light:
   m_CorrespondingSourceObject: {fileID: 5886631550238554159, guid: 9323fce9f159efe4c8848aca71033228, type: 3}
   m_PrefabInstance: {fileID: 8172246454132700848}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &374429843 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4516737218955439114, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+  m_PrefabInstance: {fileID: 4075055851583946303}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &391919292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1777,6 +1782,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &562781422 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6135126194349209344, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+  m_PrefabInstance: {fileID: 1422353500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &562781423
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562781422}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.14882147, y: 0.9180685, z: 1.9351076}
+  m_Center: {x: 0.025844155, y: -0.4712203, z: 0.00000017881393}
 --- !u!1 &568205761 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4123208479979067757, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -6307,6 +6330,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4075055850246563107, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
   m_PrefabInstance: {fileID: 4075055851583946303}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1348818720 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4390283012868979052, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+  m_PrefabInstance: {fileID: 4075055851583946303}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1365499903 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6324023854328927070, guid: 01a27c2133c41b646bd8d3998f429b8c, type: 3}
@@ -12882,6 +12916,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 500086750}
     - target: {fileID: 8371592768302931693, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+      propertyPath: m_txtPhone
+      value: 
+      objectReference: {fileID: 374429843}
+    - target: {fileID: 8371592768302931693, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
       propertyPath: m_uiManager
       value: 
       objectReference: {fileID: 2066910956}
@@ -14370,6 +14408,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.088403806, y: 0.9180609, z: 1.9351077}
   m_Center: {x: 0.0560311, y: -0.47122484, z: 0.00000017881393}
+--- !u!1 &1522090621 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8953934972251053813, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
+  m_PrefabInstance: {fileID: 1422353500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1522090622
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522090621}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.14882147, y: 0.9180685, z: 1.9351076}
+  m_Center: {x: 0.025844155, y: -0.47122127, z: 0.00000047683716}
 --- !u!1 &1545727932 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5729863825282525977, guid: 9f7fe9c35175d1e4caadaddd0904ab8c, type: 3}
@@ -23783,6 +23839,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.6511845
       objectReference: {fileID: 0}
+    - target: {fileID: 970689577331996742, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 623.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 970689577331996742, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970689577331996742, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -372
+      objectReference: {fileID: 0}
     - target: {fileID: 972191736019097974, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -23859,6 +23927,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1077461413775552226, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_text
+      value: 'Hey, sweetheart, sorry to wake you up, your little sister was just
+        born.
+
+        See you tomorrow, love you.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1077461413775552226, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 44d6811953faeca42aaf9ed8394e2d79, type: 2}
+    - target: {fileID: 1077461413775552226, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6001756275928439646, guid: 44d6811953faeca42aaf9ed8394e2d79, type: 2}
     - target: {fileID: 1078871682409273747, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
       propertyPath: m_Layer
       value: 5
@@ -24758,6 +24841,10 @@ PrefabInstance:
     - target: {fileID: 2321648171965181595, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331181760017343887, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 196
       objectReference: {fileID: 0}
     - target: {fileID: 2333165398860995554, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -26752,12 +26839,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 494317833}
     - target: {fileID: 4075055851489939087, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075055851489939087, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 22
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4075055851489939087, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -369
+      value: -370
       objectReference: {fileID: 0}
     - target: {fileID: 4075055851505524415, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
       propertyPath: m_Color.b
@@ -27319,6 +27410,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4390283012868979052, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_text
+      value: Hi Thibault, look... this is your little sister, Lilia.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390283012868979052, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_fontSize
+      value: 58.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390283012868979052, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 44d6811953faeca42aaf9ed8394e2d79, type: 2}
+    - target: {fileID: 4390283012868979052, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 58.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390283012868979052, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6001756275928439646, guid: 44d6811953faeca42aaf9ed8394e2d79, type: 2}
     - target: {fileID: 4395841150902053188, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 5.499202
@@ -27434,6 +27545,14 @@ PrefabInstance:
     - target: {fileID: 4513704477493567577, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516737218955439114, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_Name
+      value: AnswerPhoneTxt
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516737218955439114, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4526990798767694867, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
       propertyPath: m_Layer
@@ -28578,6 +28697,10 @@ PrefabInstance:
     - target: {fileID: 6265836639041021508, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 15.098433
+      objectReference: {fileID: 0}
+    - target: {fileID: 6279549081037539412, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6298593283078236551, guid: 31126e3f2d7172a4397c7b506eb9d9fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -30961,6 +31084,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 576080451}
     - target: {fileID: 3614090448397036639, guid: 3d07d37d48c6fc3489b4540047ff78f3, type: 3}
+      propertyPath: m_endTxt
+      value: 
+      objectReference: {fileID: 1348818720}
+    - target: {fileID: 3614090448397036639, guid: 3d07d37d48c6fc3489b4540047ff78f3, type: 3}
       propertyPath: m_player
       value: 
       objectReference: {fileID: 494317833}
@@ -30984,6 +31111,10 @@ PrefabInstance:
       propertyPath: m_menuManager
       value: 
       objectReference: {fileID: 1607349580}
+    - target: {fileID: 3614090448397036639, guid: 3d07d37d48c6fc3489b4540047ff78f3, type: 3}
+      propertyPath: m_txtToDisplay
+      value: Hello Thibault, look... this is your little sister, Lilia.
+      objectReference: {fileID: 0}
     - target: {fileID: 3614090448397036639, guid: 3d07d37d48c6fc3489b4540047ff78f3, type: 3}
       propertyPath: m_animGiveDoudou
       value: 

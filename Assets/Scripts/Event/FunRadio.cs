@@ -38,6 +38,7 @@ public class FunRadio : MonoBehaviour
     [SerializeField] private BoxCollider m_chairBox;
     [SerializeField] private BoxCollider m_activeBebe;
 
+    [SerializeField] private GameObject m_txtPhone;
     private void Awake()
     {
         m_occlusion = FindObjectOfType<FirstPersonOcclusion>();
@@ -54,6 +55,7 @@ public class FunRadio : MonoBehaviour
     {
         if(isFirstAnswer == true)
         {
+            m_txtPhone.SetActive(true);
             m_activeBebe.enabled = true;
             m_chairBox.enabled = false;
             m_player.m_stopStress = true;
@@ -88,6 +90,7 @@ public class FunRadio : MonoBehaviour
         m_player.isCinematic = false;
         m_player.m_stopStress = false;
         m_player.m_speed = 1.5f;
+        m_txtPhone.SetActive(false);
         StopCoroutine(StopPhoneCinematic());
     }
     public void StartPhoneSound()

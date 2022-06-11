@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using FMODUnity;
 using UnityEngine;
-
+using TMPro;
 public class ScriptGiveDoudou : MonoBehaviour
 {
     //
@@ -18,6 +18,8 @@ public class ScriptGiveDoudou : MonoBehaviour
     [SerializeField] private StudioEventEmitter m_eventEmitterCrying;
     [SerializeField] private StudioEventEmitter m_endVoice;
     [SerializeField] private AISM m_ia;
+    [SerializeField, TextArea(0,4)] private string m_txtToDisplay;
+    [SerializeField] private TextMeshProUGUI m_endTxt;
     private bool hasgiven = false;
 
     private void Awake()
@@ -42,8 +44,10 @@ public class ScriptGiveDoudou : MonoBehaviour
                
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    Destroy(m_walkhands, .1f);
                     m_animGiveDoudou.gameObject.SetActive(true);
-                    m_walkhands.SetActive(false);
+                    m_endTxt.gameObject.SetActive(true);
+                    m_endTxt.text = m_txtToDisplay;
                     m_animGiveDoudou.SetTrigger("GiveDoudou");
                     m_playerAnimator.SetTrigger("GiveElDoudou");
                     m_eventEmitterCrying.StopInstance();

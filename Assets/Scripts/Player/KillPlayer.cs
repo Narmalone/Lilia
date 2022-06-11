@@ -48,14 +48,13 @@ public class KillPlayer : MonoBehaviour
         {
             if ((m_playerMask.value & (1 << other.gameObject.layer)) > 0 && m_screamerDone)
             {
+                m_walkHandsUi.SetActive(false);
                 m_menuManager.OnDeath();
                 m_gameManager.isDead = true;
                 m_respawn.makeRespawn = true;
                 m_screamerObj.SetActive(true);
                 m_screamerBebe.SetTrigger("Screamer");
-                Debug.Log("Screamer Maintenant");
                 m_screamerSound.Play();
-                m_walkHandsUi.SetActive(false);
                 m_screamerDone = false;
                 StartCoroutine(CorouBeforeDeath());
                 
