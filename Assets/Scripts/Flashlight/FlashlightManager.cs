@@ -51,18 +51,18 @@ public class FlashlightManager : MonoBehaviour
     {
         if(GetDropped == true)
         {
-            m_rbodyFlashlight.constraints = RigidbodyConstraints.FreezeRotation;
-            m_veilleuseLight.gameObject.SetActive(true);
+
         }
         else
         {
-            m_rbodyFlashlight.constraints = RigidbodyConstraints.None;
-            m_veilleuseLight.gameObject.SetActive(false);
+            
         }
     }
     //----------------------------------------------- Fonctions li�es � la veilleuse ------------------------------------------//
     public void PickItem()
     {
+        m_rbodyFlashlight.constraints = RigidbodyConstraints.None;
+        m_veilleuseLight.gameObject.SetActive(false);
         m_instancePickUp.setVolume(m_audio.volumeSound);
         m_instancePickUp.start();
         m_rbodyFlashlight.useGravity = false;
@@ -80,7 +80,9 @@ public class FlashlightManager : MonoBehaviour
         m_rbodyFlashlight.isKinematic = false;
         m_rbodyFlashlight.useGravity = true;
         flashlight.transform.position = FlashlightContainer.transform.position;
-        transform.rotation = Quaternion.Euler(-90f, m_playerController.transform.localEulerAngles.y, m_playerController.transform.localEulerAngles.z);
+        transform.localRotation = Quaternion.Euler(-90f, m_playerController.transform.localEulerAngles.y + 5f, m_playerController.transform.localEulerAngles.z);
+        m_rbodyFlashlight.constraints = RigidbodyConstraints.FreezeRotation;
+        m_veilleuseLight.gameObject.SetActive(true);
         GetDropped = true;
         flashlight.transform.SetParent(FlashlightContainer);
         flashlight.transform.parent = null;
