@@ -1,13 +1,33 @@
-# Horror Game
+# Thriller-Horror Game
  
  
-## CONTEXT
-Game make in 3 month with 4 other people, the main goal was to make a thriller-horror game in 3D.
+# OVERVIEW
+> **Game Engine**: Unity
 
-## ENGINE
-Made in Unity 2020 version
+> **Engine Version**: 2020.3.30f1
 
-## What problem we occured ?
-Make a sound spatialized and using external tools like FMOD.
+> **Effective**: 5
 
-What I learned ?
+> **Production's Budget**: 4 month
+
+# Organisation
+
+## Tools
+We used **HacknPlan** for the global organisation of the project, this is working like jira.
+
+And also **Clickup** to have more informations with visual like a Gantt diagram.
+
+# Gameplay
+You must use your both hands to manage some objects, your night light and your teddy to survive
+![src](https://img.itch.zone/aW1hZ2UvMTU2NzQwMi85MTY2NzM2LnBuZw==/original/jKin%2BO.png)
+## Which problem we occured ?
+- Make a sound spatialized and using external tools like FMOD.
+- Use an AI
+- Making a Gameplay that follows a story line
+
+## What I learned ?
+- Tips about the UI of Unity and her responsive to different devices
+- Use and implement an external tool like **FMOD**
+- Basics of AI
+- Lead the player to follow a story line
+- 
